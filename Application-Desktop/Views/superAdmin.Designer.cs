@@ -213,7 +213,7 @@
             btnBranches.Name = "btnBranches";
             btnBranches.Size = new Size(179, 34);
             btnBranches.TabIndex = 3;
-            btnBranches.Text = "              Branches";
+            btnBranches.Text = "              Vendors";
             btnBranches.TextAlign = ContentAlignment.MiddleLeft;
             btnBranches.UseVisualStyleBackColor = false;
             btnBranches.Click += btnBranches_Click;
@@ -311,7 +311,7 @@
             btnMenu.Name = "btnMenu";
             btnMenu.Size = new Size(179, 34);
             btnMenu.TabIndex = 3;
-            btnMenu.Text = "              Menu";
+            btnMenu.Text = "              Account";
             btnMenu.TextAlign = ContentAlignment.MiddleLeft;
             btnMenu.UseVisualStyleBackColor = false;
             btnMenu.Click += btnMenu_Click;

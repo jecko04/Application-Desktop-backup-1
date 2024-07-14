@@ -170,5 +170,27 @@ namespace Application_Desktop.Sub_sub_Views
         {
             this.Close();
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            string fname = txtFirstName.Text;
+            string lname = txtLastName.Text;
+            string email = txtEmail.Text;
+            string pwd = txtPassword.Text;
+            string role = txtRoles.Text;
+
+
+            DialogResult result = MessageBox.Show("Would you like to proceed with Updating this account?", "Confirm Changes", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                UpdateSuperAdmin(superAdminID, fname, lname, email, pwd, role);
+                this.Close();
+            }
+            
+
+            
+
+        }
     }
 }

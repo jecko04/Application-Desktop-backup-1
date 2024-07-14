@@ -222,6 +222,7 @@
             btnUpdate.TabIndex = 18;
             btnUpdate.Text = "Submit";
             btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // errorProvider1
             // 
