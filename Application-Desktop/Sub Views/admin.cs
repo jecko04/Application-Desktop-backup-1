@@ -314,9 +314,48 @@ namespace Application_Desktop.Sub_Views
             }
         }
 
+
+
+        private editSuperAdmin editSuperAdminInstance;
         private void viewSuperAdminData_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
+            //update
+            if (viewSuperAdminData.Columns["editSuperAdmin"] != null &&
+        e.ColumnIndex == viewSuperAdminData.Columns["editSuperAdmin"].Index && e.RowIndex >= 0)
+            {
 
+                string fullname = viewSuperAdminData.Rows[e.RowIndex].Cells["Name"].Value?.ToString() ?? string.Empty;
+                string[] nameParts = fullname.Split(new char[] { ' ' }, 2);
+
+
+
+                int superAdminID = Convert.ToInt32(viewSuperAdminData.Rows[e.RowIndex].Cells["SuperAdmin_ID"].Value);
+                string fname = nameParts[0];
+                string lname = nameParts.Length > 1 ? nameParts[1] : string.Empty;
+                string email = viewSuperAdminData.Rows[e.RowIndex].Cells["Email"].Value?.ToString() ?? string.Empty;
+                string pwd = viewSuperAdminData.Rows[e.RowIndex].Cells["Pwd"].Value?.ToString() ?? string.Empty;
+
+                string role = viewSuperAdminData.Rows[e.RowIndex].Cells["Role_ID"].Value?.ToString() ?? string.Empty;
+
+                if (editSuperAdminInstance == null || editSuperAdminInstance.IsDisposed)
+                {
+                    editSuperAdminInstance = new editSuperAdmin(superAdminID, fname, lname, email, pwd, role);
+                    editSuperAdminInstance.Show();
+                }
+                else
+                {
+                    if (editSuperAdminInstance.Visible)
+                    {
+                        editSuperAdminInstance.BringToFront();
+                    }
+                    else
+                    {
+                        editSuperAdminInstance.Show();
+                    }
+                }
+            }
+
+            //
         }
 
 
