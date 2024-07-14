@@ -315,7 +315,7 @@ namespace Application_Desktop.Sub_Views
         }
 
 
-
+        private superadminChangePass changeSuperAdminPassInstance;
         private editSuperAdmin editSuperAdminInstance;
         private void viewSuperAdminData_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
@@ -355,7 +355,73 @@ namespace Application_Desktop.Sub_Views
                 }
             }
 
-            //
+            //delete
+            if (e.RowIndex >= 0 && e.ColumnIndex == viewSuperAdminData.Columns["deleteSuperAdmin"].Index)
+            {
+                DialogResult result = MessageBox.Show("Would you like to proceed with deleting this account?", "Confirm Deletions", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    int superadminID = Convert.ToInt32(viewSuperAdminData.Rows[e.RowIndex].Cells["SuperAdmin_ID"].Value);
+
+                    // Delete row from database
+                    DeleteSuperAdmin(superadminID);
+                    LoadDataSuper();
+                }
+            }
+
+            //change password
+            if (viewSuperAdminData.Columns["changeSuperAdmin"] != null &&
+        e.ColumnIndex == viewSuperAdminData.Columns["changeSuperAdmin"].Index && e.RowIndex >= 0)
+            {
+
+                int superadminID = Convert.ToInt32(viewSuperAdminData.Rows[e.RowIndex].Cells["SuperAdmin_ID"].Value);
+
+                if (changeSuperAdminPassInstance == null || changeSuperAdminPassInstance.IsDisposed)
+                {
+                    changeSuperAdminPassInstance = new superadminChangePass(superadminID);
+                    changeSuperAdminPassInstance.Show();
+                }
+                else
+                {
+                    if (changeSuperAdminPassInstance.Visible)
+                    {
+                        changeSuperAdminPassInstance.BringToFront();
+                    }
+                    else
+                    {
+                        changeSuperAdminPassInstance.Show();
+                    }
+                }
+            }
+
+        }
+
+        public int DeleteSuperAdmin(int superadminID)
+        {
+            string query = "Delete from superadmin Where SuperAdmin_ID = @superadminID";
+
+            MySqlConnection conn = databaseHelper.getConnection();
+
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@superadminID", superadminID);
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Row deleted successfully from database.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { conn.Close(); }
+            return superadminID;
         }
 
 

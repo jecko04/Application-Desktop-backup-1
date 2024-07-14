@@ -109,27 +109,18 @@ namespace Application_Desktop.Sub_sub_Views
             return role;
         }
 
-        private void UpdateSuperAdmin(int superAdminID, string fname, string lname, string email, string pwd, string role)
+        private void UpdateSuperAdmin(int superAdminID, string fname, string lname, string email, string pwd)
         {
-            if (emailValidator.IsEmailValidate(email))
-            {
-                errorProvider1.SetError(txtEmail, string.Empty);
-                errorProvider2.SetError(txtEmail, "Email is valid");
-
-            }
-            else
-            {
-                errorProvider2.SetError(txtEmail, string.Empty);
-                errorProvider1.SetError(txtEmail, "Email is not valid");
-            }
+            errorProvider1.SetError(txtEmail, string.Empty);
+            errorProvider2.SetError(txtEmail, "Email is valid");
 
             string fullname = $"{fname} {lname}";
-            string query = "Update superadmin SET" +
-                           "Name = @name" +
-                           "Email = @email" +
-                           "Pwd = @pwd" +
-                           "Role_ID = @roleID" +
-                           "Where SuperAdmin_ID = @superAdminID";
+            string query = "UPDATE superadmin SET " +
+                           "Name = @name, " +
+                           "Email = @email, " +
+                           "Pwd = @pwd, " +
+                           "Role_ID = @roleID " +
+                           "WHERE SuperAdmin_ID = @superAdminID";
 
             MySqlConnection conn = databaseHelper.getConnection();
             try
@@ -142,12 +133,17 @@ namespace Application_Desktop.Sub_sub_Views
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@name", fullname);
                 cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@pwd", pwd);
+
+                idValue selectedRole = (idValue)txtRoles.SelectedItem;
+                int role = selectedRole.ID;
+                cmd.Parameters.AddWithValue("@roleID", role);
                 cmd.Parameters.AddWithValue("@superAdminID", superAdminID);
-                cmd.ExecuteNonQuery();
+                int rowsAffected = cmd.ExecuteNonQuery();
 
                 MessageBox.Show("Successfully Updated");
 
-
+                errorProvider1.SetError(txtEmail, string.Empty);
             }
             catch (Exception ex)
             {
@@ -157,8 +153,6 @@ namespace Application_Desktop.Sub_sub_Views
             {
                 conn.Close();
             }
-
-
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -181,15 +175,20 @@ namespace Application_Desktop.Sub_sub_Views
 
 
             DialogResult result = MessageBox.Show("Would you like to proceed with Updating this account?", "Confirm Changes", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            if (emailValidator.IsEmailValidate(email))
             {
-                UpdateSuperAdmin(superAdminID, fname, lname, email, pwd, role);
-                this.Close();
+                if (result == DialogResult.Yes)
+                {
+                    UpdateSuperAdmin(superAdminID, fname, lname, email, pwd);
+                    this.Close();
+                }
             }
-            
+            else if (emailValidator.IsEmailNotValidate(email))
+            {
+                errorProvider2.SetError(txtEmail, string.Empty);
+                errorProvider1.SetError(txtEmail, "Email is not valid");
+            }
 
-            
 
         }
     }

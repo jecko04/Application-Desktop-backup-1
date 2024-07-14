@@ -200,6 +200,7 @@
             Controls.Add(panel1);
             ForeColor = SystemColors.ActiveCaptionText;
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "loginPage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "loginPage";

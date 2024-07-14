@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loadingScreen));
             label1 = new Label();
             panel1 = new Panel();
             panel2 = new Panel();
@@ -93,6 +94,7 @@
             Controls.Add(panel1);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "loadingScreen";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "loadingScreen";

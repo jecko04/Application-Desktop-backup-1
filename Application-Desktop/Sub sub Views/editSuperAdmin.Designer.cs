@@ -92,6 +92,7 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureBox1.Cursor = Cursors.Hand;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(390, 3);
             pictureBox1.Name = "pictureBox1";
@@ -263,6 +264,7 @@
             Controls.Add(panel1);
             Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "editSuperAdmin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "editSuperAdmin";

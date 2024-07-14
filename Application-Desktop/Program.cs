@@ -24,7 +24,7 @@ namespace Application_Desktop
             //Close the database
             databaseHelper.closeConnection();
 
-            //ayusin mo yung superadmin para sa edit, delete at change pass
+            //ayusin mo yung register super admin
             
         }
     }

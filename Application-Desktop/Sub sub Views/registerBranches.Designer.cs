@@ -43,6 +43,10 @@
             pictureBox1 = new PictureBox();
             label1 = new Label();
             panel2 = new Panel();
+            button1 = new Button();
+            label11 = new Label();
+            label2 = new Label();
+            txtBranchName = new TextBox();
             txtCityLists = new ComboBox();
             txtProvinceList = new ComboBox();
             label10 = new Label();
@@ -57,10 +61,6 @@
             txtPostal = new TextBox();
             label8 = new Label();
             label7 = new Label();
-            label2 = new Label();
-            txtBranchName = new TextBox();
-            label11 = new Label();
-            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider3).BeginInit();
@@ -196,6 +196,57 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(739, 400);
             panel2.TabIndex = 24;
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            button1.BackColor = Color.FromArgb(231, 76, 60);
+            button1.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(580, 345);
+            button1.Name = "button1";
+            button1.Size = new Size(58, 30);
+            button1.TabIndex = 57;
+            button1.Text = "Cancel";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // label11
+            // 
+            label11.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label11.AutoSize = true;
+            label11.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.ForeColor = Color.DimGray;
+            label11.Location = new Point(43, 22);
+            label11.Name = "label11";
+            label11.Size = new Size(45, 16);
+            label11.TabIndex = 56;
+            label11.Text = "Name:";
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Top;
+            label2.AutoSize = true;
+            label2.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(30, 44);
+            label2.Name = "label2";
+            label2.Size = new Size(88, 16);
+            label2.TabIndex = 2;
+            label2.Text = "Branch Name:";
+            // 
+            // txtBranchName
+            // 
+            txtBranchName.Anchor = AnchorStyles.Top;
+            txtBranchName.BackColor = SystemColors.InactiveBorder;
+            txtBranchName.BorderStyle = BorderStyle.FixedSingle;
+            txtBranchName.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBranchName.Location = new Point(43, 75);
+            txtBranchName.Name = "txtBranchName";
+            txtBranchName.PlaceholderText = "Branches Name";
+            txtBranchName.RightToLeft = RightToLeft.No;
+            txtBranchName.Size = new Size(660, 25);
+            txtBranchName.TabIndex = 0;
             // 
             // txtCityLists
             // 
@@ -377,57 +428,6 @@
             label7.Size = new Size(64, 16);
             label7.TabIndex = 44;
             label7.Text = "Province: ";
-            // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.Top;
-            label2.AutoSize = true;
-            label2.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.ForeColor = Color.Black;
-            label2.Location = new Point(30, 44);
-            label2.Name = "label2";
-            label2.Size = new Size(88, 16);
-            label2.TabIndex = 2;
-            label2.Text = "Branch Name:";
-            // 
-            // txtBranchName
-            // 
-            txtBranchName.Anchor = AnchorStyles.Top;
-            txtBranchName.BackColor = SystemColors.InactiveBorder;
-            txtBranchName.BorderStyle = BorderStyle.FixedSingle;
-            txtBranchName.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBranchName.Location = new Point(43, 75);
-            txtBranchName.Name = "txtBranchName";
-            txtBranchName.PlaceholderText = "Branches Name";
-            txtBranchName.RightToLeft = RightToLeft.No;
-            txtBranchName.Size = new Size(660, 25);
-            txtBranchName.TabIndex = 0;
-            // 
-            // label11
-            // 
-            label11.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label11.AutoSize = true;
-            label11.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.ForeColor = Color.DimGray;
-            label11.Location = new Point(43, 22);
-            label11.Name = "label11";
-            label11.Size = new Size(45, 16);
-            label11.TabIndex = 56;
-            label11.Text = "Name:";
-            // 
-            // button1
-            // 
-            button1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            button1.BackColor = Color.FromArgb(231, 76, 60);
-            button1.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(580, 345);
-            button1.Name = "button1";
-            button1.Size = new Size(58, 30);
-            button1.TabIndex = 57;
-            button1.Text = "Cancel";
-            button1.UseVisualStyleBackColor = false;
             // 
             // registerBranches
             // 

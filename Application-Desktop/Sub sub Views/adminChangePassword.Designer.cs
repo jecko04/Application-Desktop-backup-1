@@ -250,6 +250,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "adminChangePassword";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "adminChangePassword";
