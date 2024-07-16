@@ -77,6 +77,8 @@ namespace Application_Desktop.Views
             }
             else
             {
+                
+
                 string query = "SELECT 'SuperAdmin' AS Role, SuperAdmin_ID AS ID, email AS Name, pwd AS Pass FROM superadmin " +
                 "UNION ALL " +
                 "SELECT 'Admin' AS Role, Admin_ID AS ID, email AS Name, pwd AS Pass FROM admin";
@@ -122,7 +124,6 @@ namespace Application_Desktop.Views
 
                                     MessageBox.Show("Welcome Super Admin");
 
-                                    // Open the appropriate form for superAdmin
                                     this.Hide();
                                     superAdmin superadmin = new superAdmin();
                                     superadmin.BringToFront();
@@ -136,7 +137,6 @@ namespace Application_Desktop.Views
 
                                     MessageBox.Show("Welcome Admin");
 
-                                    // Open the appropriate form for admin
                                     this.Hide();
                                     adminPage adminForm = new adminPage();
                                     adminForm.BringToFront();
@@ -147,7 +147,7 @@ namespace Application_Desktop.Views
                                 this.Hide();
                                 errorProvider1.SetError(txtEmail, string.Empty);
                                 errorProvider2.SetError(txtPassword, string.Empty);
-                                break; // Exit the loop after successful login                                                                                                                           
+                                break;                                                                                                                         
                             }
 
                         }

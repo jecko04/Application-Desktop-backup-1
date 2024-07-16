@@ -1,6 +1,8 @@
 ﻿using Application_Desktop.Models;
 using Application_Desktop.Sub_sub_Views;
 using Application_Desktop.Sub_Views;
+using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +24,7 @@ namespace Application_Desktop.Views
 
         private void superAdmin_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         //149, 86, 203 = light violet
@@ -126,6 +128,11 @@ namespace Application_Desktop.Views
             // Redirect to login form
             loginPage loginForm = new loginPage();
             loginForm.Show();
+        }
+
+        private void btnUsers_Click(object sender, EventArgs e)
+        {
+            LoadForm(new dentaldoctorUsers());
         }
     }
 }

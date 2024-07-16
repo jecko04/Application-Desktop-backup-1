@@ -276,7 +276,7 @@ namespace Application_Desktop.Sub_sub_Views
                         cmd.ExecuteNonQuery();
 
 
-                        MessageBox.Show("Sign-Up Successful");
+                        MessageBox.Show("Signed-Up Successful");
                         txtfirstName.Text = "";
                         txtLastName.Text = "";
                         txtEmail.Text = "";

@@ -11,12 +11,20 @@ namespace Application_Desktop
         public registerSuperAdmin()
         {
             InitializeComponent();
+            PopulateRoleName();
 
         }
         private void registerSuperAdmin_Load(object sender, EventArgs e)
         {
+
+        }
+
+        public void PopulateRoleName()
+        {
             //Selecting roles from database
-            string query = "SELECT Role_ID FROM role";
+
+
+            string query = "SELECT 'role' AS Type, Role_ID AS ID, RoleName AS Name FROM role";
             MySqlConnection conn = databaseHelper.getConnection();
             try
             {
@@ -31,8 +39,21 @@ namespace Application_Desktop
                 {
                     while (reader.Read())
                     {
-                        string roleName = GetRoleNameFromRoleId(Convert.ToInt32(reader["Role_ID"]));
-                        txtComboBox.Items.Add(new KeyValuePair<int, string>(Convert.ToInt32(reader["Role_ID"]), roleName));
+                        string type = reader["Type"].ToString();
+                        int id = Convert.ToInt32(reader["ID"]);
+                        string name = reader["Name"].ToString();
+
+                        if (type == "role")
+                        {
+                            if (name == "SuperAdmin")
+                            {
+                                idValue role = new idValue(id, name);
+                                txtComboBox.Items.Add(role);
+                            }
+                        }
+
+                        txtComboBox.DisplayMember = "Name";
+                        txtComboBox.ValueMember = "ID";
                     }
                 }
             }
@@ -43,25 +64,6 @@ namespace Application_Desktop
             finally
             {
                 conn.Close();
-            }
-
-        }
-
-
-
-        private string GetRoleNameFromRoleId(int roleId)
-        {
-            //Getting role name
-            switch (roleId)
-            {
-                case 1:
-                    return "SuperAdmin";
-                /*                case 2:
-                                    return "Admin";
-                                case 3:
-                                    return "User";*/
-                default:
-                    return "Unknown Role";
             }
         }
 
@@ -74,7 +76,7 @@ namespace Application_Desktop
             }
         }
 
-        private void btnRegister_Click(object sender, EventArgs e)
+        public void RegSuperAdmin()
         {
             string fname = txtFirstName.Text;
             string lname = txtLastName.Text;
@@ -235,98 +237,134 @@ namespace Application_Desktop
             //Input data to database
             if (!checkBox)
             {
-                errorProvider7.SetError(txtLink, "Check the Terms and Condition.");
-            }
-            else if (string.IsNullOrEmpty(pwd) || string.IsNullOrEmpty(rePwd))
-            {
-                errorProvider4.SetError(txtPwd, "Password is required.");
-                errorProvider4.SetError(txtRePwd, "Confirm Password is required.");
-            }
-            else if (pwd != rePwd)
-            {
-                errorProvider6.SetError(txtPwd, "Password are not match.");
-                errorProvider6.SetError(txtRePwd, "Password are not match.");
-            }
-            else if (passwordValidator.isPasswordNotValid(pwd) || passwordValidator.isPasswordNotValid(rePwd))
-            {
-                errorProvider8.SetError(txtPwd, "Password must be at least 8 characters long and contain at least " +
-                    "one uppercase letter, one lowercase letter, and one number.");
-                errorProvider8.SetError(txtRePwd, "Password must be at least 8 characters long and contain at least " +
-                    "one uppercase letter, one lowercase letter, and one number.");
-            }
-            else if (string.IsNullOrEmpty(email))
-            {
-                errorProvider3.SetError(txtEmail, "Email is required.");
-            }
-            else if (emailValidator.IsEmailNotValidate(email))
-            {
-                errorProvider11.SetError(txtEmail, "Email is not valid");
-            }
-            else if (
-            errorProvider1.GetError(txtFirstName) != string.Empty ||
-            errorProvider2.GetError(txtLastName) != string.Empty ||
-            errorProvider3.GetError(txtEmail) != string.Empty ||
-            errorProvider5.GetError(txtComboBox) != string.Empty
-            )
-            {
-
+                errorProvider7.SetError(txtCheckBox, "Check the Terms and Condition.");
             }
             else
             {
-                string fullname = $"{fname} {lname}";
+                errorProvider7.SetError(txtCheckBox, string.Empty);
 
-                string query = "INSERT INTO superadmin (Name, Email, Pwd, Role_ID) " +
-                    "VALUES (@fullname, @email, @pwd, @roleID)";
-                MySqlConnection conn = databaseHelper.getConnection();
-                try
+                if (string.IsNullOrEmpty(pwd) || string.IsNullOrEmpty(rePwd))
                 {
-                    conn.Open();
-
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@fullname", fullname);
-                    cmd.Parameters.AddWithValue("@email", email);
-                    //Add validation of password, password hint, encryption
-
-                    //Encryption
-                    cryptography hasher = new cryptography();
-                    string hashPassword = hasher.HashPassword(pwd);
-                    cmd.Parameters.AddWithValue("@pwd", hashPassword);
-
-
-
-                    //Get the selected role_ID from the comboBox
-                    KeyValuePair<int, string> selectedRole = (KeyValuePair<int, string>)txtComboBox.SelectedItem;
-                    int roleId = selectedRole.Key;
-
-                    cmd.Parameters.AddWithValue("@roleID", roleId);
-                    int rowsaffected = cmd.ExecuteNonQuery();
-
-                    MessageBox.Show("Successful");
-                    txtFirstName.Text = "";
-                    txtLastName.Text = "";
-                    txtEmail.Text = "";
-                    txtPwd.Text = "";
-                    txtRePwd.Text = "";
-                    txtComboBox.Text = "";
-                    txtCheckBox.Checked = false;
-
-                    errorProvider9.SetError(txtRePwd, string.Empty);
-                    errorProvider9.SetError(txtPwd, string.Empty);
-                    errorProvider7.SetError(txtCheckBox, string.Empty);
-                    errorProvider10.SetError(txtEmail, string.Empty);
+                    errorProvider4.SetError(txtPwd, "Password is required.");
+                    errorProvider4.SetError(txtRePwd, "Confirm Password is required.");
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    conn.Close();
-                }
+                    errorProvider4.SetError(txtPwd, string.Empty);
+                    errorProvider4.SetError(txtRePwd, string.Empty);
 
+                    if (pwd != rePwd)
+                    {
+                        errorProvider6.SetError(txtPwd, "Passwords do not match.");
+                        errorProvider6.SetError(txtRePwd, "Passwords do not match.");
+                    }
+                    else
+                    {
+                        errorProvider6.SetError(txtPwd, string.Empty);
+                        errorProvider6.SetError(txtRePwd, string.Empty);
+
+                        if (passwordValidator.isPasswordNotValid(pwd) || passwordValidator.isPasswordNotValid(rePwd))
+                        {
+                            errorProvider8.SetError(txtPwd, "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.");
+                            errorProvider8.SetError(txtRePwd, "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.");
+                        }
+                        else
+                        {
+                            errorProvider8.SetError(txtPwd, string.Empty);
+                            errorProvider8.SetError(txtRePwd, string.Empty);
+
+                            if (string.IsNullOrEmpty(email))
+                            {
+                                errorProvider3.SetError(txtEmail, "Email is required.");
+                            }
+                            else
+                            {
+                                errorProvider3.SetError(txtEmail, string.Empty);
+
+                                if (emailValidator.IsEmailNotValidate(email))
+                                {
+                                    errorProvider11.SetError(txtEmail, "Email is not valid");
+                                }
+                                else
+                                {
+                                    errorProvider11.SetError(txtEmail, string.Empty);
+
+                                    if (
+                                        errorProvider1.GetError(txtFirstName) != string.Empty ||
+                                        errorProvider2.GetError(txtLastName) != string.Empty ||
+                                        errorProvider3.GetError(txtEmail) != string.Empty ||
+                                        errorProvider5.GetError(txtComboBox) != string.Empty
+                                    )
+                                    {
+                                        // Do nothing if there are errors
+                                    }
+                                    else
+                                    {
+                                        string fullname = $"{fname} {lname}";
+
+                                        string query = "INSERT INTO superadmin (Name, Email, Pwd, Role_ID) VALUES (@fullname, @email, @pwd, @roleID)";
+                                        MySqlConnection conn = databaseHelper.getConnection();
+                                        try
+                                        {
+                                            conn.Open();
+
+                                            MySqlCommand cmd = new MySqlCommand(query, conn);
+                                            cmd.Parameters.AddWithValue("@fullname", fullname);
+                                            cmd.Parameters.AddWithValue("@email", email);
+
+                                            // Encryption
+                                            cryptography hasher = new cryptography();
+                                            string hashPassword = hasher.HashPassword(pwd);
+                                            cmd.Parameters.AddWithValue("@pwd", hashPassword);
+
+                                            // Get the selected role_ID from the comboBox
+                                            idValue selectedRole = (idValue)txtComboBox.SelectedItem;
+                                            int roleId = selectedRole.ID;
+
+                                            cmd.Parameters.AddWithValue("@roleID", roleId);
+                                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                                            MessageBox.Show("Successful");
+                                            txtFirstName.Text = "";
+                                            txtLastName.Text = "";
+                                            txtEmail.Text = "";
+                                            txtPwd.Text = "";
+                                            txtRePwd.Text = "";
+                                            txtComboBox.Text = "";
+                                            checkBox = false;
+
+                                            // Clear error providers
+                                            errorProvider9.SetError(txtRePwd, string.Empty);
+                                            errorProvider9.SetError(txtPwd, string.Empty);
+                                            errorProvider7.SetError(txtCheckBox, string.Empty);
+                                            errorProvider10.SetError(txtEmail, string.Empty);
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            MessageBox.Show(ex.Message);
+                                        }
+                                        finally
+                                        {
+                                            conn.Close();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
 
+        }
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            RegSuperAdmin();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

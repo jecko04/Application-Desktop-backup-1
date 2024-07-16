@@ -60,6 +60,15 @@ namespace Application_Desktop.Sub_sub_Views
                     string roleName = reader["RoleName"].ToString();
                     txtRoles.Items.Add(new idValue(roleId, roleName));
                 }
+                for (int i = txtRoles.Items.Count - 1; i >= 0; i--)
+                {
+                    idValue item = (idValue)txtRoles.Items[i];
+                    if (item.Name == "User")
+                    {
+                        txtRoles.Items.RemoveAt(i);
+                    }
+                }
+
 
                 reader.Close();
             }
@@ -184,13 +193,16 @@ namespace Application_Desktop.Sub_sub_Views
             return branch;
         }
 
+        private int superadminID;
         public void UpdateAdmin(int adminID, string fname, string lname, string email, string pwd, string role, string branch)
         {
+            
+            
             string fullname = $"{fname} {lname}";
 
             string query = "UPDATE admin SET " +
                            "Name = @name, " +
-                           "Email = @Email, " +
+                           "Email = @email, " +
                            "Branch_ID = @branchID, " +
                            "Role_ID = @roleID " +
                            "WHERE Admin_ID = @adminID";
@@ -204,7 +216,7 @@ namespace Application_Desktop.Sub_sub_Views
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@name", fullname);
-                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@email", email);
                 cmd.Parameters.AddWithValue("@adminID", adminID);
 
                 if (role == "SuperAdmin")
@@ -229,34 +241,6 @@ namespace Application_Desktop.Sub_sub_Views
 
                     MessageBox.Show("Successfully Updated");
 
-                }
-                else if (role == "User")
-                {
-                    int createdBy = session.LoggedInSession;
-                    string query3 = "INSERT INTO users (Name, Email, Pwd, CreatedBy, Branch_ID, Role_ID) " +
-                                    "VALUES (@U_name, @U_email, @U_pwd, @U_createdBy, @U_branchID, @U_roleID)";
-                    MySqlCommand userCmd = new MySqlCommand(query3, conn);
-
-                    userCmd.Parameters.AddWithValue("@U_name", fullname);
-                    userCmd.Parameters.AddWithValue("@U_email", email);
-                    userCmd.Parameters.AddWithValue("@U_pwd", pwd);
-
-                    cmd.Parameters.AddWithValue("@U_createdBy", createdBy);
-
-                    idValue selectedBranch = (idValue)txtBranch.SelectedItem;
-                    int branchId = selectedBranch.ID;
-                    userCmd.Parameters.AddWithValue("@U_branchID", branchId);
-
-                    idValue selectedRole = (idValue)txtRoles.SelectedItem;
-                    int roleId = selectedRole.ID;
-                    userCmd.Parameters.AddWithValue("@U_roleID", roleId);
-                    userCmd.ExecuteNonQuery();
-
-                    string delete2 = "DELETE FROM admin WHERE Admin_ID = @adminID";
-                    MySqlCommand deleteCmd = new MySqlCommand(delete2, conn);
-                    deleteCmd.Parameters.AddWithValue("@adminID", adminID);
-                    deleteCmd.ExecuteNonQuery();
-                    MessageBox.Show("Successfully Updated");
                 }
                 else
                 {

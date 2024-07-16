@@ -95,23 +95,23 @@
             // 
             // txtEmail
             // 
-            txtEmail.BorderStyle = BorderStyle.None;
+            txtEmail.BorderStyle = BorderStyle.FixedSingle;
             txtEmail.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtEmail.Location = new Point(43, 109);
             txtEmail.Name = "txtEmail";
-            txtEmail.PlaceholderText = "Email";
-            txtEmail.Size = new Size(342, 20);
+            txtEmail.PlaceholderText = " Email";
+            txtEmail.Size = new Size(342, 27);
             txtEmail.TabIndex = 3;
             // 
             // txtPassword
             // 
-            txtPassword.BorderStyle = BorderStyle.None;
+            txtPassword.BorderStyle = BorderStyle.FixedSingle;
             txtPassword.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtPassword.Location = new Point(43, 172);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
-            txtPassword.PlaceholderText = "Password";
-            txtPassword.Size = new Size(342, 20);
+            txtPassword.PlaceholderText = " Password";
+            txtPassword.Size = new Size(342, 27);
             txtPassword.TabIndex = 5;
             // 
             // label3

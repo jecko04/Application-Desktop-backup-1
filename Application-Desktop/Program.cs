@@ -19,12 +19,12 @@ namespace Application_Desktop
             //Open the database
             databaseHelper.initializeConnection();
 
-            Application.Run(new superAdmin());
+            Application.Run(new loginPage());
 
             //Close the database
             databaseHelper.closeConnection();
 
-            //ayusin mo yung register super admin
+            //Gawa ka ng admin  panel na
             
         }
     }

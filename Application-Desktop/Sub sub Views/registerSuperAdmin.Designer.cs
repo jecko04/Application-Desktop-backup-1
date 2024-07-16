@@ -30,8 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(registerSuperAdmin));
-            panel1 = new Panel();
             panel = new Panel();
+            label10 = new Label();
+            btnClose = new PictureBox();
             label7 = new Label();
             txtComboBox = new ComboBox();
             txtLink = new LinkLabel();
@@ -60,6 +61,7 @@
             errorProvider10 = new ErrorProvider(components);
             errorProvider11 = new ErrorProvider(components);
             panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider3).BeginInit();
@@ -73,17 +75,12 @@
             ((System.ComponentModel.ISupportInitialize)errorProvider11).BeginInit();
             SuspendLayout();
             // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(52, 152, 219);
-            panel1.Location = new Point(-17, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(421, 458);
-            panel1.TabIndex = 0;
-            // 
             // panel
             // 
             panel.BackColor = Color.FromArgb(248, 249, 250);
+            panel.BorderStyle = BorderStyle.FixedSingle;
+            panel.Controls.Add(label10);
+            panel.Controls.Add(btnClose);
             panel.Controls.Add(label7);
             panel.Controls.Add(txtComboBox);
             panel.Controls.Add(txtLink);
@@ -101,17 +98,42 @@
             panel.Controls.Add(label2);
             panel.Controls.Add(label1);
             panel.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            panel.Location = new Point(398, 0);
+            panel.Location = new Point(1, 0);
             panel.Name = "panel";
-            panel.Size = new Size(405, 458);
+            panel.Size = new Size(426, 499);
             panel.TabIndex = 1;
+            // 
+            // label10
+            // 
+            label10.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label10.AutoSize = true;
+            label10.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.ForeColor = Color.DimGray;
+            label10.Location = new Point(40, 291);
+            label10.Name = "label10";
+            label10.Size = new Size(341, 32);
+            label10.TabIndex = 55;
+            label10.Text = "Password must be at least 8 characters long, including an \r\nuppercase letter, a lowercase letter, and a number.\r\n";
+            label10.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // btnClose
+            // 
+            btnClose.Cursor = Cursors.Hand;
+            btnClose.Image = (Image)resources.GetObject("btnClose.Image");
+            btnClose.Location = new Point(397, 3);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(24, 24);
+            btnClose.SizeMode = PictureBoxSizeMode.AutoSize;
+            btnClose.TabIndex = 20;
+            btnClose.TabStop = false;
+            btnClose.Click += btnClose_Click;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label7.ForeColor = SystemColors.ActiveCaptionText;
-            label7.Location = new Point(47, 291);
+            label7.Location = new Point(27, 342);
             label7.Name = "label7";
             label7.Size = new Size(32, 16);
             label7.TabIndex = 15;
@@ -119,18 +141,17 @@
             // 
             // txtComboBox
             // 
-            txtComboBox.FlatStyle = FlatStyle.Flat;
             txtComboBox.FormattingEnabled = true;
-            txtComboBox.Location = new Point(60, 310);
+            txtComboBox.Location = new Point(40, 361);
             txtComboBox.Name = "txtComboBox";
-            txtComboBox.Size = new Size(295, 24);
+            txtComboBox.Size = new Size(345, 24);
             txtComboBox.TabIndex = 14;
             // 
             // txtLink
             // 
             txtLink.ActiveLinkColor = Color.FromArgb(123, 44, 191);
             txtLink.AutoSize = true;
-            txtLink.Location = new Point(81, 353);
+            txtLink.Location = new Point(71, 408);
             txtLink.Name = "txtLink";
             txtLink.Size = new Size(126, 16);
             txtLink.TabIndex = 13;
@@ -140,7 +161,7 @@
             // txtCheckBox
             // 
             txtCheckBox.AutoSize = true;
-            txtCheckBox.Location = new Point(60, 355);
+            txtCheckBox.Location = new Point(40, 408);
             txtCheckBox.Name = "txtCheckBox";
             txtCheckBox.Size = new Size(15, 14);
             txtCheckBox.TabIndex = 12;
@@ -149,23 +170,27 @@
             // 
             // btnRegister
             // 
-            btnRegister.ForeColor = SystemColors.ActiveCaptionText;
-            btnRegister.Location = new Point(248, 385);
+            btnRegister.BackColor = Color.FromArgb(102, 204, 102);
+            btnRegister.FlatAppearance.BorderColor = Color.FromArgb(102, 204, 102);
+            btnRegister.FlatStyle = FlatStyle.Flat;
+            btnRegister.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRegister.ForeColor = Color.White;
+            btnRegister.Location = new Point(282, 436);
             btnRegister.Name = "btnRegister";
-            btnRegister.Size = new Size(93, 32);
+            btnRegister.Size = new Size(103, 33);
             btnRegister.TabIndex = 11;
             btnRegister.Text = "Register";
-            btnRegister.UseVisualStyleBackColor = true;
+            btnRegister.UseVisualStyleBackColor = false;
             btnRegister.Click += btnRegister_Click;
             // 
             // txtRePwd
             // 
-            txtRePwd.BorderStyle = BorderStyle.None;
-            txtRePwd.Location = new Point(231, 254);
+            txtRePwd.BorderStyle = BorderStyle.FixedSingle;
+            txtRePwd.Location = new Point(228, 256);
             txtRePwd.Name = "txtRePwd";
             txtRePwd.PasswordChar = '*';
-            txtRePwd.PlaceholderText = "Confirm Password";
-            txtRePwd.Size = new Size(124, 16);
+            txtRePwd.PlaceholderText = " Confirm Password";
+            txtRePwd.Size = new Size(157, 23);
             txtRePwd.TabIndex = 10;
             // 
             // label5
@@ -173,7 +198,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = SystemColors.ActiveCaptionText;
-            label5.Location = new Point(213, 225);
+            label5.Location = new Point(210, 227);
             label5.Name = "label5";
             label5.Size = new Size(111, 16);
             label5.TabIndex = 9;
@@ -181,12 +206,12 @@
             // 
             // txtPwd
             // 
-            txtPwd.BorderStyle = BorderStyle.None;
-            txtPwd.Location = new Point(60, 254);
+            txtPwd.BorderStyle = BorderStyle.FixedSingle;
+            txtPwd.Location = new Point(40, 256);
             txtPwd.Name = "txtPwd";
             txtPwd.PasswordChar = '*';
-            txtPwd.PlaceholderText = "Password";
-            txtPwd.Size = new Size(124, 16);
+            txtPwd.PlaceholderText = " Password";
+            txtPwd.Size = new Size(157, 23);
             txtPwd.TabIndex = 8;
             // 
             // label6
@@ -194,7 +219,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = SystemColors.ActiveCaptionText;
-            label6.Location = new Point(47, 225);
+            label6.Location = new Point(27, 227);
             label6.Name = "label6";
             label6.Size = new Size(62, 16);
             label6.TabIndex = 7;
@@ -202,11 +227,11 @@
             // 
             // txtEmail
             // 
-            txtEmail.BorderStyle = BorderStyle.None;
-            txtEmail.Location = new Point(60, 184);
+            txtEmail.BorderStyle = BorderStyle.FixedSingle;
+            txtEmail.Location = new Point(40, 186);
             txtEmail.Name = "txtEmail";
-            txtEmail.PlaceholderText = "Email";
-            txtEmail.Size = new Size(295, 16);
+            txtEmail.PlaceholderText = " Email";
+            txtEmail.Size = new Size(345, 23);
             txtEmail.TabIndex = 6;
             // 
             // label4
@@ -214,7 +239,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(47, 155);
+            label4.Location = new Point(27, 157);
             label4.Name = "label4";
             label4.Size = new Size(38, 16);
             label4.TabIndex = 5;
@@ -222,11 +247,11 @@
             // 
             // txtLastName
             // 
-            txtLastName.BorderStyle = BorderStyle.None;
-            txtLastName.Location = new Point(231, 120);
+            txtLastName.BorderStyle = BorderStyle.FixedSingle;
+            txtLastName.Location = new Point(228, 122);
             txtLastName.Name = "txtLastName";
-            txtLastName.PlaceholderText = "Last Name";
-            txtLastName.Size = new Size(124, 16);
+            txtLastName.PlaceholderText = " Last Name";
+            txtLastName.Size = new Size(157, 23);
             txtLastName.TabIndex = 4;
             // 
             // label3
@@ -234,7 +259,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(213, 91);
+            label3.Location = new Point(210, 93);
             label3.Name = "label3";
             label3.Size = new Size(67, 16);
             label3.TabIndex = 3;
@@ -242,11 +267,11 @@
             // 
             // txtFirstName
             // 
-            txtFirstName.BorderStyle = BorderStyle.None;
-            txtFirstName.Location = new Point(60, 120);
+            txtFirstName.BorderStyle = BorderStyle.FixedSingle;
+            txtFirstName.Location = new Point(40, 122);
             txtFirstName.Name = "txtFirstName";
-            txtFirstName.PlaceholderText = "First Name";
-            txtFirstName.Size = new Size(124, 16);
+            txtFirstName.PlaceholderText = " First Name";
+            txtFirstName.Size = new Size(157, 23);
             txtFirstName.TabIndex = 2;
             // 
             // label2
@@ -254,7 +279,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ActiveCaptionText;
-            label2.Location = new Point(47, 91);
+            label2.Location = new Point(27, 93);
             label2.Name = "label2";
             label2.Size = new Size(69, 16);
             label2.TabIndex = 1;
@@ -265,7 +290,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Tahoma", 24F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(31, 20);
+            label1.Location = new Point(21, 18);
             label1.Name = "label1";
             label1.Size = new Size(163, 39);
             label1.TabIndex = 0;
@@ -330,9 +355,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(429, 500);
             Controls.Add(panel);
-            Controls.Add(panel1);
             ForeColor = SystemColors.ActiveCaptionText;
             FormBorderStyle = FormBorderStyle.None;
             Name = "registerSuperAdmin";
@@ -341,6 +365,7 @@
             Load += registerSuperAdmin_Load;
             panel.ResumeLayout(false);
             panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)btnClose).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider2).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider3).EndInit();
@@ -356,8 +381,6 @@
         }
 
         #endregion
-
-        private Panel panel1;
         private Panel panel;
         private Label label1;
         private TextBox txtFirstName;
@@ -386,5 +409,7 @@
         private ErrorProvider errorProvider9;
         private ErrorProvider errorProvider10;
         private ErrorProvider errorProvider11;
+        private PictureBox btnClose;
+        private Label label10;
     }
 }

@@ -57,6 +57,8 @@
             menuTransition = new System.Windows.Forms.Timer(components);
             sidebarTransition = new System.Windows.Forms.Timer(components);
             mainPanel = new Panel();
+            panel11 = new Panel();
+            btnUsers = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnSidebar).BeginInit();
             sidebarContainer.SuspendLayout();
@@ -71,6 +73,7 @@
             panel6.SuspendLayout();
             panel10.SuspendLayout();
             panel8.SuspendLayout();
+            panel11.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -114,6 +117,7 @@
             sidebarContainer.Controls.Add(flowLayoutPanel2);
             sidebarContainer.Controls.Add(panel5);
             sidebarContainer.Controls.Add(panel3);
+            sidebarContainer.Controls.Add(panel11);
             sidebarContainer.Controls.Add(panel4);
             sidebarContainer.Controls.Add(menuContainer);
             sidebarContainer.Dock = DockStyle.Left;
@@ -250,7 +254,7 @@
             // panel4
             // 
             panel4.Controls.Add(btnEmployee);
-            panel4.Location = new Point(0, 102);
+            panel4.Location = new Point(0, 136);
             panel4.Margin = new Padding(0);
             panel4.Name = "panel4";
             panel4.Size = new Size(179, 34);
@@ -281,7 +285,7 @@
             menuContainer.Controls.Add(panel6);
             menuContainer.Controls.Add(panel10);
             menuContainer.Controls.Add(panel8);
-            menuContainer.Location = new Point(0, 136);
+            menuContainer.Location = new Point(0, 170);
             menuContainer.Margin = new Padding(0);
             menuContainer.Name = "menuContainer";
             menuContainer.Size = new Size(179, 34);
@@ -421,6 +425,34 @@
             mainPanel.Size = new Size(1101, 660);
             mainPanel.TabIndex = 2;
             // 
+            // panel11
+            // 
+            panel11.Controls.Add(btnUsers);
+            panel11.Location = new Point(0, 102);
+            panel11.Margin = new Padding(0);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(179, 34);
+            panel11.TabIndex = 9;
+            // 
+            // btnUsers
+            // 
+            btnUsers.BackColor = Color.FromArgb(41, 128, 185);
+            btnUsers.Dock = DockStyle.Fill;
+            btnUsers.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnUsers.FlatStyle = FlatStyle.Flat;
+            btnUsers.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnUsers.ForeColor = SystemColors.ButtonFace;
+            btnUsers.Image = (Image)resources.GetObject("btnUsers.Image");
+            btnUsers.ImageAlign = ContentAlignment.MiddleLeft;
+            btnUsers.Location = new Point(0, 0);
+            btnUsers.Name = "btnUsers";
+            btnUsers.Size = new Size(179, 34);
+            btnUsers.TabIndex = 3;
+            btnUsers.Text = "              Dental Doctors";
+            btnUsers.TextAlign = ContentAlignment.MiddleLeft;
+            btnUsers.UseVisualStyleBackColor = false;
+            btnUsers.Click += btnUsers_Click;
+            // 
             // superAdmin
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -449,6 +481,7 @@
             panel6.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel8.ResumeLayout(false);
+            panel11.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -481,5 +514,7 @@
         private Panel mainPanel;
         private Panel panel5;
         private Button btnBranches;
+        private Panel panel11;
+        private Button btnUsers;
     }
 }
