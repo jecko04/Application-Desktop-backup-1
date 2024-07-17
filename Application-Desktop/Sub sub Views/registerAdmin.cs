@@ -240,7 +240,7 @@ namespace Application_Desktop.Sub_sub_Views
                 {
                     int createdBy = session.LoggedInSession;
 
-                    string query = "INSERT INTO admin (Name, Email, Pwd, CreatedBy, Branch_ID, Role_ID)" +
+                    string query = "INSERT INTO admin (Name, Email, Password, CreatedBy, Branch_ID, Role_ID)" +
                                    "VALUES" +
                                    "(@fullname, @email, @pwd, @createdBy, @branchID, @roleID)";
 

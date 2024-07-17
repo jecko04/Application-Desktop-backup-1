@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(editAdmin));
             panel1 = new Panel();
             label1 = new Label();
@@ -47,10 +48,14 @@
             label3 = new Label();
             txtfirstName = new TextBox();
             label2 = new Label();
+            errorProvider1 = new ErrorProvider(components);
+            errorProvider2 = new ErrorProvider(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -262,6 +267,16 @@
             label2.TabIndex = 0;
             label2.Text = "First name*";
             // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            errorProvider1.Icon = (Icon)resources.GetObject("errorProvider1.Icon");
+            // 
+            // errorProvider2
+            // 
+            errorProvider2.ContainerControl = this;
+            errorProvider2.Icon = (Icon)resources.GetObject("errorProvider2.Icon");
+            // 
             // editAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -281,6 +296,8 @@
             ((System.ComponentModel.ISupportInitialize)btnClose).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider2).EndInit();
             ResumeLayout(false);
         }
 
@@ -304,5 +321,7 @@
         private Button button1;
         private Button btnUpdate;
         private TextBox txtPassword;
+        private ErrorProvider errorProvider1;
+        private ErrorProvider errorProvider2;
     }
 }

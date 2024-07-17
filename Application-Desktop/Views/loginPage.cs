@@ -79,9 +79,9 @@ namespace Application_Desktop.Views
             {
                 
 
-                string query = "SELECT 'SuperAdmin' AS Role, SuperAdmin_ID AS ID, email AS Name, pwd AS Pass FROM superadmin " +
+                string query = "SELECT 'SuperAdmin' AS Role, SuperAdmin_ID AS ID, email AS Name, password AS Pass FROM superadmin " +
                 "UNION ALL " +
-                "SELECT 'Admin' AS Role, Admin_ID AS ID, email AS Name, pwd AS Pass FROM admin";
+                "SELECT 'Admin' AS Role, Admin_ID AS ID, email AS Name, password AS Pass FROM admin";
 
                 MySqlConnection conn = databaseHelper.getConnection();
                 try

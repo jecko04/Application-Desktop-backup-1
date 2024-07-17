@@ -302,7 +302,7 @@ namespace Application_Desktop
                                     {
                                         string fullname = $"{fname} {lname}";
 
-                                        string query = "INSERT INTO superadmin (Name, Email, Pwd, Role_ID) VALUES (@fullname, @email, @pwd, @roleID)";
+                                        string query = "INSERT INTO superadmin (Name, Email, Password, Role_ID) VALUES (@fullname, @email, @pwd, @roleID)";
                                         MySqlConnection conn = databaseHelper.getConnection();
                                         try
                                         {

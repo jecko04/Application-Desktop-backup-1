@@ -74,10 +74,10 @@ namespace Application_Desktop.Sub_sub_Views
             finally { conn.Close(); }
         }
 
-        private string GetRoleNames(string superAdminID)
+        private string GetRoleNames(string rolename)
         {
             string role = null;
-            string query = "Select Role_ID, RoleName from role where Role_ID = @roleID";
+            string query = "Select Role_ID, RoleName from role where RoleName = @rolename";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -89,7 +89,7 @@ namespace Application_Desktop.Sub_sub_Views
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@roleID", superAdminID);
+                cmd.Parameters.AddWithValue("@rolename", rolename);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())

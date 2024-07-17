@@ -23,16 +23,24 @@ namespace Application_Desktop.Sub_Views
         {
             InitializeComponent();
             LoadData();
-            LoadDataSuper();
+            LoadSuperAdmin();
         }
 
         private void registerAdmin_Load(object sender, EventArgs e)
         {
         }
 
-        private void LoadDataSuper()
+        //Load Super Admin Data
+        private void LoadSuperAdmin()
         {
-            string query = "Select *from superadmin;";
+            string query = @"SELECT 
+                             superadmin.SuperAdmin_ID,
+                             superadmin.Name, 
+                             superadmin.Email, 
+                             superadmin.Password, 
+                             role.RoleName AS RoleName
+                             FROM superadmin
+                             JOIN role ON superadmin.Role_ID = role.Role_ID";
 
             MySqlConnection conn = databaseHelper.getConnection();
             try
@@ -50,7 +58,41 @@ namespace Application_Desktop.Sub_Views
                 viewSuperAdminData.Rows.Clear();
                 viewSuperAdminData.Columns.Clear();
 
+                viewAdminData.AutoGenerateColumns = false;
+
+                DataGridViewTextBoxColumn adminColumn = new DataGridViewTextBoxColumn();
+                adminColumn.HeaderText = "SuperAdmin ID";
+                adminColumn.Name = "SuperAdmin_ID";
+                adminColumn.DataPropertyName = "SuperAdmin_ID";
+                viewSuperAdminData.Columns.Add(adminColumn);
+
+                DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
+                nameColumn.HeaderText = "Name";
+                nameColumn.Name = "Name";
+                nameColumn.DataPropertyName = "Name";
+                viewSuperAdminData.Columns.Add(nameColumn);
+
+                DataGridViewTextBoxColumn emailColumn = new DataGridViewTextBoxColumn();
+                emailColumn.HeaderText = "Email";
+                emailColumn.Name = "Email";
+                emailColumn.DataPropertyName = "Email";
+                viewSuperAdminData.Columns.Add(emailColumn);
+
+                DataGridViewTextBoxColumn passwordColumn = new DataGridViewTextBoxColumn();
+                passwordColumn.HeaderText = "Password";
+                passwordColumn.Name = "Password";
+                passwordColumn.DataPropertyName = "Password";
+                viewSuperAdminData.Columns.Add(passwordColumn);
+
+                DataGridViewTextBoxColumn roleColumn = new DataGridViewTextBoxColumn();
+                roleColumn.HeaderText = "Role";
+                roleColumn.Name = "Role_ID";
+                roleColumn.DataPropertyName = "RoleName";
+                viewSuperAdminData.Columns.Add(roleColumn);
+
+
                 viewSuperAdminData.DataSource = dataTable;
+
 
                 DataGridViewImageColumn editButtonColumn = new DataGridViewImageColumn();
                 editButtonColumn.HeaderText = "";
@@ -90,9 +132,23 @@ namespace Application_Desktop.Sub_Views
             }
         }
 
+        //Load Admin Data
         private void LoadData()
         {
-            string query = "Select * from admin";
+            string query = @"SELECT 
+                             admin.Admin_ID,
+                             admin.Name, 
+                             admin.Email, 
+                             admin.Password, 
+                             branch.BranchName AS BranchName, 
+                             role.RoleName AS RoleName,
+                             superadmin.Name AS CreatedByName, 
+                             admin.Role_ID,
+                             admin.Branch_ID
+                             FROM admin
+                             JOIN branch ON admin.Branch_ID = branch.Branch_ID
+                             JOIN superadmin ON admin.CreatedBy = superadmin.SuperAdmin_ID
+                             JOIN role ON admin.Role_ID = role.Role_ID";
 
             MySqlConnection conn = databaseHelper.getConnection();
             try
@@ -109,6 +165,51 @@ namespace Application_Desktop.Sub_Views
                 viewAdminData.DataSource = null;
                 viewAdminData.Rows.Clear();
                 viewAdminData.Columns.Clear();
+
+                viewAdminData.AutoGenerateColumns = false;
+
+                DataGridViewTextBoxColumn adminColumn = new DataGridViewTextBoxColumn();
+                adminColumn.HeaderText = "Admin ID";
+                adminColumn.Name = "Admin_ID";
+                adminColumn.DataPropertyName = "Admin_ID";
+                viewAdminData.Columns.Add(adminColumn);
+
+                DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
+                nameColumn.HeaderText = "Name";
+                nameColumn.Name = "Name";
+                nameColumn.DataPropertyName = "Name";
+                viewAdminData.Columns.Add(nameColumn);
+
+                DataGridViewTextBoxColumn emailColumn = new DataGridViewTextBoxColumn();
+                emailColumn.HeaderText = "Email";
+                emailColumn.Name = "Email";
+                emailColumn.DataPropertyName = "Email";
+                viewAdminData.Columns.Add(emailColumn);
+
+                DataGridViewTextBoxColumn passwordColumn = new DataGridViewTextBoxColumn();
+                passwordColumn.HeaderText = "Password";
+                passwordColumn.Name = "Password";
+                passwordColumn.DataPropertyName = "Password";
+                viewAdminData.Columns.Add(passwordColumn);
+
+
+                DataGridViewTextBoxColumn branchColumn = new DataGridViewTextBoxColumn();
+                branchColumn.HeaderText = "Branch";
+                branchColumn.Name = "Branch_ID";
+                branchColumn.DataPropertyName = "BranchName";
+                viewAdminData.Columns.Add(branchColumn);
+
+                DataGridViewTextBoxColumn roleColumn = new DataGridViewTextBoxColumn();
+                roleColumn.HeaderText = "Role";
+                roleColumn.Name = "Role_ID";
+                roleColumn.DataPropertyName = "RoleName";
+                viewAdminData.Columns.Add(roleColumn);
+
+                DataGridViewTextBoxColumn createdByColumn = new DataGridViewTextBoxColumn();
+                createdByColumn.HeaderText = "Created By";
+                createdByColumn.Name = "CreatedBy";
+                createdByColumn.DataPropertyName = "CreatedByName";
+                viewAdminData.Columns.Add(createdByColumn);
 
                 viewAdminData.DataSource = dataTable;
 
@@ -175,7 +276,7 @@ namespace Application_Desktop.Sub_Views
         {
             //Refresh Button
             LoadData();
-            LoadDataSuper();
+            LoadSuperAdmin();
         }
 
         private editAdmin editAdminInstance;
@@ -187,16 +288,14 @@ namespace Application_Desktop.Sub_Views
         e.ColumnIndex == viewAdminData.Columns["edit"].Index && e.RowIndex >= 0)
             {
 
+                int adminID = Convert.ToInt32(viewAdminData.Rows[e.RowIndex].Cells["Admin_ID"].Value);
                 string fullname = viewAdminData.Rows[e.RowIndex].Cells["Name"].Value?.ToString() ?? string.Empty;
                 string[] nameParts = fullname.Split(new char[] { ' ' }, 2);
-
-
-
-                int adminID = Convert.ToInt32(viewAdminData.Rows[e.RowIndex].Cells["Admin_ID"].Value);
                 string fname = nameParts[0];
                 string lname = nameParts.Length > 1 ? nameParts[1] : string.Empty;
+
                 string email = viewAdminData.Rows[e.RowIndex].Cells["Email"].Value?.ToString() ?? string.Empty;
-                string pwd = viewAdminData.Rows[e.RowIndex].Cells["Pwd"].Value?.ToString() ?? string.Empty;
+                string pwd = viewAdminData.Rows[e.RowIndex].Cells["Password"].Value?.ToString() ?? string.Empty;
 
                 string role = viewAdminData.Rows[e.RowIndex].Cells["Role_ID"].Value?.ToString() ?? string.Empty;
                 string branch = viewAdminData.Rows[e.RowIndex].Cells["Branch_ID"].Value?.ToString() ?? string.Empty;
@@ -290,7 +389,7 @@ namespace Application_Desktop.Sub_Views
 
         private void btnSuperAdminRefresh_Click(object sender, EventArgs e)
         {
-            LoadDataSuper();
+            LoadSuperAdmin();
         }
 
         private registerSuperAdmin superAdminInstance;
@@ -324,16 +423,13 @@ namespace Application_Desktop.Sub_Views
         e.ColumnIndex == viewSuperAdminData.Columns["editSuperAdmin"].Index && e.RowIndex >= 0)
             {
 
+                int superAdminID = Convert.ToInt32(viewSuperAdminData.Rows[e.RowIndex].Cells["SuperAdmin_ID"].Value);
                 string fullname = viewSuperAdminData.Rows[e.RowIndex].Cells["Name"].Value?.ToString() ?? string.Empty;
                 string[] nameParts = fullname.Split(new char[] { ' ' }, 2);
-
-
-
-                int superAdminID = Convert.ToInt32(viewSuperAdminData.Rows[e.RowIndex].Cells["SuperAdmin_ID"].Value);
                 string fname = nameParts[0];
                 string lname = nameParts.Length > 1 ? nameParts[1] : string.Empty;
                 string email = viewSuperAdminData.Rows[e.RowIndex].Cells["Email"].Value?.ToString() ?? string.Empty;
-                string pwd = viewSuperAdminData.Rows[e.RowIndex].Cells["Pwd"].Value?.ToString() ?? string.Empty;
+                string pwd = viewSuperAdminData.Rows[e.RowIndex].Cells["Password"].Value?.ToString() ?? string.Empty;
 
                 string role = viewSuperAdminData.Rows[e.RowIndex].Cells["Role_ID"].Value?.ToString() ?? string.Empty;
 
@@ -366,7 +462,7 @@ namespace Application_Desktop.Sub_Views
 
                     // Delete row from database
                     DeleteSuperAdmin(superadminID);
-                    LoadDataSuper();
+                    LoadSuperAdmin();
                 }
             }
 
