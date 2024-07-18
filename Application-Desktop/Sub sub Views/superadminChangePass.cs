@@ -28,7 +28,7 @@ namespace Application_Desktop.Sub_sub_Views
 
             bool passwordVerify = false;
 
-            string query = "Select Pwd from superadmin where SuperAdmin_ID = @superadminID";
+            string query = "Select Password from superadmin where SuperAdmin_ID = @superadminID";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -48,7 +48,7 @@ namespace Application_Desktop.Sub_sub_Views
 
                 while (reader.Read())
                 {
-                    string storedHash = reader.GetString("Pwd");
+                    string storedHash = reader.GetString("Password");
                     if (verify.VerifyPassword(Cpass, storedHash))
                     {
                         passwordVerify = true;
@@ -140,7 +140,7 @@ namespace Application_Desktop.Sub_sub_Views
             }
             else
             {
-                string query = "UPDATE superadmin SET Pwd = @pwd WHERE SuperAdmin_ID = @superadminID";
+                string query = "UPDATE superadmin SET Password = @pwd WHERE SuperAdmin_ID = @superadminID";
 
                 MySqlConnection conn = databaseHelper.getConnection();
 

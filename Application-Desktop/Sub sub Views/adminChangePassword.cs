@@ -29,7 +29,7 @@ namespace Application_Desktop.Sub_sub_Views
 
             bool passwordVerify = false;
 
-            string query = "Select Pwd from admin where Admin_ID = @adminID";
+            string query = "Select Password from admin where Admin_ID = @adminID";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -49,7 +49,7 @@ namespace Application_Desktop.Sub_sub_Views
 
                 while (reader.Read())
                 {
-                    string storedHash = reader.GetString("Pwd");
+                    string storedHash = reader.GetString("Password");
                     if (verify.VerifyPassword(Cpass, storedHash))
                     {
                         passwordVerify = true;
@@ -141,7 +141,7 @@ namespace Application_Desktop.Sub_sub_Views
             }
             else
             {
-                string query = "UPDATE admin SET Pwd = @pwd WHERE Admin_ID = @adminID";
+                string query = "UPDATE admin SET Password = @pwd WHERE Admin_ID = @adminID";
 
                 MySqlConnection conn = databaseHelper.getConnection();
 

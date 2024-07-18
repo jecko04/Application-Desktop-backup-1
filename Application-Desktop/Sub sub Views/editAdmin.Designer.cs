@@ -50,12 +50,21 @@
             label2 = new Label();
             errorProvider1 = new ErrorProvider(components);
             errorProvider2 = new ErrorProvider(components);
+            errorProvider3 = new ErrorProvider(components);
+            errorProvider4 = new ErrorProvider(components);
+            errorProvider5 = new ErrorProvider(components);
+            errorProvider6 = new ErrorProvider(components);
+            errorTimer = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider6).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -277,6 +286,26 @@
             errorProvider2.ContainerControl = this;
             errorProvider2.Icon = (Icon)resources.GetObject("errorProvider2.Icon");
             // 
+            // errorProvider3
+            // 
+            errorProvider3.ContainerControl = this;
+            errorProvider3.Icon = (Icon)resources.GetObject("errorProvider3.Icon");
+            // 
+            // errorProvider4
+            // 
+            errorProvider4.ContainerControl = this;
+            errorProvider4.Icon = (Icon)resources.GetObject("errorProvider4.Icon");
+            // 
+            // errorProvider5
+            // 
+            errorProvider5.ContainerControl = this;
+            errorProvider5.Icon = (Icon)resources.GetObject("errorProvider5.Icon");
+            // 
+            // errorProvider6
+            // 
+            errorProvider6.ContainerControl = this;
+            errorProvider6.Icon = (Icon)resources.GetObject("errorProvider6.Icon");
+            // 
             // editAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -298,6 +327,10 @@
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider6).EndInit();
             ResumeLayout(false);
         }
 
@@ -323,5 +356,10 @@
         private TextBox txtPassword;
         private ErrorProvider errorProvider1;
         private ErrorProvider errorProvider2;
+        private ErrorProvider errorProvider3;
+        private ErrorProvider errorProvider4;
+        private ErrorProvider errorProvider5;
+        private ErrorProvider errorProvider6;
+        private System.Windows.Forms.Timer errorTimer;
     }
 }
