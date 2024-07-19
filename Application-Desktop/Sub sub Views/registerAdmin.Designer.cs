@@ -323,6 +323,7 @@
             // errorProvider8
             // 
             errorProvider8.ContainerControl = this;
+            errorProvider8.Icon = (Icon)resources.GetObject("errorProvider8.Icon");
             // 
             // registerAdmin
             // 

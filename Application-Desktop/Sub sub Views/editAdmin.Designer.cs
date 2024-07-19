@@ -54,7 +54,7 @@
             errorProvider4 = new ErrorProvider(components);
             errorProvider5 = new ErrorProvider(components);
             errorProvider6 = new ErrorProvider(components);
-            errorTimer = new System.Windows.Forms.Timer(components);
+            errorProvider7 = new ErrorProvider(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
@@ -65,6 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)errorProvider4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider7).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -76,7 +77,7 @@
             panel1.Controls.Add(btnClose);
             panel1.Location = new Point(2, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(410, 30);
+            panel1.Size = new Size(421, 30);
             panel1.TabIndex = 1;
             // 
             // label1
@@ -105,7 +106,7 @@
             btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnClose.Cursor = Cursors.Hand;
             btnClose.Image = (Image)resources.GetObject("btnClose.Image");
-            btnClose.Location = new Point(383, 3);
+            btnClose.Location = new Point(394, 3);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(24, 24);
             btnClose.SizeMode = PictureBoxSizeMode.Zoom;
@@ -132,7 +133,7 @@
             panel2.Controls.Add(label2);
             panel2.Location = new Point(2, 29);
             panel2.Name = "panel2";
-            panel2.Size = new Size(410, 406);
+            panel2.Size = new Size(421, 406);
             panel2.TabIndex = 2;
             // 
             // txtPassword
@@ -306,11 +307,16 @@
             errorProvider6.ContainerControl = this;
             errorProvider6.Icon = (Icon)resources.GetObject("errorProvider6.Icon");
             // 
+            // errorProvider7
+            // 
+            errorProvider7.ContainerControl = this;
+            errorProvider7.Icon = (Icon)resources.GetObject("errorProvider7.Icon");
+            // 
             // editAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(414, 436);
+            ClientSize = new Size(425, 436);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
@@ -331,6 +337,7 @@
             ((System.ComponentModel.ISupportInitialize)errorProvider4).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider5).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider7).EndInit();
             ResumeLayout(false);
         }
 
@@ -360,6 +367,6 @@
         private ErrorProvider errorProvider4;
         private ErrorProvider errorProvider5;
         private ErrorProvider errorProvider6;
-        private System.Windows.Forms.Timer errorTimer;
+        private ErrorProvider errorProvider7;
     }
 }

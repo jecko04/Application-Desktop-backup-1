@@ -118,7 +118,7 @@ namespace Application_Desktop.Sub_sub_Views
             string query = "UPDATE superadmin SET " +
                            "Name = @name, " +
                            "Email = @email, " +
-                           "Pwd = @pwd, " +
+                           "Password = @pwd, " +
                            "Role_ID = @roleID " +
                            "WHERE SuperAdmin_ID = @superAdminID";
 

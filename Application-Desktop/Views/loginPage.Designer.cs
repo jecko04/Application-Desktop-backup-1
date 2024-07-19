@@ -127,14 +127,17 @@
             // 
             // btnLogin
             // 
+            btnLogin.BackColor = Color.FromArgb(102, 204, 102);
+            btnLogin.FlatAppearance.BorderColor = Color.FromArgb(102, 204, 102);
+            btnLogin.FlatStyle = FlatStyle.Flat;
             btnLogin.Font = new Font("Tahoma", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnLogin.ForeColor = Color.Black;
+            btnLogin.ForeColor = Color.White;
             btnLogin.Location = new Point(43, 233);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(342, 38);
             btnLogin.TabIndex = 6;
-            btnLogin.Text = "Sign In";
-            btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Text = "Log In";
+            btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
             // 
             // checkBox1

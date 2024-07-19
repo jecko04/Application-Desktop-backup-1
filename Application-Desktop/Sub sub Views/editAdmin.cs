@@ -23,6 +23,7 @@ namespace Application_Desktop.Sub_sub_Views
         {
             InitializeComponent();
             this.adminID = adminID;
+
             txtfirstName.Text = fname;
             txtLastName.Text = lname;
             txtEmail.Text = email;
@@ -191,12 +192,82 @@ namespace Application_Desktop.Sub_sub_Views
             return branch;
         }
 
-        private int superadminID;
-        public void UpdateAdmin(int adminID, string fname, string lname, string email, string pwd, string role, string branch)
+        public void UpdateAdmin(int adminID, string email, string pwd, string role)
         {
+
+            if (role == "SuperAdmin")
+            {
+                InsertSuperAdmin(email, pwd, adminID);
+            }
+            if (role == "Admin")
+            {
+                Update(email, adminID);
+            }
+
+        }
+
+
+        private void InsertSuperAdmin(string email, string pwd, int adminID)
+        {
+            txtEmail.Text = email;
+            txtPassword.Text = pwd;
+
+            string fname = txtfirstName.Text;
+            string lname = txtLastName.Text;
             string fullname = $"{fname} {lname}";
 
+            // Validate if email format is correct
+            if (emailValidator.IsEmailNotValidate(email))
+            {
+                errorProvider3.SetError(txtEmail, "Email is not valid.");
+                errorProvider6.SetError(txtEmail, string.Empty);
+                return;
+            }
+            else
+            {
+                errorProvider3.SetError(txtEmail, string.Empty);
+                errorProvider6.SetError(txtEmail, "Email is valid.");
+            }
+
+            // Check if email already exists
+            try
+            {
+                if (emailValidator.IsEmailSuperAdminExist(email))
+                {
+                    errorProvider7.SetError(txtEmail, "Email already exists. Please use a different email.");
+                    errorProvider6.SetError(txtEmail, string.Empty);
+
+                    MessageBox.Show("Email already exists. Please use a different email.");
+                    return;
+                }
+                else
+                {
+                    errorProvider7.SetError(txtEmail, string.Empty);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error checking email existence: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Validate other fields
+            if (errorProvider1.GetError(txtfirstName) != string.Empty ||
+                errorProvider2.GetError(txtLastName) != string.Empty ||
+                errorProvider3.GetError(txtEmail) != string.Empty ||
+                errorProvider4.GetError(txtPassword) != string.Empty ||
+                errorProvider5.GetError(txtRoles) != string.Empty ||
+                errorProvider5.GetError(txtBranch) != string.Empty)
+            {
+                return;
+            }
+
+            string insertQuery = "INSERT INTO superadmin (Name, Email, Password, Role_ID) " +
+                                "VALUES " +
+                                "(@S_name, @S_email, @S_pwd, @S_roleID)";
+
             MySqlConnection conn = databaseHelper.getConnection();
+
             try
             {
                 if (conn.State != ConnectionState.Open)
@@ -204,96 +275,26 @@ namespace Application_Desktop.Sub_sub_Views
                     conn.Open();
                 }
 
-                
+                MySqlCommand superAdminCmd = new MySqlCommand(insertQuery, conn);
+                superAdminCmd.Parameters.AddWithValue("@S_name", fullname);
+                superAdminCmd.Parameters.AddWithValue("@S_email", email);
+                superAdminCmd.Parameters.AddWithValue("@S_pwd", pwd);
 
-                if (role == "SuperAdmin")
-                {
-                    //email error provider
-                    if (string.IsNullOrEmpty(email))
-                    {
-                        errorProvider3.SetError(txtEmail, "Email is required.");
-                        errorProvider6.SetError(txtEmail, string.Empty);
-                    }
-                    else
-                    {
-                        errorProvider3.SetError(txtEmail, string.Empty);
+                idValue selectedRole = (idValue)txtRoles.SelectedItem;
+                int roleId = selectedRole.ID;
+                superAdminCmd.Parameters.AddWithValue("@S_roleID", roleId);
+                superAdminCmd.ExecuteNonQuery();
 
-                        // Validate if email format is correct
-                        if (!emailValidator.IsEmailValidate(email))
-                        {
-                            errorProvider3.SetError(txtEmail, "Email is not valid.");
-                            errorProvider6.SetError(txtEmail, string.Empty);
-                        }
-                        else
-                        {
-                            errorProvider3.SetError(txtEmail, string.Empty);
-                            errorProvider6.SetError(txtEmail, "Email is valid.");
+                string deleteQuery = "DELETE FROM admin WHERE Admin_ID = @adminID";
+                MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, conn);
+                deleteCmd.Parameters.AddWithValue("@adminID", adminID);
+                deleteCmd.ExecuteNonQuery();
 
-                            // Check if email already exists
-                            try
-                            {
-                                if (emailValidator.IsEmailAdminExist(email))
-                                {
-                                    errorProvider3.SetError(txtEmail, "Email already exists. Please use a different email.");
-                                    errorProvider6.SetError(txtEmail, string.Empty);
-                                }
-                                else
-                                {
-                                    errorProvider3.SetError(txtEmail, string.Empty);
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show("Error checking email existence: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                    }
-                    string insertQuery = "INSERT INTO superadmin (Name, Email, Password, Role_ID) " +
-                            "VALUES " +
-                            "(@S_name, @S_email, @S_pwd, @S_roleID)";
-                        MySqlCommand superAdminCmd = new MySqlCommand(insertQuery, conn);
-                        superAdminCmd.Parameters.AddWithValue("@S_name", fullname);
-                        superAdminCmd.Parameters.AddWithValue("@S_email", email);
-                        superAdminCmd.Parameters.AddWithValue("@S_pwd", pwd);
-
-                        idValue selectedRole = (idValue)txtRoles.SelectedItem;
-                        int roleId = selectedRole.ID;
-                        superAdminCmd.Parameters.AddWithValue("@S_roleID", roleId);
-                        superAdminCmd.ExecuteNonQuery();
-
-                        string deleteQuery = "DELETE FROM admin WHERE Admin_ID = @adminID";
-                        MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, conn);
-                        deleteCmd.Parameters.AddWithValue("@adminID", adminID);
-                        deleteCmd.ExecuteNonQuery();
-
-                        MessageBox.Show("Successfully Updated to SuperAdmin");
-                }
-                else if (role == "Admin")
-                {
-                    
-                    string query = "UPDATE admin SET Name = @name, Email = @email, Branch_ID = @branchID, Role_ID = @roleID WHERE Admin_ID = @adminID";
-
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@name", fullname);
-                    cmd.Parameters.AddWithValue("@email", email);
-                    cmd.Parameters.AddWithValue("@adminID", adminID);
-
-                    idValue selectedBranch = (idValue)txtBranch.SelectedItem;
-                    int branchId = selectedBranch.ID;
-                    cmd.Parameters.AddWithValue("@branchID", branchId);
-
-                    idValue selectedRole = (idValue)txtRoles.SelectedItem;
-                    int roleId = selectedRole.ID;
-                    cmd.Parameters.AddWithValue("@roleID", roleId);
-
-                    cmd.ExecuteNonQuery();
-
-                    MessageBox.Show("Successfully Updated admin record.");
-                }
+                MessageBox.Show("Successfully Updated to SuperAdmin");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error updating admin: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error Inputting Data to SuperAdmin: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -301,14 +302,52 @@ namespace Application_Desktop.Sub_sub_Views
             }
         }
 
+        private void Update(string email, int adminID)
+        {
+            txtEmail.Text = email;
 
+            string fname = txtfirstName.Text;
+            string lname = txtLastName.Text;
+            string fullname = $"{fname} {lname}";
+            string query = "UPDATE admin SET Name = @name, Email = @email, Branch_ID = @branchID, Role_ID = @roleID WHERE Admin_ID = @adminID";
 
+            MySqlConnection conn = databaseHelper.getConnection();
+
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@name", fullname);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@adminID", adminID);
+
+                idValue selectedBranch = (idValue)txtBranch.SelectedItem;
+                int branchId = selectedBranch.ID;
+                cmd.Parameters.AddWithValue("@branchID", branchId);
+
+                idValue selectedRole = (idValue)txtRoles.SelectedItem;
+                int roleId = selectedRole.ID;
+                cmd.Parameters.AddWithValue("@roleID", roleId);
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Successfully Updated admin record.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Updating Data to Admin: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally { conn.Close(); }
+        }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             string fname = txtfirstName.Text;
             string lname = txtLastName.Text;
-            string fullname = $"{fname} {lname}";
 
             string email = txtEmail.Text;
             string pwd = txtPassword.Text;
@@ -360,28 +399,10 @@ namespace Application_Desktop.Sub_sub_Views
                     errorProvider5.SetError(txtBranch, string.Empty);
                 }
 
+
+
                 // proceed to update
-                if (string.IsNullOrEmpty(fname))
-                {
-                    errorProvider1.SetError(txtfirstName, "First Name is required.");
-                }
-                else if (string.IsNullOrEmpty(lname))
-                {
-                    errorProvider2.SetError(txtLastName, "Last Name is required.");
-                }
-                else if (string.IsNullOrEmpty(email))
-                {
-                    errorProvider3.SetError(txtEmail, "Email is required.");
-                }
-                else if (string.IsNullOrEmpty(role))
-                {
-                    errorProvider4.SetError(txtRoles, "Role is required.");
-                }
-                else if (string.IsNullOrEmpty(branch))
-                {
-                    errorProvider5.SetError(txtBranch, "Branch is required.");
-                }
-                else if (errorProvider1.GetError(txtfirstName) != string.Empty ||
+                if (errorProvider1.GetError(txtfirstName) != string.Empty ||
                         errorProvider2.GetError(txtLastName) != string.Empty ||
                         errorProvider3.GetError(txtEmail) != string.Empty ||
                         errorProvider4.GetError(txtPassword) != string.Empty ||
@@ -392,12 +413,7 @@ namespace Application_Desktop.Sub_sub_Views
                 }
                 else
                 {
-                    //MessageBox.Show($"Collected Data:\nFullname: {fullname}\nEmail: {email}\nPassword: {pwd}\n\nRole: {role}\nBranch: {branch}", "Changes");
-                    DialogResult result = MessageBox.Show("Do you want to proceed to update this account?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    { 
-                    UpdateAdmin(adminID, fname, lname, email, pwd, role, branch);
-                    }
+                    UpdateAdmin(adminID, email, pwd, role);
                 }
             }
             catch (Exception ex)
@@ -405,7 +421,7 @@ namespace Application_Desktop.Sub_sub_Views
                 MessageBox.Show("Error checking email existence: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            
+
             this.Close();
         }
         private void btnClose_Click(object sender, EventArgs e)

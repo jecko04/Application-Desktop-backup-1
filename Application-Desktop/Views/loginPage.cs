@@ -77,7 +77,7 @@ namespace Application_Desktop.Views
             }
             else
             {
-                
+
 
                 string query = "SELECT 'SuperAdmin' AS Role, SuperAdmin_ID AS ID, email AS Name, password AS Pass FROM superadmin " +
                 "UNION ALL " +
@@ -147,7 +147,7 @@ namespace Application_Desktop.Views
                                 this.Hide();
                                 errorProvider1.SetError(txtEmail, string.Empty);
                                 errorProvider2.SetError(txtPassword, string.Empty);
-                                break;                                                                                                                         
+                                break;
                             }
 
                         }
