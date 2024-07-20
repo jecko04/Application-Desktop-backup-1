@@ -39,19 +39,20 @@
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
             flowLayoutPanel3 = new FlowLayoutPanel();
-            btnRefresh = new Button();
             label2 = new Label();
+            btnRefresh = new Button();
             viewAdminData = new DataGridView();
             viewSuperAdminData = new DataGridView();
             flowLayoutPanel4 = new FlowLayoutPanel();
+            btnDelete = new Button();
             btnNewSuperAdmin = new Button();
-            btnSuperAdminRefresh = new Button();
+            btnSearchSuperAdmin = new Button();
+            txtSearchBox = new TextBox();
             pictureBox3 = new PictureBox();
             label1 = new Label();
             panel1 = new Panel();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            flowLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)viewAdminData).BeginInit();
             ((System.ComponentModel.ISupportInitialize)viewSuperAdminData).BeginInit();
             flowLayoutPanel4.SuspendLayout();
@@ -69,8 +70,8 @@
             btnNewAdmin.ForeColor = SystemColors.ButtonFace;
             btnNewAdmin.Image = (Image)resources.GetObject("btnNewAdmin.Image");
             btnNewAdmin.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNewAdmin.Location = new Point(133, 0);
-            btnNewAdmin.Margin = new Padding(0);
+            btnNewAdmin.Location = new Point(382, 0);
+            btnNewAdmin.Margin = new Padding(0, 0, 2, 0);
             btnNewAdmin.Name = "btnNewAdmin";
             btnNewAdmin.Size = new Size(126, 30);
             btnNewAdmin.TabIndex = 4;
@@ -88,7 +89,7 @@
             panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Point(0, 107);
             panel2.Name = "panel2";
-            panel2.Size = new Size(800, 30);
+            panel2.Size = new Size(894, 30);
             panel2.TabIndex = 4;
             // 
             // pictureBox1
@@ -106,31 +107,11 @@
             // 
             flowLayoutPanel3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             flowLayoutPanel3.BackColor = Color.White;
-            flowLayoutPanel3.Controls.Add(btnNewAdmin);
-            flowLayoutPanel3.Controls.Add(btnRefresh);
             flowLayoutPanel3.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutPanel3.Location = new Point(541, 0);
+            flowLayoutPanel3.Location = new Point(276, 0);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new Size(259, 30);
+            flowLayoutPanel3.Size = new Size(618, 30);
             flowLayoutPanel3.TabIndex = 2;
-            // 
-            // btnRefresh
-            // 
-            btnRefresh.BackColor = Color.FromArgb(52, 152, 219);
-            btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(98, 35, 153);
-            btnRefresh.FlatStyle = FlatStyle.Flat;
-            btnRefresh.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRefresh.ForeColor = SystemColors.ButtonFace;
-            btnRefresh.Image = (Image)resources.GetObject("btnRefresh.Image");
-            btnRefresh.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRefresh.Location = new Point(101, 0);
-            btnRefresh.Margin = new Padding(5, 0, 0, 0);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(32, 30);
-            btnRefresh.TabIndex = 11;
-            btnRefresh.TextAlign = ContentAlignment.MiddleLeft;
-            btnRefresh.UseVisualStyleBackColor = false;
-            btnRefresh.Click += btnRefresh_Click;
             // 
             // label2
             // 
@@ -138,9 +119,27 @@
             label2.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(42, 8);
             label2.Name = "label2";
-            label2.Size = new Size(43, 16);
+            label2.Size = new Size(79, 16);
             label2.TabIndex = 5;
-            label2.Text = "Admin";
+            label2.Text = "Admin Table";
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.BackColor = Color.FromArgb(52, 152, 219);
+            btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnRefresh.FlatStyle = FlatStyle.Flat;
+            btnRefresh.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRefresh.ForeColor = SystemColors.ButtonFace;
+            btnRefresh.Image = (Image)resources.GetObject("btnRefresh.Image");
+            btnRefresh.ImageAlign = ContentAlignment.MiddleLeft;
+            btnRefresh.Location = new Point(345, 0);
+            btnRefresh.Margin = new Padding(5, 0, 5, 0);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(32, 30);
+            btnRefresh.TabIndex = 11;
+            btnRefresh.TextAlign = ContentAlignment.MiddleLeft;
+            btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // viewAdminData
             // 
@@ -185,7 +184,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             viewAdminData.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             viewAdminData.RowTemplate.Height = 25;
-            viewAdminData.Size = new Size(800, 313);
+            viewAdminData.Size = new Size(894, 313);
             viewAdminData.TabIndex = 5;
             viewAdminData.CellContentClick += viewAdminData_CellContentClick;
             // 
@@ -232,7 +231,7 @@
             dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
             viewSuperAdminData.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             viewSuperAdminData.RowTemplate.Height = 25;
-            viewSuperAdminData.Size = new Size(800, 282);
+            viewSuperAdminData.Size = new Size(894, 282);
             viewSuperAdminData.TabIndex = 8;
             viewSuperAdminData.CellContentClick += viewSuperAdminData_CellContentClick_1;
             // 
@@ -240,13 +239,36 @@
             // 
             flowLayoutPanel4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             flowLayoutPanel4.BackColor = Color.White;
+            flowLayoutPanel4.Controls.Add(btnDelete);
             flowLayoutPanel4.Controls.Add(btnNewSuperAdmin);
-            flowLayoutPanel4.Controls.Add(btnSuperAdminRefresh);
+            flowLayoutPanel4.Controls.Add(btnNewAdmin);
+            flowLayoutPanel4.Controls.Add(btnRefresh);
+            flowLayoutPanel4.Controls.Add(btnSearchSuperAdmin);
+            flowLayoutPanel4.Controls.Add(txtSearchBox);
             flowLayoutPanel4.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutPanel4.Location = new Point(541, 0);
+            flowLayoutPanel4.Location = new Point(183, 0);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new Size(259, 30);
+            flowLayoutPanel4.Size = new Size(711, 30);
             flowLayoutPanel4.TabIndex = 3;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnDelete.BackColor = Color.FromArgb(52, 152, 219);
+            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDelete.ForeColor = SystemColors.ButtonFace;
+            btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
+            btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDelete.Location = new Point(673, 0);
+            btnDelete.Margin = new Padding(0);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(38, 30);
+            btnDelete.TabIndex = 12;
+            btnDelete.TextAlign = ContentAlignment.MiddleLeft;
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnNewSuperAdmin
             // 
@@ -258,8 +280,8 @@
             btnNewSuperAdmin.ForeColor = SystemColors.ButtonFace;
             btnNewSuperAdmin.Image = (Image)resources.GetObject("btnNewSuperAdmin.Image");
             btnNewSuperAdmin.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNewSuperAdmin.Location = new Point(98, 0);
-            btnNewSuperAdmin.Margin = new Padding(0);
+            btnNewSuperAdmin.Location = new Point(510, 0);
+            btnNewSuperAdmin.Margin = new Padding(0, 0, 2, 0);
             btnNewSuperAdmin.Name = "btnNewSuperAdmin";
             btnNewSuperAdmin.Size = new Size(161, 30);
             btnNewSuperAdmin.TabIndex = 4;
@@ -268,23 +290,35 @@
             btnNewSuperAdmin.UseVisualStyleBackColor = false;
             btnNewSuperAdmin.Click += btnNewSuperAdmin_Click;
             // 
-            // btnSuperAdminRefresh
+            // btnSearchSuperAdmin
             // 
-            btnSuperAdminRefresh.BackColor = Color.FromArgb(52, 152, 219);
-            btnSuperAdminRefresh.FlatAppearance.BorderColor = Color.FromArgb(98, 35, 153);
-            btnSuperAdminRefresh.FlatStyle = FlatStyle.Flat;
-            btnSuperAdminRefresh.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSuperAdminRefresh.ForeColor = SystemColors.ButtonFace;
-            btnSuperAdminRefresh.Image = (Image)resources.GetObject("btnSuperAdminRefresh.Image");
-            btnSuperAdminRefresh.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSuperAdminRefresh.Location = new Point(66, 0);
-            btnSuperAdminRefresh.Margin = new Padding(5, 0, 0, 0);
-            btnSuperAdminRefresh.Name = "btnSuperAdminRefresh";
-            btnSuperAdminRefresh.Size = new Size(32, 30);
-            btnSuperAdminRefresh.TabIndex = 11;
-            btnSuperAdminRefresh.TextAlign = ContentAlignment.MiddleLeft;
-            btnSuperAdminRefresh.UseVisualStyleBackColor = false;
-            btnSuperAdminRefresh.Click += btnSuperAdminRefresh_Click;
+            btnSearchSuperAdmin.BackColor = Color.FromArgb(52, 152, 219);
+            btnSearchSuperAdmin.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnSearchSuperAdmin.FlatStyle = FlatStyle.Flat;
+            btnSearchSuperAdmin.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSearchSuperAdmin.ForeColor = SystemColors.ButtonFace;
+            btnSearchSuperAdmin.Image = (Image)resources.GetObject("btnSearchSuperAdmin.Image");
+            btnSearchSuperAdmin.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSearchSuperAdmin.Location = new Point(308, 0);
+            btnSearchSuperAdmin.Margin = new Padding(0);
+            btnSearchSuperAdmin.Name = "btnSearchSuperAdmin";
+            btnSearchSuperAdmin.Size = new Size(32, 30);
+            btnSearchSuperAdmin.TabIndex = 11;
+            btnSearchSuperAdmin.TextAlign = ContentAlignment.MiddleLeft;
+            btnSearchSuperAdmin.UseVisualStyleBackColor = false;
+            btnSearchSuperAdmin.Click += btnSearchSuperAdmin_Click;
+            // 
+            // txtSearchBox
+            // 
+            txtSearchBox.BorderStyle = BorderStyle.FixedSingle;
+            txtSearchBox.Cursor = Cursors.IBeam;
+            txtSearchBox.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSearchBox.Location = new Point(109, 3);
+            txtSearchBox.Margin = new Padding(3, 3, 5, 3);
+            txtSearchBox.Name = "txtSearchBox";
+            txtSearchBox.PlaceholderText = " Search";
+            txtSearchBox.Size = new Size(194, 23);
+            txtSearchBox.TabIndex = 6;
             // 
             // pictureBox3
             // 
@@ -303,9 +337,9 @@
             label1.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(42, 8);
             label1.Name = "label1";
-            label1.Size = new Size(81, 16);
+            label1.Size = new Size(117, 16);
             label1.TabIndex = 4;
-            label1.Text = "Super Admin";
+            label1.Text = "Super Admin Table";
             // 
             // panel1
             // 
@@ -316,13 +350,13 @@
             panel1.Controls.Add(flowLayoutPanel4);
             panel1.Location = new Point(0, -1);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 30);
+            panel1.Size = new Size(894, 30);
             panel1.TabIndex = 7;
             // 
             // admin
             // 
             AutoScaleMode = AutoScaleMode.None;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(894, 450);
             Controls.Add(panel1);
             Controls.Add(viewSuperAdminData);
             Controls.Add(panel2);
@@ -334,10 +368,10 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            flowLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)viewAdminData).EndInit();
             ((System.ComponentModel.ISupportInitialize)viewSuperAdminData).EndInit();
             flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -355,9 +389,11 @@
         private PictureBox pictureBox1;
         private FlowLayoutPanel flowLayoutPanel4;
         private Button btnNewSuperAdmin;
-        private Button btnSuperAdminRefresh;
         private PictureBox pictureBox3;
         private Label label1;
         private Panel panel1;
+        private TextBox txtSearchBox;
+        private Button btnSearchSuperAdmin;
+        private Button btnDelete;
     }
 }

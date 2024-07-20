@@ -17,6 +17,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace Application_Desktop.Sub_Views
 {
+    //super admin 800, 282 + 30
+    //admin 800, 313 + 30
     public partial class admin : Form
     {
         public admin()
@@ -60,66 +62,12 @@ namespace Application_Desktop.Sub_Views
 
                 viewAdminData.AutoGenerateColumns = false;
 
-                DataGridViewTextBoxColumn adminColumn = new DataGridViewTextBoxColumn();
-                adminColumn.HeaderText = "SuperAdmin ID";
-                adminColumn.Name = "SuperAdmin_ID";
-                adminColumn.DataPropertyName = "SuperAdmin_ID";
-                viewSuperAdminData.Columns.Add(adminColumn);
-
-                DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
-                nameColumn.HeaderText = "Name";
-                nameColumn.Name = "Name";
-                nameColumn.DataPropertyName = "Name";
-                viewSuperAdminData.Columns.Add(nameColumn);
-
-                DataGridViewTextBoxColumn emailColumn = new DataGridViewTextBoxColumn();
-                emailColumn.HeaderText = "Email";
-                emailColumn.Name = "Email";
-                emailColumn.DataPropertyName = "Email";
-                viewSuperAdminData.Columns.Add(emailColumn);
-
-                DataGridViewTextBoxColumn passwordColumn = new DataGridViewTextBoxColumn();
-                passwordColumn.HeaderText = "Password";
-                passwordColumn.Name = "Password";
-                passwordColumn.DataPropertyName = "Password";
-                viewSuperAdminData.Columns.Add(passwordColumn);
-
-                DataGridViewTextBoxColumn roleColumn = new DataGridViewTextBoxColumn();
-                roleColumn.HeaderText = "Role";
-                roleColumn.Name = "Role_ID";
-                roleColumn.DataPropertyName = "RoleName";
-                viewSuperAdminData.Columns.Add(roleColumn);
+                AddColumnSuperAdmin();
 
 
                 viewSuperAdminData.DataSource = dataTable;
 
 
-                DataGridViewImageColumn editButtonColumn = new DataGridViewImageColumn();
-                editButtonColumn.HeaderText = "";
-                editButtonColumn.Name = "editSuperAdmin";
-                editButtonColumn.Image = Properties.Resources.edit_img;
-                editButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                editButtonColumn.Width = 50;
-                editButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-                viewSuperAdminData.Columns.Add(editButtonColumn);
-
-                DataGridViewImageColumn deleteButtonColumn = new DataGridViewImageColumn();
-                deleteButtonColumn.HeaderText = "";
-                deleteButtonColumn.Name = "deleteSuperAdmin";
-                deleteButtonColumn.Image = Properties.Resources.delete_img;
-                deleteButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                deleteButtonColumn.Width = 50;
-                deleteButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-                viewSuperAdminData.Columns.Add(deleteButtonColumn);
-
-                DataGridViewImageColumn changeButtonColumn = new DataGridViewImageColumn();
-                changeButtonColumn.HeaderText = "";
-                changeButtonColumn.Name = "changeSuperAdmin";
-                changeButtonColumn.Image = Properties.Resources.change;
-                changeButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                changeButtonColumn.Width = 50;
-                changeButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-                viewSuperAdminData.Columns.Add(changeButtonColumn);
 
             }
             catch (Exception ex)
@@ -168,77 +116,11 @@ namespace Application_Desktop.Sub_Views
 
                 viewAdminData.AutoGenerateColumns = false;
 
-                DataGridViewTextBoxColumn adminColumn = new DataGridViewTextBoxColumn();
-                adminColumn.HeaderText = "Admin ID";
-                adminColumn.Name = "Admin_ID";
-                adminColumn.DataPropertyName = "Admin_ID";
-                viewAdminData.Columns.Add(adminColumn);
-
-                DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
-                nameColumn.HeaderText = "Name";
-                nameColumn.Name = "Name";
-                nameColumn.DataPropertyName = "Name";
-                viewAdminData.Columns.Add(nameColumn);
-
-                DataGridViewTextBoxColumn emailColumn = new DataGridViewTextBoxColumn();
-                emailColumn.HeaderText = "Email";
-                emailColumn.Name = "Email";
-                emailColumn.DataPropertyName = "Email";
-                viewAdminData.Columns.Add(emailColumn);
-
-                DataGridViewTextBoxColumn passwordColumn = new DataGridViewTextBoxColumn();
-                passwordColumn.HeaderText = "Password";
-                passwordColumn.Name = "Password";
-                passwordColumn.DataPropertyName = "Password";
-                viewAdminData.Columns.Add(passwordColumn);
-
-
-                DataGridViewTextBoxColumn branchColumn = new DataGridViewTextBoxColumn();
-                branchColumn.HeaderText = "Branch";
-                branchColumn.Name = "Branch_ID";
-                branchColumn.DataPropertyName = "BranchName";
-                viewAdminData.Columns.Add(branchColumn);
-
-                DataGridViewTextBoxColumn roleColumn = new DataGridViewTextBoxColumn();
-                roleColumn.HeaderText = "Role";
-                roleColumn.Name = "Role_ID";
-                roleColumn.DataPropertyName = "RoleName";
-                viewAdminData.Columns.Add(roleColumn);
-
-                DataGridViewTextBoxColumn createdByColumn = new DataGridViewTextBoxColumn();
-                createdByColumn.HeaderText = "Created By";
-                createdByColumn.Name = "CreatedBy";
-                createdByColumn.DataPropertyName = "CreatedByName";
-                viewAdminData.Columns.Add(createdByColumn);
+                AddColumnAdmin();
 
                 viewAdminData.DataSource = dataTable;
 
-                DataGridViewImageColumn editButtonColumn = new DataGridViewImageColumn();
-                editButtonColumn.HeaderText = "";
-                editButtonColumn.Name = "edit";
-                editButtonColumn.Image = Properties.Resources.edit_img;
-                editButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                editButtonColumn.Width = 50;
-                editButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-                viewAdminData.Columns.Add(editButtonColumn);
 
-                DataGridViewImageColumn deleteButtonColumn = new DataGridViewImageColumn();
-                deleteButtonColumn.HeaderText = "";
-                deleteButtonColumn.Name = "delete";
-                deleteButtonColumn.Image = Properties.Resources.delete_img;
-                deleteButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                deleteButtonColumn.Width = 50;
-                deleteButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-                viewAdminData.Columns.Add(deleteButtonColumn);
-
-                DataGridViewImageColumn changeButtonColumn = new DataGridViewImageColumn();
-                changeButtonColumn.HeaderText = "";
-                changeButtonColumn.Name = "change";
-                changeButtonColumn.Image = Properties.Resources.change;
-                changeButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                changeButtonColumn.Width = 50;
-                changeButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-                viewAdminData.Columns.Add(changeButtonColumn);
 
             }
             catch (Exception ex)
@@ -357,6 +239,14 @@ namespace Application_Desktop.Sub_Views
                     }
                 }
             }
+
+            //Select Check Box
+            if (e.ColumnIndex == viewAdminData.Columns["selectAdmin"].Index)
+            {
+                DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)viewAdminData.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                cell.Value = !(cell.Value is bool && (bool)cell.Value); // Toggle checkbox value
+            }
+
         }
 
 
@@ -376,8 +266,6 @@ namespace Application_Desktop.Sub_Views
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@adminID", adminID);
                 cmd.ExecuteNonQuery();
-
-                MessageBox.Show("Row deleted successfully from database.");
             }
             catch (Exception ex)
             {
@@ -387,10 +275,7 @@ namespace Application_Desktop.Sub_Views
             return adminID;
         }
 
-        private void btnSuperAdminRefresh_Click(object sender, EventArgs e)
-        {
-            LoadSuperAdmin();
-        }
+
 
         private registerSuperAdmin superAdminInstance;
         private void btnNewSuperAdmin_Click(object sender, EventArgs e)
@@ -422,7 +307,6 @@ namespace Application_Desktop.Sub_Views
             if (viewSuperAdminData.Columns["editSuperAdmin"] != null &&
         e.ColumnIndex == viewSuperAdminData.Columns["editSuperAdmin"].Index && e.RowIndex >= 0)
             {
-
                 int superAdminID = Convert.ToInt32(viewSuperAdminData.Rows[e.RowIndex].Cells["SuperAdmin_ID"].Value);
                 string fullname = viewSuperAdminData.Rows[e.RowIndex].Cells["Name"].Value?.ToString() ?? string.Empty;
                 string[] nameParts = fullname.Split(new char[] { ' ' }, 2);
@@ -491,6 +375,12 @@ namespace Application_Desktop.Sub_Views
                 }
             }
 
+            //Select Check Box
+            if (e.ColumnIndex == viewSuperAdminData.Columns["selectSuperAdmin"].Index)
+            {
+                DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)viewSuperAdminData.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                cell.Value = !(cell.Value is bool && (bool)cell.Value); // Toggle checkbox value
+            }
         }
 
         public int DeleteSuperAdmin(int superadminID)
@@ -509,8 +399,6 @@ namespace Application_Desktop.Sub_Views
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@superadminID", superadminID);
                 cmd.ExecuteNonQuery();
-
-                MessageBox.Show("Row deleted successfully from database.");
             }
             catch (Exception ex)
             {
@@ -520,6 +408,293 @@ namespace Application_Desktop.Sub_Views
             return superadminID;
         }
 
+        private void LoadSearchBarS(string searchBarS)
+        {
+            string superAdminQuery = @"SELECT 
+                         superadmin.SuperAdmin_ID,
+                         superadmin.Name, 
+                         superadmin.Email,
+                         superadmin.Password,
+                         role.RoleName AS RoleName
+                     FROM superadmin
+                     JOIN role ON superadmin.Role_ID = role.Role_ID
+                     WHERE superadmin.SuperAdmin_ID LIKE @search OR
+                           superadmin.Name LIKE @search OR
+                           superadmin.Email LIKE @search OR
+                           role.RoleName LIKE @search";
 
+            string adminQuery = @"SELECT 
+                             admin.Admin_ID,
+                             admin.Name, 
+                             admin.Email, 
+                             admin.Password, 
+                             branch.BranchName AS BranchName, 
+                             role.RoleName AS RoleName,
+                             superadmin.Name AS CreatedByName, 
+                             admin.Role_ID,
+                             admin.Branch_ID
+                      FROM admin
+                      JOIN branch ON admin.Branch_ID = branch.Branch_ID
+                      JOIN superadmin ON admin.CreatedBy = superadmin.SuperAdmin_ID
+                      JOIN role ON admin.Role_ID = role.Role_ID
+                      WHERE admin.Admin_ID LIKE @search OR
+                               admin.Name LIKE @search OR
+                               admin.Email LIKE @search OR
+                               branch.BranchName LIKE @search OR
+                               role.RoleName LIKE @search OR
+                               superadmin.Name LIKE @search";
+
+            MySqlConnection conn = databaseHelper.getConnection();
+
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                MySqlCommand SuperAdminCmd = new MySqlCommand(superAdminQuery, conn);
+                SuperAdminCmd.Parameters.AddWithValue("@search", $"%{searchBarS}%");
+
+                MySqlDataAdapter SuperAdminAdapter = new MySqlDataAdapter(SuperAdminCmd);
+                DataTable SuperAdminTable = new DataTable();
+                SuperAdminAdapter.Fill(SuperAdminTable);
+
+                MySqlCommand AdminCmd = new MySqlCommand(adminQuery, conn);
+                AdminCmd.Parameters.AddWithValue("@search", $"%{searchBarS}%");
+
+                MySqlDataAdapter AdminAdapter = new MySqlDataAdapter(AdminCmd);
+                DataTable AdminTable = new DataTable();
+                AdminAdapter.Fill(AdminTable);
+
+                // Clear previous columns and rows
+                viewSuperAdminData.DataSource = null;
+                viewSuperAdminData.Rows.Clear();
+                viewSuperAdminData.Columns.Clear();
+
+                viewAdminData.DataSource = null;
+                viewAdminData.Rows.Clear();
+                viewAdminData.Columns.Clear();
+
+                // Add columns to DataGridView
+                AddColumnSuperAdmin();
+                AddColumnAdmin();
+
+                if (SuperAdminTable.Rows.Count > 0)
+                {
+                    viewSuperAdminData.DataSource = SuperAdminTable;
+                }
+
+                if (AdminTable.Rows.Count > 0)
+                {
+                    viewAdminData.DataSource = AdminTable;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}\n{ex.StackTrace}");
+            }
+            finally { conn.Close(); }
+        }
+
+        //Add Column
+        private void AddColumnSuperAdmin()
+        {
+
+            DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
+            selectColumn.HeaderText = "";
+            selectColumn.Name = "selectSuperAdmin";
+            selectColumn.Width = 30;
+            viewSuperAdminData.Columns.Add(selectColumn);
+            viewSuperAdminData.Columns["selectSuperAdmin"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            DataGridViewTextBoxColumn adminColumn = new DataGridViewTextBoxColumn();
+            adminColumn.HeaderText = "SuperAdmin ID";
+            adminColumn.Name = "SuperAdmin_ID";
+            adminColumn.DataPropertyName = "SuperAdmin_ID";
+            viewSuperAdminData.Columns.Add(adminColumn);
+
+            DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
+            nameColumn.HeaderText = "Name";
+            nameColumn.Name = "Name";
+            nameColumn.DataPropertyName = "Name";
+            viewSuperAdminData.Columns.Add(nameColumn);
+
+            DataGridViewTextBoxColumn emailColumn = new DataGridViewTextBoxColumn();
+            emailColumn.HeaderText = "Email";
+            emailColumn.Name = "Email";
+            emailColumn.DataPropertyName = "Email";
+            viewSuperAdminData.Columns.Add(emailColumn);
+
+            DataGridViewTextBoxColumn passwordColumn = new DataGridViewTextBoxColumn();
+            passwordColumn.HeaderText = "Password";
+            passwordColumn.Name = "Password";
+            passwordColumn.DataPropertyName = "Password";
+            viewSuperAdminData.Columns.Add(passwordColumn);
+
+            DataGridViewTextBoxColumn roleColumn = new DataGridViewTextBoxColumn();
+            roleColumn.HeaderText = "Role";
+            roleColumn.Name = "Role_ID";
+            roleColumn.DataPropertyName = "RoleName";
+            viewSuperAdminData.Columns.Add(roleColumn);
+
+            DataGridViewImageColumn editButtonColumn = new DataGridViewImageColumn();
+            editButtonColumn.HeaderText = "";
+            editButtonColumn.Name = "editSuperAdmin";
+            editButtonColumn.Image = Properties.Resources.edit_img;
+            editButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            editButtonColumn.Width = 50;
+            editButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            viewSuperAdminData.Columns.Add(editButtonColumn);
+
+            DataGridViewImageColumn deleteButtonColumn = new DataGridViewImageColumn();
+            deleteButtonColumn.HeaderText = "";
+            deleteButtonColumn.Name = "deleteSuperAdmin";
+            deleteButtonColumn.Image = Properties.Resources.delete_img;
+            deleteButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            deleteButtonColumn.Width = 50;
+            deleteButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            viewSuperAdminData.Columns.Add(deleteButtonColumn);
+
+            DataGridViewImageColumn changeButtonColumn = new DataGridViewImageColumn();
+            changeButtonColumn.HeaderText = "";
+            changeButtonColumn.Name = "changeSuperAdmin";
+            changeButtonColumn.Image = Properties.Resources.change;
+            changeButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            changeButtonColumn.Width = 50;
+            changeButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            viewSuperAdminData.Columns.Add(changeButtonColumn);
+        }
+
+        private void AddColumnAdmin()
+        {
+            DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
+            selectColumn.HeaderText = "";
+            selectColumn.Name = "selectAdmin";
+            selectColumn.Width = 30;
+            viewAdminData.Columns.Add(selectColumn);
+            viewAdminData.Columns["selectAdmin"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            DataGridViewTextBoxColumn adminColumn = new DataGridViewTextBoxColumn();
+            adminColumn.HeaderText = "Admin ID";
+            adminColumn.Name = "Admin_ID";
+            adminColumn.DataPropertyName = "Admin_ID";
+            viewAdminData.Columns.Add(adminColumn);
+
+            DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
+            nameColumn.HeaderText = "Name";
+            nameColumn.Name = "Name";
+            nameColumn.DataPropertyName = "Name";
+            viewAdminData.Columns.Add(nameColumn);
+
+            DataGridViewTextBoxColumn emailColumn = new DataGridViewTextBoxColumn();
+            emailColumn.HeaderText = "Email";
+            emailColumn.Name = "Email";
+            emailColumn.DataPropertyName = "Email";
+            viewAdminData.Columns.Add(emailColumn);
+
+            DataGridViewTextBoxColumn passwordColumn = new DataGridViewTextBoxColumn();
+            passwordColumn.HeaderText = "Password";
+            passwordColumn.Name = "Password";
+            passwordColumn.DataPropertyName = "Password";
+            viewAdminData.Columns.Add(passwordColumn);
+
+
+            DataGridViewTextBoxColumn branchColumn = new DataGridViewTextBoxColumn();
+            branchColumn.HeaderText = "Branch";
+            branchColumn.Name = "Branch_ID";
+            branchColumn.DataPropertyName = "BranchName";
+            viewAdminData.Columns.Add(branchColumn);
+
+            DataGridViewTextBoxColumn roleColumn = new DataGridViewTextBoxColumn();
+            roleColumn.HeaderText = "Role";
+            roleColumn.Name = "Role_ID";
+            roleColumn.DataPropertyName = "RoleName";
+            viewAdminData.Columns.Add(roleColumn);
+
+            DataGridViewTextBoxColumn createdByColumn = new DataGridViewTextBoxColumn();
+            createdByColumn.HeaderText = "Created By";
+            createdByColumn.Name = "CreatedBy";
+            createdByColumn.DataPropertyName = "CreatedByName";
+            viewAdminData.Columns.Add(createdByColumn);
+
+            DataGridViewImageColumn editButtonColumn = new DataGridViewImageColumn();
+            editButtonColumn.HeaderText = "";
+            editButtonColumn.Name = "edit";
+            editButtonColumn.Image = Properties.Resources.edit_img;
+            editButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            editButtonColumn.Width = 50;
+            editButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            viewAdminData.Columns.Add(editButtonColumn);
+
+            DataGridViewImageColumn deleteButtonColumn = new DataGridViewImageColumn();
+            deleteButtonColumn.HeaderText = "";
+            deleteButtonColumn.Name = "delete";
+            deleteButtonColumn.Image = Properties.Resources.delete_img;
+            deleteButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            deleteButtonColumn.Width = 50;
+            deleteButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            viewAdminData.Columns.Add(deleteButtonColumn);
+
+            DataGridViewImageColumn changeButtonColumn = new DataGridViewImageColumn();
+            changeButtonColumn.HeaderText = "";
+            changeButtonColumn.Name = "change";
+            changeButtonColumn.Image = Properties.Resources.change;
+            changeButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            changeButtonColumn.Width = 50;
+            changeButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            viewAdminData.Columns.Add(changeButtonColumn);
+        }
+
+
+
+
+        private void btnSearchSuperAdmin_Click(object sender, EventArgs e)
+        {
+            string searchBarS = txtSearchBox.Text;
+            LoadSearchBarS(searchBarS);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Are you sure you want to delete the selected rows?", "Confirm Deletion", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                viewSuperAdminData.EndEdit();
+                viewAdminData.EndEdit();
+
+                // Deleting from viewSuperAdminData
+                for (int i = viewSuperAdminData.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataGridViewRow row = viewSuperAdminData.Rows[i];
+                    DataGridViewCheckBoxCell checkBoxCell = row.Cells["selectSuperAdmin"] as DataGridViewCheckBoxCell;
+
+                    // Check if the checkbox is checked
+                    if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
+                    {
+                        // Get the ID of the superadmin to delete
+                        int superadminID = Convert.ToInt32(row.Cells["SuperAdmin_ID"].Value);
+                        viewSuperAdminData.Rows.RemoveAt(i);
+                        DeleteSuperAdmin(superadminID);
+                    }
+                }
+
+                // Deleting from viewAdminData
+                for (int i = viewAdminData.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataGridViewRow row = viewAdminData.Rows[i];
+                    DataGridViewCheckBoxCell checkBoxCell = row.Cells["selectAdmin"] as DataGridViewCheckBoxCell;
+
+                    // Check if the checkbox is checked
+                    if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
+                    {
+                        // Get the ID of the admin to delete
+                        int adminID = Convert.ToInt32(row.Cells["Admin_ID"].Value);
+                        viewAdminData.Rows.RemoveAt(i);
+                        DeleteRowFromDatabase(adminID);
+                    }
+                }
+            }
+        }
     }
 }
