@@ -64,6 +64,7 @@ namespace Application_Desktop.Models
             string superAdminQuery = "SELECT COUNT(*) FROM superadmin WHERE Email = @Email";
 
             MySqlConnection conn = databaseHelper.getConnection();
+            
             try
             {
                 if (conn.State != ConnectionState.Open)
@@ -77,6 +78,31 @@ namespace Application_Desktop.Models
 
                 return superAdminCount > 0;
 
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Database error: " + ex.Message);
+            }
+            finally { conn.Close(); }
+        }
+
+        public static bool IsEmailUserExist(string email)
+        {
+            string UserQuery = "SELECT COUNT(*) FROM dentaldoctor WHERE Email = @email";
+            MySqlConnection conn = databaseHelper.getConnection();
+
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                MySqlCommand cmdUser = new MySqlCommand(UserQuery, conn);
+                cmdUser.Parameters.AddWithValue("@Email", email);
+                int UserCount = Convert.ToInt32(cmdUser.ExecuteScalar());
+
+                return UserCount > 0;
             }
             catch (Exception ex)
             {
