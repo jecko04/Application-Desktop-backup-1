@@ -24,7 +24,9 @@ namespace Application_Desktop
             //Close the database
             databaseHelper.closeConnection();
 
-            //Gawa ka ng admin  panel na
+            //gawa ka ng view sa superadmin para sa dental doctors account next time
+            //wag kalimutan yung email sa login
+            //wag kalimutan yung forgot password sa login
             
         }
     }

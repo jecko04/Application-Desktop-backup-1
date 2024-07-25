@@ -31,10 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dentaldoctorUsers));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            btnDelete = new Button();
+            btnRefresh = new Button();
+            btnSearchSuperAdmin = new Button();
+            txtSearchBox = new TextBox();
             label1 = new Label();
             pictureBox3 = new PictureBox();
             viewDentalAccount = new DataGridView();
             panel1.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)viewDentalAccount).BeginInit();
             SuspendLayout();
@@ -43,12 +49,93 @@
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(flowLayoutPanel1);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox3);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(799, 30);
             panel1.TabIndex = 0;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            flowLayoutPanel1.Controls.Add(btnDelete);
+            flowLayoutPanel1.Controls.Add(btnRefresh);
+            flowLayoutPanel1.Controls.Add(btnSearchSuperAdmin);
+            flowLayoutPanel1.Controls.Add(txtSearchBox);
+            flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
+            flowLayoutPanel1.Location = new Point(302, 0);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(497, 30);
+            flowLayoutPanel1.TabIndex = 8;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnDelete.BackColor = Color.FromArgb(231, 76, 60);
+            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDelete.ForeColor = SystemColors.ButtonFace;
+            btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
+            btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDelete.Location = new Point(459, 0);
+            btnDelete.Margin = new Padding(0);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(38, 30);
+            btnDelete.TabIndex = 13;
+            btnDelete.TextAlign = ContentAlignment.MiddleLeft;
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.BackColor = Color.FromArgb(52, 152, 219);
+            btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnRefresh.FlatStyle = FlatStyle.Flat;
+            btnRefresh.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRefresh.ForeColor = SystemColors.ButtonFace;
+            btnRefresh.Image = (Image)resources.GetObject("btnRefresh.Image");
+            btnRefresh.ImageAlign = ContentAlignment.MiddleLeft;
+            btnRefresh.Location = new Point(422, 0);
+            btnRefresh.Margin = new Padding(5, 0, 5, 0);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(32, 30);
+            btnRefresh.TabIndex = 17;
+            btnRefresh.TextAlign = ContentAlignment.MiddleLeft;
+            btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
+            // btnSearchSuperAdmin
+            // 
+            btnSearchSuperAdmin.BackColor = Color.FromArgb(52, 152, 219);
+            btnSearchSuperAdmin.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnSearchSuperAdmin.FlatStyle = FlatStyle.Flat;
+            btnSearchSuperAdmin.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSearchSuperAdmin.ForeColor = SystemColors.ButtonFace;
+            btnSearchSuperAdmin.Image = (Image)resources.GetObject("btnSearchSuperAdmin.Image");
+            btnSearchSuperAdmin.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSearchSuperAdmin.Location = new Point(385, 0);
+            btnSearchSuperAdmin.Margin = new Padding(0);
+            btnSearchSuperAdmin.Name = "btnSearchSuperAdmin";
+            btnSearchSuperAdmin.Size = new Size(32, 30);
+            btnSearchSuperAdmin.TabIndex = 19;
+            btnSearchSuperAdmin.TextAlign = ContentAlignment.MiddleLeft;
+            btnSearchSuperAdmin.UseVisualStyleBackColor = false;
+            btnSearchSuperAdmin.Click += btnSearchSuperAdmin_Click;
+            // 
+            // txtSearchBox
+            // 
+            txtSearchBox.BorderStyle = BorderStyle.FixedSingle;
+            txtSearchBox.Cursor = Cursors.IBeam;
+            txtSearchBox.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSearchBox.Location = new Point(186, 3);
+            txtSearchBox.Margin = new Padding(3, 3, 5, 3);
+            txtSearchBox.Name = "txtSearchBox";
+            txtSearchBox.PlaceholderText = " Search";
+            txtSearchBox.Size = new Size(194, 23);
+            txtSearchBox.TabIndex = 18;
             // 
             // label1
             // 
@@ -94,6 +181,7 @@
             viewDentalAccount.RowTemplate.Height = 25;
             viewDentalAccount.Size = new Size(799, 424);
             viewDentalAccount.TabIndex = 1;
+            viewDentalAccount.CellContentClick += viewDentalAccount_CellContentClick;
             // 
             // dentaldoctorUsers
             // 
@@ -108,6 +196,8 @@
             Load += dentaldoctorUsers_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)viewDentalAccount).EndInit();
             ResumeLayout(false);
@@ -119,5 +209,10 @@
         private Label label1;
         private PictureBox pictureBox3;
         private DataGridView viewDentalAccount;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Button btnDelete;
+        private Button btnRefresh;
+        private Button btnSearchSuperAdmin;
+        private TextBox txtSearchBox;
     }
 }

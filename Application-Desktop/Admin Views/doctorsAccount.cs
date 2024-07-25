@@ -94,6 +94,7 @@ namespace Application_Desktop.Admin_Views
             finally { conn.Close(); }
         }
 
+        // Column
         private void AddColumnDentalDoctor()
         {
             DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
@@ -195,10 +196,148 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
+        private changeDentalDoctorsPass changeDentalDoctorsPassInstance;
+        private editDentalDoctorAccounts editDentalDoctorAccountsInstance;
         private void viewDentalDoctorAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //update
+            if (viewDentalDoctorAccount.Columns["edit"] != null &&
+        e.ColumnIndex == viewDentalDoctorAccount.Columns["edit"].Index && e.RowIndex >= 0)
+            {
 
+                int doctorsID = Convert.ToInt32(viewDentalDoctorAccount.Rows[e.RowIndex].Cells["Doctors_ID"].Value);
+                string fullname = viewDentalDoctorAccount.Rows[e.RowIndex].Cells["Name"].Value?.ToString() ?? string.Empty;
+                string[] nameParts = fullname.Split(new char[] { ' ' }, 2);
+                string fname = nameParts[0];
+                string lname = nameParts.Length > 1 ? nameParts[1] : string.Empty;
+
+                string email = viewDentalDoctorAccount.Rows[e.RowIndex].Cells["Email"].Value?.ToString() ?? string.Empty;
+                string pwd = viewDentalDoctorAccount.Rows[e.RowIndex].Cells["Password"].Value?.ToString() ?? string.Empty;
+
+                string role = viewDentalDoctorAccount.Rows[e.RowIndex].Cells["Role_ID"].Value?.ToString() ?? string.Empty;
+                string branch = viewDentalDoctorAccount.Rows[e.RowIndex].Cells["Branch_ID"].Value?.ToString() ?? string.Empty;
+
+                if (editDentalDoctorAccountsInstance == null || editDentalDoctorAccountsInstance.IsDisposed)
+                {
+                    editDentalDoctorAccountsInstance = new editDentalDoctorAccounts(doctorsID, fname, lname, email, pwd, role, branch);
+                    editDentalDoctorAccountsInstance.Show();
+                }
+                else
+                {
+                    if (editDentalDoctorAccountsInstance.Visible)
+                    {
+                        editDentalDoctorAccountsInstance.BringToFront();
+                    }
+                    else
+                    {
+                        editDentalDoctorAccountsInstance.Show();
+                    }
+                }
+            }
+
+            //delete
+            if (e.RowIndex >= 0 && e.ColumnIndex == viewDentalDoctorAccount.Columns["delete"].Index)
+            {
+                DialogResult result = MessageBox.Show("Would you like to proceed with deleting this account?", "Confirm Deletions", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    int doctors_ID = Convert.ToInt32(viewDentalDoctorAccount.Rows[e.RowIndex].Cells["Doctors_ID"].Value);
+
+                    // Delete row from database
+                    DeleteRowFromDatabase(doctors_ID);
+                    LoadData();
+                }
+            }
+
+            //change password
+            if (viewDentalDoctorAccount.Columns["change"] != null &&
+            e.ColumnIndex == viewDentalDoctorAccount.Columns["change"].Index && e.RowIndex >= 0)
+            {
+
+                int doctorsID = Convert.ToInt32(viewDentalDoctorAccount.Rows[e.RowIndex].Cells["Doctors_ID"].Value);
+
+                if (changeDentalDoctorsPassInstance == null || changeDentalDoctorsPassInstance.IsDisposed)
+                {
+                    changeDentalDoctorsPassInstance = new changeDentalDoctorsPass(doctorsID);
+                    changeDentalDoctorsPassInstance.Show();
+                }
+                else
+                {
+                    if (changeDentalDoctorsPassInstance.Visible)
+                    {
+                        changeDentalDoctorsPassInstance.BringToFront();
+                    }
+                    else
+                    {
+                        changeDentalDoctorsPassInstance.Show();
+                    }
+                }
+            }
+            //Select Check Box
+            if (e.ColumnIndex == viewDentalDoctorAccount.Columns["selectDoctors"].Index)
+            {
+                DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)viewDentalDoctorAccount.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                cell.Value = !(cell.Value is bool && (bool)cell.Value); // Toggle checkbox value
+            }
         }
 
+
+
+        public int DeleteRowFromDatabase(int doctorsID)
+        {
+            string query = "Delete From dentaldoctor Where Doctors_ID = @doctorsID";
+
+            MySqlConnection conn = databaseHelper.getConnection();
+
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@doctorsID", doctorsID);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { conn.Close(); }
+            return doctorsID;
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            //refresh button
+            LoadData();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Are you sure you want to delete the selected rows?", "Confirm Deletion", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                viewDentalDoctorAccount.EndEdit();
+
+                // Deleting from viewAdminData
+                for (int i = viewDentalDoctorAccount.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataGridViewRow row = viewDentalDoctorAccount.Rows[i];
+                    DataGridViewCheckBoxCell checkBoxCell = row.Cells["selectDoctors"] as DataGridViewCheckBoxCell;
+
+                    // Check if the checkbox is checked
+                    if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
+                    {
+                        // Get the ID of the admin to delete
+                        int doctorsID = Convert.ToInt32(row.Cells["Doctors_ID"].Value);
+                        viewDentalDoctorAccount.Rows.RemoveAt(i);
+                        DeleteRowFromDatabase(doctorsID);
+                    }
+                }
+            }
+        }
     }
 }

@@ -383,6 +383,7 @@ namespace Application_Desktop.Sub_Views
             }
         }
 
+        //Delete
         public int DeleteSuperAdmin(int superadminID)
         {
             string query = "Delete from superadmin Where SuperAdmin_ID = @superadminID";
@@ -408,6 +409,7 @@ namespace Application_Desktop.Sub_Views
             return superadminID;
         }
 
+        //Search Bar
         private void LoadSearchBarS(string searchBarS)
         {
             string superAdminQuery = @"SELECT 

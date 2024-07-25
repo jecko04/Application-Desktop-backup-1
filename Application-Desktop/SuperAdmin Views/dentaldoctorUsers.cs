@@ -61,7 +61,7 @@ namespace Application_Desktop.Sub_Views
 
                 viewDentalAccount.DataSource = dataTable;
 
-                
+
             }
             catch (Exception ex)
             {
@@ -133,6 +133,129 @@ namespace Application_Desktop.Sub_Views
             editButtonColumn.Width = 50;
             editButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             viewDentalAccount.Columns.Add(editButtonColumn);
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            //refresh button
+            LoadDentalData();
+        }
+
+        private void btnSearchSuperAdmin_Click(object sender, EventArgs e)
+        {
+            string searchBar = txtSearchBox.Text;
+            LoadSearchBar(searchBar);
+        }
+
+        private void LoadSearchBar(string searchBar)
+        {
+            string query = @"SELECT 
+                             dentaldoctor.Doctors_ID,
+                             dentaldoctor.Name, 
+                             dentaldoctor.Email, 
+                             dentaldoctor.Password, 
+                             branch.BranchName AS BranchName, 
+                             role.RoleName AS RoleName,
+                             admin.Name AS CreatedByName
+                             FROM dentaldoctor
+                             JOIN branch ON dentaldoctor.Branch_ID = branch.Branch_ID
+                             JOIN admin ON dentaldoctor.CreatedBy = admin.Admin_ID
+                             JOIN role ON dentaldoctor.Role_ID = role.Role_ID
+                             Where dentaldoctor.Branch_ID LIKE @search
+                             OR dentaldoctor.Name LIKE @search
+                             OR dentaldoctor.Email LIKE @search
+                             OR branch.BranchName LIKE @search
+                             OR role.RoleName LIKE @search
+                             OR admin.Name LIKE @search";
+
+            MySqlConnection conn = databaseHelper.getConnection();
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@search", $"%{searchBar}%");
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataTable datatable = new DataTable();
+                adapter.Fill(datatable);
+
+                viewDentalAccount.DataSource = null;
+                viewDentalAccount.Rows.Clear();
+                viewDentalAccount.Columns.Clear();
+
+                AddColumnDentalDoctor();
+
+                viewDentalAccount.DataSource = datatable;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { conn.Close(); }
+        }
+
+        private void viewDentalAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Select Check Box
+            if (e.ColumnIndex == viewDentalAccount.Columns["selectDoctors"].Index)
+            {
+                DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)viewDentalAccount.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                cell.Value = !(cell.Value is bool && (bool)cell.Value); // Toggle checkbox value
+            }
+        }
+
+        public int DeleteRowFromDatabase(int doctorsID)
+        {
+            string query = "Delete From dentaldoctor Where Doctors_ID = @doctorsID";
+
+            MySqlConnection conn = databaseHelper.getConnection();
+
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@doctorsID", doctorsID);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { conn.Close(); }
+            return doctorsID;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Are you sure you want to delete the selected rows?", "Confirm Deletion", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                viewDentalAccount.EndEdit();
+
+                // Deleting from viewAdminData
+                for (int i = viewDentalAccount.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataGridViewRow row = viewDentalAccount.Rows[i];
+                    DataGridViewCheckBoxCell checkBoxCell = row.Cells["selectDoctors"] as DataGridViewCheckBoxCell;
+
+                    // Check if the checkbox is checked
+                    if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
+                    {
+                        // Get the ID of the admin to delete
+                        int doctorsID = Convert.ToInt32(row.Cells["Doctors_ID"].Value);
+                        viewDentalAccount.Rows.RemoveAt(i);
+                        DeleteRowFromDatabase(doctorsID);
+                    }
+                }
+            }
         }
     }
 }

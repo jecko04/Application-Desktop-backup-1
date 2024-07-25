@@ -87,7 +87,7 @@
             panel2.Controls.Add(flowLayoutPanel3);
             panel2.Controls.Add(label2);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 107);
+            panel2.Location = new Point(0, 57);
             panel2.Name = "panel2";
             panel2.Size = new Size(894, 30);
             panel2.TabIndex = 4;
@@ -170,7 +170,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             viewAdminData.DefaultCellStyle = dataGridViewCellStyle2;
             viewAdminData.Dock = DockStyle.Bottom;
-            viewAdminData.Location = new Point(0, 137);
+            viewAdminData.Location = new Point(0, 87);
             viewAdminData.Margin = new Padding(0);
             viewAdminData.Name = "viewAdminData";
             viewAdminData.ReadOnly = true;
@@ -184,7 +184,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             viewAdminData.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             viewAdminData.RowTemplate.Height = 25;
-            viewAdminData.Size = new Size(894, 313);
+            viewAdminData.Size = new Size(894, 363);
             viewAdminData.TabIndex = 5;
             viewAdminData.CellContentClick += viewAdminData_CellContentClick;
             // 
@@ -231,7 +231,7 @@
             dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
             viewSuperAdminData.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             viewSuperAdminData.RowTemplate.Height = 25;
-            viewSuperAdminData.Size = new Size(894, 282);
+            viewSuperAdminData.Size = new Size(894, 192);
             viewSuperAdminData.TabIndex = 8;
             viewSuperAdminData.CellContentClick += viewSuperAdminData_CellContentClick_1;
             // 

@@ -311,8 +311,6 @@ namespace Application_Desktop.Admin_Sub_Views
                         txtLastName.Text = "";
                         txtEmail.Text = "";
                         txtPassword.Text = "";
-                        txtRoles.Text = "";
-                        txtBranch.Text = "";
 
                         errorProvider6.SetError(txtEmail, string.Empty);
                         errorProvider6.SetError(txtPassword, string.Empty);
