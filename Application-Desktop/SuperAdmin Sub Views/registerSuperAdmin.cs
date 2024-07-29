@@ -302,7 +302,8 @@ namespace Application_Desktop
                                     {
                                         string fullname = $"{fname} {lname}";
 
-                                        string query = "INSERT INTO superadmin (Name, Email, Password, Role_ID) VALUES (@fullname, @email, @pwd, @roleID)";
+                                        string query = "INSERT INTO superadmin (Name, Email, Password, Role_ID, created_at, updated_at) " +
+                                            "VALUES (@fullname, @email, @pwd, @roleID, @createdAt, @updatedAt)";
                                         MySqlConnection conn = databaseHelper.getConnection();
                                         try
                                         {
@@ -322,6 +323,11 @@ namespace Application_Desktop
                                             int roleId = selectedRole.ID;
 
                                             cmd.Parameters.AddWithValue("@roleID", roleId);
+
+                                            DateTime now = DateTime.Now;
+                                            cmd.Parameters.AddWithValue("@createdAt", now);
+                                            cmd.Parameters.AddWithValue("@updatedAt", now);
+
                                             int rowsAffected = cmd.ExecuteNonQuery();
 
                                             MessageBox.Show("Successful");

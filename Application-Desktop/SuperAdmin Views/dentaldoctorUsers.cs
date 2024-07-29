@@ -235,12 +235,13 @@ namespace Application_Desktop.Sub_Views
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            bool hasSelectedRows = false;
             var result = MessageBox.Show("Are you sure you want to delete the selected rows?", "Confirm Deletion", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 viewDentalAccount.EndEdit();
 
-                // Deleting from viewAdminData
+                // Deleting from viewDentalAccount
                 for (int i = viewDentalAccount.Rows.Count - 1; i >= 0; i--)
                 {
                     DataGridViewRow row = viewDentalAccount.Rows[i];
@@ -249,11 +250,18 @@ namespace Application_Desktop.Sub_Views
                     // Check if the checkbox is checked
                     if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
                     {
-                        // Get the ID of the admin to delete
+                        hasSelectedRows = true;
+                        // Get the ID of the doctor to delete
                         int doctorsID = Convert.ToInt32(row.Cells["Doctors_ID"].Value);
                         viewDentalAccount.Rows.RemoveAt(i);
                         DeleteRowFromDatabase(doctorsID);
                     }
+                }
+
+                // If no rows were selected, show a message box
+                if (!hasSelectedRows)
+                {
+                    MessageBox.Show("No rows were selected for deletion.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

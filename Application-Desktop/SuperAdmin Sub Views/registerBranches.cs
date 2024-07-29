@@ -148,9 +148,9 @@ namespace Application_Desktop.Sub_sub_Views
             }
             else
             {
-                string query = "INSERT INTO branch (BranchName, BuildingNumber, Street, Barangay, City, Province, PostalCode) " +
+                string query = "INSERT INTO branch (BranchName, BuildingNumber, Street, Barangay, City, Province, PostalCode, created_at, updated_at) " +
                     "VALUES " +
-                    "(@branchName, @houseNum, @street, @brgy, @city, @province, @postal)";
+                    "(@branchName, @houseNum, @street, @brgy, @city, @province, @postal, @createdAt, @updatedAt)";
 
                 MySqlConnection conn = databaseHelper.getConnection();
                 try
@@ -167,6 +167,10 @@ namespace Application_Desktop.Sub_sub_Views
                     cmd.Parameters.AddWithValue("@city", city);
                     cmd.Parameters.AddWithValue("@province", province);
                     cmd.Parameters.AddWithValue("@postal", postal);
+
+                    DateTime now = DateTime.Now;
+                    cmd.Parameters.AddWithValue("@createdAt", now);
+                    cmd.Parameters.AddWithValue("@updatedAt", now);
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Save Successful");

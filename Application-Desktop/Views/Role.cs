@@ -51,25 +51,30 @@ namespace Application_Desktop
             {
                 string query = "INSERT INTO role (RoleName) VALUES (@Roles)";
 
-                using (MySqlConnection conn = databaseHelper.getConnection())
+                MySqlConnection conn = databaseHelper.getConnection();
+
+                try
                 {
-                    try
+                    if (conn.State != System.Data.ConnectionState.Open)
                     {
-
-                        MySqlCommand cmd = new MySqlCommand(query, conn);
-                        cmd.Parameters.AddWithValue("@Roles", roles);
-
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        MessageBox.Show($"Successfully added {roles}.");
-                        txtComboBox.Text = "";
+                        conn.Open();
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error: {ex.Message}");
-                    }
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Roles", roles);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    MessageBox.Show($"Successfully added {roles}.");
+                    txtComboBox.Text = "";
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}");
+                }
+                finally { conn.Close(); }
             }
         }
+    
     }
 }

@@ -240,9 +240,9 @@ namespace Application_Desktop.Sub_sub_Views
                 {
                     int createdBy = session.LoggedInSession;
 
-                    string query = "INSERT INTO admin (Name, Email, Password, CreatedBy, Branch_ID, Role_ID)" +
+                    string query = "INSERT INTO admin (Name, Email, Password, CreatedBy, Branch_ID, Role_ID, created_at, updated_at)" +
                                    "VALUES" +
-                                   "(@fullname, @email, @pwd, @createdBy, @branchID, @roleID)";
+                                   "(@fullname, @email, @pwd, @createdBy, @branchID, @roleID, @createdAt, @updatedAt)";
 
                     MySqlConnection conn = databaseHelper.getConnection();
 
@@ -273,6 +273,10 @@ namespace Application_Desktop.Sub_sub_Views
                         idValue selectedRole = (idValue)txtRoles.SelectedItem;
                         int roleId = selectedRole.ID;
                         cmd.Parameters.AddWithValue("@roleID", roleId);
+
+                        DateTime now = DateTime.Now;
+                        cmd.Parameters.AddWithValue("@createdAt", now);
+                        cmd.Parameters.AddWithValue("@updatedAt", now);
                         cmd.ExecuteNonQuery();
 
 

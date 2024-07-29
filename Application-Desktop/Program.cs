@@ -27,6 +27,11 @@ namespace Application_Desktop
             //gawa ka ng view sa superadmin para sa dental doctors account next time
             //wag kalimutan yung email sa login
             //wag kalimutan yung forgot password sa login
+
+            //dagdag ka ng if nothing selected sa check box, it messagebox the delete button no selected item/data
+
+            //gawa ka ng staff attendance monitory at register ng staff like dental doctor at iba pa
+            
             
         }
     }
