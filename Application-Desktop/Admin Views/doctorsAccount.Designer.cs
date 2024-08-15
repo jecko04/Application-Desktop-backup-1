@@ -35,12 +35,12 @@
             btnDelete = new Button();
             btnNewAccount = new Button();
             btnRefresh = new Button();
-            pictureBox3 = new PictureBox();
             viewDentalDoctorAccount = new DataGridView();
+            pictureBox3 = new PictureBox();
             panel1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)viewDentalDoctorAccount).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -123,17 +123,6 @@
             btnRefresh.UseVisualStyleBackColor = false;
             btnRefresh.Click += btnRefresh_Click;
             // 
-            // pictureBox3
-            // 
-            pictureBox3.BackColor = Color.White;
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(3, 3);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(33, 27);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 6;
-            pictureBox3.TabStop = false;
-            // 
             // viewDentalDoctorAccount
             // 
             viewDentalDoctorAccount.AllowUserToAddRows = false;
@@ -160,6 +149,17 @@
             viewDentalDoctorAccount.TabIndex = 1;
             viewDentalDoctorAccount.CellContentClick += viewDentalDoctorAccount_CellContentClick;
             // 
+            // pictureBox3
+            // 
+            pictureBox3.BackColor = Color.White;
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(3, 3);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(33, 27);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 18;
+            pictureBox3.TabStop = false;
+            // 
             // doctorsAccount
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -172,19 +172,19 @@
             Text = "doctorsAccount";
             panel1.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)viewDentalDoctorAccount).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private PictureBox pictureBox3;
         private FlowLayoutPanel flowLayoutPanel1;
         private Button btnDelete;
         private Button btnNewAccount;
         private Button btnRefresh;
         private DataGridView viewDentalDoctorAccount;
+        private PictureBox pictureBox3;
     }
 }

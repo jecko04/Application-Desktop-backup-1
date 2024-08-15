@@ -31,6 +31,8 @@ namespace Application_Desktop.Views
         {
             menuTransition.Start();
         }
+
+
         private void menuTransition_Tick_1(object sender, EventArgs e)
         {
             if (menuExpand == false)
@@ -52,6 +54,38 @@ namespace Application_Desktop.Views
                 }
             }
         }
+
+        bool setupExpand = false;
+        private void btnSetup_Click(object sender, EventArgs e)
+        {
+            setupTransition.Start();
+        }
+        private void setupTransition_Tick(object sender, EventArgs e)
+        {
+            if (setupExpand == false)
+            {
+                setupContainer.Height += 10;
+                if (setupContainer.Height >= 179)
+                {
+                    setupTransition.Stop();
+                    setupExpand = true;
+                }
+            }
+            else
+            {
+                setupContainer.Height -= 10;
+                if (setupContainer.Height <= 34)
+                {
+                    setupTransition.Stop();
+                    setupExpand = false;
+                }
+            }
+        }
+
+
+
+
+
 
         //sidebar Slide
         bool sidebarExpand = true;
@@ -117,5 +151,16 @@ namespace Application_Desktop.Views
         {
             LoadForm(new doctorsAccount());
         }
+
+        private void btnUsers_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCategory_Click(object sender, EventArgs e)
+        {
+            LoadForm(new setupAppointmentTypes());
+        }
     }
 }
+//179, 179

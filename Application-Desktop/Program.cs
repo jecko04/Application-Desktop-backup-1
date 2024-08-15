@@ -31,7 +31,12 @@ namespace Application_Desktop
             //dagdag ka ng if nothing selected sa check box, it messagebox the delete button no selected item/data
 
             //gawa ka ng staff attendance monitory at register ng staff like dental doctor at iba pa
+
+            //paki fix ng delete sa admin
             
+
+            //latest
+            //i fetch mo yung data gamit yung combo box sa update at malalagay yung data sa mga textbox
             
         }
     }
