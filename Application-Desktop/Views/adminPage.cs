@@ -161,6 +161,7 @@ namespace Application_Desktop.Views
         {
             LoadForm(new setupAppointmentTypes());
         }
+
     }
 }
 //179, 179

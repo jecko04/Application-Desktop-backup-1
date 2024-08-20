@@ -47,14 +47,14 @@
             setupContainer = new FlowLayoutPanel();
             panel3 = new Panel();
             btnSetup = new Button();
+            panel14 = new Panel();
+            btnOfficeHourAvailability = new Button();
             panel13 = new Panel();
-            button2 = new Button();
+            m = new Button();
             panel15 = new Panel();
             btnCategory = new Button();
-            panel14 = new Panel();
-            button3 = new Button();
             panel16 = new Panel();
-            button5 = new Button();
+            btnOnlineBooking = new Button();
             menuContainer = new FlowLayoutPanel();
             panel9 = new Panel();
             btnMenu = new Button();
@@ -79,9 +79,9 @@
             panel5.SuspendLayout();
             setupContainer.SuspendLayout();
             panel3.SuspendLayout();
+            panel14.SuspendLayout();
             panel13.SuspendLayout();
             panel15.SuspendLayout();
-            panel14.SuspendLayout();
             panel16.SuspendLayout();
             menuContainer.SuspendLayout();
             panel9.SuspendLayout();
@@ -321,33 +321,61 @@
             btnSetup.UseVisualStyleBackColor = false;
             btnSetup.Click += btnSetup_Click;
             // 
+            // panel14
+            // 
+            panel14.Controls.Add(btnOfficeHourAvailability);
+            panel14.Location = new Point(0, 34);
+            panel14.Margin = new Padding(0);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(179, 40);
+            panel14.TabIndex = 4;
+            // 
+            // btnOfficeHourAvailability
+            // 
+            btnOfficeHourAvailability.BackColor = Color.FromArgb(31, 97, 141);
+            btnOfficeHourAvailability.Dock = DockStyle.Fill;
+            btnOfficeHourAvailability.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
+            btnOfficeHourAvailability.FlatStyle = FlatStyle.Flat;
+            btnOfficeHourAvailability.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnOfficeHourAvailability.ForeColor = SystemColors.ButtonFace;
+            btnOfficeHourAvailability.Image = (Image)resources.GetObject("btnOfficeHourAvailability.Image");
+            btnOfficeHourAvailability.ImageAlign = ContentAlignment.MiddleLeft;
+            btnOfficeHourAvailability.Location = new Point(0, 0);
+            btnOfficeHourAvailability.Margin = new Padding(0);
+            btnOfficeHourAvailability.Name = "btnOfficeHourAvailability";
+            btnOfficeHourAvailability.Size = new Size(179, 40);
+            btnOfficeHourAvailability.TabIndex = 3;
+            btnOfficeHourAvailability.Text = "              Office Hour and \r\n              Availability";
+            btnOfficeHourAvailability.TextAlign = ContentAlignment.MiddleLeft;
+            btnOfficeHourAvailability.UseVisualStyleBackColor = false;
+            // 
             // panel13
             // 
-            panel13.Controls.Add(button2);
+            panel13.Controls.Add(m);
             panel13.Location = new Point(0, 74);
             panel13.Margin = new Padding(0);
             panel13.Name = "panel13";
             panel13.Size = new Size(179, 34);
             panel13.TabIndex = 4;
             // 
-            // button2
+            // m
             // 
-            button2.BackColor = Color.FromArgb(31, 97, 141);
-            button2.Dock = DockStyle.Fill;
-            button2.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.ForeColor = SystemColors.ButtonFace;
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(0, 0);
-            button2.Margin = new Padding(0);
-            button2.Name = "button2";
-            button2.Size = new Size(179, 34);
-            button2.TabIndex = 3;
-            button2.Text = "              Staff";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.UseVisualStyleBackColor = false;
+            m.BackColor = Color.FromArgb(31, 97, 141);
+            m.Dock = DockStyle.Fill;
+            m.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
+            m.FlatStyle = FlatStyle.Flat;
+            m.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            m.ForeColor = SystemColors.ButtonFace;
+            m.Image = (Image)resources.GetObject("m.Image");
+            m.ImageAlign = ContentAlignment.MiddleLeft;
+            m.Location = new Point(0, 0);
+            m.Margin = new Padding(0);
+            m.Name = "m";
+            m.Size = new Size(179, 34);
+            m.TabIndex = 3;
+            m.Text = "              Staff";
+            m.TextAlign = ContentAlignment.MiddleLeft;
+            m.UseVisualStyleBackColor = false;
             // 
             // panel15
             // 
@@ -378,61 +406,33 @@
             btnCategory.UseVisualStyleBackColor = false;
             btnCategory.Click += btnCategory_Click;
             // 
-            // panel14
-            // 
-            panel14.Controls.Add(button3);
-            panel14.Location = new Point(0, 34);
-            panel14.Margin = new Padding(0);
-            panel14.Name = "panel14";
-            panel14.Size = new Size(179, 40);
-            panel14.TabIndex = 4;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.FromArgb(31, 97, 141);
-            button3.Dock = DockStyle.Fill;
-            button3.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.ForeColor = SystemColors.ButtonFace;
-            button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(0, 0);
-            button3.Margin = new Padding(0);
-            button3.Name = "button3";
-            button3.Size = new Size(179, 40);
-            button3.TabIndex = 3;
-            button3.Text = "              Office Hour and \r\n              Availability";
-            button3.TextAlign = ContentAlignment.MiddleLeft;
-            button3.UseVisualStyleBackColor = false;
-            // 
             // panel16
             // 
-            panel16.Controls.Add(button5);
+            panel16.Controls.Add(btnOnlineBooking);
             panel16.Location = new Point(0, 142);
             panel16.Margin = new Padding(0);
             panel16.Name = "panel16";
             panel16.Size = new Size(179, 34);
             panel16.TabIndex = 5;
             // 
-            // button5
+            // btnOnlineBooking
             // 
-            button5.BackColor = Color.FromArgb(31, 97, 141);
-            button5.Dock = DockStyle.Fill;
-            button5.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button5.ForeColor = SystemColors.ButtonFace;
-            button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(0, 0);
-            button5.Margin = new Padding(0);
-            button5.Name = "button5";
-            button5.Size = new Size(179, 34);
-            button5.TabIndex = 3;
-            button5.Text = "              Online Booking";
-            button5.TextAlign = ContentAlignment.MiddleLeft;
-            button5.UseVisualStyleBackColor = false;
+            btnOnlineBooking.BackColor = Color.FromArgb(31, 97, 141);
+            btnOnlineBooking.Dock = DockStyle.Fill;
+            btnOnlineBooking.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
+            btnOnlineBooking.FlatStyle = FlatStyle.Flat;
+            btnOnlineBooking.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnOnlineBooking.ForeColor = SystemColors.ButtonFace;
+            btnOnlineBooking.Image = (Image)resources.GetObject("btnOnlineBooking.Image");
+            btnOnlineBooking.ImageAlign = ContentAlignment.MiddleLeft;
+            btnOnlineBooking.Location = new Point(0, 0);
+            btnOnlineBooking.Margin = new Padding(0);
+            btnOnlineBooking.Name = "btnOnlineBooking";
+            btnOnlineBooking.Size = new Size(179, 34);
+            btnOnlineBooking.TabIndex = 3;
+            btnOnlineBooking.Text = "              Online Booking";
+            btnOnlineBooking.TextAlign = ContentAlignment.MiddleLeft;
+            btnOnlineBooking.UseVisualStyleBackColor = false;
             // 
             // menuContainer
             // 
@@ -610,9 +610,9 @@
             panel5.ResumeLayout(false);
             setupContainer.ResumeLayout(false);
             panel3.ResumeLayout(false);
+            panel14.ResumeLayout(false);
             panel13.ResumeLayout(false);
             panel15.ResumeLayout(false);
-            panel14.ResumeLayout(false);
             panel16.ResumeLayout(false);
             menuContainer.ResumeLayout(false);
             panel9.ResumeLayout(false);
@@ -653,14 +653,14 @@
         private System.Windows.Forms.Timer menuTransition;
         private System.Windows.Forms.Timer sidebarTransition;
         private Panel panel13;
-        private Button button2;
+        private Button m;
         private Panel panel14;
-        private Button button3;
+        private Button btnOfficeHourAvailability;
         private FlowLayoutPanel setupContainer;
         private Panel panel15;
         private Button btnCategory;
         private Panel panel16;
-        private Button button5;
+        private Button btnOnlineBooking;
         private System.Windows.Forms.Timer setupTransition;
     }
 }

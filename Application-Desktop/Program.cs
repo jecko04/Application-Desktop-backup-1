@@ -33,10 +33,10 @@ namespace Application_Desktop
             //gawa ka ng staff attendance monitory at register ng staff like dental doctor at iba pa
 
             //paki fix ng delete sa admin
-            
+            //gumawa ka ng polling the database para every 5 second ma fetch lagi yung data
 
             //latest
-            //i fetch mo yung data gamit yung combo box sa update at malalagay yung data sa mga textbox
+            //pag isahin mo yung staff at office hour
             
         }
     }

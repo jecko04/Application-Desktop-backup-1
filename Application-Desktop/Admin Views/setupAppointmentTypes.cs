@@ -1,4 +1,5 @@
-﻿using Application_Desktop.Models;
+﻿using Application_Desktop.Admin_Sub_Views;
+using Application_Desktop.Models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -410,6 +411,12 @@ namespace Application_Desktop.Admin_Views
             if (string.IsNullOrEmpty(title))
             {
                 errorProvider1.SetError(txtFetchTitle, "Please Select Categories");
+
+                MessageBox.Show("Please select a title first before proceeding.",
+                                "Title Not Selected",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+
                 valid = false;
             }
             else
@@ -456,11 +463,31 @@ namespace Application_Desktop.Admin_Views
                     }
 
                     // Update the category if all validations pass
+
                     if (valid)
                     {
                         UpdateCategory(categoryId);
                     }
                 }
+            }
+        }
+
+        private viewCategories ViewCategoriesInstance;
+        private void btnViewCategories_Click(object sender, EventArgs e)
+        {
+
+            if (ViewCategoriesInstance == null || ViewCategoriesInstance.IsDisposed)
+            {
+                ViewCategoriesInstance = new viewCategories();
+                ViewCategoriesInstance.Show();
+            }
+            else
+            {
+                if (ViewCategoriesInstance.Visible)
+                {
+                    ViewCategoriesInstance.BringToFront();
+                }
+                else { ViewCategoriesInstance.Show(); }
             }
         }
     }

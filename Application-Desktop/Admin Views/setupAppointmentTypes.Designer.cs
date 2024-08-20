@@ -32,10 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(setupAppointmentTypes));
             panel1 = new Panel();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            button2 = new Button();
+            btnViewCategories = new Button();
             pictureBox3 = new PictureBox();
             btnSubmit = new Button();
-            btnDelete = new Button();
             btnRefresh = new Button();
             panel2 = new Panel();
             lineDevider = new Label();
@@ -89,28 +88,29 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            flowLayoutPanel1.Controls.Add(button2);
+            flowLayoutPanel1.Controls.Add(btnViewCategories);
             flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
             flowLayoutPanel1.Location = new Point(381, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(419, 30);
             flowLayoutPanel1.TabIndex = 20;
             // 
-            // button2
+            // btnViewCategories
             // 
-            button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button2.BackColor = Color.FromArgb(52, 152, 219);
-            button2.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.ForeColor = SystemColors.ButtonFace;
-            button2.Location = new Point(312, 0);
-            button2.Margin = new Padding(0);
-            button2.Name = "button2";
-            button2.Size = new Size(107, 30);
-            button2.TabIndex = 66;
-            button2.Text = "View Categories";
-            button2.UseVisualStyleBackColor = false;
+            btnViewCategories.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnViewCategories.BackColor = Color.FromArgb(52, 152, 219);
+            btnViewCategories.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnViewCategories.FlatStyle = FlatStyle.Flat;
+            btnViewCategories.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnViewCategories.ForeColor = SystemColors.ButtonFace;
+            btnViewCategories.Location = new Point(312, 0);
+            btnViewCategories.Margin = new Padding(0);
+            btnViewCategories.Name = "btnViewCategories";
+            btnViewCategories.Size = new Size(107, 30);
+            btnViewCategories.TabIndex = 66;
+            btnViewCategories.Text = "View Categories";
+            btnViewCategories.UseVisualStyleBackColor = false;
+            btnViewCategories.Click += btnViewCategories_Click;
             // 
             // pictureBox3
             // 
@@ -141,23 +141,6 @@
             btnSubmit.UseVisualStyleBackColor = false;
             btnSubmit.Click += btnSubmit_Click;
             // 
-            // btnDelete
-            // 
-            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnDelete.BackColor = Color.FromArgb(231, 76, 60);
-            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDelete.ForeColor = SystemColors.ButtonFace;
-            btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
-            btnDelete.Location = new Point(547, 349);
-            btnDelete.Margin = new Padding(0, 0, 3, 0);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(38, 30);
-            btnDelete.TabIndex = 56;
-            btnDelete.TextAlign = ContentAlignment.MiddleLeft;
-            btnDelete.UseVisualStyleBackColor = false;
-            // 
             // btnRefresh
             // 
             btnRefresh.BackColor = Color.FromArgb(52, 152, 219);
@@ -166,7 +149,7 @@
             btnRefresh.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnRefresh.ForeColor = SystemColors.ButtonFace;
             btnRefresh.Image = (Image)resources.GetObject("btnRefresh.Image");
-            btnRefresh.Location = new Point(506, 349);
+            btnRefresh.Location = new Point(547, 349);
             btnRefresh.Margin = new Padding(5, 0, 3, 0);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(38, 30);
@@ -182,7 +165,6 @@
             panel2.Controls.Add(lineDevider);
             panel2.Controls.Add(label12);
             panel2.Controls.Add(btnRefresh);
-            panel2.Controls.Add(btnDelete);
             panel2.Controls.Add(txtFetchFrequency);
             panel2.Controls.Add(label11);
             panel2.Controls.Add(txtFetchDuration);
@@ -549,7 +531,6 @@
         private ErrorProvider errorProvider3;
         private ErrorProvider errorProvider4;
         private Button btnRefresh;
-        private Button btnDelete;
         private Button btnUpdate;
         private ComboBox txtFetchTitle;
         private Label label8;
@@ -559,7 +540,7 @@
         private TextBox txtFetchFrequency;
         private Label label11;
         private ComboBox txtFetchDuration;
-        private Button button2;
+        private Button btnViewCategories;
         private Label label13;
         private Label label7;
         private Label lineDevider;
