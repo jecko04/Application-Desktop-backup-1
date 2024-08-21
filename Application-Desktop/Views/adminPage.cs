@@ -162,6 +162,15 @@ namespace Application_Desktop.Views
             LoadForm(new setupAppointmentTypes());
         }
 
+        private void btnOfficeHourAndStaff_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOnlineBooking_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 //179, 179

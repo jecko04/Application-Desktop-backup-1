@@ -152,39 +152,39 @@ namespace Application_Desktop.Admin_Views
 
             if (string.IsNullOrEmpty(title))
             {
-                errorProvider1.SetError(txtTitle, "Title is required");
+                errorProvider1.SetError(borderTitle, "Title is required");
                 valid = false;
             }
             else
             {
-                errorProvider1.SetError(txtTitle, string.Empty);
+                errorProvider1.SetError(borderTitle, string.Empty);
             }
             if (string.IsNullOrEmpty(description))
             {
-                errorProvider2.SetError(txtDescription, "Description is required");
+                errorProvider2.SetError(borderDescription, "Description is required");
                 valid = false;
             }
             else
             {
-                errorProvider2.SetError(txtDescription, string.Empty);
+                errorProvider2.SetError(borderDescription, string.Empty);
             }
             if (string.IsNullOrEmpty(duration))
             {
-                errorProvider3.SetError(txtDuration, "Duration is required");
+                errorProvider3.SetError(borderDuration, "Duration is required");
                 valid = false;
             }
             else
             {
-                errorProvider3.SetError(txtDuration, string.Empty);
+                errorProvider3.SetError(borderDuration, string.Empty);
             }
             if (string.IsNullOrEmpty(frequency))
             {
-                errorProvider4.SetError(txtFrequency, "Frequency is required");
+                errorProvider4.SetError(borderFrequency, "Frequency is required");
                 valid = false;
             }
             else
             {
-                errorProvider4.SetError(txtFrequency, string.Empty);
+                errorProvider4.SetError(borderFrequency, string.Empty);
             }
 
             if (valid == true)
@@ -354,10 +354,10 @@ namespace Application_Desktop.Admin_Views
                     txtFetchDuration.Text = "";
                     txtFetchFrequency.Text = "";
 
-                    errorProvider1.SetError(txtFetchTitle, string.Empty);
-                    errorProvider2.SetError(txtFetchDescription, string.Empty);
-                    errorProvider3.SetError(txtFetchDuration, string.Empty);
-                    errorProvider4.SetError(txtFetchFrequency, string.Empty);
+                    errorProvider1.SetError(borderFetchTitle, string.Empty);
+                    errorProvider2.SetError(borderFetchDescription, string.Empty);
+                    errorProvider3.SetError(borderFetchDuration, string.Empty);
+                    errorProvider4.SetError(borderFetchFrequency, string.Empty);
                 }
                 catch (Exception ex)
                 {
@@ -410,7 +410,7 @@ namespace Application_Desktop.Admin_Views
             // Check if the title is empty
             if (string.IsNullOrEmpty(title))
             {
-                errorProvider1.SetError(txtFetchTitle, "Please Select Categories");
+                errorProvider1.SetError(borderFetchTitle, "Please Select Categories");
 
                 MessageBox.Show("Please select a title first before proceeding.",
                                 "Title Not Selected",
@@ -421,7 +421,7 @@ namespace Application_Desktop.Admin_Views
             }
             else
             {
-                errorProvider1.SetError(txtFetchTitle, string.Empty);
+                errorProvider1.SetError(borderFetchTitle, string.Empty);
                 // If title is not empty, proceed with fetching the category ID
                 int categoryId = GetSelectedCategoryId();
                 if (categoryId == -1)
@@ -434,32 +434,32 @@ namespace Application_Desktop.Admin_Views
                     // Proceed with other validations only if category ID is valid
                     if (string.IsNullOrEmpty(description))
                     {
-                        errorProvider2.SetError(txtFetchDescription, "Description is required");
+                        errorProvider2.SetError(borderFetchDescription, "Description is required");
                         valid = false;
                     }
                     else
                     {
-                        errorProvider2.SetError(txtFetchDescription, string.Empty);
+                        errorProvider2.SetError(borderFetchDescription, string.Empty);
                     }
 
                     if (string.IsNullOrEmpty(duration))
                     {
-                        errorProvider3.SetError(txtFetchDuration, "Duration is required");
+                        errorProvider3.SetError(borderFetchDuration, "Duration is required");
                         valid = false;
                     }
                     else
                     {
-                        errorProvider3.SetError(txtFetchDuration, string.Empty);
+                        errorProvider3.SetError(borderFetchDescription, string.Empty);
                     }
 
                     if (string.IsNullOrEmpty(frequency))
                     {
-                        errorProvider4.SetError(txtFetchFrequency, "Frequency is required");
+                        errorProvider4.SetError(borderFetchFrequency, "Frequency is required");
                         valid = false;
                     }
                     else
                     {
-                        errorProvider4.SetError(txtFetchFrequency, string.Empty);
+                        errorProvider4.SetError(borderFetchFrequency, string.Empty);
                     }
 
                     // Update the category if all validations pass
@@ -489,6 +489,41 @@ namespace Application_Desktop.Admin_Views
                 }
                 else { ViewCategoriesInstance.Show(); }
             }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label38_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

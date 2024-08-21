@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Application_Desktop.Admin_Views
 {
-    public partial class setAppointment : Form
+    public partial class setupOfficeHourAndStaff : Form
     {
-        public setAppointment()
+        public setupOfficeHourAndStaff()
         {
             InitializeComponent();
         }

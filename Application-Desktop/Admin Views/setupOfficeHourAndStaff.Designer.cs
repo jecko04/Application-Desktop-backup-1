@@ -1,6 +1,6 @@
 ﻿namespace Application_Desktop.Admin_Views
 {
-    partial class setAppointment
+    partial class setupOfficeHourAndStaff
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(setAppointment));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(setupOfficeHourAndStaff));
             panel1 = new Panel();
             pictureBox3 = new PictureBox();
             panel1.SuspendLayout();
@@ -38,10 +38,11 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.BackColor = Color.White;
             panel1.Controls.Add(pictureBox3);
-            panel1.Location = new Point(-2, -1);
+            panel1.Location = new Point(0, -2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(802, 30);
+            panel1.Size = new Size(800, 30);
             panel1.TabIndex = 0;
             // 
             // pictureBox3
@@ -52,18 +53,18 @@
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(33, 27);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 7;
+            pictureBox3.TabIndex = 20;
             pictureBox3.TabStop = false;
             // 
-            // setAppointment
+            // setupOfficeHourAndStaff
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "setAppointment";
-            Text = "setAppointment";
+            Name = "setupOfficeHourAndStaff";
+            Text = "setupOfficeHourAndStaff";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
