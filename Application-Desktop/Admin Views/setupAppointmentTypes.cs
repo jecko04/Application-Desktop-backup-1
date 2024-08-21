@@ -490,10 +490,5 @@ namespace Application_Desktop.Admin_Views
                 else { ViewCategoriesInstance.Show(); }
             }
         }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

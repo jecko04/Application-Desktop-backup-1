@@ -97,6 +97,25 @@
             this.btnSaturday = (new global::System.Windows.Forms.Button());
             this.btnSunday = (new global::System.Windows.Forms.Button());
             this.panel3 = (new global::System.Windows.Forms.Panel());
+            this.panel122 = (new global::System.Windows.Forms.Panel());
+            this.panel117 = (new global::System.Windows.Forms.Panel());
+            this.button25 = (new global::System.Windows.Forms.Button());
+            this.panel118 = (new global::System.Windows.Forms.Panel());
+            this.panel119 = (new global::System.Windows.Forms.Panel());
+            this.panel120 = (new global::System.Windows.Forms.Panel());
+            this.panel121 = (new global::System.Windows.Forms.Panel());
+            this.dateTimePicker16 = (new global::System.Windows.Forms.DateTimePicker());
+            this.label39 = (new global::System.Windows.Forms.Label());
+            this.button24 = (new global::System.Windows.Forms.Button());
+            this.checkBox8 = (new global::System.Windows.Forms.CheckBox());
+            this.panel112 = (new global::System.Windows.Forms.Panel());
+            this.button22 = (new global::System.Windows.Forms.Button());
+            this.panel113 = (new global::System.Windows.Forms.Panel());
+            this.panel114 = (new global::System.Windows.Forms.Panel());
+            this.panel115 = (new global::System.Windows.Forms.Panel());
+            this.panel116 = (new global::System.Windows.Forms.Panel());
+            this.dateTimePicker15 = (new global::System.Windows.Forms.DateTimePicker());
+            this.label38 = (new global::System.Windows.Forms.Label());
             this.panel102 = (new global::System.Windows.Forms.Panel());
             this.button19 = (new global::System.Windows.Forms.Button());
             this.panel103 = (new global::System.Windows.Forms.Panel());
@@ -270,6 +289,8 @@
             this.borderTitle.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel117.SuspendLayout();
+            this.panel112.SuspendLayout();
             this.panel102.SuspendLayout();
             this.panel107.SuspendLayout();
             this.panel92.SuspendLayout();
@@ -408,7 +429,6 @@
             this.panel2.Name = ("panel2");
             this.panel2.Size = (new global::System.Drawing.Size(1096, 631));
             this.panel2.TabIndex = (1);
-            this.panel2.Paint += (this.panel2_Paint);
             // 
             // monthCalendar1
             // 
@@ -1062,6 +1082,13 @@
             // panel3
             // 
             this.panel3.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.panel122);
+            this.panel3.Controls.Add(this.panel117);
+            this.panel3.Controls.Add(this.label39);
+            this.panel3.Controls.Add(this.button24);
+            this.panel3.Controls.Add(this.checkBox8);
+            this.panel3.Controls.Add(this.panel112);
+            this.panel3.Controls.Add(this.label38);
             this.panel3.Controls.Add(this.panel102);
             this.panel3.Controls.Add(this.panel107);
             this.panel3.Controls.Add(this.button21);
@@ -1119,6 +1146,216 @@
             this.panel3.Name = ("panel3");
             this.panel3.Size = (new global::System.Drawing.Size(660, 325));
             this.panel3.TabIndex = (70);
+            // 
+            // panel122
+            // 
+            this.panel122.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel122.Location = (new global::System.Drawing.Point(26, 253));
+            this.panel122.Name = ("panel122");
+            this.panel122.Size = (new global::System.Drawing.Size(615, 1));
+            this.panel122.TabIndex = (86);
+            // 
+            // panel117
+            // 
+            this.panel117.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
+            this.panel117.Controls.Add(this.button25);
+            this.panel117.Controls.Add(this.panel118);
+            this.panel117.Controls.Add(this.panel119);
+            this.panel117.Controls.Add(this.panel120);
+            this.panel117.Controls.Add(this.panel121);
+            this.panel117.Controls.Add(this.dateTimePicker16);
+            this.panel117.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.panel117.Location = (new global::System.Drawing.Point(313, 266));
+            this.panel117.Name = ("panel117");
+            this.panel117.Size = (new global::System.Drawing.Size(107, 23));
+            this.panel117.TabIndex = (116);
+            // 
+            // button25
+            // 
+            this.button25.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
+            this.button25.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
+            this.button25.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
+            this.button25.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
+            this.button25.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button25.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
+            this.button25.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
+            this.button25.Location = (new global::System.Drawing.Point(129, 32));
+            this.button25.Margin = (new global::System.Windows.Forms.Padding(0));
+            this.button25.Name = ("button25");
+            this.button25.Size = (new global::System.Drawing.Size(48, 25));
+            this.button25.TabIndex = (59);
+            this.button25.Text = ("Apply");
+            this.button25.UseVisualStyleBackColor = (false);
+            // 
+            // panel118
+            // 
+            this.panel118.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel118.Dock = (global::System.Windows.Forms.DockStyle.Right);
+            this.panel118.Location = (new global::System.Drawing.Point(106, 1));
+            this.panel118.Name = ("panel118");
+            this.panel118.Size = (new global::System.Drawing.Size(1, 21));
+            this.panel118.TabIndex = (3);
+            // 
+            // panel119
+            // 
+            this.panel119.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel119.Dock = (global::System.Windows.Forms.DockStyle.Bottom);
+            this.panel119.Location = (new global::System.Drawing.Point(1, 22));
+            this.panel119.Name = ("panel119");
+            this.panel119.Size = (new global::System.Drawing.Size(106, 1));
+            this.panel119.TabIndex = (2);
+            // 
+            // panel120
+            // 
+            this.panel120.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel120.Dock = (global::System.Windows.Forms.DockStyle.Top);
+            this.panel120.Location = (new global::System.Drawing.Point(1, 0));
+            this.panel120.Name = ("panel120");
+            this.panel120.Size = (new global::System.Drawing.Size(106, 1));
+            this.panel120.TabIndex = (1);
+            // 
+            // panel121
+            // 
+            this.panel121.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel121.Dock = (global::System.Windows.Forms.DockStyle.Left);
+            this.panel121.Location = (new global::System.Drawing.Point(0, 0));
+            this.panel121.Name = ("panel121");
+            this.panel121.Size = (new global::System.Drawing.Size(1, 23));
+            this.panel121.TabIndex = (0);
+            // 
+            // dateTimePicker16
+            // 
+            this.dateTimePicker16.Dock = (global::System.Windows.Forms.DockStyle.Fill);
+            this.dateTimePicker16.Format = (global::System.Windows.Forms.DateTimePickerFormat.Time);
+            this.dateTimePicker16.Location = (new global::System.Drawing.Point(0, 0));
+            this.dateTimePicker16.Name = ("dateTimePicker16");
+            this.dateTimePicker16.Size = (new global::System.Drawing.Size(107, 23));
+            this.dateTimePicker16.TabIndex = (5);
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = (true);
+            this.label39.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label39.Location = (new global::System.Drawing.Point(232, 274));
+            this.label39.Name = ("label39");
+            this.label39.Size = (new global::System.Drawing.Size(76, 16));
+            this.label39.TabIndex = (115);
+            this.label39.Text = ("End of Time");
+            // 
+            // button24
+            // 
+            this.button24.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
+            this.button24.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
+            this.button24.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
+            this.button24.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
+            this.button24.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button24.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
+            this.button24.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
+            this.button24.Location = (new global::System.Drawing.Point(572, 263));
+            this.button24.Margin = (new global::System.Windows.Forms.Padding(0));
+            this.button24.Name = ("button24");
+            this.button24.Size = (new global::System.Drawing.Size(70, 25));
+            this.button24.TabIndex = (118);
+            this.button24.Text = ("Save");
+            this.button24.UseVisualStyleBackColor = (false);
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = (true);
+            this.checkBox8.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.checkBox8.Location = (new global::System.Drawing.Point(439, 268));
+            this.checkBox8.Name = ("checkBox8");
+            this.checkBox8.Size = (new global::System.Drawing.Size(119, 20));
+            this.checkBox8.TabIndex = (116);
+            this.checkBox8.Text = ("Apply to all days");
+            this.checkBox8.UseVisualStyleBackColor = (true);
+            // 
+            // panel112
+            // 
+            this.panel112.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
+            this.panel112.Controls.Add(this.button22);
+            this.panel112.Controls.Add(this.panel113);
+            this.panel112.Controls.Add(this.panel114);
+            this.panel112.Controls.Add(this.panel115);
+            this.panel112.Controls.Add(this.panel116);
+            this.panel112.Controls.Add(this.dateTimePicker15);
+            this.panel112.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.panel112.Location = (new global::System.Drawing.Point(112, 267));
+            this.panel112.Name = ("panel112");
+            this.panel112.Size = (new global::System.Drawing.Size(107, 23));
+            this.panel112.TabIndex = (115);
+            // 
+            // button22
+            // 
+            this.button22.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
+            this.button22.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
+            this.button22.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
+            this.button22.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
+            this.button22.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button22.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
+            this.button22.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
+            this.button22.Location = (new global::System.Drawing.Point(222, 32));
+            this.button22.Margin = (new global::System.Windows.Forms.Padding(0));
+            this.button22.Name = ("button22");
+            this.button22.Size = (new global::System.Drawing.Size(48, 25));
+            this.button22.TabIndex = (59);
+            this.button22.Text = ("Apply");
+            this.button22.UseVisualStyleBackColor = (false);
+            // 
+            // panel113
+            // 
+            this.panel113.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel113.Dock = (global::System.Windows.Forms.DockStyle.Right);
+            this.panel113.Location = (new global::System.Drawing.Point(106, 1));
+            this.panel113.Name = ("panel113");
+            this.panel113.Size = (new global::System.Drawing.Size(1, 21));
+            this.panel113.TabIndex = (3);
+            // 
+            // panel114
+            // 
+            this.panel114.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel114.Dock = (global::System.Windows.Forms.DockStyle.Bottom);
+            this.panel114.Location = (new global::System.Drawing.Point(1, 22));
+            this.panel114.Name = ("panel114");
+            this.panel114.Size = (new global::System.Drawing.Size(106, 1));
+            this.panel114.TabIndex = (2);
+            // 
+            // panel115
+            // 
+            this.panel115.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel115.Dock = (global::System.Windows.Forms.DockStyle.Top);
+            this.panel115.Location = (new global::System.Drawing.Point(1, 0));
+            this.panel115.Name = ("panel115");
+            this.panel115.Size = (new global::System.Drawing.Size(106, 1));
+            this.panel115.TabIndex = (1);
+            // 
+            // panel116
+            // 
+            this.panel116.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel116.Dock = (global::System.Windows.Forms.DockStyle.Left);
+            this.panel116.Location = (new global::System.Drawing.Point(0, 0));
+            this.panel116.Name = ("panel116");
+            this.panel116.Size = (new global::System.Drawing.Size(1, 23));
+            this.panel116.TabIndex = (0);
+            // 
+            // dateTimePicker15
+            // 
+            this.dateTimePicker15.Dock = (global::System.Windows.Forms.DockStyle.Fill);
+            this.dateTimePicker15.Format = (global::System.Windows.Forms.DateTimePickerFormat.Time);
+            this.dateTimePicker15.Location = (new global::System.Drawing.Point(0, 0));
+            this.dateTimePicker15.Name = ("dateTimePicker15");
+            this.dateTimePicker15.Size = (new global::System.Drawing.Size(107, 23));
+            this.dateTimePicker15.TabIndex = (5);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = (true);
+            this.label38.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label38.Location = (new global::System.Drawing.Point(23, 273));
+            this.label38.Name = ("label38");
+            this.label38.Size = (new global::System.Drawing.Size(83, 16));
+            this.label38.TabIndex = (114);
+            this.label38.Text = ("Start of Time");
             // 
             // panel102
             // 
@@ -2688,7 +2925,7 @@
             // 
             this.lineDevider.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Left) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.lineDevider.AutoSize = (true);
-            this.lineDevider.Location = (new global::System.Drawing.Point(521, 5973));
+            this.lineDevider.Location = (new global::System.Drawing.Point(521, 6541));
             this.lineDevider.Name = ("lineDevider");
             this.lineDevider.Size = (new global::System.Drawing.Size(10, 15));
             this.lineDevider.TabIndex = (59);
@@ -2906,6 +3143,8 @@
             this.flowLayoutPanel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel117.ResumeLayout(false);
+            this.panel112.ResumeLayout(false);
             this.panel102.ResumeLayout(false);
             this.panel107.ResumeLayout(false);
             this.panel92.ResumeLayout(false);
@@ -3155,5 +3394,24 @@
         private global::System.Windows.Forms.Panel panel4;
         private global::System.Windows.Forms.Label label37;
         private global::System.Windows.Forms.MonthCalendar monthCalendar1;
+        private global::System.Windows.Forms.CheckBox checkBox8;
+        private global::System.Windows.Forms.Panel panel112;
+        private global::System.Windows.Forms.Button button22;
+        private global::System.Windows.Forms.Panel panel113;
+        private global::System.Windows.Forms.Panel panel114;
+        private global::System.Windows.Forms.Panel panel115;
+        private global::System.Windows.Forms.Panel panel116;
+        private global::System.Windows.Forms.DateTimePicker dateTimePicker15;
+        private global::System.Windows.Forms.Label label38;
+        private global::System.Windows.Forms.Panel panel117;
+        private global::System.Windows.Forms.Button button25;
+        private global::System.Windows.Forms.Panel panel118;
+        private global::System.Windows.Forms.Panel panel119;
+        private global::System.Windows.Forms.Panel panel120;
+        private global::System.Windows.Forms.Panel panel121;
+        private global::System.Windows.Forms.DateTimePicker dateTimePicker16;
+        private global::System.Windows.Forms.Label label39;
+        private global::System.Windows.Forms.Button button24;
+        private global::System.Windows.Forms.Panel panel122;
     }
 }
