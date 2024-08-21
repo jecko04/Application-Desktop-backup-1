@@ -37,6 +37,8 @@
             this.panel9 = (new global::System.Windows.Forms.Panel());
             this.btnSubmit = (new global::System.Windows.Forms.Button());
             this.panel2 = (new global::System.Windows.Forms.Panel());
+            this.monthCalendar1 = (new global::System.Windows.Forms.MonthCalendar());
+            this.label37 = (new global::System.Windows.Forms.Label());
             this.panel4 = (new global::System.Windows.Forms.Panel());
             this.borderFetchDuration = (new global::System.Windows.Forms.Panel());
             this.panel45 = (new global::System.Windows.Forms.Panel());
@@ -369,6 +371,8 @@
             this.panel2.Anchor = ((global::System.Windows.Forms.AnchorStyles)((((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Bottom)) | (global::System.Windows.Forms.AnchorStyles.Left)) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoScroll = (true);
             this.panel2.BackColor = (global::System.Drawing.Color.White);
+            this.panel2.Controls.Add(this.monthCalendar1);
+            this.panel2.Controls.Add(this.label37);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel9);
             this.panel2.Controls.Add(this.borderFetchDuration);
@@ -406,10 +410,28 @@
             this.panel2.TabIndex = (1);
             this.panel2.Paint += (this.panel2_Paint);
             // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = (new global::System.Drawing.Point(68, 840));
+            this.monthCalendar1.Name = ("monthCalendar1");
+            this.monthCalendar1.TabIndex = (85);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = (true);
+            this.label37.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label37.ForeColor = (global::System.Drawing.Color.DimGray);
+            this.label37.Location = (new global::System.Drawing.Point(13, 711));
+            this.label37.Name = ("label37");
+            this.label37.Size = (new global::System.Drawing.Size(326, 96));
+            this.label37.TabIndex = (82);
+            this.label37.Text = (resources.GetString("label37.Text"));
+            this.label37.TextAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
+            // 
             // panel4
             // 
             this.panel4.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Location = (new global::System.Drawing.Point(180, 921));
+            this.panel4.Location = (new global::System.Drawing.Point(175, 1014));
             this.panel4.Name = ("panel4");
             this.panel4.Size = (new global::System.Drawing.Size(120, 184));
             this.panel4.TabIndex = (81);
@@ -1095,9 +1117,8 @@
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Location = (new global::System.Drawing.Point(402, 677));
             this.panel3.Name = ("panel3");
-            this.panel3.Size = (new global::System.Drawing.Size(660, 299));
+            this.panel3.Size = (new global::System.Drawing.Size(660, 325));
             this.panel3.TabIndex = (70);
-            this.panel3.Paint += (this.panel3_Paint);
             // 
             // panel102
             // 
@@ -2524,7 +2545,6 @@
             this.dateTimePicker1.Name = ("dateTimePicker1");
             this.dateTimePicker1.Size = (new global::System.Drawing.Size(107, 23));
             this.dateTimePicker1.TabIndex = (5);
-            this.dateTimePicker1.ValueChanged += (this.dateTimePicker1_ValueChanged);
             // 
             // button1
             // 
@@ -2590,14 +2610,14 @@
             this.panel8.Dock = (global::System.Windows.Forms.DockStyle.Right);
             this.panel8.Location = (new global::System.Drawing.Point(659, 1));
             this.panel8.Name = ("panel8");
-            this.panel8.Size = (new global::System.Drawing.Size(1, 297));
+            this.panel8.Size = (new global::System.Drawing.Size(1, 323));
             this.panel8.TabIndex = (3);
             // 
             // panel7
             // 
             this.panel7.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.panel7.Dock = (global::System.Windows.Forms.DockStyle.Bottom);
-            this.panel7.Location = (new global::System.Drawing.Point(1, 298));
+            this.panel7.Location = (new global::System.Drawing.Point(1, 324));
             this.panel7.Name = ("panel7");
             this.panel7.Size = (new global::System.Drawing.Size(659, 1));
             this.panel7.TabIndex = (2);
@@ -2617,7 +2637,7 @@
             this.panel5.Dock = (global::System.Windows.Forms.DockStyle.Left);
             this.panel5.Location = (new global::System.Drawing.Point(0, 0));
             this.panel5.Name = ("panel5");
-            this.panel5.Size = (new global::System.Drawing.Size(1, 299));
+            this.panel5.Size = (new global::System.Drawing.Size(1, 325));
             this.panel5.TabIndex = (0);
             // 
             // label14
@@ -2631,7 +2651,6 @@
             this.label14.TabIndex = (69);
             this.label14.Text = ("Setup office hour availability for each day of the week");
             this.label14.TextAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
-            this.label14.Click += (this.label14_Click);
             // 
             // label15
             // 
@@ -2669,7 +2688,7 @@
             // 
             this.lineDevider.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Left) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.lineDevider.AutoSize = (true);
-            this.lineDevider.Location = (new global::System.Drawing.Point(521, 5405));
+            this.lineDevider.Location = (new global::System.Drawing.Point(521, 5973));
             this.lineDevider.Name = ("lineDevider");
             this.lineDevider.Size = (new global::System.Drawing.Size(10, 15));
             this.lineDevider.TabIndex = (59);
@@ -2749,7 +2768,6 @@
             this.label11.Size = (new global::System.Drawing.Size(66, 16));
             this.label11.TabIndex = (63);
             this.label11.Text = ("Frequency");
-            this.label11.Click += (this.label11_Click);
             // 
             // label9
             // 
@@ -3135,5 +3153,7 @@
         private global::System.Windows.Forms.Label label23;
         private global::System.Windows.Forms.Label label24;
         private global::System.Windows.Forms.Panel panel4;
+        private global::System.Windows.Forms.Label label37;
+        private global::System.Windows.Forms.MonthCalendar monthCalendar1;
     }
 }

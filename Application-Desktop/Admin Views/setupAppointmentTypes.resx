@@ -72,6 +72,14 @@
         oB0sB63E9ljsH9ctiXXjPvq8AAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>1. The user sets the office hours for each day of the 
+week.
+2. These settings are saved and applied to all future 
+weeks automatically.
+3. Users can modify this recurring schedule at any time 
+if their office hours change.</value>
+  </data>
   <data name="btnRefresh.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
