@@ -36,7 +36,8 @@ namespace Application_Desktop
             //gumawa ka ng polling the database para every 5 second ma fetch lagi yung data
 
             //latest
-            //pag isahin mo yung staff at office hour
+            //sa laravel yung office hour table gawa ka ng reference ng branch 
+            //dapat naka reference parin kasi each branch may kanya kanyang office hours
             
         }
     }

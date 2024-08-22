@@ -490,5 +490,76 @@ namespace Application_Desktop.Admin_Views
                 else { ViewCategoriesInstance.Show(); }
             }
         }
+
+        private void SaveOfficeHours(DayOfWeek day, DateTime startTime, DateTime endTime, bool isClosed)
+        {
+            string query = @"REPLACE INTO OfficeHours (DayOfWeek, StartTime, EndTime, IsClosed, created_at, updated_at) 
+                            VALUES (@DayOfWeek, @StartTime, @EndTime, @IsClosed, @createdAt, @updatedAt)";
+
+            MySqlConnection conn = databaseHelper.getConnection();
+
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@DayOfWeek", day.ToString());
+                cmd.Parameters.AddWithValue("@StartTime", startTime.TimeOfDay);  // Store only the time part
+                cmd.Parameters.AddWithValue("@EndTime", endTime.TimeOfDay);      // Store only the time part
+                cmd.Parameters.AddWithValue("@IsClosed", isClosed);
+
+                DateTime createdAt = DateTime.Now;
+                cmd.Parameters.AddWithValue("@createdAt", createdAt);
+
+                DateTime updatedAt = DateTime.Now;
+                cmd.Parameters.AddWithValue("@updatedAt", updatedAt);
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Office hours saved successfully.",
+                                "Success",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { conn.Close(); }
+        }
+
+        private void btnSaveOfficeHours_Click(object sender, EventArgs e)
+        {
+            // Array of days
+            var days = new[]
+            {
+                DayOfWeek.Monday,
+                DayOfWeek.Tuesday,
+                DayOfWeek.Wednesday,
+                DayOfWeek.Thursday,
+                DayOfWeek.Friday,
+                DayOfWeek.Saturday,
+                DayOfWeek.Sunday
+            };
+
+            // Iterate through each day and save the corresponding office hours
+            foreach (var day in days)
+            {
+                // Construct control names dynamically
+                var startPicker = (DateTimePicker)this.Controls.Find("dtp" + day + "Start", true).FirstOrDefault();
+                var endPicker = (DateTimePicker)this.Controls.Find("dtp" + day + "End", true).FirstOrDefault();
+                var closedCheckbox = (CheckBox)this.Controls.Find("chk" + day + "Closed", true).FirstOrDefault();
+
+                // Ensure the controls were found
+                if (startPicker != null && endPicker != null && closedCheckbox != null)
+                {
+                    SaveOfficeHours(day, startPicker.Value, endPicker.Value, closedCheckbox.Checked);
+                }
+            }
+        }
     }
 }
