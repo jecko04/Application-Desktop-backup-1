@@ -38,6 +38,7 @@ namespace Application_Desktop
             //latest
             //sa laravel yung office hour table gawa ka ng reference ng branch 
             //dapat naka reference parin kasi each branch may kanya kanyang office hours
+            //fix mo yung query para dito sa office hour
             
         }
     }

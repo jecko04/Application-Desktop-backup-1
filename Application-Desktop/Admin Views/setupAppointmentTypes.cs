@@ -19,15 +19,6 @@ namespace Application_Desktop.Admin_Views
         public setupAppointmentTypes()
         {
             InitializeComponent();
-
-            int margin = 27;
-            lineDevider.AutoSize = false; // Disable automatic sizing
-            lineDevider.Height = 3; // Thickness of the line
-            lineDevider.Width = this.panel2.Width - 2 * margin; // Full width of the form
-            lineDevider.BackColor = Color.DimGray; // Line color
-            lineDevider.BorderStyle = BorderStyle.None; // No border
-
-            lineDevider.Left = 19;
         }
 
         private void setupAppointmentTypes_Load(object sender, EventArgs e)
@@ -491,10 +482,30 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
-        private void SaveOfficeHours(DayOfWeek day, DateTime startTime, DateTime endTime, bool isClosed)
+
+        //setup office hours
+        private void SaveOfficeHours()
         {
-            string query = @"REPLACE INTO OfficeHours (DayOfWeek, StartTime, EndTime, IsClosed, created_at, updated_at) 
-                            VALUES (@DayOfWeek, @StartTime, @EndTime, @IsClosed, @createdAt, @updatedAt)";
+            //get branch
+            int branchID = GetBranch();
+
+            // Arrays for DateTimePickers and CheckBoxes
+            DateTimePicker[] startPickers = { dateTimePicker2, dateTimePicker4, dateTimePicker6, dateTimePicker8, dateTimePicker10, dateTimePicker12, dateTimePicker14 };
+            DateTimePicker[] endPickers = { dateTimePicker1, dateTimePicker3, dateTimePicker5, dateTimePicker7, dateTimePicker9, dateTimePicker11, dateTimePicker13 };
+            CheckBox[] closeCheckBoxes = { mondayClose, tuesdayClose, wednesdayClose, thursdayClose, fridayClose, saturdayClose, sundayClose };
+
+            // Days of the week
+            string[] days = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+
+            string query = @"
+                            INSERT INTO office_hours (DayOfWeek, StartTime, EndTime, IsClosed, Branch_ID, created_at, updated_at)
+                            VALUES (@DayOfWeek, @StartTime, @EndTime, @IsClosed, @branchID, @createdAt, @updatedAt)
+                            ON DUPLICATE KEY UPDATE 
+                                StartTime = VALUES(StartTime),
+                                EndTime = VALUES(EndTime),
+                                IsClosed = VALUES(IsClosed),
+                                updated_at = VALUES(updated_at);";
+
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -505,61 +516,46 @@ namespace Application_Desktop.Admin_Views
                     conn.Open();
                 }
 
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@DayOfWeek", day.ToString());
-                cmd.Parameters.AddWithValue("@StartTime", startTime.TimeOfDay);  // Store only the time part
-                cmd.Parameters.AddWithValue("@EndTime", endTime.TimeOfDay);      // Store only the time part
-                cmd.Parameters.AddWithValue("@IsClosed", isClosed);
+                for (int i = 0; i < days.Length; i++)
+                {
+                    // Extract time as a string
+                    string startTime = startPickers[i].Value.ToString("HH:mm:ss");
+                    string endTime = endPickers[i].Value.ToString("HH:mm:ss");
+                    bool isClosed = closeCheckBoxes[i].Checked;
 
-                DateTime createdAt = DateTime.Now;
-                cmd.Parameters.AddWithValue("@createdAt", createdAt);
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@DayOfWeek", days[i]);
+                    cmd.Parameters.AddWithValue("@StartTime", startTime);   // Store only the time part
+                    cmd.Parameters.AddWithValue("@EndTime", endTime);       // Store only the time part
+                    cmd.Parameters.AddWithValue("@IsClosed", isClosed);
+                    cmd.Parameters.AddWithValue("@branchID", branchID);
 
-                DateTime updatedAt = DateTime.Now;
-                cmd.Parameters.AddWithValue("@updatedAt", updatedAt);
-                cmd.ExecuteNonQuery();
+                    DateTime now = DateTime.Now;
+                    cmd.Parameters.AddWithValue("@createdAt", now);
+                    cmd.Parameters.AddWithValue("@updatedAt", now);
+
+                    // Execute the query for each day
+                    cmd.ExecuteNonQuery();
+                }
 
                 MessageBox.Show("Office hours saved successfully.",
                                 "Success",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
-
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            finally { conn.Close(); }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         private void btnSaveOfficeHours_Click(object sender, EventArgs e)
         {
-            // Array of days
-            var days = new[]
-            {
-                DayOfWeek.Monday,
-                DayOfWeek.Tuesday,
-                DayOfWeek.Wednesday,
-                DayOfWeek.Thursday,
-                DayOfWeek.Friday,
-                DayOfWeek.Saturday,
-                DayOfWeek.Sunday
-            };
-
-            // Iterate through each day and save the corresponding office hours
-            foreach (var day in days)
-            {
-                // Construct control names dynamically
-                var startPicker = (DateTimePicker)this.Controls.Find("dtp" + day + "Start", true).FirstOrDefault();
-                var endPicker = (DateTimePicker)this.Controls.Find("dtp" + day + "End", true).FirstOrDefault();
-                var closedCheckbox = (CheckBox)this.Controls.Find("chk" + day + "Closed", true).FirstOrDefault();
-
-                // Ensure the controls were found
-                if (startPicker != null && endPicker != null && closedCheckbox != null)
-                {
-                    SaveOfficeHours(day, startPicker.Value, endPicker.Value, closedCheckbox.Checked);
-                }
-            }
+            SaveOfficeHours();
         }
     }
 }

@@ -166,7 +166,7 @@
             this.panel90 = (new global::System.Windows.Forms.Panel());
             this.panel91 = (new global::System.Windows.Forms.Panel());
             this.dateTimePicker10 = (new global::System.Windows.Forms.DateTimePicker());
-            this.fridayClsoe = (new global::System.Windows.Forms.CheckBox());
+            this.fridayClose = (new global::System.Windows.Forms.CheckBox());
             this.label28 = (new global::System.Windows.Forms.Label());
             this.label29 = (new global::System.Windows.Forms.Label());
             this.label30 = (new global::System.Windows.Forms.Label());
@@ -1096,7 +1096,7 @@
             this.panel3.Controls.Add(this.label33);
             this.panel3.Controls.Add(this.panel82);
             this.panel3.Controls.Add(this.panel87);
-            this.panel3.Controls.Add(this.fridayClsoe);
+            this.panel3.Controls.Add(this.fridayClose);
             this.panel3.Controls.Add(this.label28);
             this.panel3.Controls.Add(this.label29);
             this.panel3.Controls.Add(this.label30);
@@ -1888,16 +1888,16 @@
             this.dateTimePicker10.Size = (new global::System.Drawing.Size(107, 23));
             this.dateTimePicker10.TabIndex = (5);
             // 
-            // fridayClsoe
+            // fridayClose
             // 
-            this.fridayClsoe.AutoSize = (true);
-            this.fridayClsoe.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
-            this.fridayClsoe.Location = (new global::System.Drawing.Point(556, 157));
-            this.fridayClsoe.Name = ("fridayClsoe");
-            this.fridayClsoe.Size = (new global::System.Drawing.Size(57, 20));
-            this.fridayClsoe.TabIndex = (97);
-            this.fridayClsoe.Text = ("Close");
-            this.fridayClsoe.UseVisualStyleBackColor = (true);
+            this.fridayClose.AutoSize = (true);
+            this.fridayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.fridayClose.Location = (new global::System.Drawing.Point(556, 157));
+            this.fridayClose.Name = ("fridayClose");
+            this.fridayClose.Size = (new global::System.Drawing.Size(57, 20));
+            this.fridayClose.TabIndex = (97);
+            this.fridayClose.Text = ("Close");
+            this.fridayClose.UseVisualStyleBackColor = (true);
             // 
             // label28
             // 
@@ -2793,7 +2793,7 @@
             // 
             this.lineDevider.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Left) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.lineDevider.AutoSize = (true);
-            this.lineDevider.Location = (new global::System.Drawing.Point(521, 7677));
+            this.lineDevider.Location = (new global::System.Drawing.Point(521, 7961));
             this.lineDevider.Name = ("lineDevider");
             this.lineDevider.Size = (new global::System.Drawing.Size(10, 15));
             this.lineDevider.TabIndex = (59);
@@ -3212,7 +3212,7 @@
         private global::System.Windows.Forms.Panel panel90;
         private global::System.Windows.Forms.Panel panel91;
         private global::System.Windows.Forms.DateTimePicker dateTimePicker10;
-        private global::System.Windows.Forms.CheckBox fridayClsoe;
+        private global::System.Windows.Forms.CheckBox fridayClose;
         private global::System.Windows.Forms.Label label28;
         private global::System.Windows.Forms.Label label29;
         private global::System.Windows.Forms.Label label30;
