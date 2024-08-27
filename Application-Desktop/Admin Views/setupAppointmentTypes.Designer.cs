@@ -107,7 +107,7 @@
             this.dateTimePicker16 = (new global::System.Windows.Forms.DateTimePicker());
             this.label39 = (new global::System.Windows.Forms.Label());
             this.btnSaveOfficeHours = (new global::System.Windows.Forms.Button());
-            this.checkBox8 = (new global::System.Windows.Forms.CheckBox());
+            this.btnApplyToAll = (new global::System.Windows.Forms.CheckBox());
             this.panel112 = (new global::System.Windows.Forms.Panel());
             this.button22 = (new global::System.Windows.Forms.Button());
             this.panel113 = (new global::System.Windows.Forms.Panel());
@@ -1079,7 +1079,7 @@
             this.panel3.Controls.Add(this.panel117);
             this.panel3.Controls.Add(this.label39);
             this.panel3.Controls.Add(this.btnSaveOfficeHours);
-            this.panel3.Controls.Add(this.checkBox8);
+            this.panel3.Controls.Add(this.btnApplyToAll);
             this.panel3.Controls.Add(this.panel112);
             this.panel3.Controls.Add(this.label38);
             this.panel3.Controls.Add(this.panel102);
@@ -1151,7 +1151,7 @@
             this.panel117.Controls.Add(this.panel121);
             this.panel117.Controls.Add(this.dateTimePicker16);
             this.panel117.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
-            this.panel117.Location = (new global::System.Drawing.Point(313, 266));
+            this.panel117.Location = (new global::System.Drawing.Point(114, 266));
             this.panel117.Name = ("panel117");
             this.panel117.Size = (new global::System.Drawing.Size(107, 23));
             this.panel117.TabIndex = (116);
@@ -1246,16 +1246,17 @@
             this.btnSaveOfficeHours.UseVisualStyleBackColor = (false);
             this.btnSaveOfficeHours.Click += (this.btnSaveOfficeHours_Click);
             // 
-            // checkBox8
+            // btnApplyToAll
             // 
-            this.checkBox8.AutoSize = (true);
-            this.checkBox8.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
-            this.checkBox8.Location = (new global::System.Drawing.Point(439, 268));
-            this.checkBox8.Name = ("checkBox8");
-            this.checkBox8.Size = (new global::System.Drawing.Size(119, 20));
-            this.checkBox8.TabIndex = (116);
-            this.checkBox8.Text = ("Apply to all days");
-            this.checkBox8.UseVisualStyleBackColor = (true);
+            this.btnApplyToAll.AutoSize = (true);
+            this.btnApplyToAll.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.btnApplyToAll.Location = (new global::System.Drawing.Point(439, 268));
+            this.btnApplyToAll.Name = ("btnApplyToAll");
+            this.btnApplyToAll.Size = (new global::System.Drawing.Size(119, 20));
+            this.btnApplyToAll.TabIndex = (116);
+            this.btnApplyToAll.Text = ("Apply to all days");
+            this.btnApplyToAll.UseVisualStyleBackColor = (true);
+            this.btnApplyToAll.CheckedChanged += (this.btnApplyToAll_CheckedChanged);
             // 
             // panel112
             // 
@@ -1267,7 +1268,7 @@
             this.panel112.Controls.Add(this.panel116);
             this.panel112.Controls.Add(this.dateTimePicker15);
             this.panel112.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
-            this.panel112.Location = (new global::System.Drawing.Point(112, 267));
+            this.panel112.Location = (new global::System.Drawing.Point(313, 267));
             this.panel112.Name = ("panel112");
             this.panel112.Size = (new global::System.Drawing.Size(107, 23));
             this.panel112.TabIndex = (115);
@@ -2793,7 +2794,7 @@
             // 
             this.lineDevider.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Left) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.lineDevider.AutoSize = (true);
-            this.lineDevider.Location = (new global::System.Drawing.Point(521, 7961));
+            this.lineDevider.Location = (new global::System.Drawing.Point(521, 8813));
             this.lineDevider.Name = ("lineDevider");
             this.lineDevider.Size = (new global::System.Drawing.Size(10, 15));
             this.lineDevider.TabIndex = (59);
@@ -3255,7 +3256,7 @@
         private global::System.Windows.Forms.Panel panel4;
         private global::System.Windows.Forms.Label label37;
         private global::System.Windows.Forms.MonthCalendar monthCalendar1;
-        private global::System.Windows.Forms.CheckBox checkBox8;
+        private global::System.Windows.Forms.CheckBox btnApplyToAll;
         private global::System.Windows.Forms.Panel panel112;
         private global::System.Windows.Forms.Button button22;
         private global::System.Windows.Forms.Panel panel113;

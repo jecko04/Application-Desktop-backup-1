@@ -24,8 +24,11 @@ namespace Application_Desktop.Admin_Views
         private void setupAppointmentTypes_Load(object sender, EventArgs e)
         {
             GetTitle();
+            LoadOfficeHour();
+            LoadIsClosed();
         }
 
+        // It get branch Id
         private int GetBranch()
         {
             int adminID = session.LoggedInSession;
@@ -289,6 +292,7 @@ namespace Application_Desktop.Admin_Views
             txtFetchFrequency.Text = "";
         }
 
+        // Update the categories
         private void UpdateCategory(int categoryId)
         {
             DialogResult result = MessageBox.Show("Do you want to update this Category?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -483,7 +487,7 @@ namespace Application_Desktop.Admin_Views
         }
 
 
-        //setup office hours
+        // It save setup office hours
         private void SaveOfficeHours()
         {
             //get branch
@@ -556,6 +560,174 @@ namespace Application_Desktop.Admin_Views
         private void btnSaveOfficeHours_Click(object sender, EventArgs e)
         {
             SaveOfficeHours();
+        }
+
+
+        //Apply to All CheckBox
+        private DateTime[] originalStartValues;
+        private DateTime[] originalEndValues;
+
+        private void ApplyToAll()
+        {
+            DateTimePicker[] startPickers = { dateTimePicker2, dateTimePicker4, dateTimePicker6, dateTimePicker8, dateTimePicker10, dateTimePicker12, dateTimePicker14 };
+            DateTimePicker[] endPickers = { dateTimePicker1, dateTimePicker3, dateTimePicker5, dateTimePicker7, dateTimePicker9, dateTimePicker11, dateTimePicker13 };
+
+            // Get the start and end values from the selected DateTimePickers
+            DateTime start = dateTimePicker16.Value;
+            DateTime end = dateTimePicker15.Value;
+
+            if (originalStartValues == null)
+            {
+                originalStartValues = startPickers.Select(picker => picker.Value).ToArray();
+            }
+            if (originalEndValues == null)
+            {
+                originalEndValues = endPickers.Select(picker => picker.Value).ToArray();
+            }
+
+            // Apply the start and end values to all DateTimePickers in the arrays
+            foreach (var picker in startPickers)
+            {
+                picker.Value = start;
+            }
+            foreach (var picker in endPickers)
+            {
+                picker.Value = end;
+            }
+        }
+
+        // Changed to Original Value
+        private void RevertToOriginal()
+        {
+            DateTimePicker[] startPickers = { dateTimePicker2, dateTimePicker4, dateTimePicker6, dateTimePicker8, dateTimePicker10, dateTimePicker12, dateTimePicker14 };
+            DateTimePicker[] endPickers = { dateTimePicker1, dateTimePicker3, dateTimePicker5, dateTimePicker7, dateTimePicker9, dateTimePicker11, dateTimePicker13 };
+
+            // Revert to the original values
+            for (int i = 0; i < startPickers.Length; i++)
+            {
+                startPickers[i].Value = originalStartValues[i];
+            }
+            for (int i = 0; i < endPickers.Length; i++)
+            {
+                endPickers[i].Value = originalEndValues[i];
+            }
+
+            // Clear the stored original values
+            originalStartValues = null;
+            originalEndValues = null;
+        }
+
+        private void btnApplyToAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (btnApplyToAll.Checked)
+            {
+                ApplyToAll(); // Apply the values to all DateTimePickers
+            }
+            else
+            {
+                RevertToOriginal(); // Revert to the original values
+            }
+        }
+
+        // It Load the OfficeHour data value in database 
+        private void LoadOfficeHour()
+        {
+            int branchID = GetBranch();
+            string query = @"Select StartTime, EndTime, IsClosed From office_hours Where Branch_ID = @branchID";
+
+            DateTimePicker[] startPickers = { dateTimePicker2, dateTimePicker4, dateTimePicker6, dateTimePicker8, dateTimePicker10, dateTimePicker12, dateTimePicker14 };
+            DateTimePicker[] endPickers = { dateTimePicker1, dateTimePicker3, dateTimePicker5, dateTimePicker7, dateTimePicker9, dateTimePicker11, dateTimePicker13 };
+            
+
+            MySqlConnection conn = databaseHelper.getConnection();
+
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@branchID", branchID);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    TimeSpan start = reader.GetTimeSpan("StartTime");
+                    TimeSpan end = reader.GetTimeSpan("EndTime");
+                    int isChecked = reader.GetInt32("IsClosed");
+
+                    DateTime startDateTime = DateTime.Today.Add(start);
+                    DateTime endDateTime = DateTime.Today.Add(end);
+
+                    foreach (var picker in startPickers)
+                    {
+                        picker.Value = startDateTime;
+                    }
+                    foreach (var picker in endPickers)
+                    {
+                        picker.Value = endDateTime;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { conn.Close(); }
+        }
+
+
+        // It load the IsClosed data value in database
+        private void LoadIsClosed()
+        {
+            int branchID = GetBranch();
+            string query = @"SELECT DayOfWeek, IsClosed FROM office_hours WHERE Branch_ID = @branchID";
+
+            //CheckBox[] closeCheckBoxes = { mondayClose, tuesdayClose, wednesdayClose, thursdayClose, fridayClose, saturdayClose, sundayClose };
+
+            MySqlConnection conn = databaseHelper.getConnection();
+
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@branchID", branchID);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string days = reader.GetString("DayOfWeek");
+                    int IsClosed = reader.GetInt32("IsClosed");
+
+                    CheckBox checkbox = days switch
+                    {
+                        "Monday" => mondayClose,
+                        "Tuesday" => tuesdayClose,
+                        "Wednesday" => wednesdayClose,
+                        "Thursday" => thursdayClose,
+                        "Friday" => fridayClose,
+                        "Saturday" => saturdayClose,
+                        "Sunday" => sundayClose,
+                    };
+
+                    checkbox.Checked = (IsClosed == 1);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { conn.Close(); }
+           
         }
     }
 }
