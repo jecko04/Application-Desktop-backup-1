@@ -152,7 +152,7 @@
   <data name="btnSetup.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAAYxJREFUSEvt1UsoRFEcx/HRMJkR0WiUlFKSyN7KxkpmOYXsPaPIykZJWchCbLEZ
+        DAAACwwBP0AiyAAAAYxJREFUSEvt1UsoRFEcx/HRMJkR0WiUlFKSyN7KxkpmOYXsPaPIykZJWchCbLEZ
         K1sUys6KpUcWDHm/shFlcX1/d84tDXXNvcpm/vVp7jnzP///3Me5E/ATlmVFzGcC7zj5Ou8rKFKNUyxi
         FeN4QT9uMWRSvQUFJrGNGcxDDbuwjimcI2TS08FEDDUuYiY3gjdUohnLGEM+NtFrF3WCCXW9x56LUajQ
         MzZQgkf0YQfD6MY17Hui4mHo+hXbEy5B3izW0A6dVQp5UJM5VGECH86CcqTswS+C3HroZuosdAZLOMYZ
@@ -162,10 +162,10 @@
         AABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnOfficeHourAndStaff.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnCategory.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAAcVJREFUSEvtlr1LQmEUxpWGAgcJalSiqT9CoqkhaIjsE/8A9yChhqzGoA9oMKj2
+        DQAACw0B7QfALAAAAcVJREFUSEvtlr1LQmEUxpWGAgcJalSiqT9CoqkhaIjsE/8A9yChhqzGoA9oMKj2
         IotcK1oiKJqDQGgIIiiaamiy3/N6bvahdq859sAP7nPe855zvZ7ra6iWSqVSN2yYrSnlKNesf7GpD27N
         1pRylGvWv5regKQwJOEAruAG3uy6HspRrq73IWklKyKo4lvwCHMwBiMB0Z4sPMEmhK28a5CCe4hZqGFR
         Iw4PMGkhFzyGeWhvEotwZOVdgyI0W0Ur7xpoEgah2t00gmpVJlAGgs9yDanWf4O6olYMlsz+rQH7emEZ
@@ -176,27 +176,30 @@
         RU5ErkJggg==
 </value>
   </data>
-  <data name="btnCategory.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAASlJREFUSEvdk7tKxEAUhtMlaOM+Q7L4BFoFtrGKW7lgq50W9m6xWwpio28Qu60s
-        tJPY+lzxO8OZhBAzzBgwsD98zOVcBmbmj/ZDdV2vYA63cARr3W9G3b8BybuAXHHWGrG4hGO4gxlsdb8Z
-        dV/ikif5C8VZ+z/itAw+4B1SWMInVCMoIbYHbKBQZP4FByb4R1H/BLldXMNOuYJXeID7EXxDag4QsTgR
-        dB6DPODZCDLT2IqNU0HnCYQcILmJafSbCMoVvSn2ip7h0ZMXKLVdXwRHPTK5h1Dpsi+C8k3li9pveg4h
-        31RyC203gTg91GitiXxEctAbEGtN5COSQ43WNZGPKAgxWtdEPqJoyGhuE/mIBi6juU3kIxoMPjKj20Q+
-        ooHLaBObaFpF0Q8zyltY3VbHqQAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="btnOnlineBooking.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAXVJREFUSEvNla9Ow3AUhQeEYMiGZAkOFH8eYDgeATtBgtiCIMGNoECiSUChAA2C
+        DAAACwwBP0AiyAAAAXVJREFUSEvNla9Ow3AUhQeEYMiGZAkOFH8eYDgeATtBgtiCIMGNoECiSUChAA2C
         B8BikICABIOApyjfac5WRtvQOyY4yZf97r3n3DbZ1tb+hZIkmYJdeDY6T3r8N7FoDe7hDlqw7rN6q7bF
         RXga9uET9mBwx5wnYAs+4BhmPKomArrLR7iFBbdzYjYPF/ACG26XC1MdzuAdNt3+VfI6cwp1t4fFoAH6
         As9hzu3KUsbZJ8hfhOYOXLscWey4ga7LTDQP4cjlyNIO7XKZyYNxXSC/p2hAvQSvUCb9ehZtT0UdusAB
         nLjMSTN5XKbSDuEyU9Gg1GyFMiGzFcqEzFYoEzJboUzIbIUyIbMVylQxc9b7oOUyfIEuXLpM9d3MZxv0
         /Bftn/O+qK+g4zITTT1N9c+UQS+aZUgXgP5wb+6t+Kxef66+MspqR8Nrh6UBdEBvKYV6oDt+gKZt8jXd
         00weeZVRtnh5kWSGbZh1ayD1PKu+cPyq1b4A1Aeg34i28TcAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnOfficeHourAndStaff.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAAcVJREFUSEvtlr1LQmEUxpWGAgcJalSiqT9CoqkhaIjsE/8A9yChhqzGoA9oMKj2
+        IotcK1oiKJqDQGgIIiiaamiy3/N6bvahdq859sAP7nPe855zvZ7ra6iWSqVSN2yYrSnlKNesf7GpD27N
+        1pRylGvWv5regKQwJOEAruAG3uy6HspRrq73IWklKyKo4lvwCHMwBiMB0Z4sPMEmhK28a5CCe4hZqGFR
+        Iw4PMGkhFzyGeWhvEotwZOVdgyI0W0Ur7xpoEgah2t00gmpVJlAGgs9yDanWf4O6olYMlsz+rQH7emEZ
+        dmEdBiBsy2URCNyA/AjswTPkIAOroBf2FDosteEGKn72pRDCq/EhnEOLFwzUgFw9Ft35R3GuTyBq11G4
+        g5S3GLTBCuTMOuGlLrPyM5D3TNAGOzBt1gn/ChNm5UfhwjP6Lep3xofI1bSsmXXCD8ELJMxPQcFb1K9p
+        xhkfIlejqGmJWMgJnwC9A21wDWlvQeeBDpu4C/wi8nRAaRQ1Le6L9YRX8W1Qg1YvqA06hTQZCzAO1U4t
+        0WN7OkGjqGmZBT1zPRYVFj//aRAchjx8P3c/k7V05beAPr32XEIB0lC+81Ao9A7Ik5Kzf+CHvgAAAABJ
+        RU5ErkJggg==
 </value>
   </data>
   <data name="btnMenu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

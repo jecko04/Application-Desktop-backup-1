@@ -312,7 +312,7 @@
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Location = (new global::System.Drawing.Point(-1, -1));
             this.panel1.Name = ("panel1");
-            this.panel1.Size = (new global::System.Drawing.Size(1079, 30));
+            this.panel1.Size = (new global::System.Drawing.Size(1084, 30));
             this.panel1.TabIndex = (0);
             // 
             // flowLayoutPanel1
@@ -320,7 +320,7 @@
             this.flowLayoutPanel1.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.Controls.Add(this.btnViewCategories);
             this.flowLayoutPanel1.FlowDirection = (global::System.Windows.Forms.FlowDirection.RightToLeft);
-            this.flowLayoutPanel1.Location = (new global::System.Drawing.Point(632, 0));
+            this.flowLayoutPanel1.Location = (new global::System.Drawing.Point(637, 0));
             this.flowLayoutPanel1.Name = ("flowLayoutPanel1");
             this.flowLayoutPanel1.Size = (new global::System.Drawing.Size(447, 30));
             this.flowLayoutPanel1.TabIndex = (20);
@@ -359,7 +359,7 @@
             this.panel9.Dock = (global::System.Windows.Forms.DockStyle.Top);
             this.panel9.Location = (new global::System.Drawing.Point(0, 0));
             this.panel9.Name = ("panel9");
-            this.panel9.Size = (new global::System.Drawing.Size(1079, 1));
+            this.panel9.Size = (new global::System.Drawing.Size(1084, 1));
             this.panel9.TabIndex = (80);
             // 
             // btnSubmit
@@ -371,7 +371,7 @@
             this.btnSubmit.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
             this.btnSubmit.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnSubmit.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
-            this.btnSubmit.Location = (new global::System.Drawing.Point(528, 283));
+            this.btnSubmit.Location = (new global::System.Drawing.Point(533, 283));
             this.btnSubmit.Margin = (new global::System.Windows.Forms.Padding(0));
             this.btnSubmit.Name = ("btnSubmit");
             this.btnSubmit.Size = (new global::System.Drawing.Size(64, 30));
@@ -420,7 +420,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = (new global::System.Drawing.Point(-1, 28));
             this.panel2.Name = ("panel2");
-            this.panel2.Size = (new global::System.Drawing.Size(1096, 631));
+            this.panel2.Size = (new global::System.Drawing.Size(1101, 631));
             this.panel2.TabIndex = (1);
             // 
             // monthCalendar1
@@ -444,7 +444,7 @@
             // panel4
             // 
             this.panel4.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Location = (new global::System.Drawing.Point(175, 1014));
+            this.panel4.Location = (new global::System.Drawing.Point(180, 1014));
             this.panel4.Name = ("panel4");
             this.panel4.Size = (new global::System.Drawing.Size(120, 184));
             this.panel4.TabIndex = (81);
@@ -457,7 +457,7 @@
             this.borderFetchDuration.Controls.Add(this.panel47);
             this.borderFetchDuration.Controls.Add(this.panel48);
             this.borderFetchDuration.Controls.Add(this.txtFetchDuration);
-            this.borderFetchDuration.Location = (new global::System.Drawing.Point(528, 512));
+            this.borderFetchDuration.Location = (new global::System.Drawing.Point(533, 512));
             this.borderFetchDuration.Name = ("borderFetchDuration");
             this.borderFetchDuration.Size = (new global::System.Drawing.Size(197, 24));
             this.borderFetchDuration.TabIndex = (78);
@@ -521,7 +521,7 @@
             this.borderFetchDescription.Controls.Add(this.panel42);
             this.borderFetchDescription.Controls.Add(this.panel43);
             this.borderFetchDescription.Controls.Add(this.txtFetchDescription);
-            this.borderFetchDescription.Location = (new global::System.Drawing.Point(528, 399));
+            this.borderFetchDescription.Location = (new global::System.Drawing.Point(533, 399));
             this.borderFetchDescription.Name = ("borderFetchDescription");
             this.borderFetchDescription.Size = (new global::System.Drawing.Size(534, 95));
             this.borderFetchDescription.TabIndex = (79);
@@ -581,7 +581,7 @@
             this.borderFetchTitle.Controls.Add(this.panel37);
             this.borderFetchTitle.Controls.Add(this.panel38);
             this.borderFetchTitle.Controls.Add(this.txtFetchTitle);
-            this.borderFetchTitle.Location = (new global::System.Drawing.Point(528, 359));
+            this.borderFetchTitle.Location = (new global::System.Drawing.Point(533, 359));
             this.borderFetchTitle.Name = ("borderFetchTitle");
             this.borderFetchTitle.Size = (new global::System.Drawing.Size(534, 24));
             this.borderFetchTitle.TabIndex = (78);
@@ -645,7 +645,7 @@
             this.borderFetchFrequency.Controls.Add(this.panel32);
             this.borderFetchFrequency.Controls.Add(this.panel33);
             this.borderFetchFrequency.Controls.Add(this.txtFetchFrequency);
-            this.borderFetchFrequency.Location = (new global::System.Drawing.Point(876, 513));
+            this.borderFetchFrequency.Location = (new global::System.Drawing.Point(881, 513));
             this.borderFetchFrequency.Name = ("borderFetchFrequency");
             this.borderFetchFrequency.Size = (new global::System.Drawing.Size(186, 25));
             this.borderFetchFrequency.TabIndex = (77);
@@ -704,7 +704,7 @@
             this.borderDuration.Controls.Add(this.panel27);
             this.borderDuration.Controls.Add(this.panel28);
             this.borderDuration.Controls.Add(this.txtDuration);
-            this.borderDuration.Location = (new global::System.Drawing.Point(528, 215));
+            this.borderDuration.Location = (new global::System.Drawing.Point(533, 215));
             this.borderDuration.Name = ("borderDuration");
             this.borderDuration.Size = (new global::System.Drawing.Size(534, 24));
             this.borderDuration.TabIndex = (76);
@@ -768,7 +768,7 @@
             this.borderFrequency.Controls.Add(this.panel22);
             this.borderFrequency.Controls.Add(this.panel23);
             this.borderFrequency.Controls.Add(this.txtFrequency);
-            this.borderFrequency.Location = (new global::System.Drawing.Point(528, 255));
+            this.borderFrequency.Location = (new global::System.Drawing.Point(533, 255));
             this.borderFrequency.Name = ("borderFrequency");
             this.borderFrequency.Size = (new global::System.Drawing.Size(534, 25));
             this.borderFrequency.TabIndex = (75);
@@ -827,7 +827,7 @@
             this.borderDescription.Controls.Add(this.panel17);
             this.borderDescription.Controls.Add(this.panel18);
             this.borderDescription.Controls.Add(this.txtDescription);
-            this.borderDescription.Location = (new global::System.Drawing.Point(528, 97));
+            this.borderDescription.Location = (new global::System.Drawing.Point(533, 97));
             this.borderDescription.Name = ("borderDescription");
             this.borderDescription.Size = (new global::System.Drawing.Size(534, 95));
             this.borderDescription.TabIndex = (74);
@@ -887,7 +887,7 @@
             this.borderTitle.Controls.Add(this.panel12);
             this.borderTitle.Controls.Add(this.panel13);
             this.borderTitle.Controls.Add(this.txtTitle);
-            this.borderTitle.Location = (new global::System.Drawing.Point(528, 52));
+            this.borderTitle.Location = (new global::System.Drawing.Point(533, 52));
             this.borderTitle.Name = ("borderTitle");
             this.borderTitle.Size = (new global::System.Drawing.Size(534, 25));
             this.borderTitle.TabIndex = (73);
@@ -948,7 +948,7 @@
             this.flowLayoutPanel2.Controls.Add(this.btnFriday);
             this.flowLayoutPanel2.Controls.Add(this.btnSaturday);
             this.flowLayoutPanel2.Controls.Add(this.btnSunday);
-            this.flowLayoutPanel2.Location = (new global::System.Drawing.Point(402, 636));
+            this.flowLayoutPanel2.Location = (new global::System.Drawing.Point(407, 636));
             this.flowLayoutPanel2.Name = ("flowLayoutPanel2");
             this.flowLayoutPanel2.Size = (new global::System.Drawing.Size(660, 30));
             this.flowLayoutPanel2.TabIndex = (71);
@@ -1128,7 +1128,7 @@
             this.panel3.Controls.Add(this.panel7);
             this.panel3.Controls.Add(this.panel6);
             this.panel3.Controls.Add(this.panel5);
-            this.panel3.Location = (new global::System.Drawing.Point(402, 677));
+            this.panel3.Location = (new global::System.Drawing.Point(407, 677));
             this.panel3.Name = ("panel3");
             this.panel3.Size = (new global::System.Drawing.Size(660, 325));
             this.panel3.TabIndex = (70);
@@ -2794,7 +2794,7 @@
             // 
             this.lineDevider.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Left) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.lineDevider.AutoSize = (true);
-            this.lineDevider.Location = (new global::System.Drawing.Point(521, 8813));
+            this.lineDevider.Location = (new global::System.Drawing.Point(521, 9381));
             this.lineDevider.Name = ("lineDevider");
             this.lineDevider.Size = (new global::System.Drawing.Size(10, 15));
             this.lineDevider.TabIndex = (59);
@@ -2817,7 +2817,7 @@
             this.label12.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = (true);
             this.label12.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
-            this.label12.Location = (new global::System.Drawing.Point(402, 514));
+            this.label12.Location = (new global::System.Drawing.Point(407, 514));
             this.label12.Name = ("label12");
             this.label12.Size = (new global::System.Drawing.Size(55, 16));
             this.label12.TabIndex = (65);
@@ -2845,7 +2845,7 @@
             this.btnRefresh.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
             this.btnRefresh.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnRefresh.Image = ((global::System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.Location = (new global::System.Drawing.Point(597, 539));
+            this.btnRefresh.Location = (new global::System.Drawing.Point(602, 539));
             this.btnRefresh.Margin = (new global::System.Windows.Forms.Padding(5, 0, 3, 0));
             this.btnRefresh.Name = ("btnRefresh");
             this.btnRefresh.Size = (new global::System.Drawing.Size(38, 30));
@@ -2869,7 +2869,7 @@
             this.label11.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = (true);
             this.label11.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
-            this.label11.Location = (new global::System.Drawing.Point(769, 514));
+            this.label11.Location = (new global::System.Drawing.Point(774, 514));
             this.label11.Name = ("label11");
             this.label11.Size = (new global::System.Drawing.Size(66, 16));
             this.label11.TabIndex = (63);
@@ -2880,7 +2880,7 @@
             this.label9.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = (true);
             this.label9.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
-            this.label9.Location = (new global::System.Drawing.Point(402, 98));
+            this.label9.Location = (new global::System.Drawing.Point(407, 98));
             this.label9.Name = ("label9");
             this.label9.Size = (new global::System.Drawing.Size(70, 16));
             this.label9.TabIndex = (61);
@@ -2891,7 +2891,7 @@
             this.label8.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = (true);
             this.label8.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
-            this.label8.Location = (new global::System.Drawing.Point(402, 361));
+            this.label8.Location = (new global::System.Drawing.Point(407, 361));
             this.label8.Name = ("label8");
             this.label8.Size = (new global::System.Drawing.Size(32, 16));
             this.label8.TabIndex = (59);
@@ -2906,7 +2906,7 @@
             this.btnUpdate.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
             this.btnUpdate.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnUpdate.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
-            this.btnUpdate.Location = (new global::System.Drawing.Point(528, 539));
+            this.btnUpdate.Location = (new global::System.Drawing.Point(533, 539));
             this.btnUpdate.Margin = (new global::System.Windows.Forms.Padding(0));
             this.btnUpdate.Name = ("btnUpdate");
             this.btnUpdate.Size = (new global::System.Drawing.Size(64, 30));
@@ -2920,7 +2920,7 @@
             this.label4.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = (true);
             this.label4.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
-            this.label4.Location = (new global::System.Drawing.Point(402, 255));
+            this.label4.Location = (new global::System.Drawing.Point(407, 255));
             this.label4.Name = ("label4");
             this.label4.Size = (new global::System.Drawing.Size(66, 16));
             this.label4.TabIndex = (6);
@@ -2931,7 +2931,7 @@
             this.label3.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = (true);
             this.label3.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
-            this.label3.Location = (new global::System.Drawing.Point(402, 215));
+            this.label3.Location = (new global::System.Drawing.Point(407, 215));
             this.label3.Name = ("label3");
             this.label3.Size = (new global::System.Drawing.Size(55, 16));
             this.label3.TabIndex = (4);
@@ -2942,7 +2942,7 @@
             this.label2.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = (true);
             this.label2.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
-            this.label2.Location = (new global::System.Drawing.Point(402, 400));
+            this.label2.Location = (new global::System.Drawing.Point(407, 400));
             this.label2.Name = ("label2");
             this.label2.Size = (new global::System.Drawing.Size(70, 16));
             this.label2.TabIndex = (2);
@@ -2953,7 +2953,7 @@
             this.label1.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = (true);
             this.label1.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
-            this.label1.Location = (new global::System.Drawing.Point(402, 52));
+            this.label1.Location = (new global::System.Drawing.Point(407, 52));
             this.label1.Name = ("label1");
             this.label1.Size = (new global::System.Drawing.Size(32, 16));
             this.label1.TabIndex = (0);
@@ -2984,7 +2984,7 @@
             this.AutoScaleDimensions = (new global::System.Drawing.SizeF(7F, 15F));
             this.AutoScaleMode = (global::System.Windows.Forms.AutoScaleMode.Font);
             this.BackColor = (global::System.Drawing.SystemColors.Control);
-            this.ClientSize = (new global::System.Drawing.Size(1096, 660));
+            this.ClientSize = (new global::System.Drawing.Size(1101, 660));
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = (global::System.Windows.Forms.FormBorderStyle.None);

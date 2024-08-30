@@ -637,7 +637,7 @@ namespace Application_Desktop.Admin_Views
 
             DateTimePicker[] startPickers = { dateTimePicker2, dateTimePicker4, dateTimePicker6, dateTimePicker8, dateTimePicker10, dateTimePicker12, dateTimePicker14 };
             DateTimePicker[] endPickers = { dateTimePicker1, dateTimePicker3, dateTimePicker5, dateTimePicker7, dateTimePicker9, dateTimePicker11, dateTimePicker13 };
-            
+
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -727,7 +727,7 @@ namespace Application_Desktop.Admin_Views
                 MessageBox.Show(ex.Message);
             }
             finally { conn.Close(); }
-           
+
         }
     }
 }

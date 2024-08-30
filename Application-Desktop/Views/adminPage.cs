@@ -171,6 +171,16 @@ namespace Application_Desktop.Views
         {
 
         }
+
+        private void mainPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnEmployee_Click(object sender, EventArgs e)
+        {
+            LoadForm(new employeeProfile());
+        }
     }
 }
 //179, 179
