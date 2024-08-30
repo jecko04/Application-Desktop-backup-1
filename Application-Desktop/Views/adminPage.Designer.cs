@@ -47,12 +47,12 @@
             setupContainer = new FlowLayoutPanel();
             panel3 = new Panel();
             btnSetup = new Button();
+            panel14 = new Panel();
+            btnOfficeHourAndStaff = new Button();
             panel15 = new Panel();
             btnCategory = new Button();
             panel16 = new Panel();
             btnOnlineBooking = new Button();
-            panel14 = new Panel();
-            btnOfficeHourAndStaff = new Button();
             menuContainer = new FlowLayoutPanel();
             panel9 = new Panel();
             btnMenu = new Button();
@@ -77,9 +77,9 @@
             panel5.SuspendLayout();
             setupContainer.SuspendLayout();
             panel3.SuspendLayout();
+            panel14.SuspendLayout();
             panel15.SuspendLayout();
             panel16.SuspendLayout();
-            panel14.SuspendLayout();
             menuContainer.SuspendLayout();
             panel9.SuspendLayout();
             panel6.SuspendLayout();
@@ -89,7 +89,6 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.White;
             panel1.Controls.Add(btnSidebar);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -218,7 +217,6 @@
             btnEmployee.Text = "              Employee Profile";
             btnEmployee.TextAlign = ContentAlignment.MiddleLeft;
             btnEmployee.UseVisualStyleBackColor = false;
-            btnEmployee.Click += btnEmployee_Click;
             // 
             // panel11
             // 
@@ -281,10 +279,9 @@
             // 
             setupContainer.BackColor = Color.FromArgb(31, 97, 141);
             setupContainer.Controls.Add(panel3);
+            setupContainer.Controls.Add(panel14);
             setupContainer.Controls.Add(panel15);
             setupContainer.Controls.Add(panel16);
-            setupContainer.Controls.Add(panel14);
-            setupContainer.FlowDirection = FlowDirection.RightToLeft;
             setupContainer.Location = new Point(0, 136);
             setupContainer.Margin = new Padding(0);
             setupContainer.Name = "setupContainer";
@@ -320,10 +317,39 @@
             btnSetup.UseVisualStyleBackColor = false;
             btnSetup.Click += btnSetup_Click;
             // 
+            // panel14
+            // 
+            panel14.Controls.Add(btnOfficeHourAndStaff);
+            panel14.Location = new Point(0, 34);
+            panel14.Margin = new Padding(0);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(179, 34);
+            panel14.TabIndex = 4;
+            // 
+            // btnOfficeHourAndStaff
+            // 
+            btnOfficeHourAndStaff.BackColor = Color.FromArgb(31, 97, 141);
+            btnOfficeHourAndStaff.Dock = DockStyle.Fill;
+            btnOfficeHourAndStaff.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
+            btnOfficeHourAndStaff.FlatStyle = FlatStyle.Flat;
+            btnOfficeHourAndStaff.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnOfficeHourAndStaff.ForeColor = SystemColors.ButtonFace;
+            btnOfficeHourAndStaff.Image = (Image)resources.GetObject("btnOfficeHourAndStaff.Image");
+            btnOfficeHourAndStaff.ImageAlign = ContentAlignment.MiddleLeft;
+            btnOfficeHourAndStaff.Location = new Point(0, 0);
+            btnOfficeHourAndStaff.Margin = new Padding(0);
+            btnOfficeHourAndStaff.Name = "btnOfficeHourAndStaff";
+            btnOfficeHourAndStaff.Size = new Size(179, 34);
+            btnOfficeHourAndStaff.TabIndex = 3;
+            btnOfficeHourAndStaff.Text = "              Office Hour and Staff";
+            btnOfficeHourAndStaff.TextAlign = ContentAlignment.MiddleLeft;
+            btnOfficeHourAndStaff.UseVisualStyleBackColor = false;
+            btnOfficeHourAndStaff.Click += btnOfficeHourAndStaff_Click;
+            // 
             // panel15
             // 
             panel15.Controls.Add(btnCategory);
-            panel15.Location = new Point(0, 34);
+            panel15.Location = new Point(0, 68);
             panel15.Margin = new Padding(0);
             panel15.Name = "panel15";
             panel15.Size = new Size(179, 34);
@@ -344,7 +370,7 @@
             btnCategory.Name = "btnCategory";
             btnCategory.Size = new Size(179, 34);
             btnCategory.TabIndex = 3;
-            btnCategory.Text = "              Appointment";
+            btnCategory.Text = "              Appointment Category";
             btnCategory.TextAlign = ContentAlignment.MiddleLeft;
             btnCategory.UseVisualStyleBackColor = false;
             btnCategory.Click += btnCategory_Click;
@@ -352,7 +378,7 @@
             // panel16
             // 
             panel16.Controls.Add(btnOnlineBooking);
-            panel16.Location = new Point(0, 68);
+            panel16.Location = new Point(0, 102);
             panel16.Margin = new Padding(0);
             panel16.Name = "panel16";
             panel16.Size = new Size(179, 34);
@@ -377,35 +403,6 @@
             btnOnlineBooking.TextAlign = ContentAlignment.MiddleLeft;
             btnOnlineBooking.UseVisualStyleBackColor = false;
             btnOnlineBooking.Click += btnOnlineBooking_Click;
-            // 
-            // panel14
-            // 
-            panel14.Controls.Add(btnOfficeHourAndStaff);
-            panel14.Location = new Point(0, 102);
-            panel14.Margin = new Padding(0);
-            panel14.Name = "panel14";
-            panel14.Size = new Size(179, 34);
-            panel14.TabIndex = 4;
-            // 
-            // btnOfficeHourAndStaff
-            // 
-            btnOfficeHourAndStaff.BackColor = Color.FromArgb(31, 97, 141);
-            btnOfficeHourAndStaff.Dock = DockStyle.Fill;
-            btnOfficeHourAndStaff.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
-            btnOfficeHourAndStaff.FlatStyle = FlatStyle.Flat;
-            btnOfficeHourAndStaff.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnOfficeHourAndStaff.ForeColor = SystemColors.ButtonFace;
-            btnOfficeHourAndStaff.Image = (Image)resources.GetObject("btnOfficeHourAndStaff.Image");
-            btnOfficeHourAndStaff.ImageAlign = ContentAlignment.MiddleLeft;
-            btnOfficeHourAndStaff.Location = new Point(0, 0);
-            btnOfficeHourAndStaff.Margin = new Padding(0);
-            btnOfficeHourAndStaff.Name = "btnOfficeHourAndStaff";
-            btnOfficeHourAndStaff.Size = new Size(179, 34);
-            btnOfficeHourAndStaff.TabIndex = 3;
-            btnOfficeHourAndStaff.Text = "              Employee";
-            btnOfficeHourAndStaff.TextAlign = ContentAlignment.MiddleLeft;
-            btnOfficeHourAndStaff.UseVisualStyleBackColor = false;
-            btnOfficeHourAndStaff.Click += btnOfficeHourAndStaff_Click;
             // 
             // menuContainer
             // 
@@ -543,7 +540,6 @@
             mainPanel.Padding = new Padding(15, 0, 15, 0);
             mainPanel.Size = new Size(1101, 660);
             mainPanel.TabIndex = 3;
-            mainPanel.Paint += mainPanel_Paint;
             // 
             // menuTransition
             // 
@@ -568,9 +564,10 @@
             Controls.Add(mainPanel);
             Controls.Add(sidebarContainer);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "adminPage";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Admin";
+            Text = "adminPage";
             Load += adminPage_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)btnSidebar).EndInit();
@@ -583,9 +580,9 @@
             panel5.ResumeLayout(false);
             setupContainer.ResumeLayout(false);
             panel3.ResumeLayout(false);
+            panel14.ResumeLayout(false);
             panel15.ResumeLayout(false);
             panel16.ResumeLayout(false);
-            panel14.ResumeLayout(false);
             menuContainer.ResumeLayout(false);
             panel9.ResumeLayout(false);
             panel6.ResumeLayout(false);
