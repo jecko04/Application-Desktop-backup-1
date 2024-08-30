@@ -1,5 +1,6 @@
 ﻿using Application_Desktop.Admin_Sub_Views;
 using Application_Desktop.Models;
+using Application_Desktop.Screen;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,17 @@ namespace Application_Desktop.Admin_Views
         public setupAppointmentTypes()
         {
             InitializeComponent();
+        }
+
+        void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
+        {
+            alertBox alertbox = new alertBox();
+            alertbox.BackColor = backcolor;
+            alertbox.ColorAlertBox = color;
+            alertbox.TitleAlertBox = title;
+            alertbox.SubTitleAlertBox = subtitle;
+            alertbox.IconAlertBox = icon;
+            alertbox.Show();
         }
 
         private void setupAppointmentTypes_Load(object sender, EventArgs e)
@@ -111,10 +123,12 @@ namespace Application_Desktop.Admin_Views
                     cmd.Parameters.AddWithValue("@updatedAt", now);
                     cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("The category has been successfully created.",
+                    /*MessageBox.Show("The category has been successfully created.",
                                     "Category Creation Success",
                                     MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);
+                                    MessageBoxIcon.Information);*/
+
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The category has been successfully created", Properties.Resources.success);
 
                     txtTitle.Text = "";
                     txtDescription.Text = "";
@@ -334,14 +348,16 @@ namespace Application_Desktop.Admin_Views
 
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("The category has been successfully updated.",
+                        /*MessageBox.Show("The category has been successfully updated.",
                                     "Category Update Success",
                                     MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);
+                                    MessageBoxIcon.Information);*/
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The category has been successfully updated", Properties.Resources.success);
                     }
                     else
                     {
-                        MessageBox.Show("No record found with the provided ID.");
+                        //MessageBox.Show("No record found with the provided ID.");
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "No record found with the provided ID", Properties.Resources.success);
                     }
 
                     txtFetchTitle.Text = "";
@@ -407,10 +423,12 @@ namespace Application_Desktop.Admin_Views
             {
                 errorProvider1.SetError(borderFetchTitle, "Please Select Categories");
 
-                MessageBox.Show("Please select a title first before proceeding.",
+                /*MessageBox.Show("Please select a title first before proceeding.",
                                 "Title Not Selected",
                                 MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
+                                MessageBoxIcon.Warning);*/
+
+                AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Please select a title before proceeding", Properties.Resources.warning);
 
                 valid = false;
             }
@@ -421,7 +439,8 @@ namespace Application_Desktop.Admin_Views
                 int categoryId = GetSelectedCategoryId();
                 if (categoryId == -1)
                 {
-                    MessageBox.Show("No matching category found. Please check the title and try again.");
+                    //MessageBox.Show("No matching category found. Please check the title and try again.");
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "No matching category found. Please check the title and try again", Properties.Resources.error);
                     valid = false;
                 }
                 else
@@ -542,10 +561,12 @@ namespace Application_Desktop.Admin_Views
                     cmd.ExecuteNonQuery();
                 }
 
-                MessageBox.Show("Office hours saved successfully.",
+                /*MessageBox.Show("Office hours saved successfully.",
                                 "Success",
                                 MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
+                                MessageBoxIcon.Information);*/
+
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Office hours saved successfully", Properties.Resources.success);
             }
             catch (Exception ex)
             {
@@ -637,7 +658,7 @@ namespace Application_Desktop.Admin_Views
 
             DateTimePicker[] startPickers = { dateTimePicker2, dateTimePicker4, dateTimePicker6, dateTimePicker8, dateTimePicker10, dateTimePicker12, dateTimePicker14 };
             DateTimePicker[] endPickers = { dateTimePicker1, dateTimePicker3, dateTimePicker5, dateTimePicker7, dateTimePicker9, dateTimePicker11, dateTimePicker13 };
-            
+
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -727,7 +748,7 @@ namespace Application_Desktop.Admin_Views
                 MessageBox.Show(ex.Message);
             }
             finally { conn.Close(); }
-           
+
         }
     }
 }

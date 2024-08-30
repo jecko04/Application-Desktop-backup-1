@@ -171,6 +171,11 @@ namespace Application_Desktop.Views
         {
 
         }
+
+        private void btnEmployee_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 //179, 179

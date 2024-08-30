@@ -217,6 +217,7 @@
             btnEmployee.Text = "              Employee Profile";
             btnEmployee.TextAlign = ContentAlignment.MiddleLeft;
             btnEmployee.UseVisualStyleBackColor = false;
+            btnEmployee.Click += btnEmployee_Click;
             // 
             // panel11
             // 
@@ -279,8 +280,8 @@
             // 
             setupContainer.BackColor = Color.FromArgb(31, 97, 141);
             setupContainer.Controls.Add(panel3);
-            setupContainer.Controls.Add(panel14);
             setupContainer.Controls.Add(panel15);
+            setupContainer.Controls.Add(panel14);
             setupContainer.Controls.Add(panel16);
             setupContainer.Location = new Point(0, 136);
             setupContainer.Margin = new Padding(0);
@@ -320,7 +321,7 @@
             // panel14
             // 
             panel14.Controls.Add(btnOfficeHourAndStaff);
-            panel14.Location = new Point(0, 34);
+            panel14.Location = new Point(0, 68);
             panel14.Margin = new Padding(0);
             panel14.Name = "panel14";
             panel14.Size = new Size(179, 34);
@@ -341,7 +342,7 @@
             btnOfficeHourAndStaff.Name = "btnOfficeHourAndStaff";
             btnOfficeHourAndStaff.Size = new Size(179, 34);
             btnOfficeHourAndStaff.TabIndex = 3;
-            btnOfficeHourAndStaff.Text = "              Office Hour and Staff";
+            btnOfficeHourAndStaff.Text = "              Employee";
             btnOfficeHourAndStaff.TextAlign = ContentAlignment.MiddleLeft;
             btnOfficeHourAndStaff.UseVisualStyleBackColor = false;
             btnOfficeHourAndStaff.Click += btnOfficeHourAndStaff_Click;
@@ -349,7 +350,7 @@
             // panel15
             // 
             panel15.Controls.Add(btnCategory);
-            panel15.Location = new Point(0, 68);
+            panel15.Location = new Point(0, 34);
             panel15.Margin = new Padding(0);
             panel15.Name = "panel15";
             panel15.Size = new Size(179, 34);
@@ -370,7 +371,7 @@
             btnCategory.Name = "btnCategory";
             btnCategory.Size = new Size(179, 34);
             btnCategory.TabIndex = 3;
-            btnCategory.Text = "              Appointment Category";
+            btnCategory.Text = "              Appointment";
             btnCategory.TextAlign = ContentAlignment.MiddleLeft;
             btnCategory.UseVisualStyleBackColor = false;
             btnCategory.Click += btnCategory_Click;
@@ -564,10 +565,9 @@
             Controls.Add(mainPanel);
             Controls.Add(sidebarContainer);
             Controls.Add(panel1);
-            FormBorderStyle = FormBorderStyle.None;
             Name = "adminPage";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "adminPage";
+            Text = "Admin";
             Load += adminPage_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)btnSidebar).EndInit();
