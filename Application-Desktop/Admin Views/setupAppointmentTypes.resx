@@ -60,27 +60,18 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DAAACwwBP0AiyAAAAdxJREFUSEvN1T1IlVEcx/Grg6YOWrgEQoSCoTmIIAaBg0PR0iCILi4OajqIgpgY
-        QmKUoIOCFAQOBq6CkbgJ4iQ6tIgo4eAL+IKiiCaIfX/Puef6XDnd4TwO/uDD/Z/nnHue87zH7kseoREf
-        8R6vkIY7SR12MIEO9GAF03iOSCnEFoqC1k2y0QL1PdUG3wyi15TOfMAXU/plBjWmdOYF5k3plzm8NKUz
-        xfhtSr9MotaUzlRhwZR+6ceAKZ1px3dT+uUnUh1BNZZM6ZdxfDKlM22YNaVfnuAQBUErOXk4QlnQipCv
-        6DZlUt7hhymjRavfQ37QMsnCJuwTrqP4DO3UK2vQ6bJ5gHLovVSBLlzjAJnQSzE8PmX0h12sQ29RG02u
-        SS9xHq/lJP67gQz8N+nQbajToIt5hTew0RFocjvxbaNwRivuxB9oYB9eQxfarqgSegC1U41ZRT3G4m35
-        hVYkpQQabAeJJnmLZxiCMoLwGE2u6COkb0e4L5Ec6M4Id1p/cYxSKM3QNbH9WrmiBWqstp1iEYnok2j/
-        4KI7KZxcXMD2a+V2ctF7KinDsJ0u+kSGo9PlGmftQ1++RNR4mIJOYTiPoev1DVPQpGfQw7aNJkSOvasa
-        oB0sB63E9ljsH9ctiXXjPvq8AAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAGpSURBVEhL7ZY7SxxRGEBHLBRSiKClEqz8ESJWKQQL8REV
+        f4C9kEAsErUUfICFgtobfKCtio0IhtSBQMAiIIJipYWVnjN3d5h9uOzsbumBw36z3Pm+2TvfvXejCvTg
+        Zggr4hjHZmYAr0NYEcc4NjMNL9CEo3iIv/EvPufiSjrGscYHaI4STL6Nd/gdP+NYRr3nB97jFpozYRpv
+        sCu+qo9uvMWp+CrHKc5je4NcxBNM+IcvDdacCXbCEJZ7mlo0V0EH1tzLb1DS4u8FirHdl0IYqKdAPy7j
+        T1zHQSxYZFJLgQ+4hw+4gV9xFV2w59iBCbUUMPkFFiQCCx/hJTb7hWQt4LT45OnkZ9gWwvjzP7oFxWQt
+        sIJOSxpX78cQxnzD/RBmL7CLX0KY8ISTIYwZx6sQhn3jUwirwm5ZC2HCMD5iX3wVRbN4HMKwm9oF1WIr
+        2i2+0DQmdw204h+cwRhfhoeNe3k12Oe2ot2Sf7F5TL6DFmjxC/EGTyE7YwEnsNyppb0onWgr2i1z6Jw7
+        LSbWsv80RtA3X3zupvVYzGOf++u95xc6505L7smj6BWYF4CboJKuxgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="label37.Text" xml:space="preserve">
-    <value>1. The user sets the office hours for each day of the 
-week.
-2. These settings are saved and applied to all future 
-weeks automatically.
-3. Users can modify this recurring schedule at any time 
-if their office hours change.</value>
-  </data>
-  <data name="btnRefresh.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnUpdateRefresh.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAAAU5JREFUOE/VlD1KA0EAhdNqoRjTGuzEG6igjQQSEIKKlUKM0cpG4wVyCgN6GEW9
@@ -91,6 +82,14 @@ if their office hours change.</value>
         6urpc3b1tNiCpxehrGPNn3XI9QcweoCFdtbHcjLxLzBpCnXgT1AvbRvjjzgmlEpfWg/z5+G+gB8AAAAA
         SUVORK5CYII=
 </value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>1. The user sets the office hours for each day of the 
+week.
+2. These settings are saved and applied to all future 
+weeks automatically.
+3. Users can modify this recurring schedule at any time 
+if their office hours change.</value>
   </data>
   <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>

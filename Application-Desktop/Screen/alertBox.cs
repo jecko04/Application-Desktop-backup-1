@@ -21,7 +21,7 @@ namespace Application_Desktop.Screen
         private int progress = 0;
         private void AlertTimer_Tick(object sender, EventArgs e)
         {
-            progress += 2;
+            progress += 4;
             AlertProgressBar.Width = progress;
             if (progress >= 400)
             {

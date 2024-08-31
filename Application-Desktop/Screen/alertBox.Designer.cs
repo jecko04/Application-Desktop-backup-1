@@ -45,6 +45,7 @@
             AlertPicture.Size = new Size(50, 50);
             AlertPicture.TabIndex = 0;
             AlertPicture.TabStop = false;
+            AlertPicture.UseWaitCursor = true;
             // 
             // AlertTitle
             // 
@@ -55,6 +56,7 @@
             AlertTitle.Size = new Size(79, 18);
             AlertTitle.TabIndex = 1;
             AlertTitle.Text = "AlertTitle";
+            AlertTitle.UseWaitCursor = true;
             // 
             // AlernSubTitle
             // 
@@ -66,6 +68,7 @@
             AlernSubTitle.Size = new Size(81, 16);
             AlernSubTitle.TabIndex = 2;
             AlernSubTitle.Text = "AlertSubTitle";
+            AlernSubTitle.UseWaitCursor = true;
             // 
             // AlertTimer
             // 
@@ -80,6 +83,7 @@
             AlertProgressBar.Name = "AlertProgressBar";
             AlertProgressBar.Size = new Size(500, 6);
             AlertProgressBar.TabIndex = 3;
+            AlertProgressBar.UseWaitCursor = true;
             // 
             // elipseControl1
             // 
@@ -100,6 +104,7 @@
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            UseWaitCursor = true;
             Load += alertBox_Load_1;
             ((System.ComponentModel.ISupportInitialize)AlertPicture).EndInit();
             ResumeLayout(false);

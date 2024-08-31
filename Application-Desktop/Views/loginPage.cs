@@ -34,43 +34,43 @@ namespace Application_Desktop.Views
             //Error Provider
             if (string.IsNullOrEmpty(email))
             {
-                errorProvider1.SetError(txtEmail, "Email is required");
+                errorProvider1.SetError(borderEmail, "Email is required");
             }
             else
             {
-                errorProvider1.SetError(txtEmail, string.Empty);
+                errorProvider1.SetError(borderEmail, string.Empty);
             }
             if (string.IsNullOrEmpty(pwd))
             {
-                errorProvider2.SetError(txtPassword, "Password is required");
+                errorProvider2.SetError(borderPassword, "Password is required");
             }
             else
             {
-                errorProvider2.SetError(txtPassword, string.Empty);
+                errorProvider2.SetError(borderPassword, string.Empty);
             }
 
             //Select Data
             if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(pwd))
             {
-                errorProvider1.SetError(txtEmail, "Email is required");
-                errorProvider2.SetError(txtPassword, "Password is required");
+                errorProvider1.SetError(borderEmail, "Email is required");
+                errorProvider2.SetError(borderPassword, "Password is required");
             }
             else if (string.IsNullOrEmpty(email))
             {
-                errorProvider2.SetError(txtPassword, string.Empty);
+                errorProvider2.SetError(borderPassword, string.Empty);
 
-                errorProvider1.SetError(txtEmail, "Email is required");
+                errorProvider1.SetError(borderEmail, "Email is required");
 
             }
             else if (string.IsNullOrEmpty(pwd))
             {
-                errorProvider1.SetError(txtEmail, string.Empty);
+                errorProvider1.SetError(borderEmail, string.Empty);
 
-                errorProvider2.SetError(txtPassword, "Password is required");
+                errorProvider2.SetError(borderPassword, "Password is required");
             }
             else if (
-            errorProvider1.GetError(txtEmail) != string.Empty ||
-            errorProvider2.GetError(txtPassword) != string.Empty
+            errorProvider1.GetError(borderEmail) != string.Empty ||
+            errorProvider2.GetError(borderPassword) != string.Empty
             )
             {
 
@@ -145,8 +145,8 @@ namespace Application_Desktop.Views
                                 }
 
                                 this.Hide();
-                                errorProvider1.SetError(txtEmail, string.Empty);
-                                errorProvider2.SetError(txtPassword, string.Empty);
+                                errorProvider1.SetError(borderEmail, string.Empty);
+                                errorProvider2.SetError(borderPassword, string.Empty);
                                 break;
                             }
 
@@ -154,19 +154,19 @@ namespace Application_Desktop.Views
                     }
                     if (!emailFound)
                     {
-                        errorProvider1.SetError(txtEmail, "Email not found");
+                        errorProvider1.SetError(borderEmail, "Email not found");
                     }
                     else
                     {
-                        errorProvider1.SetError(txtEmail, string.Empty);
+                        errorProvider1.SetError(borderEmail, string.Empty);
                     }
                     if (!passwordVerified)
                     {
-                        errorProvider2.SetError(txtPassword, "Password is incorrect");
+                        errorProvider2.SetError(borderPassword, "Password is incorrect");
                     }
                     else
                     {
-                        errorProvider2.SetError(txtPassword, string.Empty);
+                        errorProvider2.SetError(borderPassword, string.Empty);
                     }
                 }
                 catch (Exception ex)

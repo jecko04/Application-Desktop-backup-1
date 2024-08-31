@@ -1,4 +1,5 @@
 ﻿using Application_Desktop.Models;
+using Application_Desktop.Screen;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,16 @@ namespace Application_Desktop.Admin_Sub_Views
         {
 
         }
-
+        void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
+        {
+            alertBox alertbox = new alertBox();
+            alertbox.BackColor = backcolor;
+            alertbox.ColorAlertBox = color;
+            alertbox.TitleAlertBox = title;
+            alertbox.SubTitleAlertBox = subtitle;
+            alertbox.IconAlertBox = icon;
+            alertbox.Show();
+        }
         private void LoadData()
         {
             int adminBranchID = session.LoggedInSession;
@@ -195,6 +205,7 @@ namespace Application_Desktop.Admin_Sub_Views
 
                     // Delete row from database
                     DeleteFromDatabase(categoriesID);
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The item has been deleted successfully", Properties.Resources.success);
                     LoadData();
                 }
             }
@@ -224,10 +235,7 @@ namespace Application_Desktop.Admin_Sub_Views
                 cmd.Parameters.AddWithValue("categoriesId", categoriesID);
                 cmd.ExecuteNonQuery();
 
-                MessageBox.Show("The item has been successfully deleted.",
-                                "Delete Success",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
+
             }
             catch (Exception ex)
             {

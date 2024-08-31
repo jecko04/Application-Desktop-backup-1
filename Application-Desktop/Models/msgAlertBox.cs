@@ -11,7 +11,10 @@ namespace Application_Desktop.Models
     {
         public static void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
         {
+            
+
             alertBox alertbox = new alertBox();
+
             alertbox.BackColor = backcolor;
             alertbox.ColorAlertBox = color;
             alertbox.TitleAlertBox = title;

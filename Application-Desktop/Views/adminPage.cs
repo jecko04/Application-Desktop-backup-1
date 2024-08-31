@@ -65,7 +65,7 @@ namespace Application_Desktop.Views
             if (setupExpand == false)
             {
                 setupContainer.Height += 10;
-                if (setupContainer.Height >= 179)
+                if (setupContainer.Height >= 130)
                 {
                     setupTransition.Stop();
                     setupExpand = true;

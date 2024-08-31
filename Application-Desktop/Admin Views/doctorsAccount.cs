@@ -1,6 +1,8 @@
 ﻿using Application_Desktop.Admin_Sub_Views;
 using Application_Desktop.Models;
+using Application_Desktop.Screen;
 using Application_Desktop.Sub_sub_Views;
+using ElipseToolDemo;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Application_Desktop.Models.EllipseManager;
 
 namespace Application_Desktop.Admin_Views
 {
@@ -20,8 +23,21 @@ namespace Application_Desktop.Admin_Views
         {
             InitializeComponent();
             LoadData();
+
+            ElipseManager elipseManager = new ElipseManager(5);
+            elipseManager.ApplyElipseToAllButtons(this);
         }
 
+        void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
+        {
+            alertBox alertbox = new alertBox();
+            alertbox.BackColor = backcolor;
+            alertbox.ColorAlertBox = color;
+            alertbox.TitleAlertBox = title;
+            alertbox.SubTitleAlertBox = subtitle;
+            alertbox.IconAlertBox = icon;
+            alertbox.Show();
+        }
         private void LoadData()
         {
             int adminBranchID = session.LoggedInSession;
@@ -50,7 +66,7 @@ namespace Application_Desktop.Admin_Views
                 // Check if adminBranchID was correctly retrieved
                 if (branchID == -1)
                 {
-                    MessageBox.Show("Failed to retrieve the admin's branch ID.");
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "The branch didn't retrieved successfully", Properties.Resources.error);
                     return;
                 }
 
@@ -246,6 +262,7 @@ namespace Application_Desktop.Admin_Views
 
                     // Delete row from database
                     DeleteRowFromDatabase(doctors_ID);
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been deleted successfully", Properties.Resources.success);
                     LoadData();
                 }
             }
@@ -300,6 +317,8 @@ namespace Application_Desktop.Admin_Views
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@doctorsID", doctorsID);
                 cmd.ExecuteNonQuery();
+
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been deleted successfully", Properties.Resources.success);
             }
             catch (Exception ex)
             {
@@ -337,13 +356,17 @@ namespace Application_Desktop.Admin_Views
                         int doctorsID = Convert.ToInt32(row.Cells["Doctors_ID"].Value);
                         viewDentalDoctorAccount.Rows.RemoveAt(i);
                         DeleteRowFromDatabase(doctorsID);
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been deleted successfully", Properties.Resources.success);
+
+
                     }
                 }
 
                 // If no rows were selected, show a message box
                 if (!hasSelectedRows)
                 {
-                    MessageBox.Show("No rows were selected for deletion.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("No rows were selected for deletion.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "No rows were selected for deletion", Properties.Resources.error);
                 }
             }
         }

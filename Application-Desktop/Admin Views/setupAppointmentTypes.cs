@@ -1,6 +1,7 @@
 ﻿using Application_Desktop.Admin_Sub_Views;
 using Application_Desktop.Models;
 using Application_Desktop.Screen;
+using ElipseToolDemo;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -12,14 +13,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Application_Desktop.Models.EllipseManager;
 
 namespace Application_Desktop.Admin_Views
 {
     public partial class setupAppointmentTypes : Form
     {
+
         public setupAppointmentTypes()
         {
             InitializeComponent();
+            ElipseManager elipseManager = new ElipseManager(5);
+            elipseManager.ApplyElipseToAllButtons(this);
+
         }
 
         void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
@@ -38,6 +44,7 @@ namespace Application_Desktop.Admin_Views
             GetTitle();
             LoadOfficeHour();
             LoadIsClosed();
+
         }
 
         // It get branch Id
@@ -122,11 +129,6 @@ namespace Application_Desktop.Admin_Views
                     cmd.Parameters.AddWithValue("@createdAt", now);
                     cmd.Parameters.AddWithValue("@updatedAt", now);
                     cmd.ExecuteNonQuery();
-
-                    /*MessageBox.Show("The category has been successfully created.",
-                                    "Category Creation Success",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);*/
 
                     AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The category has been successfully created", Properties.Resources.success);
 
@@ -294,17 +296,6 @@ namespace Application_Desktop.Admin_Views
         }
 
 
-        //Refresh
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            GetTitle();
-
-            // Optionally, clear details if needed
-            txtFetchTitle.Text = "";
-            txtFetchDescription.Text = "";
-            txtFetchDuration.Text = "";
-            txtFetchFrequency.Text = "";
-        }
 
         // Update the categories
         private void UpdateCategory(int categoryId)
@@ -348,16 +339,11 @@ namespace Application_Desktop.Admin_Views
 
                     if (rowsAffected > 0)
                     {
-                        /*MessageBox.Show("The category has been successfully updated.",
-                                    "Category Update Success",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);*/
                         AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The category has been successfully updated", Properties.Resources.success);
                     }
                     else
                     {
-                        //MessageBox.Show("No record found with the provided ID.");
-                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "No record found with the provided ID", Properties.Resources.success);
+                        AlertBox(Color.LightPink, Color.DarkRed, "Error", "No record found with the provided ID", Properties.Resources.error);
                     }
 
                     txtFetchTitle.Text = "";
@@ -423,11 +409,6 @@ namespace Application_Desktop.Admin_Views
             {
                 errorProvider1.SetError(borderFetchTitle, "Please Select Categories");
 
-                /*MessageBox.Show("Please select a title first before proceeding.",
-                                "Title Not Selected",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);*/
-
                 AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Please select a title before proceeding", Properties.Resources.warning);
 
                 valid = false;
@@ -439,7 +420,6 @@ namespace Application_Desktop.Admin_Views
                 int categoryId = GetSelectedCategoryId();
                 if (categoryId == -1)
                 {
-                    //MessageBox.Show("No matching category found. Please check the title and try again.");
                     AlertBox(Color.LightPink, Color.DarkRed, "Error", "No matching category found. Please check the title and try again", Properties.Resources.error);
                     valid = false;
                 }
@@ -560,11 +540,6 @@ namespace Application_Desktop.Admin_Views
                     // Execute the query for each day
                     cmd.ExecuteNonQuery();
                 }
-
-                /*MessageBox.Show("Office hours saved successfully.",
-                                "Success",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);*/
 
                 AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Office hours saved successfully", Properties.Resources.success);
             }
@@ -749,6 +724,22 @@ namespace Application_Desktop.Admin_Views
             }
             finally { conn.Close(); }
 
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnUpdateRefresh_Click(object sender, EventArgs e)
+        {
+            GetTitle();
+
+            // Optionally, clear details if needed
+            txtFetchTitle.Text = "";
+            txtFetchDescription.Text = "";
+            txtFetchDuration.Text = "";
+            txtFetchFrequency.Text = "";
         }
     }
 }

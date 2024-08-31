@@ -64,7 +64,7 @@
   <data name="btnClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAALNJREFUSEvtlFkKwjAURQOCPyKKVXBlLsI9OkDBEVF/dDl6bkmghFKNJn5IDhza
+        DAAACwwBP0AiyAAAALNJREFUSEvtlFkKwjAURQOCPyKKVXBlLsI9OkDBEVF/dDl6bkmghFKNJn5IDhza
         tOHddMgzmUzHHtt4Z04jMzxiUY2a6eES59UoAK1qjw884Qh9+lii5lyxi0EMcIcqcMYxOrTyFereDaf4
         EfWQCypExdf22lfFHX7Ixp7rtUwwCgrZogrXnyYafoBWHy0g6StK+pGH6PZC2296x+CQn2w0tYoDvmoV
         CwxuFY6kzS7zFxjzBEa6N1MMeqy1AAAAAElFTkSuQmCC
@@ -9790,4 +9790,7 @@
         AElFTkSuQmCC
 </value>
   </data>
+  <metadata name="elipseControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>277, 17</value>
+  </metadata>
 </root>

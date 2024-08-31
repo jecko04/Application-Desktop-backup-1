@@ -34,6 +34,8 @@
             panel1 = new Panel();
             btnClose = new PictureBox();
             panel2 = new Panel();
+            elipseControl1 = new ElipseToolDemo.ElipseControl();
+            elipseControl2 = new ElipseToolDemo.ElipseControl();
             ((System.ComponentModel.ISupportInitialize)viewCategoriesDetails).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
@@ -44,11 +46,11 @@
             // 
             viewCategoriesDetails.AllowUserToAddRows = false;
             viewCategoriesDetails.AllowUserToDeleteRows = false;
-            viewCategoriesDetails.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             viewCategoriesDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            viewCategoriesDetails.BackgroundColor = SystemColors.ButtonFace;
+            viewCategoriesDetails.BackgroundColor = Color.White;
             viewCategoriesDetails.BorderStyle = BorderStyle.None;
-            viewCategoriesDetails.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            viewCategoriesDetails.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            viewCategoriesDetails.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             viewCategoriesDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
@@ -58,7 +60,8 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             viewCategoriesDetails.DefaultCellStyle = dataGridViewCellStyle1;
-            viewCategoriesDetails.Location = new Point(-1, -1);
+            viewCategoriesDetails.Dock = DockStyle.Fill;
+            viewCategoriesDetails.Location = new Point(0, 0);
             viewCategoriesDetails.Name = "viewCategoriesDetails";
             viewCategoriesDetails.ReadOnly = true;
             viewCategoriesDetails.RowTemplate.Height = 25;
@@ -93,12 +96,21 @@
             // 
             // panel2
             // 
-            panel2.BorderStyle = BorderStyle.FixedSingle;
             panel2.Controls.Add(viewCategoriesDetails);
             panel2.Location = new Point(0, 29);
             panel2.Name = "panel2";
             panel2.Size = new Size(1000, 260);
             panel2.TabIndex = 4;
+            // 
+            // elipseControl1
+            // 
+            elipseControl1.CornerRadius = 15;
+            elipseControl1.TargetControl = this;
+            // 
+            // elipseControl2
+            // 
+            elipseControl2.CornerRadius = 15;
+            elipseControl2.TargetControl = viewCategoriesDetails;
             // 
             // viewCategories
             // 
@@ -125,5 +137,7 @@
         private Panel panel1;
         private PictureBox btnClose;
         private Panel panel2;
+        private ElipseToolDemo.ElipseControl elipseControl1;
+        private ElipseToolDemo.ElipseControl elipseControl2;
     }
 }

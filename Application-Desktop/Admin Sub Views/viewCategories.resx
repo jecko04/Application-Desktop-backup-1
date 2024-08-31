@@ -61,10 +61,16 @@
   <data name="btnClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAM5JREFUSEvtlEsKwjAQQAMFNyKKVvBkHsI7qgXBL6Ju9DjxTTsRqb/EGhfaBw9K
+        DQAACw0B7QfALAAAAM5JREFUSEvtlEsKwjAQQAMFNyKKVvBkHsI7qgXBL6Ju9DjxTTsRqb/EGhfaBw9K
         JjOTpk1MzZ9jrU308SE+c+5C4hA32NOhG4g1cYIjHfKDhARXKGyxq6ELjLVwJhPggA0N+UFCG5eSDTtM
         NeRWPpUAHHGgoTBIvG6yxxSleCYD8H5xBwXKTebFY74tfZ1WDQpJk4VUVfK30XB1KFZuIKv/TAMKxdsi
         CsT7yCR20J2FZ7/pCcOakPCVgyZXxRpfXRVjDLsqHCTGu+xqfgVjzkpYbiojF9tKAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="elipseControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="elipseControl2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>147, 17</value>
+  </metadata>
 </root>

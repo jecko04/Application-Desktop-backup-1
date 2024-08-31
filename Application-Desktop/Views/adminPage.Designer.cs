@@ -47,10 +47,10 @@
             setupContainer = new FlowLayoutPanel();
             panel3 = new Panel();
             btnSetup = new Button();
-            panel14 = new Panel();
-            btnOfficeHourAndStaff = new Button();
             panel15 = new Panel();
             btnCategory = new Button();
+            panel14 = new Panel();
+            btnOfficeHourAndStaff = new Button();
             panel16 = new Panel();
             btnOnlineBooking = new Button();
             menuContainer = new FlowLayoutPanel();
@@ -66,6 +66,7 @@
             menuTransition = new System.Windows.Forms.Timer(components);
             sidebarTransition = new System.Windows.Forms.Timer(components);
             setupTransition = new System.Windows.Forms.Timer(components);
+            elipseControl1 = new ElipseToolDemo.ElipseControl();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnSidebar).BeginInit();
             sidebarContainer.SuspendLayout();
@@ -77,8 +78,8 @@
             panel5.SuspendLayout();
             setupContainer.SuspendLayout();
             panel3.SuspendLayout();
-            panel14.SuspendLayout();
             panel15.SuspendLayout();
+            panel14.SuspendLayout();
             panel16.SuspendLayout();
             menuContainer.SuspendLayout();
             panel9.SuspendLayout();
@@ -318,35 +319,6 @@
             btnSetup.UseVisualStyleBackColor = false;
             btnSetup.Click += btnSetup_Click;
             // 
-            // panel14
-            // 
-            panel14.Controls.Add(btnOfficeHourAndStaff);
-            panel14.Location = new Point(0, 68);
-            panel14.Margin = new Padding(0);
-            panel14.Name = "panel14";
-            panel14.Size = new Size(179, 34);
-            panel14.TabIndex = 4;
-            // 
-            // btnOfficeHourAndStaff
-            // 
-            btnOfficeHourAndStaff.BackColor = Color.FromArgb(31, 97, 141);
-            btnOfficeHourAndStaff.Dock = DockStyle.Fill;
-            btnOfficeHourAndStaff.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
-            btnOfficeHourAndStaff.FlatStyle = FlatStyle.Flat;
-            btnOfficeHourAndStaff.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnOfficeHourAndStaff.ForeColor = SystemColors.ButtonFace;
-            btnOfficeHourAndStaff.Image = (Image)resources.GetObject("btnOfficeHourAndStaff.Image");
-            btnOfficeHourAndStaff.ImageAlign = ContentAlignment.MiddleLeft;
-            btnOfficeHourAndStaff.Location = new Point(0, 0);
-            btnOfficeHourAndStaff.Margin = new Padding(0);
-            btnOfficeHourAndStaff.Name = "btnOfficeHourAndStaff";
-            btnOfficeHourAndStaff.Size = new Size(179, 34);
-            btnOfficeHourAndStaff.TabIndex = 3;
-            btnOfficeHourAndStaff.Text = "              Employee";
-            btnOfficeHourAndStaff.TextAlign = ContentAlignment.MiddleLeft;
-            btnOfficeHourAndStaff.UseVisualStyleBackColor = false;
-            btnOfficeHourAndStaff.Click += btnOfficeHourAndStaff_Click;
-            // 
             // panel15
             // 
             panel15.Controls.Add(btnCategory);
@@ -375,6 +347,35 @@
             btnCategory.TextAlign = ContentAlignment.MiddleLeft;
             btnCategory.UseVisualStyleBackColor = false;
             btnCategory.Click += btnCategory_Click;
+            // 
+            // panel14
+            // 
+            panel14.Controls.Add(btnOfficeHourAndStaff);
+            panel14.Location = new Point(0, 68);
+            panel14.Margin = new Padding(0);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(179, 34);
+            panel14.TabIndex = 4;
+            // 
+            // btnOfficeHourAndStaff
+            // 
+            btnOfficeHourAndStaff.BackColor = Color.FromArgb(31, 97, 141);
+            btnOfficeHourAndStaff.Dock = DockStyle.Fill;
+            btnOfficeHourAndStaff.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
+            btnOfficeHourAndStaff.FlatStyle = FlatStyle.Flat;
+            btnOfficeHourAndStaff.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnOfficeHourAndStaff.ForeColor = SystemColors.ButtonFace;
+            btnOfficeHourAndStaff.Image = (Image)resources.GetObject("btnOfficeHourAndStaff.Image");
+            btnOfficeHourAndStaff.ImageAlign = ContentAlignment.MiddleLeft;
+            btnOfficeHourAndStaff.Location = new Point(0, 0);
+            btnOfficeHourAndStaff.Margin = new Padding(0);
+            btnOfficeHourAndStaff.Name = "btnOfficeHourAndStaff";
+            btnOfficeHourAndStaff.Size = new Size(179, 34);
+            btnOfficeHourAndStaff.TabIndex = 3;
+            btnOfficeHourAndStaff.Text = "              Employee";
+            btnOfficeHourAndStaff.TextAlign = ContentAlignment.MiddleLeft;
+            btnOfficeHourAndStaff.UseVisualStyleBackColor = false;
+            btnOfficeHourAndStaff.Click += btnOfficeHourAndStaff_Click;
             // 
             // panel16
             // 
@@ -557,6 +558,11 @@
             setupTransition.Interval = 10;
             setupTransition.Tick += setupTransition_Tick;
             // 
+            // elipseControl1
+            // 
+            elipseControl1.CornerRadius = 15;
+            elipseControl1.TargetControl = mainPanel;
+            // 
             // adminPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -580,8 +586,8 @@
             panel5.ResumeLayout(false);
             setupContainer.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            panel14.ResumeLayout(false);
             panel15.ResumeLayout(false);
+            panel14.ResumeLayout(false);
             panel16.ResumeLayout(false);
             menuContainer.ResumeLayout(false);
             panel9.ResumeLayout(false);
@@ -629,5 +635,6 @@
         private Panel panel16;
         private Button btnOnlineBooking;
         private System.Windows.Forms.Timer setupTransition;
+        private ElipseToolDemo.ElipseControl elipseControl1;
     }
 }
