@@ -1,4 +1,5 @@
 ﻿using Application_Desktop.Models;
+using Application_Desktop.Screen;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
 using System;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Application_Desktop.Models.EllipseManager;
 
 namespace Application_Desktop.Sub_sub_Views
 {
@@ -19,6 +21,20 @@ namespace Application_Desktop.Sub_sub_Views
         {
             InitializeComponent();
 
+            ElipseManager elipseManager = new ElipseManager(5);
+            elipseManager.ApplyElipseToAllButtons(this);
+
+        }
+
+        void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
+        {
+            alertBox alertbox = new alertBox();
+            alertbox.BackColor = backcolor;
+            alertbox.ColorAlertBox = color;
+            alertbox.TitleAlertBox = title;
+            alertbox.SubTitleAlertBox = subtitle;
+            alertbox.IconAlertBox = icon;
+            alertbox.Show();
         }
 
         private void registerAdmin_Load(object sender, EventArgs e)
@@ -92,108 +108,108 @@ namespace Application_Desktop.Sub_sub_Views
             //error provider
             if (string.IsNullOrEmpty(first))
             {
-                errorProvider1.SetError(txtfirstName, "First Name is required.");
+                errorProvider1.SetError(borderFirst, "First Name is required.");
             }
             else
             {
-                errorProvider1.SetError(txtfirstName, string.Empty);
+                errorProvider1.SetError(borderFirst, string.Empty);
             }
 
             if (string.IsNullOrEmpty(last))
             {
-                errorProvider2.SetError(txtLastName, "Last Name is required.");
+                errorProvider2.SetError(borderLast, "Last Name is required.");
             }
             else
             {
-                errorProvider2.SetError(txtLastName, string.Empty);
+                errorProvider2.SetError(borderLast, string.Empty);
             }
 
             if (string.IsNullOrEmpty(email))
             {
-                errorProvider3.SetError(txtEmail, "Email is required.");
+                errorProvider3.SetError(borderEmail, "Email is required.");
             }
             else
             {
-                errorProvider3.SetError(txtEmail, string.Empty);
+                errorProvider3.SetError(borderEmail, string.Empty);
             }
 
             if (string.IsNullOrEmpty(role))
             {
-                errorProvider5.SetError(txtRoles, "Role is required.");
+                errorProvider5.SetError(borderRole, "Role is required.");
             }
             else
             {
-                errorProvider5.SetError(txtRoles, string.Empty);
+                errorProvider5.SetError(borderRole, string.Empty);
             }
 
             if (string.IsNullOrEmpty(branch))
             {
-                errorProvider7.SetError(txtBranch, "Branch is required.");
+                errorProvider7.SetError(borderBranch, "Branch is required.");
             }
             else
             {
-                errorProvider7.SetError(txtBranch, string.Empty);
+                errorProvider7.SetError(borderBranch, string.Empty);
             }
 
             //password error provider
             if (string.IsNullOrEmpty(pwd))
             {
-                errorProvider4.SetError(txtPassword, string.Empty);
+                errorProvider4.SetError(borderPass, string.Empty);
 
-                errorProvider4.SetError(txtPassword, "Password is required.");
+                errorProvider4.SetError(borderPass, "Password is required.");
             }
             else if (passwordValidator.IsPasswordValidate(pwd))
             {
 
-                errorProvider4.SetError(txtPassword, string.Empty);
+                errorProvider4.SetError(borderPass, string.Empty);
 
-                errorProvider6.SetError(txtPassword, "Password is valid");
+                errorProvider6.SetError(borderPass, "Password is valid");
             }
             else if (passwordValidator.isPasswordNotValid(pwd))
             {
 
-                errorProvider4.SetError(txtPassword, string.Empty);
+                errorProvider4.SetError(borderPass, string.Empty);
 
-                errorProvider4.SetError(txtPassword, "Password must be at least 8 characters long and contain at least" +
+                errorProvider4.SetError(borderPass, "Password must be at least 8 characters long and contain at least" +
                     " one uppercase letter, one lowercase letter, and one number.");
             }
             else
             {
-                errorProvider4.SetError(txtPassword, string.Empty);
+                errorProvider4.SetError(borderPass, string.Empty);
             }
 
             //email error provider
             if (string.IsNullOrEmpty(email))
             {
-                errorProvider3.SetError(txtEmail, "Email is required.");
-                errorProvider6.SetError(txtEmail, string.Empty);
+                errorProvider3.SetError(borderEmail, "Email is required.");
+                errorProvider6.SetError(borderEmail, string.Empty);
             }
             else
             {
-                errorProvider3.SetError(txtEmail, string.Empty);
+                errorProvider3.SetError(borderEmail, string.Empty);
 
                 // Validate if email format is correct
                 if (!emailValidator.IsEmailValidate(email))
                 {
-                    errorProvider3.SetError(txtEmail, "Email is not valid.");
-                    errorProvider6.SetError(txtEmail, string.Empty);
+                    errorProvider3.SetError(borderEmail, "Email is not valid.");
+                    errorProvider6.SetError(borderEmail, string.Empty);
                 }
                 else
                 {
-                    errorProvider3.SetError(txtEmail, string.Empty);
-                    errorProvider6.SetError(txtEmail, "Email is valid.");
+                    errorProvider3.SetError(borderEmail, string.Empty);
+                    errorProvider6.SetError(borderEmail, "Email is valid.");
 
                     // Check if email already exists
                     try
                     {
                         if (emailValidator.IsEmailAdminExist(email))
                         {
-                            errorProvider3.SetError(txtEmail, "Email already exists. Please use a different email.");
-                            errorProvider6.SetError(txtEmail, string.Empty);
+                            errorProvider3.SetError(borderEmail, "Email already exists. Please use a different email.");
+                            errorProvider6.SetError(borderEmail, string.Empty);
                         }
                         else
                         {
-                            errorProvider3.SetError(txtEmail, string.Empty);
+                            errorProvider3.SetError(borderEmail, string.Empty);
                         }
                     }
                     catch (Exception ex)
@@ -205,30 +221,30 @@ namespace Application_Desktop.Sub_sub_Views
 
             if (string.IsNullOrEmpty(first))
             {
-                errorProvider1.SetError(txtfirstName, "First Name is required.");
+                errorProvider1.SetError(borderFirst, "First Name is required.");
             }
             else if (string.IsNullOrEmpty(last))
             {
-                errorProvider2.SetError(txtLastName, "Last Name is required.");
+                errorProvider2.SetError(borderLast, "Last Name is required.");
             }
             else if (string.IsNullOrEmpty(email))
             {
-                errorProvider3.SetError(txtEmail, "Email is required.");
+                errorProvider3.SetError(borderEmail, "Email is required.");
             }
             else if (string.IsNullOrEmpty(role))
             {
-                errorProvider5.SetError(txtRoles, "Role is required.");
+                errorProvider5.SetError(borderRole, "Role is required.");
             }
             else if (string.IsNullOrEmpty(branch))
             {
-                errorProvider7.SetError(txtBranch, "Branch is required.");
+                errorProvider7.SetError(borderBranch, "Branch is required.");
             }
-            else if (errorProvider1.GetError(txtfirstName) != string.Empty ||
-            errorProvider2.GetError(txtLastName) != string.Empty ||
-            errorProvider3.GetError(txtEmail) != string.Empty ||
-            errorProvider4.GetError(txtPassword) != string.Empty ||
-            errorProvider5.GetError(txtRoles) != string.Empty ||
-            errorProvider5.GetError(txtBranch) != string.Empty
+            else if (errorProvider1.GetError(borderFirst) != string.Empty ||
+            errorProvider2.GetError(borderLast) != string.Empty ||
+            errorProvider3.GetError(borderEmail) != string.Empty ||
+            errorProvider4.GetError(borderPass) != string.Empty ||
+            errorProvider5.GetError(borderRole) != string.Empty ||
+            errorProvider5.GetError(borderBranch) != string.Empty
             )
             {
 
@@ -280,7 +296,9 @@ namespace Application_Desktop.Sub_sub_Views
                         cmd.ExecuteNonQuery();
 
 
-                        MessageBox.Show("Signed-Up Successful");
+                        //MessageBox.Show("Signed-Up Successful
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The admin created successfully", Properties.Resources.success);
+
                         txtfirstName.Text = "";
                         txtLastName.Text = "";
                         txtEmail.Text = "";
