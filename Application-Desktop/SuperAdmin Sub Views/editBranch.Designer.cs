@@ -50,10 +50,53 @@
             btnSave = new Button();
             btnCancel = new Button();
             panel2 = new Panel();
+            borderBranch = new Panel();
+            panel8 = new Panel();
+            panel7 = new Panel();
+            panel6 = new Panel();
+            panel5 = new Panel();
+            elipseControl1 = new ElipseToolDemo.ElipseControl();
+            borderPostal = new Panel();
+            panel9 = new Panel();
+            panel10 = new Panel();
+            panel11 = new Panel();
+            panel12 = new Panel();
+            borderProvince = new Panel();
+            panel13 = new Panel();
+            panel14 = new Panel();
+            panel15 = new Panel();
+            panel16 = new Panel();
+            borderCity = new Panel();
+            panel17 = new Panel();
+            panel18 = new Panel();
+            panel19 = new Panel();
+            panel20 = new Panel();
+            borderBrgy = new Panel();
+            panel21 = new Panel();
+            panel22 = new Panel();
+            panel23 = new Panel();
+            panel24 = new Panel();
+            borderStreet = new Panel();
+            panel25 = new Panel();
+            panel26 = new Panel();
+            panel27 = new Panel();
+            panel28 = new Panel();
+            borderBuildingNumber = new Panel();
+            panel29 = new Panel();
+            panel30 = new Panel();
+            panel31 = new Panel();
+            panel32 = new Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
+            borderBranch.SuspendLayout();
+            borderPostal.SuspendLayout();
+            borderProvince.SuspendLayout();
+            borderCity.SuspendLayout();
+            borderBrgy.SuspendLayout();
+            borderStreet.SuspendLayout();
+            borderBuildingNumber.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -116,7 +159,8 @@
             // 
             txtBname.BorderStyle = BorderStyle.FixedSingle;
             txtBname.Cursor = Cursors.IBeam;
-            txtBname.Location = new Point(193, 29);
+            txtBname.Dock = DockStyle.Fill;
+            txtBname.Location = new Point(0, 0);
             txtBname.Name = "txtBname";
             txtBname.Size = new Size(253, 23);
             txtBname.TabIndex = 3;
@@ -136,7 +180,8 @@
             // 
             txtBnum.BorderStyle = BorderStyle.FixedSingle;
             txtBnum.Cursor = Cursors.IBeam;
-            txtBnum.Location = new Point(193, 79);
+            txtBnum.Dock = DockStyle.Fill;
+            txtBnum.Location = new Point(0, 0);
             txtBnum.Name = "txtBnum";
             txtBnum.Size = new Size(253, 23);
             txtBnum.TabIndex = 5;
@@ -145,7 +190,8 @@
             // 
             txtBrgy.BorderStyle = BorderStyle.FixedSingle;
             txtBrgy.Cursor = Cursors.IBeam;
-            txtBrgy.Location = new Point(193, 181);
+            txtBrgy.Dock = DockStyle.Fill;
+            txtBrgy.Location = new Point(0, 0);
             txtBrgy.Name = "txtBrgy";
             txtBrgy.Size = new Size(253, 23);
             txtBrgy.TabIndex = 9;
@@ -165,7 +211,8 @@
             // 
             txtStreet.BorderStyle = BorderStyle.FixedSingle;
             txtStreet.Cursor = Cursors.IBeam;
-            txtStreet.Location = new Point(193, 131);
+            txtStreet.Dock = DockStyle.Fill;
+            txtStreet.Location = new Point(0, 0);
             txtStreet.Name = "txtStreet";
             txtStreet.Size = new Size(253, 23);
             txtStreet.TabIndex = 7;
@@ -185,7 +232,8 @@
             // 
             txtProvince.BorderStyle = BorderStyle.FixedSingle;
             txtProvince.Cursor = Cursors.IBeam;
-            txtProvince.Location = new Point(193, 285);
+            txtProvince.Dock = DockStyle.Fill;
+            txtProvince.Location = new Point(0, 0);
             txtProvince.Name = "txtProvince";
             txtProvince.Size = new Size(253, 23);
             txtProvince.TabIndex = 13;
@@ -205,7 +253,8 @@
             // 
             txtCity.BorderStyle = BorderStyle.FixedSingle;
             txtCity.Cursor = Cursors.IBeam;
-            txtCity.Location = new Point(193, 235);
+            txtCity.Dock = DockStyle.Fill;
+            txtCity.Location = new Point(0, 0);
             txtCity.Name = "txtCity";
             txtCity.Size = new Size(253, 23);
             txtCity.TabIndex = 11;
@@ -225,7 +274,8 @@
             // 
             txtPostal.BorderStyle = BorderStyle.FixedSingle;
             txtPostal.Cursor = Cursors.IBeam;
-            txtPostal.Location = new Point(193, 343);
+            txtPostal.Dock = DockStyle.Fill;
+            txtPostal.Location = new Point(0, 0);
             txtPostal.Name = "txtPostal";
             txtPostal.Size = new Size(253, 23);
             txtPostal.TabIndex = 15;
@@ -248,9 +298,10 @@
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(378, 388);
+            btnSave.Location = new Point(388, 387);
+            btnSave.Margin = new Padding(1, 0, 0, 0);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(58, 30);
+            btnSave.Size = new Size(58, 24);
             btnSave.TabIndex = 16;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
@@ -263,9 +314,10 @@
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnCancel.ForeColor = Color.White;
-            btnCancel.Location = new Point(304, 388);
+            btnCancel.Location = new Point(329, 387);
+            btnCancel.Margin = new Padding(0);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(58, 30);
+            btnCancel.Size = new Size(58, 24);
             btnCancel.TabIndex = 17;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = false;
@@ -273,27 +325,367 @@
             // 
             // panel2
             // 
-            panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(borderBuildingNumber);
+            panel2.Controls.Add(borderStreet);
+            panel2.Controls.Add(borderBrgy);
+            panel2.Controls.Add(borderCity);
+            panel2.Controls.Add(borderProvince);
+            panel2.Controls.Add(borderPostal);
+            panel2.Controls.Add(borderBranch);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(btnCancel);
-            panel2.Controls.Add(txtBname);
             panel2.Controls.Add(btnSave);
             panel2.Controls.Add(label2);
-            panel2.Controls.Add(txtPostal);
-            panel2.Controls.Add(txtBnum);
             panel2.Controls.Add(label8);
             panel2.Controls.Add(label4);
-            panel2.Controls.Add(txtProvince);
-            panel2.Controls.Add(txtStreet);
             panel2.Controls.Add(label5);
             panel2.Controls.Add(label3);
-            panel2.Controls.Add(txtCity);
-            panel2.Controls.Add(txtBrgy);
             panel2.Controls.Add(label6);
             panel2.Location = new Point(1, 29);
             panel2.Name = "panel2";
             panel2.Size = new Size(466, 438);
             panel2.TabIndex = 18;
+            // 
+            // borderBranch
+            // 
+            borderBranch.Controls.Add(panel8);
+            borderBranch.Controls.Add(panel7);
+            borderBranch.Controls.Add(panel6);
+            borderBranch.Controls.Add(panel5);
+            borderBranch.Controls.Add(txtBname);
+            borderBranch.Location = new Point(193, 29);
+            borderBranch.Name = "borderBranch";
+            borderBranch.Size = new Size(253, 23);
+            borderBranch.TabIndex = 18;
+            // 
+            // panel8
+            // 
+            panel8.BackColor = Color.FromArgb(52, 152, 219);
+            panel8.Dock = DockStyle.Left;
+            panel8.Location = new Point(0, 1);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(1, 21);
+            panel8.TabIndex = 20;
+            // 
+            // panel7
+            // 
+            panel7.BackColor = Color.FromArgb(52, 152, 219);
+            panel7.Dock = DockStyle.Top;
+            panel7.Location = new Point(0, 0);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(252, 1);
+            panel7.TabIndex = 20;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.FromArgb(52, 152, 219);
+            panel6.Dock = DockStyle.Bottom;
+            panel6.Location = new Point(0, 22);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(252, 1);
+            panel6.TabIndex = 20;
+            // 
+            // panel5
+            // 
+            panel5.BackColor = Color.FromArgb(52, 152, 219);
+            panel5.Dock = DockStyle.Right;
+            panel5.Location = new Point(252, 0);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(1, 23);
+            panel5.TabIndex = 20;
+            // 
+            // elipseControl1
+            // 
+            elipseControl1.CornerRadius = 15;
+            elipseControl1.TargetControl = this;
+            // 
+            // borderPostal
+            // 
+            borderPostal.Controls.Add(panel9);
+            borderPostal.Controls.Add(panel10);
+            borderPostal.Controls.Add(panel11);
+            borderPostal.Controls.Add(panel12);
+            borderPostal.Controls.Add(txtPostal);
+            borderPostal.Location = new Point(193, 343);
+            borderPostal.Name = "borderPostal";
+            borderPostal.Size = new Size(253, 23);
+            borderPostal.TabIndex = 21;
+            // 
+            // panel9
+            // 
+            panel9.BackColor = Color.FromArgb(52, 152, 219);
+            panel9.Dock = DockStyle.Left;
+            panel9.Location = new Point(0, 1);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(1, 21);
+            panel9.TabIndex = 20;
+            // 
+            // panel10
+            // 
+            panel10.BackColor = Color.FromArgb(52, 152, 219);
+            panel10.Dock = DockStyle.Top;
+            panel10.Location = new Point(0, 0);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(252, 1);
+            panel10.TabIndex = 20;
+            // 
+            // panel11
+            // 
+            panel11.BackColor = Color.FromArgb(52, 152, 219);
+            panel11.Dock = DockStyle.Bottom;
+            panel11.Location = new Point(0, 22);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(252, 1);
+            panel11.TabIndex = 20;
+            // 
+            // panel12
+            // 
+            panel12.BackColor = Color.FromArgb(52, 152, 219);
+            panel12.Dock = DockStyle.Right;
+            panel12.Location = new Point(252, 0);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(1, 23);
+            panel12.TabIndex = 20;
+            // 
+            // borderProvince
+            // 
+            borderProvince.Controls.Add(panel13);
+            borderProvince.Controls.Add(panel14);
+            borderProvince.Controls.Add(panel15);
+            borderProvince.Controls.Add(panel16);
+            borderProvince.Controls.Add(txtProvince);
+            borderProvince.Location = new Point(193, 285);
+            borderProvince.Name = "borderProvince";
+            borderProvince.Size = new Size(253, 23);
+            borderProvince.TabIndex = 22;
+            // 
+            // panel13
+            // 
+            panel13.BackColor = Color.FromArgb(52, 152, 219);
+            panel13.Dock = DockStyle.Left;
+            panel13.Location = new Point(0, 1);
+            panel13.Name = "panel13";
+            panel13.Size = new Size(1, 21);
+            panel13.TabIndex = 20;
+            // 
+            // panel14
+            // 
+            panel14.BackColor = Color.FromArgb(52, 152, 219);
+            panel14.Dock = DockStyle.Top;
+            panel14.Location = new Point(0, 0);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(252, 1);
+            panel14.TabIndex = 20;
+            // 
+            // panel15
+            // 
+            panel15.BackColor = Color.FromArgb(52, 152, 219);
+            panel15.Dock = DockStyle.Bottom;
+            panel15.Location = new Point(0, 22);
+            panel15.Name = "panel15";
+            panel15.Size = new Size(252, 1);
+            panel15.TabIndex = 20;
+            // 
+            // panel16
+            // 
+            panel16.BackColor = Color.FromArgb(52, 152, 219);
+            panel16.Dock = DockStyle.Right;
+            panel16.Location = new Point(252, 0);
+            panel16.Name = "panel16";
+            panel16.Size = new Size(1, 23);
+            panel16.TabIndex = 20;
+            // 
+            // borderCity
+            // 
+            borderCity.Controls.Add(panel17);
+            borderCity.Controls.Add(panel18);
+            borderCity.Controls.Add(panel19);
+            borderCity.Controls.Add(panel20);
+            borderCity.Controls.Add(txtCity);
+            borderCity.Location = new Point(193, 235);
+            borderCity.Name = "borderCity";
+            borderCity.Size = new Size(253, 23);
+            borderCity.TabIndex = 23;
+            // 
+            // panel17
+            // 
+            panel17.BackColor = Color.FromArgb(52, 152, 219);
+            panel17.Dock = DockStyle.Left;
+            panel17.Location = new Point(0, 1);
+            panel17.Name = "panel17";
+            panel17.Size = new Size(1, 21);
+            panel17.TabIndex = 20;
+            // 
+            // panel18
+            // 
+            panel18.BackColor = Color.FromArgb(52, 152, 219);
+            panel18.Dock = DockStyle.Top;
+            panel18.Location = new Point(0, 0);
+            panel18.Name = "panel18";
+            panel18.Size = new Size(252, 1);
+            panel18.TabIndex = 20;
+            // 
+            // panel19
+            // 
+            panel19.BackColor = Color.FromArgb(52, 152, 219);
+            panel19.Dock = DockStyle.Bottom;
+            panel19.Location = new Point(0, 22);
+            panel19.Name = "panel19";
+            panel19.Size = new Size(252, 1);
+            panel19.TabIndex = 20;
+            // 
+            // panel20
+            // 
+            panel20.BackColor = Color.FromArgb(52, 152, 219);
+            panel20.Dock = DockStyle.Right;
+            panel20.Location = new Point(252, 0);
+            panel20.Name = "panel20";
+            panel20.Size = new Size(1, 23);
+            panel20.TabIndex = 20;
+            // 
+            // borderBrgy
+            // 
+            borderBrgy.Controls.Add(panel21);
+            borderBrgy.Controls.Add(panel22);
+            borderBrgy.Controls.Add(panel23);
+            borderBrgy.Controls.Add(panel24);
+            borderBrgy.Controls.Add(txtBrgy);
+            borderBrgy.Location = new Point(193, 181);
+            borderBrgy.Name = "borderBrgy";
+            borderBrgy.Size = new Size(253, 23);
+            borderBrgy.TabIndex = 24;
+            // 
+            // panel21
+            // 
+            panel21.BackColor = Color.FromArgb(52, 152, 219);
+            panel21.Dock = DockStyle.Left;
+            panel21.Location = new Point(0, 1);
+            panel21.Name = "panel21";
+            panel21.Size = new Size(1, 21);
+            panel21.TabIndex = 20;
+            // 
+            // panel22
+            // 
+            panel22.BackColor = Color.FromArgb(52, 152, 219);
+            panel22.Dock = DockStyle.Top;
+            panel22.Location = new Point(0, 0);
+            panel22.Name = "panel22";
+            panel22.Size = new Size(252, 1);
+            panel22.TabIndex = 20;
+            // 
+            // panel23
+            // 
+            panel23.BackColor = Color.FromArgb(52, 152, 219);
+            panel23.Dock = DockStyle.Bottom;
+            panel23.Location = new Point(0, 22);
+            panel23.Name = "panel23";
+            panel23.Size = new Size(252, 1);
+            panel23.TabIndex = 20;
+            // 
+            // panel24
+            // 
+            panel24.BackColor = Color.FromArgb(52, 152, 219);
+            panel24.Dock = DockStyle.Right;
+            panel24.Location = new Point(252, 0);
+            panel24.Name = "panel24";
+            panel24.Size = new Size(1, 23);
+            panel24.TabIndex = 20;
+            // 
+            // borderStreet
+            // 
+            borderStreet.Controls.Add(panel25);
+            borderStreet.Controls.Add(panel26);
+            borderStreet.Controls.Add(panel27);
+            borderStreet.Controls.Add(panel28);
+            borderStreet.Controls.Add(txtStreet);
+            borderStreet.Location = new Point(193, 131);
+            borderStreet.Name = "borderStreet";
+            borderStreet.Size = new Size(253, 23);
+            borderStreet.TabIndex = 25;
+            // 
+            // panel25
+            // 
+            panel25.BackColor = Color.FromArgb(52, 152, 219);
+            panel25.Dock = DockStyle.Left;
+            panel25.Location = new Point(0, 1);
+            panel25.Name = "panel25";
+            panel25.Size = new Size(1, 21);
+            panel25.TabIndex = 20;
+            // 
+            // panel26
+            // 
+            panel26.BackColor = Color.FromArgb(52, 152, 219);
+            panel26.Dock = DockStyle.Top;
+            panel26.Location = new Point(0, 0);
+            panel26.Name = "panel26";
+            panel26.Size = new Size(252, 1);
+            panel26.TabIndex = 20;
+            // 
+            // panel27
+            // 
+            panel27.BackColor = Color.FromArgb(52, 152, 219);
+            panel27.Dock = DockStyle.Bottom;
+            panel27.Location = new Point(0, 22);
+            panel27.Name = "panel27";
+            panel27.Size = new Size(252, 1);
+            panel27.TabIndex = 20;
+            // 
+            // panel28
+            // 
+            panel28.BackColor = Color.FromArgb(52, 152, 219);
+            panel28.Dock = DockStyle.Right;
+            panel28.Location = new Point(252, 0);
+            panel28.Name = "panel28";
+            panel28.Size = new Size(1, 23);
+            panel28.TabIndex = 20;
+            // 
+            // borderBuildingNumber
+            // 
+            borderBuildingNumber.Controls.Add(panel29);
+            borderBuildingNumber.Controls.Add(panel30);
+            borderBuildingNumber.Controls.Add(panel31);
+            borderBuildingNumber.Controls.Add(panel32);
+            borderBuildingNumber.Controls.Add(txtBnum);
+            borderBuildingNumber.Location = new Point(193, 79);
+            borderBuildingNumber.Name = "borderBuildingNumber";
+            borderBuildingNumber.Size = new Size(253, 23);
+            borderBuildingNumber.TabIndex = 26;
+            // 
+            // panel29
+            // 
+            panel29.BackColor = Color.FromArgb(52, 152, 219);
+            panel29.Dock = DockStyle.Left;
+            panel29.Location = new Point(0, 1);
+            panel29.Name = "panel29";
+            panel29.Size = new Size(1, 21);
+            panel29.TabIndex = 20;
+            // 
+            // panel30
+            // 
+            panel30.BackColor = Color.FromArgb(52, 152, 219);
+            panel30.Dock = DockStyle.Top;
+            panel30.Location = new Point(0, 0);
+            panel30.Name = "panel30";
+            panel30.Size = new Size(252, 1);
+            panel30.TabIndex = 20;
+            // 
+            // panel31
+            // 
+            panel31.BackColor = Color.FromArgb(52, 152, 219);
+            panel31.Dock = DockStyle.Bottom;
+            panel31.Location = new Point(0, 22);
+            panel31.Name = "panel31";
+            panel31.Size = new Size(252, 1);
+            panel31.TabIndex = 20;
+            // 
+            // panel32
+            // 
+            panel32.BackColor = Color.FromArgb(52, 152, 219);
+            panel32.Dock = DockStyle.Right;
+            panel32.Location = new Point(252, 0);
+            panel32.Name = "panel32";
+            panel32.Size = new Size(1, 23);
+            panel32.TabIndex = 20;
             // 
             // editBranch
             // 
@@ -314,6 +706,20 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            borderBranch.ResumeLayout(false);
+            borderBranch.PerformLayout();
+            borderPostal.ResumeLayout(false);
+            borderPostal.PerformLayout();
+            borderProvince.ResumeLayout(false);
+            borderProvince.PerformLayout();
+            borderCity.ResumeLayout(false);
+            borderCity.PerformLayout();
+            borderBrgy.ResumeLayout(false);
+            borderBrgy.PerformLayout();
+            borderStreet.ResumeLayout(false);
+            borderStreet.PerformLayout();
+            borderBuildingNumber.ResumeLayout(false);
+            borderBuildingNumber.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -340,5 +746,41 @@
         private Label label7;
         private PictureBox btnClose;
         private Panel panel2;
+        private ElipseToolDemo.ElipseControl elipseControl1;
+        private Panel borderBranch;
+        private Panel panel8;
+        private Panel panel7;
+        private Panel panel6;
+        private Panel panel5;
+        private Panel borderStreet;
+        private Panel panel25;
+        private Panel panel26;
+        private Panel panel27;
+        private Panel panel28;
+        private Panel borderBrgy;
+        private Panel panel21;
+        private Panel panel22;
+        private Panel panel23;
+        private Panel panel24;
+        private Panel borderCity;
+        private Panel panel17;
+        private Panel panel18;
+        private Panel panel19;
+        private Panel panel20;
+        private Panel borderProvince;
+        private Panel panel13;
+        private Panel panel14;
+        private Panel panel15;
+        private Panel panel16;
+        private Panel borderPostal;
+        private Panel panel9;
+        private Panel panel10;
+        private Panel panel11;
+        private Panel panel12;
+        private Panel borderBuildingNumber;
+        private Panel panel29;
+        private Panel panel30;
+        private Panel panel31;
+        private Panel panel32;
     }
 }

@@ -1,8 +1,10 @@
 ﻿using Application_Desktop.Models;
+using Application_Desktop.Screen;
 using Isopoh.Cryptography.Blake2b;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Text.RegularExpressions;
+using static Application_Desktop.Models.EllipseManager;
 
 namespace Application_Desktop
 {
@@ -12,7 +14,19 @@ namespace Application_Desktop
         {
             InitializeComponent();
             PopulateRoleName();
+            ElipseManager elipseManager = new ElipseManager(5);
+            elipseManager.ApplyElipseToAllButtons(this);
+        }
 
+        void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
+        {
+            alertBox alertbox = new alertBox();
+            alertbox.BackColor = backcolor;
+            alertbox.ColorAlertBox = color;
+            alertbox.TitleAlertBox = title;
+            alertbox.SubTitleAlertBox = subtitle;
+            alertbox.IconAlertBox = icon;
+            alertbox.Show();
         }
         private void registerSuperAdmin_Load(object sender, EventArgs e)
         {
@@ -92,133 +106,133 @@ namespace Application_Desktop
             //Error Provider for textbox/combo box
             if (string.IsNullOrEmpty(fname))
             {
-                errorProvider1.SetError(txtFirstName, "First Name is required.");
+                errorProvider1.SetError(borderFirst, "First Name is required.");
             }
             else
             {
-                errorProvider1.SetError(txtFirstName, string.Empty);
+                errorProvider1.SetError(borderFirst, string.Empty);
             }
 
             if (string.IsNullOrEmpty(lname))
             {
-                errorProvider2.SetError(txtLastName, "Last Name is required.");
+                errorProvider2.SetError(borderLast, "Last Name is required.");
             }
             else
             {
-                errorProvider2.SetError(txtLastName, string.Empty);
+                errorProvider2.SetError(borderLast, string.Empty);
             }
 
             if (string.IsNullOrEmpty(email))
             {
-                errorProvider3.SetError(txtEmail, "Email is required.");
+                errorProvider3.SetError(borderEmail, "Email is required.");
             }
             else
             {
-                errorProvider3.SetError(txtEmail, string.Empty);
+                errorProvider3.SetError(borderEmail, string.Empty);
             }
 
             if (string.IsNullOrEmpty(roles))
             {
-                errorProvider5.SetError(txtComboBox, "Roles is required.");
+                errorProvider5.SetError(borderRole, "Roles is required.");
             }
             else
             {
-                errorProvider5.SetError(txtComboBox, string.Empty);
+                errorProvider5.SetError(borderRole, string.Empty);
             }
 
 
             //Password error Provider
             if (string.IsNullOrEmpty(pwd) || string.IsNullOrEmpty(rePwd))
             {
-                errorProvider6.SetError(txtRePwd, string.Empty);
-                errorProvider6.SetError(txtPwd, string.Empty);
+                errorProvider6.SetError(borderRePass, string.Empty);
+                errorProvider6.SetError(borderPass, string.Empty);
 
-                errorProvider8.SetError(txtRePwd, string.Empty);
-                errorProvider8.SetError(txtPwd, string.Empty);
+                errorProvider8.SetError(borderRePass, string.Empty);
+                errorProvider8.SetError(borderPass, string.Empty);
 
-                errorProvider9.SetError(txtRePwd, string.Empty);
-                errorProvider9.SetError(txtPwd, string.Empty);
+                errorProvider9.SetError(borderRePass, string.Empty);
+                errorProvider9.SetError(borderPass, string.Empty);
 
-                errorProvider4.SetError(txtPwd, "Password is required.");
-                errorProvider4.SetError(txtRePwd, "Confirm Password is required.");
+                errorProvider4.SetError(borderPass, "Password is required.");
+                errorProvider4.SetError(borderRePass, "Confirm Password is required.");
             }
             else if (pwd != rePwd)
             {
-                errorProvider4.SetError(txtPwd, string.Empty);
-                errorProvider4.SetError(txtRePwd, string.Empty);
+                errorProvider4.SetError(borderPass, string.Empty);
+                errorProvider4.SetError(borderRePass, string.Empty);
 
-                errorProvider8.SetError(txtRePwd, string.Empty);
-                errorProvider8.SetError(txtPwd, string.Empty);
+                errorProvider8.SetError(borderRePass, string.Empty);
+                errorProvider8.SetError(borderPass, string.Empty);
 
-                errorProvider9.SetError(txtRePwd, string.Empty);
-                errorProvider9.SetError(txtPwd, string.Empty);
+                errorProvider9.SetError(borderRePass, string.Empty);
+                errorProvider9.SetError(borderPass, string.Empty);
 
-                errorProvider6.SetError(txtPwd, "Password are not match.");
-                errorProvider6.SetError(txtRePwd, "Password are not match.");
+                errorProvider6.SetError(borderPass, "Password are not match.");
+                errorProvider6.SetError(borderRePass, "Password are not match.");
             }
             else if (passwordValidator.IsPasswordValidate(pwd) || passwordValidator.IsPasswordValidate(rePwd))
             {
-                errorProvider4.SetError(txtPwd, string.Empty);
-                errorProvider4.SetError(txtRePwd, string.Empty);
+                errorProvider4.SetError(borderPass, string.Empty);
+                errorProvider4.SetError(borderRePass, string.Empty);
 
-                errorProvider6.SetError(txtRePwd, string.Empty);
-                errorProvider6.SetError(txtPwd, string.Empty);
+                errorProvider6.SetError(borderRePass, string.Empty);
+                errorProvider6.SetError(borderPass, string.Empty);
 
-                errorProvider8.SetError(txtRePwd, string.Empty);
-                errorProvider8.SetError(txtPwd, string.Empty);
+                errorProvider8.SetError(borderRePass, string.Empty);
+                errorProvider8.SetError(borderPass, string.Empty);
 
-                errorProvider9.SetError(txtPwd, "Password is valid");
-                errorProvider9.SetError(txtRePwd, "Password is valid");
+                errorProvider9.SetError(borderPass, "Password is valid");
+                errorProvider9.SetError(borderRePass, "Password is valid");
             }
             else if (passwordValidator.isPasswordNotValid(pwd) || passwordValidator.isPasswordNotValid(rePwd))
             {
-                errorProvider4.SetError(txtPwd, string.Empty);
-                errorProvider4.SetError(txtRePwd, string.Empty);
+                errorProvider4.SetError(borderPass, string.Empty);
+                errorProvider4.SetError(borderRePass, string.Empty);
 
-                errorProvider6.SetError(txtRePwd, string.Empty);
-                errorProvider6.SetError(txtPwd, string.Empty);
+                errorProvider6.SetError(borderRePass, string.Empty);
+                errorProvider6.SetError(borderPass, string.Empty);
 
-                errorProvider9.SetError(txtRePwd, string.Empty);
-                errorProvider9.SetError(txtPwd, string.Empty);
+                errorProvider9.SetError(borderRePass, string.Empty);
+                errorProvider9.SetError(borderPass, string.Empty);
 
-                errorProvider8.SetError(txtPwd, "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.");
-                errorProvider8.SetError(txtRePwd, "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.");
+                errorProvider8.SetError(borderPass, "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.");
+                errorProvider8.SetError(borderRePass, "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.");
 
             }
 
             //Email error Provider
             if (string.IsNullOrEmpty(email))
             {
-                errorProvider3.SetError(txtEmail, "Email is required.");
-                errorProvider10.SetError(txtEmail, string.Empty);
-                errorProvider11.SetError(txtEmail, string.Empty);
+                errorProvider3.SetError(borderEmail, "Email is required.");
+                errorProvider10.SetError(borderEmail, string.Empty);
+                errorProvider11.SetError(borderEmail, string.Empty);
             }
             else
             {
-                errorProvider3.SetError(txtEmail, string.Empty);
+                errorProvider3.SetError(borderEmail, string.Empty);
 
                 // Validate if email format is correct
                 if (emailValidator.IsEmailValidate(email))
                 {
-                    errorProvider3.SetError(txtEmail, string.Empty);
-                    errorProvider11.SetError(txtEmail, string.Empty);
-                    errorProvider10.SetError(txtEmail, "Email is valid.");
+                    errorProvider3.SetError(borderEmail, string.Empty);
+                    errorProvider11.SetError(borderEmail, string.Empty);
+                    errorProvider10.SetError(borderEmail, "Email is valid.");
 
                     // Check if email exists in superadmin tables
                     try
                     {
                         if (emailValidator.IsEmailSuperAdminExist(email))
                         {
-                            errorProvider3.SetError(txtEmail, string.Empty);
-                            errorProvider10.SetError(txtEmail, string.Empty);
-                            errorProvider11.SetError(txtEmail, "Email is already registered as a superadmin.");
+                            errorProvider3.SetError(borderEmail, string.Empty);
+                            errorProvider10.SetError(borderEmail, string.Empty);
+                            errorProvider11.SetError(borderEmail, "Email is already registered as a superadmin.");
                         }
                         else
                         {
-                            errorProvider3.SetError(txtEmail, string.Empty);
-                            errorProvider11.SetError(txtEmail, string.Empty);
+                            errorProvider3.SetError(borderEmail, string.Empty);
+                            errorProvider11.SetError(borderEmail, string.Empty);
 
-                            errorProvider10.SetError(txtEmail, "Email is valid.");
+                            errorProvider10.SetError(borderEmail, "Email is valid.");
                         }
                     }
                     catch (Exception ex)
@@ -228,8 +242,8 @@ namespace Application_Desktop
                 }
                 else
                 {
-                    errorProvider10.SetError(txtEmail, string.Empty);
-                    errorProvider11.SetError(txtEmail, "Email is not valid.");
+                    errorProvider10.SetError(borderEmail, string.Empty);
+                    errorProvider11.SetError(borderEmail, "Email is not valid.");
                 }
             }
 
@@ -237,63 +251,63 @@ namespace Application_Desktop
             //Input data to database
             if (!checkBox)
             {
-                errorProvider7.SetError(txtCheckBox, "Check the Terms and Condition.");
+                errorProvider7.SetError(borderTerms, "Check the Terms and Condition.");
             }
             else
             {
-                errorProvider7.SetError(txtCheckBox, string.Empty);
+                errorProvider7.SetError(borderTerms, string.Empty);
 
                 if (string.IsNullOrEmpty(pwd) || string.IsNullOrEmpty(rePwd))
                 {
-                    errorProvider4.SetError(txtPwd, "Password is required.");
-                    errorProvider4.SetError(txtRePwd, "Confirm Password is required.");
+                    errorProvider4.SetError(borderPass, "Password is required.");
+                    errorProvider4.SetError(borderRePass, "Confirm Password is required.");
                 }
                 else
                 {
-                    errorProvider4.SetError(txtPwd, string.Empty);
-                    errorProvider4.SetError(txtRePwd, string.Empty);
+                    errorProvider4.SetError(borderPass, string.Empty);
+                    errorProvider4.SetError(borderRePass, string.Empty);
 
                     if (pwd != rePwd)
                     {
-                        errorProvider6.SetError(txtPwd, "Passwords do not match.");
-                        errorProvider6.SetError(txtRePwd, "Passwords do not match.");
+                        errorProvider6.SetError(borderPass, "Passwords do not match.");
+                        errorProvider6.SetError(borderRePass, "Passwords do not match.");
                     }
                     else
                     {
-                        errorProvider6.SetError(txtPwd, string.Empty);
-                        errorProvider6.SetError(txtRePwd, string.Empty);
+                        errorProvider6.SetError(borderPass, string.Empty);
+                        errorProvider6.SetError(borderRePass, string.Empty);
 
                         if (passwordValidator.isPasswordNotValid(pwd) || passwordValidator.isPasswordNotValid(rePwd))
                         {
-                            errorProvider8.SetError(txtPwd, "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.");
-                            errorProvider8.SetError(txtRePwd, "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.");
+                            errorProvider8.SetError(borderPass, "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.");
+                            errorProvider8.SetError(borderRePass, "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.");
                         }
                         else
                         {
-                            errorProvider8.SetError(txtPwd, string.Empty);
-                            errorProvider8.SetError(txtRePwd, string.Empty);
+                            errorProvider8.SetError(borderPass, string.Empty);
+                            errorProvider8.SetError(borderRePass, string.Empty);
 
                             if (string.IsNullOrEmpty(email))
                             {
-                                errorProvider3.SetError(txtEmail, "Email is required.");
+                                errorProvider3.SetError(borderEmail, "Email is required.");
                             }
                             else
                             {
-                                errorProvider3.SetError(txtEmail, string.Empty);
+                                errorProvider3.SetError(borderEmail, string.Empty);
 
                                 if (emailValidator.IsEmailNotValidate(email))
                                 {
-                                    errorProvider11.SetError(txtEmail, "Email is not valid");
+                                    errorProvider11.SetError(borderEmail, "Email is not valid");
                                 }
                                 else
                                 {
-                                    errorProvider11.SetError(txtEmail, string.Empty);
+                                    errorProvider11.SetError(borderEmail, string.Empty);
 
                                     if (
-                                        errorProvider1.GetError(txtFirstName) != string.Empty ||
-                                        errorProvider2.GetError(txtLastName) != string.Empty ||
-                                        errorProvider3.GetError(txtEmail) != string.Empty ||
-                                        errorProvider5.GetError(txtComboBox) != string.Empty
+                                        errorProvider1.GetError(borderFirst) != string.Empty ||
+                                        errorProvider2.GetError(borderLast) != string.Empty ||
+                                        errorProvider3.GetError(borderEmail) != string.Empty ||
+                                        errorProvider5.GetError(borderRole) != string.Empty
                                     )
                                     {
                                         // Do nothing if there are errors
@@ -330,7 +344,10 @@ namespace Application_Desktop
 
                                             int rowsAffected = cmd.ExecuteNonQuery();
 
-                                            MessageBox.Show("Successful");
+                                            //MessageBox.Show("Successful");
+
+                                            AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Super admin created successfully", Properties.Resources.success);
+
                                             txtFirstName.Text = "";
                                             txtLastName.Text = "";
                                             txtEmail.Text = "";
@@ -340,10 +357,10 @@ namespace Application_Desktop
                                             checkBox = false;
 
                                             // Clear error providers
-                                            errorProvider9.SetError(txtRePwd, string.Empty);
-                                            errorProvider9.SetError(txtPwd, string.Empty);
-                                            errorProvider7.SetError(txtCheckBox, string.Empty);
-                                            errorProvider10.SetError(txtEmail, string.Empty);
+                                            errorProvider9.SetError(borderRePass, string.Empty);
+                                            errorProvider9.SetError(borderPass, string.Empty);
+                                            errorProvider7.SetError(borderTerms, string.Empty);
+                                            errorProvider10.SetError(borderEmail, string.Empty);
                                         }
                                         catch (Exception ex)
                                         {

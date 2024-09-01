@@ -1,4 +1,5 @@
 ﻿using Application_Desktop.Models;
+using Application_Desktop.Screen;
 using Google.Protobuf.WellKnownTypes;
 using MySql.Data.MySqlClient;
 using System;
@@ -11,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Application_Desktop.Models.EllipseManager;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace Application_Desktop.Sub_sub_Views
@@ -30,8 +32,21 @@ namespace Application_Desktop.Sub_sub_Views
             txtCity.Text = city;
             txtProvince.Text = province;
             txtPostal.Text = postal;
+
+            ElipseManager elipseManager = new ElipseManager(5);
+            elipseManager.ApplyElipseToAllButtons(this);
         }
 
+        void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
+        {
+            alertBox alertbox = new alertBox();
+            alertbox.BackColor = backcolor;
+            alertbox.ColorAlertBox = color;
+            alertbox.TitleAlertBox = title;
+            alertbox.SubTitleAlertBox = subtitle;
+            alertbox.IconAlertBox = icon;
+            alertbox.Show();
+        }
         private void editBranch_Load(object sender, EventArgs e)
         {
 
@@ -79,8 +94,8 @@ namespace Application_Desktop.Sub_sub_Views
 
                 cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Branch details updated successfully.");
-
+                //MessageBox.Show("Branch details updated successfully.");
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The branch data has been updated successfully", Properties.Resources.success);
                 this.Close();
             }
             catch (Exception ex)

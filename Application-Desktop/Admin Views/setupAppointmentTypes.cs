@@ -409,7 +409,7 @@ namespace Application_Desktop.Admin_Views
             {
                 errorProvider1.SetError(borderFetchTitle, "Please Select Categories");
 
-                AlertBox(Color.LightGoldenrodYellow, Color.Goldenrod, "Warning", "Please select a title before proceeding", Properties.Resources.warning);
+                AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "Information", "Please select a title before proceeding", Properties.Resources.information);
 
                 valid = false;
             }

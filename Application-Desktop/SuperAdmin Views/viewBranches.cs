@@ -1,4 +1,5 @@
 ﻿using Application_Desktop.Models;
+using Application_Desktop.Screen;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Application_Desktop.Models.EllipseManager;
 
 namespace Application_Desktop.Sub_sub_Views
 {
@@ -19,8 +21,21 @@ namespace Application_Desktop.Sub_sub_Views
             InitializeComponent();
             this.AcceptButton = btnSearch;
             LoadData();
+
+            ElipseManager elipseManager = new ElipseManager(5);
+            elipseManager.ApplyElipseToAllButtons(this);
         }
 
+        void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
+        {
+            alertBox alertbox = new alertBox();
+            alertbox.BackColor = backcolor;
+            alertbox.ColorAlertBox = color;
+            alertbox.TitleAlertBox = title;
+            alertbox.SubTitleAlertBox = subtitle;
+            alertbox.IconAlertBox = icon;
+            alertbox.Show();
+        }
         private void LoadData()
         {
             string query = "SELECT * FROM branch";
@@ -74,9 +89,10 @@ namespace Application_Desktop.Sub_sub_Views
 
         private void DeleteRowFromDatabase(int branchID)
         {
-            string query = @"Delete from branch Where Branch_ID = @branchID;
-                Delete from admin Where Branch_ID = @branchID;
-                Delete from users Where Branch_ID = @branchID;";
+            string query = @"Delete from branch Where Branch_ID = @branchID";
+
+                /*Delete from admin Where Branch_ID = @branchID;
+                Delete from users Where Branch_ID = @branchID;*/
 
             MySqlConnection conn = databaseHelper.getConnection();
             try
@@ -87,9 +103,9 @@ namespace Application_Desktop.Sub_sub_Views
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@BranchID", branchID);
+                cmd.Parameters.AddWithValue("branchID", branchID);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Branch deleted successfully.");
+                //MessageBox.Show("Branch deleted successfully.");
                 LoadData();
 
             }
@@ -102,6 +118,12 @@ namespace Application_Desktop.Sub_sub_Views
                 conn.Close();
             }
         }
+
+        private void SelectBranch()
+        {
+
+        }
+
 
         private editBranch editBranchInstance;
         private void viewBranchData_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -149,6 +171,8 @@ namespace Application_Desktop.Sub_sub_Views
 
                     // Delete row from database
                     DeleteRowFromDatabase(branchID);
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The branch data has been deleted successfully", Properties.Resources.success);
+                    
                 }
             }
         }
@@ -221,6 +245,11 @@ namespace Application_Desktop.Sub_sub_Views
             {
                 conn.Close();
             }
+        }
+
+        private void viewBranches_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

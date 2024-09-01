@@ -1,4 +1,5 @@
 ﻿using Application_Desktop.Models;
+using Application_Desktop.Screen;
 using Application_Desktop.Sub_sub_Views;
 using Google.Protobuf.WellKnownTypes;
 using MySql.Data.MySqlClient;
@@ -12,6 +13,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Application_Desktop.Models.EllipseManager;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
@@ -26,6 +28,20 @@ namespace Application_Desktop.Sub_Views
             InitializeComponent();
             LoadData();
             LoadSuperAdmin();
+
+            ElipseManager elipseManager = new ElipseManager(5);
+            elipseManager.ApplyElipseToAllButtons(this);
+        }
+
+        void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
+        {
+            alertBox alertbox = new alertBox();
+            alertbox.BackColor = backcolor;
+            alertbox.ColorAlertBox = color;
+            alertbox.TitleAlertBox = title;
+            alertbox.SubTitleAlertBox = subtitle;
+            alertbox.IconAlertBox = icon;
+            alertbox.Show();
         }
 
         private void registerAdmin_Load(object sender, EventArgs e)
@@ -701,9 +717,15 @@ namespace Application_Desktop.Sub_Views
                 }
 
                 // If no rows were selected, show a message box
-                if (!hasSelectedRows)
+                if (hasSelectedRows)
                 {
-                    MessageBox.Show("No rows were selected for deletion.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("No rows were selected for deletion.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The Selected rows were deleted successfully", Properties.Resources.success);
+                }
+                else
+                {
+                    AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "Information", "No rows were selected for deletion", Properties.Resources.information);
+
                 }
             }
         }

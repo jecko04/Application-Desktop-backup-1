@@ -28,26 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(viewBranches));
             viewBranchData = new DataGridView();
-            panel1 = new Panel();
+            btnAddBranch = new Button();
             panel2 = new Panel();
-            flowLayoutPanel1 = new FlowLayoutPanel();
             pictureBox3 = new PictureBox();
             txtSearchBox = new TextBox();
             btnSearch = new Button();
             btnRefresh = new Button();
-            flowLayoutPanel2 = new FlowLayoutPanel();
-            btnAddBranch = new Button();
+            elipseControl1 = new ElipseToolDemo.ElipseControl();
             ((System.ComponentModel.ISupportInitialize)viewBranchData).BeginInit();
-            panel1.SuspendLayout();
             panel2.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            flowLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // viewBranchData
@@ -56,83 +51,82 @@
             viewBranchData.AllowUserToDeleteRows = false;
             viewBranchData.AllowUserToResizeColumns = false;
             viewBranchData.AllowUserToResizeRows = false;
-            viewBranchData.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            viewBranchData.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             viewBranchData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            viewBranchData.BackgroundColor = SystemColors.ButtonFace;
+            viewBranchData.BackgroundColor = Color.White;
             viewBranchData.BorderStyle = BorderStyle.None;
-            viewBranchData.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(123, 44, 191);
-            dataGridViewCellStyle4.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.Padding = new Padding(3);
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(149, 86, 203);
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            viewBranchData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            viewBranchData.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            viewBranchData.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(123, 44, 191);
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new Padding(3);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(149, 86, 203);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            viewBranchData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             viewBranchData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(41, 128, 185);
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            viewBranchData.DefaultCellStyle = dataGridViewCellStyle5;
-            viewBranchData.Location = new Point(0, 30);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(41, 128, 185);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            viewBranchData.DefaultCellStyle = dataGridViewCellStyle2;
+            viewBranchData.Location = new Point(-1, 57);
             viewBranchData.Margin = new Padding(0);
             viewBranchData.Name = "viewBranchData";
             viewBranchData.ReadOnly = true;
             viewBranchData.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Control;
-            dataGridViewCellStyle6.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(149, 86, 203);
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            viewBranchData.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(149, 86, 203);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            viewBranchData.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             viewBranchData.RowTemplate.Height = 25;
-            viewBranchData.Size = new Size(800, 423);
+            viewBranchData.Size = new Size(986, 355);
             viewBranchData.TabIndex = 0;
             viewBranchData.CellContentClick += viewBranchData_CellContentClick;
             // 
-            // panel1
+            // btnAddBranch
             // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.Controls.Add(panel2);
-            panel1.Controls.Add(viewBranchData);
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(800, 453);
-            panel1.TabIndex = 1;
+            btnAddBranch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAddBranch.BackColor = Color.FromArgb(52, 152, 219);
+            btnAddBranch.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnAddBranch.FlatStyle = FlatStyle.Flat;
+            btnAddBranch.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAddBranch.ForeColor = SystemColors.ButtonFace;
+            btnAddBranch.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAddBranch.Location = new Point(994, 57);
+            btnAddBranch.Margin = new Padding(0);
+            btnAddBranch.Name = "btnAddBranch";
+            btnAddBranch.Size = new Size(85, 24);
+            btnAddBranch.TabIndex = 9;
+            btnAddBranch.Text = "Create New";
+            btnAddBranch.TextAlign = ContentAlignment.MiddleLeft;
+            btnAddBranch.UseVisualStyleBackColor = false;
+            btnAddBranch.Click += btnAddBranch_Click;
             // 
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel2.BackColor = Color.White;
-            panel2.Controls.Add(flowLayoutPanel1);
-            panel2.Controls.Add(flowLayoutPanel2);
-            panel2.Location = new Point(0, 0);
+            panel2.BackColor = SystemColors.Control;
+            panel2.Controls.Add(pictureBox3);
+            panel2.Controls.Add(txtSearchBox);
+            panel2.Controls.Add(btnSearch);
+            panel2.Location = new Point(-1, -1);
             panel2.Name = "panel2";
-            panel2.Size = new Size(800, 30);
+            panel2.Size = new Size(1102, 30);
             panel2.TabIndex = 3;
-            // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.BackColor = Color.White;
-            flowLayoutPanel1.Controls.Add(pictureBox3);
-            flowLayoutPanel1.Controls.Add(txtSearchBox);
-            flowLayoutPanel1.Controls.Add(btnSearch);
-            flowLayoutPanel1.Controls.Add(btnRefresh);
-            flowLayoutPanel1.Location = new Point(0, 0);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(423, 30);
-            flowLayoutPanel1.TabIndex = 1;
             // 
             // pictureBox3
             // 
-            pictureBox3.BackColor = Color.White;
+            pictureBox3.BackColor = SystemColors.Control;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
             pictureBox3.Location = new Point(3, 3);
             pictureBox3.Name = "pictureBox3";
@@ -146,7 +140,7 @@
             txtSearchBox.BorderStyle = BorderStyle.FixedSingle;
             txtSearchBox.Cursor = Cursors.IBeam;
             txtSearchBox.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSearchBox.Location = new Point(42, 3);
+            txtSearchBox.Location = new Point(42, 4);
             txtSearchBox.Name = "txtSearchBox";
             txtSearchBox.PlaceholderText = " Search";
             txtSearchBox.Size = new Size(194, 23);
@@ -161,10 +155,10 @@
             btnSearch.ForeColor = SystemColors.ButtonFace;
             btnSearch.Image = (Image)resources.GetObject("btnSearch.Image");
             btnSearch.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSearch.Location = new Point(239, 0);
+            btnSearch.Location = new Point(239, 4);
             btnSearch.Margin = new Padding(0);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(32, 30);
+            btnSearch.Size = new Size(32, 24);
             btnSearch.TabIndex = 10;
             btnSearch.TextAlign = ContentAlignment.MiddleLeft;
             btnSearch.UseVisualStyleBackColor = false;
@@ -172,82 +166,56 @@
             // 
             // btnRefresh
             // 
+            btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnRefresh.BackColor = Color.FromArgb(52, 152, 219);
             btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
             btnRefresh.FlatStyle = FlatStyle.Flat;
             btnRefresh.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnRefresh.ForeColor = SystemColors.ButtonFace;
             btnRefresh.Image = (Image)resources.GetObject("btnRefresh.Image");
-            btnRefresh.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRefresh.Location = new Point(276, 0);
-            btnRefresh.Margin = new Padding(5, 0, 0, 0);
+            btnRefresh.Location = new Point(994, 82);
+            btnRefresh.Margin = new Padding(0, 1, 0, 0);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(32, 30);
+            btnRefresh.Size = new Size(85, 24);
             btnRefresh.TabIndex = 11;
             btnRefresh.TextAlign = ContentAlignment.MiddleLeft;
             btnRefresh.UseVisualStyleBackColor = false;
             btnRefresh.Click += btnRefresh_Click;
             // 
-            // flowLayoutPanel2
+            // elipseControl1
             // 
-            flowLayoutPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            flowLayoutPanel2.BackColor = Color.White;
-            flowLayoutPanel2.Controls.Add(btnAddBranch);
-            flowLayoutPanel2.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutPanel2.Location = new Point(496, 0);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(304, 30);
-            flowLayoutPanel2.TabIndex = 2;
-            // 
-            // btnAddBranch
-            // 
-            btnAddBranch.BackColor = Color.FromArgb(231, 76, 60);
-            btnAddBranch.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
-            btnAddBranch.FlatStyle = FlatStyle.Flat;
-            btnAddBranch.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAddBranch.ForeColor = SystemColors.ButtonFace;
-            btnAddBranch.Image = (Image)resources.GetObject("btnAddBranch.Image");
-            btnAddBranch.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAddBranch.Location = new Point(219, 0);
-            btnAddBranch.Margin = new Padding(0);
-            btnAddBranch.Name = "btnAddBranch";
-            btnAddBranch.Size = new Size(85, 30);
-            btnAddBranch.TabIndex = 9;
-            btnAddBranch.Text = "              Add";
-            btnAddBranch.TextAlign = ContentAlignment.MiddleLeft;
-            btnAddBranch.UseVisualStyleBackColor = false;
-            btnAddBranch.Click += btnAddBranch_Click;
+            elipseControl1.CornerRadius = 15;
+            elipseControl1.TargetControl = viewBranchData;
             // 
             // viewBranches
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(panel1);
+            ClientSize = new Size(1101, 660);
+            Controls.Add(panel2);
+            Controls.Add(btnAddBranch);
+            Controls.Add(viewBranchData);
+            Controls.Add(btnRefresh);
             FormBorderStyle = FormBorderStyle.None;
             Name = "viewBranches";
             Text = "viewBranches";
+            Load += viewBranches_Load;
             ((System.ComponentModel.ISupportInitialize)viewBranchData).EndInit();
-            panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
+            panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            flowLayoutPanel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
         private DataGridView viewBranchData;
-        private Panel panel1;
-        private FlowLayoutPanel flowLayoutPanel1;
         private TextBox txtSearchBox;
-        private FlowLayoutPanel flowLayoutPanel2;
         private Button btnAddBranch;
         private PictureBox pictureBox3;
         private Panel panel2;
         private Button btnSearch;
         private Button btnRefresh;
+        private ElipseToolDemo.ElipseControl elipseControl1;
     }
 }

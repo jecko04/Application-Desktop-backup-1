@@ -43,6 +43,8 @@
             btnBranches = new Button();
             panel3 = new Panel();
             btnAdmin = new Button();
+            panel11 = new Panel();
+            btnUsers = new Button();
             panel4 = new Panel();
             btnEmployee = new Button();
             menuContainer = new FlowLayoutPanel();
@@ -57,8 +59,6 @@
             menuTransition = new System.Windows.Forms.Timer(components);
             sidebarTransition = new System.Windows.Forms.Timer(components);
             mainPanel = new Panel();
-            panel11 = new Panel();
-            btnUsers = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnSidebar).BeginInit();
             sidebarContainer.SuspendLayout();
@@ -67,13 +67,13 @@
             panel7.SuspendLayout();
             panel5.SuspendLayout();
             panel3.SuspendLayout();
+            panel11.SuspendLayout();
             panel4.SuspendLayout();
             menuContainer.SuspendLayout();
             panel9.SuspendLayout();
             panel6.SuspendLayout();
             panel10.SuspendLayout();
             panel8.SuspendLayout();
-            panel11.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -251,6 +251,34 @@
             btnAdmin.UseVisualStyleBackColor = false;
             btnAdmin.Click += btnAdmin_Click;
             // 
+            // panel11
+            // 
+            panel11.Controls.Add(btnUsers);
+            panel11.Location = new Point(0, 102);
+            panel11.Margin = new Padding(0);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(179, 34);
+            panel11.TabIndex = 9;
+            // 
+            // btnUsers
+            // 
+            btnUsers.BackColor = Color.FromArgb(41, 128, 185);
+            btnUsers.Dock = DockStyle.Fill;
+            btnUsers.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnUsers.FlatStyle = FlatStyle.Flat;
+            btnUsers.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnUsers.ForeColor = SystemColors.ButtonFace;
+            btnUsers.Image = (Image)resources.GetObject("btnUsers.Image");
+            btnUsers.ImageAlign = ContentAlignment.MiddleLeft;
+            btnUsers.Location = new Point(0, 0);
+            btnUsers.Name = "btnUsers";
+            btnUsers.Size = new Size(179, 34);
+            btnUsers.TabIndex = 3;
+            btnUsers.Text = "              Dental Doctors";
+            btnUsers.TextAlign = ContentAlignment.MiddleLeft;
+            btnUsers.UseVisualStyleBackColor = false;
+            btnUsers.Click += btnUsers_Click;
+            // 
             // panel4
             // 
             panel4.Controls.Add(btnEmployee);
@@ -425,34 +453,6 @@
             mainPanel.Size = new Size(1101, 660);
             mainPanel.TabIndex = 2;
             // 
-            // panel11
-            // 
-            panel11.Controls.Add(btnUsers);
-            panel11.Location = new Point(0, 102);
-            panel11.Margin = new Padding(0);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(179, 34);
-            panel11.TabIndex = 9;
-            // 
-            // btnUsers
-            // 
-            btnUsers.BackColor = Color.FromArgb(41, 128, 185);
-            btnUsers.Dock = DockStyle.Fill;
-            btnUsers.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
-            btnUsers.FlatStyle = FlatStyle.Flat;
-            btnUsers.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnUsers.ForeColor = SystemColors.ButtonFace;
-            btnUsers.Image = (Image)resources.GetObject("btnUsers.Image");
-            btnUsers.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUsers.Location = new Point(0, 0);
-            btnUsers.Name = "btnUsers";
-            btnUsers.Size = new Size(179, 34);
-            btnUsers.TabIndex = 3;
-            btnUsers.Text = "              Dental Doctors";
-            btnUsers.TextAlign = ContentAlignment.MiddleLeft;
-            btnUsers.UseVisualStyleBackColor = false;
-            btnUsers.Click += btnUsers_Click;
-            // 
             // superAdmin
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -460,11 +460,10 @@
             Controls.Add(mainPanel);
             Controls.Add(sidebarContainer);
             Controls.Add(panel1);
-            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "superAdmin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "superAdmin";
+            Text = "Super Admin";
             Load += superAdmin_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -475,13 +474,13 @@
             panel7.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel3.ResumeLayout(false);
+            panel11.ResumeLayout(false);
             panel4.ResumeLayout(false);
             menuContainer.ResumeLayout(false);
             panel9.ResumeLayout(false);
             panel6.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel8.ResumeLayout(false);
-            panel11.ResumeLayout(false);
             ResumeLayout(false);
         }
 

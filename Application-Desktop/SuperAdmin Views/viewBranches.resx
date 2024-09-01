@@ -58,23 +58,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnAddBranch.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DAAACwwBP0AiyAAAAYpJREFUSEvdlTtOw0AURbMCqIKgRREFJLABshcQLCeBkrANKCnYQGj47AEoaEGi
-        COdI14lggh0QFHCkK3nue29sP8+MW/+fyWSygg7QKTqPvNZrJ+3rULyWiV6R3KNx5LUYM2ctZYtBQR89
-        omc0QFsJTcHromFyzO0nVI+J6AVdo/XYn0JOB92mZjf2fEiwLT7NDVqK3Qi5y8ibPKDV2CUE7aev3Pjk
-        H6HGN7F2FOs9BFwtfrRBrAJjDfGjzFGuLsxDJJuxCohdqgwLiPWcAPZjzcC0PfcZzoV47Q2EuN+hbBOm
-        G2ic4RQ823IRPUXVuGgXnvvkLMMZmL9+g59qkct8bos8W6Qbq4BY00fecQLYizUDs1qmw1gFxJqW6XHm
-        mH8IEqg2WifWwlCzgTwuTmKVEKyOCrf9cuxGzEV3qP6oEBKqw86bNL4JOT65kzcfdhUmIp/GIrd/L6Ep
-        eNvInptj7mKTV1CwikbIjyZO4hq/QrZRjJ2g+rbUQXEb7Weis8hrve//Mv8IrdYb215ppr65oqMAAAAA
-        SUVORK5CYII=
-</value>
-  </data>
   <data name="pictureBox3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAAIBJREFUSEvt1LENgDAQQ9HsPxaIuSAUaXJ5ygVRUPAlFz4bUyBRflY4qs5F7VVp
+        DAAACwwBP0AiyAAAAIBJREFUSEvt1LENgDAQQ9HsPxaIuSAUaXJ5ygVRUPAlFz4bUyBRflY4qs5F7VVp
         RgMZpVl94PsvyPqRht+mhY2slwIMgPrcYQDU504fZL3ugVlRXvcAA6A+dxgA9bnTB1mve2BWlNc9wACo
         zx0GQH3utOAtBe4f1Kj4RFvVT4ZSLgEGuhrKeHJxAAAAAElFTkSuQmCC
 </value>
@@ -103,4 +90,7 @@
         SUVORK5CYII=
 </value>
   </data>
+  <metadata name="elipseControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

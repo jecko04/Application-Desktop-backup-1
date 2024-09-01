@@ -24,7 +24,7 @@ namespace Application_Desktop.Views
 
         private void superAdmin_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         //149, 86, 203 = light violet

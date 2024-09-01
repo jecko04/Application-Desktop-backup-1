@@ -1,4 +1,5 @@
 ﻿using Application_Desktop.Models;
+using Application_Desktop.Screen;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Application_Desktop.Models.EllipseManager;
 
 namespace Application_Desktop.Sub_sub_Views
 {
@@ -18,8 +20,20 @@ namespace Application_Desktop.Sub_sub_Views
         {
             InitializeComponent();
             this.AcceptButton = btnSave;
+            ElipseManager elipseManager = new ElipseManager(5);
+            elipseManager.ApplyElipseToAllButtons(this);
         }
 
+        void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
+        {
+            alertBox alertbox = new alertBox();
+            alertbox.BackColor = backcolor;
+            alertbox.ColorAlertBox = color;
+            alertbox.TitleAlertBox = title;
+            alertbox.SubTitleAlertBox = subtitle;
+            alertbox.IconAlertBox = icon;
+            alertbox.Show();
+        }
         private void registerBranches_Load(object sender, EventArgs e)
         {
 
@@ -44,104 +58,104 @@ namespace Application_Desktop.Sub_sub_Views
             //Error Provider
             if (string.IsNullOrEmpty(branchName))
             {
-                errorProvider1.SetError(txtBranchName, "Branch Name is required.");
+                errorProvider1.SetError(borderBranch, "Branch Name is required.");
             }
             else
             {
-                errorProvider1.SetError(txtBranchName, string.Empty);
+                errorProvider1.SetError(borderBranch, string.Empty);
             }
 
             if (string.IsNullOrEmpty(houseNum))
             {
-                errorProvider2.SetError(txtHouseNum, "House/Building Number is required.");
+                errorProvider2.SetError(borderBuildingNumber, "House/Building Number is required.");
             }
             else
             {
-                errorProvider2.SetError(txtHouseNum, string.Empty);
+                errorProvider2.SetError(borderBuildingNumber, string.Empty);
             }
 
             if (string.IsNullOrEmpty(street))
             {
-                errorProvider3.SetError(txtStreet, "Street is required.");
+                errorProvider3.SetError(borderStreet, "Street is required.");
             }
             else
             {
-                errorProvider3.SetError(txtStreet, string.Empty);
+                errorProvider3.SetError(borderStreet, string.Empty);
             }
 
             if (string.IsNullOrEmpty(brgy))
             {
-                errorProvider4.SetError(txtBrgy, "Barangay is required.");
+                errorProvider4.SetError(borderBrgy, "Barangay is required.");
             }
             else
             {
-                errorProvider4.SetError(txtBrgy, string.Empty);
+                errorProvider4.SetError(borderBrgy, string.Empty);
             }
 
             if (string.IsNullOrEmpty(city))
             {
-                errorProvider5.SetError(txtCityLists, "City/Municipality is required.");
+                errorProvider5.SetError(borderCity, "City/Municipality is required.");
             }
             else
             {
-                errorProvider5.SetError(txtCityLists, string.Empty);
+                errorProvider5.SetError(borderCity, string.Empty);
             }
 
             if (string.IsNullOrEmpty(province))
             {
-                errorProvider6.SetError(txtProvinceList, "Province is required.");
+                errorProvider6.SetError(borderProvince, "Province is required.");
             }
             else
             {
-                errorProvider6.SetError(txtProvinceList, string.Empty);
+                errorProvider6.SetError(borderProvince, string.Empty);
             }
 
             if (string.IsNullOrEmpty(postal))
             {
-                errorProvider7.SetError(txtPostal, "Postal Code is required.");
+                errorProvider7.SetError(borderPostal, "Postal Code is required.");
             }
             else
             {
-                errorProvider7.SetError(txtPostal, string.Empty);
+                errorProvider7.SetError(borderPostal, string.Empty);
             }
 
 
             if (string.IsNullOrEmpty(branchName))
             {
-                errorProvider1.SetError(txtBranchName, "Branch Name is required.");
+                errorProvider1.SetError(borderBranch, "Branch Name is required.");
             }
             else if (string.IsNullOrEmpty(houseNum))
             {
-                errorProvider2.SetError(txtHouseNum, "House/Building Number is required.");
+                errorProvider2.SetError(borderBuildingNumber, "House/Building Number is required.");
             }
             else if (string.IsNullOrEmpty(street))
             {
-                errorProvider3.SetError(txtStreet, "Street is required.");
+                errorProvider3.SetError(borderStreet, "Street is required.");
             }
             else if (string.IsNullOrEmpty(brgy))
             {
-                errorProvider4.SetError(txtBrgy, "Barangay is required.");
+                errorProvider4.SetError(borderBrgy, "Barangay is required.");
             }
             else if (string.IsNullOrEmpty(city))
             {
-                errorProvider5.SetError(txtCityLists, "City/Municipality is required.");
+                errorProvider5.SetError(borderCity, "City/Municipality is required.");
             }
             else if (string.IsNullOrEmpty(province))
             {
-                errorProvider6.SetError(txtProvinceList, "Province is required.");
+                errorProvider6.SetError(borderProvince, "Province is required.");
             }
             else if (string.IsNullOrEmpty(postal))
             {
-                errorProvider7.SetError(txtPostal, "Postal Code is required.");
+                errorProvider7.SetError(borderPostal, "Postal Code is required.");
             }
             else if (
-                errorProvider1.GetError(txtBranchName) != string.Empty ||
-                errorProvider2.GetError(txtHouseNum) != string.Empty ||
-                errorProvider3.GetError(txtStreet) != string.Empty ||
-                errorProvider4.GetError(txtBrgy) != string.Empty ||
-                errorProvider5.GetError(txtCityLists) != string.Empty ||
-                errorProvider6.GetError(txtProvinceList) != string.Empty ||
-                errorProvider7.GetError(txtPostal) != string.Empty
+                errorProvider1.GetError(borderBranch) != string.Empty ||
+                errorProvider2.GetError(borderBuildingNumber) != string.Empty ||
+                errorProvider3.GetError(borderStreet) != string.Empty ||
+                errorProvider4.GetError(borderBrgy) != string.Empty ||
+                errorProvider5.GetError(borderCity) != string.Empty ||
+                errorProvider6.GetError(borderProvince) != string.Empty ||
+                errorProvider7.GetError(borderPostal) != string.Empty
                 )
             {
 
@@ -173,7 +187,9 @@ namespace Application_Desktop.Sub_sub_Views
                     cmd.Parameters.AddWithValue("@updatedAt", now);
                     cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Save Successful");
+                    //MessageBox.Show("Save Successful");
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The branch data save successfully", Properties.Resources.success);
+
                     txtBranchName.Text = "";
                     txtHouseNum.Text = "";
                     txtStreet.Text = "";
@@ -182,13 +198,13 @@ namespace Application_Desktop.Sub_sub_Views
                     txtProvinceList.Text = "";
                     txtPostal.Text = "";
 
-                    errorProvider1.SetError(txtBranchName, string.Empty);
-                    errorProvider2.SetError(txtHouseNum, string.Empty);
-                    errorProvider3.SetError(txtStreet, string.Empty);
-                    errorProvider4.SetError(txtBrgy, string.Empty);
-                    errorProvider5.SetError(txtCityLists, string.Empty);
-                    errorProvider6.SetError(txtProvinceList, string.Empty);
-                    errorProvider7.SetError(txtPostal, string.Empty);
+                    errorProvider1.SetError(borderBranch, string.Empty);
+                    errorProvider2.SetError(borderBuildingNumber, string.Empty);
+                    errorProvider3.SetError(borderStreet, string.Empty);
+                    errorProvider4.SetError(borderBrgy, string.Empty);
+                    errorProvider5.SetError(borderCity, string.Empty);
+                    errorProvider6.SetError(borderProvince, string.Empty);
+                    errorProvider7.SetError(borderPostal, string.Empty);
 
                 }
                 catch (Exception ex)
@@ -201,5 +217,6 @@ namespace Application_Desktop.Sub_sub_Views
                 }
             }
         }
+
     }
 }

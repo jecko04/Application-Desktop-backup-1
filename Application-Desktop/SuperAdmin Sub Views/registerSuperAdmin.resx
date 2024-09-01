@@ -61,15 +61,30 @@
   <data name="btnClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DAAACwwBP0AiyAAAALNJREFUSEvtlFkKwjAURQOCPyKKVXBlLsI9OkDBEVF/dDl6bkmghFKNJn5IDhza
-        tOHddMgzmUzHHtt4Z04jMzxiUY2a6eES59UoAK1qjw884Qh9+lii5lyxi0EMcIcqcMYxOrTyFereDaf4
-        EfWQCypExdf22lfFHX7Ixp7rtUwwCgrZogrXnyYafoBWHy0g6StK+pGH6PZC2296x+CQn2w0tYoDvmoV
-        CwxuFY6kzS7zFxjzBEa6N1MMeqy1AAAAAElFTkSuQmCC
+        DQAACw0B7QfALAAAAM5JREFUSEvtlEsKwjAQQAMFNyKKVvBkHsI7qgXBL6Ju9DjxTTsRqb/EGhfaBw9K
+        JjOTpk1MzZ9jrU308SE+c+5C4hA32NOhG4g1cYIjHfKDhARXKGyxq6ELjLVwJhPggA0N+UFCG5eSDTtM
+        NeRWPpUAHHGgoTBIvG6yxxSleCYD8H5xBwXKTebFY74tfZ1WDQpJk4VUVfK30XB1KFZuIKv/TAMKxdsi
+        CsT7yCR20J2FZ7/pCcOakPCVgyZXxRpfXRVjDLsqHCTGu+xqfgVjzkpYbiojF9tKAAAAAElFTkSuQmCC
 </value>
   </data>
   <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAAghJREFUSEvNlU9IFGEYh8cOZXooo0sgLKFQVB4ikILAgwfDSwch7NKlQ2UeQkEs
+        kiBJStCDC1EgdEjwKhRFtyA6RR28iBTRoT+QilKIFcT6/L757bIx7sK3XXzgYfb3vu/37Swzs5NsCwqF
+        wj68gLfxOnZhndv/Bxudw6/4CK/hML7DOTzmsdpggxb8jK0uBcgNeNm9gy7Hw+I7eMMxA70RvOcYD4uf
+        YKdjBnqn8KVjPCx+gacdM9A7hPOO8bD4MfY4ZqB3El85xsPiWzjqmIFeP047xsPip1jtF3TgG8d4WHwf
+        xxwz0LuKzx3jYXEOV7DZpRLU9uIqtrlUG2zwAIccS1DrwxnH2mGTZvyO+11SbTd+wvCEc2zDu9gXBmJh
+        4SLmHJXr8Tjqf+kEDqJYxl2oP8XSfFW84Bu+xy6XVdfm4g9upB8DP3z8gDs9noXmDtRt2Iq6mH+x2231
+        9Qu0eSWmPPovNHTGA/hRU3ATz+AQhjPi2I6jqC8VC9iL+ZBSnuGVsGkRCkdQw+Vok7N4GMc9N4nl9Lpe
+        h3p3lFA9wOdG1J2xFb9xDY969hLqmhTJu64T1Kz4ia9VDxD0SqzGokcD5D34K3RSdObFzUW/R1MoTKT1
+        isx5NEAeT8sVWcIGj4cFeg02VbHRowHyAdT1eoizKNZRT/gXvOjR2mGT4l11HsXb8nqSJMkmRhov+X7E
+        2AMAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="errorProvider1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAkAEBAAAAEAIABoBAAAlgAAABgYAAABACAAiAkAAP4EAAAgIAAAAQAgAKgQAACGDgAAMDAAAAEA
@@ -34881,4 +34896,7 @@
         AElFTkSuQmCC
 </value>
   </data>
+  <metadata name="elipseControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
+  </metadata>
 </root>
