@@ -163,7 +163,7 @@ namespace Application_Desktop.Admin_Sub_Views
 
                 AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been updated successfully", Properties.Resources.success);
 
-                
+
                 this.Close();
 
                 errorProvider1.SetError(borderFirst, string.Empty);

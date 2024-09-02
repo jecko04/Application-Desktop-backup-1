@@ -459,7 +459,7 @@ namespace Application_Desktop.Sub_Views
                              role.RoleName AS RoleName,
                              superadmin.Name AS CreatedByName,
                              admin.created_at,
-                             admin,updated_at,
+                             admin.updated_at,
                              admin.Role_ID,
                              admin.Branch_ID
                       FROM admin
@@ -547,14 +547,14 @@ namespace Application_Desktop.Sub_Views
             nameColumn.HeaderText = "Name";
             nameColumn.Name = "Name";
             nameColumn.DataPropertyName = "Name";
-            nameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            nameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewSuperAdminData.Columns.Add(nameColumn);
 
             DataGridViewTextBoxColumn emailColumn = new DataGridViewTextBoxColumn();
             emailColumn.HeaderText = "Email";
             emailColumn.Name = "Email";
             emailColumn.DataPropertyName = "Email";
-            emailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            emailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewSuperAdminData.Columns.Add(emailColumn);
 
             DataGridViewTextBoxColumn passwordColumn = new DataGridViewTextBoxColumn();
@@ -628,14 +628,14 @@ namespace Application_Desktop.Sub_Views
             nameColumn.HeaderText = "Name";
             nameColumn.Name = "Name";
             nameColumn.DataPropertyName = "Name";
-            nameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            nameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewAdminData.Columns.Add(nameColumn);
 
             DataGridViewTextBoxColumn emailColumn = new DataGridViewTextBoxColumn();
             emailColumn.HeaderText = "Email";
             emailColumn.Name = "Email";
             emailColumn.DataPropertyName = "Email";
-            emailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            emailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewAdminData.Columns.Add(emailColumn);
 
             DataGridViewTextBoxColumn passwordColumn = new DataGridViewTextBoxColumn();

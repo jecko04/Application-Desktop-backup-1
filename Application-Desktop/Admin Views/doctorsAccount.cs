@@ -130,12 +130,14 @@ namespace Application_Desktop.Admin_Views
             nameColumn.HeaderText = "Name";
             nameColumn.Name = "Name";
             nameColumn.DataPropertyName = "Name";
+            nameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewDentalDoctorAccount.Columns.Add(nameColumn);
 
             DataGridViewTextBoxColumn emailColumn = new DataGridViewTextBoxColumn();
             emailColumn.HeaderText = "Email";
             emailColumn.Name = "Email";
             emailColumn.DataPropertyName = "Email";
+            emailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewDentalDoctorAccount.Columns.Add(emailColumn);
 
             DataGridViewTextBoxColumn passwordColumn = new DataGridViewTextBoxColumn();

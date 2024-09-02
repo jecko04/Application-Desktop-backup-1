@@ -1,4 +1,5 @@
 ﻿using Application_Desktop.Models;
+using Application_Desktop.Screen;
 using Application_Desktop.Sub_Views;
 using MySql.Data.MySqlClient;
 using System;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Application_Desktop.Models.EllipseManager;
 
 namespace Application_Desktop.Admin_Sub_Views
 {
@@ -20,6 +22,20 @@ namespace Application_Desktop.Admin_Sub_Views
         {
             InitializeComponent();
             this.doctorsID = doctorsID;
+
+            ElipseManager elipseManager = new ElipseManager(5);
+            elipseManager.ApplyElipseToAllButtons(this);
+        }
+
+        void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
+        {
+            alertBox alertbox = new alertBox();
+            alertbox.BackColor = backcolor;
+            alertbox.ColorAlertBox = color;
+            alertbox.TitleAlertBox = title;
+            alertbox.SubTitleAlertBox = subtitle;
+            alertbox.IconAlertBox = icon;
+            alertbox.Show();
         }
 
         public bool SelectPassword(int doctorsID)
@@ -52,14 +68,14 @@ namespace Application_Desktop.Admin_Sub_Views
                     if (verify.VerifyPassword(Cpass, storedHash))
                     {
                         passwordVerify = true;
-                        errorProvider1.SetError(txtCurrentPass, string.Empty);
-                        errorProvider4.SetError(txtCurrentPass, "Verified Password");
+                        errorProvider1.SetError(borderCurrent, string.Empty);
+                        errorProvider4.SetError(borderCurrent, "Verified Password");
                     }
                     else
                     {
-                        errorProvider4.SetError(txtCurrentPass, string.Empty);
+                        errorProvider4.SetError(borderCurrent, string.Empty);
 
-                        errorProvider1.SetError(txtCurrentPass, "Wrong Password");
+                        errorProvider1.SetError(borderCurrent, "Wrong Password");
                     }
                 }
             }
@@ -79,40 +95,40 @@ namespace Application_Desktop.Admin_Sub_Views
 
             if (string.IsNullOrEmpty(Npass) || string.IsNullOrEmpty(CNpass))
             {
-                errorProvider1.SetError(txtNewPass, string.Empty);
-                errorProvider2.SetError(txtConfirmPass, string.Empty);
+                errorProvider1.SetError(borderNew, string.Empty);
+                errorProvider2.SetError(borderRepass, string.Empty);
 
-                errorProvider1.SetError(txtNewPass, "Password is required.");
-                errorProvider2.SetError(txtConfirmPass, "Password is required.");
+                errorProvider1.SetError(borderNew, "Password is required.");
+                errorProvider2.SetError(borderRepass, "Password is required.");
             }
             else if (CNpass != Npass)
             {
-                errorProvider1.SetError(txtNewPass, string.Empty);
-                errorProvider2.SetError(txtConfirmPass, string.Empty);
+                errorProvider1.SetError(borderNew, string.Empty);
+                errorProvider2.SetError(borderRepass, string.Empty);
 
-                errorProvider1.SetError(txtNewPass, "Password is not match");
-                errorProvider2.SetError(txtConfirmPass, "Password is not match");
+                errorProvider1.SetError(borderNew, "Password is not match");
+                errorProvider2.SetError(borderRepass, "Password is not match");
             }
             else if (passwordValidator.IsPasswordValidate(Npass) || passwordValidator.IsPasswordValidate(CNpass))
             {
 
-                errorProvider1.SetError(txtNewPass, string.Empty);
-                errorProvider2.SetError(txtConfirmPass, string.Empty);
+                errorProvider1.SetError(borderNew, string.Empty);
+                errorProvider2.SetError(borderRepass, string.Empty);
 
-                errorProvider4.SetError(txtConfirmPass, string.Empty);
+                errorProvider4.SetError(borderRepass, string.Empty);
 
                 errorProvider4.SetError(txtNewPass, "Password is valid");
-                errorProvider4.SetError(txtConfirmPass, "Password is valid");
+                errorProvider4.SetError(borderRepass, "Password is valid");
             }
             else if (passwordValidator.isPasswordNotValid(Npass) || passwordValidator.isPasswordNotValid(CNpass))
             {
 
-                errorProvider1.SetError(txtNewPass, string.Empty);
-                errorProvider2.SetError(txtConfirmPass, string.Empty);
+                errorProvider1.SetError(borderNew, string.Empty);
+                errorProvider2.SetError(borderRepass, string.Empty);
 
-                errorProvider1.SetError(txtNewPass, "Password must be at least 8 characters long and contain at least" +
+                errorProvider1.SetError(borderNew, "Password must be at least 8 characters long and contain at least" +
                     " one uppercase letter, one lowercase letter, and one number.");
-                errorProvider2.SetError(txtConfirmPass, "Password must be at least 8 characters long and contain at least" +
+                errorProvider2.SetError(borderRepass, "Password must be at least 8 characters long and contain at least" +
                     " one uppercase letter, one lowercase letter, and one number.");
             }
 
@@ -120,20 +136,20 @@ namespace Application_Desktop.Admin_Sub_Views
 
             if (string.IsNullOrEmpty(Npass))
             {
-                errorProvider1.SetError(txtNewPass, "Password is required");
+                errorProvider1.SetError(borderNew, "Password is required");
             }
             else if (string.IsNullOrEmpty(CNpass))
             {
-                errorProvider2.SetError(txtConfirmPass, "Password is required");
+                errorProvider2.SetError(borderRepass, "Password is required");
             }
             else if (string.IsNullOrEmpty(Cpass))
             {
-                errorProvider3.SetError(txtCurrentPass, "Current Password is required");
+                errorProvider3.SetError(borderCurrent, "Current Password is required");
             }
             else if (
-            errorProvider1.GetError(txtNewPass) != string.Empty ||
-            errorProvider2.GetError(txtConfirmPass) != string.Empty ||
-            errorProvider3.GetError(txtCurrentPass) != string.Empty
+            errorProvider1.GetError(borderNew) != string.Empty ||
+            errorProvider2.GetError(borderRepass) != string.Empty ||
+            errorProvider3.GetError(borderCurrent) != string.Empty
             )
             {
 
@@ -159,15 +175,16 @@ namespace Application_Desktop.Admin_Sub_Views
                     cmd.Parameters.AddWithValue("@doctorsID", doctorsID);
                     cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Password changed successfully");
+                    //MessageBox.Show("Password changed successfully");
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The doctor password changed successfully", Properties.Resources.success);
 
                     txtCurrentPass.Text = "";
                     txtNewPass.Text = "";
                     txtConfirmPass.Text = "";
 
-                    errorProvider4.SetError(txtNewPass, string.Empty);
-                    errorProvider4.SetError(txtConfirmPass, string.Empty);
-                    errorProvider4.SetError(txtCurrentPass, string.Empty);
+                    errorProvider4.SetError(borderNew, string.Empty);
+                    errorProvider4.SetError(borderRepass, string.Empty);
+                    errorProvider4.SetError(borderCurrent, string.Empty);
                     return true;
                 }
                 catch (Exception ex)

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(doctorsAccount));
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel1 = new Panel();
             label40 = new Label();
             pictureBox1 = new PictureBox();
@@ -62,9 +62,9 @@
             label40.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label40.Location = new Point(37, 9);
             label40.Name = "label40";
-            label40.Size = new Size(201, 16);
+            label40.Size = new Size(194, 16);
             label40.TabIndex = 89;
-            label40.Text = "Dental Doctors Account Panel";
+            label40.Text = "Dental Doctor Account Panel";
             // 
             // pictureBox1
             // 
@@ -149,14 +149,14 @@
             viewDentalDoctorAccount.CellBorderStyle = DataGridViewCellBorderStyle.None;
             viewDentalDoctorAccount.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             viewDentalDoctorAccount.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            viewDentalDoctorAccount.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            viewDentalDoctorAccount.DefaultCellStyle = dataGridViewCellStyle1;
             viewDentalDoctorAccount.Location = new Point(-1, 36);
             viewDentalDoctorAccount.Margin = new Padding(0, 0, 10, 0);
             viewDentalDoctorAccount.Name = "viewDentalDoctorAccount";

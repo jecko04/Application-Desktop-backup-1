@@ -350,7 +350,7 @@ namespace Application_Desktop.Sub_sub_Views
                 idValue selectedBranch = (idValue)txtBranch.SelectedItem;
                 int branchId = selectedBranch.ID;
                 cmd.Parameters.AddWithValue("@branchID", branchId);
-                
+
                 DateTime now = DateTime.Now;
                 cmd.Parameters.AddWithValue("@updatedAt", now);
 

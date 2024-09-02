@@ -504,6 +504,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.ForeColor = Color.DimGray;
             label7.Location = new Point(22, 268);
             label7.Name = "label7";
             label7.Size = new Size(54, 16);
@@ -514,6 +515,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.ForeColor = Color.DimGray;
             label6.Location = new Point(22, 205);
             label6.Name = "label6";
             label6.Size = new Size(40, 16);
@@ -524,6 +526,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.ForeColor = Color.DimGray;
             label4.Location = new Point(22, 110);
             label4.Name = "label4";
             label4.Size = new Size(46, 16);
@@ -534,6 +537,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = Color.DimGray;
             label3.Location = new Point(212, 39);
             label3.Name = "label3";
             label3.Size = new Size(74, 16);
@@ -544,6 +548,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = Color.DimGray;
             label2.Location = new Point(22, 39);
             label2.Name = "label2";
             label2.Size = new Size(76, 16);

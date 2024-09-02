@@ -174,7 +174,7 @@ namespace Application_Desktop.Views
 
         private void btnEmployee_Click(object sender, EventArgs e)
         {
-
+            LoadForm(new employeeProfile());
         }
     }
 }
