@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(doctorsAccount));
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            label40 = new Label();
+            pictureBox1 = new PictureBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             btnDelete = new Button();
             btnNewAccount = new Button();
             btnRefresh = new Button();
             viewDentalDoctorAccount = new DataGridView();
             elipseControl1 = new ElipseToolDemo.ElipseControl();
-            label40 = new Label();
-            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)viewDentalDoctorAccount).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)viewDentalDoctorAccount).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -55,6 +55,27 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1101, 30);
             panel1.TabIndex = 0;
+            // 
+            // label40
+            // 
+            label40.AutoSize = true;
+            label40.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label40.Location = new Point(37, 9);
+            label40.Name = "label40";
+            label40.Size = new Size(201, 16);
+            label40.TabIndex = 89;
+            label40.Text = "Dental Doctors Account Panel";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = SystemColors.Control;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(7, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(24, 24);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 88;
+            pictureBox1.TabStop = false;
             // 
             // flowLayoutPanel1
             // 
@@ -128,14 +149,14 @@
             viewDentalDoctorAccount.CellBorderStyle = DataGridViewCellBorderStyle.None;
             viewDentalDoctorAccount.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             viewDentalDoctorAccount.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            viewDentalDoctorAccount.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            viewDentalDoctorAccount.DefaultCellStyle = dataGridViewCellStyle2;
             viewDentalDoctorAccount.Location = new Point(-1, 36);
             viewDentalDoctorAccount.Margin = new Padding(0, 0, 10, 0);
             viewDentalDoctorAccount.Name = "viewDentalDoctorAccount";
@@ -149,27 +170,6 @@
             // 
             elipseControl1.CornerRadius = 15;
             elipseControl1.TargetControl = viewDentalDoctorAccount;
-            // 
-            // label40
-            // 
-            label40.AutoSize = true;
-            label40.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label40.Location = new Point(37, 9);
-            label40.Name = "label40";
-            label40.Size = new Size(201, 16);
-            label40.TabIndex = 89;
-            label40.Text = "Dental Doctors Account Panel";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = SystemColors.Control;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(7, 3);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(24, 24);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 88;
-            pictureBox1.TabStop = false;
             // 
             // doctorsAccount
             // 
@@ -187,8 +187,8 @@
             Text = "doctorsAccount";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)viewDentalDoctorAccount).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)viewDentalDoctorAccount).EndInit();
             ResumeLayout(false);
         }
 

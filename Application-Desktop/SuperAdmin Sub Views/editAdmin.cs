@@ -1,4 +1,5 @@
 ﻿using Application_Desktop.Models;
+using Application_Desktop.Screen;
 using MySql.Data.MySqlClient;
 using Mysqlx.Crud;
 using System;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Application_Desktop.Models.EllipseManager;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
@@ -34,6 +36,20 @@ namespace Application_Desktop.Sub_sub_Views
 
             PopulateBranchComboBox();
             txtBranch.Text = GetBranchName(branch);
+
+            ElipseManager elipseManager = new ElipseManager(5);
+            elipseManager.ApplyElipseToAllButtons(this);
+        }
+
+        void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
+        {
+            alertBox alertbox = new alertBox();
+            alertbox.BackColor = backcolor;
+            alertbox.ColorAlertBox = color;
+            alertbox.TitleAlertBox = title;
+            alertbox.SubTitleAlertBox = subtitle;
+            alertbox.IconAlertBox = icon;
+            alertbox.Show();
         }
 
 
@@ -219,14 +235,14 @@ namespace Application_Desktop.Sub_sub_Views
             // Validate if email format is correct
             if (emailValidator.IsEmailNotValidate(email))
             {
-                errorProvider3.SetError(txtEmail, "Email is not valid.");
-                errorProvider6.SetError(txtEmail, string.Empty);
+                errorProvider3.SetError(borderEmail, "Email is not valid.");
+                errorProvider6.SetError(borderEmail, string.Empty);
                 return;
             }
             else
             {
-                errorProvider3.SetError(txtEmail, string.Empty);
-                errorProvider6.SetError(txtEmail, "Email is valid.");
+                errorProvider3.SetError(borderEmail, string.Empty);
+                errorProvider6.SetError(borderEmail, "Email is valid.");
             }
 
             // Check if email already exists
@@ -234,15 +250,16 @@ namespace Application_Desktop.Sub_sub_Views
             {
                 if (emailValidator.IsEmailSuperAdminExist(email))
                 {
-                    errorProvider7.SetError(txtEmail, "Email already exists. Please use a different email.");
-                    errorProvider6.SetError(txtEmail, string.Empty);
+                    errorProvider7.SetError(borderEmail, "Email already exists. Please use a different email.");
+                    errorProvider6.SetError(borderEmail, string.Empty);
 
-                    MessageBox.Show("Email already exists. Please use a different email.");
+                    //MessageBox.Show("Email already exists. Please use a different email.");
+                    AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "Information", "Email already exist. Please use different email", Properties.Resources.information);
                     return;
                 }
                 else
                 {
-                    errorProvider7.SetError(txtEmail, string.Empty);
+                    errorProvider7.SetError(borderEmail, string.Empty);
                 }
             }
             catch (Exception ex)
@@ -252,19 +269,19 @@ namespace Application_Desktop.Sub_sub_Views
             }
 
             // Validate other fields
-            if (errorProvider1.GetError(txtfirstName) != string.Empty ||
-                errorProvider2.GetError(txtLastName) != string.Empty ||
-                errorProvider3.GetError(txtEmail) != string.Empty ||
+            if (errorProvider1.GetError(borderFirst) != string.Empty ||
+                errorProvider2.GetError(borderLast) != string.Empty ||
+                errorProvider3.GetError(borderEmail) != string.Empty ||
                 errorProvider4.GetError(txtPassword) != string.Empty ||
-                errorProvider5.GetError(txtRoles) != string.Empty ||
-                errorProvider5.GetError(txtBranch) != string.Empty)
+                errorProvider5.GetError(borderRole) != string.Empty ||
+                errorProvider5.GetError(borderBranch) != string.Empty)
             {
                 return;
             }
 
-            string insertQuery = "INSERT INTO superadmin (Name, Email, Password, Role_ID) " +
+            string insertQuery = "INSERT INTO superadmin (Name, Email, Password, Role_ID, created_at, updated_at) " +
                                 "VALUES " +
-                                "(@S_name, @S_email, @S_pwd, @S_roleID)";
+                                "(@S_name, @S_email, @S_pwd, @S_roleID, @createdAt, @updatedAt)";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -283,6 +300,10 @@ namespace Application_Desktop.Sub_sub_Views
                 idValue selectedRole = (idValue)txtRoles.SelectedItem;
                 int roleId = selectedRole.ID;
                 superAdminCmd.Parameters.AddWithValue("@S_roleID", roleId);
+
+                DateTime now = DateTime.Now;
+                superAdminCmd.Parameters.AddWithValue("@createdAt", now);
+                superAdminCmd.Parameters.AddWithValue("@updatedAt", now);
                 superAdminCmd.ExecuteNonQuery();
 
                 string deleteQuery = "DELETE FROM admin WHERE Admin_ID = @adminID";
@@ -290,7 +311,8 @@ namespace Application_Desktop.Sub_sub_Views
                 deleteCmd.Parameters.AddWithValue("@adminID", adminID);
                 deleteCmd.ExecuteNonQuery();
 
-                MessageBox.Show("Successfully Updated to SuperAdmin");
+                //MessageBox.Show("Successfully Updated to SuperAdmin");
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been change to super admin", Properties.Resources.success);
             }
             catch (Exception ex)
             {
@@ -309,7 +331,7 @@ namespace Application_Desktop.Sub_sub_Views
             string fname = txtfirstName.Text;
             string lname = txtLastName.Text;
             string fullname = $"{fname} {lname}";
-            string query = "UPDATE admin SET Name = @name, Email = @email, Branch_ID = @branchID, Role_ID = @roleID WHERE Admin_ID = @adminID";
+            string query = "UPDATE admin SET Name = @name, Email = @email, Branch_ID = @branchID, Role_ID = @roleID, updated_at = @updatedAt WHERE Admin_ID = @adminID";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -328,6 +350,9 @@ namespace Application_Desktop.Sub_sub_Views
                 idValue selectedBranch = (idValue)txtBranch.SelectedItem;
                 int branchId = selectedBranch.ID;
                 cmd.Parameters.AddWithValue("@branchID", branchId);
+                
+                DateTime now = DateTime.Now;
+                cmd.Parameters.AddWithValue("@updatedAt", now);
 
                 idValue selectedRole = (idValue)txtRoles.SelectedItem;
                 int roleId = selectedRole.ID;
@@ -335,7 +360,8 @@ namespace Application_Desktop.Sub_sub_Views
 
                 cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Successfully Updated admin record.");
+                //MessageBox.Show("Successfully Updated admin record.");
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been updated successfully", Properties.Resources.success);
             }
             catch (Exception ex)
             {
@@ -359,55 +385,55 @@ namespace Application_Desktop.Sub_sub_Views
                 // empty field error provider
                 if (string.IsNullOrEmpty(fname))
                 {
-                    errorProvider1.SetError(txtfirstName, "First name is required");
+                    errorProvider1.SetError(borderFirst, "First name is required");
                 }
                 else
                 {
-                    errorProvider1.SetError(txtfirstName, string.Empty);
+                    errorProvider1.SetError(borderFirst, string.Empty);
                 }
 
                 if (string.IsNullOrEmpty(lname))
                 {
-                    errorProvider2.SetError(txtLastName, "Last name is required");
+                    errorProvider2.SetError(borderLast, "Last name is required");
                 }
                 else
                 {
-                    errorProvider2.SetError(txtLastName, string.Empty);
+                    errorProvider2.SetError(borderLast, string.Empty);
                 }
                 if (string.IsNullOrEmpty(email))
                 {
-                    errorProvider3.SetError(txtEmail, "Email is required");
+                    errorProvider3.SetError(borderEmail, "Email is required");
                 }
                 else
                 {
-                    errorProvider3.SetError(txtEmail, string.Empty);
+                    errorProvider3.SetError(borderEmail, string.Empty);
                 }
                 if (string.IsNullOrEmpty(role))
                 {
-                    errorProvider4.SetError(txtRoles, "Role is required");
+                    errorProvider4.SetError(borderRole, "Role is required");
                 }
                 else
                 {
-                    errorProvider4.SetError(txtRoles, string.Empty);
+                    errorProvider4.SetError(borderRole, string.Empty);
                 }
                 if (string.IsNullOrEmpty(branch))
                 {
-                    errorProvider5.SetError(txtBranch, "Branch is required");
+                    errorProvider5.SetError(borderBranch, "Branch is required");
                 }
                 else
                 {
-                    errorProvider5.SetError(txtBranch, string.Empty);
+                    errorProvider5.SetError(borderBranch, string.Empty);
                 }
 
 
 
                 // proceed to update
-                if (errorProvider1.GetError(txtfirstName) != string.Empty ||
-                        errorProvider2.GetError(txtLastName) != string.Empty ||
-                        errorProvider3.GetError(txtEmail) != string.Empty ||
+                if (errorProvider1.GetError(borderFirst) != string.Empty ||
+                        errorProvider2.GetError(borderLast) != string.Empty ||
+                        errorProvider3.GetError(borderEmail) != string.Empty ||
                         errorProvider4.GetError(txtPassword) != string.Empty ||
-                        errorProvider5.GetError(txtRoles) != string.Empty ||
-                        errorProvider5.GetError(txtBranch) != string.Empty)
+                        errorProvider5.GetError(borderRole) != string.Empty ||
+                        errorProvider5.GetError(borderBranch) != string.Empty)
                 {
                     return;
                 }

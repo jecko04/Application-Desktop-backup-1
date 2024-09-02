@@ -366,7 +366,7 @@ namespace Application_Desktop.Admin_Views
                 if (!hasSelectedRows)
                 {
                     //MessageBox.Show("No rows were selected for deletion.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "Information", "No rows were selected for deletion", Properties.Resources.information);
+                    AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No rows selected", "No rows were selected for deletion", Properties.Resources.information);
                 }
             }
         }

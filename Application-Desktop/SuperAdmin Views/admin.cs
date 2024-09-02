@@ -56,7 +56,10 @@ namespace Application_Desktop.Sub_Views
                              superadmin.Name, 
                              superadmin.Email, 
                              superadmin.Password, 
-                             role.RoleName AS RoleName
+                             role.RoleName AS RoleName,
+                             superadmin.created_at,
+                             superadmin.updated_at
+
                              FROM superadmin
                              JOIN role ON superadmin.Role_ID = role.Role_ID";
 
@@ -106,7 +109,9 @@ namespace Application_Desktop.Sub_Views
                              admin.Password, 
                              branch.BranchName AS BranchName, 
                              role.RoleName AS RoleName,
-                             superadmin.Name AS CreatedByName, 
+                             superadmin.Name AS CreatedByName,
+                             admin.created_at,
+                             admin.updated_at,
                              admin.Role_ID,
                              admin.Branch_ID
                              FROM admin
@@ -228,6 +233,7 @@ namespace Application_Desktop.Sub_Views
                     // Delete row from database
                     DeleteRowFromDatabase(admin_ID);
                     LoadData();
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The data has been deleted successfully", Properties.Resources.success);
                 }
             }
 
@@ -363,6 +369,7 @@ namespace Application_Desktop.Sub_Views
                     // Delete row from database
                     DeleteSuperAdmin(superadminID);
                     LoadSuperAdmin();
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The data has been deleted successfully", Properties.Resources.success);
                 }
             }
 
@@ -433,7 +440,9 @@ namespace Application_Desktop.Sub_Views
                          superadmin.Name, 
                          superadmin.Email,
                          superadmin.Password,
-                         role.RoleName AS RoleName
+                         role.RoleName AS RoleName,
+                         superadmin.created_at,
+                         superadmin.updated_at
                      FROM superadmin
                      JOIN role ON superadmin.Role_ID = role.Role_ID
                      WHERE superadmin.SuperAdmin_ID LIKE @search OR
@@ -448,7 +457,9 @@ namespace Application_Desktop.Sub_Views
                              admin.Password, 
                              branch.BranchName AS BranchName, 
                              role.RoleName AS RoleName,
-                             superadmin.Name AS CreatedByName, 
+                             superadmin.Name AS CreatedByName,
+                             admin.created_at,
+                             admin,updated_at,
                              admin.Role_ID,
                              admin.Branch_ID
                       FROM admin
@@ -536,12 +547,14 @@ namespace Application_Desktop.Sub_Views
             nameColumn.HeaderText = "Name";
             nameColumn.Name = "Name";
             nameColumn.DataPropertyName = "Name";
+            nameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             viewSuperAdminData.Columns.Add(nameColumn);
 
             DataGridViewTextBoxColumn emailColumn = new DataGridViewTextBoxColumn();
             emailColumn.HeaderText = "Email";
             emailColumn.Name = "Email";
             emailColumn.DataPropertyName = "Email";
+            emailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             viewSuperAdminData.Columns.Add(emailColumn);
 
             DataGridViewTextBoxColumn passwordColumn = new DataGridViewTextBoxColumn();
@@ -555,6 +568,18 @@ namespace Application_Desktop.Sub_Views
             roleColumn.Name = "Role_ID";
             roleColumn.DataPropertyName = "RoleName";
             viewSuperAdminData.Columns.Add(roleColumn);
+
+            DataGridViewTextBoxColumn createdSuperAdmin = new DataGridViewTextBoxColumn();
+            createdSuperAdmin.HeaderText = "Created At";
+            createdSuperAdmin.Name = "created_at";
+            createdSuperAdmin.DataPropertyName = "created_at";
+            viewSuperAdminData.Columns.Add(createdSuperAdmin);
+
+            DataGridViewTextBoxColumn updatedSuperAdmin = new DataGridViewTextBoxColumn();
+            updatedSuperAdmin.HeaderText = "Updated At";
+            updatedSuperAdmin.Name = "updated_at";
+            updatedSuperAdmin.DataPropertyName = "updated_at";
+            viewSuperAdminData.Columns.Add(updatedSuperAdmin);
 
             DataGridViewImageColumn editButtonColumn = new DataGridViewImageColumn();
             editButtonColumn.HeaderText = "";
@@ -603,12 +628,14 @@ namespace Application_Desktop.Sub_Views
             nameColumn.HeaderText = "Name";
             nameColumn.Name = "Name";
             nameColumn.DataPropertyName = "Name";
+            nameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             viewAdminData.Columns.Add(nameColumn);
 
             DataGridViewTextBoxColumn emailColumn = new DataGridViewTextBoxColumn();
             emailColumn.HeaderText = "Email";
             emailColumn.Name = "Email";
             emailColumn.DataPropertyName = "Email";
+            emailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             viewAdminData.Columns.Add(emailColumn);
 
             DataGridViewTextBoxColumn passwordColumn = new DataGridViewTextBoxColumn();
@@ -635,6 +662,18 @@ namespace Application_Desktop.Sub_Views
             createdByColumn.Name = "CreatedBy";
             createdByColumn.DataPropertyName = "CreatedByName";
             viewAdminData.Columns.Add(createdByColumn);
+
+            DataGridViewTextBoxColumn createdAdmin = new DataGridViewTextBoxColumn();
+            createdAdmin.HeaderText = "Created At";
+            createdAdmin.Name = "created_at";
+            createdAdmin.DataPropertyName = "created_at";
+            viewAdminData.Columns.Add(createdAdmin);
+
+            DataGridViewTextBoxColumn updatedAdmin = new DataGridViewTextBoxColumn();
+            updatedAdmin.HeaderText = "Updated At";
+            updatedAdmin.Name = "updated_at";
+            updatedAdmin.DataPropertyName = "updated_at";
+            viewAdminData.Columns.Add(updatedAdmin);
 
             DataGridViewImageColumn editButtonColumn = new DataGridViewImageColumn();
             editButtonColumn.HeaderText = "";
@@ -724,7 +763,7 @@ namespace Application_Desktop.Sub_Views
                 }
                 else
                 {
-                    AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "Information", "No rows were selected for deletion", Properties.Resources.information);
+                    AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No rows selected", "No rows were selected for deletion", Properties.Resources.information);
 
                 }
             }

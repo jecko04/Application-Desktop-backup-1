@@ -1,4 +1,5 @@
 ﻿using Application_Desktop.Models;
+using Application_Desktop.Screen;
 using Application_Desktop.Sub_Views;
 using MySql.Data.MySqlClient;
 using System;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Application_Desktop.Models.EllipseManager;
 
 namespace Application_Desktop.Sub_sub_Views
 {
@@ -28,6 +30,20 @@ namespace Application_Desktop.Sub_sub_Views
 
             PopulateRoleName();
             txtRoles.Text = GetRoleNames(role);
+
+            ElipseManager elipseManager = new ElipseManager(5);
+            elipseManager.ApplyElipseToAllButtons(this);
+        }
+
+        void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
+        {
+            alertBox alertbox = new alertBox();
+            alertbox.BackColor = backcolor;
+            alertbox.ColorAlertBox = color;
+            alertbox.TitleAlertBox = title;
+            alertbox.SubTitleAlertBox = subtitle;
+            alertbox.IconAlertBox = icon;
+            alertbox.Show();
         }
 
         private void editSuperAdmin_Load(object sender, EventArgs e)
@@ -111,47 +127,53 @@ namespace Application_Desktop.Sub_sub_Views
 
         private void UpdateSuperAdmin(int superAdminID, string fname, string lname, string email, string pwd)
         {
-            errorProvider1.SetError(txtEmail, string.Empty);
-            errorProvider2.SetError(txtEmail, "Email is valid");
+            errorProvider1.SetError(borderEmail, string.Empty);
+            errorProvider2.SetError(borderEmail, "Email is valid");
 
-            string fullname = $"{fname} {lname}";
-            string query = "UPDATE superadmin SET " +
-                           "Name = @name, " +
-                           "Email = @email, " +
-                           "Password = @pwd, " +
-                           "Role_ID = @roleID " +
-                           "WHERE SuperAdmin_ID = @superAdminID";
-
-            MySqlConnection conn = databaseHelper.getConnection();
-            try
+            DialogResult result = MessageBox.Show("Would you like to proceed with Updating this account?", "Confirm Changes", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
             {
-                if (conn.State != ConnectionState.Open)
+
+
+                string fullname = $"{fname} {lname}";
+                string query = @"Update superadmin SET Name = @name, Email = @email, Password = @pwd, Role_ID = @roleID, updated_at = @updatedAt Where SuperAdmin_ID = @superAdminID";
+
+
+                MySqlConnection conn = databaseHelper.getConnection();
+                try
                 {
-                    conn.Open();
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        conn.Open();
+                    }
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@name", fullname);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@pwd", pwd);
+
+                    idValue selectedRole = (idValue)txtRoles.SelectedItem;
+                    int role = selectedRole.ID;
+                    cmd.Parameters.AddWithValue("@roleID", role);
+                    DateTime now = DateTime.Now;
+                    cmd.Parameters.AddWithValue("@updatedAt", now);
+
+                    cmd.Parameters.AddWithValue("@superAdminID", superAdminID);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    //MessageBox.Show("Successfully Updated");
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been updated successfully", Properties.Resources.success);
+
+                    errorProvider1.SetError(borderEmail, string.Empty);
                 }
-
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@name", fullname);
-                cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@pwd", pwd);
-
-                idValue selectedRole = (idValue)txtRoles.SelectedItem;
-                int role = selectedRole.ID;
-                cmd.Parameters.AddWithValue("@roleID", role);
-                cmd.Parameters.AddWithValue("@superAdminID", superAdminID);
-                int rowsAffected = cmd.ExecuteNonQuery();
-
-                MessageBox.Show("Successfully Updated");
-
-                errorProvider1.SetError(txtEmail, string.Empty);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conn.Close();
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
             }
         }
 
@@ -173,22 +195,51 @@ namespace Application_Desktop.Sub_sub_Views
             string pwd = txtPassword.Text;
             string role = txtRoles.Text;
 
-
-            DialogResult result = MessageBox.Show("Would you like to proceed with Updating this account?", "Confirm Changes", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (emailValidator.IsEmailValidate(email))
+            if (string.IsNullOrEmpty(fname))
             {
-                if (result == DialogResult.Yes)
-                {
+                errorProvider3.SetError(borderFirst, "Firstname is required");
+            }
+            else
+            {
+                errorProvider3.SetError(borderFirst, string.Empty);
+            }
+
+            if (string.IsNullOrEmpty(lname))
+            {
+                errorProvider4.SetError(borderLast, "Lastname is required");
+            }
+            else
+            {
+                errorProvider4.SetError(borderLast, string.Empty);
+            }
+
+            if (string.IsNullOrEmpty(role))
+            {
+                errorProvider5.SetError(borderRole, "Role is required");
+            }
+            else
+            {
+                errorProvider5.SetError(borderRole, string.Empty);
+            }
+
+            // email validate
+            if (!emailValidator.IsEmailValidate(email))
+            {
+                errorProvider1.SetError(borderEmail, "Email is not valid");
+            }
+            else
+            {
+                errorProvider1.SetError(borderEmail, string.Empty);
+            }
+
+            if (errorProvider1.GetError(borderEmail) == string.Empty && 
+            errorProvider3.GetError(borderFirst) == string.Empty && 
+            errorProvider4.GetError(borderLast) == string.Empty && 
+            errorProvider5.GetError(borderRole) == string.Empty)
+            {
                     UpdateSuperAdmin(superAdminID, fname, lname, email, pwd);
                     this.Close();
-                }
             }
-            else if (emailValidator.IsEmailNotValidate(email))
-            {
-                errorProvider2.SetError(txtEmail, string.Empty);
-                errorProvider1.SetError(txtEmail, "Email is not valid");
-            }
-
 
         }
     }

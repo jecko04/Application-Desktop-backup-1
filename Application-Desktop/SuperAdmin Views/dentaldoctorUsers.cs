@@ -1,4 +1,5 @@
 ﻿using Application_Desktop.Models;
+using Application_Desktop.Screen;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Application_Desktop.Models.EllipseManager;
 
 namespace Application_Desktop.Sub_Views
 {
@@ -18,6 +20,20 @@ namespace Application_Desktop.Sub_Views
         {
             InitializeComponent();
             LoadDentalData();
+
+            ElipseManager elipseManager = new ElipseManager(5);
+            elipseManager.ApplyElipseToAllButtons(this);
+        }
+
+        void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
+        {
+            alertBox alertbox = new alertBox();
+            alertbox.BackColor = backcolor;
+            alertbox.ColorAlertBox = color;
+            alertbox.TitleAlertBox = title;
+            alertbox.SubTitleAlertBox = subtitle;
+            alertbox.IconAlertBox = icon;
+            alertbox.Show();
         }
 
         private void dentaldoctorUsers_Load(object sender, EventArgs e)
@@ -34,7 +50,9 @@ namespace Application_Desktop.Sub_Views
                              dentaldoctor.Password, 
                              branch.BranchName AS BranchName, 
                              role.RoleName AS RoleName,
-                             admin.Name AS CreatedByName
+                             admin.Name AS CreatedByName,
+                             dentaldoctor.created_at,
+                             dentaldoctor.updated_at
                              FROM dentaldoctor
                              JOIN branch ON dentaldoctor.Branch_ID = branch.Branch_ID
                              JOIN admin ON dentaldoctor.CreatedBy = admin.Admin_ID
@@ -125,6 +143,18 @@ namespace Application_Desktop.Sub_Views
             createdByColumn.DataPropertyName = "CreatedByName";
             viewDentalAccount.Columns.Add(createdByColumn);
 
+            DataGridViewTextBoxColumn createdDental = new DataGridViewTextBoxColumn();
+            createdDental.HeaderText = "Created At";
+            createdDental.Name = "created_at";
+            createdDental.DataPropertyName = "created_at";
+            viewDentalAccount.Columns.Add(createdDental);
+
+            DataGridViewTextBoxColumn updatedDental = new DataGridViewTextBoxColumn();
+            updatedDental.HeaderText = "Updated At";
+            updatedDental.Name = "updated_at";
+            updatedDental.DataPropertyName = "updated_at";
+            viewDentalAccount.Columns.Add(updatedDental);
+
             DataGridViewImageColumn editButtonColumn = new DataGridViewImageColumn();
             editButtonColumn.HeaderText = "";
             editButtonColumn.Name = "view";
@@ -156,7 +186,9 @@ namespace Application_Desktop.Sub_Views
                              dentaldoctor.Password, 
                              branch.BranchName AS BranchName, 
                              role.RoleName AS RoleName,
-                             admin.Name AS CreatedByName
+                             admin.Name AS CreatedByName,
+                             dentaldoctor.created_at,
+                             dentaldoctor.updated_at
                              FROM dentaldoctor
                              JOIN branch ON dentaldoctor.Branch_ID = branch.Branch_ID
                              JOIN admin ON dentaldoctor.CreatedBy = admin.Admin_ID
@@ -255,13 +287,16 @@ namespace Application_Desktop.Sub_Views
                         int doctorsID = Convert.ToInt32(row.Cells["Doctors_ID"].Value);
                         viewDentalAccount.Rows.RemoveAt(i);
                         DeleteRowFromDatabase(doctorsID);
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The data has been deleted successfully", Properties.Resources.success);
+
                     }
                 }
 
                 // If no rows were selected, show a message box
                 if (!hasSelectedRows)
                 {
-                    MessageBox.Show("No rows were selected for deletion.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No rows selected", "No rows were selected for deletion", Properties.Resources.information);
+                    //MessageBox.Show("No rows were selected for deletion.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
