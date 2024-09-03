@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(registerEmployees));
             panel1 = new Panel();
             label1 = new Label();
@@ -63,12 +64,12 @@
             panel2 = new Panel();
             panel7 = new Panel();
             label3 = new Label();
-            panel18 = new Panel();
+            borderMobile = new Panel();
             panel23 = new Panel();
             panel24 = new Panel();
             panel25 = new Panel();
             panel26 = new Panel();
-            textBox1 = new TextBox();
+            txtMobile = new TextBox();
             label8 = new Label();
             borderDateofBirth = new Panel();
             button20 = new Button();
@@ -86,46 +87,21 @@
             txtStreet = new TextBox();
             label10 = new Label();
             panel32 = new Panel();
-            label5 = new Label();
-            panel8 = new Panel();
-            panel9 = new Panel();
-            label7 = new Label();
-            panel33 = new Panel();
-            borderCity = new Panel();
-            panel35 = new Panel();
-            panel36 = new Panel();
-            panel37 = new Panel();
-            panel38 = new Panel();
-            txtCity = new TextBox();
-            borderBrgy = new Panel();
-            panel40 = new Panel();
-            panel41 = new Panel();
-            panel42 = new Panel();
-            panel43 = new Panel();
-            txtBrgy = new TextBox();
-            borderProvince = new Panel();
-            panel34 = new Panel();
-            panel39 = new Panel();
-            panel44 = new Panel();
-            panel45 = new Panel();
-            txtProvince = new TextBox();
-            borderPostal = new Panel();
-            panel47 = new Panel();
-            panel48 = new Panel();
-            panel49 = new Panel();
-            panel50 = new Panel();
-            txtPostalCode = new TextBox();
-            label11 = new Label();
-            panel27 = new Panel();
-            panel46 = new Panel();
-            label12 = new Label();
-            borderPosition = new Panel();
-            panel52 = new Panel();
-            panel53 = new Panel();
-            panel54 = new Panel();
-            panel55 = new Panel();
-            txtPosition = new TextBox();
-            label13 = new Label();
+            btnSave = new Button();
+            borderLicense = new Panel();
+            panel64 = new Panel();
+            panel65 = new Panel();
+            panel66 = new Panel();
+            panel67 = new Panel();
+            txtLicense = new TextBox();
+            label16 = new Label();
+            borderSpecial = new Panel();
+            panel60 = new Panel();
+            panel61 = new Panel();
+            panel62 = new Panel();
+            panel63 = new Panel();
+            txtSpecial = new TextBox();
+            label15 = new Label();
             label14 = new Label();
             borderHired = new Panel();
             button1 = new Button();
@@ -134,21 +110,50 @@
             panel58 = new Panel();
             panel59 = new Panel();
             txtHired = new DateTimePicker();
-            borderSpecial = new Panel();
-            panel60 = new Panel();
-            panel61 = new Panel();
-            panel62 = new Panel();
-            panel63 = new Panel();
-            txtSpecial = new TextBox();
-            label15 = new Label();
-            panel51 = new Panel();
-            panel64 = new Panel();
-            panel65 = new Panel();
-            panel66 = new Panel();
-            panel67 = new Panel();
-            textBox2 = new TextBox();
-            label16 = new Label();
-            btnSignUp = new Button();
+            borderPosition = new Panel();
+            panel52 = new Panel();
+            panel53 = new Panel();
+            panel54 = new Panel();
+            panel55 = new Panel();
+            txtPosition = new TextBox();
+            label13 = new Label();
+            label11 = new Label();
+            panel27 = new Panel();
+            panel46 = new Panel();
+            label12 = new Label();
+            borderProvince = new Panel();
+            panel34 = new Panel();
+            panel39 = new Panel();
+            panel44 = new Panel();
+            panel45 = new Panel();
+            txtProvince = new TextBox();
+            borderCity = new Panel();
+            panel35 = new Panel();
+            panel36 = new Panel();
+            panel37 = new Panel();
+            panel38 = new Panel();
+            txtCity = new TextBox();
+            borderPostal = new Panel();
+            panel47 = new Panel();
+            panel48 = new Panel();
+            panel49 = new Panel();
+            panel50 = new Panel();
+            txtPostalCode = new TextBox();
+            borderBrgy = new Panel();
+            panel40 = new Panel();
+            panel41 = new Panel();
+            panel42 = new Panel();
+            panel43 = new Panel();
+            txtBrgy = new TextBox();
+            panel33 = new Panel();
+            label5 = new Label();
+            panel8 = new Panel();
+            panel9 = new Panel();
+            label7 = new Label();
+            elipseControl1 = new ElipseToolDemo.ElipseControl();
+            errorProvider1 = new ErrorProvider(components);
+            errorProvider2 = new ErrorProvider(components);
+            errorProvider3 = new ErrorProvider(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
@@ -157,20 +162,23 @@
             borderEmail.SuspendLayout();
             borderMiddle.SuspendLayout();
             panel2.SuspendLayout();
-            panel18.SuspendLayout();
+            borderMobile.SuspendLayout();
             borderDateofBirth.SuspendLayout();
             borderStreet.SuspendLayout();
             panel32.SuspendLayout();
-            panel8.SuspendLayout();
-            borderCity.SuspendLayout();
-            borderBrgy.SuspendLayout();
-            borderProvince.SuspendLayout();
-            borderPostal.SuspendLayout();
-            panel27.SuspendLayout();
-            borderPosition.SuspendLayout();
-            borderHired.SuspendLayout();
+            borderLicense.SuspendLayout();
             borderSpecial.SuspendLayout();
-            panel51.SuspendLayout();
+            borderHired.SuspendLayout();
+            borderPosition.SuspendLayout();
+            panel27.SuspendLayout();
+            borderProvince.SuspendLayout();
+            borderCity.SuspendLayout();
+            borderPostal.SuspendLayout();
+            borderBrgy.SuspendLayout();
+            panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider3).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -217,6 +225,7 @@
             btnClose.SizeMode = PictureBoxSizeMode.Zoom;
             btnClose.TabIndex = 1;
             btnClose.TabStop = false;
+            btnClose.Click += btnClose_Click;
             // 
             // borderLast
             // 
@@ -225,7 +234,7 @@
             borderLast.Controls.Add(panel16);
             borderLast.Controls.Add(panel17);
             borderLast.Controls.Add(txtLastName);
-            borderLast.Location = new Point(409, 74);
+            borderLast.Location = new Point(407, 92);
             borderLast.Name = "borderLast";
             borderLast.Size = new Size(157, 23);
             borderLast.TabIndex = 62;
@@ -284,7 +293,7 @@
             borderFirst.Controls.Add(panel12);
             borderFirst.Controls.Add(panel13);
             borderFirst.Controls.Add(txtfirstName);
-            borderFirst.Location = new Point(54, 74);
+            borderFirst.Location = new Point(52, 92);
             borderFirst.Name = "borderFirst";
             borderFirst.Size = new Size(157, 23);
             borderFirst.TabIndex = 63;
@@ -341,7 +350,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.DimGray;
-            label2.Location = new Point(45, 45);
+            label2.Location = new Point(43, 63);
             label2.Name = "label2";
             label2.Size = new Size(69, 16);
             label2.TabIndex = 60;
@@ -424,7 +433,7 @@
             borderMiddle.Controls.Add(panel5);
             borderMiddle.Controls.Add(panel6);
             borderMiddle.Controls.Add(txtMiddleName);
-            borderMiddle.Location = new Point(232, 74);
+            borderMiddle.Location = new Point(230, 92);
             borderMiddle.Name = "borderMiddle";
             borderMiddle.Size = new Size(157, 23);
             borderMiddle.TabIndex = 64;
@@ -482,7 +491,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = Color.DimGray;
-            label6.Location = new Point(315, 12);
+            label6.Location = new Point(313, 30);
             label6.Name = "label6";
             label6.Size = new Size(155, 16);
             label6.TabIndex = 66;
@@ -494,7 +503,7 @@
             panel2.BackColor = Color.DimGray;
             panel2.Controls.Add(panel7);
             panel2.Controls.Add(label3);
-            panel2.Location = new Point(33, 31);
+            panel2.Location = new Point(31, 49);
             panel2.Name = "panel2";
             panel2.Size = new Size(718, 1);
             panel2.TabIndex = 67;
@@ -520,17 +529,17 @@
             label3.TabIndex = 68;
             label3.Text = "PERSONAL INFORMATION";
             // 
-            // panel18
+            // borderMobile
             // 
-            panel18.Controls.Add(panel23);
-            panel18.Controls.Add(panel24);
-            panel18.Controls.Add(panel25);
-            panel18.Controls.Add(panel26);
-            panel18.Controls.Add(textBox1);
-            panel18.Location = new Point(412, 232);
-            panel18.Name = "panel18";
-            panel18.Size = new Size(332, 23);
-            panel18.TabIndex = 67;
+            borderMobile.Controls.Add(panel23);
+            borderMobile.Controls.Add(panel24);
+            borderMobile.Controls.Add(panel25);
+            borderMobile.Controls.Add(panel26);
+            borderMobile.Controls.Add(txtMobile);
+            borderMobile.Location = new Point(412, 232);
+            borderMobile.Name = "borderMobile";
+            borderMobile.Size = new Size(332, 23);
+            borderMobile.TabIndex = 67;
             // 
             // panel23
             // 
@@ -568,16 +577,16 @@
             panel26.Size = new Size(1, 23);
             panel26.TabIndex = 58;
             // 
-            // textBox1
+            // txtMobile
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Dock = DockStyle.Fill;
-            textBox1.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(0, 0);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = " Mobile Number";
-            textBox1.Size = new Size(332, 23);
-            textBox1.TabIndex = 5;
+            txtMobile.BorderStyle = BorderStyle.FixedSingle;
+            txtMobile.Dock = DockStyle.Fill;
+            txtMobile.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtMobile.Location = new Point(0, 0);
+            txtMobile.Name = "txtMobile";
+            txtMobile.PlaceholderText = " Mobile Number";
+            txtMobile.Size = new Size(332, 23);
+            txtMobile.TabIndex = 5;
             // 
             // label8
             // 
@@ -592,7 +601,6 @@
             // 
             // borderDateofBirth
             // 
-            borderDateofBirth.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             borderDateofBirth.Controls.Add(button20);
             borderDateofBirth.Controls.Add(panel108);
             borderDateofBirth.Controls.Add(panel109);
@@ -601,7 +609,7 @@
             borderDateofBirth.Controls.Add(txtDateofBirth);
             borderDateofBirth.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             borderDateofBirth.ForeColor = Color.DimGray;
-            borderDateofBirth.Location = new Point(591, 74);
+            borderDateofBirth.Location = new Point(589, 92);
             borderDateofBirth.Name = "borderDateofBirth";
             borderDateofBirth.Size = new Size(153, 23);
             borderDateofBirth.TabIndex = 114;
@@ -675,7 +683,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label9.ForeColor = Color.DimGray;
-            label9.Location = new Point(581, 45);
+            label9.Location = new Point(579, 63);
             label9.Name = "label9";
             label9.Size = new Size(78, 16);
             label9.TabIndex = 115;
@@ -754,8 +762,8 @@
             // panel32
             // 
             panel32.AutoScroll = true;
-            panel32.Controls.Add(btnSignUp);
-            panel32.Controls.Add(panel51);
+            panel32.Controls.Add(btnSave);
+            panel32.Controls.Add(borderLicense);
             panel32.Controls.Add(label16);
             panel32.Controls.Add(borderSpecial);
             panel32.Controls.Add(label15);
@@ -781,7 +789,7 @@
             panel32.Controls.Add(label4);
             panel32.Controls.Add(borderDateofBirth);
             panel32.Controls.Add(borderEmail);
-            panel32.Controls.Add(panel18);
+            panel32.Controls.Add(borderMobile);
             panel32.Controls.Add(borderMiddle);
             panel32.Controls.Add(label8);
             panel32.Controls.Add(label6);
@@ -790,408 +798,161 @@
             panel32.Name = "panel32";
             panel32.Size = new Size(800, 422);
             panel32.TabIndex = 116;
-            panel32.Paint += panel32_Paint;
-            // 
-            // label5
-            // 
-            label5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label5.AutoSize = true;
-            label5.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.ForeColor = Color.DimGray;
-            label5.Location = new Point(315, 157);
-            label5.Name = "label5";
-            label5.Size = new Size(151, 16);
-            label5.TabIndex = 116;
-            label5.Text = "CONTACT INFORMATION";
-            // 
-            // panel8
-            // 
-            panel8.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel8.BackColor = Color.DimGray;
-            panel8.Controls.Add(panel9);
-            panel8.Controls.Add(label7);
-            panel8.Location = new Point(33, 176);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(718, 1);
-            panel8.TabIndex = 117;
-            // 
-            // panel9
-            // 
-            panel9.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel9.BackColor = Color.DimGray;
-            panel9.Location = new Point(0, 9);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(1253, 1);
-            panel9.TabIndex = 69;
-            // 
-            // label7
-            // 
-            label7.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label7.AutoSize = true;
-            label7.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.ForeColor = Color.DimGray;
-            label7.Location = new Point(281, -10);
-            label7.Name = "label7";
-            label7.Size = new Size(155, 16);
-            label7.TabIndex = 68;
-            label7.Text = "PERSONAL INFORMATION";
-            // 
-            // panel33
-            // 
-            panel33.Location = new Point(3, 516);
-            panel33.Name = "panel33";
-            panel33.Size = new Size(11, 196);
-            panel33.TabIndex = 118;
-            // 
-            // borderCity
-            // 
-            borderCity.Controls.Add(panel35);
-            borderCity.Controls.Add(panel36);
-            borderCity.Controls.Add(panel37);
-            borderCity.Controls.Add(panel38);
-            borderCity.Controls.Add(txtCity);
-            borderCity.Location = new Point(55, 333);
-            borderCity.Name = "borderCity";
-            borderCity.Size = new Size(335, 23);
-            borderCity.TabIndex = 120;
-            // 
-            // panel35
-            // 
-            panel35.BackColor = Color.FromArgb(52, 152, 219);
-            panel35.Dock = DockStyle.Bottom;
-            panel35.Location = new Point(1, 22);
-            panel35.Name = "panel35";
-            panel35.Size = new Size(333, 1);
-            panel35.TabIndex = 58;
-            // 
-            // panel36
-            // 
-            panel36.BackColor = Color.FromArgb(52, 152, 219);
-            panel36.Dock = DockStyle.Top;
-            panel36.Location = new Point(1, 0);
-            panel36.Name = "panel36";
-            panel36.Size = new Size(333, 1);
-            panel36.TabIndex = 58;
-            // 
-            // panel37
-            // 
-            panel37.BackColor = Color.FromArgb(52, 152, 219);
-            panel37.Dock = DockStyle.Left;
-            panel37.Location = new Point(0, 0);
-            panel37.Name = "panel37";
-            panel37.Size = new Size(1, 23);
-            panel37.TabIndex = 57;
-            // 
-            // panel38
-            // 
-            panel38.BackColor = Color.FromArgb(52, 152, 219);
-            panel38.Dock = DockStyle.Right;
-            panel38.Location = new Point(334, 0);
-            panel38.Name = "panel38";
-            panel38.Size = new Size(1, 23);
-            panel38.TabIndex = 58;
-            // 
-            // txtCity
-            // 
-            txtCity.BorderStyle = BorderStyle.FixedSingle;
-            txtCity.Dock = DockStyle.Fill;
-            txtCity.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCity.Location = new Point(0, 0);
-            txtCity.Name = "txtCity";
-            txtCity.PlaceholderText = " City";
-            txtCity.Size = new Size(335, 23);
-            txtCity.TabIndex = 5;
-            // 
-            // borderBrgy
-            // 
-            borderBrgy.Controls.Add(panel40);
-            borderBrgy.Controls.Add(panel41);
-            borderBrgy.Controls.Add(panel42);
-            borderBrgy.Controls.Add(panel43);
-            borderBrgy.Controls.Add(txtBrgy);
-            borderBrgy.Location = new Point(411, 333);
-            borderBrgy.Name = "borderBrgy";
-            borderBrgy.Size = new Size(333, 23);
-            borderBrgy.TabIndex = 122;
-            // 
-            // panel40
-            // 
-            panel40.BackColor = Color.FromArgb(52, 152, 219);
-            panel40.Dock = DockStyle.Bottom;
-            panel40.Location = new Point(1, 22);
-            panel40.Name = "panel40";
-            panel40.Size = new Size(331, 1);
-            panel40.TabIndex = 58;
-            // 
-            // panel41
-            // 
-            panel41.BackColor = Color.FromArgb(52, 152, 219);
-            panel41.Dock = DockStyle.Top;
-            panel41.Location = new Point(1, 0);
-            panel41.Name = "panel41";
-            panel41.Size = new Size(331, 1);
-            panel41.TabIndex = 58;
-            // 
-            // panel42
-            // 
-            panel42.BackColor = Color.FromArgb(52, 152, 219);
-            panel42.Dock = DockStyle.Left;
-            panel42.Location = new Point(0, 0);
-            panel42.Name = "panel42";
-            panel42.Size = new Size(1, 23);
-            panel42.TabIndex = 57;
-            // 
-            // panel43
-            // 
-            panel43.BackColor = Color.FromArgb(52, 152, 219);
-            panel43.Dock = DockStyle.Right;
-            panel43.Location = new Point(332, 0);
-            panel43.Name = "panel43";
-            panel43.Size = new Size(1, 23);
-            panel43.TabIndex = 58;
-            // 
-            // txtBrgy
-            // 
-            txtBrgy.BorderStyle = BorderStyle.FixedSingle;
-            txtBrgy.Dock = DockStyle.Fill;
-            txtBrgy.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            txtBrgy.Location = new Point(0, 0);
-            txtBrgy.Name = "txtBrgy";
-            txtBrgy.PlaceholderText = "Barangay";
-            txtBrgy.Size = new Size(333, 23);
-            txtBrgy.TabIndex = 5;
-            // 
-            // borderProvince
-            // 
-            borderProvince.Controls.Add(panel34);
-            borderProvince.Controls.Add(panel39);
-            borderProvince.Controls.Add(panel44);
-            borderProvince.Controls.Add(panel45);
-            borderProvince.Controls.Add(txtProvince);
-            borderProvince.Location = new Point(55, 362);
-            borderProvince.Name = "borderProvince";
-            borderProvince.Size = new Size(335, 23);
-            borderProvince.TabIndex = 123;
-            // 
-            // panel34
-            // 
-            panel34.BackColor = Color.FromArgb(52, 152, 219);
-            panel34.Dock = DockStyle.Bottom;
-            panel34.Location = new Point(1, 22);
-            panel34.Name = "panel34";
-            panel34.Size = new Size(333, 1);
-            panel34.TabIndex = 58;
-            // 
-            // panel39
-            // 
-            panel39.BackColor = Color.FromArgb(52, 152, 219);
-            panel39.Dock = DockStyle.Top;
-            panel39.Location = new Point(1, 0);
-            panel39.Name = "panel39";
-            panel39.Size = new Size(333, 1);
-            panel39.TabIndex = 58;
-            // 
-            // panel44
-            // 
-            panel44.BackColor = Color.FromArgb(52, 152, 219);
-            panel44.Dock = DockStyle.Left;
-            panel44.Location = new Point(0, 0);
-            panel44.Name = "panel44";
-            panel44.Size = new Size(1, 23);
-            panel44.TabIndex = 57;
-            // 
-            // panel45
-            // 
-            panel45.BackColor = Color.FromArgb(52, 152, 219);
-            panel45.Dock = DockStyle.Right;
-            panel45.Location = new Point(334, 0);
-            panel45.Name = "panel45";
-            panel45.Size = new Size(1, 23);
-            panel45.TabIndex = 58;
-            // 
-            // txtProvince
-            // 
-            txtProvince.BorderStyle = BorderStyle.FixedSingle;
-            txtProvince.Dock = DockStyle.Fill;
-            txtProvince.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            txtProvince.Location = new Point(0, 0);
-            txtProvince.Name = "txtProvince";
-            txtProvince.PlaceholderText = " Province";
-            txtProvince.Size = new Size(335, 23);
-            txtProvince.TabIndex = 5;
-            // 
-            // borderPostal
-            // 
-            borderPostal.Controls.Add(panel47);
-            borderPostal.Controls.Add(panel48);
-            borderPostal.Controls.Add(panel49);
-            borderPostal.Controls.Add(panel50);
-            borderPostal.Controls.Add(txtPostalCode);
-            borderPostal.Location = new Point(411, 362);
-            borderPostal.Name = "borderPostal";
-            borderPostal.Size = new Size(333, 23);
-            borderPostal.TabIndex = 124;
-            // 
-            // panel47
-            // 
-            panel47.BackColor = Color.FromArgb(52, 152, 219);
-            panel47.Dock = DockStyle.Bottom;
-            panel47.Location = new Point(1, 22);
-            panel47.Name = "panel47";
-            panel47.Size = new Size(331, 1);
-            panel47.TabIndex = 58;
-            // 
-            // panel48
-            // 
-            panel48.BackColor = Color.FromArgb(52, 152, 219);
-            panel48.Dock = DockStyle.Top;
-            panel48.Location = new Point(1, 0);
-            panel48.Name = "panel48";
-            panel48.Size = new Size(331, 1);
-            panel48.TabIndex = 58;
-            // 
-            // panel49
-            // 
-            panel49.BackColor = Color.FromArgb(52, 152, 219);
-            panel49.Dock = DockStyle.Left;
-            panel49.Location = new Point(0, 0);
-            panel49.Name = "panel49";
-            panel49.Size = new Size(1, 23);
-            panel49.TabIndex = 57;
-            // 
-            // panel50
-            // 
-            panel50.BackColor = Color.FromArgb(52, 152, 219);
-            panel50.Dock = DockStyle.Right;
-            panel50.Location = new Point(332, 0);
-            panel50.Name = "panel50";
-            panel50.Size = new Size(1, 23);
-            panel50.TabIndex = 58;
-            // 
-            // txtPostalCode
-            // 
-            txtPostalCode.BorderStyle = BorderStyle.FixedSingle;
-            txtPostalCode.Dock = DockStyle.Fill;
-            txtPostalCode.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPostalCode.Location = new Point(0, 0);
-            txtPostalCode.Name = "txtPostalCode";
-            txtPostalCode.PlaceholderText = "Postal Code";
-            txtPostalCode.Size = new Size(333, 23);
-            txtPostalCode.TabIndex = 5;
-            // 
-            // label11
-            // 
-            label11.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label11.AutoSize = true;
-            label11.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.ForeColor = Color.DimGray;
-            label11.Location = new Point(314, 437);
-            label11.Name = "label11";
-            label11.Size = new Size(183, 16);
-            label11.TabIndex = 125;
-            label11.Text = "PROFESSIONAL INFORMATION";
-            // 
-            // panel27
-            // 
-            panel27.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel27.BackColor = Color.DimGray;
-            panel27.Controls.Add(panel46);
-            panel27.Controls.Add(label12);
-            panel27.Location = new Point(32, 456);
-            panel27.Name = "panel27";
-            panel27.Size = new Size(718, 1);
-            panel27.TabIndex = 126;
-            // 
-            // panel46
-            // 
-            panel46.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel46.BackColor = Color.DimGray;
-            panel46.Location = new Point(0, 9);
-            panel46.Name = "panel46";
-            panel46.Size = new Size(1771, 1);
-            panel46.TabIndex = 69;
-            // 
-            // label12
-            // 
-            label12.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label12.AutoSize = true;
-            label12.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.ForeColor = Color.DimGray;
-            label12.Location = new Point(281, -10);
-            label12.Name = "label12";
-            label12.Size = new Size(155, 16);
-            label12.TabIndex = 68;
-            label12.Text = "PERSONAL INFORMATION";
-            // 
-            // borderPosition
-            // 
-            borderPosition.Controls.Add(panel52);
-            borderPosition.Controls.Add(panel53);
-            borderPosition.Controls.Add(panel54);
-            borderPosition.Controls.Add(panel55);
-            borderPosition.Controls.Add(txtPosition);
-            borderPosition.Location = new Point(55, 507);
-            borderPosition.Name = "borderPosition";
-            borderPosition.Size = new Size(335, 23);
-            borderPosition.TabIndex = 128;
-            // 
-            // panel52
-            // 
-            panel52.BackColor = Color.FromArgb(52, 152, 219);
-            panel52.Dock = DockStyle.Bottom;
-            panel52.Location = new Point(1, 22);
-            panel52.Name = "panel52";
-            panel52.Size = new Size(333, 1);
-            panel52.TabIndex = 58;
-            // 
-            // panel53
-            // 
-            panel53.BackColor = Color.FromArgb(52, 152, 219);
-            panel53.Dock = DockStyle.Top;
-            panel53.Location = new Point(1, 0);
-            panel53.Name = "panel53";
-            panel53.Size = new Size(333, 1);
-            panel53.TabIndex = 58;
-            // 
-            // panel54
-            // 
-            panel54.BackColor = Color.FromArgb(52, 152, 219);
-            panel54.Dock = DockStyle.Left;
-            panel54.Location = new Point(0, 0);
-            panel54.Name = "panel54";
-            panel54.Size = new Size(1, 23);
-            panel54.TabIndex = 57;
-            // 
-            // panel55
-            // 
-            panel55.BackColor = Color.FromArgb(52, 152, 219);
-            panel55.Dock = DockStyle.Right;
-            panel55.Location = new Point(334, 0);
-            panel55.Name = "panel55";
-            panel55.Size = new Size(1, 23);
-            panel55.TabIndex = 58;
-            // 
-            // txtPosition
-            // 
-            txtPosition.BorderStyle = BorderStyle.FixedSingle;
-            txtPosition.Dock = DockStyle.Fill;
-            txtPosition.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPosition.Location = new Point(0, 0);
-            txtPosition.Name = "txtPosition";
-            txtPosition.PlaceholderText = " Position";
-            txtPosition.Size = new Size(335, 23);
-            txtPosition.TabIndex = 1;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label13.ForeColor = Color.DimGray;
-            label13.Location = new Point(46, 478);
-            label13.Name = "label13";
-            label13.Size = new Size(56, 16);
-            label13.TabIndex = 127;
-            label13.Text = "Position:";
+            // 
+            // btnSave
+            // 
+            btnSave.BackColor = Color.FromArgb(102, 204, 102);
+            btnSave.FlatAppearance.BorderColor = Color.FromArgb(102, 204, 102);
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSave.ForeColor = Color.White;
+            btnSave.Location = new Point(630, 650);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(120, 24);
+            btnSave.TabIndex = 133;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
+            // 
+            // borderLicense
+            // 
+            borderLicense.Controls.Add(panel64);
+            borderLicense.Controls.Add(panel65);
+            borderLicense.Controls.Add(panel66);
+            borderLicense.Controls.Add(panel67);
+            borderLicense.Controls.Add(txtLicense);
+            borderLicense.Location = new Point(408, 572);
+            borderLicense.Name = "borderLicense";
+            borderLicense.Size = new Size(335, 23);
+            borderLicense.TabIndex = 132;
+            // 
+            // panel64
+            // 
+            panel64.BackColor = Color.FromArgb(52, 152, 219);
+            panel64.Dock = DockStyle.Bottom;
+            panel64.Location = new Point(1, 22);
+            panel64.Name = "panel64";
+            panel64.Size = new Size(333, 1);
+            panel64.TabIndex = 58;
+            // 
+            // panel65
+            // 
+            panel65.BackColor = Color.FromArgb(52, 152, 219);
+            panel65.Dock = DockStyle.Top;
+            panel65.Location = new Point(1, 0);
+            panel65.Name = "panel65";
+            panel65.Size = new Size(333, 1);
+            panel65.TabIndex = 58;
+            // 
+            // panel66
+            // 
+            panel66.BackColor = Color.FromArgb(52, 152, 219);
+            panel66.Dock = DockStyle.Left;
+            panel66.Location = new Point(0, 0);
+            panel66.Name = "panel66";
+            panel66.Size = new Size(1, 23);
+            panel66.TabIndex = 57;
+            // 
+            // panel67
+            // 
+            panel67.BackColor = Color.FromArgb(52, 152, 219);
+            panel67.Dock = DockStyle.Right;
+            panel67.Location = new Point(334, 0);
+            panel67.Name = "panel67";
+            panel67.Size = new Size(1, 23);
+            panel67.TabIndex = 58;
+            // 
+            // txtLicense
+            // 
+            txtLicense.BorderStyle = BorderStyle.FixedSingle;
+            txtLicense.Dock = DockStyle.Fill;
+            txtLicense.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtLicense.Location = new Point(0, 0);
+            txtLicense.Name = "txtLicense";
+            txtLicense.PlaceholderText = " License Number";
+            txtLicense.Size = new Size(335, 23);
+            txtLicense.TabIndex = 1;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label16.ForeColor = Color.DimGray;
+            label16.Location = new Point(399, 543);
+            label16.Name = "label16";
+            label16.Size = new Size(164, 16);
+            label16.TabIndex = 131;
+            label16.Text = "License Number: (Optional)";
+            // 
+            // borderSpecial
+            // 
+            borderSpecial.Controls.Add(panel60);
+            borderSpecial.Controls.Add(panel61);
+            borderSpecial.Controls.Add(panel62);
+            borderSpecial.Controls.Add(panel63);
+            borderSpecial.Controls.Add(txtSpecial);
+            borderSpecial.Location = new Point(56, 572);
+            borderSpecial.Name = "borderSpecial";
+            borderSpecial.Size = new Size(335, 23);
+            borderSpecial.TabIndex = 130;
+            // 
+            // panel60
+            // 
+            panel60.BackColor = Color.FromArgb(52, 152, 219);
+            panel60.Dock = DockStyle.Bottom;
+            panel60.Location = new Point(1, 22);
+            panel60.Name = "panel60";
+            panel60.Size = new Size(333, 1);
+            panel60.TabIndex = 58;
+            // 
+            // panel61
+            // 
+            panel61.BackColor = Color.FromArgb(52, 152, 219);
+            panel61.Dock = DockStyle.Top;
+            panel61.Location = new Point(1, 0);
+            panel61.Name = "panel61";
+            panel61.Size = new Size(333, 1);
+            panel61.TabIndex = 58;
+            // 
+            // panel62
+            // 
+            panel62.BackColor = Color.FromArgb(52, 152, 219);
+            panel62.Dock = DockStyle.Left;
+            panel62.Location = new Point(0, 0);
+            panel62.Name = "panel62";
+            panel62.Size = new Size(1, 23);
+            panel62.TabIndex = 57;
+            // 
+            // panel63
+            // 
+            panel63.BackColor = Color.FromArgb(52, 152, 219);
+            panel63.Dock = DockStyle.Right;
+            panel63.Location = new Point(334, 0);
+            panel63.Name = "panel63";
+            panel63.Size = new Size(1, 23);
+            panel63.TabIndex = 58;
+            // 
+            // txtSpecial
+            // 
+            txtSpecial.BorderStyle = BorderStyle.FixedSingle;
+            txtSpecial.Dock = DockStyle.Fill;
+            txtSpecial.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSpecial.Location = new Point(0, 0);
+            txtSpecial.Name = "txtSpecial";
+            txtSpecial.PlaceholderText = " Specialization";
+            txtSpecial.Size = new Size(335, 23);
+            txtSpecial.TabIndex = 1;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label15.ForeColor = Color.DimGray;
+            label15.Location = new Point(47, 543);
+            label15.Name = "label15";
+            label15.Size = new Size(151, 16);
+            label15.TabIndex = 129;
+            label15.Text = "Specialization: (Optional)";
             // 
             // label14
             // 
@@ -1206,7 +967,6 @@
             // 
             // borderHired
             // 
-            borderHired.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             borderHired.Controls.Add(button1);
             borderHired.Controls.Add(panel56);
             borderHired.Controls.Add(panel57);
@@ -1284,159 +1044,426 @@
             txtHired.Size = new Size(153, 23);
             txtHired.TabIndex = 5;
             // 
-            // borderSpecial
+            // borderPosition
             // 
-            borderSpecial.Controls.Add(panel60);
-            borderSpecial.Controls.Add(panel61);
-            borderSpecial.Controls.Add(panel62);
-            borderSpecial.Controls.Add(panel63);
-            borderSpecial.Controls.Add(txtSpecial);
-            borderSpecial.Location = new Point(56, 572);
-            borderSpecial.Name = "borderSpecial";
-            borderSpecial.Size = new Size(335, 23);
-            borderSpecial.TabIndex = 130;
+            borderPosition.Controls.Add(panel52);
+            borderPosition.Controls.Add(panel53);
+            borderPosition.Controls.Add(panel54);
+            borderPosition.Controls.Add(panel55);
+            borderPosition.Controls.Add(txtPosition);
+            borderPosition.Location = new Point(55, 507);
+            borderPosition.Name = "borderPosition";
+            borderPosition.Size = new Size(335, 23);
+            borderPosition.TabIndex = 128;
             // 
-            // panel60
+            // panel52
             // 
-            panel60.BackColor = Color.FromArgb(52, 152, 219);
-            panel60.Dock = DockStyle.Bottom;
-            panel60.Location = new Point(1, 22);
-            panel60.Name = "panel60";
-            panel60.Size = new Size(333, 1);
-            panel60.TabIndex = 58;
+            panel52.BackColor = Color.FromArgb(52, 152, 219);
+            panel52.Dock = DockStyle.Bottom;
+            panel52.Location = new Point(1, 22);
+            panel52.Name = "panel52";
+            panel52.Size = new Size(333, 1);
+            panel52.TabIndex = 58;
             // 
-            // panel61
+            // panel53
             // 
-            panel61.BackColor = Color.FromArgb(52, 152, 219);
-            panel61.Dock = DockStyle.Top;
-            panel61.Location = new Point(1, 0);
-            panel61.Name = "panel61";
-            panel61.Size = new Size(333, 1);
-            panel61.TabIndex = 58;
+            panel53.BackColor = Color.FromArgb(52, 152, 219);
+            panel53.Dock = DockStyle.Top;
+            panel53.Location = new Point(1, 0);
+            panel53.Name = "panel53";
+            panel53.Size = new Size(333, 1);
+            panel53.TabIndex = 58;
             // 
-            // panel62
+            // panel54
             // 
-            panel62.BackColor = Color.FromArgb(52, 152, 219);
-            panel62.Dock = DockStyle.Left;
-            panel62.Location = new Point(0, 0);
-            panel62.Name = "panel62";
-            panel62.Size = new Size(1, 23);
-            panel62.TabIndex = 57;
+            panel54.BackColor = Color.FromArgb(52, 152, 219);
+            panel54.Dock = DockStyle.Left;
+            panel54.Location = new Point(0, 0);
+            panel54.Name = "panel54";
+            panel54.Size = new Size(1, 23);
+            panel54.TabIndex = 57;
             // 
-            // panel63
+            // panel55
             // 
-            panel63.BackColor = Color.FromArgb(52, 152, 219);
-            panel63.Dock = DockStyle.Right;
-            panel63.Location = new Point(334, 0);
-            panel63.Name = "panel63";
-            panel63.Size = new Size(1, 23);
-            panel63.TabIndex = 58;
+            panel55.BackColor = Color.FromArgb(52, 152, 219);
+            panel55.Dock = DockStyle.Right;
+            panel55.Location = new Point(334, 0);
+            panel55.Name = "panel55";
+            panel55.Size = new Size(1, 23);
+            panel55.TabIndex = 58;
             // 
-            // txtSpecial
+            // txtPosition
             // 
-            txtSpecial.BorderStyle = BorderStyle.FixedSingle;
-            txtSpecial.Dock = DockStyle.Fill;
-            txtSpecial.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSpecial.Location = new Point(0, 0);
-            txtSpecial.Name = "txtSpecial";
-            txtSpecial.PlaceholderText = " Specialization";
-            txtSpecial.Size = new Size(335, 23);
-            txtSpecial.TabIndex = 1;
+            txtPosition.BorderStyle = BorderStyle.FixedSingle;
+            txtPosition.Dock = DockStyle.Fill;
+            txtPosition.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPosition.Location = new Point(0, 0);
+            txtPosition.Name = "txtPosition";
+            txtPosition.PlaceholderText = " Position";
+            txtPosition.Size = new Size(335, 23);
+            txtPosition.TabIndex = 1;
             // 
-            // label15
+            // label13
             // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label15.ForeColor = Color.DimGray;
-            label15.Location = new Point(47, 543);
-            label15.Name = "label15";
-            label15.Size = new Size(151, 16);
-            label15.TabIndex = 129;
-            label15.Text = "Specialization: (Optional)";
+            label13.AutoSize = true;
+            label13.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.ForeColor = Color.DimGray;
+            label13.Location = new Point(46, 478);
+            label13.Name = "label13";
+            label13.Size = new Size(56, 16);
+            label13.TabIndex = 127;
+            label13.Text = "Position:";
             // 
-            // panel51
+            // label11
             // 
-            panel51.Controls.Add(panel64);
-            panel51.Controls.Add(panel65);
-            panel51.Controls.Add(panel66);
-            panel51.Controls.Add(panel67);
-            panel51.Controls.Add(textBox2);
-            panel51.Location = new Point(408, 572);
-            panel51.Name = "panel51";
-            panel51.Size = new Size(335, 23);
-            panel51.TabIndex = 132;
+            label11.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label11.AutoSize = true;
+            label11.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.ForeColor = Color.DimGray;
+            label11.Location = new Point(314, 437);
+            label11.Name = "label11";
+            label11.Size = new Size(183, 16);
+            label11.TabIndex = 125;
+            label11.Text = "PROFESSIONAL INFORMATION";
             // 
-            // panel64
+            // panel27
             // 
-            panel64.BackColor = Color.FromArgb(52, 152, 219);
-            panel64.Dock = DockStyle.Bottom;
-            panel64.Location = new Point(1, 22);
-            panel64.Name = "panel64";
-            panel64.Size = new Size(333, 1);
-            panel64.TabIndex = 58;
+            panel27.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel27.BackColor = Color.DimGray;
+            panel27.Controls.Add(panel46);
+            panel27.Controls.Add(label12);
+            panel27.Location = new Point(32, 456);
+            panel27.Name = "panel27";
+            panel27.Size = new Size(718, 1);
+            panel27.TabIndex = 126;
             // 
-            // panel65
+            // panel46
             // 
-            panel65.BackColor = Color.FromArgb(52, 152, 219);
-            panel65.Dock = DockStyle.Top;
-            panel65.Location = new Point(1, 0);
-            panel65.Name = "panel65";
-            panel65.Size = new Size(333, 1);
-            panel65.TabIndex = 58;
+            panel46.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel46.BackColor = Color.DimGray;
+            panel46.Location = new Point(0, 9);
+            panel46.Name = "panel46";
+            panel46.Size = new Size(1771, 1);
+            panel46.TabIndex = 69;
             // 
-            // panel66
+            // label12
             // 
-            panel66.BackColor = Color.FromArgb(52, 152, 219);
-            panel66.Dock = DockStyle.Left;
-            panel66.Location = new Point(0, 0);
-            panel66.Name = "panel66";
-            panel66.Size = new Size(1, 23);
-            panel66.TabIndex = 57;
+            label12.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label12.AutoSize = true;
+            label12.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.ForeColor = Color.DimGray;
+            label12.Location = new Point(281, -10);
+            label12.Name = "label12";
+            label12.Size = new Size(155, 16);
+            label12.TabIndex = 68;
+            label12.Text = "PERSONAL INFORMATION";
             // 
-            // panel67
+            // borderProvince
             // 
-            panel67.BackColor = Color.FromArgb(52, 152, 219);
-            panel67.Dock = DockStyle.Right;
-            panel67.Location = new Point(334, 0);
-            panel67.Name = "panel67";
-            panel67.Size = new Size(1, 23);
-            panel67.TabIndex = 58;
+            borderProvince.Controls.Add(panel34);
+            borderProvince.Controls.Add(panel39);
+            borderProvince.Controls.Add(panel44);
+            borderProvince.Controls.Add(panel45);
+            borderProvince.Controls.Add(txtProvince);
+            borderProvince.Location = new Point(55, 362);
+            borderProvince.Name = "borderProvince";
+            borderProvince.Size = new Size(335, 23);
+            borderProvince.TabIndex = 123;
             // 
-            // textBox2
+            // panel34
             // 
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Dock = DockStyle.Fill;
-            textBox2.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(0, 0);
-            textBox2.Name = "textBox2";
-            textBox2.PlaceholderText = " License Number";
-            textBox2.Size = new Size(335, 23);
-            textBox2.TabIndex = 1;
+            panel34.BackColor = Color.FromArgb(52, 152, 219);
+            panel34.Dock = DockStyle.Bottom;
+            panel34.Location = new Point(1, 22);
+            panel34.Name = "panel34";
+            panel34.Size = new Size(333, 1);
+            panel34.TabIndex = 58;
             // 
-            // label16
+            // panel39
             // 
-            label16.AutoSize = true;
-            label16.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label16.ForeColor = Color.DimGray;
-            label16.Location = new Point(399, 543);
-            label16.Name = "label16";
-            label16.Size = new Size(164, 16);
-            label16.TabIndex = 131;
-            label16.Text = "License Number: (Optional)";
+            panel39.BackColor = Color.FromArgb(52, 152, 219);
+            panel39.Dock = DockStyle.Top;
+            panel39.Location = new Point(1, 0);
+            panel39.Name = "panel39";
+            panel39.Size = new Size(333, 1);
+            panel39.TabIndex = 58;
             // 
-            // btnSignUp
+            // panel44
             // 
-            btnSignUp.BackColor = Color.FromArgb(102, 204, 102);
-            btnSignUp.FlatAppearance.BorderColor = Color.FromArgb(102, 204, 102);
-            btnSignUp.FlatStyle = FlatStyle.Flat;
-            btnSignUp.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSignUp.ForeColor = Color.White;
-            btnSignUp.Location = new Point(54, 629);
-            btnSignUp.Name = "btnSignUp";
-            btnSignUp.Size = new Size(690, 24);
-            btnSignUp.TabIndex = 133;
-            btnSignUp.Text = "Sign Up";
-            btnSignUp.UseVisualStyleBackColor = false;
+            panel44.BackColor = Color.FromArgb(52, 152, 219);
+            panel44.Dock = DockStyle.Left;
+            panel44.Location = new Point(0, 0);
+            panel44.Name = "panel44";
+            panel44.Size = new Size(1, 23);
+            panel44.TabIndex = 57;
+            // 
+            // panel45
+            // 
+            panel45.BackColor = Color.FromArgb(52, 152, 219);
+            panel45.Dock = DockStyle.Right;
+            panel45.Location = new Point(334, 0);
+            panel45.Name = "panel45";
+            panel45.Size = new Size(1, 23);
+            panel45.TabIndex = 58;
+            // 
+            // txtProvince
+            // 
+            txtProvince.BorderStyle = BorderStyle.FixedSingle;
+            txtProvince.Dock = DockStyle.Fill;
+            txtProvince.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtProvince.Location = new Point(0, 0);
+            txtProvince.Name = "txtProvince";
+            txtProvince.PlaceholderText = " Province";
+            txtProvince.Size = new Size(335, 23);
+            txtProvince.TabIndex = 5;
+            // 
+            // borderCity
+            // 
+            borderCity.Controls.Add(panel35);
+            borderCity.Controls.Add(panel36);
+            borderCity.Controls.Add(panel37);
+            borderCity.Controls.Add(panel38);
+            borderCity.Controls.Add(txtCity);
+            borderCity.Location = new Point(409, 333);
+            borderCity.Name = "borderCity";
+            borderCity.Size = new Size(335, 23);
+            borderCity.TabIndex = 120;
+            // 
+            // panel35
+            // 
+            panel35.BackColor = Color.FromArgb(52, 152, 219);
+            panel35.Dock = DockStyle.Bottom;
+            panel35.Location = new Point(1, 22);
+            panel35.Name = "panel35";
+            panel35.Size = new Size(333, 1);
+            panel35.TabIndex = 58;
+            // 
+            // panel36
+            // 
+            panel36.BackColor = Color.FromArgb(52, 152, 219);
+            panel36.Dock = DockStyle.Top;
+            panel36.Location = new Point(1, 0);
+            panel36.Name = "panel36";
+            panel36.Size = new Size(333, 1);
+            panel36.TabIndex = 58;
+            // 
+            // panel37
+            // 
+            panel37.BackColor = Color.FromArgb(52, 152, 219);
+            panel37.Dock = DockStyle.Left;
+            panel37.Location = new Point(0, 0);
+            panel37.Name = "panel37";
+            panel37.Size = new Size(1, 23);
+            panel37.TabIndex = 57;
+            // 
+            // panel38
+            // 
+            panel38.BackColor = Color.FromArgb(52, 152, 219);
+            panel38.Dock = DockStyle.Right;
+            panel38.Location = new Point(334, 0);
+            panel38.Name = "panel38";
+            panel38.Size = new Size(1, 23);
+            panel38.TabIndex = 58;
+            // 
+            // txtCity
+            // 
+            txtCity.BorderStyle = BorderStyle.FixedSingle;
+            txtCity.Dock = DockStyle.Fill;
+            txtCity.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCity.Location = new Point(0, 0);
+            txtCity.Name = "txtCity";
+            txtCity.PlaceholderText = " City";
+            txtCity.Size = new Size(335, 23);
+            txtCity.TabIndex = 5;
+            // 
+            // borderPostal
+            // 
+            borderPostal.Controls.Add(panel47);
+            borderPostal.Controls.Add(panel48);
+            borderPostal.Controls.Add(panel49);
+            borderPostal.Controls.Add(panel50);
+            borderPostal.Controls.Add(txtPostalCode);
+            borderPostal.Location = new Point(411, 362);
+            borderPostal.Name = "borderPostal";
+            borderPostal.Size = new Size(333, 23);
+            borderPostal.TabIndex = 124;
+            // 
+            // panel47
+            // 
+            panel47.BackColor = Color.FromArgb(52, 152, 219);
+            panel47.Dock = DockStyle.Bottom;
+            panel47.Location = new Point(1, 22);
+            panel47.Name = "panel47";
+            panel47.Size = new Size(331, 1);
+            panel47.TabIndex = 58;
+            // 
+            // panel48
+            // 
+            panel48.BackColor = Color.FromArgb(52, 152, 219);
+            panel48.Dock = DockStyle.Top;
+            panel48.Location = new Point(1, 0);
+            panel48.Name = "panel48";
+            panel48.Size = new Size(331, 1);
+            panel48.TabIndex = 58;
+            // 
+            // panel49
+            // 
+            panel49.BackColor = Color.FromArgb(52, 152, 219);
+            panel49.Dock = DockStyle.Left;
+            panel49.Location = new Point(0, 0);
+            panel49.Name = "panel49";
+            panel49.Size = new Size(1, 23);
+            panel49.TabIndex = 57;
+            // 
+            // panel50
+            // 
+            panel50.BackColor = Color.FromArgb(52, 152, 219);
+            panel50.Dock = DockStyle.Right;
+            panel50.Location = new Point(332, 0);
+            panel50.Name = "panel50";
+            panel50.Size = new Size(1, 23);
+            panel50.TabIndex = 58;
+            // 
+            // txtPostalCode
+            // 
+            txtPostalCode.BorderStyle = BorderStyle.FixedSingle;
+            txtPostalCode.Dock = DockStyle.Fill;
+            txtPostalCode.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPostalCode.Location = new Point(0, 0);
+            txtPostalCode.Name = "txtPostalCode";
+            txtPostalCode.PlaceholderText = "Postal Code";
+            txtPostalCode.Size = new Size(333, 23);
+            txtPostalCode.TabIndex = 5;
+            // 
+            // borderBrgy
+            // 
+            borderBrgy.Controls.Add(panel40);
+            borderBrgy.Controls.Add(panel41);
+            borderBrgy.Controls.Add(panel42);
+            borderBrgy.Controls.Add(panel43);
+            borderBrgy.Controls.Add(txtBrgy);
+            borderBrgy.Location = new Point(55, 333);
+            borderBrgy.Name = "borderBrgy";
+            borderBrgy.Size = new Size(335, 23);
+            borderBrgy.TabIndex = 122;
+            // 
+            // panel40
+            // 
+            panel40.BackColor = Color.FromArgb(52, 152, 219);
+            panel40.Dock = DockStyle.Bottom;
+            panel40.Location = new Point(1, 22);
+            panel40.Name = "panel40";
+            panel40.Size = new Size(333, 1);
+            panel40.TabIndex = 58;
+            // 
+            // panel41
+            // 
+            panel41.BackColor = Color.FromArgb(52, 152, 219);
+            panel41.Dock = DockStyle.Top;
+            panel41.Location = new Point(1, 0);
+            panel41.Name = "panel41";
+            panel41.Size = new Size(333, 1);
+            panel41.TabIndex = 58;
+            // 
+            // panel42
+            // 
+            panel42.BackColor = Color.FromArgb(52, 152, 219);
+            panel42.Dock = DockStyle.Left;
+            panel42.Location = new Point(0, 0);
+            panel42.Name = "panel42";
+            panel42.Size = new Size(1, 23);
+            panel42.TabIndex = 57;
+            // 
+            // panel43
+            // 
+            panel43.BackColor = Color.FromArgb(52, 152, 219);
+            panel43.Dock = DockStyle.Right;
+            panel43.Location = new Point(334, 0);
+            panel43.Name = "panel43";
+            panel43.Size = new Size(1, 23);
+            panel43.TabIndex = 58;
+            // 
+            // txtBrgy
+            // 
+            txtBrgy.BorderStyle = BorderStyle.FixedSingle;
+            txtBrgy.Dock = DockStyle.Fill;
+            txtBrgy.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBrgy.Location = new Point(0, 0);
+            txtBrgy.Name = "txtBrgy";
+            txtBrgy.PlaceholderText = "Barangay";
+            txtBrgy.Size = new Size(335, 23);
+            txtBrgy.TabIndex = 5;
+            // 
+            // panel33
+            // 
+            panel33.Location = new Point(3, 516);
+            panel33.Name = "panel33";
+            panel33.Size = new Size(11, 196);
+            panel33.TabIndex = 118;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label5.AutoSize = true;
+            label5.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.ForeColor = Color.DimGray;
+            label5.Location = new Point(315, 157);
+            label5.Name = "label5";
+            label5.Size = new Size(151, 16);
+            label5.TabIndex = 116;
+            label5.Text = "CONTACT INFORMATION";
+            // 
+            // panel8
+            // 
+            panel8.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel8.BackColor = Color.DimGray;
+            panel8.Controls.Add(panel9);
+            panel8.Controls.Add(label7);
+            panel8.Location = new Point(33, 176);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(718, 1);
+            panel8.TabIndex = 117;
+            // 
+            // panel9
+            // 
+            panel9.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel9.BackColor = Color.DimGray;
+            panel9.Location = new Point(0, 9);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(1253, 1);
+            panel9.TabIndex = 69;
+            // 
+            // label7
+            // 
+            label7.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label7.AutoSize = true;
+            label7.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.ForeColor = Color.DimGray;
+            label7.Location = new Point(281, -10);
+            label7.Name = "label7";
+            label7.Size = new Size(155, 16);
+            label7.TabIndex = 68;
+            label7.Text = "PERSONAL INFORMATION";
+            // 
+            // elipseControl1
+            // 
+            elipseControl1.CornerRadius = 15;
+            elipseControl1.TargetControl = this;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            errorProvider1.Icon = (Icon)resources.GetObject("errorProvider1.Icon");
+            // 
+            // errorProvider2
+            // 
+            errorProvider2.ContainerControl = this;
+            errorProvider2.Icon = (Icon)resources.GetObject("errorProvider2.Icon");
+            // 
+            // errorProvider3
+            // 
+            errorProvider3.ContainerControl = this;
+            errorProvider3.Icon = (Icon)resources.GetObject("errorProvider3.Icon");
             // 
             // registerEmployees
             // 
@@ -1447,6 +1474,7 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "registerEmployees";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "registerEmployees";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -1462,32 +1490,35 @@
             borderMiddle.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            panel18.ResumeLayout(false);
-            panel18.PerformLayout();
+            borderMobile.ResumeLayout(false);
+            borderMobile.PerformLayout();
             borderDateofBirth.ResumeLayout(false);
             borderStreet.ResumeLayout(false);
             borderStreet.PerformLayout();
             panel32.ResumeLayout(false);
             panel32.PerformLayout();
-            panel8.ResumeLayout(false);
-            panel8.PerformLayout();
-            borderCity.ResumeLayout(false);
-            borderCity.PerformLayout();
-            borderBrgy.ResumeLayout(false);
-            borderBrgy.PerformLayout();
-            borderProvince.ResumeLayout(false);
-            borderProvince.PerformLayout();
-            borderPostal.ResumeLayout(false);
-            borderPostal.PerformLayout();
-            panel27.ResumeLayout(false);
-            panel27.PerformLayout();
-            borderPosition.ResumeLayout(false);
-            borderPosition.PerformLayout();
-            borderHired.ResumeLayout(false);
+            borderLicense.ResumeLayout(false);
+            borderLicense.PerformLayout();
             borderSpecial.ResumeLayout(false);
             borderSpecial.PerformLayout();
-            panel51.ResumeLayout(false);
-            panel51.PerformLayout();
+            borderHired.ResumeLayout(false);
+            borderPosition.ResumeLayout(false);
+            borderPosition.PerformLayout();
+            panel27.ResumeLayout(false);
+            panel27.PerformLayout();
+            borderProvince.ResumeLayout(false);
+            borderProvince.PerformLayout();
+            borderCity.ResumeLayout(false);
+            borderCity.PerformLayout();
+            borderPostal.ResumeLayout(false);
+            borderPostal.PerformLayout();
+            borderBrgy.ResumeLayout(false);
+            borderBrgy.PerformLayout();
+            panel8.ResumeLayout(false);
+            panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider3).EndInit();
             ResumeLayout(false);
         }
 
@@ -1527,12 +1558,12 @@
         private Panel panel2;
         private Panel panel7;
         private Label label3;
-        private Panel panel18;
+        private Panel borderMobile;
         private Panel panel23;
         private Panel panel24;
         private Panel panel25;
         private Panel panel26;
-        private TextBox textBox1;
+        private TextBox txtMobile;
         private Label label8;
         private Panel borderDateofBirth;
         private Button button20;
@@ -1605,13 +1636,17 @@
         private Panel panel63;
         private TextBox txtSpecial;
         private Label label15;
-        private Panel panel51;
+        private Panel borderLicense;
         private Panel panel64;
         private Panel panel65;
         private Panel panel66;
         private Panel panel67;
-        private TextBox textBox2;
+        private TextBox txtLicense;
         private Label label16;
-        private Button btnSignUp;
+        private Button btnSave;
+        private ElipseToolDemo.ElipseControl elipseControl1;
+        private ErrorProvider errorProvider1;
+        private ErrorProvider errorProvider2;
+        private ErrorProvider errorProvider3;
     }
 }

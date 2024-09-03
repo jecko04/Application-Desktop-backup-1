@@ -22,7 +22,6 @@ namespace Application_Desktop.Admin_Sub_Views
         {
             InitializeComponent();
             ElipseManager elipseManager = new ElipseManager(5);
-
             elipseManager.ApplyElipseToAllButtons(this);
         }
 

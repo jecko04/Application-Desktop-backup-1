@@ -90,8 +90,10 @@
             // 
             viewEmployeeDetails.AllowUserToAddRows = false;
             viewEmployeeDetails.AllowUserToDeleteRows = false;
+            viewEmployeeDetails.AllowUserToResizeColumns = false;
+            viewEmployeeDetails.AllowUserToResizeRows = false;
             viewEmployeeDetails.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            viewEmployeeDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            viewEmployeeDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             viewEmployeeDetails.BackgroundColor = Color.White;
             viewEmployeeDetails.BorderStyle = BorderStyle.None;
             viewEmployeeDetails.CellBorderStyle = DataGridViewCellBorderStyle.None;
@@ -105,13 +107,14 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             viewEmployeeDetails.DefaultCellStyle = dataGridViewCellStyle1;
+            viewEmployeeDetails.EditMode = DataGridViewEditMode.EditOnEnter;
             viewEmployeeDetails.Location = new Point(-2, 42);
             viewEmployeeDetails.Margin = new Padding(0, 0, 10, 0);
             viewEmployeeDetails.Name = "viewEmployeeDetails";
-            viewEmployeeDetails.ReadOnly = true;
             viewEmployeeDetails.RowTemplate.Height = 25;
             viewEmployeeDetails.Size = new Size(983, 325);
             viewEmployeeDetails.TabIndex = 2;
+            viewEmployeeDetails.CellContentClick += viewEmployeeDetails_CellContentClick;
             // 
             // btnCreate
             // 
@@ -128,6 +131,7 @@
             btnCreate.TabIndex = 19;
             btnCreate.Text = "Create New";
             btnCreate.UseVisualStyleBackColor = false;
+            btnCreate.Click += btnCreate_Click;
             // 
             // btnRefresh
             // 
@@ -145,6 +149,7 @@
             btnRefresh.TabIndex = 20;
             btnRefresh.TextAlign = ContentAlignment.MiddleLeft;
             btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // btnDelete
             // 
@@ -180,6 +185,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "employeeProfile";
             Text = "Employees";
+            Load += employeeProfile_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
