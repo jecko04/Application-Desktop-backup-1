@@ -263,7 +263,7 @@ namespace Application_Desktop.Admin_Views
                     int doctors_ID = Convert.ToInt32(viewDentalDoctorAccount.Rows[e.RowIndex].Cells["Doctors_ID"].Value);
 
                     // Delete row from database
-                    DeleteRowFromDatabase(doctors_ID);
+                    await DeleteRowFromDatabase(doctors_ID);
                     AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been deleted successfully", Properties.Resources.success);
                     await LoadData();
                 }
@@ -303,7 +303,7 @@ namespace Application_Desktop.Admin_Views
 
 
 
-        public int DeleteRowFromDatabase(int doctorsID)
+        public async Task<int> DeleteRowFromDatabase(int doctorsID)
         {
             string query = "Delete From dentaldoctor Where Doctors_ID = @doctorsID";
 
@@ -313,12 +313,12 @@ namespace Application_Desktop.Admin_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@doctorsID", doctorsID);
-                cmd.ExecuteNonQuery();
+                await cmd.ExecuteNonQueryAsync();
 
                 AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been deleted successfully", Properties.Resources.success);
             }
@@ -326,7 +326,7 @@ namespace Application_Desktop.Admin_Views
             {
                 MessageBox.Show(ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
             return doctorsID;
         }
 
@@ -336,7 +336,7 @@ namespace Application_Desktop.Admin_Views
             await LoadData();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
             bool hasSelectedRows = false;
             var result = MessageBox.Show("Are you sure you want to delete the selected rows?", "Confirm Deletion", MessageBoxButtons.YesNo);
@@ -357,7 +357,7 @@ namespace Application_Desktop.Admin_Views
                         // Get the ID of the doctor to delete
                         int doctorsID = Convert.ToInt32(row.Cells["Doctors_ID"].Value);
                         viewDentalDoctorAccount.Rows.RemoveAt(i);
-                        DeleteRowFromDatabase(doctorsID);
+                        await DeleteRowFromDatabase(doctorsID);
                         AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been deleted successfully", Properties.Resources.success);
 
 

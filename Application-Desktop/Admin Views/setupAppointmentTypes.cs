@@ -492,6 +492,8 @@ namespace Application_Desktop.Admin_Views
             string duration = txtFetchDuration.Text;
             string frequency = txtFetchFrequency.Text;
 
+            string newTitle = txtNewTitle.Text;
+
             // Initialize a flag for validation status
             bool valid = true;
 
@@ -545,6 +547,16 @@ namespace Application_Desktop.Admin_Views
                     else
                     {
                         errorProvider4.SetError(borderFetchFrequency, string.Empty);
+                    }
+
+                    if (await categoriesValidator.IsCategoryExist(newTitle))
+                    {
+                        errorProvider1.SetError(borderNewTitle, "Categories title is alread exist");
+                        valid = false;
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(borderNewTitle, string.Empty);
                     }
 
                     // Update the category if all validations pass

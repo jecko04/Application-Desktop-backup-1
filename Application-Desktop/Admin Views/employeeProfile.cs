@@ -227,8 +227,21 @@ namespace Application_Desktop.Admin_Views
                 "active",     // Employee is actively working
                 "inactive",   // Employee is not currently active
                 "terminated", // Employee has been let go from the practice
-                "retired"     // Employee has retired
+                "retired",
+                "resigned"// Employee has retired
             });
+
+            statusColumn.ReadOnly = false;
+
+            // Ensure that only the Status column is editable
+            foreach (DataGridViewColumn column in viewEmployeeDetails.Columns)
+            {
+                if (column.Name != "Status")
+                {
+                    column.ReadOnly = true;
+                }
+            }
+
 
             viewEmployeeDetails.Columns.Add(statusColumn);
 
@@ -262,6 +275,7 @@ namespace Application_Desktop.Admin_Views
             await LoadEmployees();
         }
 
+        private editEmployees EditEmployeesInstance;
         private async void viewEmployeeDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //Update status
@@ -278,6 +292,118 @@ namespace Application_Desktop.Admin_Views
                     AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The employee status updated successfully", Properties.Resources.success);
                 }));
             }
+
+            //Edit emploees details
+            if (viewEmployeeDetails.Columns["edit"] != null &&
+        e.ColumnIndex == viewEmployeeDetails.Columns["edit"].Index && e.RowIndex >= 0)
+            {
+
+                int emploeesID = Convert.ToInt32(viewEmployeeDetails.Rows[e.RowIndex].Cells["Employee_ID"].Value);
+                string fullname = viewEmployeeDetails.Rows[e.RowIndex].Cells["Fullname"].Value?.ToString() ?? string.Empty;
+                string[] nameParts = fullname.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                string fname = nameParts.Length > 0 ? nameParts[0] : string.Empty;
+                string middle = nameParts.Length > 2 ? nameParts[1] : string.Empty;
+                string lname = nameParts.Length > 1 ? nameParts[nameParts.Length - 1] : string.Empty;
+
+                string email = viewEmployeeDetails.Rows[e.RowIndex].Cells["Email"].Value?.ToString() ?? string.Empty;
+                string phone = viewEmployeeDetails.Rows[e.RowIndex].Cells["Phone"].Value?.ToString() ?? string.Empty;
+
+                string dobString = viewEmployeeDetails.Rows[e.RowIndex].Cells["DateOfBirth"].Value?.ToString() ?? string.Empty;
+                string hireDateString = viewEmployeeDetails.Rows[e.RowIndex].Cells["HireDate"].Value?.ToString() ?? string.Empty;
+
+                // Parse the strings to DateTime objects
+                DateTime dob, hireDate;
+
+                bool isDobValid = DateTime.TryParse(dobString, out dob);
+                bool isHireDateValid = DateTime.TryParse(hireDateString, out hireDate);
+
+                // Format the DateTime objects to the desired format
+                string formattedDob = isDobValid ? dob.ToString("MMMM/dd/yyyy") : string.Empty;
+                string formattedHireDate = isHireDateValid ? hireDate.ToString("MMMM/dd/yyyy") : string.Empty;
+
+                string address = viewEmployeeDetails.Rows[e.RowIndex].Cells["Address"].Value?.ToString() ?? string.Empty;
+                string[] addressParts = address.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+                string street = addressParts.Length > 0 ? addressParts[0] : string.Empty;
+                string barangay = addressParts.Length > 1 ? addressParts[1] : string.Empty;
+                string city = addressParts.Length > 2 ? addressParts[2] : string.Empty;
+                string province = addressParts.Length > 3 ? addressParts[3] : string.Empty;
+                string postalCode = addressParts.Length > 4 ? addressParts[4] : string.Empty;
+
+                string position = viewEmployeeDetails.Rows[e.RowIndex].Cells["Position"].Value?.ToString() ?? string.Empty;
+
+                string special = viewEmployeeDetails.Rows[e.RowIndex].Cells["Specialization"].Value?.ToString() ?? string.Empty;
+                string license = viewEmployeeDetails.Rows[e.RowIndex].Cells["LicenseNumber"].Value?.ToString() ?? string.Empty;
+
+
+                if (EditEmployeesInstance == null || EditEmployeesInstance.IsDisposed)
+                {
+                    EditEmployeesInstance = new editEmployees(emploeesID, fname, middle, lname, dob, email, phone, street, barangay, city, province, postalCode, position, hireDate, special, license);
+                    EditEmployeesInstance.Show();
+                }
+                else
+                {
+                    if (EditEmployeesInstance.Visible)
+                    {
+                        EditEmployeesInstance.BringToFront();
+                    }
+                    else
+                    {
+                        EditEmployeesInstance.Show();
+                    }
+                }
+            }
+
+            //delete
+            if (e.RowIndex >= 0 && e.ColumnIndex == viewEmployeeDetails.Columns["delete"].Index)
+            {
+                DialogResult result = MessageBox.Show("Would you like to proceed with deleting this account?", "Confirm Deletions", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    int doctors_ID = Convert.ToInt32(viewEmployeeDetails.Rows[e.RowIndex].Cells["Employee_ID"].Value);
+
+                    // Delete row from database
+                    await DeleteRowFromDatabase(doctors_ID);
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The data has been deleted successfully", Properties.Resources.success);
+                    await LoadEmployees();
+                }
+            }
+
+            //Select Check Box
+            if (e.ColumnIndex == viewEmployeeDetails.Columns["selectEmployees"].Index)
+            {
+                DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)viewEmployeeDetails.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                cell.Value = !(cell.Value is bool && (bool)cell.Value); // Toggle checkbox value
+            }
+        }
+
+        public async Task<int> DeleteRowFromDatabase(int employeeID)
+        {
+            string query = "Delete From employees Where Employee_ID = @employeeid";
+
+            MySqlConnection conn = databaseHelper.getConnection();
+
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    await conn.OpenAsync();
+                }
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@employeeid", employeeID);
+                await cmd.ExecuteNonQueryAsync();
+
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been deleted successfully", Properties.Resources.success);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { await conn.CloseAsync(); }
+            return employeeID;
         }
 
         private async Task UpdateEmployeeStatus(string employeeId, string newStatus)
@@ -290,7 +416,7 @@ namespace Application_Desktop.Admin_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                   await conn.OpenAsync();
+                    await conn.OpenAsync();
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -307,5 +433,41 @@ namespace Application_Desktop.Admin_Views
             finally { await conn.CloseAsync(); }
         }
 
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+            bool hasSelectedRows = false;
+            var result = MessageBox.Show("Are you sure you want to delete the selected rows?", "Confirm Deletion", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                viewEmployeeDetails.EndEdit();
+
+                // Deleting from viewDentalDoctorAccount
+                for (int i = viewEmployeeDetails.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataGridViewRow row = viewEmployeeDetails.Rows[i];
+                    DataGridViewCheckBoxCell checkBoxCell = row.Cells["selectEmployees"] as DataGridViewCheckBoxCell;
+
+                    // Check if the checkbox is checked
+                    if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
+                    {
+                        hasSelectedRows = true;
+                        // Get the ID of the doctor to delete
+                        int doctorsID = Convert.ToInt32(row.Cells["Employee_ID"].Value);
+                        viewEmployeeDetails.Rows.RemoveAt(i);
+                        await DeleteRowFromDatabase(doctorsID);
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been deleted successfully", Properties.Resources.success);
+
+
+                    }
+                }
+
+                // If no rows were selected, show a message box
+                if (!hasSelectedRows)
+                {
+                    //MessageBox.Show("No rows were selected for deletion.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No rows selected", "No rows were selected for deletion", Properties.Resources.information);
+                }
+            }
+        }
     }
 }

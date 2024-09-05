@@ -583,10 +583,12 @@
             txtMobile.Dock = DockStyle.Fill;
             txtMobile.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtMobile.Location = new Point(0, 0);
+            txtMobile.MaxLength = 11;
             txtMobile.Name = "txtMobile";
             txtMobile.PlaceholderText = " Mobile Number";
             txtMobile.Size = new Size(332, 23);
             txtMobile.TabIndex = 5;
+            txtMobile.TextChanged += txtMobile_TextChanged;
             // 
             // label8
             // 
@@ -1224,9 +1226,9 @@
             borderCity.Controls.Add(panel37);
             borderCity.Controls.Add(panel38);
             borderCity.Controls.Add(txtCity);
-            borderCity.Location = new Point(409, 333);
+            borderCity.Location = new Point(411, 333);
             borderCity.Name = "borderCity";
-            borderCity.Size = new Size(335, 23);
+            borderCity.Size = new Size(333, 23);
             borderCity.TabIndex = 120;
             // 
             // panel35
@@ -1235,7 +1237,7 @@
             panel35.Dock = DockStyle.Bottom;
             panel35.Location = new Point(1, 22);
             panel35.Name = "panel35";
-            panel35.Size = new Size(333, 1);
+            panel35.Size = new Size(331, 1);
             panel35.TabIndex = 58;
             // 
             // panel36
@@ -1244,7 +1246,7 @@
             panel36.Dock = DockStyle.Top;
             panel36.Location = new Point(1, 0);
             panel36.Name = "panel36";
-            panel36.Size = new Size(333, 1);
+            panel36.Size = new Size(331, 1);
             panel36.TabIndex = 58;
             // 
             // panel37
@@ -1260,7 +1262,7 @@
             // 
             panel38.BackColor = Color.FromArgb(52, 152, 219);
             panel38.Dock = DockStyle.Right;
-            panel38.Location = new Point(334, 0);
+            panel38.Location = new Point(332, 0);
             panel38.Name = "panel38";
             panel38.Size = new Size(1, 23);
             panel38.TabIndex = 58;
@@ -1273,7 +1275,7 @@
             txtCity.Location = new Point(0, 0);
             txtCity.Name = "txtCity";
             txtCity.PlaceholderText = " City";
-            txtCity.Size = new Size(335, 23);
+            txtCity.Size = new Size(333, 23);
             txtCity.TabIndex = 5;
             // 
             // borderPostal

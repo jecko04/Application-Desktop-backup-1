@@ -10,19 +10,19 @@ namespace Application_Desktop
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static async Task Main()
+        static void Main()
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
             //Open the database
-            await databaseHelper.initializeConnection();
+            databaseHelper.initializeConnection();
 
             Application.Run(new loginPage());
 
             //Close the database
-            await databaseHelper.closeConnection();
+            databaseHelper.closeConnection();
 
             //wag kalimutan yung email sa login
             //wag kalimutan yung forgot password sa login
@@ -33,7 +33,6 @@ namespace Application_Desktop
             //gawa na ng para sa staff information
             
 
-            //use transaction to all form to avoid error out of sync with server
         }
     }
 }

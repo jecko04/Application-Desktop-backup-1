@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Application_Desktop.Models.EllipseManager;
 
 namespace Application_Desktop.Views
 {
@@ -19,6 +20,9 @@ namespace Application_Desktop.Views
         {
             InitializeComponent();
             this.AcceptButton = btnLogin;
+
+            ElipseManager elipseManager = new ElipseManager(5);
+            elipseManager.ApplyElipseToAllButtons(this);
         }
 
         private void loginPage_Load(object sender, EventArgs e)

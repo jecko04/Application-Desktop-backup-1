@@ -2878,9 +2878,9 @@
             this.label15.Font = (new global::System.Drawing.Font("Tahoma", 14.25F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
             this.label15.Location = (new global::System.Drawing.Point(13, 670));
             this.label15.Name = ("label15");
-            this.label15.Size = (new global::System.Drawing.Size(160, 23));
+            this.label15.Size = (new global::System.Drawing.Size(273, 23));
             this.label15.TabIndex = (68);
-            this.label15.Text = ("Setup Office Hour");
+            this.label15.Text = ("Setup Appointment Office Hour");
             // 
             // label7
             // 
@@ -2908,7 +2908,7 @@
             // 
             this.lineDevider.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Left) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.lineDevider.AutoSize = (true);
-            this.lineDevider.Location = (new global::System.Drawing.Point(521, 11653));
+            this.lineDevider.Location = (new global::System.Drawing.Point(521, 11937));
             this.lineDevider.Name = ("lineDevider");
             this.lineDevider.Size = (new global::System.Drawing.Size(10, 15));
             this.lineDevider.TabIndex = (59);

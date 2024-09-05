@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -14,11 +15,32 @@ using static Application_Desktop.Models.EllipseManager;
 
 namespace Application_Desktop.Admin_Sub_Views
 {
-    public partial class registerEmployees : Form
+    public partial class editEmployees : Form
     {
-        public registerEmployees()
+        private int employeesID;
+        public editEmployees(int employeesID, string fname, string middle, string lname, DateTime doh, string email, string phone, string street, string barangay, string city, string province, string postalCode, string position, DateTime hired, string special, string license)
         {
             InitializeComponent();
+            this.employeesID = employeesID;
+
+            txtfirstName.Text = fname;
+            txtMiddleName.Text = middle;
+            txtLastName.Text = lname;
+            txtDateofBirth.Text = doh.ToString("yyyy/MM/dd");
+            txtEmail.Text = email;
+            txtMobile.Text = phone;
+
+            txtStreet.Text = street;
+            txtBrgy.Text = barangay;
+            txtCity.Text = city;
+            txtProvince.Text = province;
+            txtPostalCode.Text = postalCode;
+
+            txtPosition.Text = position;
+            txtHired.Text = hired.ToString("yyyy/MM/dd");
+            txtSpecial.Text = special;
+            txtLicense.Text = license;
+
             ElipseManager elipseManager = new ElipseManager(5);
             elipseManager.ApplyElipseToAllButtons(this);
         }
@@ -33,54 +55,23 @@ namespace Application_Desktop.Admin_Sub_Views
             alertbox.IconAlertBox = icon;
             alertbox.Show();
         }
-        private int GetBranch()
+
+        private void editEmployees_Load(object sender, EventArgs e)
         {
-            int adminBranchID = session.LoggedInSession;
-            int branchID = -1;
 
-
-            string getBranchID = "SELECT Branch_ID FROM admin WHERE Admin_ID = @adminID";
-
-            MySqlConnection conn = databaseHelper.getConnection();
-            try
-            {
-                if (conn.State != ConnectionState.Open)
-                {
-                    conn.Open();
-                }
-
-                MySqlCommand getBranchIDCmd = new MySqlCommand(getBranchID, conn);
-                getBranchIDCmd.Parameters.AddWithValue("@adminID", adminBranchID);
-
-                MySqlDataReader branchIDReader = getBranchIDCmd.ExecuteReader();
-                if (branchIDReader.Read())
-                {
-                    branchID = Convert.ToInt32(branchIDReader["Branch_ID"]);
-                }
-                branchIDReader.Close();
-
-                // Check if adminBranchID was correctly retrieved
-                if (branchID == -1)
-                {
-                    MessageBox.Show("Failed to retrieve the admin's branch ID.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally { conn.Close(); }
-            return branchID;
         }
-        private async Task CreateEmployee()
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private async Task EmployeeUpdate()
         {
 
-
-            //personal info
-            DateTime dateofbirth = txtDateofBirth.Value;
-
+            //perosonal info
             string fullname = $"{txtfirstName.Text} {txtMiddleName.Text} {txtLastName.Text}";
-
+            string doh = txtDateofBirth.Text;
 
             //contact info
             string email = txtEmail.Text;
@@ -90,16 +81,23 @@ namespace Application_Desktop.Admin_Sub_Views
 
             //professional info
             string position = txtPosition.Text;
-            DateTime hired = txtHired.Value;
+            string hired = txtHired.Text;
             string special = txtSpecial.Text;
             string license = txtLicense.Text;
 
-            int branchID = GetBranch();
 
-
-
-            string query = @"INSERT INTO employees (Fullname, Email, Phone, DateOfBirth, Address, Position, HireDate, Specialization, LicenseNumber, Branch_ID, created_at, updated_at)
-                            VALUES (@fullname, @email, @phone, @dateofbirth, @address, @position, @hiredate, @special, @license, @branchID, @createdAt, @updatedAt)";
+            string query = @"UPDATE employees SET
+                    Fullname = @fullname,
+                    Email = @email,
+                    Phone = @phone,
+                    DateOfBirth = @dateofbirth,
+                    Address = @address,
+                    Position = @position,
+                    HireDate = @hired,
+                    Specialization = @special,
+                    LicenseNumber = @license,
+                    updated_at = @updatedAt
+                WHERE Employee_ID = @employee";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -111,25 +109,23 @@ namespace Application_Desktop.Admin_Sub_Views
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@employee", employeesID);
                 cmd.Parameters.AddWithValue("@fullname", fullname);
-                cmd.Parameters.AddWithValue("@dateofbirth", dateofbirth.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("@dateofbirth", doh);
                 cmd.Parameters.AddWithValue("@email", email);
                 cmd.Parameters.AddWithValue("@phone", mobile);
                 cmd.Parameters.AddWithValue("@address", address);
                 cmd.Parameters.AddWithValue("@position", position);
-                cmd.Parameters.AddWithValue("@hiredate", hired.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("@hired", hired);
+
                 cmd.Parameters.AddWithValue("@special", special);
                 cmd.Parameters.AddWithValue("@license", license);
 
-                cmd.Parameters.AddWithValue("@branchID", branchID);
-
                 DateTime now = DateTime.Now;
-                cmd.Parameters.AddWithValue("@createdAt", now);
                 cmd.Parameters.AddWithValue("@updatedAt", now);
-
                 await cmd.ExecuteNonQueryAsync();
 
-                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The employee data saved successfully", Properties.Resources.success);
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The employee data has been updated successfully", Properties.Resources.success);
 
                 txtfirstName.Text = "";
                 txtMiddleName.Text = "";
@@ -147,12 +143,13 @@ namespace Application_Desktop.Admin_Sub_Views
                 txtSpecial.Text = "";
                 txtLicense.Text = "";
 
+                this.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
 
 
         }
@@ -321,15 +318,9 @@ namespace Application_Desktop.Admin_Sub_Views
             // Final check if any errors occurred
             if (!hasError)
             {
-                await CreateEmployee();
+                await EmployeeUpdate();
             }
 
-
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void txtMobile_TextChanged(object sender, EventArgs e)

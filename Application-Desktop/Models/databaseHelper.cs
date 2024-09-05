@@ -12,13 +12,13 @@ namespace Application_Desktop.Models
         private static MySqlConnection _connection;
         private static string mysqlCon = "server=localhost; user=root; database=appointment; password=";
 
-        public static async Task initializeConnection()
+        public static void initializeConnection()
         {
             _connection = new MySqlConnection(mysqlCon);
 
             try
             {
-                await _connection.OpenAsync();
+                 _connection.OpenAsync();
                 //MessageBox.Show("Connection opened successfully.");
             }
             catch (Exception ex)
@@ -33,11 +33,11 @@ namespace Application_Desktop.Models
             return _connection;
         }
 
-        public static async Task closeConnection()
+        public static void closeConnection()
         {
             if (_connection != null && _connection.State == System.Data.ConnectionState.Open)
             {
-                await _connection.CloseAsync();
+                _connection.CloseAsync();
                 _connection.Dispose();
             }
         }

@@ -111,6 +111,7 @@
             viewEmployeeDetails.Location = new Point(-2, 42);
             viewEmployeeDetails.Margin = new Padding(0, 0, 10, 0);
             viewEmployeeDetails.Name = "viewEmployeeDetails";
+            viewEmployeeDetails.ReadOnly = true;
             viewEmployeeDetails.RowTemplate.Height = 25;
             viewEmployeeDetails.Size = new Size(983, 325);
             viewEmployeeDetails.TabIndex = 2;
@@ -166,6 +167,7 @@
             btnDelete.Size = new Size(85, 24);
             btnDelete.TabIndex = 18;
             btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // elipseControl1
             // 
@@ -177,10 +179,10 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1085, 621);
+            Controls.Add(viewEmployeeDetails);
             Controls.Add(btnCreate);
             Controls.Add(btnRefresh);
             Controls.Add(btnDelete);
-            Controls.Add(viewEmployeeDetails);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "employeeProfile";
