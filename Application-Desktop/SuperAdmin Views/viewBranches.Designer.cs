@@ -90,7 +90,7 @@
             viewBranchData.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             viewBranchData.RowTemplate.Height = 25;
             viewBranchData.Size = new Size(995, 355);
-            viewBranchData.TabIndex = 0;
+            viewBranchData.TabIndex = 8;
             viewBranchData.CellContentClick += viewBranchData_CellContentClick;
             // 
             // btnAddBranch

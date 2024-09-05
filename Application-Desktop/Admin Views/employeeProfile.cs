@@ -275,6 +275,7 @@ namespace Application_Desktop.Admin_Views
             await LoadEmployees();
         }
 
+        private bool isProcessingClick = false;
         private editEmployees EditEmployeesInstance;
         private async void viewEmployeeDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -372,12 +373,29 @@ namespace Application_Desktop.Admin_Views
             }
 
             //Select Check Box
-            if (e.ColumnIndex == viewEmployeeDetails.Columns["selectEmployees"].Index)
+
+            if (isProcessingClick) return; // Ignore the click if already processing
+
+            isProcessingClick = true;
+
+            try
             {
-                DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)viewEmployeeDetails.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                cell.Value = !(cell.Value is bool && (bool)cell.Value); // Toggle checkbox value
+                // Your checkbox toggle logic here
+                if (e.ColumnIndex == viewEmployeeDetails.Columns["selectEmployees"].Index)
+                {
+                    DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)viewEmployeeDetails.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    bool isChecked = cell.Value != null && (bool)cell.Value;
+                    cell.Value = !isChecked;
+                }
+            }
+            finally
+            {
+                // Allow clicks again after processing
+                isProcessingClick = false;
             }
         }
+
+
 
         public async Task<int> DeleteRowFromDatabase(int employeeID)
         {

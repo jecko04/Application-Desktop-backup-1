@@ -32,7 +32,7 @@ namespace Application_Desktop
             //latest
             //gawa na ng para sa staff information
             
-
+            //add debounce click sa every datagridview na may select checkbox
         }
     }
 }

@@ -107,11 +107,9 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             viewEmployeeDetails.DefaultCellStyle = dataGridViewCellStyle1;
-            viewEmployeeDetails.EditMode = DataGridViewEditMode.EditOnEnter;
             viewEmployeeDetails.Location = new Point(-2, 42);
             viewEmployeeDetails.Margin = new Padding(0, 0, 10, 0);
             viewEmployeeDetails.Name = "viewEmployeeDetails";
-            viewEmployeeDetails.ReadOnly = true;
             viewEmployeeDetails.RowTemplate.Height = 25;
             viewEmployeeDetails.Size = new Size(983, 325);
             viewEmployeeDetails.TabIndex = 2;

@@ -74,7 +74,7 @@ namespace Application_Desktop.Sub_Views
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
                 DataTable dataTable = new DataTable();
-                await Task.Run(() => adapter.Fill(dataTable));
+                adapter.Fill(dataTable);
 
                 viewSuperAdminData.DataSource = null;
                 viewSuperAdminData.Rows.Clear();
@@ -130,7 +130,7 @@ namespace Application_Desktop.Sub_Views
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
                 DataTable dataTable = new DataTable();
-                await Task.Run(() => adapter.Fill(dataTable));
+                adapter.Fill(dataTable);
 
                 viewAdminData.DataSource = null;
                 viewAdminData.Rows.Clear();

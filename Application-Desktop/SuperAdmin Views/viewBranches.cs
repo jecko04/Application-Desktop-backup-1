@@ -61,6 +61,8 @@ namespace Application_Desktop.Sub_sub_Views
 
                 viewBranchData.DataSource = dataTable;
 
+                
+
 
 
             }
@@ -89,11 +91,11 @@ namespace Application_Desktop.Sub_sub_Views
                     await conn.OpenAsync();
                 }
 
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("branchID", branchID);
-                    await cmd.ExecuteNonQueryAsync();
-                    //MessageBox.Show("Branch deleted successfully.");
-                    await LoadData();
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("branchID", branchID);
+                await cmd.ExecuteNonQueryAsync();
+                //MessageBox.Show("Branch deleted successfully.");
+                await LoadData();
             }
             catch (Exception ex)
             {
@@ -196,16 +198,16 @@ namespace Application_Desktop.Sub_sub_Views
         {
             string searchBar = txtSearchBox.Text;
 
-            string query = "SELECT Branch_ID, BranchName, BuildingNumber, Street, Barangay, City, Province, PostalCode " +
-                   "FROM branch " +
-                   "WHERE Branch_ID LIKE @searchBar OR " +
-                   "BranchName LIKE @searchBar OR " +
-                   "BuildingNumber LIKE @searchBar OR " +
-                   "Street LIKE @searchBar OR " +
-                   "Barangay LIKE @searchBar OR " +
-                   "City LIKE @searchBar OR " +
-                   "Province LIKE @searchBar OR " +
-                   "PostalCode LIKE @searchBar";
+            string query = "SELECT Branch_ID, BranchName, BuildingNumber, Street, Barangay, City, Province, PostalCode, created_at, updated_at " +
+                    "FROM branch " +
+                    "WHERE Branch_ID LIKE @searchBar OR " +
+                    "BranchName LIKE @searchBar OR " +
+                    "BuildingNumber LIKE @searchBar OR " +
+                    "Street LIKE @searchBar OR " +
+                    "Barangay LIKE @searchBar OR " +
+                    "City LIKE @searchBar OR " +
+                    "Province LIKE @searchBar OR " +
+                    "PostalCode LIKE @searchBar";
             MySqlConnection conn = databaseHelper.getConnection();
             try
             {
@@ -218,7 +220,7 @@ namespace Application_Desktop.Sub_sub_Views
 
                 DataTable dataTable = new DataTable();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-                await Task.Run(() => adapter.Fill(dataTable));
+                adapter.Fill(dataTable);
 
                 viewBranchData.DataSource = null;
                 viewBranchData.Rows.Clear();
@@ -249,70 +251,60 @@ namespace Application_Desktop.Sub_sub_Views
             idColumn.HeaderText = "Branch ID";
             idColumn.Name = "Branch_ID";
             idColumn.DataPropertyName = "Branch_ID";
-            idColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewBranchData.Columns.Add(idColumn);
 
             DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
             nameColumn.HeaderText = "Branch Name";
             nameColumn.Name = "BranchName";
             nameColumn.DataPropertyName = "BranchName";
-            nameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewBranchData.Columns.Add(nameColumn);
 
             DataGridViewTextBoxColumn HouseColumn = new DataGridViewTextBoxColumn();
             HouseColumn.HeaderText = "Building Number";
             HouseColumn.Name = "BuildingNumber";
             HouseColumn.DataPropertyName = "BuildingNumber";
-            HouseColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewBranchData.Columns.Add(HouseColumn);
 
             DataGridViewTextBoxColumn streetColumn = new DataGridViewTextBoxColumn();
             streetColumn.HeaderText = "Street";
             streetColumn.Name = "Street";
             streetColumn.DataPropertyName = "Street";
-            streetColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewBranchData.Columns.Add(streetColumn);
 
             DataGridViewTextBoxColumn brgyColumn = new DataGridViewTextBoxColumn();
             brgyColumn.HeaderText = "Barangay";
             brgyColumn.Name = "Barangay";
             brgyColumn.DataPropertyName = "Barangay";
-            brgyColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewBranchData.Columns.Add(brgyColumn);
 
             DataGridViewTextBoxColumn cityColumn = new DataGridViewTextBoxColumn();
             cityColumn.HeaderText = "City";
             cityColumn.Name = "City";
             cityColumn.DataPropertyName = "City";
-            cityColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewBranchData.Columns.Add(cityColumn);
 
             DataGridViewTextBoxColumn provinceColumn = new DataGridViewTextBoxColumn();
             provinceColumn.HeaderText = "Province";
             provinceColumn.Name = "Province";
             provinceColumn.DataPropertyName = "Province";
-            provinceColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewBranchData.Columns.Add(provinceColumn);
 
             DataGridViewTextBoxColumn postalColumn = new DataGridViewTextBoxColumn();
             postalColumn.HeaderText = "Postal Code";
             postalColumn.Name = "PostalCode";
             postalColumn.DataPropertyName = "PostalCode";
-            postalColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewBranchData.Columns.Add(postalColumn);
 
             DataGridViewTextBoxColumn createColumn = new DataGridViewTextBoxColumn();
             createColumn.HeaderText = "Created At";
             createColumn.Name = "created_at";
             createColumn.DataPropertyName = "created_at";
-            createColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewBranchData.Columns.Add(createColumn);
 
             DataGridViewTextBoxColumn updateColumn = new DataGridViewTextBoxColumn();
             updateColumn.HeaderText = "Updated At";
             updateColumn.Name = "updated_at";
             updateColumn.DataPropertyName = "updated_at";
-            updateColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewBranchData.Columns.Add(updateColumn);
 
 
@@ -321,8 +313,8 @@ namespace Application_Desktop.Sub_sub_Views
             editButtonColumn.Name = "edit";
             editButtonColumn.Image = Properties.Resources.edit_img;
             editButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            editButtonColumn.Width = 50;
             editButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            editButtonColumn.Width = 50;
             viewBranchData.Columns.Add(editButtonColumn);
 
             DataGridViewImageColumn deleteButtonColumn = new DataGridViewImageColumn();
@@ -330,8 +322,8 @@ namespace Application_Desktop.Sub_sub_Views
             deleteButtonColumn.Name = "delete";
             deleteButtonColumn.Image = Properties.Resources.delete_img;
             deleteButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            deleteButtonColumn.Width = 50;
             deleteButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            deleteButtonColumn.Width = 50;
             viewBranchData.Columns.Add(deleteButtonColumn);
         }
         private async void viewBranches_Load(object sender, EventArgs e)
