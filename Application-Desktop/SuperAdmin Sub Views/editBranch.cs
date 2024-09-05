@@ -62,7 +62,7 @@ namespace Application_Desktop.Sub_sub_Views
             this.Close();
         }
 
-        public void UpdateBranch(int branchID, string bname, string bnum, string street, string brgy, string city, string province, string postal)
+        public async Task UpdateBranch(int branchID, string bname, string bnum, string street, string brgy, string city, string province, string postal)
         {
             string query = "UPDATE branch  " +
                 "SET " +
@@ -80,23 +80,36 @@ namespace Application_Desktop.Sub_sub_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@BranchName", bname);
-                cmd.Parameters.AddWithValue("@BuildingNumber", bnum);
-                cmd.Parameters.AddWithValue("@Street", street);
-                cmd.Parameters.AddWithValue("@Barangay", brgy);
-                cmd.Parameters.AddWithValue("@City", city);
-                cmd.Parameters.AddWithValue("@Province", province);
-                cmd.Parameters.AddWithValue("@PostalCode", postal);
-                cmd.Parameters.AddWithValue("@BranchID", branchID);
 
-                cmd.ExecuteNonQuery();
+                MySqlTransaction transaction = conn.BeginTransaction();
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@BranchName", bname);
+                    cmd.Parameters.AddWithValue("@BuildingNumber", bnum);
+                    cmd.Parameters.AddWithValue("@Street", street);
+                    cmd.Parameters.AddWithValue("@Barangay", brgy);
+                    cmd.Parameters.AddWithValue("@City", city);
+                    cmd.Parameters.AddWithValue("@Province", province);
+                    cmd.Parameters.AddWithValue("@PostalCode", postal);
+                    cmd.Parameters.AddWithValue("@BranchID", branchID);
 
-                //MessageBox.Show("Branch details updated successfully.");
-                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The branch data has been updated successfully", Properties.Resources.success);
-                this.Close();
+                    await cmd.ExecuteNonQueryAsync();
+
+                    await transaction.CommitAsync();
+                    //MessageBox.Show("Branch details updated successfully.");
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The branch data has been updated successfully", Properties.Resources.success);
+                    this.Close();
+                }
+                catch (Exception transEx)
+                {
+                    // Rollback the transaction in case of an error
+                    await transaction.RollbackAsync();
+                    MessageBox.Show("Transaction failed: " + transEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
             catch (Exception ex)
             {
@@ -104,12 +117,12 @@ namespace Application_Desktop.Sub_sub_Views
             }
             finally
             {
-                conn.Close();
+                await conn.CloseAsync();
             }
         }
 
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             string bname = txtBname.Text;
             string bnum = txtBnum.Text;
@@ -120,7 +133,7 @@ namespace Application_Desktop.Sub_sub_Views
             string postal = txtPostal.Text;
 
             // Call method to update branch details
-            UpdateBranch(branchID, bname, bnum, street, brgy, city, province, postal);
+            await UpdateBranch(branchID, bname, bnum, street, brgy, city, province, postal);
 
             this.Close();
         }

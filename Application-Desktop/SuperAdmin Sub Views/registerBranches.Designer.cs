@@ -723,7 +723,7 @@
             btnSave.TabIndex = 40;
             btnSave.Text = "Submit";
             btnSave.UseVisualStyleBackColor = false;
-            btnSave.Click += btnSave_Click_1;
+            btnSave.Click += btnSave_Click;
             // 
             // label3
             // 

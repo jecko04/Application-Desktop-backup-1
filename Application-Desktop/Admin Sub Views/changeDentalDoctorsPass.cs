@@ -38,7 +38,7 @@ namespace Application_Desktop.Admin_Sub_Views
             alertbox.Show();
         }
 
-        public bool SelectPassword(int doctorsID)
+        public async Task<bool> SelectPassword(int doctorsID)
         {
             string Cpass = txtCurrentPass.Text;
 
@@ -52,7 +52,7 @@ namespace Application_Desktop.Admin_Sub_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -62,7 +62,7 @@ namespace Application_Desktop.Admin_Sub_Views
 
                 cryptography verify = new cryptography();
 
-                while (reader.Read())
+                while (await reader.ReadAsync())
                 {
                     string storedHash = reader.GetString("Password");
                     if (verify.VerifyPassword(Cpass, storedHash))
@@ -83,11 +83,11 @@ namespace Application_Desktop.Admin_Sub_Views
             {
                 MessageBox.Show(ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
             return passwordVerify;
         }
 
-        public bool ChangePassword(int doctorsID)
+        public async Task<bool> ChangePassword(int doctorsID)
         {
             string Cpass = txtCurrentPass.Text;
             string Npass = txtNewPass.Text;
@@ -164,7 +164,7 @@ namespace Application_Desktop.Admin_Sub_Views
                 {
                     if (conn.State != ConnectionState.Open)
                     {
-                        conn.Open();
+                        await conn.OpenAsync();
                     }
 
                     MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -173,7 +173,7 @@ namespace Application_Desktop.Admin_Sub_Views
                     string newPass = hash.HashPassword(Npass);
                     cmd.Parameters.AddWithValue("@pwd", newPass);
                     cmd.Parameters.AddWithValue("@doctorsID", doctorsID);
-                    cmd.ExecuteNonQuery();
+                    await cmd.ExecuteNonQueryAsync();
 
                     //MessageBox.Show("Password changed successfully");
                     AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The doctor password changed successfully", Properties.Resources.success);
@@ -191,17 +191,17 @@ namespace Application_Desktop.Admin_Sub_Views
                 {
                     MessageBox.Show(ex.Message);
                 }
-                finally { conn.Close(); }
+                finally { await conn.CloseAsync(); }
 
             }
             return false;
         }
 
-        private void btnChangePass_Click(object sender, EventArgs e)
+        private async void btnChangePass_Click(object sender, EventArgs e)
         {
-            if (SelectPassword(doctorsID))
+            if (await SelectPassword(doctorsID))
             {
-                ChangePassword(doctorsID);
+                await ChangePassword(doctorsID);
             }
         }
 

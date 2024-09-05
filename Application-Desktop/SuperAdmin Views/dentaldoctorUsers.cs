@@ -19,7 +19,7 @@ namespace Application_Desktop.Sub_Views
         public dentaldoctorUsers()
         {
             InitializeComponent();
-            LoadDentalData();
+            
 
             ElipseManager elipseManager = new ElipseManager(5);
             elipseManager.ApplyElipseToAllButtons(this);
@@ -36,12 +36,12 @@ namespace Application_Desktop.Sub_Views
             alertbox.Show();
         }
 
-        private void dentaldoctorUsers_Load(object sender, EventArgs e)
+        private async void dentaldoctorUsers_Load(object sender, EventArgs e)
         {
-
+            await LoadDentalData();
         }
 
-        private void LoadDentalData()
+        private async Task LoadDentalData()
         {
             string query = @"SELECT 
                              dentaldoctor.Doctors_ID,
@@ -64,12 +64,12 @@ namespace Application_Desktop.Sub_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
                 DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
+                await Task.Run(() => adapter.Fill(dataTable));
 
                 viewDentalAccount.DataSource = null;
                 viewDentalAccount.Rows.Clear();
@@ -87,7 +87,7 @@ namespace Application_Desktop.Sub_Views
             }
             finally
             {
-                conn.Close();
+                await conn.CloseAsync();
             }
         }
 
@@ -165,19 +165,19 @@ namespace Application_Desktop.Sub_Views
             viewDentalAccount.Columns.Add(editButtonColumn);
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private async void btnRefresh_Click(object sender, EventArgs e)
         {
             //refresh button
-            LoadDentalData();
+            await LoadDentalData();
         }
 
-        private void btnSearchSuperAdmin_Click(object sender, EventArgs e)
+        private async void btnSearchSuperAdmin_Click(object sender, EventArgs e)
         {
             string searchBar = txtSearchBox.Text;
-            LoadSearchBar(searchBar);
+            await LoadSearchBar(searchBar);
         }
 
-        private void LoadSearchBar(string searchBar)
+        private async Task LoadSearchBar(string searchBar)
         {
             string query = @"SELECT 
                              dentaldoctor.Doctors_ID,
@@ -205,14 +205,14 @@ namespace Application_Desktop.Sub_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@search", $"%{searchBar}%");
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 DataTable datatable = new DataTable();
-                adapter.Fill(datatable);
+                await Task.Run(() => adapter.Fill(datatable));
 
                 viewDentalAccount.DataSource = null;
                 viewDentalAccount.Rows.Clear();
@@ -227,7 +227,7 @@ namespace Application_Desktop.Sub_Views
             {
                 MessageBox.Show(ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
         }
 
         private void viewDentalAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -240,7 +240,7 @@ namespace Application_Desktop.Sub_Views
             }
         }
 
-        public int DeleteRowFromDatabase(int doctorsID)
+        public async Task<int> DeleteRowFromDatabase(int doctorsID)
         {
             string query = "Delete From dentaldoctor Where Doctors_ID = @doctorsID";
 
@@ -250,22 +250,22 @@ namespace Application_Desktop.Sub_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@doctorsID", doctorsID);
-                cmd.ExecuteNonQuery();
+                await cmd.ExecuteNonQueryAsync();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
             return doctorsID;
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
             bool hasSelectedRows = false;
             var result = MessageBox.Show("Are you sure you want to delete the selected rows?", "Confirm Deletion", MessageBoxButtons.YesNo);
@@ -286,7 +286,7 @@ namespace Application_Desktop.Sub_Views
                         // Get the ID of the doctor to delete
                         int doctorsID = Convert.ToInt32(row.Cells["Doctors_ID"].Value);
                         viewDentalAccount.Rows.RemoveAt(i);
-                        DeleteRowFromDatabase(doctorsID);
+                        await DeleteRowFromDatabase(doctorsID);
                         AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The data has been deleted successfully", Properties.Resources.success);
 
                     }

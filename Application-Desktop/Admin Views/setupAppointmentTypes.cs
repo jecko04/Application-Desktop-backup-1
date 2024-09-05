@@ -39,11 +39,11 @@ namespace Application_Desktop.Admin_Views
             alertbox.Show();
         }
 
-        private void setupAppointmentTypes_Load(object sender, EventArgs e)
+        private async void setupAppointmentTypes_Load(object sender, EventArgs e)
         {
-            GetTitle();
-            LoadOfficeHour();
-            LoadIsClosed();
+            await GetTitle();
+            await LoadOfficeHour();
+            await LoadIsClosed();
 
         }
 
@@ -91,7 +91,7 @@ namespace Application_Desktop.Admin_Views
         }
 
         //Create Categories
-        private void CreateCategory()
+        private async Task CreateCategory()
         {
             DialogResult result = MessageBox.Show("Do you want to create this Category?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -113,7 +113,7 @@ namespace Application_Desktop.Admin_Views
                 {
                     if (conn.State != ConnectionState.Open)
                     {
-                        conn.Open();
+                        await conn.OpenAsync();
                     }
 
                     MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -128,7 +128,7 @@ namespace Application_Desktop.Admin_Views
                     DateTime now = DateTime.Now;
                     cmd.Parameters.AddWithValue("@createdAt", now);
                     cmd.Parameters.AddWithValue("@updatedAt", now);
-                    cmd.ExecuteNonQuery();
+                    await cmd.ExecuteNonQueryAsync();
 
                     AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The category has been successfully created", Properties.Resources.success);
 
@@ -147,11 +147,11 @@ namespace Application_Desktop.Admin_Views
                 {
                     MessageBox.Show(ex.Message);
                 }
-                finally { conn.Close(); }
+                finally { await conn.CloseAsync(); }
             }
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private async void btnSubmit_Click(object sender, EventArgs e)
         {
             string title = txtTitle.Text;
             string description = txtDescription.Text;
@@ -162,13 +162,27 @@ namespace Application_Desktop.Admin_Views
 
             if (string.IsNullOrEmpty(title))
             {
-                errorProvider1.SetError(borderTitle, "Title is required");
+                errorProvider5.SetError(borderTitle, "Title is required");
+                valid = false;
+            }
+            else
+            {
+                errorProvider5.SetError(borderTitle, string.Empty);
+            }
+            if (await categoriesValidator.IsCategoryExist(title))
+            {
+                errorProvider1.SetError(borderTitle, "Title is already exist");
+                this.BeginInvoke(new Action(() =>
+                {
+                    AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "Already Exist", "Title is already exist. Please use different title", Properties.Resources.information);
+                }));
                 valid = false;
             }
             else
             {
                 errorProvider1.SetError(borderTitle, string.Empty);
             }
+
             if (string.IsNullOrEmpty(description))
             {
                 errorProvider2.SetError(borderDescription, "Description is required");
@@ -199,14 +213,16 @@ namespace Application_Desktop.Admin_Views
 
             if (valid == true)
             {
-                CreateCategory();
+                await CreateCategory();
             }
         }
 
         //Fetch Titles
-        private void GetTitle()
+        private async Task GetTitle()
         {
-            string query = @"SELECT Title FROM categories";
+            int branchid = await GetAdminBranch();
+
+            string query = @"SELECT Title FROM categories Where Branch_ID = @branchID";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -214,23 +230,25 @@ namespace Application_Desktop.Admin_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@branchID", branchid);
+
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 // Clear existing items
                 txtFetchTitle.Items.Clear();
 
-                while (reader.Read())
+                while (await reader.ReadAsync())
                 {
                     // Add each title to the ComboBox
                     string title = reader["Title"].ToString();
                     txtFetchTitle.Items.Add(title);
                 }
 
-                reader.Close();
+                await reader.CloseAsync();
             }
             catch (Exception ex)
             {
@@ -240,15 +258,65 @@ namespace Application_Desktop.Admin_Views
             {
                 if (conn.State == ConnectionState.Open)
                 {
-                    conn.Close();
+                    await conn.CloseAsync();
                 }
             }
         }
 
-        //Fetch Details
-        private void FetchDetailsForTitle(string title)
+        private async Task<int> GetAdminBranch()
         {
-            string query = @"SELECT Title, Description, Duration, Frequency FROM categories WHERE Title = @title";
+            int adminBranchID = session.LoggedInSession;
+            int branchID = -1;
+
+            string getBranchID = "SELECT Branch_ID FROM admin WHERE Admin_ID = @adminID";
+
+            MySqlConnection conn = databaseHelper.getConnection();
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    await conn.OpenAsync();
+                }
+
+                MySqlCommand getBranchIDCmd = new MySqlCommand(getBranchID, conn);
+
+                getBranchIDCmd.Parameters.AddWithValue("@adminID", adminBranchID);
+
+                MySqlDataReader branchIDReader = getBranchIDCmd.ExecuteReader();
+
+                if (await branchIDReader.ReadAsync())
+                {
+                    branchID = Convert.ToInt32(branchIDReader["Branch_ID"]);
+                }
+                await branchIDReader.CloseAsync();
+
+
+
+                // Check if branchID was correctly retrieved
+                if (branchID == -1)
+                {
+                    MessageBox.Show("Failed to retrieve the admin's branch ID.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                await conn.CloseAsync();
+            }
+            return branchID;
+        }
+
+
+        //Fetch Details
+        private async Task FetchDetailsForTitle(string title)
+        {
+
+            int branchID = await GetAdminBranch();
+            int categories = await GetSelectedCategoryId();
+            string query = @"SELECT Title, Description, Duration, Frequency FROM categories WHERE Categories_ID = @categories AND Branch_ID = @branchid";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -256,23 +324,24 @@ namespace Application_Desktop.Admin_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@title", title);
+                cmd.Parameters.AddWithValue("@branchid", branchID);
+                cmd.Parameters.AddWithValue("@categories", categories);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read())
+                if (await reader.ReadAsync())
                 {
                     // Set the details in the respective text boxes
-                    txtFetchTitle.Text = reader["Title"].ToString();
+                    //txtFetchTitle.Text = reader["Title"].ToString();
                     txtFetchDescription.Text = reader["Description"].ToString();
                     txtFetchDuration.Text = reader["Duration"].ToString();
                     txtFetchFrequency.Text = reader["Frequency"].ToString();
                 }
 
-                reader.Close();
+                await reader.CloseAsync();
             }
             catch (Exception ex)
             {
@@ -282,47 +351,54 @@ namespace Application_Desktop.Admin_Views
             {
                 if (conn.State == ConnectionState.Open)
                 {
-                    conn.Close();
+                    await conn.CloseAsync();
                 }
             }
         }
 
 
         //Fetch Details from Selected Title
-        private void txtFetchTitle_SelectedIndexChanged(object sender, EventArgs e)
+        private async void txtFetchTitle_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedTitle = txtFetchTitle.SelectedItem.ToString();
-            FetchDetailsForTitle(selectedTitle);
+            await FetchDetailsForTitle(selectedTitle);
         }
 
 
 
         // Update the categories
-        private void UpdateCategory(int categoryId)
+        private async Task UpdateCategory()
         {
             DialogResult result = MessageBox.Show("Do you want to update this Category?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                //int branchID = await GetAdminBranch();
+                int categoryId = await GetSelectedCategoryId();
 
                 string title = txtFetchTitle.Text;
                 string description = txtFetchDescription.Text;
                 string duration = txtFetchDuration.Text;
                 string frequency = txtFetchFrequency.Text;
+                string newTitle = txtNewTitle.Text;
 
-                string query = @"UPDATE categories 
-                     SET Title = @title, 
+                string query = @"UPDATE categories SET
                          Description = @description, 
                          Duration = @duration, 
                          Frequency = @frequency,
-                         updated_at = @updatedAt
-                     WHERE Categories_ID = @categoryId";
+                         updated_at = @updatedAt";
+
+                if (!string.IsNullOrEmpty(newTitle))
+                {
+                    query += ", Title = @newTitle";
+                }
+                query += " WHERE Categories_ID = @categories";
 
                 MySqlConnection conn = databaseHelper.getConnection();
                 try
                 {
                     if (conn.State != ConnectionState.Open)
                     {
-                        conn.Open();
+                        await conn.OpenAsync();
                     }
 
                     MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -333,9 +409,15 @@ namespace Application_Desktop.Admin_Views
 
                     DateTime updatedAt = DateTime.Now;
                     cmd.Parameters.AddWithValue("@updatedAt", updatedAt);
-                    cmd.Parameters.AddWithValue("@categoryId", categoryId);
+                    //cmd.Parameters.AddWithValue("@branchID", branchID);
+                    cmd.Parameters.AddWithValue("@categories", categoryId);
 
-                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (!string.IsNullOrEmpty(newTitle))
+                    {
+                        cmd.Parameters.AddWithValue("@newTitle", newTitle);
+                    }
+
+                    int rowsAffected = await cmd.ExecuteNonQueryAsync();
 
                     if (rowsAffected > 0)
                     {
@@ -350,6 +432,7 @@ namespace Application_Desktop.Admin_Views
                     txtFetchDescription.Text = "";
                     txtFetchDuration.Text = "";
                     txtFetchFrequency.Text = "";
+                    txtNewTitle.Text = "";
 
                     errorProvider1.SetError(borderFetchTitle, string.Empty);
                     errorProvider2.SetError(borderFetchDescription, string.Empty);
@@ -360,15 +443,21 @@ namespace Application_Desktop.Admin_Views
                 {
                     MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    await conn.CloseAsync();
+                }
             }
         }
 
         //Select Categories Id using Title
-        private int GetSelectedCategoryId()
+        private async Task<int> GetSelectedCategoryId()
         {
             string title = txtFetchTitle.Text;
             int categoriesId = -1;
-            string query = @"Select Categories_ID from categories Where Title = @title";
+            int branchid = await GetAdminBranch();
+
+            string query = @"Select Categories_ID from categories Where Title = @title AND Branch_ID = @branchid";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -379,7 +468,9 @@ namespace Application_Desktop.Admin_Views
                     conn.Open();
                 }
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("title", title);
+                cmd.Parameters.AddWithValue("@title", title);
+                cmd.Parameters.AddWithValue("@branchid", branchid);
+
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())
@@ -394,7 +485,7 @@ namespace Application_Desktop.Admin_Views
             finally { conn.Close(); }
             return categoriesId;
         }
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private async void btnUpdate_Click(object sender, EventArgs e)
         {
             string title = txtFetchTitle.Text;
             string description = txtFetchDescription.Text;
@@ -417,10 +508,10 @@ namespace Application_Desktop.Admin_Views
             {
                 errorProvider1.SetError(borderFetchTitle, string.Empty);
                 // If title is not empty, proceed with fetching the category ID
-                int categoryId = GetSelectedCategoryId();
+                int categoryId = await GetSelectedCategoryId();
                 if (categoryId == -1)
                 {
-                    AlertBox(Color.LightPink, Color.DarkRed, "Error", "No matching category found. Please check the title and try again", Properties.Resources.error);
+                    AlertBox(Color.LightPink, Color.DarkRed, "No Matching Found", "Please check the title and try again", Properties.Resources.error);
                     valid = false;
                 }
                 else
@@ -460,7 +551,7 @@ namespace Application_Desktop.Admin_Views
 
                     if (valid)
                     {
-                        UpdateCategory(categoryId);
+                        await UpdateCategory();
                     }
                 }
             }
@@ -487,7 +578,7 @@ namespace Application_Desktop.Admin_Views
 
 
         // It save setup office hours
-        private void SaveOfficeHours()
+        private async Task SaveOfficeHours()
         {
             //get branch
             int branchID = GetBranch();
@@ -516,7 +607,7 @@ namespace Application_Desktop.Admin_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 for (int i = 0; i < days.Length; i++)
@@ -538,7 +629,7 @@ namespace Application_Desktop.Admin_Views
                     cmd.Parameters.AddWithValue("@updatedAt", now);
 
                     // Execute the query for each day
-                    cmd.ExecuteNonQuery();
+                    await cmd.ExecuteNonQueryAsync();
                 }
 
                 AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Office hours saved successfully", Properties.Resources.success);
@@ -549,13 +640,13 @@ namespace Application_Desktop.Admin_Views
             }
             finally
             {
-                conn.Close();
+                await conn.CloseAsync();
             }
         }
 
-        private void btnSaveOfficeHours_Click(object sender, EventArgs e)
+        private async void btnSaveOfficeHours_Click(object sender, EventArgs e)
         {
-            SaveOfficeHours();
+            await SaveOfficeHours();
         }
 
 
@@ -626,7 +717,7 @@ namespace Application_Desktop.Admin_Views
         }
 
         // It Load the OfficeHour data value in database 
-        private void LoadOfficeHour()
+        private async Task LoadOfficeHour()
         {
             int branchID = GetBranch();
             string query = @"Select StartTime, EndTime, IsClosed From office_hours Where Branch_ID = @branchID";
@@ -641,7 +732,7 @@ namespace Application_Desktop.Admin_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -672,12 +763,12 @@ namespace Application_Desktop.Admin_Views
             {
                 MessageBox.Show(ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
         }
 
 
         // It load the IsClosed data value in database
-        private void LoadIsClosed()
+        private async Task LoadIsClosed()
         {
             int branchID = GetBranch();
             string query = @"SELECT DayOfWeek, IsClosed FROM office_hours WHERE Branch_ID = @branchID";
@@ -690,7 +781,7 @@ namespace Application_Desktop.Admin_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -698,7 +789,7 @@ namespace Application_Desktop.Admin_Views
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                while (reader.Read())
+                while (await reader.ReadAsync())
                 {
                     string days = reader.GetString("DayOfWeek");
                     int IsClosed = reader.GetInt32("IsClosed");
@@ -722,18 +813,13 @@ namespace Application_Desktop.Admin_Views
             {
                 MessageBox.Show(ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
 
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private async void btnUpdateRefresh_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnUpdateRefresh_Click(object sender, EventArgs e)
-        {
-            GetTitle();
+            await GetTitle();
 
             // Optionally, clear details if needed
             txtFetchTitle.Text = "";

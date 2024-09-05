@@ -44,7 +44,7 @@ namespace Application_Desktop.Sub_sub_Views
             this.Hide();
         }
 
-        private void btnSave_Click_1(object sender, EventArgs e)
+        private async Task CreateBranch()
         {
             string branchName = txtBranchName.Text;
             string houseNum = txtHouseNum.Text;
@@ -171,40 +171,53 @@ namespace Application_Desktop.Sub_sub_Views
                 {
                     if (conn.State != ConnectionState.Open)
                     {
-                        conn.Open();
+                        await conn.OpenAsync();
                     }
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@branchName", branchName);
-                    cmd.Parameters.AddWithValue("@houseNum", houseNum);
-                    cmd.Parameters.AddWithValue("@street", street);
-                    cmd.Parameters.AddWithValue("@brgy", brgy);
-                    cmd.Parameters.AddWithValue("@city", city);
-                    cmd.Parameters.AddWithValue("@province", province);
-                    cmd.Parameters.AddWithValue("@postal", postal);
 
-                    DateTime now = DateTime.Now;
-                    cmd.Parameters.AddWithValue("@createdAt", now);
-                    cmd.Parameters.AddWithValue("@updatedAt", now);
-                    cmd.ExecuteNonQuery();
+                    MySqlTransaction transaction = conn.BeginTransaction();
+                    try
+                    {
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@branchName", branchName);
+                        cmd.Parameters.AddWithValue("@houseNum", houseNum);
+                        cmd.Parameters.AddWithValue("@street", street);
+                        cmd.Parameters.AddWithValue("@brgy", brgy);
+                        cmd.Parameters.AddWithValue("@city", city);
+                        cmd.Parameters.AddWithValue("@province", province);
+                        cmd.Parameters.AddWithValue("@postal", postal);
 
-                    //MessageBox.Show("Save Successful");
-                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The branch data save successfully", Properties.Resources.success);
+                        DateTime now = DateTime.Now;
+                        cmd.Parameters.AddWithValue("@createdAt", now);
+                        cmd.Parameters.AddWithValue("@updatedAt", now);
+                        await cmd.ExecuteNonQueryAsync();
+                        await transaction.CommitAsync();
 
-                    txtBranchName.Text = "";
-                    txtHouseNum.Text = "";
-                    txtStreet.Text = "";
-                    txtBrgy.Text = "";
-                    txtCityLists.Text = "";
-                    txtProvinceList.Text = "";
-                    txtPostal.Text = "";
+                        //MessageBox.Show("Save Successful");
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The branch data save successfully", Properties.Resources.success);
 
-                    errorProvider1.SetError(borderBranch, string.Empty);
-                    errorProvider2.SetError(borderBuildingNumber, string.Empty);
-                    errorProvider3.SetError(borderStreet, string.Empty);
-                    errorProvider4.SetError(borderBrgy, string.Empty);
-                    errorProvider5.SetError(borderCity, string.Empty);
-                    errorProvider6.SetError(borderProvince, string.Empty);
-                    errorProvider7.SetError(borderPostal, string.Empty);
+                        txtBranchName.Text = "";
+                        txtHouseNum.Text = "";
+                        txtStreet.Text = "";
+                        txtBrgy.Text = "";
+                        txtCityLists.Text = "";
+                        txtProvinceList.Text = "";
+                        txtPostal.Text = "";
+
+                        errorProvider1.SetError(borderBranch, string.Empty);
+                        errorProvider2.SetError(borderBuildingNumber, string.Empty);
+                        errorProvider3.SetError(borderStreet, string.Empty);
+                        errorProvider4.SetError(borderBrgy, string.Empty);
+                        errorProvider5.SetError(borderCity, string.Empty);
+                        errorProvider6.SetError(borderProvince, string.Empty);
+                        errorProvider7.SetError(borderPostal, string.Empty);
+
+                    }
+                    catch (Exception transEx)
+                    {
+                        // Rollback the transaction in case of an error
+                        await transaction.RollbackAsync();
+                        MessageBox.Show("Transaction failed: " + transEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
                 }
                 catch (Exception ex)
@@ -213,10 +226,14 @@ namespace Application_Desktop.Sub_sub_Views
                 }
                 finally
                 {
-                    conn.Close();
+                    await conn.CloseAsync();
                 }
             }
         }
 
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
+            await CreateBranch();
+        }
     }
 }

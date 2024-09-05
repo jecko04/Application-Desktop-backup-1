@@ -135,7 +135,7 @@ namespace Application_Desktop.Admin_Sub_Views
             this.Close();
         }
 
-        private void DentalAccountUpdate(int doctorsID)
+        private async Task DentalAccountUpdate(int doctorsID)
         {
             int CreatedBy = session.LoggedInSession;
 
@@ -149,7 +149,7 @@ namespace Application_Desktop.Admin_Sub_Views
 
             try
             {
-                if (conn.State != ConnectionState.Open) { conn.Open(); }
+                if (conn.State != ConnectionState.Open) { await conn.OpenAsync(); }
                 MySqlCommand cmd = new MySqlCommand(query, conn);
 
                 cmd.Parameters.AddWithValue("@fullname", fullname);
@@ -159,7 +159,7 @@ namespace Application_Desktop.Admin_Sub_Views
                 DateTime updatedAt = DateTime.Now;
                 cmd.Parameters.AddWithValue("@updatedAt", updatedAt);
                 cmd.Parameters.AddWithValue("@doctorsID", doctorsID);
-                cmd.ExecuteNonQuery();
+                await cmd.ExecuteNonQueryAsync();
 
                 AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been updated successfully", Properties.Resources.success);
 
@@ -177,9 +177,9 @@ namespace Application_Desktop.Admin_Sub_Views
             {
                 MessageBox.Show(ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
         }
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private async void btnUpdate_Click(object sender, EventArgs e)
         {
             string fname = txtfirstName.Text;
             string lname = txtLastName.Text;
@@ -245,7 +245,7 @@ namespace Application_Desktop.Admin_Sub_Views
             }
             else
             {
-                DentalAccountUpdate(doctorsID);
+                await DentalAccountUpdate(doctorsID);
             }
         }
     }

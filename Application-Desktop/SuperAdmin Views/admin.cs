@@ -26,8 +26,7 @@ namespace Application_Desktop.Sub_Views
         public admin()
         {
             InitializeComponent();
-            LoadData();
-            LoadSuperAdmin();
+
 
             ElipseManager elipseManager = new ElipseManager(5);
             elipseManager.ApplyElipseToAllButtons(this);
@@ -44,12 +43,14 @@ namespace Application_Desktop.Sub_Views
             alertbox.Show();
         }
 
-        private void registerAdmin_Load(object sender, EventArgs e)
+        private async void registerAdmin_Load(object sender, EventArgs e)
         {
+            await LoadData();
+            await LoadSuperAdmin();
         }
 
         //Load Super Admin Data
-        private void LoadSuperAdmin()
+        private async Task LoadSuperAdmin()
         {
             string query = @"SELECT 
                              superadmin.SuperAdmin_ID,
@@ -68,12 +69,12 @@ namespace Application_Desktop.Sub_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
                 DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
+                await Task.Run(() => adapter.Fill(dataTable));
 
                 viewSuperAdminData.DataSource = null;
                 viewSuperAdminData.Rows.Clear();
@@ -95,12 +96,12 @@ namespace Application_Desktop.Sub_Views
             }
             finally
             {
-                conn.Close();
+                await conn.CloseAsync();
             }
         }
 
         //Load Admin Data
-        private void LoadData()
+        private async Task LoadData()
         {
             string query = @"SELECT 
                              admin.Admin_ID,
@@ -124,12 +125,12 @@ namespace Application_Desktop.Sub_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
                 DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
+                await Task.Run(() => adapter.Fill(dataTable));
 
                 viewAdminData.DataSource = null;
                 viewAdminData.Rows.Clear();
@@ -150,7 +151,7 @@ namespace Application_Desktop.Sub_Views
             }
             finally
             {
-                conn.Close();
+                await conn.CloseAsync();
             }
         }
 
@@ -175,16 +176,16 @@ namespace Application_Desktop.Sub_Views
             }
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private async void btnRefresh_Click(object sender, EventArgs e)
         {
             //Refresh Button
-            LoadData();
-            LoadSuperAdmin();
+            await LoadData();
+            await LoadSuperAdmin();
         }
 
         private editAdmin editAdminInstance;
         private adminChangePassword adminChangePassInstance;
-        private void viewAdminData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void viewAdminData_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //update
             if (viewAdminData.Columns["edit"] != null &&
@@ -231,8 +232,8 @@ namespace Application_Desktop.Sub_Views
                     int admin_ID = Convert.ToInt32(viewAdminData.Rows[e.RowIndex].Cells["Admin_ID"].Value);
 
                     // Delete row from database
-                    DeleteRowFromDatabase(admin_ID);
-                    LoadData();
+                    await DeleteRowFromDatabase(admin_ID);
+                    await LoadData();
                     AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The data has been deleted successfully", Properties.Resources.success);
                 }
             }
@@ -272,7 +273,7 @@ namespace Application_Desktop.Sub_Views
         }
 
 
-        public int DeleteRowFromDatabase(int adminID)
+        public async Task<int> DeleteRowFromDatabase(int adminID)
         {
             string query = "Delete From admin Where Admin_ID = @adminID";
 
@@ -282,18 +283,30 @@ namespace Application_Desktop.Sub_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@adminID", adminID);
-                cmd.ExecuteNonQuery();
+                MySqlTransaction transaction = conn.BeginTransaction();
+
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@adminID", adminID);
+                    await cmd.ExecuteNonQueryAsync();
+                    await transaction.CommitAsync();
+                }
+                catch (Exception transEx)
+                {
+                    // Rollback the transaction in case of an error
+                    await transaction.RollbackAsync();
+                    MessageBox.Show("Transaction failed: " + transEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
             return adminID;
         }
 
@@ -323,7 +336,7 @@ namespace Application_Desktop.Sub_Views
 
         private superadminChangePass changeSuperAdminPassInstance;
         private editSuperAdmin editSuperAdminInstance;
-        private void viewSuperAdminData_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        private async void viewSuperAdminData_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             //update
             if (viewSuperAdminData.Columns["editSuperAdmin"] != null &&
@@ -367,8 +380,8 @@ namespace Application_Desktop.Sub_Views
                     int superadminID = Convert.ToInt32(viewSuperAdminData.Rows[e.RowIndex].Cells["SuperAdmin_ID"].Value);
 
                     // Delete row from database
-                    DeleteSuperAdmin(superadminID);
-                    LoadSuperAdmin();
+                    await DeleteSuperAdmin(superadminID);
+                    await LoadSuperAdmin();
                     AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The data has been deleted successfully", Properties.Resources.success);
                 }
             }
@@ -407,7 +420,7 @@ namespace Application_Desktop.Sub_Views
         }
 
         //Delete
-        public int DeleteSuperAdmin(int superadminID)
+        public async Task<int> DeleteSuperAdmin(int superadminID)
         {
             string query = "Delete from superadmin Where SuperAdmin_ID = @superadminID";
 
@@ -417,23 +430,35 @@ namespace Application_Desktop.Sub_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@superadminID", superadminID);
-                cmd.ExecuteNonQuery();
+                MySqlTransaction transaction = conn.BeginTransaction();
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@superadminID", superadminID);
+                    await cmd.ExecuteNonQueryAsync();
+
+                    await transaction.CommitAsync();
+                }
+                catch (Exception transEx)
+                {
+                    // Rollback the transaction in case of an error
+                    await transaction.RollbackAsync();
+                    MessageBox.Show("Transaction failed: " + transEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
             return superadminID;
         }
 
         //Search Bar
-        private void LoadSearchBarS(string searchBarS)
+        private async Task LoadSearchBarS(string searchBarS)
         {
             string superAdminQuery = @"SELECT 
                          superadmin.SuperAdmin_ID,
@@ -487,14 +512,14 @@ namespace Application_Desktop.Sub_Views
 
                 MySqlDataAdapter SuperAdminAdapter = new MySqlDataAdapter(SuperAdminCmd);
                 DataTable SuperAdminTable = new DataTable();
-                SuperAdminAdapter.Fill(SuperAdminTable);
+                await Task.Run(() => SuperAdminAdapter.Fill(SuperAdminTable));
 
                 MySqlCommand AdminCmd = new MySqlCommand(adminQuery, conn);
                 AdminCmd.Parameters.AddWithValue("@search", $"%{searchBarS}%");
 
                 MySqlDataAdapter AdminAdapter = new MySqlDataAdapter(AdminCmd);
                 DataTable AdminTable = new DataTable();
-                AdminAdapter.Fill(AdminTable);
+                await Task.Run(() => AdminAdapter.Fill(AdminTable));
 
                 // Clear previous columns and rows
                 viewSuperAdminData.DataSource = null;
@@ -523,7 +548,7 @@ namespace Application_Desktop.Sub_Views
             {
                 MessageBox.Show($"Error: {ex.Message}\n{ex.StackTrace}");
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
         }
 
         //Add Column
@@ -706,13 +731,13 @@ namespace Application_Desktop.Sub_Views
 
 
 
-        private void btnSearchSuperAdmin_Click(object sender, EventArgs e)
+        private async void btnSearchSuperAdmin_Click(object sender, EventArgs e)
         {
             string searchBarS = txtSearchBox.Text;
-            LoadSearchBarS(searchBarS);
+            await LoadSearchBarS(searchBarS);
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
             bool hasSelectedRows = false;
             var result = MessageBox.Show("Are you sure you want to delete the selected rows?", "Confirm Deletion", MessageBoxButtons.YesNo);
@@ -734,7 +759,7 @@ namespace Application_Desktop.Sub_Views
                         // Get the ID of the superadmin to delete
                         int superadminID = Convert.ToInt32(row.Cells["SuperAdmin_ID"].Value);
                         viewSuperAdminData.Rows.RemoveAt(i);
-                        DeleteSuperAdmin(superadminID);
+                        await DeleteSuperAdmin(superadminID);
                     }
                 }
 
@@ -751,7 +776,7 @@ namespace Application_Desktop.Sub_Views
                         // Get the ID of the admin to delete
                         int adminID = Convert.ToInt32(row.Cells["Admin_ID"].Value);
                         viewAdminData.Rows.RemoveAt(i);
-                        DeleteRowFromDatabase(adminID);
+                        await DeleteRowFromDatabase(adminID);
                     }
                 }
 

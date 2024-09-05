@@ -38,7 +38,7 @@ namespace Application_Desktop.Sub_sub_Views
             alertbox.Show();
         }
 
-        public bool SelectPassword(int superadminID)
+        public async Task<bool> SelectPassword(int superadminID)
         {
             string Cpass = txtCurrentPass.Text;
 
@@ -52,7 +52,7 @@ namespace Application_Desktop.Sub_sub_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -62,7 +62,7 @@ namespace Application_Desktop.Sub_sub_Views
 
                 cryptography verify = new cryptography();
 
-                while (reader.Read())
+                while (await reader.ReadAsync())
                 {
                     string storedHash = reader.GetString("Password");
                     if (verify.VerifyPassword(Cpass, storedHash))
@@ -83,11 +83,11 @@ namespace Application_Desktop.Sub_sub_Views
             {
                 MessageBox.Show(ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
             return passwordVerify;
         }
 
-        public bool ChangePassword(int superadminID)
+        public async Task<bool> ChangePassword(int superadminID)
         {
             string Cpass = txtCurrentPass.Text;
             string Npass = txtNewPass.Text;
@@ -164,44 +164,57 @@ namespace Application_Desktop.Sub_sub_Views
                 {
                     if (conn.State != ConnectionState.Open)
                     {
-                        conn.Open();
+                        await conn.OpenAsync();
                     }
 
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    MySqlTransaction transaction = conn.BeginTransaction();
+                    try
+                    {
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
 
-                    cryptography hash = new cryptography();
-                    string newPass = hash.HashPassword(Npass);
-                    cmd.Parameters.AddWithValue("@pwd", newPass);
-                    cmd.Parameters.AddWithValue("@superadminID", superadminID);
-                    cmd.ExecuteNonQuery();
+                        cryptography hash = new cryptography();
+                        string newPass = hash.HashPassword(Npass);
+                        cmd.Parameters.AddWithValue("@pwd", newPass);
+                        cmd.Parameters.AddWithValue("@superadminID", superadminID);
+                        await cmd.ExecuteNonQueryAsync();
+                        await transaction.CommitAsync();
 
-                    //MessageBox.Show("Password changed successfully");
-                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The super admin password changed successfully", Properties.Resources.success);
+                        //MessageBox.Show("Password changed successfully");
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The super admin password changed successfully", Properties.Resources.success);
 
-                    txtCurrentPass.Text = "";
-                    txtNewPass.Text = "";
-                    txtConfirmPass.Text = "";
+                        txtCurrentPass.Text = "";
+                        txtNewPass.Text = "";
+                        txtConfirmPass.Text = "";
 
-                    errorProvider4.SetError(borderNew, string.Empty);
-                    errorProvider4.SetError(borderRepass, string.Empty);
-                    errorProvider4.SetError(borderCurrent, string.Empty);
-                    return true;
+                        errorProvider4.SetError(borderNew, string.Empty);
+                        errorProvider4.SetError(borderRepass, string.Empty);
+                        errorProvider4.SetError(borderCurrent, string.Empty);
+                        return true;
+
+                    }
+                    catch (Exception transEx)
+                    {
+                        // Rollback the transaction in case of an error
+                        await transaction.RollbackAsync();
+                        MessageBox.Show("Transaction failed: " + transEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-                finally { conn.Close(); }
+                finally { await conn.CloseAsync(); }
 
             }
             return false;
         }
 
-        private void btnChangePass_Click(object sender, EventArgs e)
+        private async void btnChangePass_Click(object sender, EventArgs e)
         {
-            if (SelectPassword(superadminID))
+            if (await SelectPassword(superadminID))
             {
-                ChangePassword(superadminID);
+                await ChangePassword(superadminID);
             }
         }
 

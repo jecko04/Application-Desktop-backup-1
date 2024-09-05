@@ -127,7 +127,7 @@ namespace Application_Desktop.Admin_Sub_Views
                 cmd.Parameters.AddWithValue("@createdAt", now);
                 cmd.Parameters.AddWithValue("@updatedAt", now);
 
-                cmd.ExecuteNonQueryAsync();
+                await cmd.ExecuteNonQueryAsync();
 
                 AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The employee data saved successfully", Properties.Resources.success);
 

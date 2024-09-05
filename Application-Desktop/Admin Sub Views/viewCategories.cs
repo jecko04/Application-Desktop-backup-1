@@ -19,12 +19,12 @@ namespace Application_Desktop.Admin_Sub_Views
         public viewCategories()
         {
             InitializeComponent();
-            LoadData();
+            
         }
 
-        private void viewCategories_Load(object sender, EventArgs e)
+        private async void viewCategories_Load(object sender, EventArgs e)
         {
-
+            await LoadData();
         }
         void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
         {
@@ -36,7 +36,7 @@ namespace Application_Desktop.Admin_Sub_Views
             alertbox.IconAlertBox = icon;
             alertbox.Show();
         }
-        private void LoadData()
+        private async Task LoadData()
         {
             int adminBranchID = session.LoggedInSession;
             int branchID = -1;
@@ -49,18 +49,18 @@ namespace Application_Desktop.Admin_Sub_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlCommand getBranchIDCmd = new MySqlCommand(getBranchID, conn);
                 getBranchIDCmd.Parameters.AddWithValue("@adminID", adminBranchID);
 
                 MySqlDataReader branchIDReader = getBranchIDCmd.ExecuteReader();
-                if (branchIDReader.Read())
+                if (await branchIDReader.ReadAsync())
                 {
                     branchID = Convert.ToInt32(branchIDReader["Branch_ID"]);
                 }
-                branchIDReader.Close();
+                await branchIDReader.CloseAsync();
 
                 // Check if adminBranchID was correctly retrieved
                 if (branchID == -1)
@@ -90,7 +90,8 @@ namespace Application_Desktop.Admin_Sub_Views
                 cmd.Parameters.AddWithValue("@branchID", branchID);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 DataTable datatable = new DataTable();
-                adapter.Fill(datatable);
+                
+                await Task.Run(() => adapter.Fill(datatable));
 
                 viewCategoriesDetails.DataSource = null;
                 viewCategoriesDetails.Rows.Clear();
@@ -106,7 +107,7 @@ namespace Application_Desktop.Admin_Sub_Views
             {
                 MessageBox.Show(ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
         }
 
         private void AddcolumnForCategories()
@@ -191,7 +192,7 @@ namespace Application_Desktop.Admin_Sub_Views
             this.Close();
         }
 
-        private void viewCategoriesDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void viewCategoriesDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
             //delete
@@ -204,9 +205,9 @@ namespace Application_Desktop.Admin_Sub_Views
                     int categoriesID = Convert.ToInt32(viewCategoriesDetails.Rows[e.RowIndex].Cells["Categories_ID"].Value);
 
                     // Delete row from database
-                    DeleteFromDatabase(categoriesID);
+                    await DeleteFromDatabase(categoriesID);
                     AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The item has been deleted successfully", Properties.Resources.success);
-                    LoadData();
+                    await LoadData();
                 }
             }
 
@@ -218,7 +219,7 @@ namespace Application_Desktop.Admin_Sub_Views
             }*/
         }
 
-        private void DeleteFromDatabase(int categoriesID)
+        private async Task DeleteFromDatabase(int categoriesID)
         {
             string query = @"DELETE from categories Where Categories_ID = @categoriesId";
 
@@ -228,12 +229,12 @@ namespace Application_Desktop.Admin_Sub_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("categoriesId", categoriesID);
-                cmd.ExecuteNonQuery();
+                await cmd.ExecuteNonQueryAsync();
 
 
             }
@@ -241,12 +242,12 @@ namespace Application_Desktop.Admin_Sub_Views
             {
                 MessageBox.Show(ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
         }
 
 
         //not use yet baka sa susunod lmao
-        private void DeleteSelected()
+        /*private void DeleteSelected()
         {
             bool hasSelectedRows = false;
             var result = MessageBox.Show("Are you sure you want to delete the selected rows?", "Confirm Deletion", MessageBoxButtons.YesNo);
@@ -277,7 +278,7 @@ namespace Application_Desktop.Admin_Sub_Views
                     MessageBox.Show("No rows were selected for deletion.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-        }
+        }*/
 
     }
 }

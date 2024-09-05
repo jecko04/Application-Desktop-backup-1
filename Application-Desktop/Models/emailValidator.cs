@@ -11,7 +11,7 @@ namespace Application_Desktop.Models
 {
     public class emailValidator
     {
-        public static bool IsEmailValidate (string email)
+        public  static bool IsEmailValidate (string email)
         {
             if (string.IsNullOrEmpty (email)) 
                 return false;
@@ -33,7 +33,7 @@ namespace Application_Desktop.Models
             return !IsEmailValidate (email);
         }
 
-        public static bool IsEmailAdminExist(string email)
+        public async static Task<bool> IsEmailAdminExist(string email)
         {
             string adminQuery = "SELECT COUNT(*) FROM admin WHERE Email = @Email";
 
@@ -42,12 +42,12 @@ namespace Application_Desktop.Models
             {
                     if (conn.State != ConnectionState.Open)
                     {
-                        conn.Open();
+                        await conn.OpenAsync();
                     }
 
                     MySqlCommand cmd = new MySqlCommand(adminQuery, conn);
                     cmd.Parameters.AddWithValue("@Email", email);
-                    int adminCount = Convert.ToInt32(cmd.ExecuteScalar());
+                    int adminCount = Convert.ToInt32(await cmd.ExecuteScalarAsync());
 
                 return adminCount > 0;
                 
@@ -56,10 +56,10 @@ namespace Application_Desktop.Models
             {
                 throw new Exception("Database error: " + ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
         }
 
-        public static bool IsEmailSuperAdminExist(string email)
+        public async static Task<bool> IsEmailSuperAdminExist(string email)
         {
             string superAdminQuery = "SELECT COUNT(*) FROM superadmin WHERE Email = @Email";
 
@@ -69,12 +69,12 @@ namespace Application_Desktop.Models
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlCommand cmdSuper = new MySqlCommand(superAdminQuery, conn);
                 cmdSuper.Parameters.AddWithValue("@Email", email);
-                int superAdminCount = Convert.ToInt32(cmdSuper.ExecuteScalar());
+                int superAdminCount = Convert.ToInt32(await cmdSuper.ExecuteScalarAsync());
 
                 return superAdminCount > 0;
 
@@ -83,10 +83,10 @@ namespace Application_Desktop.Models
             {
                 throw new Exception("Database error: " + ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
         }
 
-        public static bool IsEmailUserExist(string email)
+        public async static Task<bool> IsEmailUserExist(string email)
         {
             string UserQuery = "SELECT COUNT(*) FROM dentaldoctor WHERE Email = @email";
             MySqlConnection conn = databaseHelper.getConnection();
@@ -95,12 +95,12 @@ namespace Application_Desktop.Models
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlCommand cmdUser = new MySqlCommand(UserQuery, conn);
                 cmdUser.Parameters.AddWithValue("@Email", email);
-                int UserCount = Convert.ToInt32(cmdUser.ExecuteScalar());
+                int UserCount = Convert.ToInt32(await cmdUser.ExecuteScalarAsync());
 
                 return UserCount > 0;
             }
@@ -108,7 +108,7 @@ namespace Application_Desktop.Models
             {
                 throw new Exception("Database error: " + ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
         }
 
     }

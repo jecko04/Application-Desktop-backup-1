@@ -36,12 +36,12 @@ namespace Application_Desktop.Admin_Sub_Views
             alertbox.Show();
         }
 
-        private void registerDentalDoctorAccount_Load(object sender, EventArgs e)
+        private async void registerDentalDoctorAccount_Load(object sender, EventArgs e)
         {
-            GettingRoleBranchName();
+            await GettingRoleBranchName();
         }
 
-        private void GettingRoleBranchName()
+        private async Task GettingRoleBranchName()
         {
             int adminBranchID = session.LoggedInSession;
             int branchID = -1;
@@ -53,18 +53,18 @@ namespace Application_Desktop.Admin_Sub_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlCommand getBranchIDCmd = new MySqlCommand(getBranchID, conn);
                 getBranchIDCmd.Parameters.AddWithValue("@adminID", adminBranchID);
 
                 MySqlDataReader branchIDReader = getBranchIDCmd.ExecuteReader();
-                if (branchIDReader.Read())
+                if (await branchIDReader.ReadAsync())
                 {
                     branchID = Convert.ToInt32(branchIDReader["Branch_ID"]);
                 }
-                branchIDReader.Close();
+                await branchIDReader.CloseAsync();
 
                 // Check if adminBranchID was correctly retrieved
                 if (branchID == -1)
@@ -86,7 +86,7 @@ namespace Application_Desktop.Admin_Sub_Views
                 cmd.Parameters.AddWithValue("@branchID", branchID);
 
                 MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                while (await reader.ReadAsync())
                 {
                     string type = reader["Type"].ToString();
                     int id = Convert.ToInt32(reader["ID"]);
@@ -122,11 +122,11 @@ namespace Application_Desktop.Admin_Sub_Views
             }
             finally
             {
-                conn.Close();
+                await conn.CloseAsync();
             }
         }
 
-        private void SignUp()
+        private async Task SignUp()
         {
             string first = txtfirstName.Text;
             string last = txtLastName.Text;
@@ -232,7 +232,7 @@ namespace Application_Desktop.Admin_Sub_Views
                     // Check if email already exists
                     try
                     {
-                        if (emailValidator.IsEmailUserExist(email))
+                        if (await emailValidator.IsEmailUserExist(email))
                         {
                             errorProvider3.SetError(borderEmail, "Email already exists. Please use a different email.");
                             errorProvider6.SetError(borderEmail, string.Empty);
@@ -297,7 +297,7 @@ namespace Application_Desktop.Admin_Sub_Views
 
                         if (conn.State != ConnectionState.Open)
                         {
-                            conn.Open();
+                            await conn.OpenAsync();
                         }
 
                         MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -322,7 +322,7 @@ namespace Application_Desktop.Admin_Sub_Views
                         DateTime now = DateTime.Now;
                         cmd.Parameters.AddWithValue("@createdAt", now);
                         cmd.Parameters.AddWithValue("@updatedAt", now);
-                        cmd.ExecuteNonQuery();
+                        await cmd.ExecuteNonQueryAsync();
 
 
                         //MessageBox.Show("Signed-Up Successful");
@@ -339,14 +339,14 @@ namespace Application_Desktop.Admin_Sub_Views
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    finally { conn.Close(); }
+                    finally { await conn.CloseAsync(); }
                 }
             }
         }
 
-        private void btnSignUp_Click(object sender, EventArgs e)
+        private async void btnSignUp_Click(object sender, EventArgs e)
         {
-            SignUp();
+            await SignUp();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

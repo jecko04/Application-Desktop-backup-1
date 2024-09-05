@@ -37,11 +37,16 @@ namespace Application_Desktop.Sub_sub_Views
             alertbox.Show();
         }
 
-        private void registerAdmin_Load(object sender, EventArgs e)
+        private async void registerAdmin_Load(object sender, EventArgs e)
+        {
+            await LoadRoleBranch();
+        }
+
+        private async Task LoadRoleBranch()
         {
             string query = "SELECT 'role' AS Type, Role_ID AS ID, RoleName AS Name FROM role " +
-                "UNION ALL " +
-                "SELECT 'branch' AS Type, Branch_ID AS ID, BranchName AS Name FROM branch";
+               "UNION ALL " +
+               "SELECT 'branch' AS Type, Branch_ID AS ID, BranchName AS Name FROM branch";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -49,11 +54,11 @@ namespace Application_Desktop.Sub_sub_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                while (await reader.ReadAsync())
                 {
                     string type = reader["Type"].ToString();
                     int id = Convert.ToInt32(reader["ID"]);
@@ -87,7 +92,7 @@ namespace Application_Desktop.Sub_sub_Views
             }
             finally
             {
-                conn.Close();
+                await conn.CloseAsync();
             }
         }
 
@@ -96,7 +101,7 @@ namespace Application_Desktop.Sub_sub_Views
             this.Close();
         }
 
-        public void SignUp()
+        public async Task SignUp()
         {
             string first = txtfirstName.Text;
             string last = txtLastName.Text;
@@ -202,7 +207,7 @@ namespace Application_Desktop.Sub_sub_Views
                     // Check if email already exists
                     try
                     {
-                        if (emailValidator.IsEmailAdminExist(email))
+                        if (await emailValidator.IsEmailAdminExist(email))
                         {
                             errorProvider3.SetError(borderEmail, "Email already exists. Please use a different email.");
                             errorProvider6.SetError(borderEmail, string.Empty);
@@ -268,55 +273,68 @@ namespace Application_Desktop.Sub_sub_Views
 
                         if (conn.State != ConnectionState.Open)
                         {
-                            conn.Open();
+                            await conn.OpenAsync();
                         }
 
-                        MySqlCommand cmd = new MySqlCommand(query, conn);
-                        cmd.Parameters.AddWithValue("@fullname", fullname);
-                        cmd.Parameters.AddWithValue("@email", email);
+                        MySqlTransaction transaction = conn.BeginTransaction();
+                        try
+                        {
+                            MySqlCommand cmd = new MySqlCommand(query, conn);
+                            cmd.Parameters.AddWithValue("@fullname", fullname);
+                            cmd.Parameters.AddWithValue("@email", email);
 
-                        //hash passowrd
-                        cryptography hasher = new cryptography();
-                        string hashPassword = hasher.HashPassword(pwd);
-                        cmd.Parameters.AddWithValue("@pwd", hashPassword);
+                            //hash passowrd
+                            cryptography hasher = new cryptography();
+                            string hashPassword = hasher.HashPassword(pwd);
+                            cmd.Parameters.AddWithValue("@pwd", hashPassword);
 
-                        cmd.Parameters.AddWithValue("@createdBy", createdBy);
+                            cmd.Parameters.AddWithValue("@createdBy", createdBy);
 
-                        idValue selectedBranch = (idValue)txtBranch.SelectedItem;
-                        int branchId = selectedBranch.ID;
-                        cmd.Parameters.AddWithValue("@branchID", branchId);
+                            idValue selectedBranch = (idValue)txtBranch.SelectedItem;
+                            int branchId = selectedBranch.ID;
+                            cmd.Parameters.AddWithValue("@branchID", branchId);
 
-                        idValue selectedRole = (idValue)txtRoles.SelectedItem;
-                        int roleId = selectedRole.ID;
-                        cmd.Parameters.AddWithValue("@roleID", roleId);
+                            idValue selectedRole = (idValue)txtRoles.SelectedItem;
+                            int roleId = selectedRole.ID;
+                            cmd.Parameters.AddWithValue("@roleID", roleId);
 
-                        DateTime now = DateTime.Now;
-                        cmd.Parameters.AddWithValue("@createdAt", now);
-                        cmd.Parameters.AddWithValue("@updatedAt", now);
-                        cmd.ExecuteNonQuery();
+                            DateTime now = DateTime.Now;
+                            cmd.Parameters.AddWithValue("@createdAt", now);
+                            cmd.Parameters.AddWithValue("@updatedAt", now);
+                            await cmd.ExecuteNonQueryAsync();
 
+                            await transaction.CommitAsync();
 
-                        //MessageBox.Show("Signed-Up Successful
-                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The admin created successfully", Properties.Resources.success);
+                            //MessageBox.Show("Signed-Up Successful
+                            AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The admin created successfully", Properties.Resources.success);
 
-                        txtfirstName.Text = "";
-                        txtLastName.Text = "";
-                        txtEmail.Text = "";
-                        txtPassword.Text = "";
-                        txtRoles.Text = "";
-                        txtBranch.Text = "";
+                            txtfirstName.Text = "";
+                            txtLastName.Text = "";
+                            txtEmail.Text = "";
+                            txtPassword.Text = "";
+                            txtRoles.Text = "";
+                            txtBranch.Text = "";
+
+                        }
+                        catch (Exception transEx)
+                        {
+                            // Rollback the transaction in case of an error
+                            await transaction.RollbackAsync();
+                            MessageBox.Show("Transaction failed: " + transEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    finally { conn.Close(); }
+                    finally { await conn.CloseAsync(); }
                 }
             }
         }
-        private void btnSignUp_Click(object sender, EventArgs e)
+        private async void btnSignUp_Click(object sender, EventArgs e)
         {
-            SignUp();
+            await SignUp();
         }
     }
 }

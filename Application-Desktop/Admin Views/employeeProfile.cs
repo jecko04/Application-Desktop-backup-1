@@ -117,7 +117,7 @@ namespace Application_Desktop.Admin_Views
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 DataTable datatable = new DataTable();
 
-                adapter.Fill(datatable);
+                await Task.Run(() => adapter.Fill(datatable));
 
                 viewEmployeeDetails.DataSource = null;
                 viewEmployeeDetails.Rows.Clear();
@@ -133,7 +133,7 @@ namespace Application_Desktop.Admin_Views
             {
                 MessageBox.Show(ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
         }
 
         //add column
@@ -304,7 +304,7 @@ namespace Application_Desktop.Admin_Views
             {
                 MessageBox.Show(ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
         }
 
     }

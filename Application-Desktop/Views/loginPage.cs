@@ -26,7 +26,7 @@ namespace Application_Desktop.Views
 
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async Task Login()
         {
             string email = txtEmail.Text;
             string pwd = txtPassword.Text;
@@ -88,7 +88,7 @@ namespace Application_Desktop.Views
                 {
                     if (conn.State != ConnectionState.Open)
                     {
-                        conn.Open();
+                        await conn.OpenAsync();
                     }
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@Email", email);
@@ -100,7 +100,7 @@ namespace Application_Desktop.Views
 
                     cryptography verify = new cryptography();
 
-                    while (reader.Read())
+                    while (await reader.ReadAsync())
                     {
                         string Role = reader["Role"].ToString();
                         string name = reader["Name"].ToString();
@@ -175,9 +175,13 @@ namespace Application_Desktop.Views
                 }
                 finally
                 {
-                    conn.Close();
+                    await conn.CloseAsync();
                 }
             }
+        }
+        private async void btnLogin_Click(object sender, EventArgs e)
+        {
+            await Login();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

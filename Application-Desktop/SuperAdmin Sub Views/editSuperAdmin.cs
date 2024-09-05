@@ -125,7 +125,7 @@ namespace Application_Desktop.Sub_sub_Views
             return role;
         }
 
-        private void UpdateSuperAdmin(int superAdminID, string fname, string lname, string email, string pwd)
+        private async Task UpdateSuperAdmin(int superAdminID, string fname, string lname, string email, string pwd)
         {
             errorProvider1.SetError(borderEmail, string.Empty);
             errorProvider2.SetError(borderEmail, "Email is valid");
@@ -144,27 +144,40 @@ namespace Application_Desktop.Sub_sub_Views
                 {
                     if (conn.State != ConnectionState.Open)
                     {
-                        conn.Open();
+                        await conn.OpenAsync();
                     }
 
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@name", fullname);
-                    cmd.Parameters.AddWithValue("@email", email);
-                    cmd.Parameters.AddWithValue("@pwd", pwd);
+                    MySqlTransaction transaction = conn.BeginTransaction();
+                    try
+                    {
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@name", fullname);
+                        cmd.Parameters.AddWithValue("@email", email);
+                        cmd.Parameters.AddWithValue("@pwd", pwd);
 
-                    idValue selectedRole = (idValue)txtRoles.SelectedItem;
-                    int role = selectedRole.ID;
-                    cmd.Parameters.AddWithValue("@roleID", role);
-                    DateTime now = DateTime.Now;
-                    cmd.Parameters.AddWithValue("@updatedAt", now);
+                        idValue selectedRole = (idValue)txtRoles.SelectedItem;
+                        int role = selectedRole.ID;
+                        cmd.Parameters.AddWithValue("@roleID", role);
+                        DateTime now = DateTime.Now;
+                        cmd.Parameters.AddWithValue("@updatedAt", now);
 
-                    cmd.Parameters.AddWithValue("@superAdminID", superAdminID);
-                    int rowsAffected = cmd.ExecuteNonQuery();
+                        cmd.Parameters.AddWithValue("@superAdminID", superAdminID);
+                        int rowsAffected = await cmd.ExecuteNonQueryAsync();
 
-                    //MessageBox.Show("Successfully Updated");
-                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been updated successfully", Properties.Resources.success);
+                        //MessageBox.Show("Successfully Updated");
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been updated successfully", Properties.Resources.success);
 
-                    errorProvider1.SetError(borderEmail, string.Empty);
+                        errorProvider1.SetError(borderEmail, string.Empty);
+
+                        await transaction.CommitAsync();
+                    }
+                    catch (Exception transEx)
+                    {
+                        // Rollback the transaction in case of an error
+                        await transaction.RollbackAsync();
+                        MessageBox.Show("Transaction failed: " + transEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -172,7 +185,7 @@ namespace Application_Desktop.Sub_sub_Views
                 }
                 finally
                 {
-                    conn.Close();
+                    await conn.CloseAsync();
                 }
             }
         }
@@ -187,7 +200,7 @@ namespace Application_Desktop.Sub_sub_Views
             this.Close();
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private async void btnUpdate_Click(object sender, EventArgs e)
         {
             string fname = txtFirstName.Text;
             string lname = txtLastName.Text;
@@ -237,7 +250,7 @@ namespace Application_Desktop.Sub_sub_Views
             errorProvider4.GetError(borderLast) == string.Empty && 
             errorProvider5.GetError(borderRole) == string.Empty)
             {
-                    UpdateSuperAdmin(superAdminID, fname, lname, email, pwd);
+                    await UpdateSuperAdmin(superAdminID, fname, lname, email, pwd);
                     this.Close();
             }
 

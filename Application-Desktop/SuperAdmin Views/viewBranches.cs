@@ -20,7 +20,6 @@ namespace Application_Desktop.Sub_sub_Views
         {
             InitializeComponent();
             this.AcceptButton = btnSearch;
-            LoadData();
 
             ElipseManager elipseManager = new ElipseManager(5);
             elipseManager.ApplyElipseToAllButtons(this);
@@ -36,7 +35,7 @@ namespace Application_Desktop.Sub_sub_Views
             alertbox.IconAlertBox = icon;
             alertbox.Show();
         }
-        private void LoadData()
+        private async Task LoadData()
         {
             string query = "SELECT * FROM branch";
 
@@ -45,36 +44,24 @@ namespace Application_Desktop.Sub_sub_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
                 DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
+                await Task.Run(() => adapter.Fill(dataTable));
 
                 viewBranchData.DataSource = null;
                 viewBranchData.Rows.Clear();
                 viewBranchData.Columns.Clear();
 
+                viewBranchData.AutoGenerateColumns = false;
+
+                AddColumnBranches();
+
                 viewBranchData.DataSource = dataTable;
 
-                DataGridViewImageColumn editButtonColumn = new DataGridViewImageColumn();
-                editButtonColumn.HeaderText = "";
-                editButtonColumn.Name = "edit";
-                editButtonColumn.Image = Properties.Resources.edit_img;
-                editButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                editButtonColumn.Width = 50;
-                editButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-                viewBranchData.Columns.Add(editButtonColumn);
 
-                DataGridViewImageColumn deleteButtonColumn = new DataGridViewImageColumn();
-                deleteButtonColumn.HeaderText = "";
-                deleteButtonColumn.Name = "delete";
-                deleteButtonColumn.Image = Properties.Resources.delete_img;
-                deleteButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                deleteButtonColumn.Width = 50;
-                deleteButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-                viewBranchData.Columns.Add(deleteButtonColumn);
 
             }
             catch (Exception ex)
@@ -83,31 +70,30 @@ namespace Application_Desktop.Sub_sub_Views
             }
             finally
             {
-                conn.Close();
+                await conn.CloseAsync();
             }
         }
 
-        private void DeleteRowFromDatabase(int branchID)
+        private async Task DeleteRowFromDatabase(int branchID)
         {
             string query = @"Delete from branch Where Branch_ID = @branchID";
 
-                /*Delete from admin Where Branch_ID = @branchID;
-                Delete from users Where Branch_ID = @branchID;*/
+            /*Delete from admin Where Branch_ID = @branchID;
+            Delete from users Where Branch_ID = @branchID;*/
 
             MySqlConnection conn = databaseHelper.getConnection();
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("branchID", branchID);
-                cmd.ExecuteNonQuery();
-                //MessageBox.Show("Branch deleted successfully.");
-                LoadData();
-
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("branchID", branchID);
+                    await cmd.ExecuteNonQueryAsync();
+                    //MessageBox.Show("Branch deleted successfully.");
+                    await LoadData();
             }
             catch (Exception ex)
             {
@@ -115,18 +101,13 @@ namespace Application_Desktop.Sub_sub_Views
             }
             finally
             {
-                conn.Close();
+                await conn.CloseAsync();
             }
-        }
-
-        private void SelectBranch()
-        {
-
         }
 
 
         private editBranch editBranchInstance;
-        private void viewBranchData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void viewBranchData_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //update
             if (viewBranchData.Columns["edit"] != null &&
@@ -170,9 +151,9 @@ namespace Application_Desktop.Sub_sub_Views
                     int branchID = Convert.ToInt32(viewBranchData.Rows[e.RowIndex].Cells["Branch_ID"].Value);
 
                     // Delete row from database
-                    DeleteRowFromDatabase(branchID);
+                    await DeleteRowFromDatabase(branchID);
                     AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The branch data has been deleted successfully", Properties.Resources.success);
-                    
+
                 }
             }
         }
@@ -200,13 +181,18 @@ namespace Application_Desktop.Sub_sub_Views
 
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private async void btnRefresh_Click(object sender, EventArgs e)
         {
             //refresh data
-            LoadData();
+            await LoadData();
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private async void btnSearch_Click(object sender, EventArgs e)
+        {
+            await SearchBar();
+        }
+
+        private async Task SearchBar()
         {
             string searchBar = txtSearchBox.Text;
 
@@ -225,16 +211,26 @@ namespace Application_Desktop.Sub_sub_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@searchBar", $"%{searchBar}%");
 
                 DataTable dataTable = new DataTable();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-                adapter.Fill(dataTable);
+                await Task.Run(() => adapter.Fill(dataTable));
+
+                viewBranchData.DataSource = null;
+                viewBranchData.Rows.Clear();
+                viewBranchData.Columns.Clear();
+
+                viewBranchData.AutoGenerateColumns = false;
+
+                AddColumnBranches();
 
                 viewBranchData.DataSource = dataTable;
+
+
 
             }
             catch (Exception ex)
@@ -243,13 +239,104 @@ namespace Application_Desktop.Sub_sub_Views
             }
             finally
             {
-                conn.Close();
+                await conn.CloseAsync();
             }
         }
 
-        private void viewBranches_Load(object sender, EventArgs e)
+        private void AddColumnBranches()
         {
+            DataGridViewTextBoxColumn idColumn = new DataGridViewTextBoxColumn();
+            idColumn.HeaderText = "Branch ID";
+            idColumn.Name = "Branch_ID";
+            idColumn.DataPropertyName = "Branch_ID";
+            idColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            viewBranchData.Columns.Add(idColumn);
 
+            DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
+            nameColumn.HeaderText = "Branch Name";
+            nameColumn.Name = "BranchName";
+            nameColumn.DataPropertyName = "BranchName";
+            nameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            viewBranchData.Columns.Add(nameColumn);
+
+            DataGridViewTextBoxColumn HouseColumn = new DataGridViewTextBoxColumn();
+            HouseColumn.HeaderText = "Building Number";
+            HouseColumn.Name = "BuildingNumber";
+            HouseColumn.DataPropertyName = "BuildingNumber";
+            HouseColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            viewBranchData.Columns.Add(HouseColumn);
+
+            DataGridViewTextBoxColumn streetColumn = new DataGridViewTextBoxColumn();
+            streetColumn.HeaderText = "Street";
+            streetColumn.Name = "Street";
+            streetColumn.DataPropertyName = "Street";
+            streetColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            viewBranchData.Columns.Add(streetColumn);
+
+            DataGridViewTextBoxColumn brgyColumn = new DataGridViewTextBoxColumn();
+            brgyColumn.HeaderText = "Barangay";
+            brgyColumn.Name = "Barangay";
+            brgyColumn.DataPropertyName = "Barangay";
+            brgyColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            viewBranchData.Columns.Add(brgyColumn);
+
+            DataGridViewTextBoxColumn cityColumn = new DataGridViewTextBoxColumn();
+            cityColumn.HeaderText = "City";
+            cityColumn.Name = "City";
+            cityColumn.DataPropertyName = "City";
+            cityColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            viewBranchData.Columns.Add(cityColumn);
+
+            DataGridViewTextBoxColumn provinceColumn = new DataGridViewTextBoxColumn();
+            provinceColumn.HeaderText = "Province";
+            provinceColumn.Name = "Province";
+            provinceColumn.DataPropertyName = "Province";
+            provinceColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            viewBranchData.Columns.Add(provinceColumn);
+
+            DataGridViewTextBoxColumn postalColumn = new DataGridViewTextBoxColumn();
+            postalColumn.HeaderText = "Postal Code";
+            postalColumn.Name = "PostalCode";
+            postalColumn.DataPropertyName = "PostalCode";
+            postalColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            viewBranchData.Columns.Add(postalColumn);
+
+            DataGridViewTextBoxColumn createColumn = new DataGridViewTextBoxColumn();
+            createColumn.HeaderText = "Created At";
+            createColumn.Name = "created_at";
+            createColumn.DataPropertyName = "created_at";
+            createColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            viewBranchData.Columns.Add(createColumn);
+
+            DataGridViewTextBoxColumn updateColumn = new DataGridViewTextBoxColumn();
+            updateColumn.HeaderText = "Updated At";
+            updateColumn.Name = "updated_at";
+            updateColumn.DataPropertyName = "updated_at";
+            updateColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            viewBranchData.Columns.Add(updateColumn);
+
+
+            DataGridViewImageColumn editButtonColumn = new DataGridViewImageColumn();
+            editButtonColumn.HeaderText = "";
+            editButtonColumn.Name = "edit";
+            editButtonColumn.Image = Properties.Resources.edit_img;
+            editButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            editButtonColumn.Width = 50;
+            editButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            viewBranchData.Columns.Add(editButtonColumn);
+
+            DataGridViewImageColumn deleteButtonColumn = new DataGridViewImageColumn();
+            deleteButtonColumn.HeaderText = "";
+            deleteButtonColumn.Name = "delete";
+            deleteButtonColumn.Image = Properties.Resources.delete_img;
+            deleteButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            deleteButtonColumn.Width = 50;
+            deleteButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            viewBranchData.Columns.Add(deleteButtonColumn);
+        }
+        private async void viewBranches_Load(object sender, EventArgs e)
+        {
+            await LoadData();
         }
     }
 }

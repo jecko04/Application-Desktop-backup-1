@@ -75,7 +75,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             viewBranchData.DefaultCellStyle = dataGridViewCellStyle2;
-            viewBranchData.Location = new Point(-1, 57);
+            viewBranchData.Location = new Point(-1, 41);
             viewBranchData.Margin = new Padding(0);
             viewBranchData.Name = "viewBranchData";
             viewBranchData.ReadOnly = true;
@@ -89,7 +89,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             viewBranchData.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             viewBranchData.RowTemplate.Height = 25;
-            viewBranchData.Size = new Size(986, 355);
+            viewBranchData.Size = new Size(995, 355);
             viewBranchData.TabIndex = 0;
             viewBranchData.CellContentClick += viewBranchData_CellContentClick;
             // 
@@ -102,7 +102,7 @@
             btnAddBranch.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddBranch.ForeColor = SystemColors.ButtonFace;
             btnAddBranch.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAddBranch.Location = new Point(994, 57);
+            btnAddBranch.Location = new Point(1007, 41);
             btnAddBranch.Margin = new Padding(0);
             btnAddBranch.Name = "btnAddBranch";
             btnAddBranch.Size = new Size(85, 24);
@@ -173,7 +173,7 @@
             btnRefresh.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnRefresh.ForeColor = SystemColors.ButtonFace;
             btnRefresh.Image = (Image)resources.GetObject("btnRefresh.Image");
-            btnRefresh.Location = new Point(994, 82);
+            btnRefresh.Location = new Point(1007, 66);
             btnRefresh.Margin = new Padding(0, 1, 0, 0);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(85, 24);

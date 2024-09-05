@@ -208,22 +208,22 @@ namespace Application_Desktop.Sub_sub_Views
             return branch;
         }
 
-        public void UpdateAdmin(int adminID, string email, string pwd, string role)
+        public async Task UpdateAdmin(int adminID, string email, string pwd, string role)
         {
 
             if (role == "SuperAdmin")
             {
-                InsertSuperAdmin(email, pwd, adminID);
+                await InsertSuperAdmin(email, pwd, adminID);
             }
             if (role == "Admin")
             {
-                Update(email, adminID);
+                await Update(email, adminID);
             }
 
         }
 
 
-        private void InsertSuperAdmin(string email, string pwd, int adminID)
+        private async Task InsertSuperAdmin(string email, string pwd, int adminID)
         {
             txtEmail.Text = email;
             txtPassword.Text = pwd;
@@ -248,13 +248,12 @@ namespace Application_Desktop.Sub_sub_Views
             // Check if email already exists
             try
             {
-                if (emailValidator.IsEmailSuperAdminExist(email))
+                if (await emailValidator.IsEmailSuperAdminExist(email))
                 {
                     errorProvider7.SetError(borderEmail, "Email already exists. Please use a different email.");
                     errorProvider6.SetError(borderEmail, string.Empty);
 
-                    //MessageBox.Show("Email already exists. Please use a different email.");
-                    AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "Information", "Email already exist. Please use different email", Properties.Resources.information);
+                    AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "Information", "Email already exists. Please use a different email", Properties.Resources.information);
                     return;
                 }
                 else
@@ -280,8 +279,9 @@ namespace Application_Desktop.Sub_sub_Views
             }
 
             string insertQuery = "INSERT INTO superadmin (Name, Email, Password, Role_ID, created_at, updated_at) " +
-                                "VALUES " +
-                                "(@S_name, @S_email, @S_pwd, @S_roleID, @createdAt, @updatedAt)";
+                                 "VALUES (@S_name, @S_email, @S_pwd, @S_roleID, @createdAt, @updatedAt)";
+
+            string deleteQuery = "DELETE FROM admin WHERE Admin_ID = @adminID";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -289,42 +289,58 @@ namespace Application_Desktop.Sub_sub_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
-                MySqlCommand superAdminCmd = new MySqlCommand(insertQuery, conn);
-                superAdminCmd.Parameters.AddWithValue("@S_name", fullname);
-                superAdminCmd.Parameters.AddWithValue("@S_email", email);
-                superAdminCmd.Parameters.AddWithValue("@S_pwd", pwd);
+                MySqlTransaction transaction = await conn.BeginTransactionAsync();
 
-                idValue selectedRole = (idValue)txtRoles.SelectedItem;
-                int roleId = selectedRole.ID;
-                superAdminCmd.Parameters.AddWithValue("@S_roleID", roleId);
+                try
+                {
+                    // Insert into superadmin
+                    MySqlCommand superAdminCmd = new MySqlCommand(insertQuery, conn, transaction);
+                    superAdminCmd.Parameters.AddWithValue("@S_name", fullname);
+                    superAdminCmd.Parameters.AddWithValue("@S_email", email);
+                    superAdminCmd.Parameters.AddWithValue("@S_pwd", pwd);
 
-                DateTime now = DateTime.Now;
-                superAdminCmd.Parameters.AddWithValue("@createdAt", now);
-                superAdminCmd.Parameters.AddWithValue("@updatedAt", now);
-                superAdminCmd.ExecuteNonQuery();
+                    idValue selectedRole = (idValue)txtRoles.SelectedItem;
+                    int roleId = selectedRole.ID;
+                    superAdminCmd.Parameters.AddWithValue("@S_roleID", roleId);
 
-                string deleteQuery = "DELETE FROM admin WHERE Admin_ID = @adminID";
-                MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, conn);
-                deleteCmd.Parameters.AddWithValue("@adminID", adminID);
-                deleteCmd.ExecuteNonQuery();
+                    DateTime now = DateTime.Now;
+                    superAdminCmd.Parameters.AddWithValue("@createdAt", now);
+                    superAdminCmd.Parameters.AddWithValue("@updatedAt", now);
+                    await superAdminCmd.ExecuteNonQueryAsync();
 
-                //MessageBox.Show("Successfully Updated to SuperAdmin");
-                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been change to super admin", Properties.Resources.success);
+                    // Delete from admin
+                    MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, conn, transaction);
+                    deleteCmd.Parameters.AddWithValue("@adminID", adminID);
+                    await deleteCmd.ExecuteNonQueryAsync();
+
+                    // Commit the transaction if both commands succeed
+                    await transaction.CommitAsync();
+
+                    // Notify success
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been changed to super admin", Properties.Resources.success);
+                }
+                catch (Exception transEx)
+                {
+                    // Rollback the transaction in case of an error
+                    await transaction.RollbackAsync();
+                    MessageBox.Show("Transaction failed: " + transEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Inputting Data to SuperAdmin: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error inputting data to SuperAdmin: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                conn.Close();
+                await conn.CloseAsync();
             }
         }
 
-        private void Update(string email, int adminID)
+
+        private async Task Update(string email, int adminID)
         {
             txtEmail.Text = email;
 
@@ -339,7 +355,7 @@ namespace Application_Desktop.Sub_sub_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -358,7 +374,7 @@ namespace Application_Desktop.Sub_sub_Views
                 int roleId = selectedRole.ID;
                 cmd.Parameters.AddWithValue("@roleID", roleId);
 
-                cmd.ExecuteNonQuery();
+                await cmd.ExecuteNonQueryAsync();
 
                 //MessageBox.Show("Successfully Updated admin record.");
                 AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been updated successfully", Properties.Resources.success);
@@ -367,10 +383,10 @@ namespace Application_Desktop.Sub_sub_Views
             {
                 MessageBox.Show("Error Updating Data to Admin: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private async void btnUpdate_Click(object sender, EventArgs e)
         {
             string fname = txtfirstName.Text;
             string lname = txtLastName.Text;
@@ -439,7 +455,7 @@ namespace Application_Desktop.Sub_sub_Views
                 }
                 else
                 {
-                    UpdateAdmin(adminID, email, pwd, role);
+                    await UpdateAdmin(adminID, email, pwd, role);
                 }
             }
             catch (Exception ex)

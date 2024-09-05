@@ -22,7 +22,7 @@ namespace Application_Desktop.Admin_Views
         public doctorsAccount()
         {
             InitializeComponent();
-            LoadData();
+            
 
             ElipseManager elipseManager = new ElipseManager(5);
             elipseManager.ApplyElipseToAllButtons(this);
@@ -38,7 +38,7 @@ namespace Application_Desktop.Admin_Views
             alertbox.IconAlertBox = icon;
             alertbox.Show();
         }
-        private void LoadData()
+        private async Task LoadData()
         {
             int adminBranchID = session.LoggedInSession;
             int branchID = -1;
@@ -50,7 +50,7 @@ namespace Application_Desktop.Admin_Views
             {
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlCommand getBranchIDCmd = new MySqlCommand(getBranchID, conn);
@@ -91,7 +91,7 @@ namespace Application_Desktop.Admin_Views
                 cmd.Parameters.AddWithValue("@branchID", branchID);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 DataTable datatable = new DataTable();
-                adapter.Fill(datatable);
+                await Task.Run(() => adapter.Fill(datatable));
 
                 viewDentalDoctorAccount.DataSource = null;
                 viewDentalDoctorAccount.Rows.Clear();
@@ -107,7 +107,7 @@ namespace Application_Desktop.Admin_Views
             {
                 MessageBox.Show(ex.Message);
             }
-            finally { conn.Close(); }
+            finally { await conn.CloseAsync(); }
         }
 
         // Column
@@ -216,7 +216,7 @@ namespace Application_Desktop.Admin_Views
 
         private changeDentalDoctorsPass changeDentalDoctorsPassInstance;
         private editDentalDoctorAccounts editDentalDoctorAccountsInstance;
-        private void viewDentalDoctorAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void viewDentalDoctorAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //update
             if (viewDentalDoctorAccount.Columns["edit"] != null &&
@@ -265,7 +265,7 @@ namespace Application_Desktop.Admin_Views
                     // Delete row from database
                     DeleteRowFromDatabase(doctors_ID);
                     AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been deleted successfully", Properties.Resources.success);
-                    LoadData();
+                    await LoadData();
                 }
             }
 
@@ -330,10 +330,10 @@ namespace Application_Desktop.Admin_Views
             return doctorsID;
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private async void btnRefresh_Click(object sender, EventArgs e)
         {
             //refresh button
-            LoadData();
+            await LoadData();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -371,6 +371,11 @@ namespace Application_Desktop.Admin_Views
                     AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No rows selected", "No rows were selected for deletion", Properties.Resources.information);
                 }
             }
+        }
+
+        private async void doctorsAccount_Load(object sender, EventArgs e)
+        {
+            await LoadData();
         }
     }
 }

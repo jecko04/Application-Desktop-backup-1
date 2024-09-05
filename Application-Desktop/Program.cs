@@ -10,36 +10,30 @@ namespace Application_Desktop
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static async Task Main()
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
             //Open the database
-            databaseHelper.initializeConnection();
+            await databaseHelper.initializeConnection();
 
             Application.Run(new loginPage());
 
             //Close the database
-            databaseHelper.closeConnection();
+            await databaseHelper.closeConnection();
 
-            //gawa ka ng view sa superadmin para sa dental doctors account next time
             //wag kalimutan yung email sa login
             //wag kalimutan yung forgot password sa login
 
-            //dagdag ka ng if nothing selected sa check box, it messagebox the delete button no selected item/data
-
-            //gawa ka ng staff attendance monitory at register ng staff like dental doctor at iba pa
-
-            //paki fix ng delete sa admin
             //gumawa ka ng polling the database para every 5 second ma fetch lagi yung data
 
             //latest
             //gawa na ng para sa staff information
             
 
-            //use async await on all form
+            //use transaction to all form to avoid error out of sync with server
         }
     }
 }

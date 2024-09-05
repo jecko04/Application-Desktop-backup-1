@@ -13,7 +13,7 @@ namespace Application_Desktop
         public registerSuperAdmin()
         {
             InitializeComponent();
-            PopulateRoleName();
+
             ElipseManager elipseManager = new ElipseManager(5);
             elipseManager.ApplyElipseToAllButtons(this);
         }
@@ -28,12 +28,12 @@ namespace Application_Desktop
             alertbox.IconAlertBox = icon;
             alertbox.Show();
         }
-        private void registerSuperAdmin_Load(object sender, EventArgs e)
+        private async void registerSuperAdmin_Load(object sender, EventArgs e)
         {
-
+            await PopulateRoleName();
         }
 
-        public void PopulateRoleName()
+        public async Task PopulateRoleName()
         {
             //Selecting roles from database
 
@@ -45,13 +45,13 @@ namespace Application_Desktop
 
                 if (conn.State != ConnectionState.Open)
                 {
-                    conn.Open();
+                    await conn.OpenAsync();
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 {
-                    while (reader.Read())
+                    while (await reader.ReadAsync())
                     {
                         string type = reader["Type"].ToString();
                         int id = Convert.ToInt32(reader["ID"]);
@@ -77,7 +77,7 @@ namespace Application_Desktop
             }
             finally
             {
-                conn.Close();
+                await conn.CloseAsync();
             }
         }
 
@@ -90,7 +90,7 @@ namespace Application_Desktop
             }
         }
 
-        public void RegSuperAdmin()
+        public async Task RegSuperAdmin()
         {
             string fname = txtFirstName.Text;
             string lname = txtLastName.Text;
@@ -221,7 +221,7 @@ namespace Application_Desktop
                     // Check if email exists in superadmin tables
                     try
                     {
-                        if (emailValidator.IsEmailSuperAdminExist(email))
+                        if (await emailValidator.IsEmailSuperAdminExist(email))
                         {
                             errorProvider3.SetError(borderEmail, string.Empty);
                             errorProvider10.SetError(borderEmail, string.Empty);
@@ -321,46 +321,58 @@ namespace Application_Desktop
                                         MySqlConnection conn = databaseHelper.getConnection();
                                         try
                                         {
-                                            conn.Open();
+                                            await conn.OpenAsync();
 
-                                            MySqlCommand cmd = new MySqlCommand(query, conn);
-                                            cmd.Parameters.AddWithValue("@fullname", fullname);
-                                            cmd.Parameters.AddWithValue("@email", email);
+                                            MySqlTransaction transaction = conn.BeginTransaction();
+                                            try
+                                            {
+                                                MySqlCommand cmd = new MySqlCommand(query, conn);
+                                                cmd.Parameters.AddWithValue("@fullname", fullname);
+                                                cmd.Parameters.AddWithValue("@email", email);
 
-                                            // Encryption
-                                            cryptography hasher = new cryptography();
-                                            string hashPassword = hasher.HashPassword(pwd);
-                                            cmd.Parameters.AddWithValue("@pwd", hashPassword);
+                                                // Encryption
+                                                cryptography hasher = new cryptography();
+                                                string hashPassword = hasher.HashPassword(pwd);
+                                                cmd.Parameters.AddWithValue("@pwd", hashPassword);
 
-                                            // Get the selected role_ID from the comboBox
-                                            idValue selectedRole = (idValue)txtComboBox.SelectedItem;
-                                            int roleId = selectedRole.ID;
+                                                // Get the selected role_ID from the comboBox
+                                                idValue selectedRole = (idValue)txtComboBox.SelectedItem;
+                                                int roleId = selectedRole.ID;
 
-                                            cmd.Parameters.AddWithValue("@roleID", roleId);
+                                                cmd.Parameters.AddWithValue("@roleID", roleId);
 
-                                            DateTime now = DateTime.Now;
-                                            cmd.Parameters.AddWithValue("@createdAt", now);
-                                            cmd.Parameters.AddWithValue("@updatedAt", now);
+                                                DateTime now = DateTime.Now;
+                                                cmd.Parameters.AddWithValue("@createdAt", now);
+                                                cmd.Parameters.AddWithValue("@updatedAt", now);
 
-                                            int rowsAffected = cmd.ExecuteNonQuery();
+                                                int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                                                await transaction.CommitAsync();
 
-                                            //MessageBox.Show("Successful");
+                                                //MessageBox.Show("Successful");
 
-                                            AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Super admin created successfully", Properties.Resources.success);
+                                                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Super admin created successfully", Properties.Resources.success);
 
-                                            txtFirstName.Text = "";
-                                            txtLastName.Text = "";
-                                            txtEmail.Text = "";
-                                            txtPwd.Text = "";
-                                            txtRePwd.Text = "";
-                                            txtComboBox.Text = "";
-                                            checkBox = false;
+                                                txtFirstName.Text = "";
+                                                txtLastName.Text = "";
+                                                txtEmail.Text = "";
+                                                txtPwd.Text = "";
+                                                txtRePwd.Text = "";
+                                                txtComboBox.Text = "";
+                                                checkBox = false;
 
-                                            // Clear error providers
-                                            errorProvider9.SetError(borderRePass, string.Empty);
-                                            errorProvider9.SetError(borderPass, string.Empty);
-                                            errorProvider7.SetError(borderTerms, string.Empty);
-                                            errorProvider10.SetError(borderEmail, string.Empty);
+                                                // Clear error providers
+                                                errorProvider9.SetError(borderRePass, string.Empty);
+                                                errorProvider9.SetError(borderPass, string.Empty);
+                                                errorProvider7.SetError(borderTerms, string.Empty);
+                                                errorProvider10.SetError(borderEmail, string.Empty);
+
+                                            }
+                                            catch (Exception transEx)
+                                            {
+                                                // Rollback the transaction in case of an error
+                                                await transaction.RollbackAsync();
+                                                MessageBox.Show("Transaction failed: " + transEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            }
                                         }
                                         catch (Exception ex)
                                         {
@@ -368,7 +380,7 @@ namespace Application_Desktop
                                         }
                                         finally
                                         {
-                                            conn.Close();
+                                            await conn.CloseAsync();
                                         }
                                     }
                                 }
@@ -380,9 +392,9 @@ namespace Application_Desktop
 
 
         }
-        private void btnRegister_Click(object sender, EventArgs e)
+        private async void btnRegister_Click(object sender, EventArgs e)
         {
-            RegSuperAdmin();
+            await RegSuperAdmin();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
