@@ -46,7 +46,6 @@
             this.txtNewTitle = (new global::System.Windows.Forms.TextBox());
             this.label41 = (new global::System.Windows.Forms.Label());
             this.btnUpdateRefresh = (new global::System.Windows.Forms.Button());
-            this.monthCalendar1 = (new global::System.Windows.Forms.MonthCalendar());
             this.label37 = (new global::System.Windows.Forms.Label());
             this.panel4 = (new global::System.Windows.Forms.Panel());
             this.borderFetchDuration = (new global::System.Windows.Forms.Panel());
@@ -251,10 +250,6 @@
             this.label18 = (new global::System.Windows.Forms.Label());
             this.label17 = (new global::System.Windows.Forms.Label());
             this.label16 = (new global::System.Windows.Forms.Label());
-            this.panel8 = (new global::System.Windows.Forms.Panel());
-            this.panel7 = (new global::System.Windows.Forms.Panel());
-            this.panel6 = (new global::System.Windows.Forms.Panel());
-            this.panel5 = (new global::System.Windows.Forms.Panel());
             this.label14 = (new global::System.Windows.Forms.Label());
             this.label15 = (new global::System.Windows.Forms.Label());
             this.label7 = (new global::System.Windows.Forms.Label());
@@ -277,6 +272,7 @@
             this.errorProvider3 = (new global::System.Windows.Forms.ErrorProvider(this.components));
             this.errorProvider4 = (new global::System.Windows.Forms.ErrorProvider(this.components));
             this.errorProvider5 = (new global::System.Windows.Forms.ErrorProvider(this.components));
+            this.elipseControl1 = (new global::ElipseToolDemo.ElipseControl());
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((global::System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -387,8 +383,8 @@
             // btnSubmit
             // 
             this.btnSubmit.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSubmit.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
-            this.btnSubmit.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
+            this.btnSubmit.BackColor = (global::System.Drawing.Color.Black);
+            this.btnSubmit.FlatAppearance.BorderColor = (global::System.Drawing.Color.Black);
             this.btnSubmit.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
             this.btnSubmit.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
             this.btnSubmit.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
@@ -410,7 +406,6 @@
             this.panel2.Controls.Add(this.borderNewTitle);
             this.panel2.Controls.Add(this.label41);
             this.panel2.Controls.Add(this.btnUpdateRefresh);
-            this.panel2.Controls.Add(this.monthCalendar1);
             this.panel2.Controls.Add(this.label37);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel9);
@@ -535,12 +530,6 @@
             this.btnUpdateRefresh.TextAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.btnUpdateRefresh.UseVisualStyleBackColor = (false);
             this.btnUpdateRefresh.Click += (this.btnUpdateRefresh_Click);
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = (new global::System.Drawing.Point(68, 874));
-            this.monthCalendar1.Name = ("monthCalendar1");
-            this.monthCalendar1.TabIndex = (85);
             // 
             // label37
             // 
@@ -1086,8 +1075,8 @@
             // btnTuesday
             // 
             this.btnTuesday.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTuesday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
-            this.btnTuesday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
+            this.btnTuesday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.btnTuesday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnTuesday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
             this.btnTuesday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
             this.btnTuesday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
@@ -1103,8 +1092,8 @@
             // btnWednesday
             // 
             this.btnWednesday.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.btnWednesday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(244)), (global::System.Int32)((global::System.Byte)(208)), (global::System.Int32)((global::System.Byte)(63))));
-            this.btnWednesday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(244)), (global::System.Int32)((global::System.Byte)(208)), (global::System.Int32)((global::System.Byte)(63))));
+            this.btnWednesday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.btnWednesday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnWednesday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
             this.btnWednesday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
             this.btnWednesday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
@@ -1120,8 +1109,8 @@
             // btnThursday
             // 
             this.btnThursday.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.btnThursday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(243)), (global::System.Int32)((global::System.Byte)(156)), (global::System.Int32)((global::System.Byte)(18))));
-            this.btnThursday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(243)), (global::System.Int32)((global::System.Byte)(156)), (global::System.Int32)((global::System.Byte)(18))));
+            this.btnThursday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.btnThursday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnThursday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
             this.btnThursday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
             this.btnThursday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
@@ -1137,8 +1126,8 @@
             // btnFriday
             // 
             this.btnFriday.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFriday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(231)), (global::System.Int32)((global::System.Byte)(76)), (global::System.Int32)((global::System.Byte)(60))));
-            this.btnFriday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(231)), (global::System.Int32)((global::System.Byte)(76)), (global::System.Int32)((global::System.Byte)(60))));
+            this.btnFriday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.btnFriday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnFriday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
             this.btnFriday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
             this.btnFriday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
@@ -1154,8 +1143,8 @@
             // btnSaturday
             // 
             this.btnSaturday.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaturday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(175)), (global::System.Int32)((global::System.Byte)(122)), (global::System.Int32)((global::System.Byte)(197))));
-            this.btnSaturday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(175)), (global::System.Int32)((global::System.Byte)(122)), (global::System.Int32)((global::System.Byte)(197))));
+            this.btnSaturday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.btnSaturday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnSaturday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
             this.btnSaturday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
             this.btnSaturday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
@@ -1171,8 +1160,8 @@
             // btnSunday
             // 
             this.btnSunday.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSunday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(118)), (global::System.Int32)((global::System.Byte)(215)), (global::System.Int32)((global::System.Byte)(196))));
-            this.btnSunday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(118)), (global::System.Int32)((global::System.Byte)(215)), (global::System.Int32)((global::System.Byte)(196))));
+            this.btnSunday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.btnSunday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnSunday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
             this.btnSunday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
             this.btnSunday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
@@ -1238,13 +1227,9 @@
             this.PanelOfficeHours.Controls.Add(this.label18);
             this.PanelOfficeHours.Controls.Add(this.label17);
             this.PanelOfficeHours.Controls.Add(this.label16);
-            this.PanelOfficeHours.Controls.Add(this.panel8);
-            this.PanelOfficeHours.Controls.Add(this.panel7);
-            this.PanelOfficeHours.Controls.Add(this.panel6);
-            this.PanelOfficeHours.Controls.Add(this.panel5);
             this.PanelOfficeHours.Location = (new global::System.Drawing.Point(402, 711));
             this.PanelOfficeHours.Name = ("PanelOfficeHours");
-            this.PanelOfficeHours.Size = (new global::System.Drawing.Size(660, 325));
+            this.PanelOfficeHours.Size = (new global::System.Drawing.Size(660, 336));
             this.PanelOfficeHours.TabIndex = (70);
             // 
             // panel122
@@ -1265,7 +1250,7 @@
             this.panel117.Controls.Add(this.panel121);
             this.panel117.Controls.Add(this.dateTimePicker16);
             this.panel117.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
-            this.panel117.Location = (new global::System.Drawing.Point(114, 266));
+            this.panel117.Location = (new global::System.Drawing.Point(123, 267));
             this.panel117.Name = ("panel117");
             this.panel117.Size = (new global::System.Drawing.Size(107, 23));
             this.panel117.TabIndex = (116);
@@ -1336,7 +1321,7 @@
             // 
             this.label39.AutoSize = (true);
             this.label39.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
-            this.label39.Location = (new global::System.Drawing.Point(232, 274));
+            this.label39.Location = (new global::System.Drawing.Point(236, 274));
             this.label39.Name = ("label39");
             this.label39.Size = (new global::System.Drawing.Size(76, 16));
             this.label39.TabIndex = (115);
@@ -1345,13 +1330,13 @@
             // btnSaveOfficeHours
             // 
             this.btnSaveOfficeHours.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveOfficeHours.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
-            this.btnSaveOfficeHours.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
+            this.btnSaveOfficeHours.BackColor = (global::System.Drawing.Color.Black);
+            this.btnSaveOfficeHours.FlatAppearance.BorderColor = (global::System.Drawing.Color.Black);
             this.btnSaveOfficeHours.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
             this.btnSaveOfficeHours.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
             this.btnSaveOfficeHours.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnSaveOfficeHours.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
-            this.btnSaveOfficeHours.Location = (new global::System.Drawing.Point(571, 266));
+            this.btnSaveOfficeHours.Location = (new global::System.Drawing.Point(561, 266));
             this.btnSaveOfficeHours.Margin = (new global::System.Windows.Forms.Padding(0));
             this.btnSaveOfficeHours.Name = ("btnSaveOfficeHours");
             this.btnSaveOfficeHours.Size = (new global::System.Drawing.Size(70, 24));
@@ -1382,7 +1367,7 @@
             this.panel112.Controls.Add(this.panel116);
             this.panel112.Controls.Add(this.dateTimePicker15);
             this.panel112.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
-            this.panel112.Location = (new global::System.Drawing.Point(313, 267));
+            this.panel112.Location = (new global::System.Drawing.Point(324, 267));
             this.panel112.Name = ("panel112");
             this.panel112.Size = (new global::System.Drawing.Size(107, 23));
             this.panel112.TabIndex = (115);
@@ -1453,7 +1438,7 @@
             // 
             this.label38.AutoSize = (true);
             this.label38.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
-            this.label38.Location = (new global::System.Drawing.Point(23, 273));
+            this.label38.Location = (new global::System.Drawing.Point(32, 274));
             this.label38.Name = ("label38");
             this.label38.Size = (new global::System.Drawing.Size(83, 16));
             this.label38.TabIndex = (114);
@@ -2824,42 +2809,6 @@
             this.label16.TabIndex = (4);
             this.label16.Text = ("Monday");
             // 
-            // panel8
-            // 
-            this.panel8.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel8.Dock = (global::System.Windows.Forms.DockStyle.Right);
-            this.panel8.Location = (new global::System.Drawing.Point(659, 1));
-            this.panel8.Name = ("panel8");
-            this.panel8.Size = (new global::System.Drawing.Size(1, 323));
-            this.panel8.TabIndex = (3);
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel7.Dock = (global::System.Windows.Forms.DockStyle.Bottom);
-            this.panel7.Location = (new global::System.Drawing.Point(1, 324));
-            this.panel7.Name = ("panel7");
-            this.panel7.Size = (new global::System.Drawing.Size(659, 1));
-            this.panel7.TabIndex = (2);
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel6.Dock = (global::System.Windows.Forms.DockStyle.Top);
-            this.panel6.Location = (new global::System.Drawing.Point(1, 0));
-            this.panel6.Name = ("panel6");
-            this.panel6.Size = (new global::System.Drawing.Size(659, 1));
-            this.panel6.TabIndex = (1);
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel5.Dock = (global::System.Windows.Forms.DockStyle.Left);
-            this.panel5.Location = (new global::System.Drawing.Point(0, 0));
-            this.panel5.Name = ("panel5");
-            this.panel5.Size = (new global::System.Drawing.Size(1, 325));
-            this.panel5.TabIndex = (0);
-            // 
             // label14
             // 
             this.label14.AutoSize = (true);
@@ -2878,9 +2827,9 @@
             this.label15.Font = (new global::System.Drawing.Font("Tahoma", 14.25F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
             this.label15.Location = (new global::System.Drawing.Point(13, 670));
             this.label15.Name = ("label15");
-            this.label15.Size = (new global::System.Drawing.Size(273, 23));
+            this.label15.Size = (new global::System.Drawing.Size(219, 23));
             this.label15.TabIndex = (68);
-            this.label15.Text = ("Setup Appointment Office Hour");
+            this.label15.Text = ("Setup Appointment Hour");
             // 
             // label7
             // 
@@ -2908,7 +2857,7 @@
             // 
             this.lineDevider.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Left) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.lineDevider.AutoSize = (true);
-            this.lineDevider.Location = (new global::System.Drawing.Point(521, 11937));
+            this.lineDevider.Location = (new global::System.Drawing.Point(521, 13641));
             this.lineDevider.Name = ("lineDevider");
             this.lineDevider.Size = (new global::System.Drawing.Size(10, 15));
             this.lineDevider.TabIndex = (59);
@@ -2998,8 +2947,8 @@
             // btnUpdate
             // 
             this.btnUpdate.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
-            this.btnUpdate.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
+            this.btnUpdate.BackColor = (global::System.Drawing.Color.Black);
+            this.btnUpdate.FlatAppearance.BorderColor = (global::System.Drawing.Color.Black);
             this.btnUpdate.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
             this.btnUpdate.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
             this.btnUpdate.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
@@ -3085,6 +3034,11 @@
             // 
             this.errorProvider5.ContainerControl = (this);
             this.errorProvider5.Icon = ((global::System.Drawing.Icon)(resources.GetObject("errorProvider5.Icon")));
+            // 
+            // elipseControl1
+            // 
+            this.elipseControl1.CornerRadius = (15);
+            this.elipseControl1.TargetControl = (this.PanelOfficeHours);
             // 
             // setupAppointmentTypes
             // 
@@ -3192,10 +3146,6 @@
         private Button btnFriday;
         private Button btnSaturday;
         private Button btnSunday;
-        private Panel panel5;
-        private Panel panel7;
-        private Panel panel6;
-        private Panel panel8;
         private Panel borderTitle;
         private Panel panel10;
         private Panel panel11;
@@ -3365,7 +3315,6 @@
         private global::System.Windows.Forms.Label label24;
         private global::System.Windows.Forms.Panel panel4;
         private global::System.Windows.Forms.Label label37;
-        private global::System.Windows.Forms.MonthCalendar monthCalendar1;
         private global::System.Windows.Forms.CheckBox btnApplyToAll;
         private global::System.Windows.Forms.Panel panel112;
         private global::System.Windows.Forms.Button button22;
@@ -3395,5 +3344,6 @@
         private global::System.Windows.Forms.Panel panel126;
         private global::System.Windows.Forms.TextBox txtNewTitle;
         private global::System.Windows.Forms.ErrorProvider errorProvider5;
+        private global::ElipseToolDemo.ElipseControl elipseControl1;
     }
 }

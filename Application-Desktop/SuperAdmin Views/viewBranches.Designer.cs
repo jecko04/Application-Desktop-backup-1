@@ -119,6 +119,7 @@
             panel2.Controls.Add(pictureBox3);
             panel2.Controls.Add(txtSearchBox);
             panel2.Controls.Add(btnSearch);
+            panel2.Controls.Add(btnRefresh);
             panel2.Location = new Point(-1, -1);
             panel2.Name = "panel2";
             panel2.Size = new Size(1102, 30);
@@ -140,7 +141,7 @@
             txtSearchBox.BorderStyle = BorderStyle.FixedSingle;
             txtSearchBox.Cursor = Cursors.IBeam;
             txtSearchBox.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSearchBox.Location = new Point(42, 4);
+            txtSearchBox.Location = new Point(733, 4);
             txtSearchBox.Name = "txtSearchBox";
             txtSearchBox.PlaceholderText = " Search";
             txtSearchBox.Size = new Size(194, 23);
@@ -155,7 +156,7 @@
             btnSearch.ForeColor = SystemColors.ButtonFace;
             btnSearch.Image = (Image)resources.GetObject("btnSearch.Image");
             btnSearch.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSearch.Location = new Point(239, 4);
+            btnSearch.Location = new Point(930, 4);
             btnSearch.Margin = new Padding(0);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(32, 24);
@@ -173,10 +174,10 @@
             btnRefresh.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnRefresh.ForeColor = SystemColors.ButtonFace;
             btnRefresh.Image = (Image)resources.GetObject("btnRefresh.Image");
-            btnRefresh.Location = new Point(1007, 66);
-            btnRefresh.Margin = new Padding(0, 1, 0, 0);
+            btnRefresh.Location = new Point(963, 4);
+            btnRefresh.Margin = new Padding(1, 0, 0, 0);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(85, 24);
+            btnRefresh.Size = new Size(32, 24);
             btnRefresh.TabIndex = 11;
             btnRefresh.TextAlign = ContentAlignment.MiddleLeft;
             btnRefresh.UseVisualStyleBackColor = false;
@@ -195,7 +196,6 @@
             Controls.Add(panel2);
             Controls.Add(btnAddBranch);
             Controls.Add(viewBranchData);
-            Controls.Add(btnRefresh);
             FormBorderStyle = FormBorderStyle.None;
             Name = "viewBranches";
             Text = "viewBranches";

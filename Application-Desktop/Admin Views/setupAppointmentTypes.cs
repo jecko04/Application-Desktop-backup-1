@@ -839,5 +839,6 @@ namespace Application_Desktop.Admin_Views
             txtFetchDuration.Text = "";
             txtFetchFrequency.Text = "";
         }
+
     }
 }

@@ -134,5 +134,10 @@ namespace Application_Desktop.Views
         {
             LoadForm(new dentaldoctorUsers());
         }
+
+        private void btnRole_Click(object sender, EventArgs e)
+        {
+            LoadForm(new Role());
+        }
     }
 }

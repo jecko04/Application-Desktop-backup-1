@@ -1,5 +1,9 @@
+using Application_Desktop.Admin_Sub_Views;
 using Application_Desktop.Models;
+using Application_Desktop.Screen;
+using Application_Desktop.SuperAdmin_Sub_Views;
 using MySql.Data.MySqlClient;
+using static Application_Desktop.Models.EllipseManager;
 using System.Drawing;
 
 
@@ -14,17 +18,19 @@ namespace Application_Desktop
         public Role()
         {
             InitializeComponent();
-            /*MySqlConnection conn = new MySqlConnection(mysqlCon);
-            try
-            {
-                conn.Open();
-                MessageBox.Show("Connection Success");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally { conn.Close(); }*/
+            ElipseManager elipseManager = new ElipseManager(5);
+            elipseManager.ApplyElipseToAllButtons(this);
+        }
+
+        void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
+        {
+            alertBox alertbox = new alertBox();
+            alertbox.BackColor = backcolor;
+            alertbox.ColorAlertBox = color;
+            alertbox.TitleAlertBox = title;
+            alertbox.SubTitleAlertBox = subtitle;
+            alertbox.IconAlertBox = icon;
+            alertbox.Show();
         }
 
         private void txtComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -65,7 +71,8 @@ namespace Application_Desktop
 
                     int rowsAffected = cmd.ExecuteNonQuery();
 
-                    MessageBox.Show($"Successfully added {roles}.");
+
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", $"Successfully added {roles}.", Properties.Resources.success);
                     txtComboBox.Text = "";
                 }
                 catch (Exception ex)
@@ -75,6 +82,32 @@ namespace Application_Desktop
                 finally { conn.Close(); }
             }
         }
-    
+        private viewRole ViewRoleInstance;
+        private void btnViewRole_Click(object sender, EventArgs e)
+        {
+            if (ViewRoleInstance == null || ViewRoleInstance.IsDisposed)
+            {
+                ViewRoleInstance = new viewRole();
+                ViewRoleInstance.Show();
+            }
+            else
+            {
+                if (ViewRoleInstance.Visible)
+                {
+                    ViewRoleInstance.BringToFront();
+                }
+                else { ViewRoleInstance.Show(); }
+            }
+        }
+
+        private void btnViewRole_MouseEnter(object sender, EventArgs e)
+        {
+            btnViewRole.ForeColor = Color.FromArgb(52, 152, 219);
+        }
+
+        private void btnViewRole_MouseLeave(object sender, EventArgs e)
+        {
+            btnViewRole.ForeColor = Color.DimGray;
+        }
     }
 }

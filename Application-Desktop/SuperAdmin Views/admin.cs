@@ -183,6 +183,8 @@ namespace Application_Desktop.Sub_Views
             await LoadSuperAdmin();
         }
 
+
+        private bool isProcessingClick = false;
         private editAdmin editAdminInstance;
         private adminChangePassword adminChangePassInstance;
         private async void viewAdminData_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -264,12 +266,26 @@ namespace Application_Desktop.Sub_Views
             }
 
             //Select Check Box
-            if (e.ColumnIndex == viewAdminData.Columns["selectAdmin"].Index)
-            {
-                DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)viewAdminData.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                cell.Value = !(cell.Value is bool && (bool)cell.Value); // Toggle checkbox value
-            }
 
+            if (isProcessingClick) return; // Ignore the click if already processing
+
+            isProcessingClick = true;
+
+            try
+            {
+                // Your checkbox toggle logic here
+                if (e.ColumnIndex == viewAdminData.Columns["selectAdmin"].Index)
+                {
+                    DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)viewAdminData.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    bool isChecked = cell.Value != null && (bool)cell.Value;
+                    cell.Value = !isChecked;
+                }
+            }
+            finally
+            {
+                // Allow clicks again after processing
+                isProcessingClick = false;
+            }
         }
 
 
@@ -412,11 +428,26 @@ namespace Application_Desktop.Sub_Views
             }
 
             //Select Check Box
-            if (e.ColumnIndex == viewSuperAdminData.Columns["selectSuperAdmin"].Index)
+            if (isProcessingClick) return; // Ignore the click if already processing
+
+            isProcessingClick = true;
+
+            try
             {
-                DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)viewSuperAdminData.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                cell.Value = !(cell.Value is bool && (bool)cell.Value); // Toggle checkbox value
+                // Your checkbox toggle logic here
+                if (e.ColumnIndex == viewSuperAdminData.Columns["selectSuperAdmin"].Index)
+                {
+                    DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)viewSuperAdminData.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    bool isChecked = cell.Value != null && (bool)cell.Value;
+                    cell.Value = !isChecked;
+                }
             }
+            finally
+            {
+                // Allow clicks again after processing
+                isProcessingClick = false;
+            }
+
         }
 
         //Delete

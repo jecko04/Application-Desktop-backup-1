@@ -19,7 +19,7 @@ namespace Application_Desktop.Admin_Sub_Views
         public viewCategories()
         {
             InitializeComponent();
-            
+
         }
 
         private async void viewCategories_Load(object sender, EventArgs e)
@@ -90,8 +90,8 @@ namespace Application_Desktop.Admin_Sub_Views
                 cmd.Parameters.AddWithValue("@branchID", branchID);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 DataTable datatable = new DataTable();
-                
-                await Task.Run(() => adapter.Fill(datatable));
+
+                adapter.Fill(datatable);
 
                 viewCategoriesDetails.DataSource = null;
                 viewCategoriesDetails.Rows.Clear();

@@ -49,8 +49,6 @@
             btnSetup = new Button();
             panel15 = new Panel();
             btnCategory = new Button();
-            panel14 = new Panel();
-            btnOfficeHourAndStaff = new Button();
             panel16 = new Panel();
             btnOnlineBooking = new Button();
             menuContainer = new FlowLayoutPanel();
@@ -79,7 +77,6 @@
             setupContainer.SuspendLayout();
             panel3.SuspendLayout();
             panel15.SuspendLayout();
-            panel14.SuspendLayout();
             panel16.SuspendLayout();
             menuContainer.SuspendLayout();
             panel9.SuspendLayout();
@@ -282,7 +279,6 @@
             setupContainer.BackColor = Color.FromArgb(31, 97, 141);
             setupContainer.Controls.Add(panel3);
             setupContainer.Controls.Add(panel15);
-            setupContainer.Controls.Add(panel14);
             setupContainer.Controls.Add(panel16);
             setupContainer.Location = new Point(0, 136);
             setupContainer.Margin = new Padding(0);
@@ -348,39 +344,10 @@
             btnCategory.UseVisualStyleBackColor = false;
             btnCategory.Click += btnCategory_Click;
             // 
-            // panel14
-            // 
-            panel14.Controls.Add(btnOfficeHourAndStaff);
-            panel14.Location = new Point(0, 68);
-            panel14.Margin = new Padding(0);
-            panel14.Name = "panel14";
-            panel14.Size = new Size(179, 34);
-            panel14.TabIndex = 4;
-            // 
-            // btnOfficeHourAndStaff
-            // 
-            btnOfficeHourAndStaff.BackColor = Color.FromArgb(31, 97, 141);
-            btnOfficeHourAndStaff.Dock = DockStyle.Fill;
-            btnOfficeHourAndStaff.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
-            btnOfficeHourAndStaff.FlatStyle = FlatStyle.Flat;
-            btnOfficeHourAndStaff.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnOfficeHourAndStaff.ForeColor = SystemColors.ButtonFace;
-            btnOfficeHourAndStaff.Image = (Image)resources.GetObject("btnOfficeHourAndStaff.Image");
-            btnOfficeHourAndStaff.ImageAlign = ContentAlignment.MiddleLeft;
-            btnOfficeHourAndStaff.Location = new Point(0, 0);
-            btnOfficeHourAndStaff.Margin = new Padding(0);
-            btnOfficeHourAndStaff.Name = "btnOfficeHourAndStaff";
-            btnOfficeHourAndStaff.Size = new Size(179, 34);
-            btnOfficeHourAndStaff.TabIndex = 3;
-            btnOfficeHourAndStaff.Text = "              Employee";
-            btnOfficeHourAndStaff.TextAlign = ContentAlignment.MiddleLeft;
-            btnOfficeHourAndStaff.UseVisualStyleBackColor = false;
-            btnOfficeHourAndStaff.Click += btnOfficeHourAndStaff_Click;
-            // 
             // panel16
             // 
             panel16.Controls.Add(btnOnlineBooking);
-            panel16.Location = new Point(0, 102);
+            panel16.Location = new Point(0, 68);
             panel16.Margin = new Padding(0);
             panel16.Name = "panel16";
             panel16.Size = new Size(179, 34);
@@ -418,6 +385,7 @@
             menuContainer.Name = "menuContainer";
             menuContainer.Size = new Size(179, 34);
             menuContainer.TabIndex = 8;
+            menuContainer.Paint += menuContainer_Paint;
             // 
             // panel9
             // 
@@ -587,7 +555,6 @@
             setupContainer.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel15.ResumeLayout(false);
-            panel14.ResumeLayout(false);
             panel16.ResumeLayout(false);
             menuContainer.ResumeLayout(false);
             panel9.ResumeLayout(false);
@@ -627,8 +594,6 @@
         private Panel mainPanel;
         private System.Windows.Forms.Timer menuTransition;
         private System.Windows.Forms.Timer sidebarTransition;
-        private Panel panel14;
-        private Button btnOfficeHourAndStaff;
         private FlowLayoutPanel setupContainer;
         private Panel panel15;
         private Button btnCategory;

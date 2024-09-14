@@ -22,7 +22,7 @@ namespace Application_Desktop.Admin_Views
         public doctorsAccount()
         {
             InitializeComponent();
-            
+
 
             ElipseManager elipseManager = new ElipseManager(5);
             elipseManager.ApplyElipseToAllButtons(this);
@@ -214,6 +214,7 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
+        private bool isProcessingClick = false;
         private changeDentalDoctorsPass changeDentalDoctorsPassInstance;
         private editDentalDoctorAccounts editDentalDoctorAccountsInstance;
         private async void viewDentalDoctorAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -294,10 +295,25 @@ namespace Application_Desktop.Admin_Views
                 }
             }
             //Select Check Box
-            if (e.ColumnIndex == viewDentalDoctorAccount.Columns["selectDoctors"].Index)
+            
+            if (isProcessingClick) return; // Ignore the click if already processing
+
+            isProcessingClick = true;
+
+            try
             {
-                DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)viewDentalDoctorAccount.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                cell.Value = !(cell.Value is bool && (bool)cell.Value); // Toggle checkbox value
+                // Your checkbox toggle logic here
+                if (e.ColumnIndex == viewDentalDoctorAccount.Columns["selectDoctors"].Index)
+                {
+                    DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)viewDentalDoctorAccount.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    bool isChecked = cell.Value != null && (bool)cell.Value;
+                    cell.Value = !isChecked;
+                }
+            }
+            finally
+            {
+                // Allow clicks again after processing
+                isProcessingClick = false;
             }
         }
 

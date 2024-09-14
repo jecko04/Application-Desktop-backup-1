@@ -33,6 +33,9 @@ namespace Application_Desktop
             //gawa na ng para sa staff information
             
             //add debounce click sa every datagridview na may select checkbox
+
+            //add employee id references in mobile users account
+            //change to drop down in creating doctors account
         }
     }
 }

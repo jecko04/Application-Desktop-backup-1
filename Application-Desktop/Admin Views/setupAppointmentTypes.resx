@@ -61,7 +61,7 @@
   <data name="pictureBox3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAAalJREFUSEvtljtLHFEYQEcsFFKIoKUSrPwRIlYpBAvxERV/gL2QQCwStRR8gIWC
+        DAAACwwBP0AiyAAAAalJREFUSEvtljtLHFEYQEcsFFKIoKUSrPwRIlYpBAvxERV/gL2QQCwStRR8gIWC
         2ht8oK2KjQiG1IFAwCIggmKlhZWeM3d3mH247Oxu6YHDfrPc+b7ZO9+9d6MK9OBmCCviGMdmZgCvQ1gR
         xzg2Mw0v0ISjeIi/8S8+5+JKOsaxxgdojhJMvo13+B0/41hGvecH3uMWmjNhGm+wK76qj268xan4Kscp
         zmN7g1zEE0z4hy8N1pwJdsIQlnuaWjRXQQfW3MtvUNLi7wWKsd2XQhiop0A/LuNPXMdBLFhkUkuBD7iH
@@ -16274,4 +16274,7 @@ if their office hours change.</value>
         AElFTkSuQmCC
 </value>
   </data>
+  <metadata name="elipseControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>667, 17</value>
+  </metadata>
 </root>

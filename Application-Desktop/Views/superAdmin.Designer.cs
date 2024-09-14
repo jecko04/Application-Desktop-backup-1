@@ -34,19 +34,10 @@
             label1 = new Label();
             btnSidebar = new PictureBox();
             sidebarContainer = new FlowLayoutPanel();
-            panel2 = new Panel();
-            btnDashboard = new Button();
-            flowLayoutPanel2 = new FlowLayoutPanel();
-            panel7 = new Panel();
-            button6 = new Button();
             panel5 = new Panel();
             btnBranches = new Button();
             panel3 = new Panel();
             btnAdmin = new Button();
-            panel11 = new Panel();
-            btnUsers = new Button();
-            panel4 = new Panel();
-            btnEmployee = new Button();
             menuContainer = new FlowLayoutPanel();
             panel9 = new Panel();
             btnMenu = new Button();
@@ -59,21 +50,19 @@
             menuTransition = new System.Windows.Forms.Timer(components);
             sidebarTransition = new System.Windows.Forms.Timer(components);
             mainPanel = new Panel();
+            panel2 = new Panel();
+            btnRole = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnSidebar).BeginInit();
             sidebarContainer.SuspendLayout();
-            panel2.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
-            panel7.SuspendLayout();
             panel5.SuspendLayout();
             panel3.SuspendLayout();
-            panel11.SuspendLayout();
-            panel4.SuspendLayout();
             menuContainer.SuspendLayout();
             panel9.SuspendLayout();
             panel6.SuspendLayout();
             panel10.SuspendLayout();
             panel8.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -113,12 +102,9 @@
             // sidebarContainer
             // 
             sidebarContainer.BackColor = Color.FromArgb(41, 128, 185);
-            sidebarContainer.Controls.Add(panel2);
-            sidebarContainer.Controls.Add(flowLayoutPanel2);
             sidebarContainer.Controls.Add(panel5);
             sidebarContainer.Controls.Add(panel3);
-            sidebarContainer.Controls.Add(panel11);
-            sidebarContainer.Controls.Add(panel4);
+            sidebarContainer.Controls.Add(panel2);
             sidebarContainer.Controls.Add(menuContainer);
             sidebarContainer.Dock = DockStyle.Left;
             sidebarContainer.Location = new Point(0, 30);
@@ -127,76 +113,10 @@
             sidebarContainer.Size = new Size(179, 660);
             sidebarContainer.TabIndex = 1;
             // 
-            // panel2
-            // 
-            panel2.Controls.Add(btnDashboard);
-            panel2.Location = new Point(0, 0);
-            panel2.Margin = new Padding(0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(179, 34);
-            panel2.TabIndex = 2;
-            // 
-            // btnDashboard
-            // 
-            btnDashboard.BackColor = Color.FromArgb(41, 128, 185);
-            btnDashboard.Dock = DockStyle.Fill;
-            btnDashboard.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
-            btnDashboard.FlatStyle = FlatStyle.Flat;
-            btnDashboard.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDashboard.ForeColor = SystemColors.ButtonFace;
-            btnDashboard.Image = (Image)resources.GetObject("btnDashboard.Image");
-            btnDashboard.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDashboard.Location = new Point(0, 0);
-            btnDashboard.Margin = new Padding(0);
-            btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(179, 34);
-            btnDashboard.TabIndex = 3;
-            btnDashboard.Text = "              Dashboard";
-            btnDashboard.TextAlign = ContentAlignment.MiddleLeft;
-            btnDashboard.UseVisualStyleBackColor = false;
-            btnDashboard.Click += btnDashboard_Click;
-            // 
-            // flowLayoutPanel2
-            // 
-            flowLayoutPanel2.BackColor = Color.FromArgb(123, 44, 191);
-            flowLayoutPanel2.Controls.Add(panel7);
-            flowLayoutPanel2.Dock = DockStyle.Left;
-            flowLayoutPanel2.Location = new Point(0, 34);
-            flowLayoutPanel2.Margin = new Padding(0);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(185, 0);
-            flowLayoutPanel2.TabIndex = 3;
-            // 
-            // panel7
-            // 
-            panel7.Controls.Add(button6);
-            panel7.Location = new Point(3, 3);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(173, 34);
-            panel7.TabIndex = 2;
-            // 
-            // button6
-            // 
-            button6.BackColor = Color.FromArgb(123, 44, 191);
-            button6.Dock = DockStyle.Fill;
-            button6.FlatAppearance.BorderColor = Color.White;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button6.ForeColor = SystemColors.ButtonFace;
-            button6.Image = (Image)resources.GetObject("button6.Image");
-            button6.ImageAlign = ContentAlignment.MiddleLeft;
-            button6.Location = new Point(0, 0);
-            button6.Name = "button6";
-            button6.Size = new Size(173, 34);
-            button6.TabIndex = 3;
-            button6.Text = "         Dashboard";
-            button6.TextAlign = ContentAlignment.MiddleLeft;
-            button6.UseVisualStyleBackColor = false;
-            // 
             // panel5
             // 
             panel5.Controls.Add(btnBranches);
-            panel5.Location = new Point(0, 34);
+            panel5.Location = new Point(0, 0);
             panel5.Margin = new Padding(0);
             panel5.Name = "panel5";
             panel5.Size = new Size(179, 34);
@@ -217,7 +137,7 @@
             btnBranches.Name = "btnBranches";
             btnBranches.Size = new Size(179, 34);
             btnBranches.TabIndex = 3;
-            btnBranches.Text = "              Vendors";
+            btnBranches.Text = "              Branches";
             btnBranches.TextAlign = ContentAlignment.MiddleLeft;
             btnBranches.UseVisualStyleBackColor = false;
             btnBranches.Click += btnBranches_Click;
@@ -225,7 +145,7 @@
             // panel3
             // 
             panel3.Controls.Add(btnAdmin);
-            panel3.Location = new Point(0, 68);
+            panel3.Location = new Point(0, 34);
             panel3.Margin = new Padding(0);
             panel3.Name = "panel3";
             panel3.Size = new Size(179, 34);
@@ -251,61 +171,6 @@
             btnAdmin.UseVisualStyleBackColor = false;
             btnAdmin.Click += btnAdmin_Click;
             // 
-            // panel11
-            // 
-            panel11.Controls.Add(btnUsers);
-            panel11.Location = new Point(0, 102);
-            panel11.Margin = new Padding(0);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(179, 34);
-            panel11.TabIndex = 9;
-            // 
-            // btnUsers
-            // 
-            btnUsers.BackColor = Color.FromArgb(41, 128, 185);
-            btnUsers.Dock = DockStyle.Fill;
-            btnUsers.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
-            btnUsers.FlatStyle = FlatStyle.Flat;
-            btnUsers.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnUsers.ForeColor = SystemColors.ButtonFace;
-            btnUsers.Image = (Image)resources.GetObject("btnUsers.Image");
-            btnUsers.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUsers.Location = new Point(0, 0);
-            btnUsers.Name = "btnUsers";
-            btnUsers.Size = new Size(179, 34);
-            btnUsers.TabIndex = 3;
-            btnUsers.Text = "              Dental Doctors";
-            btnUsers.TextAlign = ContentAlignment.MiddleLeft;
-            btnUsers.UseVisualStyleBackColor = false;
-            btnUsers.Click += btnUsers_Click;
-            // 
-            // panel4
-            // 
-            panel4.Controls.Add(btnEmployee);
-            panel4.Location = new Point(0, 136);
-            panel4.Margin = new Padding(0);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(179, 34);
-            panel4.TabIndex = 4;
-            // 
-            // btnEmployee
-            // 
-            btnEmployee.BackColor = Color.FromArgb(41, 128, 185);
-            btnEmployee.Dock = DockStyle.Fill;
-            btnEmployee.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
-            btnEmployee.FlatStyle = FlatStyle.Flat;
-            btnEmployee.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnEmployee.ForeColor = SystemColors.ButtonFace;
-            btnEmployee.Image = (Image)resources.GetObject("btnEmployee.Image");
-            btnEmployee.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmployee.Location = new Point(0, 0);
-            btnEmployee.Name = "btnEmployee";
-            btnEmployee.Size = new Size(179, 34);
-            btnEmployee.TabIndex = 3;
-            btnEmployee.Text = "              Employee Profile";
-            btnEmployee.TextAlign = ContentAlignment.MiddleLeft;
-            btnEmployee.UseVisualStyleBackColor = false;
-            // 
             // menuContainer
             // 
             menuContainer.BackColor = Color.FromArgb(31, 97, 141);
@@ -313,7 +178,7 @@
             menuContainer.Controls.Add(panel6);
             menuContainer.Controls.Add(panel10);
             menuContainer.Controls.Add(panel8);
-            menuContainer.Location = new Point(0, 170);
+            menuContainer.Location = new Point(0, 102);
             menuContainer.Margin = new Padding(0);
             menuContainer.Name = "menuContainer";
             menuContainer.Size = new Size(179, 34);
@@ -453,6 +318,35 @@
             mainPanel.Size = new Size(1101, 660);
             mainPanel.TabIndex = 2;
             // 
+            // panel2
+            // 
+            panel2.Controls.Add(btnRole);
+            panel2.Location = new Point(0, 68);
+            panel2.Margin = new Padding(0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(179, 34);
+            panel2.TabIndex = 4;
+            // 
+            // btnRole
+            // 
+            btnRole.BackColor = Color.FromArgb(41, 128, 185);
+            btnRole.Dock = DockStyle.Fill;
+            btnRole.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnRole.FlatStyle = FlatStyle.Flat;
+            btnRole.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRole.ForeColor = SystemColors.ButtonFace;
+            btnRole.Image = (Image)resources.GetObject("btnRole.Image");
+            btnRole.ImageAlign = ContentAlignment.MiddleLeft;
+            btnRole.Location = new Point(0, 0);
+            btnRole.Margin = new Padding(0);
+            btnRole.Name = "btnRole";
+            btnRole.Size = new Size(179, 34);
+            btnRole.TabIndex = 3;
+            btnRole.Text = "              Role";
+            btnRole.TextAlign = ContentAlignment.MiddleLeft;
+            btnRole.UseVisualStyleBackColor = false;
+            btnRole.Click += btnRole_Click;
+            // 
             // superAdmin
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -469,18 +363,14 @@
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)btnSidebar).EndInit();
             sidebarContainer.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            flowLayoutPanel2.ResumeLayout(false);
-            panel7.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            panel11.ResumeLayout(false);
-            panel4.ResumeLayout(false);
             menuContainer.ResumeLayout(false);
             panel9.ResumeLayout(false);
             panel6.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel8.ResumeLayout(false);
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -490,15 +380,8 @@
         private Label label1;
         private PictureBox btnSidebar;
         private FlowLayoutPanel sidebarContainer;
-        private Panel panel2;
-        private Button btnDashboard;
-        private FlowLayoutPanel flowLayoutPanel2;
-        private Panel panel7;
-        private Button button6;
         private Panel panel3;
         private Button btnAdmin;
-        private Panel panel4;
-        private Button btnEmployee;
         private FlowLayoutPanel menuContainer;
         private Panel panel9;
         private Button btnMenu;
@@ -513,7 +396,7 @@
         private Panel mainPanel;
         private Panel panel5;
         private Button btnBranches;
-        private Panel panel11;
-        private Button btnUsers;
+        private Panel panel2;
+        private Button btnRole;
     }
 }

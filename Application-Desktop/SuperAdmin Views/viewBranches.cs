@@ -49,7 +49,7 @@ namespace Application_Desktop.Sub_sub_Views
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
                 DataTable dataTable = new DataTable();
-                await Task.Run(() => adapter.Fill(dataTable));
+                adapter.Fill(dataTable);
 
                 viewBranchData.DataSource = null;
                 viewBranchData.Rows.Clear();
@@ -61,7 +61,7 @@ namespace Application_Desktop.Sub_sub_Views
 
                 viewBranchData.DataSource = dataTable;
 
-                
+
 
 
 
@@ -330,5 +330,6 @@ namespace Application_Desktop.Sub_sub_Views
         {
             await LoadData();
         }
+
     }
 }
