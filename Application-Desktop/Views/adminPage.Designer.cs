@@ -54,8 +54,6 @@
             menuContainer = new FlowLayoutPanel();
             panel9 = new Panel();
             btnMenu = new Button();
-            panel6 = new Panel();
-            btnAbout = new Button();
             panel10 = new Panel();
             btnSetting = new Button();
             panel8 = new Panel();
@@ -65,6 +63,11 @@
             sidebarTransition = new System.Windows.Forms.Timer(components);
             setupTransition = new System.Windows.Forms.Timer(components);
             elipseControl1 = new ElipseToolDemo.ElipseControl();
+            panel6 = new Panel();
+            btnAppointment = new Button();
+            panel12 = new Panel();
+            btnPatientRecord = new Button();
+            elipseControl2 = new ElipseToolDemo.ElipseControl();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnSidebar).BeginInit();
             sidebarContainer.SuspendLayout();
@@ -80,9 +83,10 @@
             panel16.SuspendLayout();
             menuContainer.SuspendLayout();
             panel9.SuspendLayout();
-            panel6.SuspendLayout();
             panel10.SuspendLayout();
             panel8.SuspendLayout();
+            panel6.SuspendLayout();
+            panel12.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -115,6 +119,8 @@
             sidebarContainer.Controls.Add(panel4);
             sidebarContainer.Controls.Add(panel11);
             sidebarContainer.Controls.Add(panel5);
+            sidebarContainer.Controls.Add(panel6);
+            sidebarContainer.Controls.Add(panel12);
             sidebarContainer.Controls.Add(setupContainer);
             sidebarContainer.Controls.Add(menuContainer);
             sidebarContainer.Dock = DockStyle.Left;
@@ -149,7 +155,7 @@
             button6.Dock = DockStyle.Fill;
             button6.FlatAppearance.BorderColor = Color.White;
             button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button6.Font = new Font("Microsoft Sans Serif", 9F);
             button6.ForeColor = SystemColors.ButtonFace;
             button6.Image = (Image)resources.GetObject("button6.Image");
             button6.ImageAlign = ContentAlignment.MiddleLeft;
@@ -176,7 +182,7 @@
             btnDashboard.Dock = DockStyle.Fill;
             btnDashboard.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
             btnDashboard.FlatStyle = FlatStyle.Flat;
-            btnDashboard.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDashboard.Font = new Font("Microsoft Sans Serif", 9F);
             btnDashboard.ForeColor = SystemColors.ButtonFace;
             btnDashboard.Image = (Image)resources.GetObject("btnDashboard.Image");
             btnDashboard.ImageAlign = ContentAlignment.MiddleLeft;
@@ -204,7 +210,7 @@
             btnEmployee.Dock = DockStyle.Fill;
             btnEmployee.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
             btnEmployee.FlatStyle = FlatStyle.Flat;
-            btnEmployee.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnEmployee.Font = new Font("Microsoft Sans Serif", 9F);
             btnEmployee.ForeColor = SystemColors.ButtonFace;
             btnEmployee.Image = (Image)resources.GetObject("btnEmployee.Image");
             btnEmployee.ImageAlign = ContentAlignment.MiddleLeft;
@@ -232,7 +238,7 @@
             btnDoctors.Dock = DockStyle.Fill;
             btnDoctors.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
             btnDoctors.FlatStyle = FlatStyle.Flat;
-            btnDoctors.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDoctors.Font = new Font("Microsoft Sans Serif", 9F);
             btnDoctors.ForeColor = SystemColors.ButtonFace;
             btnDoctors.Image = (Image)resources.GetObject("btnDoctors.Image");
             btnDoctors.ImageAlign = ContentAlignment.MiddleLeft;
@@ -260,7 +266,7 @@
             btnUsers.Dock = DockStyle.Fill;
             btnUsers.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
             btnUsers.FlatStyle = FlatStyle.Flat;
-            btnUsers.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnUsers.Font = new Font("Microsoft Sans Serif", 9F);
             btnUsers.ForeColor = SystemColors.ButtonFace;
             btnUsers.Image = (Image)resources.GetObject("btnUsers.Image");
             btnUsers.ImageAlign = ContentAlignment.MiddleLeft;
@@ -280,7 +286,7 @@
             setupContainer.Controls.Add(panel3);
             setupContainer.Controls.Add(panel15);
             setupContainer.Controls.Add(panel16);
-            setupContainer.Location = new Point(0, 136);
+            setupContainer.Location = new Point(0, 204);
             setupContainer.Margin = new Padding(0);
             setupContainer.Name = "setupContainer";
             setupContainer.Size = new Size(179, 34);
@@ -301,7 +307,7 @@
             btnSetup.Dock = DockStyle.Fill;
             btnSetup.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
             btnSetup.FlatStyle = FlatStyle.Flat;
-            btnSetup.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSetup.Font = new Font("Microsoft Sans Serif", 9F);
             btnSetup.ForeColor = SystemColors.ButtonFace;
             btnSetup.Image = (Image)resources.GetObject("btnSetup.Image");
             btnSetup.ImageAlign = ContentAlignment.MiddleLeft;
@@ -330,7 +336,7 @@
             btnCategory.Dock = DockStyle.Fill;
             btnCategory.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
             btnCategory.FlatStyle = FlatStyle.Flat;
-            btnCategory.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCategory.Font = new Font("Microsoft Sans Serif", 9F);
             btnCategory.ForeColor = SystemColors.ButtonFace;
             btnCategory.Image = (Image)resources.GetObject("btnCategory.Image");
             btnCategory.ImageAlign = ContentAlignment.MiddleLeft;
@@ -359,7 +365,7 @@
             btnOnlineBooking.Dock = DockStyle.Fill;
             btnOnlineBooking.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
             btnOnlineBooking.FlatStyle = FlatStyle.Flat;
-            btnOnlineBooking.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnOnlineBooking.Font = new Font("Microsoft Sans Serif", 9F);
             btnOnlineBooking.ForeColor = SystemColors.ButtonFace;
             btnOnlineBooking.Image = (Image)resources.GetObject("btnOnlineBooking.Image");
             btnOnlineBooking.ImageAlign = ContentAlignment.MiddleLeft;
@@ -377,10 +383,9 @@
             // 
             menuContainer.BackColor = Color.FromArgb(31, 97, 141);
             menuContainer.Controls.Add(panel9);
-            menuContainer.Controls.Add(panel6);
             menuContainer.Controls.Add(panel10);
             menuContainer.Controls.Add(panel8);
-            menuContainer.Location = new Point(0, 170);
+            menuContainer.Location = new Point(0, 238);
             menuContainer.Margin = new Padding(0);
             menuContainer.Name = "menuContainer";
             menuContainer.Size = new Size(179, 34);
@@ -402,7 +407,7 @@
             btnMenu.Dock = DockStyle.Fill;
             btnMenu.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
             btnMenu.FlatStyle = FlatStyle.Flat;
-            btnMenu.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMenu.Font = new Font("Microsoft Sans Serif", 9F);
             btnMenu.ForeColor = SystemColors.ButtonFace;
             btnMenu.Image = (Image)resources.GetObject("btnMenu.Image");
             btnMenu.ImageAlign = ContentAlignment.MiddleLeft;
@@ -416,38 +421,10 @@
             btnMenu.UseVisualStyleBackColor = false;
             btnMenu.Click += btnMenu_Click;
             // 
-            // panel6
-            // 
-            panel6.Controls.Add(btnAbout);
-            panel6.Location = new Point(0, 34);
-            panel6.Margin = new Padding(0);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(179, 34);
-            panel6.TabIndex = 4;
-            // 
-            // btnAbout
-            // 
-            btnAbout.BackColor = Color.FromArgb(31, 97, 141);
-            btnAbout.Dock = DockStyle.Fill;
-            btnAbout.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
-            btnAbout.FlatStyle = FlatStyle.Flat;
-            btnAbout.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAbout.ForeColor = SystemColors.ButtonFace;
-            btnAbout.Image = (Image)resources.GetObject("btnAbout.Image");
-            btnAbout.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAbout.Location = new Point(0, 0);
-            btnAbout.Margin = new Padding(0);
-            btnAbout.Name = "btnAbout";
-            btnAbout.Size = new Size(179, 34);
-            btnAbout.TabIndex = 3;
-            btnAbout.Text = "              About";
-            btnAbout.TextAlign = ContentAlignment.MiddleLeft;
-            btnAbout.UseVisualStyleBackColor = false;
-            // 
             // panel10
             // 
             panel10.Controls.Add(btnSetting);
-            panel10.Location = new Point(0, 68);
+            panel10.Location = new Point(0, 34);
             panel10.Margin = new Padding(0);
             panel10.Name = "panel10";
             panel10.Size = new Size(179, 34);
@@ -459,7 +436,7 @@
             btnSetting.Dock = DockStyle.Fill;
             btnSetting.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
             btnSetting.FlatStyle = FlatStyle.Flat;
-            btnSetting.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSetting.Font = new Font("Microsoft Sans Serif", 9F);
             btnSetting.ForeColor = SystemColors.ButtonFace;
             btnSetting.Image = (Image)resources.GetObject("btnSetting.Image");
             btnSetting.ImageAlign = ContentAlignment.MiddleLeft;
@@ -468,14 +445,14 @@
             btnSetting.Name = "btnSetting";
             btnSetting.Size = new Size(179, 34);
             btnSetting.TabIndex = 3;
-            btnSetting.Text = "              Settings";
+            btnSetting.Text = "              Profile Setting";
             btnSetting.TextAlign = ContentAlignment.MiddleLeft;
             btnSetting.UseVisualStyleBackColor = false;
             // 
             // panel8
             // 
             panel8.Controls.Add(btnLogout);
-            panel8.Location = new Point(0, 102);
+            panel8.Location = new Point(0, 68);
             panel8.Margin = new Padding(0);
             panel8.Name = "panel8";
             panel8.Size = new Size(179, 34);
@@ -487,7 +464,7 @@
             btnLogout.Dock = DockStyle.Fill;
             btnLogout.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
             btnLogout.FlatStyle = FlatStyle.Flat;
-            btnLogout.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLogout.Font = new Font("Microsoft Sans Serif", 9F);
             btnLogout.ForeColor = SystemColors.ButtonFace;
             btnLogout.Image = (Image)resources.GetObject("btnLogout.Image");
             btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
@@ -531,6 +508,67 @@
             elipseControl1.CornerRadius = 15;
             elipseControl1.TargetControl = mainPanel;
             // 
+            // panel6
+            // 
+            panel6.Controls.Add(btnAppointment);
+            panel6.Location = new Point(0, 136);
+            panel6.Margin = new Padding(0);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(179, 34);
+            panel6.TabIndex = 5;
+            // 
+            // btnAppointment
+            // 
+            btnAppointment.BackColor = Color.FromArgb(41, 128, 185);
+            btnAppointment.Dock = DockStyle.Fill;
+            btnAppointment.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnAppointment.FlatStyle = FlatStyle.Flat;
+            btnAppointment.Font = new Font("Microsoft Sans Serif", 9F);
+            btnAppointment.ForeColor = SystemColors.ButtonFace;
+            btnAppointment.Image = (Image)resources.GetObject("btnAppointment.Image");
+            btnAppointment.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAppointment.Location = new Point(0, 0);
+            btnAppointment.Margin = new Padding(0);
+            btnAppointment.Name = "btnAppointment";
+            btnAppointment.Size = new Size(179, 34);
+            btnAppointment.TabIndex = 3;
+            btnAppointment.Text = "              Appointment";
+            btnAppointment.TextAlign = ContentAlignment.MiddleLeft;
+            btnAppointment.UseVisualStyleBackColor = false;
+            // 
+            // panel12
+            // 
+            panel12.Controls.Add(btnPatientRecord);
+            panel12.Location = new Point(0, 170);
+            panel12.Margin = new Padding(0);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(179, 34);
+            panel12.TabIndex = 6;
+            // 
+            // btnPatientRecord
+            // 
+            btnPatientRecord.BackColor = Color.FromArgb(41, 128, 185);
+            btnPatientRecord.Dock = DockStyle.Fill;
+            btnPatientRecord.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnPatientRecord.FlatStyle = FlatStyle.Flat;
+            btnPatientRecord.Font = new Font("Microsoft Sans Serif", 9F);
+            btnPatientRecord.ForeColor = SystemColors.ButtonFace;
+            btnPatientRecord.Image = (Image)resources.GetObject("btnPatientRecord.Image");
+            btnPatientRecord.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPatientRecord.Location = new Point(0, 0);
+            btnPatientRecord.Margin = new Padding(0);
+            btnPatientRecord.Name = "btnPatientRecord";
+            btnPatientRecord.Size = new Size(179, 34);
+            btnPatientRecord.TabIndex = 3;
+            btnPatientRecord.Text = "              Patient Record";
+            btnPatientRecord.TextAlign = ContentAlignment.MiddleLeft;
+            btnPatientRecord.UseVisualStyleBackColor = false;
+            // 
+            // elipseControl2
+            // 
+            elipseControl2.CornerRadius = 5;
+            elipseControl2.TargetControl = sidebarContainer;
+            // 
             // adminPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -558,9 +596,10 @@
             panel16.ResumeLayout(false);
             menuContainer.ResumeLayout(false);
             panel9.ResumeLayout(false);
-            panel6.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel8.ResumeLayout(false);
+            panel6.ResumeLayout(false);
+            panel12.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -585,8 +624,6 @@
         private FlowLayoutPanel menuContainer;
         private Panel panel9;
         private Button btnMenu;
-        private Panel panel6;
-        private Button btnAbout;
         private Panel panel10;
         private Button btnSetting;
         private Panel panel8;
@@ -601,5 +638,10 @@
         private Button btnOnlineBooking;
         private System.Windows.Forms.Timer setupTransition;
         private ElipseToolDemo.ElipseControl elipseControl1;
+        private Panel panel6;
+        private Button btnAppointment;
+        private Panel panel12;
+        private Button btnPatientRecord;
+        private ElipseToolDemo.ElipseControl elipseControl2;
     }
 }

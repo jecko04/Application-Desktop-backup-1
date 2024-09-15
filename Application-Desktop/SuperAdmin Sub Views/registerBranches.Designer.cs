@@ -179,7 +179,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Font = new Font("Tahoma", 8.25F);
             label4.ForeColor = Color.WhiteSmoke;
             label4.Location = new Point(66, 22);
             label4.Name = "label4";
@@ -201,7 +201,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Tahoma", 12F);
             label1.ForeColor = Color.White;
             label1.Location = new Point(65, 4);
             label1.Name = "label1";
@@ -290,7 +290,7 @@
             txtProvinceList.BackColor = SystemColors.InactiveBorder;
             txtProvinceList.Dock = DockStyle.Fill;
             txtProvinceList.DropDownHeight = 75;
-            txtProvinceList.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtProvinceList.Font = new Font("Tahoma", 9.75F);
             txtProvinceList.FormattingEnabled = true;
             txtProvinceList.IntegralHeight = false;
             txtProvinceList.ItemHeight = 16;
@@ -354,7 +354,7 @@
             txtCityLists.BackColor = SystemColors.InactiveBorder;
             txtCityLists.Dock = DockStyle.Fill;
             txtCityLists.DropDownHeight = 75;
-            txtCityLists.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCityLists.Font = new Font("Tahoma", 9.75F);
             txtCityLists.FormattingEnabled = true;
             txtCityLists.IntegralHeight = false;
             txtCityLists.ItemHeight = 16;
@@ -418,7 +418,7 @@
             txtBrgy.BackColor = SystemColors.InactiveBorder;
             txtBrgy.BorderStyle = BorderStyle.FixedSingle;
             txtBrgy.Dock = DockStyle.Fill;
-            txtBrgy.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBrgy.Font = new Font("Segoe UI", 9.75F);
             txtBrgy.Location = new Point(0, 0);
             txtBrgy.Name = "txtBrgy";
             txtBrgy.PlaceholderText = "Barangay";
@@ -479,7 +479,7 @@
             txtStreet.BackColor = SystemColors.InactiveBorder;
             txtStreet.BorderStyle = BorderStyle.FixedSingle;
             txtStreet.Dock = DockStyle.Fill;
-            txtStreet.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStreet.Font = new Font("Segoe UI", 9.75F);
             txtStreet.Location = new Point(0, 0);
             txtStreet.Name = "txtStreet";
             txtStreet.PlaceholderText = "Street Name:";
@@ -540,7 +540,7 @@
             txtHouseNum.BackColor = SystemColors.InactiveBorder;
             txtHouseNum.BorderStyle = BorderStyle.FixedSingle;
             txtHouseNum.Dock = DockStyle.Fill;
-            txtHouseNum.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtHouseNum.Font = new Font("Segoe UI", 9.75F);
             txtHouseNum.Location = new Point(0, 0);
             txtHouseNum.Name = "txtHouseNum";
             txtHouseNum.PlaceholderText = "House/Building Number";
@@ -601,7 +601,7 @@
             txtBranchName.BackColor = SystemColors.InactiveBorder;
             txtBranchName.BorderStyle = BorderStyle.FixedSingle;
             txtBranchName.Dock = DockStyle.Fill;
-            txtBranchName.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBranchName.Font = new Font("Segoe UI", 9.75F);
             txtBranchName.Location = new Point(0, 0);
             txtBranchName.Name = "txtBranchName";
             txtBranchName.PlaceholderText = "Branches Name";
@@ -662,7 +662,7 @@
             txtPostal.BackColor = SystemColors.InactiveBorder;
             txtPostal.BorderStyle = BorderStyle.FixedSingle;
             txtPostal.Dock = DockStyle.Fill;
-            txtPostal.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPostal.Font = new Font("Segoe UI", 9.75F);
             txtPostal.Location = new Point(0, 0);
             txtPostal.Name = "txtPostal";
             txtPostal.PlaceholderText = "Postal Code";
@@ -689,7 +689,7 @@
             // 
             label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
-            label2.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Tahoma", 9.75F);
             label2.ForeColor = Color.DimGray;
             label2.Location = new Point(31, 44);
             label2.Name = "label2";
@@ -701,7 +701,7 @@
             // 
             label10.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label10.AutoSize = true;
-            label10.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Font = new Font("Tahoma", 9.75F);
             label10.ForeColor = Color.DimGray;
             label10.Location = new Point(43, 122);
             label10.Name = "label10";
@@ -729,7 +729,7 @@
             // 
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
-            label3.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Font = new Font("Tahoma", 9.75F);
             label3.ForeColor = Color.DimGray;
             label3.Location = new Point(30, 157);
             label3.Name = "label3";
@@ -741,7 +741,7 @@
             // 
             label6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
-            label6.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Font = new Font("Tahoma", 9.75F);
             label6.ForeColor = Color.DimGray;
             label6.Location = new Point(30, 216);
             label6.Name = "label6";
@@ -753,7 +753,7 @@
             // 
             label9.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label9.AutoSize = true;
-            label9.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.Font = new Font("Tahoma", 9.75F);
             label9.ForeColor = Color.DimGray;
             label9.Location = new Point(30, 275);
             label9.Name = "label9";
@@ -765,7 +765,7 @@
             // 
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label5.AutoSize = true;
-            label5.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Font = new Font("Tahoma", 9.75F);
             label5.ForeColor = Color.DimGray;
             label5.Location = new Point(377, 157);
             label5.Name = "label5";
@@ -777,7 +777,7 @@
             // 
             label8.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label8.AutoSize = true;
-            label8.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Font = new Font("Tahoma", 9.75F);
             label8.ForeColor = Color.DimGray;
             label8.Location = new Point(377, 275);
             label8.Name = "label8";
@@ -789,7 +789,7 @@
             // 
             label7.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label7.AutoSize = true;
-            label7.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Font = new Font("Tahoma", 9.75F);
             label7.ForeColor = Color.DimGray;
             label7.Location = new Point(377, 216);
             label7.Name = "label7";

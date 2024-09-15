@@ -18,7 +18,7 @@ namespace Application_Desktop.Admin_Sub_Views
     public partial class editDentalDoctorAccounts : Form
     {
         private int doctorsID;
-        public editDentalDoctorAccounts(int doctorsID, string fname, string lname, string email, string pwd, string role, string branch)
+        public editDentalDoctorAccounts(int doctorsID, string fname, string lname, string email, string role, string branch)
         {
             InitializeComponent();
             this.doctorsID = doctorsID;
@@ -26,7 +26,6 @@ namespace Application_Desktop.Admin_Sub_Views
             txtfirstName.Text = fname;
             txtLastName.Text = lname;
             txtEmail.Text = email;
-            txtPassword.Text = pwd;
 
             txtRoles.Text = GetRoleName(role);
 

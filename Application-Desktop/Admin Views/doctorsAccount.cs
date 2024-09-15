@@ -75,15 +75,12 @@ namespace Application_Desktop.Admin_Views
                              dentaldoctor.Doctors_ID,
                              dentaldoctor.Name, 
                              dentaldoctor.Email, 
-                             dentaldoctor.Password, 
                              branch.BranchName AS BranchName, 
                              role.RoleName AS RoleName,
-                             admin.Name AS CreatedByName, 
                              dentaldoctor.Role_ID,
                              dentaldoctor.Branch_ID
                              FROM dentaldoctor
                              JOIN branch ON dentaldoctor.Branch_ID = branch.Branch_ID
-                             JOIN admin ON dentaldoctor.CreatedBy = admin.Admin_ID
                              JOIN role ON dentaldoctor.Role_ID = role.Role_ID
                              Where dentaldoctor.Branch_ID = @branchID";
 
@@ -91,7 +88,7 @@ namespace Application_Desktop.Admin_Views
                 cmd.Parameters.AddWithValue("@branchID", branchID);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 DataTable datatable = new DataTable();
-                await Task.Run(() => adapter.Fill(datatable));
+                adapter.Fill(datatable);
 
                 viewDentalDoctorAccount.DataSource = null;
                 viewDentalDoctorAccount.Rows.Clear();
@@ -140,13 +137,6 @@ namespace Application_Desktop.Admin_Views
             emailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewDentalDoctorAccount.Columns.Add(emailColumn);
 
-            DataGridViewTextBoxColumn passwordColumn = new DataGridViewTextBoxColumn();
-            passwordColumn.HeaderText = "Password";
-            passwordColumn.Name = "Password";
-            passwordColumn.DataPropertyName = "Password";
-            viewDentalDoctorAccount.Columns.Add(passwordColumn);
-
-
             DataGridViewTextBoxColumn branchColumn = new DataGridViewTextBoxColumn();
             branchColumn.HeaderText = "Branch";
             branchColumn.Name = "Branch_ID";
@@ -158,12 +148,6 @@ namespace Application_Desktop.Admin_Views
             roleColumn.Name = "Role_ID";
             roleColumn.DataPropertyName = "RoleName";
             viewDentalDoctorAccount.Columns.Add(roleColumn);
-
-            DataGridViewTextBoxColumn createdByColumn = new DataGridViewTextBoxColumn();
-            createdByColumn.HeaderText = "Created By";
-            createdByColumn.Name = "CreatedBy";
-            createdByColumn.DataPropertyName = "CreatedByName";
-            viewDentalDoctorAccount.Columns.Add(createdByColumn);
 
             DataGridViewImageColumn editButtonColumn = new DataGridViewImageColumn();
             editButtonColumn.HeaderText = "";
@@ -231,14 +215,13 @@ namespace Application_Desktop.Admin_Views
                 string lname = nameParts.Length > 1 ? nameParts[1] : string.Empty;
 
                 string email = viewDentalDoctorAccount.Rows[e.RowIndex].Cells["Email"].Value?.ToString() ?? string.Empty;
-                string pwd = viewDentalDoctorAccount.Rows[e.RowIndex].Cells["Password"].Value?.ToString() ?? string.Empty;
 
                 string role = viewDentalDoctorAccount.Rows[e.RowIndex].Cells["Role_ID"].Value?.ToString() ?? string.Empty;
                 string branch = viewDentalDoctorAccount.Rows[e.RowIndex].Cells["Branch_ID"].Value?.ToString() ?? string.Empty;
 
                 if (editDentalDoctorAccountsInstance == null || editDentalDoctorAccountsInstance.IsDisposed)
                 {
-                    editDentalDoctorAccountsInstance = new editDentalDoctorAccounts(doctorsID, fname, lname, email, pwd, role, branch);
+                    editDentalDoctorAccountsInstance = new editDentalDoctorAccounts(doctorsID, fname, lname, email, role, branch);
                     editDentalDoctorAccountsInstance.Show();
                 }
                 else

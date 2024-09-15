@@ -71,7 +71,7 @@
             btnNewAdmin.BackColor = Color.FromArgb(52, 152, 219);
             btnNewAdmin.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
             btnNewAdmin.FlatStyle = FlatStyle.Flat;
-            btnNewAdmin.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNewAdmin.Font = new Font("Microsoft Sans Serif", 9F);
             btnNewAdmin.ForeColor = SystemColors.ButtonFace;
             btnNewAdmin.ImageAlign = ContentAlignment.MiddleLeft;
             btnNewAdmin.Location = new Point(1009, 329);
@@ -108,7 +108,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Tahoma", 9.75F, FontStyle.Bold);
             label1.Location = new Point(33, 8);
             label1.Name = "label1";
             label1.Size = new Size(86, 16);
@@ -121,7 +121,7 @@
             btnRefresh.BackColor = Color.FromArgb(52, 152, 219);
             btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
             btnRefresh.FlatStyle = FlatStyle.Flat;
-            btnRefresh.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRefresh.Font = new Font("Microsoft Sans Serif", 9F);
             btnRefresh.ForeColor = SystemColors.ButtonFace;
             btnRefresh.Image = (Image)resources.GetObject("btnRefresh.Image");
             btnRefresh.Location = new Point(920, 3);
@@ -147,7 +147,7 @@
             viewAdminData.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(123, 44, 191);
-            dataGridViewCellStyle1.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 9F);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.Padding = new Padding(3);
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(149, 86, 203);
@@ -157,7 +157,7 @@
             viewAdminData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Tahoma", 9F);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(41, 128, 185);
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -170,7 +170,7 @@
             viewAdminData.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.Font = new Font("Tahoma", 9F);
             dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(149, 86, 203);
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
@@ -195,7 +195,7 @@
             viewSuperAdminData.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.FromArgb(123, 44, 191);
-            dataGridViewCellStyle4.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.Font = new Font("Tahoma", 9F);
             dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle4.Padding = new Padding(3);
             dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(149, 86, 203);
@@ -205,7 +205,7 @@
             viewSuperAdminData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.Font = new Font("Tahoma", 9F);
             dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(41, 128, 185);
             dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
@@ -218,7 +218,7 @@
             viewSuperAdminData.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = SystemColors.Control;
-            dataGridViewCellStyle6.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.Font = new Font("Tahoma", 9F);
             dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(149, 86, 203);
             dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
@@ -235,7 +235,7 @@
             btnDelete.BackColor = Color.FromArgb(231, 76, 60);
             btnDelete.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
             btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDelete.Font = new Font("Microsoft Sans Serif", 9F);
             btnDelete.ForeColor = SystemColors.ButtonFace;
             btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
             btnDelete.Location = new Point(961, 3);
@@ -253,7 +253,7 @@
             btnNewSuperAdmin.BackColor = Color.FromArgb(52, 152, 219);
             btnNewSuperAdmin.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
             btnNewSuperAdmin.FlatStyle = FlatStyle.Flat;
-            btnNewSuperAdmin.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNewSuperAdmin.Font = new Font("Microsoft Sans Serif", 9F);
             btnNewSuperAdmin.ForeColor = SystemColors.ButtonFace;
             btnNewSuperAdmin.ImageAlign = ContentAlignment.MiddleLeft;
             btnNewSuperAdmin.Location = new Point(1009, 32);
@@ -271,7 +271,7 @@
             btnSearchSuperAdmin.BackColor = Color.FromArgb(52, 152, 219);
             btnSearchSuperAdmin.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
             btnSearchSuperAdmin.FlatStyle = FlatStyle.Flat;
-            btnSearchSuperAdmin.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSearchSuperAdmin.Font = new Font("Microsoft Sans Serif", 9F);
             btnSearchSuperAdmin.ForeColor = SystemColors.ButtonFace;
             btnSearchSuperAdmin.Image = (Image)resources.GetObject("btnSearchSuperAdmin.Image");
             btnSearchSuperAdmin.Location = new Point(879, 3);
@@ -287,7 +287,7 @@
             // 
             txtSearchBox.Cursor = Cursors.IBeam;
             txtSearchBox.Dock = DockStyle.Fill;
-            txtSearchBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSearchBox.Font = new Font("Segoe UI", 9F);
             txtSearchBox.Location = new Point(1, 1);
             txtSearchBox.Margin = new Padding(0, 0, 3, 3);
             txtSearchBox.Name = "txtSearchBox";
@@ -324,7 +324,7 @@
             // label40
             // 
             label40.AutoSize = true;
-            label40.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label40.Font = new Font("Tahoma", 9.75F, FontStyle.Bold);
             label40.Location = new Point(33, 8);
             label40.Name = "label40";
             label40.Size = new Size(128, 16);

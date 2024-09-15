@@ -56,7 +56,6 @@ namespace Application_Desktop.Sub_Views
                              superadmin.SuperAdmin_ID,
                              superadmin.Name, 
                              superadmin.Email, 
-                             superadmin.Password, 
                              role.RoleName AS RoleName,
                              superadmin.created_at,
                              superadmin.updated_at
@@ -107,17 +106,14 @@ namespace Application_Desktop.Sub_Views
                              admin.Admin_ID,
                              admin.Name, 
                              admin.Email, 
-                             admin.Password, 
                              branch.BranchName AS BranchName, 
                              role.RoleName AS RoleName,
-                             superadmin.Name AS CreatedByName,
                              admin.created_at,
                              admin.updated_at,
                              admin.Role_ID,
                              admin.Branch_ID
                              FROM admin
                              JOIN branch ON admin.Branch_ID = branch.Branch_ID
-                             JOIN superadmin ON admin.CreatedBy = superadmin.SuperAdmin_ID
                              JOIN role ON admin.Role_ID = role.Role_ID";
 
             MySqlConnection conn = databaseHelper.getConnection();
@@ -201,14 +197,13 @@ namespace Application_Desktop.Sub_Views
                 string lname = nameParts.Length > 1 ? nameParts[1] : string.Empty;
 
                 string email = viewAdminData.Rows[e.RowIndex].Cells["Email"].Value?.ToString() ?? string.Empty;
-                string pwd = viewAdminData.Rows[e.RowIndex].Cells["Password"].Value?.ToString() ?? string.Empty;
 
                 string role = viewAdminData.Rows[e.RowIndex].Cells["Role_ID"].Value?.ToString() ?? string.Empty;
                 string branch = viewAdminData.Rows[e.RowIndex].Cells["Branch_ID"].Value?.ToString() ?? string.Empty;
 
                 if (editAdminInstance == null || editAdminInstance.IsDisposed)
                 {
-                    editAdminInstance = new editAdmin(adminID, fname, lname, email, pwd, role, branch);
+                    editAdminInstance = new editAdmin(adminID, fname, lname, email, role, branch);
                     editAdminInstance.Show();
                 }
                 else
@@ -364,13 +359,12 @@ namespace Application_Desktop.Sub_Views
                 string fname = nameParts[0];
                 string lname = nameParts.Length > 1 ? nameParts[1] : string.Empty;
                 string email = viewSuperAdminData.Rows[e.RowIndex].Cells["Email"].Value?.ToString() ?? string.Empty;
-                string pwd = viewSuperAdminData.Rows[e.RowIndex].Cells["Password"].Value?.ToString() ?? string.Empty;
 
                 string role = viewSuperAdminData.Rows[e.RowIndex].Cells["Role_ID"].Value?.ToString() ?? string.Empty;
 
                 if (editSuperAdminInstance == null || editSuperAdminInstance.IsDisposed)
                 {
-                    editSuperAdminInstance = new editSuperAdmin(superAdminID, fname, lname, email, pwd, role);
+                    editSuperAdminInstance = new editSuperAdmin(superAdminID, fname, lname, email, role);
                     editSuperAdminInstance.Show();
                 }
                 else
@@ -495,7 +489,6 @@ namespace Application_Desktop.Sub_Views
                          superadmin.SuperAdmin_ID,
                          superadmin.Name, 
                          superadmin.Email,
-                         superadmin.Password,
                          role.RoleName AS RoleName,
                          superadmin.created_at,
                          superadmin.updated_at
@@ -509,18 +502,15 @@ namespace Application_Desktop.Sub_Views
             string adminQuery = @"SELECT 
                              admin.Admin_ID,
                              admin.Name, 
-                             admin.Email, 
-                             admin.Password, 
+                             admin.Email,
                              branch.BranchName AS BranchName, 
                              role.RoleName AS RoleName,
-                             superadmin.Name AS CreatedByName,
                              admin.created_at,
                              admin.updated_at,
                              admin.Role_ID,
                              admin.Branch_ID
                       FROM admin
                       JOIN branch ON admin.Branch_ID = branch.Branch_ID
-                      JOIN superadmin ON admin.CreatedBy = superadmin.SuperAdmin_ID
                       JOIN role ON admin.Role_ID = role.Role_ID
                       WHERE admin.Admin_ID LIKE @search OR
                                admin.Name LIKE @search OR
@@ -613,12 +603,6 @@ namespace Application_Desktop.Sub_Views
             emailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewSuperAdminData.Columns.Add(emailColumn);
 
-            DataGridViewTextBoxColumn passwordColumn = new DataGridViewTextBoxColumn();
-            passwordColumn.HeaderText = "Password";
-            passwordColumn.Name = "Password";
-            passwordColumn.DataPropertyName = "Password";
-            viewSuperAdminData.Columns.Add(passwordColumn);
-
             DataGridViewTextBoxColumn roleColumn = new DataGridViewTextBoxColumn();
             roleColumn.HeaderText = "Role";
             roleColumn.Name = "Role_ID";
@@ -694,13 +678,6 @@ namespace Application_Desktop.Sub_Views
             emailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewAdminData.Columns.Add(emailColumn);
 
-            DataGridViewTextBoxColumn passwordColumn = new DataGridViewTextBoxColumn();
-            passwordColumn.HeaderText = "Password";
-            passwordColumn.Name = "Password";
-            passwordColumn.DataPropertyName = "Password";
-            viewAdminData.Columns.Add(passwordColumn);
-
-
             DataGridViewTextBoxColumn branchColumn = new DataGridViewTextBoxColumn();
             branchColumn.HeaderText = "Branch";
             branchColumn.Name = "Branch_ID";
@@ -712,12 +689,6 @@ namespace Application_Desktop.Sub_Views
             roleColumn.Name = "Role_ID";
             roleColumn.DataPropertyName = "RoleName";
             viewAdminData.Columns.Add(roleColumn);
-
-            DataGridViewTextBoxColumn createdByColumn = new DataGridViewTextBoxColumn();
-            createdByColumn.HeaderText = "Created By";
-            createdByColumn.Name = "CreatedBy";
-            createdByColumn.DataPropertyName = "CreatedByName";
-            viewAdminData.Columns.Add(createdByColumn);
 
             DataGridViewTextBoxColumn createdAdmin = new DataGridViewTextBoxColumn();
             createdAdmin.HeaderText = "Created At";

@@ -75,15 +75,13 @@ namespace Application_Desktop.Admin_Sub_Views
                  categories.Title, 
                  categories.Description, 
                  categories.Duration, 
-                 categories.Frequency, 
-                 admin.Name AS CreatedByName, 
+                 categories.Frequency,
                  branch.BranchName AS BranchName,
                  categories.Branch_ID,
                  categories.created_at,
                  categories.updated_at
                  FROM categories
                  JOIN branch ON categories.Branch_ID = branch.Branch_ID
-                 JOIN admin ON categories.CreatedBy = admin.Admin_ID
                  WHERE categories.Branch_ID = @branchID";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -158,12 +156,6 @@ namespace Application_Desktop.Admin_Sub_Views
             branchColumn.Name = "Branch_ID";
             branchColumn.DataPropertyName = "BranchName";
             viewCategoriesDetails.Columns.Add(branchColumn);
-
-            DataGridViewTextBoxColumn createdByColumn = new DataGridViewTextBoxColumn();
-            createdByColumn.HeaderText = "Created By";
-            createdByColumn.Name = "CreatedBy";
-            createdByColumn.DataPropertyName = "CreatedByName";
-            viewCategoriesDetails.Columns.Add(createdByColumn);
 
             DataGridViewTextBoxColumn createdAtColumn = new DataGridViewTextBoxColumn();
             createdAtColumn.HeaderText = "Created At";

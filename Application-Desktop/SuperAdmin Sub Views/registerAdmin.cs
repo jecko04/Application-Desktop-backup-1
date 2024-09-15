@@ -261,9 +261,9 @@ namespace Application_Desktop.Sub_sub_Views
                 {
                     int createdBy = session.LoggedInSession;
 
-                    string query = "INSERT INTO admin (Name, Email, Password, CreatedBy, Branch_ID, Role_ID, created_at, updated_at)" +
+                    string query = "INSERT INTO admin (Name, Email, Password, Branch_ID, Role_ID, created_at, updated_at)" +
                                    "VALUES" +
-                                   "(@fullname, @email, @pwd, @createdBy, @branchID, @roleID, @createdAt, @updatedAt)";
+                                   "(@fullname, @email, @pwd, @branchID, @roleID, @createdAt, @updatedAt)";
 
                     MySqlConnection conn = databaseHelper.getConnection();
 
@@ -288,7 +288,6 @@ namespace Application_Desktop.Sub_sub_Views
                             string hashPassword = hasher.HashPassword(pwd);
                             cmd.Parameters.AddWithValue("@pwd", hashPassword);
 
-                            cmd.Parameters.AddWithValue("@createdBy", createdBy);
 
                             idValue selectedBranch = (idValue)txtBranch.SelectedItem;
                             int branchId = selectedBranch.ID;

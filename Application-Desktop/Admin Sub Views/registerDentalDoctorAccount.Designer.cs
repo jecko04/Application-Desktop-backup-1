@@ -35,6 +35,13 @@
             pictureBox1 = new PictureBox();
             btnClose = new PictureBox();
             panel2 = new Panel();
+            borderEmployees = new Panel();
+            panel9 = new Panel();
+            panel18 = new Panel();
+            panel23 = new Panel();
+            panel28 = new Panel();
+            txtEmployees = new ComboBox();
+            label8 = new Label();
             borderRoles = new Panel();
             panel29 = new Panel();
             panel30 = new Panel();
@@ -53,18 +60,6 @@
             panel21 = new Panel();
             panel22 = new Panel();
             txtEmail = new TextBox();
-            borderLast = new Panel();
-            panel14 = new Panel();
-            panel15 = new Panel();
-            panel16 = new Panel();
-            panel17 = new Panel();
-            txtLastName = new TextBox();
-            borderFirst = new Panel();
-            panel10 = new Panel();
-            panel11 = new Panel();
-            panel12 = new Panel();
-            panel13 = new Panel();
-            txtfirstName = new TextBox();
             borderBranch = new Panel();
             panel7 = new Panel();
             panel8 = new Panel();
@@ -78,8 +73,6 @@
             btnSignUp = new Button();
             label5 = new Label();
             label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
             errorProvider1 = new ErrorProvider(components);
             errorProvider2 = new ErrorProvider(components);
             errorProvider3 = new ErrorProvider(components);
@@ -93,11 +86,10 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
             panel2.SuspendLayout();
+            borderEmployees.SuspendLayout();
             borderRoles.SuspendLayout();
             borderPass.SuspendLayout();
             borderEmail.SuspendLayout();
-            borderLast.SuspendLayout();
-            borderFirst.SuspendLayout();
             borderBranch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
@@ -124,7 +116,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Tahoma", 9F);
             label1.ForeColor = SystemColors.InactiveBorder;
             label1.Location = new Point(33, 12);
             label1.Name = "label1";
@@ -159,11 +151,11 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel2.AutoScroll = true;
+            panel2.Controls.Add(borderEmployees);
+            panel2.Controls.Add(label8);
             panel2.Controls.Add(borderRoles);
             panel2.Controls.Add(borderPass);
             panel2.Controls.Add(borderEmail);
-            panel2.Controls.Add(borderLast);
-            panel2.Controls.Add(borderFirst);
             panel2.Controls.Add(borderBranch);
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(label10);
@@ -172,12 +164,80 @@
             panel2.Controls.Add(btnSignUp);
             panel2.Controls.Add(label5);
             panel2.Controls.Add(label4);
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(label2);
             panel2.Location = new Point(0, 29);
             panel2.Name = "panel2";
             panel2.Size = new Size(421, 420);
             panel2.TabIndex = 2;
+            panel2.Paint += panel2_Paint;
+            // 
+            // borderEmployees
+            // 
+            borderEmployees.Controls.Add(panel9);
+            borderEmployees.Controls.Add(panel18);
+            borderEmployees.Controls.Add(panel23);
+            borderEmployees.Controls.Add(panel28);
+            borderEmployees.Controls.Add(txtEmployees);
+            borderEmployees.Location = new Point(30, 74);
+            borderEmployees.Name = "borderEmployees";
+            borderEmployees.Size = new Size(347, 23);
+            borderEmployees.TabIndex = 61;
+            // 
+            // panel9
+            // 
+            panel9.BackColor = Color.FromArgb(52, 152, 219);
+            panel9.Dock = DockStyle.Bottom;
+            panel9.Location = new Point(1, 22);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(345, 1);
+            panel9.TabIndex = 58;
+            // 
+            // panel18
+            // 
+            panel18.BackColor = Color.FromArgb(52, 152, 219);
+            panel18.Dock = DockStyle.Top;
+            panel18.Location = new Point(1, 0);
+            panel18.Name = "panel18";
+            panel18.Size = new Size(345, 1);
+            panel18.TabIndex = 58;
+            // 
+            // panel23
+            // 
+            panel23.BackColor = Color.FromArgb(52, 152, 219);
+            panel23.Dock = DockStyle.Left;
+            panel23.Location = new Point(0, 0);
+            panel23.Name = "panel23";
+            panel23.Size = new Size(1, 23);
+            panel23.TabIndex = 57;
+            // 
+            // panel28
+            // 
+            panel28.BackColor = Color.FromArgb(52, 152, 219);
+            panel28.Dock = DockStyle.Right;
+            panel28.Location = new Point(346, 0);
+            panel28.Name = "panel28";
+            panel28.Size = new Size(1, 23);
+            panel28.TabIndex = 58;
+            // 
+            // txtEmployees
+            // 
+            txtEmployees.Dock = DockStyle.Fill;
+            txtEmployees.FormattingEnabled = true;
+            txtEmployees.Location = new Point(0, 0);
+            txtEmployees.Name = "txtEmployees";
+            txtEmployees.Size = new Size(347, 23);
+            txtEmployees.TabIndex = 9;
+            txtEmployees.SelectedIndexChanged += txtEmployees_SelectedIndexChanged;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Tahoma", 9.75F);
+            label8.ForeColor = Color.DimGray;
+            label8.Location = new Point(21, 43);
+            label8.Name = "label8";
+            label8.Size = new Size(129, 16);
+            label8.TabIndex = 60;
+            label8.Text = "Employees Fullname:";
             // 
             // borderRoles
             // 
@@ -289,7 +349,7 @@
             // 
             txtPassword.BorderStyle = BorderStyle.FixedSingle;
             txtPassword.Dock = DockStyle.Fill;
-            txtPassword.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPassword.Font = new Font("Tahoma", 9.75F);
             txtPassword.Location = new Point(0, 0);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
@@ -349,130 +409,12 @@
             // 
             txtEmail.BorderStyle = BorderStyle.FixedSingle;
             txtEmail.Dock = DockStyle.Fill;
-            txtEmail.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtEmail.Font = new Font("Tahoma", 9.75F);
             txtEmail.Location = new Point(0, 0);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "Email";
             txtEmail.Size = new Size(347, 23);
             txtEmail.TabIndex = 5;
-            // 
-            // borderLast
-            // 
-            borderLast.Controls.Add(panel14);
-            borderLast.Controls.Add(panel15);
-            borderLast.Controls.Add(panel16);
-            borderLast.Controls.Add(panel17);
-            borderLast.Controls.Add(txtLastName);
-            borderLast.Location = new Point(222, 73);
-            borderLast.Name = "borderLast";
-            borderLast.Size = new Size(157, 23);
-            borderLast.TabIndex = 59;
-            // 
-            // panel14
-            // 
-            panel14.BackColor = Color.FromArgb(52, 152, 219);
-            panel14.Dock = DockStyle.Bottom;
-            panel14.Location = new Point(1, 22);
-            panel14.Name = "panel14";
-            panel14.Size = new Size(155, 1);
-            panel14.TabIndex = 58;
-            // 
-            // panel15
-            // 
-            panel15.BackColor = Color.FromArgb(52, 152, 219);
-            panel15.Dock = DockStyle.Top;
-            panel15.Location = new Point(1, 0);
-            panel15.Name = "panel15";
-            panel15.Size = new Size(155, 1);
-            panel15.TabIndex = 58;
-            // 
-            // panel16
-            // 
-            panel16.BackColor = Color.FromArgb(52, 152, 219);
-            panel16.Dock = DockStyle.Left;
-            panel16.Location = new Point(0, 0);
-            panel16.Name = "panel16";
-            panel16.Size = new Size(1, 23);
-            panel16.TabIndex = 57;
-            // 
-            // panel17
-            // 
-            panel17.BackColor = Color.FromArgb(52, 152, 219);
-            panel17.Dock = DockStyle.Right;
-            panel17.Location = new Point(156, 0);
-            panel17.Name = "panel17";
-            panel17.Size = new Size(1, 23);
-            panel17.TabIndex = 58;
-            // 
-            // txtLastName
-            // 
-            txtLastName.BorderStyle = BorderStyle.FixedSingle;
-            txtLastName.Dock = DockStyle.Fill;
-            txtLastName.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            txtLastName.Location = new Point(0, 0);
-            txtLastName.Name = "txtLastName";
-            txtLastName.PlaceholderText = "Last name";
-            txtLastName.Size = new Size(157, 23);
-            txtLastName.TabIndex = 3;
-            // 
-            // borderFirst
-            // 
-            borderFirst.Controls.Add(panel10);
-            borderFirst.Controls.Add(panel11);
-            borderFirst.Controls.Add(panel12);
-            borderFirst.Controls.Add(panel13);
-            borderFirst.Controls.Add(txtfirstName);
-            borderFirst.Location = new Point(31, 73);
-            borderFirst.Name = "borderFirst";
-            borderFirst.Size = new Size(157, 23);
-            borderFirst.TabIndex = 59;
-            // 
-            // panel10
-            // 
-            panel10.BackColor = Color.FromArgb(52, 152, 219);
-            panel10.Dock = DockStyle.Bottom;
-            panel10.Location = new Point(1, 22);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(155, 1);
-            panel10.TabIndex = 58;
-            // 
-            // panel11
-            // 
-            panel11.BackColor = Color.FromArgb(52, 152, 219);
-            panel11.Dock = DockStyle.Top;
-            panel11.Location = new Point(1, 0);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(155, 1);
-            panel11.TabIndex = 58;
-            // 
-            // panel12
-            // 
-            panel12.BackColor = Color.FromArgb(52, 152, 219);
-            panel12.Dock = DockStyle.Left;
-            panel12.Location = new Point(0, 0);
-            panel12.Name = "panel12";
-            panel12.Size = new Size(1, 23);
-            panel12.TabIndex = 57;
-            // 
-            // panel13
-            // 
-            panel13.BackColor = Color.FromArgb(52, 152, 219);
-            panel13.Dock = DockStyle.Right;
-            panel13.Location = new Point(156, 0);
-            panel13.Name = "panel13";
-            panel13.Size = new Size(1, 23);
-            panel13.TabIndex = 58;
-            // 
-            // txtfirstName
-            // 
-            txtfirstName.BorderStyle = BorderStyle.FixedSingle;
-            txtfirstName.Dock = DockStyle.Fill;
-            txtfirstName.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            txtfirstName.Location = new Point(0, 0);
-            txtfirstName.Name = "txtfirstName";
-            txtfirstName.PlaceholderText = "First name";
-            txtfirstName.Size = new Size(157, 23);
-            txtfirstName.TabIndex = 1;
             // 
             // borderBranch
             // 
@@ -543,7 +485,7 @@
             // 
             label10.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label10.AutoSize = true;
-            label10.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Font = new Font("Tahoma", 9.75F);
             label10.ForeColor = Color.DimGray;
             label10.Location = new Point(32, 236);
             label10.Name = "label10";
@@ -555,7 +497,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Font = new Font("Tahoma", 9.75F);
             label7.ForeColor = Color.DimGray;
             label7.Location = new Point(21, 357);
             label7.Name = "label7";
@@ -566,7 +508,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Font = new Font("Tahoma", 9.75F);
             label6.ForeColor = Color.DimGray;
             label6.Location = new Point(21, 294);
             label6.Name = "label6";
@@ -579,7 +521,7 @@
             btnSignUp.BackColor = Color.FromArgb(102, 204, 102);
             btnSignUp.FlatAppearance.BorderColor = Color.FromArgb(102, 204, 102);
             btnSignUp.FlatStyle = FlatStyle.Flat;
-            btnSignUp.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSignUp.Font = new Font("Tahoma", 9.75F);
             btnSignUp.ForeColor = Color.White;
             btnSignUp.Location = new Point(150, 424);
             btnSignUp.Name = "btnSignUp";
@@ -592,7 +534,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Font = new Font("Tahoma", 9.75F);
             label5.ForeColor = Color.DimGray;
             label5.Location = new Point(22, 181);
             label5.Name = "label5";
@@ -603,35 +545,13 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Font = new Font("Tahoma", 9.75F);
             label4.ForeColor = Color.DimGray;
             label4.Location = new Point(22, 110);
             label4.Name = "label4";
             label4.Size = new Size(43, 16);
             label4.TabIndex = 4;
             label4.Text = "Email:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.ForeColor = Color.DimGray;
-            label3.Location = new Point(212, 39);
-            label3.Name = "label3";
-            label3.Size = new Size(71, 16);
-            label3.TabIndex = 2;
-            label3.Text = "Last name:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.ForeColor = Color.DimGray;
-            label2.Location = new Point(22, 39);
-            label2.Name = "label2";
-            label2.Size = new Size(73, 16);
-            label2.TabIndex = 0;
-            label2.Text = "First name:";
             // 
             // errorProvider1
             // 
@@ -696,15 +616,12 @@
             ((System.ComponentModel.ISupportInitialize)btnClose).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            borderEmployees.ResumeLayout(false);
             borderRoles.ResumeLayout(false);
             borderPass.ResumeLayout(false);
             borderPass.PerformLayout();
             borderEmail.ResumeLayout(false);
             borderEmail.PerformLayout();
-            borderLast.ResumeLayout(false);
-            borderLast.PerformLayout();
-            borderFirst.ResumeLayout(false);
-            borderFirst.PerformLayout();
             borderBranch.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider2).EndInit();
@@ -734,10 +651,6 @@
         private Label label5;
         private TextBox txtEmail;
         private Label label4;
-        private TextBox txtLastName;
-        private Label label3;
-        private TextBox txtfirstName;
-        private Label label2;
         private ErrorProvider errorProvider1;
         private ErrorProvider errorProvider2;
         private ErrorProvider errorProvider3;
@@ -753,16 +666,6 @@
         private Panel panel7;
         private Panel panel8;
         private Panel panel6;
-        private Panel borderLast;
-        private Panel panel14;
-        private Panel panel15;
-        private Panel panel16;
-        private Panel panel17;
-        private Panel borderFirst;
-        private Panel panel10;
-        private Panel panel11;
-        private Panel panel12;
-        private Panel panel13;
         private Panel borderRoles;
         private Panel panel29;
         private Panel panel30;
@@ -778,5 +681,12 @@
         private Panel panel20;
         private Panel panel21;
         private Panel panel22;
+        private Panel borderEmployees;
+        private Panel panel9;
+        private Panel panel18;
+        private Panel panel23;
+        private Panel panel28;
+        private ComboBox txtEmployees;
+        private Label label8;
     }
 }

@@ -102,7 +102,6 @@ namespace Application_Desktop.Admin_Views
                              employees.Position,
                              employees.HireDate,
                              employees.Specialization,
-                             employees.LicenseNumber,
                              employees.Status,
                              employees.Branch_ID,
                              employees.created_at,
@@ -138,6 +137,7 @@ namespace Application_Desktop.Admin_Views
 
         //add column
 
+        
         private void AddColumnEmployee()
         {
             DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
@@ -204,12 +204,6 @@ namespace Application_Desktop.Admin_Views
             specializationColumn.Name = "Specialization";
             specializationColumn.DataPropertyName = "Specialization";
             viewEmployeeDetails.Columns.Add(specializationColumn);
-
-            DataGridViewTextBoxColumn licenseColumn = new DataGridViewTextBoxColumn();
-            licenseColumn.HeaderText = "License Number";
-            licenseColumn.Name = "LicenseNumber";
-            licenseColumn.DataPropertyName = "LicenseNumber";
-            viewEmployeeDetails.Columns.Add(licenseColumn);
 
             DataGridViewTextBoxColumn branchColumn = new DataGridViewTextBoxColumn();
             branchColumn.HeaderText = "Branch";
@@ -335,12 +329,11 @@ namespace Application_Desktop.Admin_Views
                 string position = viewEmployeeDetails.Rows[e.RowIndex].Cells["Position"].Value?.ToString() ?? string.Empty;
 
                 string special = viewEmployeeDetails.Rows[e.RowIndex].Cells["Specialization"].Value?.ToString() ?? string.Empty;
-                string license = viewEmployeeDetails.Rows[e.RowIndex].Cells["LicenseNumber"].Value?.ToString() ?? string.Empty;
 
 
                 if (EditEmployeesInstance == null || EditEmployeesInstance.IsDisposed)
                 {
-                    EditEmployeesInstance = new editEmployees(emploeesID, fname, middle, lname, dob, email, phone, street, barangay, city, province, postalCode, position, hireDate, special, license);
+                    EditEmployeesInstance = new editEmployees(emploeesID, fname, middle, lname, dob, email, phone, street, barangay, city, province, postalCode, position, hireDate, special);
                     EditEmployeesInstance.Show();
                 }
                 else

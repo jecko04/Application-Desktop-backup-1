@@ -19,14 +19,13 @@ namespace Application_Desktop.Sub_sub_Views
     {
         private int superAdminID;
         //418, 437
-        public editSuperAdmin(int superAdminID, string fname, string lname, string email, string pwd, string role)
+        public editSuperAdmin(int superAdminID, string fname, string lname, string email, string role)
         {
             InitializeComponent();
             this.superAdminID = superAdminID;
             txtFirstName.Text = fname;
             txtLastName.Text = lname;
             txtEmail.Text = email;
-            txtPassword.Text = pwd;
 
             PopulateRoleName();
             txtRoles.Text = GetRoleNames(role);
@@ -125,7 +124,7 @@ namespace Application_Desktop.Sub_sub_Views
             return role;
         }
 
-        private async Task UpdateSuperAdmin(int superAdminID, string fname, string lname, string email, string pwd)
+        private async Task UpdateSuperAdmin(int superAdminID, string fname, string lname, string email)
         {
             errorProvider1.SetError(borderEmail, string.Empty);
             errorProvider2.SetError(borderEmail, "Email is valid");
@@ -136,7 +135,7 @@ namespace Application_Desktop.Sub_sub_Views
 
 
                 string fullname = $"{fname} {lname}";
-                string query = @"Update superadmin SET Name = @name, Email = @email, Password = @pwd, Role_ID = @roleID, updated_at = @updatedAt Where SuperAdmin_ID = @superAdminID";
+                string query = @"Update superadmin SET Name = @name, Email = @email, Role_ID = @roleID, updated_at = @updatedAt Where SuperAdmin_ID = @superAdminID";
 
 
                 MySqlConnection conn = databaseHelper.getConnection();
@@ -153,7 +152,6 @@ namespace Application_Desktop.Sub_sub_Views
                         MySqlCommand cmd = new MySqlCommand(query, conn);
                         cmd.Parameters.AddWithValue("@name", fullname);
                         cmd.Parameters.AddWithValue("@email", email);
-                        cmd.Parameters.AddWithValue("@pwd", pwd);
 
                         idValue selectedRole = (idValue)txtRoles.SelectedItem;
                         int role = selectedRole.ID;
@@ -205,7 +203,6 @@ namespace Application_Desktop.Sub_sub_Views
             string fname = txtFirstName.Text;
             string lname = txtLastName.Text;
             string email = txtEmail.Text;
-            string pwd = txtPassword.Text;
             string role = txtRoles.Text;
 
             if (string.IsNullOrEmpty(fname))
@@ -250,7 +247,7 @@ namespace Application_Desktop.Sub_sub_Views
             errorProvider4.GetError(borderLast) == string.Empty && 
             errorProvider5.GetError(borderRole) == string.Empty)
             {
-                    await UpdateSuperAdmin(superAdminID, fname, lname, email, pwd);
+                    await UpdateSuperAdmin(superAdminID, fname, lname, email);
                     this.Close();
             }
 

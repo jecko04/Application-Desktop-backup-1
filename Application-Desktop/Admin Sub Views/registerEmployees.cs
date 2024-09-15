@@ -92,14 +92,13 @@ namespace Application_Desktop.Admin_Sub_Views
             string position = txtPosition.Text;
             DateTime hired = txtHired.Value;
             string special = txtSpecial.Text;
-            string license = txtLicense.Text;
 
             int branchID = GetBranch();
 
 
 
-            string query = @"INSERT INTO employees (Fullname, Email, Phone, DateOfBirth, Address, Position, HireDate, Specialization, LicenseNumber, Branch_ID, created_at, updated_at)
-                            VALUES (@fullname, @email, @phone, @dateofbirth, @address, @position, @hiredate, @special, @license, @branchID, @createdAt, @updatedAt)";
+            string query = @"INSERT INTO employees (Fullname, Email, Phone, DateOfBirth, Address, Position, HireDate, Specialization, Branch_ID, created_at, updated_at)
+                            VALUES (@fullname, @email, @phone, @dateofbirth, @address, @position, @hiredate, @special, @branchID, @createdAt, @updatedAt)";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -119,7 +118,6 @@ namespace Application_Desktop.Admin_Sub_Views
                 cmd.Parameters.AddWithValue("@position", position);
                 cmd.Parameters.AddWithValue("@hiredate", hired.ToString("yyyy-MM-dd"));
                 cmd.Parameters.AddWithValue("@special", special);
-                cmd.Parameters.AddWithValue("@license", license);
 
                 cmd.Parameters.AddWithValue("@branchID", branchID);
 
@@ -145,7 +143,6 @@ namespace Application_Desktop.Admin_Sub_Views
 
                 txtPosition.Text = "";
                 txtSpecial.Text = "";
-                txtLicense.Text = "";
 
             }
             catch (Exception ex)
@@ -178,7 +175,6 @@ namespace Application_Desktop.Admin_Sub_Views
             string position = txtPosition.Text;
             string hired = txtHired.Text;
             string special = txtSpecial.Text; // Optional
-            string license = txtLicense.Text; // Optional
 
             bool hasError = false;
 
@@ -316,7 +312,6 @@ namespace Application_Desktop.Admin_Sub_Views
             }
 
             errorProvider3.SetError(borderSpecial, string.Empty);
-            errorProvider3.SetError(borderLicense, string.Empty);
 
             // Final check if any errors occurred
             if (!hasError)

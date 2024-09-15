@@ -18,7 +18,7 @@ namespace Application_Desktop.Admin_Sub_Views
     public partial class editEmployees : Form
     {
         private int employeesID;
-        public editEmployees(int employeesID, string fname, string middle, string lname, DateTime doh, string email, string phone, string street, string barangay, string city, string province, string postalCode, string position, DateTime hired, string special, string license)
+        public editEmployees(int employeesID, string fname, string middle, string lname, DateTime doh, string email, string phone, string street, string barangay, string city, string province, string postalCode, string position, DateTime hired, string special)
         {
             InitializeComponent();
             this.employeesID = employeesID;
@@ -39,7 +39,6 @@ namespace Application_Desktop.Admin_Sub_Views
             txtPosition.Text = position;
             txtHired.Text = hired.ToString("yyyy/MM/dd");
             txtSpecial.Text = special;
-            txtLicense.Text = license;
 
             ElipseManager elipseManager = new ElipseManager(5);
             elipseManager.ApplyElipseToAllButtons(this);
@@ -83,7 +82,6 @@ namespace Application_Desktop.Admin_Sub_Views
             string position = txtPosition.Text;
             string hired = txtHired.Text;
             string special = txtSpecial.Text;
-            string license = txtLicense.Text;
 
 
             string query = @"UPDATE employees SET
@@ -95,7 +93,6 @@ namespace Application_Desktop.Admin_Sub_Views
                     Position = @position,
                     HireDate = @hired,
                     Specialization = @special,
-                    LicenseNumber = @license,
                     updated_at = @updatedAt
                 WHERE Employee_ID = @employee";
 
@@ -119,7 +116,6 @@ namespace Application_Desktop.Admin_Sub_Views
                 cmd.Parameters.AddWithValue("@hired", hired);
 
                 cmd.Parameters.AddWithValue("@special", special);
-                cmd.Parameters.AddWithValue("@license", license);
 
                 DateTime now = DateTime.Now;
                 cmd.Parameters.AddWithValue("@updatedAt", now);
@@ -141,7 +137,6 @@ namespace Application_Desktop.Admin_Sub_Views
 
                 txtPosition.Text = "";
                 txtSpecial.Text = "";
-                txtLicense.Text = "";
 
                 this.Close();
             }
@@ -175,7 +170,6 @@ namespace Application_Desktop.Admin_Sub_Views
             string position = txtPosition.Text;
             string hired = txtHired.Text;
             string special = txtSpecial.Text; // Optional
-            string license = txtLicense.Text; // Optional
 
             bool hasError = false;
 
@@ -313,7 +307,6 @@ namespace Application_Desktop.Admin_Sub_Views
             }
 
             errorProvider3.SetError(borderSpecial, string.Empty);
-            errorProvider3.SetError(borderLicense, string.Empty);
 
             // Final check if any errors occurred
             if (!hasError)

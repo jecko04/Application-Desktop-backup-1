@@ -39,9 +39,11 @@ namespace Application_Desktop.Admin_Sub_Views
         private async void registerDentalDoctorAccount_Load(object sender, EventArgs e)
         {
             await GettingRoleBranchName();
+            await GetEmployeeNames();
         }
 
-        private async Task GettingRoleBranchName()
+
+        private static async Task<int> GetBranchID()
         {
             int adminBranchID = session.LoggedInSession;
             int branchID = -1;
@@ -70,7 +72,32 @@ namespace Application_Desktop.Admin_Sub_Views
                 if (branchID == -1)
                 {
                     MessageBox.Show("Failed to retrieve the admin's branch ID.");
-                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                await conn.CloseAsync();
+            }
+
+            return branchID; // Return branchID
+        }
+
+
+        private async Task GettingRoleBranchName()
+        {
+            int branchID = await GetBranchID();
+
+
+            MySqlConnection conn = databaseHelper.getConnection();
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    await conn.OpenAsync();
                 }
 
                 string query = @"
@@ -126,32 +153,58 @@ namespace Application_Desktop.Admin_Sub_Views
             }
         }
 
+        private async Task GetEmployeeNames()
+        {
+            int branchID = await GetBranchID();
+
+            string query = @"Select Fullname from employees Where Branch_ID = @branchID";
+
+            MySqlConnection conn = databaseHelper.getConnection();
+
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    await conn.OpenAsync();
+                }
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@branchID", branchID);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (await reader.ReadAsync())
+                {
+                    string fullname = reader["Fullname"].ToString();
+
+                    txtEmployees.Items.Add(fullname);
+                }
+
+                await reader.CloseAsync();
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { await conn.CloseAsync(); }
+        }
+
         private async Task SignUp()
         {
-            string first = txtfirstName.Text;
-            string last = txtLastName.Text;
+            string employees = txtEmployees.Text;
             string email = txtEmail.Text;
             string pwd = txtPassword.Text;
             string role = txtRoles.Text;
             string branch = txtBranch.Text;
 
             //error provider
-            if (string.IsNullOrEmpty(first))
+            if (string.IsNullOrEmpty(employees))
             {
-                errorProvider1.SetError(borderFirst, "First Name is required.");
+                errorProvider1.SetError(borderEmployees, "First Name is required.");
             }
             else
             {
-                errorProvider1.SetError(borderFirst, string.Empty);
-            }
-
-            if (string.IsNullOrEmpty(last))
-            {
-                errorProvider2.SetError(borderLast, "Last Name is required.");
-            }
-            else
-            {
-                errorProvider2.SetError(borderLast, string.Empty);
+                errorProvider1.SetError(borderEmployees, string.Empty);
             }
 
             if (string.IsNullOrEmpty(email))
@@ -249,13 +302,9 @@ namespace Application_Desktop.Admin_Sub_Views
                 }
             }
 
-            if (string.IsNullOrEmpty(first))
+            if (string.IsNullOrEmpty(employees))
             {
-                errorProvider1.SetError(borderFirst, "First Name is required.");
-            }
-            else if (string.IsNullOrEmpty(last))
-            {
-                errorProvider2.SetError(borderLast, "Last Name is required.");
+                errorProvider1.SetError(borderEmployees, "First Name is required.");
             }
             else if (string.IsNullOrEmpty(email))
             {
@@ -269,8 +318,7 @@ namespace Application_Desktop.Admin_Sub_Views
             {
                 errorProvider7.SetError(borderBranch, "Branch is required.");
             }
-            else if (errorProvider1.GetError(borderFirst) != string.Empty ||
-            errorProvider2.GetError(borderLast) != string.Empty ||
+            else if (errorProvider1.GetError(borderEmployees) != string.Empty ||
             errorProvider3.GetError(borderEmail) != string.Empty ||
             errorProvider4.GetError(borderPass) != string.Empty ||
             errorProvider5.GetError(borderRoles) != string.Empty ||
@@ -286,14 +334,14 @@ namespace Application_Desktop.Admin_Sub_Views
                 {
                     int createdBy = session.LoggedInSession;
 
-                    string query = "INSERT INTO dentaldoctor (Name, Email, Password, CreatedBy, Branch_ID, Role_ID, created_at, updated_at)" +
+                    string query = "INSERT INTO dentaldoctor (Name, Email, Password, Branch_ID, Role_ID, created_at, updated_at)" +
                                    "VALUES" +
-                                   "(@fullname, @email, @pwd, @createdBy, @branchID, @roleID, @createdAt, @updatedAt)";
+                                   "(@fullname, @email, @pwd, @branchID, @roleID, @createdAt, @updatedAt)";
 
                     MySqlConnection conn = databaseHelper.getConnection();
                     try
                     {
-                        string fullname = $"{first} {last}";
+                        string fullname = $"{employees}";
 
                         if (conn.State != ConnectionState.Open)
                         {
@@ -309,7 +357,6 @@ namespace Application_Desktop.Admin_Sub_Views
                         string hashPassword = hasher.HashPassword(pwd);
                         cmd.Parameters.AddWithValue("@pwd", hashPassword);
 
-                        cmd.Parameters.AddWithValue("@createdBy", createdBy);
 
                         idValue selectedBranch = (idValue)txtBranch.SelectedItem;
                         int branchId = selectedBranch.ID;
@@ -327,8 +374,7 @@ namespace Application_Desktop.Admin_Sub_Views
 
                         //MessageBox.Show("Signed-Up Successful");
                         AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account created successfully", Properties.Resources.success);
-                        txtfirstName.Text = "";
-                        txtLastName.Text = "";
+                        txtEmployees.Text = "";
                         txtEmail.Text = "";
                         txtPassword.Text = "";
 
@@ -352,6 +398,52 @@ namespace Application_Desktop.Admin_Sub_Views
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private async Task GetEmployeeEmail()
+        {
+            int branchID = await GetBranchID();
+            string employee = txtEmployees.Text;
+
+            string query = @"Select Email from employees Where Fullname = @fullname AND Branch_ID = @branchID";
+
+            MySqlConnection conn = databaseHelper.getConnection();
+
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    await conn.OpenAsync();
+                }
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@branchID", branchID);
+                cmd.Parameters.AddWithValue("@fullname", employee);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (await reader.ReadAsync())
+                {
+                    string email = reader["Email"].ToString();
+                    txtEmail.Text = email;
+                }
+
+                await reader.CloseAsync();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { await conn.CloseAsync(); }
+        }
+
+        private async void txtEmployees_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            await GetEmployeeEmail();
         }
     }
 }

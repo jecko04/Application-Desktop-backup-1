@@ -21,7 +21,7 @@ namespace Application_Desktop.Sub_sub_Views
     {
 
         private int adminID;
-        public editAdmin(int adminID, string fname, string lname, string email, string pwd, string role, string branch)
+        public editAdmin(int adminID, string fname, string lname, string email, string role, string branch)
         {
             InitializeComponent();
             this.adminID = adminID;
@@ -29,7 +29,6 @@ namespace Application_Desktop.Sub_sub_Views
             txtfirstName.Text = fname;
             txtLastName.Text = lname;
             txtEmail.Text = email;
-            txtPassword.Text = pwd;
 
             PopulateRoleComboBox();
             txtRoles.Text = GetRoleName(role);
@@ -39,6 +38,7 @@ namespace Application_Desktop.Sub_sub_Views
 
             ElipseManager elipseManager = new ElipseManager(5);
             elipseManager.ApplyElipseToAllButtons(this);
+
         }
 
         void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
@@ -208,12 +208,12 @@ namespace Application_Desktop.Sub_sub_Views
             return branch;
         }
 
-        public async Task UpdateAdmin(int adminID, string email, string pwd, string role)
+        public async Task UpdateAdmin(int adminID, string email, string role)
         {
 
             if (role == "SuperAdmin")
             {
-                await InsertSuperAdmin(email, pwd, adminID);
+                await InsertSuperAdmin(email, adminID);
             }
             if (role == "Admin")
             {
@@ -222,11 +222,55 @@ namespace Application_Desktop.Sub_sub_Views
 
         }
 
+        private async Task<string> GetAdminPassword(string email)
+        {
+            string query = @"SELECT Password FROM admin WHERE Email = @email";
+            string adminPassword = null;
 
-        private async Task InsertSuperAdmin(string email, string pwd, int adminID)
+            MySqlConnection conn = databaseHelper.getConnection();
+
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    await conn.OpenAsync();
+                }
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@email", email);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (await reader.ReadAsync())
+                {
+                    adminPassword = reader["Password"]?.ToString();
+                }
+                await reader.CloseAsync();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error retrieving password: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                await conn.CloseAsync();
+            }
+
+            return adminPassword;
+        }
+
+
+        private async Task InsertSuperAdmin(string email, int adminID)
         {
             txtEmail.Text = email;
-            txtPassword.Text = pwd;
+
+            // Get the password from the GetAdminPassword method
+            string pwd = await GetAdminPassword(email);
+
+            if (string.IsNullOrWhiteSpace(pwd))
+            {
+                MessageBox.Show("Password retrieval failed. Please ensure the email is correct.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             string fname = txtfirstName.Text;
             string lname = txtLastName.Text;
@@ -267,7 +311,7 @@ namespace Application_Desktop.Sub_sub_Views
                 return;
             }
 
-            // Validate other fields
+            // Validate other fields before proceeding
             if (errorProvider1.GetError(borderFirst) != string.Empty ||
                 errorProvider2.GetError(borderLast) != string.Empty ||
                 errorProvider3.GetError(borderEmail) != string.Empty ||
@@ -340,6 +384,7 @@ namespace Application_Desktop.Sub_sub_Views
         }
 
 
+
         private async Task Update(string email, int adminID)
         {
             txtEmail.Text = email;
@@ -392,7 +437,6 @@ namespace Application_Desktop.Sub_sub_Views
             string lname = txtLastName.Text;
 
             string email = txtEmail.Text;
-            string pwd = txtPassword.Text;
             string role = txtRoles.Text;
             string branch = txtBranch.Text;
 
@@ -455,7 +499,7 @@ namespace Application_Desktop.Sub_sub_Views
                 }
                 else
                 {
-                    await UpdateAdmin(adminID, email, pwd, role);
+                    await UpdateAdmin(adminID, email, role);
                 }
             }
             catch (Exception ex)
@@ -470,7 +514,7 @@ namespace Application_Desktop.Sub_sub_Views
         {
             this.Close();
         }
-        private void editAdmin_Load(object sender, EventArgs e)
+        private async void editAdmin_Load(object sender, EventArgs e)
         {
         }
 
@@ -479,5 +523,14 @@ namespace Application_Desktop.Sub_sub_Views
             this.Close();
         }
 
+        private async void txtfirstName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

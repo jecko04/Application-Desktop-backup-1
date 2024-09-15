@@ -48,13 +48,6 @@
             panel70 = new Panel();
             txtDateofBirth = new TextBox();
             btnSave = new Button();
-            borderLicense = new Panel();
-            panel64 = new Panel();
-            panel65 = new Panel();
-            panel66 = new Panel();
-            panel67 = new Panel();
-            txtLicense = new TextBox();
-            label16 = new Label();
             borderSpecial = new Panel();
             panel60 = new Panel();
             panel61 = new Panel();
@@ -158,7 +151,6 @@
             panel2.SuspendLayout();
             borderHired.SuspendLayout();
             borderDateofBirth.SuspendLayout();
-            borderLicense.SuspendLayout();
             borderSpecial.SuspendLayout();
             borderPosition.SuspendLayout();
             panel27.SuspendLayout();
@@ -194,7 +186,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Tahoma", 9F);
             label1.ForeColor = SystemColors.InactiveBorder;
             label1.Location = new Point(33, 12);
             label1.Name = "label1";
@@ -231,8 +223,6 @@
             panel2.Controls.Add(borderHired);
             panel2.Controls.Add(borderDateofBirth);
             panel2.Controls.Add(btnSave);
-            panel2.Controls.Add(borderLicense);
-            panel2.Controls.Add(label16);
             panel2.Controls.Add(borderSpecial);
             panel2.Controls.Add(label15);
             panel2.Controls.Add(label14);
@@ -318,7 +308,7 @@
             // 
             txtHired.BorderStyle = BorderStyle.FixedSingle;
             txtHired.Dock = DockStyle.Fill;
-            txtHired.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtHired.Font = new Font("Tahoma", 9.75F);
             txtHired.ForeColor = Color.DimGray;
             txtHired.Location = new Point(0, 0);
             txtHired.Name = "txtHired";
@@ -380,7 +370,7 @@
             // 
             txtDateofBirth.BorderStyle = BorderStyle.FixedSingle;
             txtDateofBirth.Dock = DockStyle.Fill;
-            txtDateofBirth.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtDateofBirth.Font = new Font("Tahoma", 9.75F);
             txtDateofBirth.ForeColor = Color.DimGray;
             txtDateofBirth.Location = new Point(0, 0);
             txtDateofBirth.Name = "txtDateofBirth";
@@ -394,7 +384,7 @@
             btnSave.BackColor = Color.FromArgb(102, 204, 102);
             btnSave.FlatAppearance.BorderColor = Color.FromArgb(102, 204, 102);
             btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSave.Font = new Font("Tahoma", 9.75F);
             btnSave.ForeColor = Color.White;
             btnSave.Location = new Point(638, 663);
             btnSave.Name = "btnSave";
@@ -403,76 +393,6 @@
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
-            // 
-            // borderLicense
-            // 
-            borderLicense.Controls.Add(panel64);
-            borderLicense.Controls.Add(panel65);
-            borderLicense.Controls.Add(panel66);
-            borderLicense.Controls.Add(panel67);
-            borderLicense.Controls.Add(txtLicense);
-            borderLicense.Location = new Point(416, 585);
-            borderLicense.Name = "borderLicense";
-            borderLicense.Size = new Size(335, 23);
-            borderLicense.TabIndex = 155;
-            // 
-            // panel64
-            // 
-            panel64.BackColor = Color.FromArgb(52, 152, 219);
-            panel64.Dock = DockStyle.Bottom;
-            panel64.Location = new Point(1, 22);
-            panel64.Name = "panel64";
-            panel64.Size = new Size(333, 1);
-            panel64.TabIndex = 58;
-            // 
-            // panel65
-            // 
-            panel65.BackColor = Color.FromArgb(52, 152, 219);
-            panel65.Dock = DockStyle.Top;
-            panel65.Location = new Point(1, 0);
-            panel65.Name = "panel65";
-            panel65.Size = new Size(333, 1);
-            panel65.TabIndex = 58;
-            // 
-            // panel66
-            // 
-            panel66.BackColor = Color.FromArgb(52, 152, 219);
-            panel66.Dock = DockStyle.Left;
-            panel66.Location = new Point(0, 0);
-            panel66.Name = "panel66";
-            panel66.Size = new Size(1, 23);
-            panel66.TabIndex = 57;
-            // 
-            // panel67
-            // 
-            panel67.BackColor = Color.FromArgb(52, 152, 219);
-            panel67.Dock = DockStyle.Right;
-            panel67.Location = new Point(334, 0);
-            panel67.Name = "panel67";
-            panel67.Size = new Size(1, 23);
-            panel67.TabIndex = 58;
-            // 
-            // txtLicense
-            // 
-            txtLicense.BorderStyle = BorderStyle.FixedSingle;
-            txtLicense.Dock = DockStyle.Fill;
-            txtLicense.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            txtLicense.Location = new Point(0, 0);
-            txtLicense.Name = "txtLicense";
-            txtLicense.PlaceholderText = " License Number";
-            txtLicense.Size = new Size(335, 23);
-            txtLicense.TabIndex = 1;
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label16.ForeColor = Color.DimGray;
-            label16.Location = new Point(407, 556);
-            label16.Name = "label16";
-            label16.Size = new Size(164, 16);
-            label16.TabIndex = 154;
-            label16.Text = "License Number: (Optional)";
             // 
             // borderSpecial
             // 
@@ -526,7 +446,7 @@
             // 
             txtSpecial.BorderStyle = BorderStyle.FixedSingle;
             txtSpecial.Dock = DockStyle.Fill;
-            txtSpecial.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSpecial.Font = new Font("Tahoma", 9.75F);
             txtSpecial.Location = new Point(0, 0);
             txtSpecial.Name = "txtSpecial";
             txtSpecial.PlaceholderText = " Specialization";
@@ -536,7 +456,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label15.Font = new Font("Tahoma", 9.75F);
             label15.ForeColor = Color.DimGray;
             label15.Location = new Point(55, 556);
             label15.Name = "label15";
@@ -547,7 +467,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.Font = new Font("Tahoma", 9.75F);
             label14.ForeColor = Color.DimGray;
             label14.Location = new Point(407, 491);
             label14.Name = "label14";
@@ -607,7 +527,7 @@
             // 
             txtPosition.BorderStyle = BorderStyle.FixedSingle;
             txtPosition.Dock = DockStyle.Fill;
-            txtPosition.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPosition.Font = new Font("Tahoma", 9.75F);
             txtPosition.Location = new Point(0, 0);
             txtPosition.Name = "txtPosition";
             txtPosition.PlaceholderText = " Position";
@@ -617,7 +537,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.Font = new Font("Tahoma", 9.75F);
             label13.ForeColor = Color.DimGray;
             label13.Location = new Point(54, 491);
             label13.Name = "label13";
@@ -629,7 +549,7 @@
             // 
             label11.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label11.AutoSize = true;
-            label11.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.Font = new Font("Tahoma", 9.75F);
             label11.ForeColor = Color.DimGray;
             label11.Location = new Point(322, 450);
             label11.Name = "label11";
@@ -661,7 +581,7 @@
             // 
             label12.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label12.AutoSize = true;
-            label12.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Font = new Font("Tahoma", 9.75F);
             label12.ForeColor = Color.DimGray;
             label12.Location = new Point(281, -10);
             label12.Name = "label12";
@@ -728,7 +648,7 @@
             // 
             txtProvince.BorderStyle = BorderStyle.FixedSingle;
             txtProvince.Dock = DockStyle.Fill;
-            txtProvince.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtProvince.Font = new Font("Tahoma", 9.75F);
             txtProvince.Location = new Point(0, 0);
             txtProvince.Name = "txtProvince";
             txtProvince.PlaceholderText = " Province";
@@ -787,7 +707,7 @@
             // 
             txtCity.BorderStyle = BorderStyle.FixedSingle;
             txtCity.Dock = DockStyle.Fill;
-            txtCity.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCity.Font = new Font("Tahoma", 9.75F);
             txtCity.Location = new Point(0, 0);
             txtCity.Name = "txtCity";
             txtCity.PlaceholderText = " City";
@@ -846,7 +766,7 @@
             // 
             txtPostalCode.BorderStyle = BorderStyle.FixedSingle;
             txtPostalCode.Dock = DockStyle.Fill;
-            txtPostalCode.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPostalCode.Font = new Font("Tahoma", 9.75F);
             txtPostalCode.Location = new Point(0, 0);
             txtPostalCode.Name = "txtPostalCode";
             txtPostalCode.PlaceholderText = "Postal Code";
@@ -905,7 +825,7 @@
             // 
             txtBrgy.BorderStyle = BorderStyle.FixedSingle;
             txtBrgy.Dock = DockStyle.Fill;
-            txtBrgy.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBrgy.Font = new Font("Tahoma", 9.75F);
             txtBrgy.Location = new Point(0, 0);
             txtBrgy.Name = "txtBrgy";
             txtBrgy.PlaceholderText = "Barangay";
@@ -916,7 +836,7 @@
             // 
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label5.AutoSize = true;
-            label5.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Font = new Font("Tahoma", 9.75F);
             label5.ForeColor = Color.DimGray;
             label5.Location = new Point(325, 161);
             label5.Name = "label5";
@@ -948,7 +868,7 @@
             // 
             label7.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label7.AutoSize = true;
-            label7.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Font = new Font("Tahoma", 9.75F);
             label7.ForeColor = Color.DimGray;
             label7.Location = new Point(281, -10);
             label7.Name = "label7";
@@ -959,7 +879,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Tahoma", 9.75F);
             label2.ForeColor = Color.DimGray;
             label2.Location = new Point(53, 67);
             label2.Name = "label2";
@@ -1019,7 +939,7 @@
             // 
             txtStreet.BorderStyle = BorderStyle.FixedSingle;
             txtStreet.Dock = DockStyle.Fill;
-            txtStreet.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStreet.Font = new Font("Tahoma", 9.75F);
             txtStreet.Location = new Point(0, 0);
             txtStreet.Name = "txtStreet";
             txtStreet.PlaceholderText = " Street";
@@ -1078,7 +998,7 @@
             // 
             txtfirstName.BorderStyle = BorderStyle.FixedSingle;
             txtfirstName.Dock = DockStyle.Fill;
-            txtfirstName.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtfirstName.Font = new Font("Tahoma", 9.75F);
             txtfirstName.Location = new Point(0, 0);
             txtfirstName.Name = "txtfirstName";
             txtfirstName.PlaceholderText = " First name";
@@ -1088,7 +1008,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Font = new Font("Tahoma", 9.75F);
             label10.ForeColor = Color.DimGray;
             label10.Location = new Point(56, 279);
             label10.Name = "label10";
@@ -1148,7 +1068,7 @@
             // 
             txtLastName.BorderStyle = BorderStyle.FixedSingle;
             txtLastName.Dock = DockStyle.Fill;
-            txtLastName.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtLastName.Font = new Font("Tahoma", 9.75F);
             txtLastName.Location = new Point(0, 0);
             txtLastName.Name = "txtLastName";
             txtLastName.PlaceholderText = " Last name";
@@ -1158,7 +1078,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.Font = new Font("Tahoma", 9.75F);
             label9.ForeColor = Color.DimGray;
             label9.Location = new Point(589, 67);
             label9.Name = "label9";
@@ -1169,7 +1089,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Font = new Font("Tahoma", 9.75F);
             label4.ForeColor = Color.DimGray;
             label4.Location = new Point(56, 202);
             label4.Name = "label4";
@@ -1229,7 +1149,7 @@
             // 
             txtEmail.BorderStyle = BorderStyle.FixedSingle;
             txtEmail.Dock = DockStyle.Fill;
-            txtEmail.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtEmail.Font = new Font("Tahoma", 9.75F);
             txtEmail.Location = new Point(0, 0);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = " Email";
@@ -1288,7 +1208,7 @@
             // 
             txtMobile.BorderStyle = BorderStyle.FixedSingle;
             txtMobile.Dock = DockStyle.Fill;
-            txtMobile.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtMobile.Font = new Font("Tahoma", 9.75F);
             txtMobile.Location = new Point(0, 0);
             txtMobile.MaxLength = 11;
             txtMobile.Name = "txtMobile";
@@ -1349,7 +1269,7 @@
             // 
             txtMiddleName.BorderStyle = BorderStyle.FixedSingle;
             txtMiddleName.Dock = DockStyle.Fill;
-            txtMiddleName.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtMiddleName.Font = new Font("Tahoma", 9.75F);
             txtMiddleName.Location = new Point(0, 0);
             txtMiddleName.Name = "txtMiddleName";
             txtMiddleName.PlaceholderText = " Middle name";
@@ -1359,7 +1279,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Font = new Font("Tahoma", 9.75F);
             label8.ForeColor = Color.DimGray;
             label8.Location = new Point(409, 202);
             label8.Name = "label8";
@@ -1371,7 +1291,7 @@
             // 
             label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
-            label6.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Font = new Font("Tahoma", 9.75F);
             label6.ForeColor = Color.DimGray;
             label6.Location = new Point(323, 34);
             label6.Name = "label6";
@@ -1403,7 +1323,7 @@
             // 
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
-            label3.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Font = new Font("Tahoma", 9.75F);
             label3.ForeColor = Color.DimGray;
             label3.Location = new Point(281, -10);
             label3.Name = "label3";
@@ -1453,8 +1373,6 @@
             borderHired.PerformLayout();
             borderDateofBirth.ResumeLayout(false);
             borderDateofBirth.PerformLayout();
-            borderLicense.ResumeLayout(false);
-            borderLicense.PerformLayout();
             borderSpecial.ResumeLayout(false);
             borderSpecial.PerformLayout();
             borderPosition.ResumeLayout(false);
@@ -1573,13 +1491,6 @@
         private Label label3;
         private Panel panel33;
         private Button btnSave;
-        private Panel borderLicense;
-        private Panel panel64;
-        private Panel panel65;
-        private Panel panel66;
-        private Panel panel67;
-        private TextBox txtLicense;
-        private Label label16;
         private Panel borderSpecial;
         private Panel panel60;
         private Panel panel61;

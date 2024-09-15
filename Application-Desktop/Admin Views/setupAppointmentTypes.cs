@@ -104,8 +104,8 @@ namespace Application_Desktop.Admin_Views
                 string duration = txtDuration.Text;
                 string frequency = txtFrequency.Text;
 
-                string query = @"INSERT INTO categories (Title, Description, Duration, Frequency, CreatedBy, Branch_ID, created_at, updated_at)
-                            VALUES (@title, @description, @duration, @frequency, @createdby, @branchID, @createdAt, @updatedAt)";
+                string query = @"INSERT INTO categories (Title, Description, Duration, Frequency, Branch_ID, created_at, updated_at)
+                            VALUES (@title, @description, @duration, @frequency, @branchID, @createdAt, @updatedAt)";
 
                 MySqlConnection conn = databaseHelper.getConnection();
 
@@ -122,7 +122,6 @@ namespace Application_Desktop.Admin_Views
                     cmd.Parameters.AddWithValue("@duration", duration);
                     cmd.Parameters.AddWithValue("@frequency", frequency);
 
-                    cmd.Parameters.AddWithValue("@createdby", createdby);
                     cmd.Parameters.AddWithValue("@branchID", branchID);
 
                     DateTime now = DateTime.Now;
