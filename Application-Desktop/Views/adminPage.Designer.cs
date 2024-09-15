@@ -44,6 +44,10 @@
             btnDoctors = new Button();
             panel5 = new Panel();
             btnUsers = new Button();
+            panel6 = new Panel();
+            btnAppointment = new Button();
+            panel12 = new Panel();
+            btnPatientRecord = new Button();
             setupContainer = new FlowLayoutPanel();
             panel3 = new Panel();
             btnSetup = new Button();
@@ -63,10 +67,6 @@
             sidebarTransition = new System.Windows.Forms.Timer(components);
             setupTransition = new System.Windows.Forms.Timer(components);
             elipseControl1 = new ElipseToolDemo.ElipseControl();
-            panel6 = new Panel();
-            btnAppointment = new Button();
-            panel12 = new Panel();
-            btnPatientRecord = new Button();
             elipseControl2 = new ElipseToolDemo.ElipseControl();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnSidebar).BeginInit();
@@ -77,6 +77,8 @@
             panel4.SuspendLayout();
             panel11.SuspendLayout();
             panel5.SuspendLayout();
+            panel6.SuspendLayout();
+            panel12.SuspendLayout();
             setupContainer.SuspendLayout();
             panel3.SuspendLayout();
             panel15.SuspendLayout();
@@ -85,8 +87,6 @@
             panel9.SuspendLayout();
             panel10.SuspendLayout();
             panel8.SuspendLayout();
-            panel6.SuspendLayout();
-            panel12.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -280,6 +280,62 @@
             btnUsers.UseVisualStyleBackColor = false;
             btnUsers.Click += btnUsers_Click;
             // 
+            // panel6
+            // 
+            panel6.Controls.Add(btnAppointment);
+            panel6.Location = new Point(0, 136);
+            panel6.Margin = new Padding(0);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(179, 34);
+            panel6.TabIndex = 5;
+            // 
+            // btnAppointment
+            // 
+            btnAppointment.BackColor = Color.FromArgb(41, 128, 185);
+            btnAppointment.Dock = DockStyle.Fill;
+            btnAppointment.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnAppointment.FlatStyle = FlatStyle.Flat;
+            btnAppointment.Font = new Font("Microsoft Sans Serif", 9F);
+            btnAppointment.ForeColor = SystemColors.ButtonFace;
+            btnAppointment.Image = (Image)resources.GetObject("btnAppointment.Image");
+            btnAppointment.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAppointment.Location = new Point(0, 0);
+            btnAppointment.Margin = new Padding(0);
+            btnAppointment.Name = "btnAppointment";
+            btnAppointment.Size = new Size(179, 34);
+            btnAppointment.TabIndex = 3;
+            btnAppointment.Text = "              Appointment";
+            btnAppointment.TextAlign = ContentAlignment.MiddleLeft;
+            btnAppointment.UseVisualStyleBackColor = false;
+            // 
+            // panel12
+            // 
+            panel12.Controls.Add(btnPatientRecord);
+            panel12.Location = new Point(0, 170);
+            panel12.Margin = new Padding(0);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(179, 34);
+            panel12.TabIndex = 6;
+            // 
+            // btnPatientRecord
+            // 
+            btnPatientRecord.BackColor = Color.FromArgb(41, 128, 185);
+            btnPatientRecord.Dock = DockStyle.Fill;
+            btnPatientRecord.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnPatientRecord.FlatStyle = FlatStyle.Flat;
+            btnPatientRecord.Font = new Font("Microsoft Sans Serif", 9F);
+            btnPatientRecord.ForeColor = SystemColors.ButtonFace;
+            btnPatientRecord.Image = (Image)resources.GetObject("btnPatientRecord.Image");
+            btnPatientRecord.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPatientRecord.Location = new Point(0, 0);
+            btnPatientRecord.Margin = new Padding(0);
+            btnPatientRecord.Name = "btnPatientRecord";
+            btnPatientRecord.Size = new Size(179, 34);
+            btnPatientRecord.TabIndex = 3;
+            btnPatientRecord.Text = "              Patient Record";
+            btnPatientRecord.TextAlign = ContentAlignment.MiddleLeft;
+            btnPatientRecord.UseVisualStyleBackColor = false;
+            // 
             // setupContainer
             // 
             setupContainer.BackColor = Color.FromArgb(31, 97, 141);
@@ -448,6 +504,7 @@
             btnSetting.Text = "              Profile Setting";
             btnSetting.TextAlign = ContentAlignment.MiddleLeft;
             btnSetting.UseVisualStyleBackColor = false;
+            btnSetting.Click += btnSetting_Click;
             // 
             // panel8
             // 
@@ -508,62 +565,6 @@
             elipseControl1.CornerRadius = 15;
             elipseControl1.TargetControl = mainPanel;
             // 
-            // panel6
-            // 
-            panel6.Controls.Add(btnAppointment);
-            panel6.Location = new Point(0, 136);
-            panel6.Margin = new Padding(0);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(179, 34);
-            panel6.TabIndex = 5;
-            // 
-            // btnAppointment
-            // 
-            btnAppointment.BackColor = Color.FromArgb(41, 128, 185);
-            btnAppointment.Dock = DockStyle.Fill;
-            btnAppointment.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
-            btnAppointment.FlatStyle = FlatStyle.Flat;
-            btnAppointment.Font = new Font("Microsoft Sans Serif", 9F);
-            btnAppointment.ForeColor = SystemColors.ButtonFace;
-            btnAppointment.Image = (Image)resources.GetObject("btnAppointment.Image");
-            btnAppointment.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAppointment.Location = new Point(0, 0);
-            btnAppointment.Margin = new Padding(0);
-            btnAppointment.Name = "btnAppointment";
-            btnAppointment.Size = new Size(179, 34);
-            btnAppointment.TabIndex = 3;
-            btnAppointment.Text = "              Appointment";
-            btnAppointment.TextAlign = ContentAlignment.MiddleLeft;
-            btnAppointment.UseVisualStyleBackColor = false;
-            // 
-            // panel12
-            // 
-            panel12.Controls.Add(btnPatientRecord);
-            panel12.Location = new Point(0, 170);
-            panel12.Margin = new Padding(0);
-            panel12.Name = "panel12";
-            panel12.Size = new Size(179, 34);
-            panel12.TabIndex = 6;
-            // 
-            // btnPatientRecord
-            // 
-            btnPatientRecord.BackColor = Color.FromArgb(41, 128, 185);
-            btnPatientRecord.Dock = DockStyle.Fill;
-            btnPatientRecord.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
-            btnPatientRecord.FlatStyle = FlatStyle.Flat;
-            btnPatientRecord.Font = new Font("Microsoft Sans Serif", 9F);
-            btnPatientRecord.ForeColor = SystemColors.ButtonFace;
-            btnPatientRecord.Image = (Image)resources.GetObject("btnPatientRecord.Image");
-            btnPatientRecord.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPatientRecord.Location = new Point(0, 0);
-            btnPatientRecord.Margin = new Padding(0);
-            btnPatientRecord.Name = "btnPatientRecord";
-            btnPatientRecord.Size = new Size(179, 34);
-            btnPatientRecord.TabIndex = 3;
-            btnPatientRecord.Text = "              Patient Record";
-            btnPatientRecord.TextAlign = ContentAlignment.MiddleLeft;
-            btnPatientRecord.UseVisualStyleBackColor = false;
-            // 
             // elipseControl2
             // 
             elipseControl2.CornerRadius = 5;
@@ -590,6 +591,8 @@
             panel4.ResumeLayout(false);
             panel11.ResumeLayout(false);
             panel5.ResumeLayout(false);
+            panel6.ResumeLayout(false);
+            panel12.ResumeLayout(false);
             setupContainer.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel15.ResumeLayout(false);
@@ -598,8 +601,6 @@
             panel9.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel8.ResumeLayout(false);
-            panel6.ResumeLayout(false);
-            panel12.ResumeLayout(false);
             ResumeLayout(false);
         }
 

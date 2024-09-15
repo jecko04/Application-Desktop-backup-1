@@ -176,6 +176,11 @@ namespace Application_Desktop.Views
         {
 
         }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            LoadForm(new adminProfileSettings());
+        }
     }
 }
 //179, 179
