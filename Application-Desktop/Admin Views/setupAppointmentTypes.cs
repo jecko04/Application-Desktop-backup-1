@@ -83,7 +83,7 @@ namespace Application_Desktop.Admin_Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"GetBranch error" + ex.Message);
             }
             finally { conn.Close(); }
 
@@ -144,7 +144,7 @@ namespace Application_Desktop.Admin_Views
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show($"Create Category error" + ex.Message);
                 }
                 finally { await conn.CloseAsync(); }
             }
@@ -246,19 +246,16 @@ namespace Application_Desktop.Admin_Views
                     string title = reader["Title"].ToString();
                     txtFetchTitle.Items.Add(title);
                 }
-
                 await reader.CloseAsync();
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"GetTitle error" + ex.Message);
             }
             finally
             {
-                if (conn.State == ConnectionState.Open)
-                {
                     await conn.CloseAsync();
-                }
             }
         }
 
@@ -299,7 +296,7 @@ namespace Application_Desktop.Admin_Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"GetAdminBranch error" + ex.Message);
             }
             finally
             {
@@ -344,14 +341,11 @@ namespace Application_Desktop.Admin_Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"Fetch Detail error" + ex.Message);
             }
             finally
             {
-                if (conn.State == ConnectionState.Open)
-                {
                     await conn.CloseAsync();
-                }
             }
         }
 
@@ -440,7 +434,7 @@ namespace Application_Desktop.Admin_Views
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show($"Update category error" + ex.Message);
                 }
                 finally
                 {
@@ -476,10 +470,11 @@ namespace Application_Desktop.Admin_Views
                 {
                     categoriesId = reader.GetInt32("Categories_ID");
                 }
+                await reader.CloseAsync();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"Select CategoryId error" + ex.Message);
             }
             finally { conn.Close(); }
             return categoriesId;
@@ -647,7 +642,7 @@ namespace Application_Desktop.Admin_Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"Save OfficeHour error" + ex.Message);
             }
             finally
             {
@@ -736,7 +731,6 @@ namespace Application_Desktop.Admin_Views
             DateTimePicker[] startPickers = { dateTimePicker2, dateTimePicker4, dateTimePicker6, dateTimePicker8, dateTimePicker10, dateTimePicker12, dateTimePicker14 };
             DateTimePicker[] endPickers = { dateTimePicker1, dateTimePicker3, dateTimePicker5, dateTimePicker7, dateTimePicker9, dateTimePicker11, dateTimePicker13 };
 
-
             MySqlConnection conn = databaseHelper.getConnection();
 
             try
@@ -751,31 +745,43 @@ namespace Application_Desktop.Admin_Views
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read())
+                if (reader.HasRows)
                 {
-                    TimeSpan start = reader.GetTimeSpan("StartTime");
-                    TimeSpan end = reader.GetTimeSpan("EndTime");
-                    int isChecked = reader.GetInt32("IsClosed");
-
-                    DateTime startDateTime = DateTime.Today.Add(start);
-                    DateTime endDateTime = DateTime.Today.Add(end);
-
-                    foreach (var picker in startPickers)
+                    while (await reader.ReadAsync())
                     {
-                        picker.Value = startDateTime;
-                    }
-                    foreach (var picker in endPickers)
-                    {
-                        picker.Value = endDateTime;
+                        TimeSpan start = reader.GetTimeSpan("StartTime");
+                        TimeSpan end = reader.GetTimeSpan("EndTime");
+
+                        DateTime startDateTime = DateTime.Today.Add(start);
+                        DateTime endDateTime = DateTime.Today.Add(end);
+
+                        foreach (var picker in startPickers)
+                        {
+                            picker.Value = startDateTime;
+                        }
+                        foreach (var picker in endPickers)
+                        {
+                            picker.Value = endDateTime;
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("No office hours found for this branch. Please add office hours first.");
+                }
+
+                await reader.CloseAsync();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"LoadOfficeHour error: " + ex.Message);
             }
-            finally { await conn.CloseAsync(); }
+            finally
+            {
+                await conn.CloseAsync();
+            }
         }
+
 
 
         // It load the IsClosed data value in database
@@ -784,8 +790,6 @@ namespace Application_Desktop.Admin_Views
             int branchID = GetBranch();
             string query = @"SELECT DayOfWeek, IsClosed FROM office_hours WHERE Branch_ID = @branchID";
 
-            //CheckBox[] closeCheckBoxes = { mondayClose, tuesdayClose, wednesdayClose, thursdayClose, fridayClose, saturdayClose, sundayClose };
-
             MySqlConnection conn = databaseHelper.getConnection();
 
             try
@@ -800,33 +804,44 @@ namespace Application_Desktop.Admin_Views
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                while (await reader.ReadAsync())
+                if (reader.HasRows)
                 {
-                    string days = reader.GetString("DayOfWeek");
-                    int IsClosed = reader.GetInt32("IsClosed");
-
-                    CheckBox checkbox = days switch
+                    while (await reader.ReadAsync())
                     {
-                        "Monday" => mondayClose,
-                        "Tuesday" => tuesdayClose,
-                        "Wednesday" => wednesdayClose,
-                        "Thursday" => thursdayClose,
-                        "Friday" => fridayClose,
-                        "Saturday" => saturdayClose,
-                        "Sunday" => sundayClose,
-                    };
+                        string days = reader.GetString("DayOfWeek");
+                        int isClosed = reader.GetInt32("IsClosed");
 
-                    checkbox.Checked = (IsClosed == 1);
+                        CheckBox checkbox = days switch
+                        {
+                            "Monday" => mondayClose,
+                            "Tuesday" => tuesdayClose,
+                            "Wednesday" => wednesdayClose,
+                            "Thursday" => thursdayClose,
+                            "Friday" => fridayClose,
+                            "Saturday" => saturdayClose,
+                            "Sunday" => sundayClose,
+                        };
+
+                        checkbox.Checked = (isClosed == 1);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No office hours found for this branch. Please add office hours first.");
                 }
 
+                await reader.CloseAsync();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"LoadIsClosed error: " + ex.Message);
             }
-            finally { await conn.CloseAsync(); }
-
+            finally
+            {
+                await conn.CloseAsync();
+            }
         }
+
 
         private async void btnUpdateRefresh_Click(object sender, EventArgs e)
         {

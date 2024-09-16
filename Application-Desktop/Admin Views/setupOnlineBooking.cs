@@ -23,15 +23,20 @@ namespace Application_Desktop.Admin_Views
 
         }
 
-        private  async Task GetBranch()
+        private async Task GetBranch()
         {
             int adminId = session.LoggedInSession;
-            
+
 
         }
         private async Task FetchDayofWeek(string dayofweek)
         {
             string query = @"SELECT DayOfWeek from office_hours Where ";
+        }
+
+        private void view_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

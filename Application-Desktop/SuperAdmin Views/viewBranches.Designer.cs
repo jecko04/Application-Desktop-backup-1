@@ -59,7 +59,7 @@
             viewBranchData.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(123, 44, 191);
-            dataGridViewCellStyle1.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 9F);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.Padding = new Padding(3);
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(149, 86, 203);
@@ -69,7 +69,7 @@
             viewBranchData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Tahoma", 9F);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(41, 128, 185);
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -82,7 +82,7 @@
             viewBranchData.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.Font = new Font("Tahoma", 9F);
             dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(149, 86, 203);
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
@@ -99,7 +99,7 @@
             btnAddBranch.BackColor = Color.FromArgb(52, 152, 219);
             btnAddBranch.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
             btnAddBranch.FlatStyle = FlatStyle.Flat;
-            btnAddBranch.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAddBranch.Font = new Font("Microsoft Sans Serif", 9F);
             btnAddBranch.ForeColor = SystemColors.ButtonFace;
             btnAddBranch.ImageAlign = ContentAlignment.MiddleLeft;
             btnAddBranch.Location = new Point(1007, 41);
@@ -140,7 +140,7 @@
             // 
             txtSearchBox.BorderStyle = BorderStyle.FixedSingle;
             txtSearchBox.Cursor = Cursors.IBeam;
-            txtSearchBox.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSearchBox.Font = new Font("Tahoma", 9.75F);
             txtSearchBox.Location = new Point(733, 4);
             txtSearchBox.Name = "txtSearchBox";
             txtSearchBox.PlaceholderText = " Search";
@@ -152,7 +152,7 @@
             btnSearch.BackColor = Color.FromArgb(52, 152, 219);
             btnSearch.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
             btnSearch.FlatStyle = FlatStyle.Flat;
-            btnSearch.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSearch.Font = new Font("Microsoft Sans Serif", 9F);
             btnSearch.ForeColor = SystemColors.ButtonFace;
             btnSearch.Image = (Image)resources.GetObject("btnSearch.Image");
             btnSearch.ImageAlign = ContentAlignment.MiddleLeft;
@@ -167,11 +167,10 @@
             // 
             // btnRefresh
             // 
-            btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnRefresh.BackColor = Color.FromArgb(52, 152, 219);
             btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
             btnRefresh.FlatStyle = FlatStyle.Flat;
-            btnRefresh.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRefresh.Font = new Font("Microsoft Sans Serif", 9F);
             btnRefresh.ForeColor = SystemColors.ButtonFace;
             btnRefresh.Image = (Image)resources.GetObject("btnRefresh.Image");
             btnRefresh.Location = new Point(963, 4);

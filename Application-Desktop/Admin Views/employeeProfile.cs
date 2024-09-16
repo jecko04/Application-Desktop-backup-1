@@ -219,10 +219,7 @@ namespace Application_Desktop.Admin_Views
             // Add items to the ComboBox column
             statusColumn.Items.AddRange(new object[] {
                 "active",     // Employee is actively working
-                "inactive",   // Employee is not currently active
-                "terminated", // Employee has been let go from the practice
-                "retired",
-                "resigned"// Employee has retired
+                "inactive"  // Employee is not currently active
             });
 
             statusColumn.ReadOnly = false;
