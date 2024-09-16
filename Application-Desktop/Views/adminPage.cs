@@ -179,7 +179,8 @@ namespace Application_Desktop.Views
 
         private void btnSetting_Click(object sender, EventArgs e)
         {
-            LoadForm(new adminProfileSettings());
+            //var profileSetting = new adminProfileSettings(this);
+            LoadForm(new adminProfileSettings(this));
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Application_Desktop.Models;
 using Application_Desktop.Sub_sub_Views;
 using Application_Desktop.Sub_Views;
+using Application_Desktop.SuperAdmin_Views;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
 using System;
@@ -138,6 +139,11 @@ namespace Application_Desktop.Views
         private void btnRole_Click(object sender, EventArgs e)
         {
             LoadForm(new Role());
+        }
+
+        private void btnProfile_Click(object sender, EventArgs e)
+        {
+            LoadForm(new superAdminProfileSetting(this));
         }
     }
 }

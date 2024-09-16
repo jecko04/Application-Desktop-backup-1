@@ -3,21 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Application_Desktop.Model
 {
-    public class profileSettingModel
+    public class superAdminProfileSettingModel
     {
-        
-
-
     }
 
-    public class profileUpdateInfoModel 
+    public class superAdminProfileUpdateInfoModel
     {
         [Required]
         public string _name { get; set; }
@@ -32,7 +27,7 @@ namespace Application_Desktop.Model
         {
             var error = new Dictionary<string, string>();
 
-            if (string.IsNullOrEmpty(_firstname) )
+            if (string.IsNullOrEmpty(_firstname))
             {
                 error["Firstname"] = "Firstname is required";
             }
@@ -50,7 +45,7 @@ namespace Application_Desktop.Model
         }
     }
 
-    public class adminUpdatePasswordModel
+    public class superAdminUpdatePasswordModel
     {
         [Required]
         public string _currentPassword { get; set; }
@@ -59,9 +54,9 @@ namespace Application_Desktop.Model
         [Required]
         public string _confrimPassword { get; set; }
 
-        public Dictionary <string, string> validate()
+        public Dictionary<string, string> validate()
         {
-            var error = new Dictionary <string, string>();
+            var error = new Dictionary<string, string>();
 
             //empty field
             if (string.IsNullOrEmpty(_currentPassword))
@@ -70,11 +65,11 @@ namespace Application_Desktop.Model
             }
 
             //validate password
-            if (!passwordValidator.IsPasswordValidate(_newPassword)) 
+            if (!passwordValidator.IsPasswordValidate(_newPassword))
             {
                 error["NotValid"] = "Password must be at least 8 characters long and contain at least\" +\r\n                    \" one uppercase letter, one lowercase letter, and one number";
             }
-          
+
             //not match
             if (_newPassword != _confrimPassword)
             {
@@ -82,9 +77,7 @@ namespace Application_Desktop.Model
             }
 
             return error;
-            
+
         }
     }
 }
-   
-

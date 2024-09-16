@@ -38,31 +38,31 @@
             btnBranches = new Button();
             panel3 = new Panel();
             btnAdmin = new Button();
+            panel2 = new Panel();
+            btnRole = new Button();
             menuContainer = new FlowLayoutPanel();
             panel9 = new Panel();
             btnMenu = new Button();
             panel6 = new Panel();
             button5 = new Button();
             panel10 = new Panel();
-            button9 = new Button();
+            btnProfile = new Button();
             panel8 = new Panel();
             btnLogout = new Button();
             menuTransition = new System.Windows.Forms.Timer(components);
             sidebarTransition = new System.Windows.Forms.Timer(components);
             mainPanel = new Panel();
-            panel2 = new Panel();
-            btnRole = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnSidebar).BeginInit();
             sidebarContainer.SuspendLayout();
             panel5.SuspendLayout();
             panel3.SuspendLayout();
+            panel2.SuspendLayout();
             menuContainer.SuspendLayout();
             panel9.SuspendLayout();
             panel6.SuspendLayout();
             panel10.SuspendLayout();
             panel8.SuspendLayout();
-            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -78,7 +78,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Tahoma", 9.75F);
             label1.ForeColor = Color.Black;
             label1.Location = new Point(37, 9);
             label1.Name = "label1";
@@ -128,7 +128,7 @@
             btnBranches.Dock = DockStyle.Fill;
             btnBranches.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
             btnBranches.FlatStyle = FlatStyle.Flat;
-            btnBranches.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBranches.Font = new Font("Microsoft Sans Serif", 9F);
             btnBranches.ForeColor = SystemColors.ButtonFace;
             btnBranches.Image = (Image)resources.GetObject("btnBranches.Image");
             btnBranches.ImageAlign = ContentAlignment.MiddleLeft;
@@ -157,7 +157,7 @@
             btnAdmin.Dock = DockStyle.Fill;
             btnAdmin.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
             btnAdmin.FlatStyle = FlatStyle.Flat;
-            btnAdmin.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAdmin.Font = new Font("Microsoft Sans Serif", 9F);
             btnAdmin.ForeColor = SystemColors.ButtonFace;
             btnAdmin.Image = (Image)resources.GetObject("btnAdmin.Image");
             btnAdmin.ImageAlign = ContentAlignment.MiddleLeft;
@@ -170,6 +170,35 @@
             btnAdmin.TextAlign = ContentAlignment.MiddleLeft;
             btnAdmin.UseVisualStyleBackColor = false;
             btnAdmin.Click += btnAdmin_Click;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(btnRole);
+            panel2.Location = new Point(0, 68);
+            panel2.Margin = new Padding(0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(179, 34);
+            panel2.TabIndex = 4;
+            // 
+            // btnRole
+            // 
+            btnRole.BackColor = Color.FromArgb(41, 128, 185);
+            btnRole.Dock = DockStyle.Fill;
+            btnRole.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnRole.FlatStyle = FlatStyle.Flat;
+            btnRole.Font = new Font("Microsoft Sans Serif", 9F);
+            btnRole.ForeColor = SystemColors.ButtonFace;
+            btnRole.Image = (Image)resources.GetObject("btnRole.Image");
+            btnRole.ImageAlign = ContentAlignment.MiddleLeft;
+            btnRole.Location = new Point(0, 0);
+            btnRole.Margin = new Padding(0);
+            btnRole.Name = "btnRole";
+            btnRole.Size = new Size(179, 34);
+            btnRole.TabIndex = 3;
+            btnRole.Text = "              Role";
+            btnRole.TextAlign = ContentAlignment.MiddleLeft;
+            btnRole.UseVisualStyleBackColor = false;
+            btnRole.Click += btnRole_Click;
             // 
             // menuContainer
             // 
@@ -199,7 +228,7 @@
             btnMenu.Dock = DockStyle.Fill;
             btnMenu.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
             btnMenu.FlatStyle = FlatStyle.Flat;
-            btnMenu.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMenu.Font = new Font("Microsoft Sans Serif", 9F);
             btnMenu.ForeColor = SystemColors.ButtonFace;
             btnMenu.Image = (Image)resources.GetObject("btnMenu.Image");
             btnMenu.ImageAlign = ContentAlignment.MiddleLeft;
@@ -228,7 +257,7 @@
             button5.Dock = DockStyle.Fill;
             button5.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
             button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button5.Font = new Font("Microsoft Sans Serif", 9F);
             button5.ForeColor = SystemColors.ButtonFace;
             button5.Image = (Image)resources.GetObject("button5.Image");
             button5.ImageAlign = ContentAlignment.MiddleLeft;
@@ -243,31 +272,32 @@
             // 
             // panel10
             // 
-            panel10.Controls.Add(button9);
+            panel10.Controls.Add(btnProfile);
             panel10.Location = new Point(0, 68);
             panel10.Margin = new Padding(0);
             panel10.Name = "panel10";
             panel10.Size = new Size(179, 34);
             panel10.TabIndex = 4;
             // 
-            // button9
+            // btnProfile
             // 
-            button9.BackColor = Color.FromArgb(31, 97, 141);
-            button9.Dock = DockStyle.Fill;
-            button9.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
-            button9.FlatStyle = FlatStyle.Flat;
-            button9.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button9.ForeColor = SystemColors.ButtonFace;
-            button9.Image = (Image)resources.GetObject("button9.Image");
-            button9.ImageAlign = ContentAlignment.MiddleLeft;
-            button9.Location = new Point(0, 0);
-            button9.Margin = new Padding(0);
-            button9.Name = "button9";
-            button9.Size = new Size(179, 34);
-            button9.TabIndex = 3;
-            button9.Text = "              Settings";
-            button9.TextAlign = ContentAlignment.MiddleLeft;
-            button9.UseVisualStyleBackColor = false;
+            btnProfile.BackColor = Color.FromArgb(31, 97, 141);
+            btnProfile.Dock = DockStyle.Fill;
+            btnProfile.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
+            btnProfile.FlatStyle = FlatStyle.Flat;
+            btnProfile.Font = new Font("Microsoft Sans Serif", 9F);
+            btnProfile.ForeColor = SystemColors.ButtonFace;
+            btnProfile.Image = (Image)resources.GetObject("btnProfile.Image");
+            btnProfile.ImageAlign = ContentAlignment.MiddleLeft;
+            btnProfile.Location = new Point(0, 0);
+            btnProfile.Margin = new Padding(0);
+            btnProfile.Name = "btnProfile";
+            btnProfile.Size = new Size(179, 34);
+            btnProfile.TabIndex = 3;
+            btnProfile.Text = "              Settings";
+            btnProfile.TextAlign = ContentAlignment.MiddleLeft;
+            btnProfile.UseVisualStyleBackColor = false;
+            btnProfile.Click += btnProfile_Click;
             // 
             // panel8
             // 
@@ -284,7 +314,7 @@
             btnLogout.Dock = DockStyle.Fill;
             btnLogout.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
             btnLogout.FlatStyle = FlatStyle.Flat;
-            btnLogout.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLogout.Font = new Font("Microsoft Sans Serif", 9F);
             btnLogout.ForeColor = SystemColors.ButtonFace;
             btnLogout.Image = (Image)resources.GetObject("btnLogout.Image");
             btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
@@ -318,35 +348,6 @@
             mainPanel.Size = new Size(1101, 660);
             mainPanel.TabIndex = 2;
             // 
-            // panel2
-            // 
-            panel2.Controls.Add(btnRole);
-            panel2.Location = new Point(0, 68);
-            panel2.Margin = new Padding(0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(179, 34);
-            panel2.TabIndex = 4;
-            // 
-            // btnRole
-            // 
-            btnRole.BackColor = Color.FromArgb(41, 128, 185);
-            btnRole.Dock = DockStyle.Fill;
-            btnRole.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
-            btnRole.FlatStyle = FlatStyle.Flat;
-            btnRole.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRole.ForeColor = SystemColors.ButtonFace;
-            btnRole.Image = (Image)resources.GetObject("btnRole.Image");
-            btnRole.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRole.Location = new Point(0, 0);
-            btnRole.Margin = new Padding(0);
-            btnRole.Name = "btnRole";
-            btnRole.Size = new Size(179, 34);
-            btnRole.TabIndex = 3;
-            btnRole.Text = "              Role";
-            btnRole.TextAlign = ContentAlignment.MiddleLeft;
-            btnRole.UseVisualStyleBackColor = false;
-            btnRole.Click += btnRole_Click;
-            // 
             // superAdmin
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -365,12 +366,12 @@
             sidebarContainer.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel3.ResumeLayout(false);
+            panel2.ResumeLayout(false);
             menuContainer.ResumeLayout(false);
             panel9.ResumeLayout(false);
             panel6.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel8.ResumeLayout(false);
-            panel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -390,7 +391,7 @@
         private Panel panel8;
         private Button btnLogout;
         private Panel panel10;
-        private Button button9;
+        private Button btnProfile;
         private System.Windows.Forms.Timer menuTransition;
         private System.Windows.Forms.Timer sidebarTransition;
         private Panel mainPanel;

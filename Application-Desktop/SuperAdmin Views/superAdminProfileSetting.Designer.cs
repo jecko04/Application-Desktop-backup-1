@@ -1,6 +1,6 @@
-﻿namespace Application_Desktop.Admin_Views
+﻿namespace Application_Desktop.SuperAdmin_Views
 {
-    partial class adminProfileSettings
+    partial class superAdminProfileSetting
     {
         /// <summary>
         /// Required designer variable.
@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminProfileSettings));
-            btnProfileSave = new Button();
-            btnDelete = new Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(superAdminProfileSetting));
             panel1 = new Panel();
             label40 = new Label();
             pictureBox1 = new PictureBox();
@@ -40,6 +38,7 @@
             deleteAccountPanel = new Panel();
             label14 = new Label();
             label15 = new Label();
+            btnDelete = new Button();
             panel31 = new Panel();
             updatePasswordPanel = new Panel();
             borderNew = new Panel();
@@ -73,6 +72,7 @@
             panel16 = new Panel();
             panel17 = new Panel();
             txtEmail = new TextBox();
+            btnProfileSave = new Button();
             label3 = new Label();
             borderLast = new Panel();
             panel5 = new Panel();
@@ -110,38 +110,6 @@
             ((System.ComponentModel.ISupportInitialize)errorProvider3).BeginInit();
             SuspendLayout();
             // 
-            // btnProfileSave
-            // 
-            btnProfileSave.BackColor = Color.FromArgb(52, 152, 219);
-            btnProfileSave.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
-            btnProfileSave.FlatStyle = FlatStyle.Flat;
-            btnProfileSave.Font = new Font("Microsoft Sans Serif", 9F);
-            btnProfileSave.ForeColor = SystemColors.ButtonFace;
-            btnProfileSave.Location = new Point(27, 221);
-            btnProfileSave.Margin = new Padding(0, 0, 0, 1);
-            btnProfileSave.Name = "btnProfileSave";
-            btnProfileSave.Size = new Size(56, 24);
-            btnProfileSave.TabIndex = 19;
-            btnProfileSave.Text = "Save";
-            btnProfileSave.UseVisualStyleBackColor = false;
-            btnProfileSave.Click += btnProfileSave_Click;
-            // 
-            // btnDelete
-            // 
-            btnDelete.BackColor = Color.FromArgb(231, 76, 60);
-            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Microsoft Sans Serif", 9F);
-            btnDelete.ForeColor = SystemColors.ButtonFace;
-            btnDelete.Location = new Point(28, 78);
-            btnDelete.Margin = new Padding(0, 0, 0, 1);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(122, 24);
-            btnDelete.TabIndex = 18;
-            btnDelete.Text = "Delete Account";
-            btnDelete.UseVisualStyleBackColor = false;
-            btnDelete.Click += btnDelete_Click;
-            // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -152,7 +120,7 @@
             panel1.Location = new Point(0, -1);
             panel1.Name = "panel1";
             panel1.Size = new Size(1101, 30);
-            panel1.TabIndex = 21;
+            panel1.TabIndex = 22;
             // 
             // label40
             // 
@@ -179,7 +147,7 @@
             // 
             flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutPanel1.Location = new Point(1503, 0);
+            flowLayoutPanel1.Location = new Point(2404, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(502, 30);
             flowLayoutPanel1.TabIndex = 1;
@@ -194,9 +162,8 @@
             panel2.Controls.Add(profileInfoPanel);
             panel2.Location = new Point(0, 27);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1101, 660);
-            panel2.TabIndex = 22;
-            panel2.Paint += panel2_Paint;
+            panel2.Size = new Size(1101, 633);
+            panel2.TabIndex = 23;
             // 
             // deleteAccountPanel
             // 
@@ -230,6 +197,22 @@
             label15.Size = new Size(92, 16);
             label15.TabIndex = 56;
             label15.Text = "Delete Account";
+            // 
+            // btnDelete
+            // 
+            btnDelete.BackColor = Color.FromArgb(231, 76, 60);
+            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Font = new Font("Microsoft Sans Serif", 9F);
+            btnDelete.ForeColor = SystemColors.ButtonFace;
+            btnDelete.Location = new Point(28, 78);
+            btnDelete.Margin = new Padding(0, 0, 0, 1);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(122, 24);
+            btnDelete.TabIndex = 18;
+            btnDelete.Text = "Delete Account";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // panel31
             // 
@@ -578,6 +561,22 @@
             txtEmail.Size = new Size(457, 25);
             txtEmail.TabIndex = 1;
             // 
+            // btnProfileSave
+            // 
+            btnProfileSave.BackColor = Color.FromArgb(52, 152, 219);
+            btnProfileSave.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnProfileSave.FlatStyle = FlatStyle.Flat;
+            btnProfileSave.Font = new Font("Microsoft Sans Serif", 9F);
+            btnProfileSave.ForeColor = SystemColors.ButtonFace;
+            btnProfileSave.Location = new Point(27, 221);
+            btnProfileSave.Margin = new Padding(0, 0, 0, 1);
+            btnProfileSave.Name = "btnProfileSave";
+            btnProfileSave.Size = new Size(56, 24);
+            btnProfileSave.TabIndex = 19;
+            btnProfileSave.Text = "Save";
+            btnProfileSave.UseVisualStyleBackColor = false;
+            btnProfileSave.Click += btnProfileSave_Click;
+            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -764,7 +763,7 @@
             errorProvider3.ContainerControl = this;
             errorProvider3.Icon = (Icon)resources.GetObject("errorProvider3.Icon");
             // 
-            // adminProfileSettings
+            // superAdminProfileSetting
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -772,9 +771,9 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "adminProfileSettings";
-            Text = "adminProfileSettings";
-            Load += adminProfileSettings_Load;
+            Name = "superAdminProfileSetting";
+            Text = "superAdminProfileSetting";
+            Load += superAdminProfileSetting_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -805,37 +804,16 @@
 
         #endregion
 
-        private Button btnProfileSave;
-        private Button btnDelete;
         private Panel panel1;
         private Label label40;
         private PictureBox pictureBox1;
         private FlowLayoutPanel flowLayoutPanel1;
         private Panel panel2;
-        private Panel profileInfoPanel;
-        private Label label10;
-        private Label label5;
-        private Panel borderFirst;
-        private Panel panel10;
-        private Panel panel11;
-        private Panel panel12;
-        private Panel panel13;
-        private TextBox txtFirstname;
-        private Label label1;
-        private Panel borderEmail;
-        private Panel panel14;
-        private Panel panel15;
-        private Panel panel16;
-        private Panel panel17;
-        private TextBox txtEmail;
-        private Label label3;
-        private Panel borderLast;
-        private Panel panel5;
-        private Panel panel6;
-        private Panel panel7;
-        private Panel panel8;
-        private TextBox txtLastname;
-        private Label label2;
+        private Panel deleteAccountPanel;
+        private Label label14;
+        private Label label15;
+        private Button btnDelete;
+        private Panel panel31;
         private Panel updatePasswordPanel;
         private Panel borderNew;
         private Panel panel9;
@@ -861,10 +839,31 @@
         private Label label7;
         private Label label8;
         private Label label9;
-        private Panel panel31;
-        private Panel deleteAccountPanel;
-        private Label label14;
-        private Label label15;
+        private Panel profileInfoPanel;
+        private Panel borderEmail;
+        private Panel panel14;
+        private Panel panel15;
+        private Panel panel16;
+        private Panel panel17;
+        private TextBox txtEmail;
+        private Button btnProfileSave;
+        private Label label3;
+        private Panel borderLast;
+        private Panel panel5;
+        private Panel panel6;
+        private Panel panel7;
+        private Panel panel8;
+        private TextBox txtLastname;
+        private Label label2;
+        private Panel borderFirst;
+        private Panel panel10;
+        private Panel panel11;
+        private Panel panel12;
+        private Panel panel13;
+        private TextBox txtFirstname;
+        private Label label1;
+        private Label label10;
+        private Label label5;
         private ErrorProvider errorProvider1;
         private ErrorProvider errorProvider2;
         private ErrorProvider errorProvider3;

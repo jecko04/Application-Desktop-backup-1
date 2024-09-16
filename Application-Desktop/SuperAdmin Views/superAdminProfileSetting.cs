@@ -6,26 +6,23 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using static Application_Desktop.Models.EllipseManager;
 
-namespace Application_Desktop.Admin_Views
+namespace Application_Desktop.SuperAdmin_Views
 {
-    public partial class adminProfileSettings : Form
+    public partial class superAdminProfileSetting : Form
     {
-
-        private readonly adminPage _adminPage;
-        public adminProfileSettings(adminPage adminPage)
+        private readonly superAdmin _superAdmin;
+        public superAdminProfileSetting(superAdmin superadmin)
         {
             InitializeComponent();
-            _adminPage = adminPage;
+            _superAdmin = superadmin;
 
             ElipseManager elipseManager = new ElipseManager(5);
             elipseManager.ApplyElipseToAllButtons(this);
@@ -34,8 +31,6 @@ namespace Application_Desktop.Admin_Views
             elipseManagerPanel.ApplyElipseToPanel(profileInfoPanel);
             elipseManagerPanel.ApplyElipseToPanel(updatePasswordPanel);
             elipseManagerPanel.ApplyElipseToPanel(deleteAccountPanel);
-
-
         }
 
         void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
@@ -48,72 +43,22 @@ namespace Application_Desktop.Admin_Views
             alertbox.IconAlertBox = icon;
             alertbox.Show();
         }
-        private async void adminProfileSettings_Load(object sender, EventArgs e)
+
+        private async void superAdminProfileSetting_Load(object sender, EventArgs e)
         {
-            await GetAdminNames();
+            await GetSuperAdminNames();
         }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
-        private async void btnProfileSave_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var profileInfo = new profileUpdateInfoModel
-                {
-                    _name = txtFirstname.Text + " " + txtLastname.Text,
-                    _email = txtEmail.Text,
-                    _firstname = txtFirstname.Text,
-                    _lastname = txtLastname.Text
-                };
-
-                var validationErrors = profileInfo.validate();
-
-                errorProvider1.Clear();
-                errorProvider2.Clear();
-
-                foreach (var error in validationErrors)
-                {
-                    if (error.Key == "Firstname")
-                        errorProvider1.SetError(borderFirst, error.Value);
-                    if (error.Key == "Lastname")
-                        errorProvider1.SetError(borderLast, error.Value);
-                    if (error.Key == "Email")
-                        errorProvider2.SetError(borderEmail, error.Value);
-                    // Add other fields as necessary
-                }
-
-                if (validationErrors.Count == 0)
-                {
-                    profileUpdateInfoModel updateProfile = new profileUpdateInfoModel
-                    {
-                        _name = txtFirstname.Text + " " + txtLastname.Text,
-                        _email = txtEmail.Text,
-                    };
-                    await UpdateProfileInfo(updateProfile);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
 
         //Select Name and Email of Current User
 
-        private async Task<profileUpdateInfoModel> GetAdminNames()
+        private async Task<superAdminProfileUpdateInfoModel> GetSuperAdminNames()
         {
             int admin = session.LoggedInSession;
 
-            string query = @"Select Name, Email From admin Where Admin_ID = @admin";
+            string query = @"Select Name, Email From superadmin Where SuperAdmin_ID = @superadmin";
 
             MySqlConnection conn = databaseHelper.getConnection();
-            profileUpdateInfoModel adminNames = new profileUpdateInfoModel();
+            superAdminProfileUpdateInfoModel adminNames = new superAdminProfileUpdateInfoModel();
             try
             {
                 if (conn.State != ConnectionState.Open)
@@ -121,7 +66,7 @@ namespace Application_Desktop.Admin_Views
                     await conn.OpenAsync();
                 }
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@admin", admin);
+                cmd.Parameters.AddWithValue("@superadmin", admin);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 if (await reader.ReadAsync())
@@ -173,11 +118,11 @@ namespace Application_Desktop.Admin_Views
             return (firstName, lastName);
         }
 
-        //Update Profile
-        private async Task UpdateProfileInfo(profileUpdateInfoModel adminProfile)
+        //Delete Account
+        private async Task<bool> DeleteAccount()
         {
-            int admin = session.LoggedInSession;
-            string query = @"UPDATE admin SET Name = @name, Email = @email Where Admin_ID = @adminId";
+            int adminId = session.LoggedInSession;
+            string query = @"DELETE from superadmin Where SuperAdmin_ID = @admin";
 
             MySqlConnection conn = databaseHelper.getConnection();
             try
@@ -187,29 +132,64 @@ namespace Application_Desktop.Admin_Views
                     await conn.OpenAsync();
                 }
                 MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@admin", adminId);
+                int rowsAffected = await cmd.ExecuteNonQueryAsync();
 
-                cmd.Parameters.AddWithValue("@name", adminProfile._name);
-                cmd.Parameters.AddWithValue("@email", adminProfile._email);
-                cmd.Parameters.AddWithValue("@adminId", admin);
-                await cmd.ExecuteNonQueryAsync();
 
-                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Profile information has been successfully updated", Properties.Resources.success);
+
+                return rowsAffected > 0;
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error Update" + ex.Message);
+                MessageBox.Show(ex.Message);
             }
             finally { await conn.CloseAsync(); }
+            return false;
+        }
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Warning: Deleting your account will permanently delete all of its data. Are you sure you want to proceed?",
+                "Delete Account",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+                );
+            if (result == DialogResult.Yes)
+            {
+                // Proceed with deletion
+                bool isDeleted = await DeleteAccount();
+                if (isDeleted)
+                {
+
+                    session.Logout();
+
+                    this.BeginInvoke(new Action(() =>
+                    {
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Account deleted successfully. You have been logged out", Properties.Resources.success);
+
+                        Task.Delay(2000).ContinueWith(t =>
+                        {
+                            this.Invoke(new Action(() =>
+                            {
+                                _superAdmin.Close();
+
+                                loginPage loginForm = new loginPage();
+                                loginForm.Show();
+                            }));
+                        });
+                    }));
+                }
+            }
         }
 
         //Changed password
-        private async Task<bool> GetCurrentPassword(adminUpdatePasswordModel adminPassword)
+        private async Task<bool> GetCurrentPassword(superAdminUpdatePasswordModel superAdminPassword)
         {
             bool passwordVerify = false;
             int adminID = session.LoggedInSession;
 
-            string query = "Select Password from admin where Admin_ID = @adminID";
+            string query = "Select Password from superadmin where SuperAdmin_ID = @adminID";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -230,7 +210,7 @@ namespace Application_Desktop.Admin_Views
                 while (await reader.ReadAsync())
                 {
                     string storedHash = reader.GetString("Password");
-                    if (verify.VerifyPassword(adminPassword._currentPassword, storedHash))
+                    if (verify.VerifyPassword(superAdminPassword._currentPassword, storedHash))
                     {
                         passwordVerify = true;
                         errorProvider1.SetError(borderCurrent, string.Empty);
@@ -252,15 +232,11 @@ namespace Application_Desktop.Admin_Views
             return passwordVerify;
         }
 
-        private async Task<bool> ChangePassword(adminUpdatePasswordModel adminPassword)
+        private async Task<bool> ChangePassword(superAdminUpdatePasswordModel superAdminPassword)
         {
-            string current = txtCurrent.Text;
-            string newPass = txtNew.Text;
-            string confirm = txtConfirm.Text;
-
             int adminID = session.LoggedInSession;
 
-            string query = @"Update admin Set Password = @password Where Admin_ID = @admin";
+            string query = @"Update superadmin Set Password = @password Where SuperAdmin_ID = @admin";
 
             MySqlConnection conn = databaseHelper.getConnection();
             try
@@ -273,8 +249,9 @@ namespace Application_Desktop.Admin_Views
                 cmd.Parameters.AddWithValue("@admin", adminID);
 
                 cryptography hash = new cryptography();
-                string newHash = hash.HashPassword(adminPassword._newPassword);
+                string newHash = hash.HashPassword(superAdminPassword._newPassword);
                 cmd.Parameters.AddWithValue("@password", newHash);
+
                 await cmd.ExecuteNonQueryAsync();
 
                 txtCurrent.Text = "";
@@ -290,11 +267,12 @@ namespace Application_Desktop.Admin_Views
             return false;
         }
 
+
         private async void btnSavePass_Click(object sender, EventArgs e)
         {
             try
             {
-                var profilePassword = new adminUpdatePasswordModel
+                var profilePassword = new superAdminUpdatePasswordModel
                 {
                     _confrimPassword = txtConfirm.Text,
                     _newPassword = txtNew.Text,
@@ -326,8 +304,8 @@ namespace Application_Desktop.Admin_Views
 
                 if (validationErrors.Count == 0)
                 {
-                    
-                    adminUpdatePasswordModel updatePassword = new adminUpdatePasswordModel
+
+                    superAdminUpdatePasswordModel updatePassword = new superAdminUpdatePasswordModel
                     {
                         _currentPassword = txtCurrent.Text,
                         _newPassword = txtNew.Text,
@@ -338,10 +316,10 @@ namespace Application_Desktop.Admin_Views
                         bool isChanged = await ChangePassword(updatePassword);
                         if (isChanged)
                         {
-                            
+
                             session.Logout();
 
-                            
+
 
                             this.BeginInvoke(new Action(() =>
                             {
@@ -351,7 +329,7 @@ namespace Application_Desktop.Admin_Views
                                 {
                                     this.Invoke(new Action(() =>
                                     {
-                                        _adminPage.Close();
+                                        _superAdmin.Close();
 
                                         loginPage loginForm = new loginPage();
                                         loginForm.Show();
@@ -369,11 +347,12 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
-        //Delete Account
-        private async Task<bool> DeleteAccount()
+
+        //Update Profile
+        private async Task UpdateProfileInfo(superAdminProfileUpdateInfoModel superAdminProfile)
         {
-            int adminId = session.LoggedInSession;
-            string query = @"DELETE from admin Where Admin_ID = @admin";
+            int admin = session.LoggedInSession;
+            string query = @"UPDATE superadmin SET Name = @name, Email = @email Where SuperAdmin_ID = @adminId";
 
             MySqlConnection conn = databaseHelper.getConnection();
             try
@@ -383,56 +362,63 @@ namespace Application_Desktop.Admin_Views
                     await conn.OpenAsync();
                 }
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@admin", adminId);
-                int rowsAffected = await cmd.ExecuteNonQueryAsync();
 
-                
+                cmd.Parameters.AddWithValue("@name", superAdminProfile._name);
+                cmd.Parameters.AddWithValue("@email", superAdminProfile._email);
+                cmd.Parameters.AddWithValue("@adminId", admin);
+                await cmd.ExecuteNonQueryAsync();
 
-                return rowsAffected > 0;
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Profile information has been successfully updated", Properties.Resources.success);
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"Error Update" + ex.Message);
             }
             finally { await conn.CloseAsync(); }
-            return false;
         }
 
-        private async void btnDelete_Click(object sender, EventArgs e)
+        private async void btnProfileSave_Click(object sender, EventArgs e)
         {
-            
-            DialogResult result = MessageBox.Show(
-                "Warning: Deleting your account will permanently delete all of its data. Are you sure you want to proceed?",
-                "Delete Account",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-                );
-            if (result == DialogResult.Yes)
+            try
             {
-                // Proceed with deletion
-                bool isDeleted = await DeleteAccount();
-                if (isDeleted)
+                var profileInfo = new superAdminProfileUpdateInfoModel
                 {
+                    _name = txtFirstname.Text + " " + txtLastname.Text,
+                    _email = txtEmail.Text,
+                    _firstname = txtFirstname.Text,
+                    _lastname = txtLastname.Text
+                };
 
-                    session.Logout();
+                var validationErrors = profileInfo.validate();
 
-                    this.BeginInvoke(new Action(() =>
-                    {
-                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "Account deleted successfully. You have been logged out", Properties.Resources.success);
+                errorProvider1.Clear();
+                errorProvider2.Clear();
 
-                        Task.Delay(2000).ContinueWith(t =>
-                        {
-                            this.Invoke(new Action(() =>
-                            {
-                                _adminPage.Close();
-
-                                loginPage loginForm = new loginPage();
-                                loginForm.Show();
-                            }));
-                        });
-                    }));
+                foreach (var error in validationErrors)
+                {
+                    if (error.Key == "Firstname")
+                        errorProvider1.SetError(borderFirst, error.Value);
+                    if (error.Key == "Lastname")
+                        errorProvider1.SetError(borderLast, error.Value);
+                    if (error.Key == "Email")
+                        errorProvider2.SetError(borderEmail, error.Value);
+                    // Add other fields as necessary
                 }
+
+                if (validationErrors.Count == 0)
+                {
+                    superAdminProfileUpdateInfoModel updateProfile = new superAdminProfileUpdateInfoModel
+                    {
+                        _name = txtFirstname.Text + " " + txtLastname.Text,
+                        _email = txtEmail.Text,
+                    };
+                    await UpdateProfileInfo(updateProfile);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
