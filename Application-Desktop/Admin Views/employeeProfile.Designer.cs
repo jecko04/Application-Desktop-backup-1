@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(employeeProfile));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             label40 = new Label();
             pictureBox1 = new PictureBox();
@@ -59,7 +60,7 @@
             // label40
             // 
             label40.AutoSize = true;
-            label40.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label40.Font = new Font("Tahoma", 9.75F, FontStyle.Bold);
             label40.Location = new Point(37, 9);
             label40.Name = "label40";
             label40.Size = new Size(107, 16);
@@ -98,20 +99,30 @@
             viewEmployeeDetails.BorderStyle = BorderStyle.None;
             viewEmployeeDetails.CellBorderStyle = DataGridViewCellBorderStyle.None;
             viewEmployeeDetails.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            viewEmployeeDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.Padding = new Padding(3);
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(52, 152, 219);
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            viewEmployeeDetails.DefaultCellStyle = dataGridViewCellStyle1;
-            viewEmployeeDetails.Location = new Point(-2, 42);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            viewEmployeeDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            viewEmployeeDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle2.SelectionBackColor = Color.Gainsboro;
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            viewEmployeeDetails.DefaultCellStyle = dataGridViewCellStyle2;
+            viewEmployeeDetails.EnableHeadersVisualStyles = false;
+            viewEmployeeDetails.Location = new Point(11, 42);
             viewEmployeeDetails.Margin = new Padding(0, 0, 10, 0);
             viewEmployeeDetails.Name = "viewEmployeeDetails";
             viewEmployeeDetails.RowTemplate.Height = 25;
-            viewEmployeeDetails.Size = new Size(983, 325);
+            viewEmployeeDetails.Size = new Size(970, 310);
             viewEmployeeDetails.TabIndex = 2;
             viewEmployeeDetails.CellContentClick += viewEmployeeDetails_CellContentClick;
             // 
@@ -121,7 +132,7 @@
             btnCreate.BackColor = Color.FromArgb(52, 152, 219);
             btnCreate.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
             btnCreate.FlatStyle = FlatStyle.Flat;
-            btnCreate.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCreate.Font = new Font("Microsoft Sans Serif", 9F);
             btnCreate.ForeColor = SystemColors.ButtonFace;
             btnCreate.Location = new Point(991, 42);
             btnCreate.Margin = new Padding(0, 0, 0, 1);
@@ -138,7 +149,7 @@
             btnRefresh.BackColor = Color.FromArgb(52, 152, 219);
             btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
             btnRefresh.FlatStyle = FlatStyle.Flat;
-            btnRefresh.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRefresh.Font = new Font("Microsoft Sans Serif", 9F);
             btnRefresh.ForeColor = SystemColors.ButtonFace;
             btnRefresh.Image = (Image)resources.GetObject("btnRefresh.Image");
             btnRefresh.Location = new Point(991, 67);
@@ -156,7 +167,7 @@
             btnDelete.BackColor = Color.FromArgb(231, 76, 60);
             btnDelete.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
             btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDelete.Font = new Font("Microsoft Sans Serif", 9F);
             btnDelete.ForeColor = SystemColors.ButtonFace;
             btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
             btnDelete.Location = new Point(991, 92);

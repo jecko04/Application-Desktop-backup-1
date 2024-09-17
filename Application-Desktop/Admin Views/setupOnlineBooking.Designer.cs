@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(setupOnlineBooking));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
-            label40 = new Label();
             pictureBox1 = new PictureBox();
-            viewDentalServices = new DataGridView();
-            borderFetchTitle = new Panel();
+            label40 = new Label();
+            borderDayofweek = new Panel();
             panel35 = new Panel();
             panel36 = new Panel();
             panel37 = new Panel();
             panel38 = new Panel();
-            txtFetchTitle = new ComboBox();
+            txtDayofweek = new ComboBox();
             label8 = new Label();
             label1 = new Label();
             borderStartTime = new Panel();
@@ -63,42 +63,43 @@
             panel4 = new Panel();
             panel5 = new Panel();
             panel6 = new Panel();
-            txtFetchBranch = new ComboBox();
+            txtBranch = new ComboBox();
             label2 = new Label();
             btnNewAccount = new Button();
             btnRefresh = new Button();
             btnView = new Button();
-            panel2 = new Panel();
+            borderStatus = new Panel();
             panel7 = new Panel();
             panel8 = new Panel();
             panel9 = new Panel();
             panel10 = new Panel();
-            comboBox1 = new ComboBox();
+            txtStatus = new ComboBox();
             label3 = new Label();
-            panel11 = new Panel();
+            borderDentalServices = new Panel();
             panel12 = new Panel();
             panel13 = new Panel();
             panel14 = new Panel();
             panel15 = new Panel();
-            comboBox2 = new ComboBox();
-            borderTitle = new Panel();
+            txtDentalServices = new ComboBox();
+            borderRangePrice = new Panel();
             panel16 = new Panel();
             panel17 = new Panel();
             panel18 = new Panel();
             panel20 = new Panel();
-            txtTitle = new TextBox();
+            txtRangePrice = new TextBox();
             label4 = new Label();
             panel21 = new Panel();
+            viewEmployeeDetails = new DataGridView();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)viewDentalServices).BeginInit();
-            borderFetchTitle.SuspendLayout();
+            borderDayofweek.SuspendLayout();
             borderStartTime.SuspendLayout();
             borderEndtime.SuspendLayout();
             borderBranch.SuspendLayout();
-            panel2.SuspendLayout();
-            panel11.SuspendLayout();
-            borderTitle.SuspendLayout();
+            borderStatus.SuspendLayout();
+            borderDentalServices.SuspendLayout();
+            borderRangePrice.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)viewEmployeeDetails).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -109,16 +110,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1106, 30);
             panel1.TabIndex = 0;
-            // 
-            // label40
-            // 
-            label40.AutoSize = true;
-            label40.Font = new Font("Tahoma", 9.75F, FontStyle.Bold);
-            label40.Location = new Point(33, 7);
-            label40.Name = "label40";
-            label40.Size = new Size(165, 16);
-            label40.TabIndex = 90;
-            label40.Text = "Setup  >  Online Booking";
             // 
             // pictureBox1
             // 
@@ -131,45 +122,27 @@
             pictureBox1.TabIndex = 89;
             pictureBox1.TabStop = false;
             // 
-            // viewDentalServices
+            // label40
             // 
-            viewDentalServices.AllowUserToAddRows = false;
-            viewDentalServices.AllowUserToDeleteRows = false;
-            viewDentalServices.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            viewDentalServices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            viewDentalServices.BackgroundColor = Color.White;
-            viewDentalServices.BorderStyle = BorderStyle.None;
-            viewDentalServices.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            viewDentalServices.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            viewDentalServices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            viewDentalServices.DefaultCellStyle = dataGridViewCellStyle2;
-            viewDentalServices.Location = new Point(13, 144);
-            viewDentalServices.Margin = new Padding(0, 0, 10, 0);
-            viewDentalServices.Name = "viewDentalServices";
-            viewDentalServices.ReadOnly = true;
-            viewDentalServices.RowTemplate.Height = 25;
-            viewDentalServices.Size = new Size(951, 279);
-            viewDentalServices.TabIndex = 2;
-            viewDentalServices.CellContentClick += view_CellContentClick;
+            label40.AutoSize = true;
+            label40.Font = new Font("Tahoma", 9.75F, FontStyle.Bold);
+            label40.Location = new Point(33, 7);
+            label40.Name = "label40";
+            label40.Size = new Size(165, 16);
+            label40.TabIndex = 90;
+            label40.Text = "Setup  >  Online Booking";
             // 
-            // borderFetchTitle
+            // borderDayofweek
             // 
-            borderFetchTitle.Controls.Add(panel35);
-            borderFetchTitle.Controls.Add(panel36);
-            borderFetchTitle.Controls.Add(panel37);
-            borderFetchTitle.Controls.Add(panel38);
-            borderFetchTitle.Controls.Add(txtFetchTitle);
-            borderFetchTitle.Location = new Point(13, 74);
-            borderFetchTitle.Name = "borderFetchTitle";
-            borderFetchTitle.Size = new Size(213, 24);
-            borderFetchTitle.TabIndex = 80;
+            borderDayofweek.Controls.Add(panel35);
+            borderDayofweek.Controls.Add(panel36);
+            borderDayofweek.Controls.Add(panel37);
+            borderDayofweek.Controls.Add(panel38);
+            borderDayofweek.Controls.Add(txtDayofweek);
+            borderDayofweek.Location = new Point(9, 64);
+            borderDayofweek.Name = "borderDayofweek";
+            borderDayofweek.Size = new Size(213, 24);
+            borderDayofweek.TabIndex = 80;
             // 
             // panel35
             // 
@@ -207,26 +180,27 @@
             panel38.Size = new Size(1, 24);
             panel38.TabIndex = 0;
             // 
-            // txtFetchTitle
+            // txtDayofweek
             // 
-            txtFetchTitle.BackColor = SystemColors.InactiveBorder;
-            txtFetchTitle.Dock = DockStyle.Fill;
-            txtFetchTitle.DropDownHeight = 75;
-            txtFetchTitle.Font = new Font("Tahoma", 9.75F);
-            txtFetchTitle.FormattingEnabled = true;
-            txtFetchTitle.IntegralHeight = false;
-            txtFetchTitle.ItemHeight = 16;
-            txtFetchTitle.Location = new Point(0, 0);
-            txtFetchTitle.Name = "txtFetchTitle";
-            txtFetchTitle.Size = new Size(213, 24);
-            txtFetchTitle.TabIndex = 56;
+            txtDayofweek.BackColor = SystemColors.InactiveBorder;
+            txtDayofweek.Dock = DockStyle.Fill;
+            txtDayofweek.DropDownHeight = 75;
+            txtDayofweek.Font = new Font("Tahoma", 9.75F);
+            txtDayofweek.FormattingEnabled = true;
+            txtDayofweek.IntegralHeight = false;
+            txtDayofweek.ItemHeight = 16;
+            txtDayofweek.Location = new Point(0, 0);
+            txtDayofweek.Name = "txtDayofweek";
+            txtDayofweek.Size = new Size(213, 24);
+            txtDayofweek.TabIndex = 56;
+            txtDayofweek.SelectedIndexChanged += txtDayofweek_SelectedIndexChanged;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Tahoma", 9.75F);
             label8.ForeColor = Color.DimGray;
-            label8.Location = new Point(14, 55);
+            label8.Location = new Point(10, 45);
             label8.Name = "label8";
             label8.Size = new Size(77, 16);
             label8.TabIndex = 79;
@@ -237,7 +211,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Tahoma", 9.75F);
             label1.ForeColor = Color.DimGray;
-            label1.Location = new Point(14, 124);
+            label1.Location = new Point(10, 114);
             label1.Name = "label1";
             label1.Size = new Size(95, 16);
             label1.TabIndex = 81;
@@ -252,7 +226,7 @@
             borderStartTime.Controls.Add(panel51);
             borderStartTime.Controls.Add(dtpStartTime);
             borderStartTime.Font = new Font("Tahoma", 9.75F);
-            borderStartTime.Location = new Point(250, 75);
+            borderStartTime.Location = new Point(246, 65);
             borderStartTime.Name = "borderStartTime";
             borderStartTime.Size = new Size(107, 23);
             borderStartTime.TabIndex = 85;
@@ -328,7 +302,7 @@
             borderEndtime.Controls.Add(panel34);
             borderEndtime.Controls.Add(dtpEndtime);
             borderEndtime.Font = new Font("Tahoma", 9.75F);
-            borderEndtime.Location = new Point(382, 74);
+            borderEndtime.Location = new Point(378, 64);
             borderEndtime.Name = "borderEndtime";
             borderEndtime.Size = new Size(107, 23);
             borderEndtime.TabIndex = 84;
@@ -400,7 +374,7 @@
             label18.AutoSize = true;
             label18.Font = new Font("Tahoma", 9.75F);
             label18.ForeColor = Color.DimGray;
-            label18.Location = new Point(382, 55);
+            label18.Location = new Point(378, 45);
             label18.Name = "label18";
             label18.Size = new Size(76, 16);
             label18.TabIndex = 83;
@@ -411,7 +385,7 @@
             label17.AutoSize = true;
             label17.Font = new Font("Tahoma", 9.75F);
             label17.ForeColor = Color.DimGray;
-            label17.Location = new Point(250, 54);
+            label17.Location = new Point(246, 44);
             label17.Name = "label17";
             label17.Size = new Size(83, 16);
             label17.TabIndex = 82;
@@ -423,8 +397,8 @@
             borderBranch.Controls.Add(panel4);
             borderBranch.Controls.Add(panel5);
             borderBranch.Controls.Add(panel6);
-            borderBranch.Controls.Add(txtFetchBranch);
-            borderBranch.Location = new Point(593, 74);
+            borderBranch.Controls.Add(txtBranch);
+            borderBranch.Location = new Point(589, 64);
             borderBranch.Name = "borderBranch";
             borderBranch.Size = new Size(213, 24);
             borderBranch.TabIndex = 87;
@@ -465,26 +439,26 @@
             panel6.Size = new Size(1, 24);
             panel6.TabIndex = 0;
             // 
-            // txtFetchBranch
+            // txtBranch
             // 
-            txtFetchBranch.BackColor = SystemColors.InactiveBorder;
-            txtFetchBranch.Dock = DockStyle.Fill;
-            txtFetchBranch.DropDownHeight = 75;
-            txtFetchBranch.Font = new Font("Tahoma", 9.75F);
-            txtFetchBranch.FormattingEnabled = true;
-            txtFetchBranch.IntegralHeight = false;
-            txtFetchBranch.ItemHeight = 16;
-            txtFetchBranch.Location = new Point(0, 0);
-            txtFetchBranch.Name = "txtFetchBranch";
-            txtFetchBranch.Size = new Size(213, 24);
-            txtFetchBranch.TabIndex = 56;
+            txtBranch.BackColor = SystemColors.InactiveBorder;
+            txtBranch.Dock = DockStyle.Fill;
+            txtBranch.DropDownHeight = 75;
+            txtBranch.Font = new Font("Tahoma", 9.75F);
+            txtBranch.FormattingEnabled = true;
+            txtBranch.IntegralHeight = false;
+            txtBranch.ItemHeight = 16;
+            txtBranch.Location = new Point(0, 0);
+            txtBranch.Name = "txtBranch";
+            txtBranch.Size = new Size(213, 24);
+            txtBranch.TabIndex = 56;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Tahoma", 9.75F);
             label2.ForeColor = Color.DimGray;
-            label2.Location = new Point(594, 55);
+            label2.Location = new Point(590, 45);
             label2.Name = "label2";
             label2.Size = new Size(83, 16);
             label2.TabIndex = 86;
@@ -498,7 +472,7 @@
             btnNewAccount.FlatStyle = FlatStyle.Flat;
             btnNewAccount.Font = new Font("Microsoft Sans Serif", 9F);
             btnNewAccount.ForeColor = SystemColors.ButtonFace;
-            btnNewAccount.Location = new Point(974, 144);
+            btnNewAccount.Location = new Point(970, 134);
             btnNewAccount.Margin = new Padding(0, 0, 0, 1);
             btnNewAccount.Name = "btnNewAccount";
             btnNewAccount.Size = new Size(119, 24);
@@ -515,7 +489,7 @@
             btnRefresh.Font = new Font("Microsoft Sans Serif", 9F);
             btnRefresh.ForeColor = SystemColors.ButtonFace;
             btnRefresh.Image = (Image)resources.GetObject("btnRefresh.Image");
-            btnRefresh.Location = new Point(974, 194);
+            btnRefresh.Location = new Point(970, 184);
             btnRefresh.Margin = new Padding(0, 0, 0, 1);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(119, 24);
@@ -531,7 +505,7 @@
             btnView.FlatStyle = FlatStyle.Flat;
             btnView.Font = new Font("Microsoft Sans Serif", 9F);
             btnView.ForeColor = SystemColors.ButtonFace;
-            btnView.Location = new Point(974, 169);
+            btnView.Location = new Point(970, 159);
             btnView.Margin = new Padding(0, 0, 0, 1);
             btnView.Name = "btnView";
             btnView.Size = new Size(119, 24);
@@ -539,17 +513,17 @@
             btnView.Text = "View All";
             btnView.UseVisualStyleBackColor = false;
             // 
-            // panel2
+            // borderStatus
             // 
-            panel2.Controls.Add(panel7);
-            panel2.Controls.Add(panel8);
-            panel2.Controls.Add(panel9);
-            panel2.Controls.Add(panel10);
-            panel2.Controls.Add(comboBox1);
-            panel2.Location = new Point(830, 74);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(134, 24);
-            panel2.TabIndex = 89;
+            borderStatus.Controls.Add(panel7);
+            borderStatus.Controls.Add(panel8);
+            borderStatus.Controls.Add(panel9);
+            borderStatus.Controls.Add(panel10);
+            borderStatus.Controls.Add(txtStatus);
+            borderStatus.Location = new Point(826, 64);
+            borderStatus.Name = "borderStatus";
+            borderStatus.Size = new Size(134, 24);
+            borderStatus.TabIndex = 89;
             // 
             // panel7
             // 
@@ -587,42 +561,42 @@
             panel10.Size = new Size(1, 24);
             panel10.TabIndex = 0;
             // 
-            // comboBox1
+            // txtStatus
             // 
-            comboBox1.BackColor = SystemColors.InactiveBorder;
-            comboBox1.Dock = DockStyle.Fill;
-            comboBox1.DropDownHeight = 75;
-            comboBox1.Font = new Font("Tahoma", 9.75F);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.IntegralHeight = false;
-            comboBox1.ItemHeight = 16;
-            comboBox1.Location = new Point(0, 0);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(134, 24);
-            comboBox1.TabIndex = 56;
+            txtStatus.BackColor = SystemColors.InactiveBorder;
+            txtStatus.Dock = DockStyle.Fill;
+            txtStatus.DropDownHeight = 75;
+            txtStatus.Font = new Font("Tahoma", 9.75F);
+            txtStatus.FormattingEnabled = true;
+            txtStatus.IntegralHeight = false;
+            txtStatus.ItemHeight = 16;
+            txtStatus.Location = new Point(0, 0);
+            txtStatus.Name = "txtStatus";
+            txtStatus.Size = new Size(134, 24);
+            txtStatus.TabIndex = 56;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Tahoma", 9.75F);
             label3.ForeColor = Color.DimGray;
-            label3.Location = new Point(831, 55);
+            label3.Location = new Point(827, 45);
             label3.Name = "label3";
             label3.Size = new Size(43, 16);
             label3.TabIndex = 88;
             label3.Text = "Status";
             // 
-            // panel11
+            // borderDentalServices
             // 
-            panel11.Controls.Add(panel12);
-            panel11.Controls.Add(panel13);
-            panel11.Controls.Add(panel14);
-            panel11.Controls.Add(panel15);
-            panel11.Controls.Add(comboBox2);
-            panel11.Location = new Point(120, 116);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(213, 24);
-            panel11.TabIndex = 90;
+            borderDentalServices.Controls.Add(panel12);
+            borderDentalServices.Controls.Add(panel13);
+            borderDentalServices.Controls.Add(panel14);
+            borderDentalServices.Controls.Add(panel15);
+            borderDentalServices.Controls.Add(txtDentalServices);
+            borderDentalServices.Location = new Point(116, 106);
+            borderDentalServices.Name = "borderDentalServices";
+            borderDentalServices.Size = new Size(213, 24);
+            borderDentalServices.TabIndex = 90;
             // 
             // panel12
             // 
@@ -660,32 +634,32 @@
             panel15.Size = new Size(1, 24);
             panel15.TabIndex = 0;
             // 
-            // comboBox2
+            // txtDentalServices
             // 
-            comboBox2.BackColor = SystemColors.InactiveBorder;
-            comboBox2.Dock = DockStyle.Fill;
-            comboBox2.DropDownHeight = 75;
-            comboBox2.Font = new Font("Tahoma", 9.75F);
-            comboBox2.FormattingEnabled = true;
-            comboBox2.IntegralHeight = false;
-            comboBox2.ItemHeight = 16;
-            comboBox2.Location = new Point(0, 0);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(213, 24);
-            comboBox2.TabIndex = 56;
+            txtDentalServices.BackColor = SystemColors.InactiveBorder;
+            txtDentalServices.Dock = DockStyle.Fill;
+            txtDentalServices.DropDownHeight = 75;
+            txtDentalServices.Font = new Font("Tahoma", 9.75F);
+            txtDentalServices.FormattingEnabled = true;
+            txtDentalServices.IntegralHeight = false;
+            txtDentalServices.ItemHeight = 16;
+            txtDentalServices.Location = new Point(0, 0);
+            txtDentalServices.Name = "txtDentalServices";
+            txtDentalServices.Size = new Size(213, 24);
+            txtDentalServices.TabIndex = 56;
             // 
-            // borderTitle
+            // borderRangePrice
             // 
-            borderTitle.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            borderTitle.Controls.Add(panel16);
-            borderTitle.Controls.Add(panel17);
-            borderTitle.Controls.Add(panel18);
-            borderTitle.Controls.Add(panel20);
-            borderTitle.Controls.Add(txtTitle);
-            borderTitle.Location = new Point(830, 114);
-            borderTitle.Name = "borderTitle";
-            borderTitle.Size = new Size(134, 25);
-            borderTitle.TabIndex = 91;
+            borderRangePrice.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            borderRangePrice.Controls.Add(panel16);
+            borderRangePrice.Controls.Add(panel17);
+            borderRangePrice.Controls.Add(panel18);
+            borderRangePrice.Controls.Add(panel20);
+            borderRangePrice.Controls.Add(txtRangePrice);
+            borderRangePrice.Location = new Point(826, 104);
+            borderRangePrice.Name = "borderRangePrice";
+            borderRangePrice.Size = new Size(134, 25);
+            borderRangePrice.TabIndex = 91;
             // 
             // panel16
             // 
@@ -723,22 +697,23 @@
             panel20.Size = new Size(1, 25);
             panel20.TabIndex = 0;
             // 
-            // txtTitle
+            // txtRangePrice
             // 
-            txtTitle.BorderStyle = BorderStyle.FixedSingle;
-            txtTitle.Dock = DockStyle.Fill;
-            txtTitle.Font = new Font("Segoe UI", 9.75F);
-            txtTitle.Location = new Point(0, 0);
-            txtTitle.Name = "txtTitle";
-            txtTitle.Size = new Size(134, 25);
-            txtTitle.TabIndex = 1;
+            txtRangePrice.BorderStyle = BorderStyle.FixedSingle;
+            txtRangePrice.Dock = DockStyle.Fill;
+            txtRangePrice.Font = new Font("Segoe UI", 9.75F);
+            txtRangePrice.Location = new Point(0, 0);
+            txtRangePrice.Name = "txtRangePrice";
+            txtRangePrice.Size = new Size(134, 25);
+            txtRangePrice.TabIndex = 1;
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("Tahoma", 9.75F);
             label4.ForeColor = Color.DimGray;
-            label4.Location = new Point(750, 123);
+            label4.Location = new Point(746, 113);
             label4.Name = "label4";
             label4.Size = new Size(75, 16);
             label4.TabIndex = 92;
@@ -747,21 +722,61 @@
             // panel21
             // 
             panel21.BackColor = Color.DimGray;
-            panel21.Location = new Point(13, 107);
+            panel21.Location = new Point(9, 97);
             panel21.Name = "panel21";
             panel21.Size = new Size(951, 1);
             panel21.TabIndex = 93;
+            // 
+            // viewEmployeeDetails
+            // 
+            viewEmployeeDetails.AllowUserToAddRows = false;
+            viewEmployeeDetails.AllowUserToDeleteRows = false;
+            viewEmployeeDetails.AllowUserToResizeColumns = false;
+            viewEmployeeDetails.AllowUserToResizeRows = false;
+            viewEmployeeDetails.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            viewEmployeeDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            viewEmployeeDetails.BackgroundColor = Color.White;
+            viewEmployeeDetails.BorderStyle = BorderStyle.None;
+            viewEmployeeDetails.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            viewEmployeeDetails.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.Padding = new Padding(3);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            viewEmployeeDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            viewEmployeeDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle2.SelectionBackColor = Color.Gainsboro;
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            viewEmployeeDetails.DefaultCellStyle = dataGridViewCellStyle2;
+            viewEmployeeDetails.EnableHeadersVisualStyles = false;
+            viewEmployeeDetails.Location = new Point(9, 134);
+            viewEmployeeDetails.Margin = new Padding(0, 0, 10, 0);
+            viewEmployeeDetails.Name = "viewEmployeeDetails";
+            viewEmployeeDetails.ReadOnly = true;
+            viewEmployeeDetails.RowTemplate.Height = 25;
+            viewEmployeeDetails.Size = new Size(951, 263);
+            viewEmployeeDetails.TabIndex = 94;
             // 
             // setupOnlineBooking
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1101, 660);
+            Controls.Add(viewEmployeeDetails);
             Controls.Add(panel21);
             Controls.Add(label4);
-            Controls.Add(borderTitle);
-            Controls.Add(panel11);
-            Controls.Add(panel2);
+            Controls.Add(borderRangePrice);
+            Controls.Add(borderDentalServices);
+            Controls.Add(borderStatus);
             Controls.Add(label3);
             Controls.Add(btnView);
             Controls.Add(btnNewAccount);
@@ -773,9 +788,8 @@
             Controls.Add(label18);
             Controls.Add(label17);
             Controls.Add(label1);
-            Controls.Add(borderFetchTitle);
+            Controls.Add(borderDayofweek);
             Controls.Add(label8);
-            Controls.Add(viewDentalServices);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "setupOnlineBooking";
@@ -784,15 +798,15 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)viewDentalServices).EndInit();
-            borderFetchTitle.ResumeLayout(false);
+            borderDayofweek.ResumeLayout(false);
             borderStartTime.ResumeLayout(false);
             borderEndtime.ResumeLayout(false);
             borderBranch.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            panel11.ResumeLayout(false);
-            borderTitle.ResumeLayout(false);
-            borderTitle.PerformLayout();
+            borderStatus.ResumeLayout(false);
+            borderDentalServices.ResumeLayout(false);
+            borderRangePrice.ResumeLayout(false);
+            borderRangePrice.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)viewEmployeeDetails).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -802,13 +816,12 @@
         private Panel panel1;
         private PictureBox pictureBox1;
         private Label label40;
-        private DataGridView viewDentalServices;
-        private Panel borderFetchTitle;
+        private Panel borderDayofweek;
         private Panel panel35;
         private Panel panel36;
         private Panel panel37;
         private Panel panel38;
-        private ComboBox txtFetchTitle;
+        private ComboBox txtDayofweek;
         private Label label8;
         private Label label1;
         private Panel borderStartTime;
@@ -832,31 +845,32 @@
         private Panel panel4;
         private Panel panel5;
         private Panel panel6;
-        private ComboBox txtFetchBranch;
+        private ComboBox txtBranch;
         private Label label2;
         private Button btnNewAccount;
         private Button btnRefresh;
         private Button btnView;
-        private Panel panel2;
+        private Panel borderStatus;
         private Panel panel7;
         private Panel panel8;
         private Panel panel9;
         private Panel panel10;
-        private ComboBox comboBox1;
+        private ComboBox txtStatus;
         private Label label3;
-        private Panel panel11;
+        private Panel borderDentalServices;
         private Panel panel12;
         private Panel panel13;
         private Panel panel14;
         private Panel panel15;
-        private ComboBox comboBox2;
-        private Panel borderTitle;
+        private ComboBox txtDentalServices;
+        private Panel borderRangePrice;
         private Panel panel16;
         private Panel panel17;
         private Panel panel18;
         private Panel panel20;
-        private TextBox txtTitle;
+        private TextBox txtRangePrice;
         private Label label4;
         private Panel panel21;
+        private DataGridView viewEmployeeDetails;
     }
 }

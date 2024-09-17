@@ -1,4 +1,5 @@
 ﻿using Application_Desktop.Admin_Sub_Views;
+using Application_Desktop.Model;
 using Application_Desktop.Models;
 using Application_Desktop.Screen;
 using ElipseToolDemo;
@@ -726,7 +727,7 @@ namespace Application_Desktop.Admin_Views
         private async Task LoadOfficeHour()
         {
             int branchID = GetBranch();
-            string query = @"Select StartTime, EndTime, IsClosed From office_hours Where Branch_ID = @branchID";
+            string query = @"SELECT StartTime, EndTime FROM office_hours WHERE Branch_ID = @branchID";
 
             DateTimePicker[] startPickers = { dateTimePicker2, dateTimePicker4, dateTimePicker6, dateTimePicker8, dateTimePicker10, dateTimePicker12, dateTimePicker14 };
             DateTimePicker[] endPickers = { dateTimePicker1, dateTimePicker3, dateTimePicker5, dateTimePicker7, dateTimePicker9, dateTimePicker11, dateTimePicker13 };
@@ -745,23 +746,32 @@ namespace Application_Desktop.Admin_Views
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
+                int startIndex = 0;
+                int endIndex = 0;
+
                 if (reader.HasRows)
                 {
                     while (await reader.ReadAsync())
                     {
-                        TimeSpan start = reader.GetTimeSpan("StartTime");
-                        TimeSpan end = reader.GetTimeSpan("EndTime");
-
-                        DateTime startDateTime = DateTime.Today.Add(start);
-                        DateTime endDateTime = DateTime.Today.Add(end);
-
-                        foreach (var picker in startPickers)
+                        if (startIndex < startPickers.Length && endIndex < endPickers.Length)
                         {
-                            picker.Value = startDateTime;
+                            TimeSpan start = reader.GetTimeSpan("StartTime");
+                            TimeSpan end = reader.GetTimeSpan("EndTime");
+
+                            DateTime startDateTime = DateTime.Today.Add(start);
+                            DateTime endDateTime = DateTime.Today.Add(end);
+
+                            startPickers[startIndex].Value = startDateTime;
+                            endPickers[endIndex].Value = endDateTime;
+
+                            startIndex++;
+                            endIndex++;
                         }
-                        foreach (var picker in endPickers)
+                        else
                         {
-                            picker.Value = endDateTime;
+                            // Handle case when there are more rows than DateTimePickers
+                            MessageBox.Show("There are more office hours records than available DateTimePickers.");
+                            break;
                         }
                     }
                 }
@@ -774,13 +784,14 @@ namespace Application_Desktop.Admin_Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"LoadOfficeHour error: " + ex.Message);
+                MessageBox.Show($"LoadOfficeHour error: {ex.Message}");
             }
             finally
             {
                 await conn.CloseAsync();
             }
         }
+
 
 
 
@@ -827,7 +838,7 @@ namespace Application_Desktop.Admin_Views
                 }
                 else
                 {
-                    MessageBox.Show("No office hours found for this branch. Please add office hours first.");
+                    return;
                 }
 
                 await reader.CloseAsync();

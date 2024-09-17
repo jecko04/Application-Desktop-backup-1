@@ -137,9 +137,12 @@ namespace Application_Desktop.Admin_Views
 
         //add column
 
-        
+
         private void AddColumnEmployee()
         {
+            viewEmployeeDetails.RowHeadersVisible = false;
+            viewEmployeeDetails.ColumnHeadersHeight = 40;
+
             DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
             selectColumn.HeaderText = "";
             selectColumn.Name = "selectEmployees";
@@ -215,7 +218,6 @@ namespace Application_Desktop.Admin_Views
             statusColumn.HeaderText = "Status";
             statusColumn.Name = "Status";
             statusColumn.DataPropertyName = "Status";
-
             // Add items to the ComboBox column
             statusColumn.Items.AddRange(new object[] {
                 "active",     // Employee is actively working
