@@ -576,6 +576,9 @@ namespace Application_Desktop.Sub_Views
         private void AddColumnSuperAdmin()
         {
 
+            viewSuperAdminData.RowHeadersVisible = false;
+            viewSuperAdminData.ColumnHeadersHeight = 40;
+
             DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
             selectColumn.HeaderText = "";
             selectColumn.Name = "selectSuperAdmin";
@@ -584,7 +587,7 @@ namespace Application_Desktop.Sub_Views
             viewSuperAdminData.Columns["selectSuperAdmin"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             DataGridViewTextBoxColumn adminColumn = new DataGridViewTextBoxColumn();
-            adminColumn.HeaderText = "SuperAdmin ID";
+            adminColumn.HeaderText = "ID";
             adminColumn.Name = "SuperAdmin_ID";
             adminColumn.DataPropertyName = "SuperAdmin_ID";
             viewSuperAdminData.Columns.Add(adminColumn);
@@ -593,14 +596,14 @@ namespace Application_Desktop.Sub_Views
             nameColumn.HeaderText = "Name";
             nameColumn.Name = "Name";
             nameColumn.DataPropertyName = "Name";
-            nameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            nameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             viewSuperAdminData.Columns.Add(nameColumn);
 
             DataGridViewTextBoxColumn emailColumn = new DataGridViewTextBoxColumn();
             emailColumn.HeaderText = "Email";
             emailColumn.Name = "Email";
             emailColumn.DataPropertyName = "Email";
-            emailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            emailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             viewSuperAdminData.Columns.Add(emailColumn);
 
             DataGridViewTextBoxColumn roleColumn = new DataGridViewTextBoxColumn();
@@ -613,12 +616,14 @@ namespace Application_Desktop.Sub_Views
             createdSuperAdmin.HeaderText = "Created At";
             createdSuperAdmin.Name = "created_at";
             createdSuperAdmin.DataPropertyName = "created_at";
+            createdSuperAdmin.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewSuperAdminData.Columns.Add(createdSuperAdmin);
 
             DataGridViewTextBoxColumn updatedSuperAdmin = new DataGridViewTextBoxColumn();
             updatedSuperAdmin.HeaderText = "Updated At";
             updatedSuperAdmin.Name = "updated_at";
             updatedSuperAdmin.DataPropertyName = "updated_at";
+            updatedSuperAdmin.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewSuperAdminData.Columns.Add(updatedSuperAdmin);
 
             DataGridViewImageColumn editButtonColumn = new DataGridViewImageColumn();
@@ -651,6 +656,9 @@ namespace Application_Desktop.Sub_Views
 
         private void AddColumnAdmin()
         {
+            viewAdminData.RowHeadersVisible = false;
+            viewAdminData.ColumnHeadersHeight = 40;
+
             DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
             selectColumn.HeaderText = "";
             selectColumn.Name = "selectAdmin";
@@ -659,7 +667,7 @@ namespace Application_Desktop.Sub_Views
             viewAdminData.Columns["selectAdmin"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             DataGridViewTextBoxColumn adminColumn = new DataGridViewTextBoxColumn();
-            adminColumn.HeaderText = "Admin ID";
+            adminColumn.HeaderText = "ID";
             adminColumn.Name = "Admin_ID";
             adminColumn.DataPropertyName = "Admin_ID";
             viewAdminData.Columns.Add(adminColumn);
@@ -694,12 +702,14 @@ namespace Application_Desktop.Sub_Views
             createdAdmin.HeaderText = "Created At";
             createdAdmin.Name = "created_at";
             createdAdmin.DataPropertyName = "created_at";
+            createdAdmin.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewAdminData.Columns.Add(createdAdmin);
 
             DataGridViewTextBoxColumn updatedAdmin = new DataGridViewTextBoxColumn();
             updatedAdmin.HeaderText = "Updated At";
             updatedAdmin.Name = "updated_at";
             updatedAdmin.DataPropertyName = "updated_at";
+            updatedAdmin.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewAdminData.Columns.Add(updatedAdmin);
 
             DataGridViewImageColumn editButtonColumn = new DataGridViewImageColumn();

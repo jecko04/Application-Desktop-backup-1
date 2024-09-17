@@ -248,7 +248,7 @@ namespace Application_Desktop.Sub_sub_Views
         private void AddColumnBranches()
         {
             DataGridViewTextBoxColumn idColumn = new DataGridViewTextBoxColumn();
-            idColumn.HeaderText = "Branch ID";
+            idColumn.HeaderText = "ID";
             idColumn.Name = "Branch_ID";
             idColumn.DataPropertyName = "Branch_ID";
             viewBranchData.Columns.Add(idColumn);

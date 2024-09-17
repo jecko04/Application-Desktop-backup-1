@@ -63,7 +63,7 @@ namespace Application_Desktop.SuperAdmin_Sub_Views
             roleColumn.HeaderText = "ID";
             roleColumn.Name = "Role_ID";
             roleColumn.DataPropertyName = "Role_ID";
-            roleColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            roleColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             viewExistingRole.Columns.Add(roleColumn);
 
             DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();

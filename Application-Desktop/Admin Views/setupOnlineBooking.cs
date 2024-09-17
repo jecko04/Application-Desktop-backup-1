@@ -26,9 +26,6 @@ namespace Application_Desktop.Admin_Views
         {
             await GetDayAndTime();
             txtDayofweek.SelectedItem = "Monday";
-
-            await GetBranches();
-
         }
 
         private void view_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -61,7 +58,7 @@ namespace Application_Desktop.Admin_Views
                         _start = DateTime.Today.Add(reader.GetTimeSpan("StartTime")),
                         _end = DateTime.Today.Add(reader.GetTimeSpan("EndTime")),
                         _isClose = reader.GetBoolean("IsClosed")
-                        
+
                     };
 
 
@@ -70,7 +67,7 @@ namespace Application_Desktop.Admin_Views
                     {
                         this.Invoke((MethodInvoker)delegate
                         {
-                                txtDayofweek.Items.Add(dayofweek._days);
+                            txtDayofweek.Items.Add(dayofweek._days);
                         });
                     }
                     else
@@ -90,7 +87,17 @@ namespace Application_Desktop.Admin_Views
         private async Task<DayofweekModel> GetDayOfWeekData(string selectedDay)
         {
             int admin = session.LoggedInSession;
-            string query = @"Select StartTime, EndTime from office_hours Where Branch_ID = @admin AND DayOfWeek = @dayofweek";
+
+            // Combined query using JOIN
+            string query = @"SELECT 
+                        oh.StartTime, oh.EndTime, 
+                        b.BranchName, b.BuildingNumber, b.Street, 
+                        b.Barangay, b.City, b.Province, b.PostalCode,
+                        c.Title, c.Description, c.Duration, c.Frequency
+                    FROM office_hours oh 
+                    INNER JOIN branch b ON oh.Branch_ID = b.Branch_ID
+                    INNER JOIN categories c ON oh.Branch_ID = c.Branch_ID
+                    WHERE oh.Branch_ID = @admin AND oh.DayOfWeek = @dayofweek";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -101,30 +108,115 @@ namespace Application_Desktop.Admin_Views
                     await conn.OpenAsync();
                 }
 
+                // Execute the combined query
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@admin", admin);
                 cmd.Parameters.AddWithValue("@dayofweek", selectedDay);
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-                if (await reader.ReadAsync())
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                 {
+                    DataTable datatable = new DataTable();
 
-                    return new DayofweekModel
-                    {
-                        _days = selectedDay,
-                        _start = DateTime.Today.Add(reader.GetTimeSpan("StartTime")),
-                        _end = DateTime.Today.Add(reader.GetTimeSpan("EndTime")),
-                    };
+                    adapter.Fill(datatable);
+
+                    viewDentalServices.DataSource = null;
+                    viewDentalServices.Rows.Clear();
+                    viewDentalServices.Columns.Clear();
+
+                    viewDentalServices.AutoGenerateColumns = false;
+
+                    AddColumnServices();
+
+                    viewDentalServices.DataSource = datatable;
                 }
-                await reader.CloseAsync();
+
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (await reader.ReadAsync())
+                    {
+                        // Create the DayofweekModel and Branches object from the same reader
+                        Branches branch = new Branches
+                        {
+                            _branches = reader["BranchName"].ToString(),
+                            _buildingnumber = reader["BuildingNumber"].ToString(),
+                            _street = reader["Street"].ToString(),
+                            _barangay = reader["Barangay"].ToString(),
+                            _city = reader["City"].ToString(),
+                            _province = reader["Province"].ToString(),
+                            _postalcode = reader["PostalCode"].ToString()
+                        };
+
+                        // Update UI (ComboBox) for branch info
+                        if (InvokeRequired)
+                        {
+                            this.Invoke((MethodInvoker)delegate
+                            {
+                                txtBranch.Items.Clear();
+                                txtBranch.Items.Add(branch._branches);
+                                txtBranch.SelectedItem = branch._branches;
+                            });
+                        }
+                        else
+                        {
+                            txtBranch.Items.Clear();
+                            txtBranch.Items.Add(branch._branches);
+                            txtBranch.SelectedItem = branch._branches;
+                        }
+
+                        // Return the day of the week data
+                        return new DayofweekModel
+                        {
+                            _days = selectedDay,
+                            _start = DateTime.Today.Add(reader.GetTimeSpan("StartTime")),
+                            _end = DateTime.Today.Add(reader.GetTimeSpan("EndTime"))
+                        };
+                    }
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"ChangeDayValue error " + ex.Message);
+                MessageBox.Show($"ChangeDayValue error: {ex.Message}");
                 throw;
             }
-            finally { await conn.CloseAsync(); }
+            finally
+            {
+                await conn.CloseAsync();
+            }
+
             return null;
+        }
+
+        private void AddColumnServices()
+        {
+            viewDentalServices.RowHeadersVisible = false;
+            viewDentalServices.ColumnHeadersHeight = 40;
+
+            DataGridViewTextBoxColumn Title = new DataGridViewTextBoxColumn();
+            Title.HeaderText = "Title";
+            Title.Name = "Title";
+            Title.DataPropertyName = "Title";
+            viewDentalServices.Columns.Add(Title);
+
+            DataGridViewTextBoxColumn Description = new DataGridViewTextBoxColumn();
+            Description.HeaderText = "Description";
+            Description.Name = "Description";
+            Description.DataPropertyName = "Description";
+            Description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            viewDentalServices.Columns.Add(Description);
+
+            DataGridViewTextBoxColumn Duration = new DataGridViewTextBoxColumn();
+            Duration.HeaderText = "Duration";
+            Duration.Name = "Duration";
+            Duration.DataPropertyName = "Duration";
+            Duration.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            viewDentalServices.Columns.Add(Duration);
+
+            DataGridViewTextBoxColumn Frequency = new DataGridViewTextBoxColumn();
+            Frequency.HeaderText = "Frequency";
+            Frequency.Name = "Frequency";
+            Frequency.DataPropertyName = "Frequency";
+            Frequency.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            viewDentalServices.Columns.Add(Frequency);
         }
 
         private void ChangeDayValue(DayofweekModel selectedDay)
@@ -142,59 +234,6 @@ namespace Application_Desktop.Admin_Views
             var dayData = await GetDayOfWeekData(selectedDay);
             ChangeDayValue(dayData);
 
-        }
-
-        private async Task GetBranches()
-        {
-            int admin = session.LoggedInSession;
-            string query = @"Select BranchName, BuildingNumber, Street, Barangay, City, Province, PostalCode From branch Where Branch_ID = @admin";
-
-            MySqlConnection connect = databaseHelper.getConnection();
-
-            try
-            {
-                if (connect.State != ConnectionState.Open)
-                {
-                    await connect.OpenAsync();
-                }
-
-                MySqlCommand cmd = new MySqlCommand(query, connect);
-                cmd.Parameters.AddWithValue("@admin", admin);
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-                if (await reader.ReadAsync())
-                {
-
-                    Branches branch = new Branches
-                    {
-                        _branches = reader["BranchName"].ToString(),
-                        _buildingnumber = reader["BuildingNumber"].ToString(),
-                        _street = reader["Street"].ToString(),
-                        _barangay = reader["Barangay"].ToString(),
-                        _city = reader["City"].ToString(),
-                        _province = reader["Province"].ToString(),
-                        _postalcode = reader["PostalCode"].ToString()
-                    };
-
-                    if (InvokeRequired)
-                    {
-                        this.Invoke((MethodInvoker)delegate
-                        {
-                            txtBranch.Items.Add(branch._branches);
-                        });
-                    }
-                    else
-                    {
-                        txtBranch.Items.Add(branch._branches);
-                    }
-                }
-                await reader.CloseAsync();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"GetBranch error " + ex.Message);
-            }
-            finally { await connect.CloseAsync(); }
         }
     }
 }

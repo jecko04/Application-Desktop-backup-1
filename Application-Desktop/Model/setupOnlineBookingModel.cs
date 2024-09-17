@@ -35,4 +35,15 @@ namespace Application_Desktop.Model
         public string _address { get; set; }
     }
 
+    public class Categories
+    {
+        [Required]
+        public string _title { get; set; }
+        [Required]
+        public string _description { get; set; }
+        [Required]
+        public string _duration { get; set; }
+        [Required]
+        public string _frequency { get; set; }
+    }
 }

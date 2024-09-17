@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(setupOnlineBooking));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             label40 = new Label();
@@ -89,7 +90,8 @@
             txtRangePrice = new TextBox();
             label4 = new Label();
             panel21 = new Panel();
-            viewEmployeeDetails = new DataGridView();
+            viewDentalServices = new DataGridView();
+            elipseControl1 = new ElipseToolDemo.ElipseControl();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             borderDayofweek.SuspendLayout();
@@ -99,7 +101,7 @@
             borderStatus.SuspendLayout();
             borderDentalServices.SuspendLayout();
             borderRangePrice.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)viewEmployeeDetails).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)viewDentalServices).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -287,6 +289,7 @@
             // dtpStartTime
             // 
             dtpStartTime.Dock = DockStyle.Fill;
+            dtpStartTime.Enabled = false;
             dtpStartTime.Format = DateTimePickerFormat.Time;
             dtpStartTime.Location = new Point(0, 0);
             dtpStartTime.Name = "dtpStartTime";
@@ -363,6 +366,7 @@
             // dtpEndtime
             // 
             dtpEndtime.Dock = DockStyle.Fill;
+            dtpEndtime.Enabled = false;
             dtpEndtime.Format = DateTimePickerFormat.Time;
             dtpEndtime.Location = new Point(0, 0);
             dtpEndtime.Name = "dtpEndtime";
@@ -393,6 +397,7 @@
             // 
             // borderBranch
             // 
+            borderBranch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             borderBranch.Controls.Add(panel3);
             borderBranch.Controls.Add(panel4);
             borderBranch.Controls.Add(panel5);
@@ -444,6 +449,7 @@
             txtBranch.BackColor = SystemColors.InactiveBorder;
             txtBranch.Dock = DockStyle.Fill;
             txtBranch.DropDownHeight = 75;
+            txtBranch.Enabled = false;
             txtBranch.Font = new Font("Tahoma", 9.75F);
             txtBranch.FormattingEnabled = true;
             txtBranch.IntegralHeight = false;
@@ -455,6 +461,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Font = new Font("Tahoma", 9.75F);
             label2.ForeColor = Color.DimGray;
@@ -515,6 +522,7 @@
             // 
             // borderStatus
             // 
+            borderStatus.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             borderStatus.Controls.Add(panel7);
             borderStatus.Controls.Add(panel8);
             borderStatus.Controls.Add(panel9);
@@ -577,6 +585,7 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("Tahoma", 9.75F);
             label3.ForeColor = Color.DimGray;
@@ -727,51 +736,62 @@
             panel21.Size = new Size(951, 1);
             panel21.TabIndex = 93;
             // 
-            // viewEmployeeDetails
+            // viewDentalServices
             // 
-            viewEmployeeDetails.AllowUserToAddRows = false;
-            viewEmployeeDetails.AllowUserToDeleteRows = false;
-            viewEmployeeDetails.AllowUserToResizeColumns = false;
-            viewEmployeeDetails.AllowUserToResizeRows = false;
-            viewEmployeeDetails.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            viewEmployeeDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            viewEmployeeDetails.BackgroundColor = Color.White;
-            viewEmployeeDetails.BorderStyle = BorderStyle.None;
-            viewEmployeeDetails.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            viewEmployeeDetails.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            viewDentalServices.AllowUserToAddRows = false;
+            viewDentalServices.AllowUserToDeleteRows = false;
+            viewDentalServices.AllowUserToResizeColumns = false;
+            viewDentalServices.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.LightGray;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.Padding = new Padding(3);
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            viewEmployeeDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            viewEmployeeDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            viewDentalServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            viewDentalServices.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            viewDentalServices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            viewDentalServices.BackgroundColor = Color.White;
+            viewDentalServices.BorderStyle = BorderStyle.None;
+            viewDentalServices.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            viewDentalServices.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle2.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.Padding = new Padding(3);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            viewEmployeeDetails.DefaultCellStyle = dataGridViewCellStyle2;
-            viewEmployeeDetails.EnableHeadersVisualStyles = false;
-            viewEmployeeDetails.Location = new Point(9, 134);
-            viewEmployeeDetails.Margin = new Padding(0, 0, 10, 0);
-            viewEmployeeDetails.Name = "viewEmployeeDetails";
-            viewEmployeeDetails.ReadOnly = true;
-            viewEmployeeDetails.RowTemplate.Height = 25;
-            viewEmployeeDetails.Size = new Size(951, 263);
-            viewEmployeeDetails.TabIndex = 94;
+            viewDentalServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            viewDentalServices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle3.SelectionBackColor = Color.Gainsboro;
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            viewDentalServices.DefaultCellStyle = dataGridViewCellStyle3;
+            viewDentalServices.EnableHeadersVisualStyles = false;
+            viewDentalServices.Location = new Point(9, 134);
+            viewDentalServices.Margin = new Padding(0, 0, 10, 0);
+            viewDentalServices.Name = "viewDentalServices";
+            viewDentalServices.ReadOnly = true;
+            viewDentalServices.RowTemplate.Height = 25;
+            viewDentalServices.Size = new Size(951, 263);
+            viewDentalServices.TabIndex = 94;
+            // 
+            // elipseControl1
+            // 
+            elipseControl1.CornerRadius = 15;
+            elipseControl1.TargetControl = viewDentalServices;
             // 
             // setupOnlineBooking
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1101, 660);
-            Controls.Add(viewEmployeeDetails);
+            Controls.Add(viewDentalServices);
             Controls.Add(panel21);
             Controls.Add(label4);
             Controls.Add(borderRangePrice);
@@ -806,7 +826,7 @@
             borderDentalServices.ResumeLayout(false);
             borderRangePrice.ResumeLayout(false);
             borderRangePrice.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)viewEmployeeDetails).EndInit();
+            ((System.ComponentModel.ISupportInitialize)viewDentalServices).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -871,6 +891,7 @@
         private TextBox txtRangePrice;
         private Label label4;
         private Panel panel21;
-        private DataGridView viewEmployeeDetails;
+        private DataGridView viewDentalServices;
+        private ElipseToolDemo.ElipseControl elipseControl1;
     }
 }

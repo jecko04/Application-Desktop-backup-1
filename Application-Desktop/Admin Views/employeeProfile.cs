@@ -116,7 +116,7 @@ namespace Application_Desktop.Admin_Views
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 DataTable datatable = new DataTable();
 
-                await Task.Run(() => adapter.Fill(datatable));
+                adapter.Fill(datatable);
 
                 viewEmployeeDetails.DataSource = null;
                 viewEmployeeDetails.Rows.Clear();

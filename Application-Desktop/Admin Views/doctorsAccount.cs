@@ -110,6 +110,10 @@ namespace Application_Desktop.Admin_Views
         // Column
         private void AddColumnDentalDoctor()
         {
+
+            viewDentalDoctorAccount.RowHeadersVisible = false;
+            viewDentalDoctorAccount.ColumnHeadersHeight = 40;
+
             DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
             selectColumn.HeaderText = "";
             selectColumn.Name = "selectDoctors";
@@ -127,26 +131,28 @@ namespace Application_Desktop.Admin_Views
             nameColumn.HeaderText = "Name";
             nameColumn.Name = "Name";
             nameColumn.DataPropertyName = "Name";
-            nameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            nameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             viewDentalDoctorAccount.Columns.Add(nameColumn);
 
             DataGridViewTextBoxColumn emailColumn = new DataGridViewTextBoxColumn();
             emailColumn.HeaderText = "Email";
             emailColumn.Name = "Email";
             emailColumn.DataPropertyName = "Email";
-            emailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            emailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             viewDentalDoctorAccount.Columns.Add(emailColumn);
 
             DataGridViewTextBoxColumn branchColumn = new DataGridViewTextBoxColumn();
             branchColumn.HeaderText = "Branch";
             branchColumn.Name = "Branch_ID";
             branchColumn.DataPropertyName = "BranchName";
+            branchColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             viewDentalDoctorAccount.Columns.Add(branchColumn);
 
             DataGridViewTextBoxColumn roleColumn = new DataGridViewTextBoxColumn();
             roleColumn.HeaderText = "Role";
             roleColumn.Name = "Role_ID";
             roleColumn.DataPropertyName = "RoleName";
+            roleColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             viewDentalDoctorAccount.Columns.Add(roleColumn);
 
             DataGridViewImageColumn editButtonColumn = new DataGridViewImageColumn();
@@ -278,7 +284,7 @@ namespace Application_Desktop.Admin_Views
                 }
             }
             //Select Check Box
-            
+
             if (isProcessingClick) return; // Ignore the click if already processing
 
             isProcessingClick = true;
