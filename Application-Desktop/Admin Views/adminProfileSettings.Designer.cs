@@ -145,7 +145,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BackColor = SystemColors.Control;
+            panel1.BackColor = Color.Transparent;
             panel1.Controls.Add(label40);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(flowLayoutPanel1);
@@ -166,7 +166,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = SystemColors.Control;
+            pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(7, 3);
             pictureBox1.Name = "pictureBox1";
@@ -188,6 +188,7 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel2.AutoScroll = true;
+            panel2.BackColor = Color.Transparent;
             panel2.Controls.Add(deleteAccountPanel);
             panel2.Controls.Add(panel31);
             panel2.Controls.Add(updatePasswordPanel);

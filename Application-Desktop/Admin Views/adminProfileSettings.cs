@@ -326,7 +326,7 @@ namespace Application_Desktop.Admin_Views
 
                 if (validationErrors.Count == 0)
                 {
-                    
+
                     adminUpdatePasswordModel updatePassword = new adminUpdatePasswordModel
                     {
                         _currentPassword = txtCurrent.Text,
@@ -338,10 +338,10 @@ namespace Application_Desktop.Admin_Views
                         bool isChanged = await ChangePassword(updatePassword);
                         if (isChanged)
                         {
-                            
+
                             session.Logout();
 
-                            
+
 
                             this.BeginInvoke(new Action(() =>
                             {
@@ -386,7 +386,7 @@ namespace Application_Desktop.Admin_Views
                 cmd.Parameters.AddWithValue("@admin", adminId);
                 int rowsAffected = await cmd.ExecuteNonQueryAsync();
 
-                
+
 
                 return rowsAffected > 0;
 
@@ -401,7 +401,7 @@ namespace Application_Desktop.Admin_Views
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
-            
+
             DialogResult result = MessageBox.Show(
                 "Warning: Deleting your account will permanently delete all of its data. Are you sure you want to proceed?",
                 "Delete Account",

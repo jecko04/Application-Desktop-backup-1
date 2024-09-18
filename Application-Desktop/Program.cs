@@ -17,12 +17,11 @@ namespace Application_Desktop
             ApplicationConfiguration.Initialize();
 
             //Open the database
-            databaseHelper.initializeConnection();
+            //databaseHelper.initializeConnection();
 
             Application.Run(new loginPage());
 
             //Close the database
-            databaseHelper.closeConnection();
 
             //wag kalimutan yung email sa login
             //wag kalimutan yung forgot password sa login

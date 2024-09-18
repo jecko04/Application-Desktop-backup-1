@@ -41,14 +41,14 @@
             // 
             // btnClose
             // 
-            btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnClose.BackColor = Color.Transparent;
+            btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnClose.BackColor = Color.FromArgb(52, 152, 219);
             btnClose.BackgroundImageLayout = ImageLayout.None;
             btnClose.Cursor = Cursors.Hand;
             btnClose.Image = (Image)resources.GetObject("btnClose.Image");
-            btnClose.Location = new Point(537, 0);
+            btnClose.Location = new Point(368, 0);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(24, 24);
+            btnClose.Size = new Size(27, 27);
             btnClose.SizeMode = PictureBoxSizeMode.Zoom;
             btnClose.TabIndex = 1;
             btnClose.TabStop = false;
@@ -58,11 +58,11 @@
             // 
             viewExistingRole.AllowUserToAddRows = false;
             viewExistingRole.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.LightGray;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(132, 202, 239);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Gainsboro;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(52, 152, 219);
             viewExistingRole.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             viewExistingRole.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             viewExistingRole.BackgroundColor = Color.White;
@@ -93,8 +93,9 @@
             viewExistingRole.Name = "viewExistingRole";
             viewExistingRole.ReadOnly = true;
             viewExistingRole.RowTemplate.Height = 25;
-            viewExistingRole.Size = new Size(561, 206);
+            viewExistingRole.Size = new Size(395, 206);
             viewExistingRole.TabIndex = 3;
+            viewExistingRole.CellContentClick += viewExistingRole_CellContentClick;
             // 
             // elipseControl1
             // 
@@ -105,7 +106,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(561, 206);
+            ClientSize = new Size(395, 206);
             Controls.Add(btnClose);
             Controls.Add(viewExistingRole);
             FormBorderStyle = FormBorderStyle.None;

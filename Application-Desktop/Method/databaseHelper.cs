@@ -30,18 +30,41 @@ namespace Application_Desktop.Models
 
         public static MySqlConnection getConnection()
         {
-            return _connection;
+            return new MySqlConnection(mysqlCon); // Always return a fresh connection
         }
 
-        public static void closeConnection()
+        // Opening and closing the connection should be done in the calling method
+        public static async Task OpenConnectionAsync(MySqlConnection connection)
         {
-            if (_connection != null && _connection.State == System.Data.ConnectionState.Open)
+            try
             {
-                _connection.CloseAsync();
-                _connection.Dispose();
+                if (connection.State != System.Data.ConnectionState.Open)
+                {
+                    await connection.OpenAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception as needed
+                throw new Exception("Error opening connection: " + ex.Message);
             }
         }
 
-
+        public static async Task CloseConnectionAsync(MySqlConnection connection)
+        {
+            try
+            {
+                if (connection != null && connection.State == System.Data.ConnectionState.Open)
+                {
+                    await connection.CloseAsync();
+                    connection.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception as needed
+                throw new Exception("Error closing connection: " + ex.Message);
+            }
+        }
     }
 }

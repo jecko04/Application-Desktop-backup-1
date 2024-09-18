@@ -91,6 +91,7 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.Transparent;
             panel1.Controls.Add(btnSidebar);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -537,7 +538,7 @@
             // 
             // mainPanel
             // 
-            mainPanel.BackColor = SystemColors.Control;
+            mainPanel.BackColor = Color.Transparent;
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(179, 30);
             mainPanel.Name = "mainPanel";

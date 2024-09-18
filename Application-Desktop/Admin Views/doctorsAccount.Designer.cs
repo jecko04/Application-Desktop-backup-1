@@ -49,7 +49,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BackColor = SystemColors.Control;
+            panel1.BackColor = Color.Transparent;
             panel1.Controls.Add(label40);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(flowLayoutPanel1);
@@ -70,7 +70,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = SystemColors.Control;
+            pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(7, 3);
             pictureBox1.Name = "pictureBox1";
@@ -82,6 +82,7 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            flowLayoutPanel1.BackColor = Color.Transparent;
             flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
             flowLayoutPanel1.Location = new Point(599, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -146,14 +147,14 @@
             viewDentalDoctorAccount.AllowUserToDeleteRows = false;
             viewDentalDoctorAccount.AllowUserToResizeColumns = false;
             viewDentalDoctorAccount.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.LightGray;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(132, 202, 239);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Gainsboro;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(52, 152, 219);
             viewDentalDoctorAccount.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             viewDentalDoctorAccount.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            viewDentalDoctorAccount.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            viewDentalDoctorAccount.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             viewDentalDoctorAccount.BackgroundColor = Color.White;
             viewDentalDoctorAccount.BorderStyle = BorderStyle.None;
             viewDentalDoctorAccount.CellBorderStyle = DataGridViewCellBorderStyle.None;

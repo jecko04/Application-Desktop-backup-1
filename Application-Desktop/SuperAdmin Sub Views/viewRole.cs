@@ -78,5 +78,10 @@ namespace Application_Desktop.SuperAdmin_Sub_Views
         {
             this.Close();
         }
+
+        private void viewExistingRole_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

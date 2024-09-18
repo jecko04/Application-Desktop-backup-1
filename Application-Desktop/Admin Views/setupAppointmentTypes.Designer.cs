@@ -314,7 +314,7 @@
             // panel1
             // 
             this.panel1.Anchor = ((global::System.Windows.Forms.AnchorStyles)(((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Left)) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = (global::System.Drawing.SystemColors.Control);
+            this.panel1.BackColor = (global::System.Drawing.Color.Transparent);
             this.panel1.Controls.Add(this.label40);
             this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Controls.Add(this.pictureBox3);
@@ -326,7 +326,7 @@
             // label40
             // 
             this.label40.AutoSize = (true);
-            this.label40.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Bold, global::System.Drawing.GraphicsUnit.Point));
+            this.label40.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Bold));
             this.label40.Location = (new global::System.Drawing.Point(33, 8));
             this.label40.Name = ("label40");
             this.label40.Size = (new global::System.Drawing.Size(172, 16));
@@ -349,7 +349,7 @@
             this.btnViewCategories.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(52)), (global::System.Int32)((global::System.Byte)(152)), (global::System.Int32)((global::System.Byte)(219))));
             this.btnViewCategories.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(52)), (global::System.Int32)((global::System.Byte)(152)), (global::System.Int32)((global::System.Byte)(219))));
             this.btnViewCategories.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnViewCategories.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.btnViewCategories.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnViewCategories.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnViewCategories.Location = (new global::System.Drawing.Point(340, 0));
             this.btnViewCategories.Margin = (new global::System.Windows.Forms.Padding(0));
@@ -362,7 +362,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackColor = (global::System.Drawing.SystemColors.Control);
+            this.pictureBox3.BackColor = (global::System.Drawing.Color.Transparent);
             this.pictureBox3.Image = ((global::System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = (new global::System.Drawing.Point(3, 2));
             this.pictureBox3.Name = ("pictureBox3");
@@ -386,7 +386,7 @@
             this.btnSubmit.BackColor = (global::System.Drawing.Color.Black);
             this.btnSubmit.FlatAppearance.BorderColor = (global::System.Drawing.Color.Black);
             this.btnSubmit.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnSubmit.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.btnSubmit.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnSubmit.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnSubmit.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.btnSubmit.Location = (new global::System.Drawing.Point(528, 283));
@@ -402,7 +402,7 @@
             // 
             this.panel2.Anchor = ((global::System.Windows.Forms.AnchorStyles)((((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Bottom)) | (global::System.Windows.Forms.AnchorStyles.Left)) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoScroll = (true);
-            this.panel2.BackColor = (global::System.Drawing.SystemColors.Control);
+            this.panel2.BackColor = (global::System.Drawing.Color.Transparent);
             this.panel2.Controls.Add(this.borderNewTitle);
             this.panel2.Controls.Add(this.label41);
             this.panel2.Controls.Add(this.btnUpdateRefresh);
@@ -495,7 +495,7 @@
             // 
             this.txtNewTitle.BorderStyle = (global::System.Windows.Forms.BorderStyle.FixedSingle);
             this.txtNewTitle.Dock = (global::System.Windows.Forms.DockStyle.Fill);
-            this.txtNewTitle.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.txtNewTitle.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F));
             this.txtNewTitle.Location = (new global::System.Drawing.Point(0, 0));
             this.txtNewTitle.Name = ("txtNewTitle");
             this.txtNewTitle.Size = (new global::System.Drawing.Size(534, 25));
@@ -505,7 +505,7 @@
             // 
             this.label41.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label41.AutoSize = (true);
-            this.label41.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label41.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label41.ForeColor = (global::System.Drawing.Color.DimGray);
             this.label41.Location = (new global::System.Drawing.Point(402, 400));
             this.label41.Name = ("label41");
@@ -519,7 +519,7 @@
             this.btnUpdateRefresh.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(52)), (global::System.Int32)((global::System.Byte)(152)), (global::System.Int32)((global::System.Byte)(219))));
             this.btnUpdateRefresh.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(52)), (global::System.Int32)((global::System.Byte)(152)), (global::System.Int32)((global::System.Byte)(219))));
             this.btnUpdateRefresh.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnUpdateRefresh.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.btnUpdateRefresh.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnUpdateRefresh.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnUpdateRefresh.Image = ((global::System.Drawing.Image)(resources.GetObject("btnUpdateRefresh.Image")));
             this.btnUpdateRefresh.Location = (new global::System.Drawing.Point(593, 576));
@@ -534,7 +534,7 @@
             // label37
             // 
             this.label37.AutoSize = (true);
-            this.label37.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label37.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label37.ForeColor = (global::System.Drawing.Color.DimGray);
             this.label37.Location = (new global::System.Drawing.Point(13, 745));
             this.label37.Name = ("label37");
@@ -605,7 +605,7 @@
             this.txtFetchDuration.BackColor = (global::System.Drawing.SystemColors.InactiveBorder);
             this.txtFetchDuration.Dock = (global::System.Windows.Forms.DockStyle.Fill);
             this.txtFetchDuration.DropDownHeight = (75);
-            this.txtFetchDuration.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.txtFetchDuration.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.txtFetchDuration.FormattingEnabled = (true);
             this.txtFetchDuration.IntegralHeight = (false);
             this.txtFetchDuration.ItemHeight = (16);
@@ -668,7 +668,7 @@
             // 
             this.txtFetchDescription.BorderStyle = (global::System.Windows.Forms.BorderStyle.FixedSingle);
             this.txtFetchDescription.Dock = (global::System.Windows.Forms.DockStyle.Fill);
-            this.txtFetchDescription.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.txtFetchDescription.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F));
             this.txtFetchDescription.Location = (new global::System.Drawing.Point(0, 0));
             this.txtFetchDescription.Multiline = (true);
             this.txtFetchDescription.Name = ("txtFetchDescription");
@@ -729,7 +729,7 @@
             this.txtFetchTitle.BackColor = (global::System.Drawing.SystemColors.InactiveBorder);
             this.txtFetchTitle.Dock = (global::System.Windows.Forms.DockStyle.Fill);
             this.txtFetchTitle.DropDownHeight = (75);
-            this.txtFetchTitle.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.txtFetchTitle.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.txtFetchTitle.FormattingEnabled = (true);
             this.txtFetchTitle.IntegralHeight = (false);
             this.txtFetchTitle.ItemHeight = (16);
@@ -792,7 +792,7 @@
             // 
             this.txtFetchFrequency.BorderStyle = (global::System.Windows.Forms.BorderStyle.FixedSingle);
             this.txtFetchFrequency.Dock = (global::System.Windows.Forms.DockStyle.Fill);
-            this.txtFetchFrequency.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.txtFetchFrequency.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F));
             this.txtFetchFrequency.Location = (new global::System.Drawing.Point(0, 0));
             this.txtFetchFrequency.Name = ("txtFetchFrequency");
             this.txtFetchFrequency.Size = (new global::System.Drawing.Size(186, 25));
@@ -852,7 +852,7 @@
             this.txtDuration.BackColor = (global::System.Drawing.SystemColors.InactiveBorder);
             this.txtDuration.Dock = (global::System.Windows.Forms.DockStyle.Fill);
             this.txtDuration.DropDownHeight = (75);
-            this.txtDuration.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.txtDuration.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.txtDuration.FormattingEnabled = (true);
             this.txtDuration.IntegralHeight = (false);
             this.txtDuration.ItemHeight = (16);
@@ -915,7 +915,7 @@
             // 
             this.txtFrequency.BorderStyle = (global::System.Windows.Forms.BorderStyle.FixedSingle);
             this.txtFrequency.Dock = (global::System.Windows.Forms.DockStyle.Fill);
-            this.txtFrequency.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.txtFrequency.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F));
             this.txtFrequency.Location = (new global::System.Drawing.Point(0, 0));
             this.txtFrequency.Name = ("txtFrequency");
             this.txtFrequency.Size = (new global::System.Drawing.Size(534, 25));
@@ -974,7 +974,7 @@
             // 
             this.txtDescription.BorderStyle = (global::System.Windows.Forms.BorderStyle.FixedSingle);
             this.txtDescription.Dock = (global::System.Windows.Forms.DockStyle.Fill);
-            this.txtDescription.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.txtDescription.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F));
             this.txtDescription.Location = (new global::System.Drawing.Point(0, 0));
             this.txtDescription.Multiline = (true);
             this.txtDescription.Name = ("txtDescription");
@@ -1034,7 +1034,7 @@
             // 
             this.txtTitle.BorderStyle = (global::System.Windows.Forms.BorderStyle.FixedSingle);
             this.txtTitle.Dock = (global::System.Windows.Forms.DockStyle.Fill);
-            this.txtTitle.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.txtTitle.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F));
             this.txtTitle.Location = (new global::System.Drawing.Point(0, 0));
             this.txtTitle.Name = ("txtTitle");
             this.txtTitle.Size = (new global::System.Drawing.Size(534, 25));
@@ -1061,7 +1061,7 @@
             this.btnMonday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnMonday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnMonday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnMonday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.btnMonday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnMonday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnMonday.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.btnMonday.Location = (new global::System.Drawing.Point(0, 0));
@@ -1078,7 +1078,7 @@
             this.btnTuesday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnTuesday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnTuesday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnTuesday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.btnTuesday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnTuesday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnTuesday.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.btnTuesday.Location = (new global::System.Drawing.Point(95, 0));
@@ -1095,7 +1095,7 @@
             this.btnWednesday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnWednesday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnWednesday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnWednesday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.btnWednesday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnWednesday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnWednesday.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.btnWednesday.Location = (new global::System.Drawing.Point(190, 0));
@@ -1112,7 +1112,7 @@
             this.btnThursday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnThursday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnThursday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnThursday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.btnThursday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnThursday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnThursday.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.btnThursday.Location = (new global::System.Drawing.Point(285, 0));
@@ -1129,7 +1129,7 @@
             this.btnFriday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnFriday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnFriday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnFriday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.btnFriday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnFriday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnFriday.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.btnFriday.Location = (new global::System.Drawing.Point(380, 0));
@@ -1146,7 +1146,7 @@
             this.btnSaturday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnSaturday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnSaturday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnSaturday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.btnSaturday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnSaturday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnSaturday.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.btnSaturday.Location = (new global::System.Drawing.Point(475, 0));
@@ -1163,7 +1163,7 @@
             this.btnSunday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnSunday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
             this.btnSunday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnSunday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.btnSunday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnSunday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnSunday.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.btnSunday.Location = (new global::System.Drawing.Point(570, 0));
@@ -1249,7 +1249,7 @@
             this.panel117.Controls.Add(this.panel120);
             this.panel117.Controls.Add(this.panel121);
             this.panel117.Controls.Add(this.dateTimePicker16);
-            this.panel117.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.panel117.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.panel117.Location = (new global::System.Drawing.Point(123, 267));
             this.panel117.Name = ("panel117");
             this.panel117.Size = (new global::System.Drawing.Size(107, 23));
@@ -1261,7 +1261,7 @@
             this.button25.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button25.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button25.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.button25.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button25.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.button25.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.button25.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.button25.Location = (new global::System.Drawing.Point(129, 32));
@@ -1320,7 +1320,7 @@
             // label39
             // 
             this.label39.AutoSize = (true);
-            this.label39.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label39.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label39.Location = (new global::System.Drawing.Point(236, 274));
             this.label39.Name = ("label39");
             this.label39.Size = (new global::System.Drawing.Size(76, 16));
@@ -1333,7 +1333,7 @@
             this.btnSaveOfficeHours.BackColor = (global::System.Drawing.Color.Black);
             this.btnSaveOfficeHours.FlatAppearance.BorderColor = (global::System.Drawing.Color.Black);
             this.btnSaveOfficeHours.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnSaveOfficeHours.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.btnSaveOfficeHours.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnSaveOfficeHours.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnSaveOfficeHours.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.btnSaveOfficeHours.Location = (new global::System.Drawing.Point(561, 266));
@@ -1348,7 +1348,7 @@
             // btnApplyToAll
             // 
             this.btnApplyToAll.AutoSize = (true);
-            this.btnApplyToAll.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.btnApplyToAll.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.btnApplyToAll.Location = (new global::System.Drawing.Point(439, 268));
             this.btnApplyToAll.Name = ("btnApplyToAll");
             this.btnApplyToAll.Size = (new global::System.Drawing.Size(119, 20));
@@ -1366,7 +1366,7 @@
             this.panel112.Controls.Add(this.panel115);
             this.panel112.Controls.Add(this.panel116);
             this.panel112.Controls.Add(this.dateTimePicker15);
-            this.panel112.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.panel112.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.panel112.Location = (new global::System.Drawing.Point(324, 267));
             this.panel112.Name = ("panel112");
             this.panel112.Size = (new global::System.Drawing.Size(107, 23));
@@ -1378,7 +1378,7 @@
             this.button22.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button22.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button22.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.button22.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button22.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.button22.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.button22.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.button22.Location = (new global::System.Drawing.Point(222, 32));
@@ -1437,7 +1437,7 @@
             // label38
             // 
             this.label38.AutoSize = (true);
-            this.label38.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label38.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label38.Location = (new global::System.Drawing.Point(32, 274));
             this.label38.Name = ("label38");
             this.label38.Size = (new global::System.Drawing.Size(83, 16));
@@ -1453,7 +1453,7 @@
             this.panel102.Controls.Add(this.panel105);
             this.panel102.Controls.Add(this.panel106);
             this.panel102.Controls.Add(this.dateTimePicker13);
-            this.panel102.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.panel102.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.panel102.Location = (new global::System.Drawing.Point(426, 215));
             this.panel102.Name = ("panel102");
             this.panel102.Size = (new global::System.Drawing.Size(107, 23));
@@ -1465,7 +1465,7 @@
             this.button19.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button19.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button19.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.button19.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button19.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.button19.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.button19.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.button19.Location = (new global::System.Drawing.Point(222, 32));
@@ -1530,7 +1530,7 @@
             this.panel107.Controls.Add(this.panel110);
             this.panel107.Controls.Add(this.panel111);
             this.panel107.Controls.Add(this.dateTimePicker14);
-            this.panel107.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.panel107.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.panel107.Location = (new global::System.Drawing.Point(227, 215));
             this.panel107.Name = ("panel107");
             this.panel107.Size = (new global::System.Drawing.Size(107, 23));
@@ -1542,7 +1542,7 @@
             this.button20.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button20.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button20.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.button20.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button20.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.button20.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.button20.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.button20.Location = (new global::System.Drawing.Point(315, 32));
@@ -1601,7 +1601,7 @@
             // sundayClose
             // 
             this.sundayClose.AutoSize = (true);
-            this.sundayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.sundayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.sundayClose.Location = (new global::System.Drawing.Point(556, 219));
             this.sundayClose.Name = ("sundayClose");
             this.sundayClose.Size = (new global::System.Drawing.Size(57, 20));
@@ -1612,7 +1612,7 @@
             // label34
             // 
             this.label34.AutoSize = (true);
-            this.label34.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label34.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label34.Location = (new global::System.Drawing.Point(345, 223));
             this.label34.Name = ("label34");
             this.label34.Size = (new global::System.Drawing.Size(76, 16));
@@ -1622,7 +1622,7 @@
             // label35
             // 
             this.label35.AutoSize = (true);
-            this.label35.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label35.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label35.Location = (new global::System.Drawing.Point(138, 221));
             this.label35.Name = ("label35");
             this.label35.Size = (new global::System.Drawing.Size(83, 16));
@@ -1632,7 +1632,7 @@
             // label36
             // 
             this.label36.AutoSize = (true);
-            this.label36.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label36.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label36.Location = (new global::System.Drawing.Point(55, 221));
             this.label36.Name = ("label36");
             this.label36.Size = (new global::System.Drawing.Size(49, 16));
@@ -1648,7 +1648,7 @@
             this.panel92.Controls.Add(this.panel95);
             this.panel92.Controls.Add(this.panel96);
             this.panel92.Controls.Add(this.dateTimePicker11);
-            this.panel92.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.panel92.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.panel92.Location = (new global::System.Drawing.Point(426, 184));
             this.panel92.Name = ("panel92");
             this.panel92.Size = (new global::System.Drawing.Size(107, 23));
@@ -1660,7 +1660,7 @@
             this.button16.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button16.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button16.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.button16.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button16.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.button16.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.button16.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.button16.Location = (new global::System.Drawing.Point(222, 32));
@@ -1725,7 +1725,7 @@
             this.panel97.Controls.Add(this.panel100);
             this.panel97.Controls.Add(this.panel101);
             this.panel97.Controls.Add(this.dateTimePicker12);
-            this.panel97.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.panel97.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.panel97.Location = (new global::System.Drawing.Point(227, 184));
             this.panel97.Name = ("panel97");
             this.panel97.Size = (new global::System.Drawing.Size(107, 23));
@@ -1737,7 +1737,7 @@
             this.button17.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button17.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button17.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.button17.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button17.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.button17.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.button17.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.button17.Location = (new global::System.Drawing.Point(315, 32));
@@ -1796,7 +1796,7 @@
             // saturdayClose
             // 
             this.saturdayClose.AutoSize = (true);
-            this.saturdayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.saturdayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.saturdayClose.Location = (new global::System.Drawing.Point(556, 188));
             this.saturdayClose.Name = ("saturdayClose");
             this.saturdayClose.Size = (new global::System.Drawing.Size(57, 20));
@@ -1807,7 +1807,7 @@
             // label31
             // 
             this.label31.AutoSize = (true);
-            this.label31.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label31.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label31.Location = (new global::System.Drawing.Point(345, 192));
             this.label31.Name = ("label31");
             this.label31.Size = (new global::System.Drawing.Size(76, 16));
@@ -1817,7 +1817,7 @@
             // label32
             // 
             this.label32.AutoSize = (true);
-            this.label32.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label32.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label32.Location = (new global::System.Drawing.Point(138, 190));
             this.label32.Name = ("label32");
             this.label32.Size = (new global::System.Drawing.Size(83, 16));
@@ -1827,7 +1827,7 @@
             // label33
             // 
             this.label33.AutoSize = (true);
-            this.label33.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label33.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label33.Location = (new global::System.Drawing.Point(55, 190));
             this.label33.Name = ("label33");
             this.label33.Size = (new global::System.Drawing.Size(58, 16));
@@ -1843,7 +1843,7 @@
             this.panel82.Controls.Add(this.panel85);
             this.panel82.Controls.Add(this.panel86);
             this.panel82.Controls.Add(this.dateTimePicker9);
-            this.panel82.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.panel82.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.panel82.Location = (new global::System.Drawing.Point(426, 153));
             this.panel82.Name = ("panel82");
             this.panel82.Size = (new global::System.Drawing.Size(107, 23));
@@ -1855,7 +1855,7 @@
             this.button13.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button13.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button13.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.button13.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button13.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.button13.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.button13.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.button13.Location = (new global::System.Drawing.Point(222, 32));
@@ -1920,7 +1920,7 @@
             this.panel87.Controls.Add(this.panel90);
             this.panel87.Controls.Add(this.panel91);
             this.panel87.Controls.Add(this.dateTimePicker10);
-            this.panel87.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.panel87.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.panel87.Location = (new global::System.Drawing.Point(227, 153));
             this.panel87.Name = ("panel87");
             this.panel87.Size = (new global::System.Drawing.Size(107, 23));
@@ -1932,7 +1932,7 @@
             this.button14.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button14.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button14.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.button14.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button14.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.button14.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.button14.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.button14.Location = (new global::System.Drawing.Point(315, 32));
@@ -1991,7 +1991,7 @@
             // fridayClose
             // 
             this.fridayClose.AutoSize = (true);
-            this.fridayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.fridayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.fridayClose.Location = (new global::System.Drawing.Point(556, 157));
             this.fridayClose.Name = ("fridayClose");
             this.fridayClose.Size = (new global::System.Drawing.Size(57, 20));
@@ -2002,7 +2002,7 @@
             // label28
             // 
             this.label28.AutoSize = (true);
-            this.label28.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label28.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label28.Location = (new global::System.Drawing.Point(345, 161));
             this.label28.Name = ("label28");
             this.label28.Size = (new global::System.Drawing.Size(76, 16));
@@ -2012,7 +2012,7 @@
             // label29
             // 
             this.label29.AutoSize = (true);
-            this.label29.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label29.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label29.Location = (new global::System.Drawing.Point(138, 159));
             this.label29.Name = ("label29");
             this.label29.Size = (new global::System.Drawing.Size(83, 16));
@@ -2022,7 +2022,7 @@
             // label30
             // 
             this.label30.AutoSize = (true);
-            this.label30.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label30.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label30.Location = (new global::System.Drawing.Point(55, 159));
             this.label30.Name = ("label30");
             this.label30.Size = (new global::System.Drawing.Size(42, 16));
@@ -2038,7 +2038,7 @@
             this.panel72.Controls.Add(this.panel75);
             this.panel72.Controls.Add(this.panel76);
             this.panel72.Controls.Add(this.dateTimePicker7);
-            this.panel72.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.panel72.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.panel72.Location = (new global::System.Drawing.Point(426, 122));
             this.panel72.Name = ("panel72");
             this.panel72.Size = (new global::System.Drawing.Size(107, 23));
@@ -2050,7 +2050,7 @@
             this.button10.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button10.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button10.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.button10.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button10.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.button10.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.button10.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.button10.Location = (new global::System.Drawing.Point(222, 32));
@@ -2115,7 +2115,7 @@
             this.panel77.Controls.Add(this.panel80);
             this.panel77.Controls.Add(this.panel81);
             this.panel77.Controls.Add(this.dateTimePicker8);
-            this.panel77.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.panel77.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.panel77.Location = (new global::System.Drawing.Point(227, 122));
             this.panel77.Name = ("panel77");
             this.panel77.Size = (new global::System.Drawing.Size(107, 23));
@@ -2127,7 +2127,7 @@
             this.button11.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button11.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button11.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.button11.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button11.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.button11.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.button11.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.button11.Location = (new global::System.Drawing.Point(315, 32));
@@ -2186,7 +2186,7 @@
             // thursdayClose
             // 
             this.thursdayClose.AutoSize = (true);
-            this.thursdayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.thursdayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.thursdayClose.Location = (new global::System.Drawing.Point(556, 126));
             this.thursdayClose.Name = ("thursdayClose");
             this.thursdayClose.Size = (new global::System.Drawing.Size(57, 20));
@@ -2197,7 +2197,7 @@
             // label25
             // 
             this.label25.AutoSize = (true);
-            this.label25.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label25.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label25.Location = (new global::System.Drawing.Point(345, 130));
             this.label25.Name = ("label25");
             this.label25.Size = (new global::System.Drawing.Size(76, 16));
@@ -2207,7 +2207,7 @@
             // label26
             // 
             this.label26.AutoSize = (true);
-            this.label26.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label26.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label26.Location = (new global::System.Drawing.Point(138, 128));
             this.label26.Name = ("label26");
             this.label26.Size = (new global::System.Drawing.Size(83, 16));
@@ -2217,7 +2217,7 @@
             // label27
             // 
             this.label27.AutoSize = (true);
-            this.label27.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label27.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label27.Location = (new global::System.Drawing.Point(55, 128));
             this.label27.Name = ("label27");
             this.label27.Size = (new global::System.Drawing.Size(60, 16));
@@ -2233,7 +2233,7 @@
             this.panel62.Controls.Add(this.panel65);
             this.panel62.Controls.Add(this.panel66);
             this.panel62.Controls.Add(this.dateTimePicker5);
-            this.panel62.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.panel62.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.panel62.Location = (new global::System.Drawing.Point(426, 91));
             this.panel62.Name = ("panel62");
             this.panel62.Size = (new global::System.Drawing.Size(107, 23));
@@ -2245,7 +2245,7 @@
             this.button7.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button7.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button7.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.button7.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button7.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.button7.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.button7.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.button7.Location = (new global::System.Drawing.Point(222, 32));
@@ -2310,7 +2310,7 @@
             this.panel67.Controls.Add(this.panel70);
             this.panel67.Controls.Add(this.panel71);
             this.panel67.Controls.Add(this.dateTimePicker6);
-            this.panel67.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.panel67.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.panel67.Location = (new global::System.Drawing.Point(227, 91));
             this.panel67.Name = ("panel67");
             this.panel67.Size = (new global::System.Drawing.Size(107, 23));
@@ -2322,7 +2322,7 @@
             this.button8.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button8.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button8.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.button8.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button8.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.button8.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.button8.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.button8.Location = (new global::System.Drawing.Point(315, 32));
@@ -2381,7 +2381,7 @@
             // wednesdayClose
             // 
             this.wednesdayClose.AutoSize = (true);
-            this.wednesdayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.wednesdayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.wednesdayClose.Location = (new global::System.Drawing.Point(556, 95));
             this.wednesdayClose.Name = ("wednesdayClose");
             this.wednesdayClose.Size = (new global::System.Drawing.Size(57, 20));
@@ -2392,7 +2392,7 @@
             // label22
             // 
             this.label22.AutoSize = (true);
-            this.label22.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label22.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label22.Location = (new global::System.Drawing.Point(345, 99));
             this.label22.Name = ("label22");
             this.label22.Size = (new global::System.Drawing.Size(76, 16));
@@ -2402,7 +2402,7 @@
             // label23
             // 
             this.label23.AutoSize = (true);
-            this.label23.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label23.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label23.Location = (new global::System.Drawing.Point(138, 97));
             this.label23.Name = ("label23");
             this.label23.Size = (new global::System.Drawing.Size(83, 16));
@@ -2412,7 +2412,7 @@
             // label24
             // 
             this.label24.AutoSize = (true);
-            this.label24.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label24.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label24.Location = (new global::System.Drawing.Point(55, 97));
             this.label24.Name = ("label24");
             this.label24.Size = (new global::System.Drawing.Size(73, 16));
@@ -2428,7 +2428,7 @@
             this.panel52.Controls.Add(this.panel55);
             this.panel52.Controls.Add(this.panel56);
             this.panel52.Controls.Add(this.dateTimePicker3);
-            this.panel52.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.panel52.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.panel52.Location = (new global::System.Drawing.Point(426, 60));
             this.panel52.Name = ("panel52");
             this.panel52.Size = (new global::System.Drawing.Size(107, 23));
@@ -2440,7 +2440,7 @@
             this.button4.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button4.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button4.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.button4.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button4.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.button4.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.button4.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.button4.Location = (new global::System.Drawing.Point(315, 32));
@@ -2505,7 +2505,7 @@
             this.panel57.Controls.Add(this.panel60);
             this.panel57.Controls.Add(this.panel61);
             this.panel57.Controls.Add(this.dateTimePicker4);
-            this.panel57.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.panel57.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.panel57.Location = (new global::System.Drawing.Point(227, 60));
             this.panel57.Name = ("panel57");
             this.panel57.Size = (new global::System.Drawing.Size(107, 23));
@@ -2517,7 +2517,7 @@
             this.button5.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button5.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button5.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.button5.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button5.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.button5.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.button5.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.button5.Location = (new global::System.Drawing.Point(408, 32));
@@ -2576,7 +2576,7 @@
             // tuesdayClose
             // 
             this.tuesdayClose.AutoSize = (true);
-            this.tuesdayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.tuesdayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.tuesdayClose.Location = (new global::System.Drawing.Point(556, 64));
             this.tuesdayClose.Name = ("tuesdayClose");
             this.tuesdayClose.Size = (new global::System.Drawing.Size(57, 20));
@@ -2587,7 +2587,7 @@
             // label19
             // 
             this.label19.AutoSize = (true);
-            this.label19.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label19.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label19.Location = (new global::System.Drawing.Point(345, 68));
             this.label19.Name = ("label19");
             this.label19.Size = (new global::System.Drawing.Size(76, 16));
@@ -2597,7 +2597,7 @@
             // label20
             // 
             this.label20.AutoSize = (true);
-            this.label20.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label20.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label20.Location = (new global::System.Drawing.Point(138, 66));
             this.label20.Name = ("label20");
             this.label20.Size = (new global::System.Drawing.Size(83, 16));
@@ -2607,7 +2607,7 @@
             // label21
             // 
             this.label21.AutoSize = (true);
-            this.label21.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label21.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label21.Location = (new global::System.Drawing.Point(55, 66));
             this.label21.Name = ("label21");
             this.label21.Size = (new global::System.Drawing.Size(55, 16));
@@ -2623,7 +2623,7 @@
             this.panel39.Controls.Add(this.panel50);
             this.panel39.Controls.Add(this.panel51);
             this.panel39.Controls.Add(this.dateTimePicker2);
-            this.panel39.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.panel39.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.panel39.Location = (new global::System.Drawing.Point(227, 29));
             this.panel39.Name = ("panel39");
             this.panel39.Size = (new global::System.Drawing.Size(107, 23));
@@ -2635,7 +2635,7 @@
             this.button3.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button3.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button3.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.button3.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button3.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.button3.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.button3.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.button3.Location = (new global::System.Drawing.Point(408, 32));
@@ -2700,7 +2700,7 @@
             this.panel14.Controls.Add(this.panel29);
             this.panel14.Controls.Add(this.panel34);
             this.panel14.Controls.Add(this.dateTimePicker1);
-            this.panel14.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.panel14.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.panel14.Location = (new global::System.Drawing.Point(426, 29));
             this.panel14.Name = ("panel14");
             this.panel14.Size = (new global::System.Drawing.Size(107, 23));
@@ -2712,7 +2712,7 @@
             this.button2.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button2.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(102)), (global::System.Int32)((global::System.Byte)(204)), (global::System.Int32)((global::System.Byte)(102))));
             this.button2.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.button2.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.button2.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.button2.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.button2.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.button2.Location = (new global::System.Drawing.Point(501, 32));
@@ -2771,7 +2771,7 @@
             // mondayClose
             // 
             this.mondayClose.AutoSize = (true);
-            this.mondayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.mondayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.mondayClose.Location = (new global::System.Drawing.Point(556, 32));
             this.mondayClose.Name = ("mondayClose");
             this.mondayClose.Size = (new global::System.Drawing.Size(57, 20));
@@ -2782,7 +2782,7 @@
             // label18
             // 
             this.label18.AutoSize = (true);
-            this.label18.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label18.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label18.Location = (new global::System.Drawing.Point(344, 36));
             this.label18.Name = ("label18");
             this.label18.Size = (new global::System.Drawing.Size(76, 16));
@@ -2792,7 +2792,7 @@
             // label17
             // 
             this.label17.AutoSize = (true);
-            this.label17.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label17.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label17.Location = (new global::System.Drawing.Point(138, 36));
             this.label17.Name = ("label17");
             this.label17.Size = (new global::System.Drawing.Size(83, 16));
@@ -2802,7 +2802,7 @@
             // label16
             // 
             this.label16.AutoSize = (true);
-            this.label16.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label16.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label16.Location = (new global::System.Drawing.Point(55, 34));
             this.label16.Name = ("label16");
             this.label16.Size = (new global::System.Drawing.Size(51, 16));
@@ -2812,7 +2812,7 @@
             // label14
             // 
             this.label14.AutoSize = (true);
-            this.label14.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label14.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label14.ForeColor = (global::System.Drawing.Color.DimGray);
             this.label14.Location = (new global::System.Drawing.Point(13, 711));
             this.label14.Name = ("label14");
@@ -2824,17 +2824,17 @@
             // label15
             // 
             this.label15.AutoSize = (true);
-            this.label15.Font = (new global::System.Drawing.Font("Tahoma", 14.25F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label15.Font = (new global::System.Drawing.Font("Tahoma", 12F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point, (global::System.Byte)(0)));
             this.label15.Location = (new global::System.Drawing.Point(13, 670));
             this.label15.Name = ("label15");
-            this.label15.Size = (new global::System.Drawing.Size(219, 23));
+            this.label15.Size = (new global::System.Drawing.Size(186, 19));
             this.label15.TabIndex = (68);
             this.label15.Text = ("Setup Appointment Hour");
             // 
             // label7
             // 
             this.label7.AutoSize = (true);
-            this.label7.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label7.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label7.ForeColor = (global::System.Drawing.Color.DimGray);
             this.label7.Location = (new global::System.Drawing.Point(13, 398));
             this.label7.Name = ("label7");
@@ -2846,18 +2846,18 @@
             // label13
             // 
             this.label13.AutoSize = (true);
-            this.label13.Font = (new global::System.Drawing.Font("Tahoma", 14.25F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label13.Font = (new global::System.Drawing.Font("Tahoma", 12F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point, (global::System.Byte)(0)));
             this.label13.Location = (new global::System.Drawing.Point(13, 359));
             this.label13.Name = ("label13");
-            this.label13.Size = (new global::System.Drawing.Size(163, 23));
+            this.label13.Size = (new global::System.Drawing.Size(171, 19));
             this.label13.TabIndex = (57);
-            this.label13.Text = ("Update Categories");
+            this.label13.Text = ("Update Dental Services");
             // 
             // lineDevider
             // 
             this.lineDevider.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Left) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.lineDevider.AutoSize = (true);
-            this.lineDevider.Location = (new global::System.Drawing.Point(521, 13641));
+            this.lineDevider.Location = (new global::System.Drawing.Point(521, 14493));
             this.lineDevider.Name = ("lineDevider");
             this.lineDevider.Size = (new global::System.Drawing.Size(10, 15));
             this.lineDevider.TabIndex = (59);
@@ -2866,7 +2866,7 @@
             // label6
             // 
             this.label6.AutoSize = (true);
-            this.label6.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label6.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label6.ForeColor = (global::System.Drawing.Color.DimGray);
             this.label6.Location = (new global::System.Drawing.Point(13, 142));
             this.label6.Name = ("label6");
@@ -2879,7 +2879,7 @@
             // 
             this.label12.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = (true);
-            this.label12.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label12.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label12.ForeColor = (global::System.Drawing.Color.DimGray);
             this.label12.Location = (new global::System.Drawing.Point(402, 551));
             this.label12.Name = ("label12");
@@ -2890,7 +2890,7 @@
             // label10
             // 
             this.label10.AutoSize = (true);
-            this.label10.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label10.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label10.ForeColor = (global::System.Drawing.Color.DimGray);
             this.label10.Location = (new global::System.Drawing.Point(13, 100));
             this.label10.Name = ("label10");
@@ -2902,18 +2902,18 @@
             // label5
             // 
             this.label5.AutoSize = (true);
-            this.label5.Font = (new global::System.Drawing.Font("Tahoma", 14.25F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label5.Font = (new global::System.Drawing.Font("Tahoma", 12F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point, (global::System.Byte)(0)));
             this.label5.Location = (new global::System.Drawing.Point(13, 46));
             this.label5.Name = ("label5");
-            this.label5.Size = (new global::System.Drawing.Size(84, 23));
+            this.label5.Size = (new global::System.Drawing.Size(116, 19));
             this.label5.TabIndex = (2);
-            this.label5.Text = ("Category");
+            this.label5.Text = ("Dental Services");
             // 
             // label11
             // 
             this.label11.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = (true);
-            this.label11.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label11.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label11.Location = (new global::System.Drawing.Point(769, 551));
             this.label11.Name = ("label11");
             this.label11.Size = (new global::System.Drawing.Size(66, 16));
@@ -2924,7 +2924,7 @@
             // 
             this.label9.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = (true);
-            this.label9.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label9.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label9.ForeColor = (global::System.Drawing.Color.DimGray);
             this.label9.Location = (new global::System.Drawing.Point(402, 98));
             this.label9.Name = ("label9");
@@ -2936,7 +2936,7 @@
             // 
             this.label8.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = (true);
-            this.label8.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label8.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label8.ForeColor = (global::System.Drawing.Color.DimGray);
             this.label8.Location = (new global::System.Drawing.Point(402, 361));
             this.label8.Name = ("label8");
@@ -2950,7 +2950,7 @@
             this.btnUpdate.BackColor = (global::System.Drawing.Color.Black);
             this.btnUpdate.FlatAppearance.BorderColor = (global::System.Drawing.Color.Black);
             this.btnUpdate.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnUpdate.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.btnUpdate.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnUpdate.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnUpdate.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.btnUpdate.Location = (new global::System.Drawing.Point(528, 576));
@@ -2966,7 +2966,7 @@
             // 
             this.label4.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = (true);
-            this.label4.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label4.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label4.ForeColor = (global::System.Drawing.Color.DimGray);
             this.label4.Location = (new global::System.Drawing.Point(402, 255));
             this.label4.Name = ("label4");
@@ -2978,7 +2978,7 @@
             // 
             this.label3.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = (true);
-            this.label3.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label3.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label3.ForeColor = (global::System.Drawing.Color.DimGray);
             this.label3.Location = (new global::System.Drawing.Point(402, 215));
             this.label3.Name = ("label3");
@@ -2990,7 +2990,7 @@
             // 
             this.label2.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = (true);
-            this.label2.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label2.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label2.ForeColor = (global::System.Drawing.Color.DimGray);
             this.label2.Location = (new global::System.Drawing.Point(402, 437));
             this.label2.Name = ("label2");
@@ -3002,7 +3002,7 @@
             // 
             this.label1.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = (true);
-            this.label1.Font = (new global::System.Drawing.Font("Tahoma", 9.75F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point));
+            this.label1.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label1.ForeColor = (global::System.Drawing.Color.DimGray);
             this.label1.Location = (new global::System.Drawing.Point(402, 52));
             this.label1.Name = ("label1");

@@ -52,11 +52,11 @@
             viewBranchData.AllowUserToDeleteRows = false;
             viewBranchData.AllowUserToResizeColumns = false;
             viewBranchData.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.LightGray;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(132, 202, 239);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Gainsboro;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(52, 152, 219);
             viewBranchData.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             viewBranchData.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             viewBranchData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

@@ -256,7 +256,7 @@ namespace Application_Desktop.Admin_Views
             }
             finally
             {
-                    await conn.CloseAsync();
+                await conn.CloseAsync();
             }
         }
 
@@ -346,7 +346,7 @@ namespace Application_Desktop.Admin_Views
             }
             finally
             {
-                    await conn.CloseAsync();
+                await conn.CloseAsync();
             }
         }
 
