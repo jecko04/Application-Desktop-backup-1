@@ -122,11 +122,14 @@ namespace Application_Desktop.Controller
             try
             {
                 List<Categories> categoriesList = await _setupBookingModel.GetAllCategoriesTitle(admin);
+
+                // Clear and populate the ComboBox with days
+                _dayOfWeekData.Clear();
+                categoryComboBox.Items.Clear();
+
                 if (categoriesList != null && categoriesList.Count > 0)
                 {
-                    // Clear and populate the ComboBox with days
-                    _dayOfWeekData.Clear();
-                    categoryComboBox.Items.Clear();
+                    
 
                     foreach (var category in categoriesList)
                     {
@@ -136,7 +139,7 @@ namespace Application_Desktop.Controller
                 }
                 else
                 {
-                    MessageBox.Show("No data found.");
+                    MessageBox.Show("No data found for dental services. Go to Setup Appointment", "No Data Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -196,11 +199,13 @@ namespace Application_Desktop.Controller
             try
             {
                 List<DayTime> dayOfWeekList = await _setupBookingModel.GetAllDayTime(admin);
+
+                // Clear and populate the ComboBox with days
+                _dayOfWeekData.Clear();
+                dayComboBox.Items.Clear();
+
                 if (dayOfWeekList != null && dayOfWeekList.Count > 0)
                 {
-                    // Clear and populate the ComboBox with days
-                    _dayOfWeekData.Clear();
-                    dayComboBox.Items.Clear();
 
                     foreach (var dayofweek in dayOfWeekList)
                     {
@@ -217,7 +222,7 @@ namespace Application_Desktop.Controller
                 }
                 else
                 {
-                    MessageBox.Show("No data found.");
+                    MessageBox.Show("No data found for available time. Go to Setup appointment", "No Data Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -246,7 +251,7 @@ namespace Application_Desktop.Controller
                 }
                 else
                 {
-                    MessageBox.Show("No data found for the selected day.");
+                    MessageBox.Show("No data found for the selected day.", "No Data Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -264,6 +269,20 @@ namespace Application_Desktop.Controller
             status.SelectedItem = "Available";
         }
 
+        public void LoadMaxAppointment(ComboBox maxAppointment)
+        {
+            maxAppointment.Items.Clear();
+            int[] value = {
+                0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
+            };
+
+            foreach (int max in value)
+            {
+                maxAppointment.Items.Add(max);
+            }
+
+            maxAppointment.SelectedItem = 0;
+        }
         public async Task LoadOpenDayTime(int admin, DataGridView viewDayTime)
         {
             try
