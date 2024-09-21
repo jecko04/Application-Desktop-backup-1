@@ -154,7 +154,6 @@ namespace Application_Desktop.Admin_Views
             employeeColumn.HeaderText = "Employee ID";
             employeeColumn.Name = "Employee_ID";
             employeeColumn.DataPropertyName = "Employee_ID";
-            employeeColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewEmployeeDetails.Columns.Add(employeeColumn);
 
             DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();

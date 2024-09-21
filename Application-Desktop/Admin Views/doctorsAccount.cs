@@ -121,12 +121,11 @@ namespace Application_Desktop.Admin_Views
             viewDentalDoctorAccount.Columns.Add(selectColumn);
             viewDentalDoctorAccount.Columns["selectDoctors"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-            DataGridViewTextBoxColumn doctorColumn = new DataGridViewTextBoxColumn();
-            doctorColumn.HeaderText = "Doctors ID";
-            doctorColumn.Name = "Doctors_ID";
-            doctorColumn.DataPropertyName = "Doctors_ID";
-            doctorColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            viewDentalDoctorAccount.Columns.Add(doctorColumn);
+            DataGridViewTextBoxColumn adminColumn = new DataGridViewTextBoxColumn();
+            adminColumn.HeaderText = "Doctors ID";
+            adminColumn.Name = "Doctors_ID";
+            adminColumn.DataPropertyName = "Doctors_ID";
+            viewDentalDoctorAccount.Columns.Add(adminColumn);
 
             DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
             nameColumn.HeaderText = "Name";

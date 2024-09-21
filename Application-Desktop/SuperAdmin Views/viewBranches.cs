@@ -251,7 +251,6 @@ namespace Application_Desktop.Sub_sub_Views
             idColumn.HeaderText = "ID";
             idColumn.Name = "Branch_ID";
             idColumn.DataPropertyName = "Branch_ID";
-            idColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewBranchData.Columns.Add(idColumn);
 
             DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();

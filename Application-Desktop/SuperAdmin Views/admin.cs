@@ -590,7 +590,6 @@ namespace Application_Desktop.Sub_Views
             adminColumn.HeaderText = "ID";
             adminColumn.Name = "SuperAdmin_ID";
             adminColumn.DataPropertyName = "SuperAdmin_ID";
-            adminColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewSuperAdminData.Columns.Add(adminColumn);
 
             DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
@@ -671,7 +670,6 @@ namespace Application_Desktop.Sub_Views
             adminColumn.HeaderText = "ID";
             adminColumn.Name = "Admin_ID";
             adminColumn.DataPropertyName = "Admin_ID";
-            adminColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewAdminData.Columns.Add(adminColumn);
 
             DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
