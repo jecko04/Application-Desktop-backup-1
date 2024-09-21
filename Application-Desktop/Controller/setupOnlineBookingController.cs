@@ -124,9 +124,7 @@ namespace Application_Desktop.Controller
                 List<Categories> categoriesList = await _setupBookingModel.GetAllCategoriesTitle(admin);
                 if (categoriesList != null && categoriesList.Count > 0)
                 {
-                    // Clear and populate the ComboBox with days
-                    _dayOfWeekData.Clear();
-                    categoryComboBox.Items.Clear();
+                    
 
                     foreach (var category in categoriesList)
                     {

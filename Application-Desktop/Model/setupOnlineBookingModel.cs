@@ -15,9 +15,7 @@ namespace Application_Desktop.Model
     {
         public async Task<DataTable> GetAllCategories(int admin)
         {
-            
-            string query = @"SELECT Title, Description, Duration, Frequency From categories Where Branch_ID = @admin";
-
+            string query = @"SELECT Title, Description, Duration, Frequency FROM categories WHERE Branch_ID = @admin";
             try
             {           
                 using (MySqlConnection conn = databaseHelper.getConnection())
@@ -32,10 +30,8 @@ namespace Application_Desktop.Model
                         using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                         {
                             DataTable datatable = new DataTable();
-
                             adapter.Fill(datatable);
-
-                            return datatable;
+                            return datatable.Rows.Count == 0 ? new DataTable() : datatable;
                         }
                     }
                 }
@@ -49,8 +45,7 @@ namespace Application_Desktop.Model
 
         public async Task<DataTable> SearchCategoryData(int admin, string title)
         {
-            string query = @"SELECT Title, Description, Duration, Frequency From categories Where Branch_ID = @admin AND Title = @title";
-
+            string query = @"SELECT Title, Description, Duration, Frequency FROM categories WHERE Branch_ID = @admin AND Title = @title";
             try
             {
                 using (MySqlConnection conn = databaseHelper.getConnection())
@@ -66,17 +61,14 @@ namespace Application_Desktop.Model
                         using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                         {
                             DataTable datatable = new DataTable();
-
                             adapter.Fill(datatable);
-
-                            return datatable;
+                            return datatable.Rows.Count == 0 ? new DataTable() : datatable;
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Log or rethrow the error, avoid UI logic in model
                 throw new Exception($"Error retrieving search categories data: {ex.Message}");
             }
         }
@@ -195,8 +187,7 @@ namespace Application_Desktop.Model
                                     _isClose = reader.GetBoolean("IsClosed")
                                 };
                                 dayOfWeekList.Add(dayofweek);
-                            }
-                            await reader.CloseAsync();
+                            }await reader.CloseAsync();
                         }
                     }
                 }
@@ -229,15 +220,15 @@ namespace Application_Desktop.Model
                         {
                             while (await reader.ReadAsync())
                             {
-                                DayTime dayofweek = new DayTime
-                                {
+                                DayTime gettime = new DayTime
+                                { 
                                     _days = reader["DayOfWeek"].ToString(),
                                     _start = DateTime.Today.Add(reader.GetTimeSpan("StartTime")),
                                     _end = DateTime.Today.Add(reader.GetTimeSpan("EndTime"))
                                 };
-                                return dayofweek;
-                            }
-                            await reader.CloseAsync();          
+                                return gettime;
+                            }await reader.CloseAsync();
+                            
                         }
                     }
                 }
@@ -281,7 +272,6 @@ namespace Application_Desktop.Model
                 throw new Exception($"Error retrieving OpenDayTime data: {ex.Message}");
             }
         }
-
     }
 
     public class DayTime
