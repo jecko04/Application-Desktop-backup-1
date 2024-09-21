@@ -27,6 +27,9 @@ namespace Application_Desktop.Admin_Views
             ElipseManager elipseManager = new ElipseManager(5);
             elipseManager.ApplyElipseToAllButtons(this);
 
+            ElipseManager elipseManagerPanel = new ElipseManager(15);
+            elipseManagerPanel.ApplyElipseToPanel(PanelOfficeHours);
+
         }
 
         void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)

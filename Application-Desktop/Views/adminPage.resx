@@ -101,7 +101,7 @@
   <data name="btnAppointment.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAedJREFUSEu1lU8rbVEYxs/EB/ABDJiQiYmBZCBuFAYM/B0hbt0xpYRQYkYykVIM
+        DAAACwwBP0AiyAAAAedJREFUSEu1lU8rbVEYxs/EB/ABDJiQiYmBZCBuFAYM/B0hbt0xpYRQYkYykVIM
         iKHu7MZMSjLSrXv9+wJioEQs2+9dHrSz1zmcw1NPu+c973qetdZe+6xUCFEUFTnnFiWDsB56CyU/jvso
         qn5w7lwyCOuxXsmP41sCWGr5QxSNsuxlBu7DO3iQgdaz78cw1jxkFwcNMzTe8FyncRj+gr2wNQ3b4U9x
         yI917pbntGyfQWolP1zzLFEpa+BRKq8KlfzsJ+EaxfyvoK0EjsveB/x2j4/Rl9K5Ldn7k7DHHvYkzSYb
@@ -110,25 +110,6 @@
         ld4Br0Z6Yi/5mGKzZEYQ0p9uFXjZd/BP0gccMqhNMmfg1YHngaR/eTsU+yRzhq0Qz21JHzBvlMwZeC3A
         t9PGntWxpEv2tUClrGEeeF3hGT+VJC7xwzXPFZY4AF9uqk6YdJsZu+BL3yBjV+WxINs4SK+icYyGDfiH
         ZruXk+7hGOndgZtwAo+3myyVSj0Bq9MokD65jQUAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnCategory.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAASNJREFUSEvd
-        VMERgzAMY5SO0lEYhU0YpaMwCHCpRaXUiclBW17VnS9BTqTEcdv9L+Z5vi/L0mNMKd1IF0AegXxrTcC6
-        roNFqsOEHhLCvLGmp8w+/EbOR46T+CpCHt+7t7GkTj6hLKQzvLnFSDoDe7CX+YH0C3BkIjXEe+UxJx1A
-        nc2kuIUROn3pbDgrLti6MawVaVEY+Jv5DZjv3RRwB3qXER+1COAWT6TA+UYIN2oZqETF4/HhNgNs9OKK
-        2sS4WG4nVD6Owbi6RbcuszH/XmTiS1rr+DKFPjZ+4OlHnwOPPdznbxjauGixPZMWbH02YeT3CvjBRGVs
-        iwufmriyHIsLZ02+EheOTH4SF1oml4gLtcml4oI3uVxcoAl6Pvzj/jO67gnY4BT/y+Y2pgAAAABJRU5E
-        rkJggg==
-</value>
-  </data>
-  <data name="btnPatientRecord.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAHlJREFUSEvt
-        lLsNwCAMBRmFzTMKo2QUx4hTSKQQDKKg8Eku8OddR3DMiEjS+uPUiqyPUzK6zEvKvQjPF9qOWjncysFp
-        hcGnIKOjIQlnFfpNgRViNhWwMrdD3wVrBE8Y3dDeVGCBGBe0IaYtWAWxFe2NfMc9ErFOjxAuZJVos18i
-        WqAAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="button6.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -158,7 +139,7 @@
   <data name="btnSetup.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAYxJREFUSEvt1UsoRFEcx/HRMJkR0WiUlFKSyN7KxkpmOYXsPaPIykZJWchCbLEZ
+        DAAACwwBP0AiyAAAAYxJREFUSEvt1UsoRFEcx/HRMJkR0WiUlFKSyN7KxkpmOYXsPaPIykZJWchCbLEZ
         K1sUys6KpUcWDHm/shFlcX1/d84tDXXNvcpm/vVp7jnzP///3Me5E/ATlmVFzGcC7zj5Ou8rKFKNUyxi
         FeN4QT9uMWRSvQUFJrGNGcxDDbuwjimcI2TS08FEDDUuYiY3gjdUohnLGEM+NtFrF3WCCXW9x56LUajQ
         MzZQgkf0YQfD6MY17Hui4mHo+hXbEy5B3izW0A6dVQp5UJM5VGECH86CcqTswS+C3HroZuosdAZLOMYZ
@@ -166,6 +147,17 @@
         tSbNewMnWFuHaQyYcSPC9pcKBr4aZIZqqaYZ5hp8j39poFeFnuVCM+U5qFEA7Y30U8RBHFt4xYE59uMQ
         qqXjuBp04g7aia1/RLX0Zu5QgyBWoK390+vZiyskEbQvk4JBFJl/Ll5FTdlcuEUg8AmP4GNfMA7sbQAA
         AABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnCategory.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAASNJREFUSEvd
+        VMERgzAMY5SO0lEYhU0YpaMwCHCpRaXUiclBW17VnS9BTqTEcdv9L+Z5vi/L0mNMKd1IF0AegXxrTcC6
+        roNFqsOEHhLCvLGmp8w+/EbOR46T+CpCHt+7t7GkTj6hLKQzvLnFSDoDe7CX+YH0C3BkIjXEe+UxJx1A
+        nc2kuIUROn3pbDgrLti6MawVaVEY+Jv5DZjv3RRwB3qXER+1COAWT6TA+UYIN2oZqETF4/HhNgNs9OKK
+        2sS4WG4nVD6Owbi6RbcuszH/XmTiS1rr+DKFPjZ+4OlHnwOPPdznbxjauGixPZMWbH02YeT3CvjBRGVs
+        iwufmriyHIsLZ02+EheOTH4SF1oml4gLtcml4oI3uVxcoAl6Pvzj/jO67gnY4BT/y+Y2pgAAAABJRU5E
+        rkJggg==
 </value>
   </data>
   <data name="btnOnlineBooking.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -176,6 +168,14 @@
         58wcAJkTdIM2Oh5sMHftY5GfNrAaKlsjw5boG9Rk2Q24VZPbdHID5HMVrCSrC8xJDZDlUqRgnVyxGhmj
         GjAHEb798R0UEOnWweSUBukHCXo9TC6/Qe9JbeIsfrmT+Cxsa8ZeAwYg0t3DLZCxIpD/xROuQPWxUrQG
         k7wSmsQLtGX7XGOHY78LJ73UMDwYF43lDfxiGp9IHmu+/4VbGFn2BkJBHsbyHMsFAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnPatientRecord.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAHlJREFUSEvt
+        lLsNwCAMBRmFzTMKo2QUx4hTSKQQDKKg8Eku8OddR3DMiEjS+uPUiqyPUzK6zEvKvQjPF9qOWjncysFp
+        hcGnIKOjIQlnFfpNgRViNhWwMrdD3wVrBE8Y3dDeVGCBGBe0IaYtWAWxFe2NfMc9ErFOjxAuZJVos18i
+        WqAAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="btnMenu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

@@ -24,6 +24,7 @@ namespace Application_Desktop.Views
 
         }
 
+
         //menu dropdown
         bool menuExpand = false;
 
@@ -147,15 +148,6 @@ namespace Application_Desktop.Views
             loginForm.Show();
         }
 
-        private void btnDoctors_Click(object sender, EventArgs e)
-        {
-            LoadForm(new doctorsAccount());
-        }
-
-        private void btnUsers_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnCategory_Click(object sender, EventArgs e)
         {
@@ -181,6 +173,23 @@ namespace Application_Desktop.Views
         {
             //var profileSetting = new adminProfileSettings(this);
             LoadForm(new adminProfileSettings(this));
+        }
+
+        private void sidebarContainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnPatientRecord_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnAppointment_Click(object sender, EventArgs e)
+        {
         }
     }
 }
