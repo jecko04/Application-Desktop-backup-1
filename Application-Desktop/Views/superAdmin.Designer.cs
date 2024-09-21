@@ -38,13 +38,15 @@
             btnBranches = new Button();
             panel3 = new Panel();
             btnAdmin = new Button();
+            panel4 = new Panel();
+            btnDentalDoctors = new Button();
+            panel7 = new Panel();
+            btnUsers = new Button();
             panel2 = new Panel();
             btnRole = new Button();
             menuContainer = new FlowLayoutPanel();
             panel9 = new Panel();
             btnMenu = new Button();
-            panel6 = new Panel();
-            button5 = new Button();
             panel10 = new Panel();
             btnProfile = new Button();
             panel8 = new Panel();
@@ -57,10 +59,11 @@
             sidebarContainer.SuspendLayout();
             panel5.SuspendLayout();
             panel3.SuspendLayout();
+            panel4.SuspendLayout();
+            panel7.SuspendLayout();
             panel2.SuspendLayout();
             menuContainer.SuspendLayout();
             panel9.SuspendLayout();
-            panel6.SuspendLayout();
             panel10.SuspendLayout();
             panel8.SuspendLayout();
             SuspendLayout();
@@ -104,6 +107,8 @@
             sidebarContainer.BackColor = Color.FromArgb(41, 128, 185);
             sidebarContainer.Controls.Add(panel5);
             sidebarContainer.Controls.Add(panel3);
+            sidebarContainer.Controls.Add(panel4);
+            sidebarContainer.Controls.Add(panel7);
             sidebarContainer.Controls.Add(panel2);
             sidebarContainer.Controls.Add(menuContainer);
             sidebarContainer.Dock = DockStyle.Left;
@@ -171,10 +176,68 @@
             btnAdmin.UseVisualStyleBackColor = false;
             btnAdmin.Click += btnAdmin_Click;
             // 
+            // panel4
+            // 
+            panel4.Controls.Add(btnDentalDoctors);
+            panel4.Location = new Point(0, 68);
+            panel4.Margin = new Padding(0);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(179, 34);
+            panel4.TabIndex = 4;
+            // 
+            // btnDentalDoctors
+            // 
+            btnDentalDoctors.BackColor = Color.FromArgb(41, 128, 185);
+            btnDentalDoctors.Dock = DockStyle.Fill;
+            btnDentalDoctors.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnDentalDoctors.FlatStyle = FlatStyle.Flat;
+            btnDentalDoctors.Font = new Font("Microsoft Sans Serif", 9F);
+            btnDentalDoctors.ForeColor = SystemColors.ButtonFace;
+            btnDentalDoctors.Image = (Image)resources.GetObject("btnDentalDoctors.Image");
+            btnDentalDoctors.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDentalDoctors.Location = new Point(0, 0);
+            btnDentalDoctors.Margin = new Padding(0);
+            btnDentalDoctors.Name = "btnDentalDoctors";
+            btnDentalDoctors.Size = new Size(179, 34);
+            btnDentalDoctors.TabIndex = 3;
+            btnDentalDoctors.Text = "              Dental Doctor\r\n";
+            btnDentalDoctors.TextAlign = ContentAlignment.MiddleLeft;
+            btnDentalDoctors.UseVisualStyleBackColor = false;
+            btnDentalDoctors.Click += btnDentalDoctors_Click;
+            // 
+            // panel7
+            // 
+            panel7.Controls.Add(btnUsers);
+            panel7.Location = new Point(0, 102);
+            panel7.Margin = new Padding(0);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(179, 34);
+            panel7.TabIndex = 4;
+            // 
+            // btnUsers
+            // 
+            btnUsers.BackColor = Color.FromArgb(41, 128, 185);
+            btnUsers.Dock = DockStyle.Fill;
+            btnUsers.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnUsers.FlatStyle = FlatStyle.Flat;
+            btnUsers.Font = new Font("Microsoft Sans Serif", 9F);
+            btnUsers.ForeColor = SystemColors.ButtonFace;
+            btnUsers.Image = (Image)resources.GetObject("btnUsers.Image");
+            btnUsers.ImageAlign = ContentAlignment.MiddleLeft;
+            btnUsers.Location = new Point(0, 0);
+            btnUsers.Margin = new Padding(0);
+            btnUsers.Name = "btnUsers";
+            btnUsers.Size = new Size(179, 34);
+            btnUsers.TabIndex = 3;
+            btnUsers.Text = "              User";
+            btnUsers.TextAlign = ContentAlignment.MiddleLeft;
+            btnUsers.UseVisualStyleBackColor = false;
+            btnUsers.Click += btnUsers_Click;
+            // 
             // panel2
             // 
             panel2.Controls.Add(btnRole);
-            panel2.Location = new Point(0, 68);
+            panel2.Location = new Point(0, 136);
             panel2.Margin = new Padding(0);
             panel2.Name = "panel2";
             panel2.Size = new Size(179, 34);
@@ -202,12 +265,11 @@
             // 
             // menuContainer
             // 
-            menuContainer.BackColor = Color.FromArgb(31, 97, 141);
+            menuContainer.BackColor = Color.FromArgb(41, 128, 185);
             menuContainer.Controls.Add(panel9);
-            menuContainer.Controls.Add(panel6);
             menuContainer.Controls.Add(panel10);
             menuContainer.Controls.Add(panel8);
-            menuContainer.Location = new Point(0, 102);
+            menuContainer.Location = new Point(0, 170);
             menuContainer.Margin = new Padding(0);
             menuContainer.Name = "menuContainer";
             menuContainer.Size = new Size(179, 34);
@@ -242,48 +304,21 @@
             btnMenu.UseVisualStyleBackColor = false;
             btnMenu.Click += btnMenu_Click;
             // 
-            // panel6
-            // 
-            panel6.Controls.Add(button5);
-            panel6.Location = new Point(0, 34);
-            panel6.Margin = new Padding(0);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(179, 34);
-            panel6.TabIndex = 4;
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.FromArgb(31, 97, 141);
-            button5.Dock = DockStyle.Fill;
-            button5.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Microsoft Sans Serif", 9F);
-            button5.ForeColor = SystemColors.ButtonFace;
-            button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(0, 0);
-            button5.Margin = new Padding(0);
-            button5.Name = "button5";
-            button5.Size = new Size(179, 34);
-            button5.TabIndex = 3;
-            button5.Text = "              About";
-            button5.TextAlign = ContentAlignment.MiddleLeft;
-            button5.UseVisualStyleBackColor = false;
-            // 
             // panel10
             // 
             panel10.Controls.Add(btnProfile);
-            panel10.Location = new Point(0, 68);
-            panel10.Margin = new Padding(0);
+            panel10.Location = new Point(2, 34);
+            panel10.Margin = new Padding(2, 0, 0, 0);
             panel10.Name = "panel10";
             panel10.Size = new Size(179, 34);
             panel10.TabIndex = 4;
             // 
             // btnProfile
             // 
-            btnProfile.BackColor = Color.FromArgb(31, 97, 141);
+            btnProfile.BackColor = Color.FromArgb(41, 128, 185);
             btnProfile.Dock = DockStyle.Fill;
             btnProfile.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
+            btnProfile.FlatAppearance.BorderSize = 0;
             btnProfile.FlatStyle = FlatStyle.Flat;
             btnProfile.Font = new Font("Microsoft Sans Serif", 9F);
             btnProfile.ForeColor = SystemColors.ButtonFace;
@@ -302,7 +337,7 @@
             // panel8
             // 
             panel8.Controls.Add(btnLogout);
-            panel8.Location = new Point(0, 102);
+            panel8.Location = new Point(0, 68);
             panel8.Margin = new Padding(0);
             panel8.Name = "panel8";
             panel8.Size = new Size(179, 34);
@@ -310,9 +345,10 @@
             // 
             // btnLogout
             // 
-            btnLogout.BackColor = Color.FromArgb(31, 97, 141);
+            btnLogout.BackColor = Color.FromArgb(41, 128, 185);
             btnLogout.Dock = DockStyle.Fill;
             btnLogout.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
+            btnLogout.FlatAppearance.BorderSize = 0;
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.Font = new Font("Microsoft Sans Serif", 9F);
             btnLogout.ForeColor = SystemColors.ButtonFace;
@@ -347,6 +383,7 @@
             mainPanel.Padding = new Padding(15, 0, 15, 0);
             mainPanel.Size = new Size(1101, 660);
             mainPanel.TabIndex = 2;
+            mainPanel.Paint += mainPanel_Paint;
             // 
             // superAdmin
             // 
@@ -366,10 +403,11 @@
             sidebarContainer.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel3.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel7.ResumeLayout(false);
             panel2.ResumeLayout(false);
             menuContainer.ResumeLayout(false);
             panel9.ResumeLayout(false);
-            panel6.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel8.ResumeLayout(false);
             ResumeLayout(false);
@@ -386,8 +424,6 @@
         private FlowLayoutPanel menuContainer;
         private Panel panel9;
         private Button btnMenu;
-        private Panel panel6;
-        private Button button5;
         private Panel panel8;
         private Button btnLogout;
         private Panel panel10;
@@ -399,5 +435,9 @@
         private Button btnBranches;
         private Panel panel2;
         private Button btnRole;
+        private Panel panel4;
+        private Button btnDentalDoctors;
+        private Panel panel7;
+        private Button btnUsers;
     }
 }

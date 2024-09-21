@@ -1,6 +1,6 @@
-﻿namespace Application_Desktop.Admin_Views
+﻿namespace Application_Desktop.SuperAdmin_Views
 {
-    partial class doctorsAccount
+    partial class usersAccount
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(doctorsAccount));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(usersAccount));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
@@ -36,14 +36,13 @@
             label40 = new Label();
             pictureBox1 = new PictureBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            btnDelete = new Button();
-            btnNewAccount = new Button();
             btnRefresh = new Button();
-            viewDentalDoctorAccount = new DataGridView();
+            btnDelete = new Button();
+            viewUsersAccount = new DataGridView();
             elipseControl1 = new ElipseToolDemo.ElipseControl();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)viewDentalDoctorAccount).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)viewUsersAccount).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -53,10 +52,10 @@
             panel1.Controls.Add(label40);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(flowLayoutPanel1);
-            panel1.Location = new Point(-1, 0);
+            panel1.Location = new Point(-3, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1101, 30);
-            panel1.TabIndex = 0;
+            panel1.Size = new Size(1097, 30);
+            panel1.TabIndex = 1;
             // 
             // label40
             // 
@@ -64,9 +63,9 @@
             label40.Font = new Font("Tahoma", 9.75F, FontStyle.Bold);
             label40.Location = new Point(37, 9);
             label40.Name = "label40";
-            label40.Size = new Size(194, 16);
+            label40.Size = new Size(82, 16);
             label40.TabIndex = 89;
-            label40.Text = "Dental Doctor Account Panel";
+            label40.Text = "Users Panel\r\n";
             // 
             // pictureBox1
             // 
@@ -78,50 +77,17 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 88;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             flowLayoutPanel1.BackColor = Color.Transparent;
             flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutPanel1.Location = new Point(599, 0);
+            flowLayoutPanel1.Location = new Point(1496, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(502, 30);
             flowLayoutPanel1.TabIndex = 1;
-            // 
-            // btnDelete
-            // 
-            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnDelete.BackColor = Color.FromArgb(231, 76, 60);
-            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Microsoft Sans Serif", 9F);
-            btnDelete.ForeColor = SystemColors.ButtonFace;
-            btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
-            btnDelete.Location = new Point(1002, 86);
-            btnDelete.Margin = new Padding(0, 0, 0, 1);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(85, 24);
-            btnDelete.TabIndex = 13;
-            btnDelete.UseVisualStyleBackColor = false;
-            btnDelete.Click += btnDelete_Click;
-            // 
-            // btnNewAccount
-            // 
-            btnNewAccount.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnNewAccount.BackColor = Color.FromArgb(52, 152, 219);
-            btnNewAccount.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
-            btnNewAccount.FlatStyle = FlatStyle.Flat;
-            btnNewAccount.Font = new Font("Microsoft Sans Serif", 9F);
-            btnNewAccount.ForeColor = SystemColors.ButtonFace;
-            btnNewAccount.Location = new Point(1002, 36);
-            btnNewAccount.Margin = new Padding(0, 0, 0, 1);
-            btnNewAccount.Name = "btnNewAccount";
-            btnNewAccount.Size = new Size(85, 24);
-            btnNewAccount.TabIndex = 15;
-            btnNewAccount.Text = "Create New";
-            btnNewAccount.UseVisualStyleBackColor = false;
-            btnNewAccount.Click += btnNewAccount_Click;
             // 
             // btnRefresh
             // 
@@ -132,33 +98,50 @@
             btnRefresh.Font = new Font("Microsoft Sans Serif", 9F);
             btnRefresh.ForeColor = SystemColors.ButtonFace;
             btnRefresh.Image = (Image)resources.GetObject("btnRefresh.Image");
-            btnRefresh.Location = new Point(1002, 61);
+            btnRefresh.Location = new Point(999, 43);
             btnRefresh.Margin = new Padding(0, 0, 0, 1);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(85, 24);
-            btnRefresh.TabIndex = 17;
+            btnRefresh.TabIndex = 21;
             btnRefresh.TextAlign = ContentAlignment.MiddleLeft;
             btnRefresh.UseVisualStyleBackColor = false;
             btnRefresh.Click += btnRefresh_Click;
             // 
-            // viewDentalDoctorAccount
+            // btnDelete
             // 
-            viewDentalDoctorAccount.AllowUserToAddRows = false;
-            viewDentalDoctorAccount.AllowUserToDeleteRows = false;
-            viewDentalDoctorAccount.AllowUserToResizeColumns = false;
-            viewDentalDoctorAccount.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(132, 202, 239);
+            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnDelete.BackColor = Color.FromArgb(231, 76, 60);
+            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Font = new Font("Microsoft Sans Serif", 9F);
+            btnDelete.ForeColor = SystemColors.ButtonFace;
+            btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
+            btnDelete.Location = new Point(999, 68);
+            btnDelete.Margin = new Padding(0, 0, 0, 1);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(85, 24);
+            btnDelete.TabIndex = 19;
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // viewUsersAccount
+            // 
+            viewUsersAccount.AllowUserToAddRows = false;
+            viewUsersAccount.AllowUserToDeleteRows = false;
+            viewUsersAccount.AllowUserToResizeColumns = false;
+            viewUsersAccount.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(224, 241, 255);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.ForeColor = Color.Gray;
             dataGridViewCellStyle1.SelectionBackColor = Color.Gainsboro;
             dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(52, 152, 219);
-            viewDentalDoctorAccount.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            viewDentalDoctorAccount.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            viewDentalDoctorAccount.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            viewDentalDoctorAccount.BackgroundColor = Color.White;
-            viewDentalDoctorAccount.BorderStyle = BorderStyle.None;
-            viewDentalDoctorAccount.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            viewDentalDoctorAccount.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            viewUsersAccount.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            viewUsersAccount.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            viewUsersAccount.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            viewUsersAccount.BackgroundColor = Color.White;
+            viewUsersAccount.BorderStyle = BorderStyle.None;
+            viewUsersAccount.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            viewUsersAccount.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(52, 152, 219);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -168,8 +151,8 @@
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            viewDentalDoctorAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            viewDentalDoctorAccount.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            viewUsersAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            viewUsersAccount.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = SystemColors.Window;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -178,54 +161,51 @@
             dataGridViewCellStyle3.SelectionBackColor = Color.Gainsboro;
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(52, 152, 219);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            viewDentalDoctorAccount.DefaultCellStyle = dataGridViewCellStyle3;
-            viewDentalDoctorAccount.EnableHeadersVisualStyles = false;
-            viewDentalDoctorAccount.Location = new Point(-1, 36);
-            viewDentalDoctorAccount.Margin = new Padding(0, 0, 10, 0);
-            viewDentalDoctorAccount.Name = "viewDentalDoctorAccount";
-            viewDentalDoctorAccount.ReadOnly = true;
-            viewDentalDoctorAccount.RowTemplate.Height = 25;
-            viewDentalDoctorAccount.Size = new Size(993, 325);
-            viewDentalDoctorAccount.TabIndex = 1;
-            viewDentalDoctorAccount.CellContentClick += viewDentalDoctorAccount_CellContentClick;
+            viewUsersAccount.DefaultCellStyle = dataGridViewCellStyle3;
+            viewUsersAccount.EnableHeadersVisualStyles = false;
+            viewUsersAccount.Location = new Point(-2, 43);
+            viewUsersAccount.Margin = new Padding(0, 0, 10, 0);
+            viewUsersAccount.Name = "viewUsersAccount";
+            viewUsersAccount.ReadOnly = true;
+            viewUsersAccount.RowTemplate.Height = 25;
+            viewUsersAccount.Size = new Size(991, 325);
+            viewUsersAccount.TabIndex = 18;
+            viewUsersAccount.CellContentClick += viewUsersAccount_CellContentClick;
             // 
             // elipseControl1
             // 
             elipseControl1.CornerRadius = 15;
-            elipseControl1.TargetControl = viewDentalDoctorAccount;
+            elipseControl1.TargetControl = viewUsersAccount;
             // 
-            // doctorsAccount
+            // usersAccount
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Control;
-            ClientSize = new Size(1101, 660);
-            Controls.Add(btnNewAccount);
+            ClientSize = new Size(1093, 621);
             Controls.Add(btnRefresh);
             Controls.Add(btnDelete);
-            Controls.Add(viewDentalDoctorAccount);
+            Controls.Add(viewUsersAccount);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "doctorsAccount";
-            Text = " mm";
-            Load += doctorsAccount_Load;
+            Name = "usersAccount";
+            Text = "usersAccount";
+            Load += usersAccount_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)viewDentalDoctorAccount).EndInit();
+            ((System.ComponentModel.ISupportInitialize)viewUsersAccount).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private Button btnDelete;
-        private Button btnNewAccount;
-        private Button btnRefresh;
-        private DataGridView viewDentalDoctorAccount;
-        private ElipseToolDemo.ElipseControl elipseControl1;
         private Label label40;
         private PictureBox pictureBox1;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Button btnRefresh;
+        private Button btnDelete;
+        private DataGridView viewUsersAccount;
+        private ElipseToolDemo.ElipseControl elipseControl1;
     }
 }

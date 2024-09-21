@@ -52,9 +52,9 @@
             viewBranchData.AllowUserToDeleteRows = false;
             viewBranchData.AllowUserToResizeColumns = false;
             viewBranchData.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(132, 202, 239);
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(224, 241, 255);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.ForeColor = Color.Gray;
             dataGridViewCellStyle1.SelectionBackColor = Color.Gainsboro;
             dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(52, 152, 219);
             viewBranchData.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -148,6 +148,7 @@
             // 
             // txtSearchBox
             // 
+            txtSearchBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtSearchBox.BorderStyle = BorderStyle.FixedSingle;
             txtSearchBox.Cursor = Cursors.IBeam;
             txtSearchBox.Font = new Font("Tahoma", 9.75F);
@@ -159,6 +160,7 @@
             // 
             // btnSearch
             // 
+            btnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSearch.BackColor = Color.FromArgb(52, 152, 219);
             btnSearch.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
             btnSearch.FlatStyle = FlatStyle.Flat;
@@ -177,6 +179,7 @@
             // 
             // btnRefresh
             // 
+            btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnRefresh.BackColor = Color.FromArgb(52, 152, 219);
             btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
             btnRefresh.FlatStyle = FlatStyle.Flat;

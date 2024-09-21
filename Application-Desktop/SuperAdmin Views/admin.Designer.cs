@@ -141,9 +141,9 @@
             viewAdminData.AllowUserToDeleteRows = false;
             viewAdminData.AllowUserToResizeColumns = false;
             viewAdminData.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(132, 202, 239);
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(224, 241, 255);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.ForeColor = Color.Gray;
             dataGridViewCellStyle1.SelectionBackColor = Color.Gainsboro;
             dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(52, 152, 219);
             viewAdminData.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -197,9 +197,9 @@
             viewSuperAdminData.AllowUserToDeleteRows = false;
             viewSuperAdminData.AllowUserToResizeColumns = false;
             viewSuperAdminData.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(132, 202, 239);
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(224, 241, 255);
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.ForeColor = Color.Gray;
             dataGridViewCellStyle5.SelectionBackColor = Color.Gainsboro;
             dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(52, 152, 219);
             viewSuperAdminData.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;

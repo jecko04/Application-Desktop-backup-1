@@ -83,14 +83,6 @@
         SUVORK5CYII=
 </value>
   </data>
-  <data name="label37.Text" xml:space="preserve">
-    <value>1. The user sets the office hours for each day of the 
-week.
-2. These settings are saved and applied to all future 
-weeks automatically.
-3. Users can modify this recurring schedule at any time 
-if their office hours change.</value>
-  </data>
   <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

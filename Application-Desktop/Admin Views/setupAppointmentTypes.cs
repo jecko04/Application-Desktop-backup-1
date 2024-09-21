@@ -105,8 +105,16 @@ namespace Application_Desktop.Admin_Views
                 string duration = txtDuration.Text;
                 string frequency = txtFrequency.Text;
 
-                string query = @"INSERT INTO categories (Title, Description, Duration, Frequency, Branch_ID, created_at, updated_at)
-                            VALUES (@title, @description, @duration, @frequency, @branchID, @createdAt, @updatedAt)";
+                string rawPrice = txtPrice.Text.Replace("₱", "").Replace(",", "").Trim();
+
+                if (!decimal.TryParse(rawPrice, out decimal price))
+                {
+                    MessageBox.Show("Invalid price input.");
+                    return;
+                }
+
+                string query = @"INSERT INTO categories (Title, Description, Duration, Frequency, Price, Branch_ID, created_at, updated_at)
+                            VALUES (@title, @description, @duration, @frequency, @price, @branchID, @createdAt, @updatedAt)";
 
                 MySqlConnection conn = databaseHelper.getConnection();
 
@@ -122,6 +130,7 @@ namespace Application_Desktop.Admin_Views
                     cmd.Parameters.AddWithValue("@description", description);
                     cmd.Parameters.AddWithValue("@duration", duration);
                     cmd.Parameters.AddWithValue("@frequency", frequency);
+                    cmd.Parameters.AddWithValue("@price", price);
 
                     cmd.Parameters.AddWithValue("@branchID", branchID);
 
@@ -136,6 +145,7 @@ namespace Application_Desktop.Admin_Views
                     txtDescription.Text = "";
                     txtDuration.Text = "";
                     txtFrequency.Text = "";
+                    txtPrice.Text = "";
 
                     errorProvider1.SetError(txtTitle, string.Empty);
                     errorProvider2.SetError(txtDescription, string.Empty);
@@ -313,7 +323,7 @@ namespace Application_Desktop.Admin_Views
 
             int branchID = await GetAdminBranch();
             int categories = await GetSelectedCategoryId();
-            string query = @"SELECT Title, Description, Duration, Frequency FROM categories WHERE Categories_ID = @categories AND Branch_ID = @branchid";
+            string query = @"SELECT Title, Description, Duration, Frequency, Price FROM categories WHERE Categories_ID = @categories AND Branch_ID = @branchid";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -327,7 +337,7 @@ namespace Application_Desktop.Admin_Views
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@branchid", branchID);
                 cmd.Parameters.AddWithValue("@categories", categories);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync();
 
                 if (await reader.ReadAsync())
                 {
@@ -336,6 +346,7 @@ namespace Application_Desktop.Admin_Views
                     txtFetchDescription.Text = reader["Description"].ToString();
                     txtFetchDuration.Text = reader["Duration"].ToString();
                     txtFetchFrequency.Text = reader["Frequency"].ToString();
+                    txtFetchPrice.Text = reader["Price"].ToString();
                 }
 
                 await reader.CloseAsync();
@@ -375,10 +386,20 @@ namespace Application_Desktop.Admin_Views
                 string frequency = txtFetchFrequency.Text;
                 string newTitle = txtNewTitle.Text;
 
+                string rawPrice = txtFetchPrice.Text.Replace("₱", "").Replace(",", "").Trim();
+
+                if (!decimal.TryParse(rawPrice, out decimal price))
+                {
+                    MessageBox.Show("Invalid price input.");
+                    return;
+                }
+
+
                 string query = @"UPDATE categories SET
                          Description = @description, 
                          Duration = @duration, 
                          Frequency = @frequency,
+                         Price = @price,
                          updated_at = @updatedAt";
 
                 if (!string.IsNullOrEmpty(newTitle))
@@ -400,6 +421,8 @@ namespace Application_Desktop.Admin_Views
                     cmd.Parameters.AddWithValue("@description", description);
                     cmd.Parameters.AddWithValue("@duration", duration);
                     cmd.Parameters.AddWithValue("@frequency", frequency);
+                    cmd.Parameters.AddWithValue("@price", price);
+
 
                     DateTime updatedAt = DateTime.Now;
                     cmd.Parameters.AddWithValue("@updatedAt", updatedAt);
@@ -427,6 +450,7 @@ namespace Application_Desktop.Admin_Views
                     txtFetchDuration.Text = "";
                     txtFetchFrequency.Text = "";
                     txtNewTitle.Text = "";
+                    txtFetchPrice.Text = "";
 
                     errorProvider1.SetError(borderFetchTitle, string.Empty);
                     errorProvider2.SetError(borderFetchDescription, string.Empty);
@@ -865,5 +889,135 @@ namespace Application_Desktop.Admin_Views
             txtFetchFrequency.Text = "";
         }
 
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+
+            // Avoid empty input
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+                return;
+
+            // Store the current cursor position before any modification
+            int originalSelectionStart = textBox.SelectionStart;
+            int originalLength = textBox.Text.Length;
+
+            // Remove the peso symbol and any commas to work with the raw numeric value
+            string rawText = textBox.Text.Replace("₱", "").Replace(",", "").Trim();
+
+            if (decimal.TryParse(rawText, out decimal value))
+            {
+                // Reformat the text with the peso symbol and two decimal places
+                textBox.Text = "₱" + value.ToString("N2");
+
+                // Adjust the cursor position after reformatting
+                int newLength = textBox.Text.Length;
+                int lengthDifference = newLength - originalLength;
+
+                // Move the cursor back to the original position, adjusting for the new text length
+                textBox.SelectionStart = originalSelectionStart + lengthDifference;
+            }
+            else
+            {
+                // If the input is not a valid number, reset to just the peso symbol
+                textBox.Text = "₱";
+                textBox.SelectionStart = textBox.Text.Length; // Set cursor at the end
+            }
+        }
+
+        private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPrice_Leave(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            string rawText = textBox.Text.Replace("₱", "").Replace(",", "").Trim();
+
+            if (decimal.TryParse(rawText, out decimal value))
+            {
+                textBox.Text = "₱" + value.ToString("N2");
+            }
+            else
+            {
+                textBox.Text = "₱0.00";
+            }
+        }
+
+        private void txtFetchPrice_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+
+            // Avoid empty input
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+                return;
+
+            // Store the current cursor position before any modification
+            int originalSelectionStart = textBox.SelectionStart;
+            int originalLength = textBox.Text.Length;
+
+            // Remove the peso symbol and any commas to work with the raw numeric value
+            string rawText = textBox.Text.Replace("₱", "").Replace(",", "").Trim();
+
+            if (decimal.TryParse(rawText, out decimal value))
+            {
+                // Reformat the text with the peso symbol and two decimal places
+                textBox.Text = "₱" + value.ToString("N2");
+
+                // Adjust the cursor position after reformatting
+                int newLength = textBox.Text.Length;
+                int lengthDifference = newLength - originalLength;
+
+                // Move the cursor back to the original position, adjusting for the new text length
+                textBox.SelectionStart = originalSelectionStart + lengthDifference;
+            }
+            else
+            {
+                // If the input is not a valid number, reset to just the peso symbol
+                textBox.Text = "₱";
+                textBox.SelectionStart = textBox.Text.Length; // Set cursor at the end
+            }
+        }
+
+        private void txtFetchPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtFetchPrice_Leave(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            string rawText = textBox.Text.Replace("₱", "").Replace(",", "").Trim();
+
+            if (decimal.TryParse(rawText, out decimal value))
+            {
+                textBox.Text = "₱" + value.ToString("N2");
+            }
+            else
+            {
+                textBox.Text = "₱0.00";
+            }
+        }
     }
 }

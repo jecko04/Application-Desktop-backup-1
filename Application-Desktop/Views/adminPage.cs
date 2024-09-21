@@ -38,7 +38,7 @@ namespace Application_Desktop.Views
             if (menuExpand == false)
             {
                 menuContainer.Height += 10;
-                if (menuContainer.Height >= 130)
+                if (menuContainer.Height >= 105)
                 {
                     menuTransition.Stop();
                     menuExpand = true;
@@ -65,7 +65,7 @@ namespace Application_Desktop.Views
             if (setupExpand == false)
             {
                 setupContainer.Height += 10;
-                if (setupContainer.Height >= 130)
+                if (setupContainer.Height >= 105)
                 {
                     setupTransition.Stop();
                     setupExpand = true;
