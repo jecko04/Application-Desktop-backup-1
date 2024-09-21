@@ -1280,6 +1280,7 @@
             // 
             this.label38.AutoSize = (true);
             this.label38.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
+
             this.label38.Location = (new global::System.Drawing.Point(224, 302));
 
             this.label38.Name = ("label38");
