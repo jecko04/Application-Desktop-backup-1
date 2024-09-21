@@ -1,5 +1,4 @@
-﻿using Application_Desktop.Admin_Views;
-using Application_Desktop.Models;
+﻿using Application_Desktop.Models;
 using Application_Desktop.Sub_sub_Views;
 using Application_Desktop.Sub_Views;
 using Application_Desktop.SuperAdmin_Views;
@@ -37,7 +36,7 @@ namespace Application_Desktop.Views
             if (menuExpand == false)
             {
                 menuContainer.Height += 10;
-                if (menuContainer.Height >= 105)
+                if (menuContainer.Height >= 130)
                 {
                     menuTransition.Stop();
                     menuExpand = true;
@@ -132,6 +131,11 @@ namespace Application_Desktop.Views
             loginForm.Show();
         }
 
+        private void btnUsers_Click(object sender, EventArgs e)
+        {
+            LoadForm(new dentaldoctorUsers());
+        }
+
         private void btnRole_Click(object sender, EventArgs e)
         {
             LoadForm(new Role());
@@ -140,21 +144,6 @@ namespace Application_Desktop.Views
         private void btnProfile_Click(object sender, EventArgs e)
         {
             LoadForm(new superAdminProfileSetting(this));
-        }
-
-        private void mainPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnDentalDoctors_Click(object sender, EventArgs e)
-        {
-            LoadForm(new doctorsAccount());
-        }
-
-        private void btnUsers_Click(object sender, EventArgs e)
-        {
-            LoadForm(new usersAccount());
         }
     }
 }

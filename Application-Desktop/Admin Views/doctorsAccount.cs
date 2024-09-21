@@ -81,9 +81,11 @@ namespace Application_Desktop.Admin_Views
                              dentaldoctor.Branch_ID
                              FROM dentaldoctor
                              JOIN branch ON dentaldoctor.Branch_ID = branch.Branch_ID
-                             JOIN role ON dentaldoctor.Role_ID = role.Role_ID";
+                             JOIN role ON dentaldoctor.Role_ID = role.Role_ID
+                             Where dentaldoctor.Branch_ID = @branchID";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@branchID", branchID);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 DataTable datatable = new DataTable();
                 adapter.Fill(datatable);

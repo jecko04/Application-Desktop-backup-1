@@ -37,20 +37,18 @@
             panel2 = new Panel();
             elipseControl1 = new ElipseToolDemo.ElipseControl();
             elipseControl2 = new ElipseToolDemo.ElipseControl();
-            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)viewCategoriesDetails).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
             panel2.SuspendLayout();
-            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // viewCategoriesDetails
             // 
             viewCategoriesDetails.AllowUserToAddRows = false;
             viewCategoriesDetails.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(224, 241, 255);
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(132, 202, 239);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Gray;
+            dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = Color.Gainsboro;
             dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(52, 152, 219);
             viewCategoriesDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -78,24 +76,25 @@
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(52, 152, 219);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             viewCategoriesDetails.DefaultCellStyle = dataGridViewCellStyle3;
+            viewCategoriesDetails.Dock = DockStyle.Fill;
             viewCategoriesDetails.EnableHeadersVisualStyles = false;
-            viewCategoriesDetails.Location = new Point(0, 32);
+            viewCategoriesDetails.Location = new Point(0, 0);
             viewCategoriesDetails.Name = "viewCategoriesDetails";
             viewCategoriesDetails.ReadOnly = true;
             viewCategoriesDetails.RowHeadersVisible = false;
             viewCategoriesDetails.RowTemplate.Height = 25;
-            viewCategoriesDetails.Size = new Size(1000, 258);
+            viewCategoriesDetails.Size = new Size(1000, 290);
             viewCategoriesDetails.TabIndex = 2;
             viewCategoriesDetails.CellContentClick += viewCategoriesDetails_CellContentClick;
             // 
             // btnClose
             // 
             btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnClose.BackColor = Color.Transparent;
+            btnClose.BackColor = Color.FromArgb(52, 152, 219);
             btnClose.BackgroundImageLayout = ImageLayout.None;
             btnClose.Cursor = Cursors.Hand;
             btnClose.Image = (Image)resources.GetObject("btnClose.Image");
-            btnClose.Location = new Point(970, 4);
+            btnClose.Location = new Point(972, 0);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(27, 27);
             btnClose.SizeMode = PictureBoxSizeMode.Zoom;
@@ -105,7 +104,7 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(panel1);
+            panel2.Controls.Add(btnClose);
             panel2.Controls.Add(viewCategoriesDetails);
             panel2.Location = new Point(0, -1);
             panel2.Name = "panel2";
@@ -122,15 +121,6 @@
             elipseControl2.CornerRadius = 15;
             elipseControl2.TargetControl = viewCategoriesDetails;
             // 
-            // panel1
-            // 
-            panel1.BackColor = Color.White;
-            panel1.Controls.Add(btnClose);
-            panel1.Location = new Point(0, -1);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1000, 33);
-            panel1.TabIndex = 3;
-            // 
             // viewCategories
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -145,7 +135,6 @@
             ((System.ComponentModel.ISupportInitialize)viewCategoriesDetails).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).EndInit();
             panel2.ResumeLayout(false);
-            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -156,6 +145,5 @@
         private Panel panel2;
         private ElipseToolDemo.ElipseControl elipseControl1;
         private ElipseToolDemo.ElipseControl elipseControl2;
-        private Panel panel1;
     }
 }

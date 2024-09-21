@@ -42,7 +42,7 @@
             // btnClose
             // 
             btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnClose.BackColor = Color.Transparent;
+            btnClose.BackColor = Color.FromArgb(52, 152, 219);
             btnClose.BackgroundImageLayout = ImageLayout.None;
             btnClose.Cursor = Cursors.Hand;
             btnClose.Image = (Image)resources.GetObject("btnClose.Image");
@@ -58,9 +58,9 @@
             // 
             viewExistingRole.AllowUserToAddRows = false;
             viewExistingRole.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(224, 241, 255);
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(132, 202, 239);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Gray;
+            dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = Color.Gainsboro;
             dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(52, 152, 219);
             viewExistingRole.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -87,12 +87,13 @@
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(52, 152, 219);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             viewExistingRole.DefaultCellStyle = dataGridViewCellStyle3;
+            viewExistingRole.Dock = DockStyle.Fill;
             viewExistingRole.EnableHeadersVisualStyles = false;
-            viewExistingRole.Location = new Point(0, 26);
+            viewExistingRole.Location = new Point(0, 0);
             viewExistingRole.Name = "viewExistingRole";
             viewExistingRole.ReadOnly = true;
             viewExistingRole.RowTemplate.Height = 25;
-            viewExistingRole.Size = new Size(395, 180);
+            viewExistingRole.Size = new Size(395, 206);
             viewExistingRole.TabIndex = 3;
             viewExistingRole.CellContentClick += viewExistingRole_CellContentClick;
             // 
@@ -105,7 +106,6 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
             ClientSize = new Size(395, 206);
             Controls.Add(btnClose);
             Controls.Add(viewExistingRole);
