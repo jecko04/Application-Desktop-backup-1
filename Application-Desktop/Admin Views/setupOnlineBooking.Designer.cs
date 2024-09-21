@@ -73,29 +73,9 @@
             panel6 = new Panel();
             txtBranch = new ComboBox();
             label2 = new Label();
-            btnNewAccount = new Button();
+            btnSave = new Button();
             btnRefresh = new Button();
             btnView = new Button();
-            borderStatus = new Panel();
-            panel7 = new Panel();
-            panel8 = new Panel();
-            panel9 = new Panel();
-            panel10 = new Panel();
-            txtStatus = new ComboBox();
-            label3 = new Label();
-            borderDentalServices = new Panel();
-            panel12 = new Panel();
-            panel13 = new Panel();
-            panel14 = new Panel();
-            panel15 = new Panel();
-            txtDentalServices = new ComboBox();
-            borderRangePrice = new Panel();
-            panel16 = new Panel();
-            panel17 = new Panel();
-            panel18 = new Panel();
-            panel20 = new Panel();
-            txtRangePrice = new TextBox();
-            label4 = new Label();
             viewDentalServices = new DataGridView();
             elipseControl1 = new ElipseToolDemo.ElipseControl();
             label5 = new Label();
@@ -103,12 +83,6 @@
             panel62 = new Panel();
             panel57 = new Panel();
             label15 = new Label();
-            panel21 = new Panel();
-            panel27 = new Panel();
-            panel33 = new Panel();
-            panel43 = new Panel();
-            panel52 = new Panel();
-            comboBox1 = new ComboBox();
             label14 = new Label();
             boderZipCode = new Panel();
             panel58 = new Panel();
@@ -155,19 +129,26 @@
             viewDayTime = new DataGridView();
             label6 = new Label();
             panel11 = new Panel();
+            panel27 = new Panel();
+            panel33 = new Panel();
+            panel43 = new Panel();
+            panel52 = new Panel();
+            comboBox1 = new ComboBox();
             elipseControl2 = new ElipseToolDemo.ElipseControl();
+            borderLimit = new Panel();
+            panel8 = new Panel();
+            panel9 = new Panel();
+            panel10 = new Panel();
+            panel12 = new Panel();
+            txtLimit = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             borderDayofweek.SuspendLayout();
             borderStartTime.SuspendLayout();
             borderEndtime.SuspendLayout();
             borderBranch.SuspendLayout();
-            borderStatus.SuspendLayout();
-            borderDentalServices.SuspendLayout();
-            borderRangePrice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)viewDentalServices).BeginInit();
             panel2.SuspendLayout();
-            panel21.SuspendLayout();
             boderZipCode.SuspendLayout();
             borderProvince.SuspendLayout();
             borderCity.SuspendLayout();
@@ -175,6 +156,7 @@
             borderStreet.SuspendLayout();
             borderNumber.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)viewDayTime).BeginInit();
+            borderLimit.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -215,7 +197,7 @@
             borderDayofweek.Controls.Add(panel37);
             borderDayofweek.Controls.Add(panel38);
             borderDayofweek.Controls.Add(txtDayofweek);
-            borderDayofweek.Location = new Point(25, 621);
+            borderDayofweek.Location = new Point(25, 554);
             borderDayofweek.Name = "borderDayofweek";
             borderDayofweek.Size = new Size(213, 24);
             borderDayofweek.TabIndex = 80;
@@ -276,7 +258,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Tahoma", 9.75F);
             label8.ForeColor = Color.DimGray;
-            label8.Location = new Point(26, 602);
+            label8.Location = new Point(26, 535);
             label8.Name = "label8";
             label8.Size = new Size(77, 16);
             label8.TabIndex = 79;
@@ -302,7 +284,7 @@
             borderStartTime.Controls.Add(panel51);
             borderStartTime.Controls.Add(dtpStartTime);
             borderStartTime.Font = new Font("Tahoma", 9.75F);
-            borderStartTime.Location = new Point(262, 622);
+            borderStartTime.Location = new Point(262, 555);
             borderStartTime.Name = "borderStartTime";
             borderStartTime.Size = new Size(107, 23);
             borderStartTime.TabIndex = 85;
@@ -379,7 +361,7 @@
             borderEndtime.Controls.Add(panel34);
             borderEndtime.Controls.Add(dtpEndtime);
             borderEndtime.Font = new Font("Tahoma", 9.75F);
-            borderEndtime.Location = new Point(394, 621);
+            borderEndtime.Location = new Point(394, 554);
             borderEndtime.Name = "borderEndtime";
             borderEndtime.Size = new Size(107, 23);
             borderEndtime.TabIndex = 84;
@@ -452,7 +434,7 @@
             label18.AutoSize = true;
             label18.Font = new Font("Tahoma", 9.75F);
             label18.ForeColor = Color.DimGray;
-            label18.Location = new Point(394, 602);
+            label18.Location = new Point(394, 535);
             label18.Name = "label18";
             label18.Size = new Size(76, 16);
             label18.TabIndex = 83;
@@ -463,7 +445,7 @@
             label17.AutoSize = true;
             label17.Font = new Font("Tahoma", 9.75F);
             label17.ForeColor = Color.DimGray;
-            label17.Location = new Point(262, 601);
+            label17.Location = new Point(262, 534);
             label17.Name = "label17";
             label17.Size = new Size(83, 16);
             label17.TabIndex = 82;
@@ -476,7 +458,7 @@
             borderBranch.Controls.Add(panel5);
             borderBranch.Controls.Add(panel6);
             borderBranch.Controls.Add(txtBranch);
-            borderBranch.Location = new Point(26, 327);
+            borderBranch.Location = new Point(26, 412);
             borderBranch.Name = "borderBranch";
             borderBranch.Size = new Size(213, 24);
             borderBranch.TabIndex = 87;
@@ -537,27 +519,28 @@
             label2.AutoSize = true;
             label2.Font = new Font("Tahoma", 9.75F);
             label2.ForeColor = Color.DimGray;
-            label2.Location = new Point(27, 308);
+            label2.Location = new Point(27, 393);
             label2.Name = "label2";
             label2.Size = new Size(83, 16);
             label2.TabIndex = 86;
             label2.Text = "Branch Name";
             // 
-            // btnNewAccount
+            // btnSave
             // 
-            btnNewAccount.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnNewAccount.BackColor = Color.Black;
-            btnNewAccount.FlatAppearance.BorderColor = Color.Black;
-            btnNewAccount.FlatStyle = FlatStyle.Flat;
-            btnNewAccount.Font = new Font("Microsoft Sans Serif", 9F);
-            btnNewAccount.ForeColor = SystemColors.ButtonFace;
-            btnNewAccount.Location = new Point(958, 78);
-            btnNewAccount.Margin = new Padding(0, 0, 0, 1);
-            btnNewAccount.Name = "btnNewAccount";
-            btnNewAccount.Size = new Size(119, 24);
-            btnNewAccount.TabIndex = 88;
-            btnNewAccount.Text = "Save Appointment";
-            btnNewAccount.UseVisualStyleBackColor = false;
+            btnSave.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSave.BackColor = Color.Black;
+            btnSave.FlatAppearance.BorderColor = Color.Black;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Font = new Font("Microsoft Sans Serif", 9F);
+            btnSave.ForeColor = SystemColors.ButtonFace;
+            btnSave.Location = new Point(958, 78);
+            btnSave.Margin = new Padding(0, 0, 0, 1);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(59, 24);
+            btnSave.TabIndex = 88;
+            btnSave.Text = "Save Appointment";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // btnRefresh
             // 
@@ -568,7 +551,7 @@
             btnRefresh.Font = new Font("Microsoft Sans Serif", 9F);
             btnRefresh.ForeColor = SystemColors.ButtonFace;
             btnRefresh.Image = (Image)resources.GetObject("btnRefresh.Image");
-            btnRefresh.Location = new Point(958, 128);
+            btnRefresh.Location = new Point(958, 103);
             btnRefresh.Margin = new Padding(0, 0, 0, 1);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(119, 24);
@@ -585,222 +568,14 @@
             btnView.FlatStyle = FlatStyle.Flat;
             btnView.Font = new Font("Microsoft Sans Serif", 9F);
             btnView.ForeColor = SystemColors.ButtonFace;
-            btnView.Location = new Point(958, 103);
+            btnView.Location = new Point(1018, 78);
             btnView.Margin = new Padding(0, 0, 0, 1);
             btnView.Name = "btnView";
-            btnView.Size = new Size(119, 24);
+            btnView.Size = new Size(59, 24);
             btnView.TabIndex = 90;
             btnView.Text = "View All";
             btnView.UseVisualStyleBackColor = false;
-            // 
-            // borderStatus
-            // 
-            borderStatus.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            borderStatus.Controls.Add(panel7);
-            borderStatus.Controls.Add(panel8);
-            borderStatus.Controls.Add(panel9);
-            borderStatus.Controls.Add(panel10);
-            borderStatus.Controls.Add(txtStatus);
-            borderStatus.Location = new Point(814, 49);
-            borderStatus.Name = "borderStatus";
-            borderStatus.Size = new Size(134, 24);
-            borderStatus.TabIndex = 89;
-            // 
-            // panel7
-            // 
-            panel7.BackColor = Color.FromArgb(93, 173, 226);
-            panel7.Dock = DockStyle.Right;
-            panel7.Location = new Point(133, 1);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(1, 22);
-            panel7.TabIndex = 3;
-            // 
-            // panel8
-            // 
-            panel8.BackColor = Color.FromArgb(93, 173, 226);
-            panel8.Dock = DockStyle.Bottom;
-            panel8.Location = new Point(1, 23);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(133, 1);
-            panel8.TabIndex = 2;
-            // 
-            // panel9
-            // 
-            panel9.BackColor = Color.FromArgb(93, 173, 226);
-            panel9.Dock = DockStyle.Top;
-            panel9.Location = new Point(1, 0);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(133, 1);
-            panel9.TabIndex = 1;
-            // 
-            // panel10
-            // 
-            panel10.BackColor = Color.FromArgb(93, 173, 226);
-            panel10.Dock = DockStyle.Left;
-            panel10.Location = new Point(0, 0);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(1, 24);
-            panel10.TabIndex = 0;
-            // 
-            // txtStatus
-            // 
-            txtStatus.BackColor = SystemColors.InactiveBorder;
-            txtStatus.Dock = DockStyle.Fill;
-            txtStatus.DropDownHeight = 75;
-            txtStatus.Font = new Font("Tahoma", 9.75F);
-            txtStatus.FormattingEnabled = true;
-            txtStatus.IntegralHeight = false;
-            txtStatus.ItemHeight = 16;
-            txtStatus.Location = new Point(0, 0);
-            txtStatus.Name = "txtStatus";
-            txtStatus.Size = new Size(134, 24);
-            txtStatus.TabIndex = 56;
-            // 
-            // label3
-            // 
-            label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label3.AutoSize = true;
-            label3.Font = new Font("Tahoma", 9.75F);
-            label3.ForeColor = Color.DimGray;
-            label3.Location = new Point(765, 57);
-            label3.Name = "label3";
-            label3.Size = new Size(43, 16);
-            label3.TabIndex = 88;
-            label3.Text = "Status";
-            // 
-            // borderDentalServices
-            // 
-            borderDentalServices.Controls.Add(panel12);
-            borderDentalServices.Controls.Add(panel13);
-            borderDentalServices.Controls.Add(panel14);
-            borderDentalServices.Controls.Add(panel15);
-            borderDentalServices.Controls.Add(txtDentalServices);
-            borderDentalServices.Location = new Point(133, 50);
-            borderDentalServices.Name = "borderDentalServices";
-            borderDentalServices.Size = new Size(213, 24);
-            borderDentalServices.TabIndex = 90;
-            // 
-            // panel12
-            // 
-            panel12.BackColor = Color.FromArgb(93, 173, 226);
-            panel12.Dock = DockStyle.Right;
-            panel12.Location = new Point(212, 1);
-            panel12.Name = "panel12";
-            panel12.Size = new Size(1, 22);
-            panel12.TabIndex = 3;
-            // 
-            // panel13
-            // 
-            panel13.BackColor = Color.FromArgb(93, 173, 226);
-            panel13.Dock = DockStyle.Bottom;
-            panel13.Location = new Point(1, 23);
-            panel13.Name = "panel13";
-            panel13.Size = new Size(212, 1);
-            panel13.TabIndex = 2;
-            // 
-            // panel14
-            // 
-            panel14.BackColor = Color.FromArgb(93, 173, 226);
-            panel14.Dock = DockStyle.Top;
-            panel14.Location = new Point(1, 0);
-            panel14.Name = "panel14";
-            panel14.Size = new Size(212, 1);
-            panel14.TabIndex = 1;
-            // 
-            // panel15
-            // 
-            panel15.BackColor = Color.FromArgb(93, 173, 226);
-            panel15.Dock = DockStyle.Left;
-            panel15.Location = new Point(0, 0);
-            panel15.Name = "panel15";
-            panel15.Size = new Size(1, 24);
-            panel15.TabIndex = 0;
-            // 
-            // txtDentalServices
-            // 
-            txtDentalServices.BackColor = SystemColors.InactiveBorder;
-            txtDentalServices.Dock = DockStyle.Fill;
-            txtDentalServices.DropDownHeight = 75;
-            txtDentalServices.Font = new Font("Tahoma", 9.75F);
-            txtDentalServices.FormattingEnabled = true;
-            txtDentalServices.IntegralHeight = false;
-            txtDentalServices.ItemHeight = 16;
-            txtDentalServices.Location = new Point(0, 0);
-            txtDentalServices.Name = "txtDentalServices";
-            txtDentalServices.Size = new Size(213, 24);
-            txtDentalServices.TabIndex = 56;
-            txtDentalServices.SelectedIndexChanged += txtDentalServices_SelectedIndexChanged;
-            // 
-            // borderRangePrice
-            // 
-            borderRangePrice.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            borderRangePrice.Controls.Add(panel16);
-            borderRangePrice.Controls.Add(panel17);
-            borderRangePrice.Controls.Add(panel18);
-            borderRangePrice.Controls.Add(panel20);
-            borderRangePrice.Controls.Add(txtRangePrice);
-            borderRangePrice.Location = new Point(606, 49);
-            borderRangePrice.Name = "borderRangePrice";
-            borderRangePrice.Size = new Size(134, 25);
-            borderRangePrice.TabIndex = 91;
-            // 
-            // panel16
-            // 
-            panel16.BackColor = Color.FromArgb(93, 173, 226);
-            panel16.Dock = DockStyle.Right;
-            panel16.Location = new Point(133, 1);
-            panel16.Name = "panel16";
-            panel16.Size = new Size(1, 23);
-            panel16.TabIndex = 3;
-            // 
-            // panel17
-            // 
-            panel17.BackColor = Color.FromArgb(93, 173, 226);
-            panel17.Dock = DockStyle.Bottom;
-            panel17.Location = new Point(1, 24);
-            panel17.Name = "panel17";
-            panel17.Size = new Size(133, 1);
-            panel17.TabIndex = 2;
-            // 
-            // panel18
-            // 
-            panel18.BackColor = Color.FromArgb(93, 173, 226);
-            panel18.Dock = DockStyle.Top;
-            panel18.Location = new Point(1, 0);
-            panel18.Name = "panel18";
-            panel18.Size = new Size(133, 1);
-            panel18.TabIndex = 1;
-            // 
-            // panel20
-            // 
-            panel20.BackColor = Color.FromArgb(93, 173, 226);
-            panel20.Dock = DockStyle.Left;
-            panel20.Location = new Point(0, 0);
-            panel20.Name = "panel20";
-            panel20.Size = new Size(1, 25);
-            panel20.TabIndex = 0;
-            // 
-            // txtRangePrice
-            // 
-            txtRangePrice.BorderStyle = BorderStyle.FixedSingle;
-            txtRangePrice.Dock = DockStyle.Fill;
-            txtRangePrice.Font = new Font("Segoe UI", 9.75F);
-            txtRangePrice.Location = new Point(0, 0);
-            txtRangePrice.Name = "txtRangePrice";
-            txtRangePrice.Size = new Size(134, 25);
-            txtRangePrice.TabIndex = 1;
-            // 
-            // label4
-            // 
-            label4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label4.AutoSize = true;
-            label4.Font = new Font("Tahoma", 9.75F);
-            label4.ForeColor = Color.DimGray;
-            label4.Location = new Point(464, 58);
-            label4.Name = "label4";
-            label4.Size = new Size(141, 16);
-            label4.TabIndex = 92;
-            label4.Text = "Range Price: (Optional)";
+            btnView.Click += btnView_Click;
             // 
             // viewDentalServices
             // 
@@ -808,9 +583,9 @@
             viewDentalServices.AllowUserToDeleteRows = false;
             viewDentalServices.AllowUserToResizeColumns = false;
             viewDentalServices.AllowUserToResizeRows = false;
-            dataGridViewCellStyle11.BackColor = Color.FromArgb(132, 202, 239);
+            dataGridViewCellStyle11.BackColor = Color.FromArgb(224, 241, 255);
             dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle11.ForeColor = Color.White;
+            dataGridViewCellStyle11.ForeColor = Color.Gray;
             dataGridViewCellStyle11.SelectionBackColor = Color.Gainsboro;
             dataGridViewCellStyle11.SelectionForeColor = Color.FromArgb(52, 152, 219);
             viewDentalServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
@@ -855,8 +630,9 @@
             dataGridViewCellStyle15.WrapMode = DataGridViewTriState.True;
             viewDentalServices.RowsDefaultCellStyle = dataGridViewCellStyle15;
             viewDentalServices.RowTemplate.Height = 25;
-            viewDentalServices.Size = new Size(922, 143);
+            viewDentalServices.Size = new Size(922, 231);
             viewDentalServices.TabIndex = 94;
+            viewDentalServices.CellContentClick += viewDentalServices_CellContentClick;
             // 
             // elipseControl1
             // 
@@ -877,10 +653,10 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel2.AutoScroll = true;
+            panel2.Controls.Add(borderLimit);
             panel2.Controls.Add(panel62);
             panel2.Controls.Add(panel57);
             panel2.Controls.Add(label15);
-            panel2.Controls.Add(panel21);
             panel2.Controls.Add(label14);
             panel2.Controls.Add(boderZipCode);
             panel2.Controls.Add(label13);
@@ -901,31 +677,27 @@
             panel2.Controls.Add(label5);
             panel2.Controls.Add(viewDentalServices);
             panel2.Controls.Add(borderDayofweek);
-            panel2.Controls.Add(label4);
             panel2.Controls.Add(label17);
-            panel2.Controls.Add(borderRangePrice);
             panel2.Controls.Add(label18);
-            panel2.Controls.Add(borderDentalServices);
             panel2.Controls.Add(borderEndtime);
-            panel2.Controls.Add(borderStatus);
             panel2.Controls.Add(borderStartTime);
-            panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(btnView);
             panel2.Controls.Add(borderBranch);
-            panel2.Controls.Add(btnNewAccount);
+            panel2.Controls.Add(btnSave);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(btnRefresh);
             panel2.Location = new Point(-2, 24);
             panel2.Name = "panel2";
             panel2.Size = new Size(1106, 636);
             panel2.TabIndex = 96;
+            panel2.Paint += panel2_Paint;
             // 
             // panel62
             // 
             panel62.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel62.BackColor = Color.DimGray;
-            panel62.Location = new Point(25, 537);
+            panel62.Location = new Point(25, 470);
             panel62.Name = "panel62";
             panel62.Size = new Size(923, 1);
             panel62.TabIndex = 114;
@@ -934,7 +706,7 @@
             // 
             panel57.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel57.BackColor = Color.DimGray;
-            panel57.Location = new Point(25, 253);
+            panel57.Location = new Point(25, 338);
             panel57.Name = "panel57";
             panel57.Size = new Size(923, 1);
             panel57.TabIndex = 113;
@@ -944,80 +716,18 @@
             label15.AutoSize = true;
             label15.Font = new Font("Tahoma", 9.75F);
             label15.ForeColor = Color.DimGray;
-            label15.Location = new Point(531, 601);
+            label15.Location = new Point(531, 534);
             label15.Name = "label15";
             label15.Size = new Size(154, 16);
             label15.TabIndex = 111;
             label15.Text = "Max Appointment per Day";
-            // 
-            // panel21
-            // 
-            borderLimit.Controls.Add(panel27);
-            borderLimit.Controls.Add(panel33);
-            borderLimit.Controls.Add(panel43);
-            borderLimit.Controls.Add(panel52);
-            borderLimit.Controls.Add(txtLimit);
-            borderLimit.Location = new Point(530, 620);
-            borderLimit.Name = "borderLimit";
-            borderLimit.Size = new Size(155, 24);
-            borderLimit.TabIndex = 112;
-            // 
-            // panel27
-            // 
-            panel27.BackColor = Color.FromArgb(93, 173, 226);
-            panel27.Dock = DockStyle.Right;
-            panel27.Location = new Point(154, 1);
-            panel27.Name = "panel27";
-            panel27.Size = new Size(1, 22);
-            panel27.TabIndex = 3;
-            // 
-            // panel33
-            // 
-            panel33.BackColor = Color.FromArgb(93, 173, 226);
-            panel33.Dock = DockStyle.Bottom;
-            panel33.Location = new Point(1, 23);
-            panel33.Name = "panel33";
-            panel33.Size = new Size(154, 1);
-            panel33.TabIndex = 2;
-            // 
-            // panel43
-            // 
-            panel43.BackColor = Color.FromArgb(93, 173, 226);
-            panel43.Dock = DockStyle.Top;
-            panel43.Location = new Point(1, 0);
-            panel43.Name = "panel43";
-            panel43.Size = new Size(154, 1);
-            panel43.TabIndex = 1;
-            // 
-            // panel52
-            // 
-            panel52.BackColor = Color.FromArgb(93, 173, 226);
-            panel52.Dock = DockStyle.Left;
-            panel52.Location = new Point(0, 0);
-            panel52.Name = "panel52";
-            panel52.Size = new Size(1, 24);
-            panel52.TabIndex = 0;
-            // 
-            // comboBox1
-            // 
-            comboBox1.BackColor = SystemColors.InactiveBorder;
-            comboBox1.Dock = DockStyle.Fill;
-            comboBox1.DropDownHeight = 75;
-            comboBox1.Font = new Font("Tahoma", 9.75F);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.IntegralHeight = false;
-            comboBox1.ItemHeight = 16;
-            comboBox1.Location = new Point(0, 0);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(155, 24);
-            comboBox1.TabIndex = 56;
             // 
             // label14
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Tahoma", 9.75F);
             label14.ForeColor = Color.DimGray;
-            label14.Location = new Point(786, 308);
+            label14.Location = new Point(786, 393);
             label14.Name = "label14";
             label14.Size = new Size(55, 16);
             label14.TabIndex = 110;
@@ -1030,7 +740,7 @@
             boderZipCode.Controls.Add(panel60);
             boderZipCode.Controls.Add(panel61);
             boderZipCode.Controls.Add(txtZipCode);
-            boderZipCode.Location = new Point(787, 326);
+            boderZipCode.Location = new Point(787, 411);
             boderZipCode.Name = "boderZipCode";
             boderZipCode.Size = new Size(59, 25);
             boderZipCode.TabIndex = 109;
@@ -1087,7 +797,7 @@
             label13.AutoSize = true;
             label13.Font = new Font("Tahoma", 9.75F);
             label13.ForeColor = Color.DimGray;
-            label13.Location = new Point(671, 308);
+            label13.Location = new Point(671, 393);
             label13.Name = "label13";
             label13.Size = new Size(48, 16);
             label13.TabIndex = 108;
@@ -1100,7 +810,7 @@
             borderProvince.Controls.Add(panel55);
             borderProvince.Controls.Add(panel56);
             borderProvince.Controls.Add(txtProvince);
-            borderProvince.Location = new Point(672, 326);
+            borderProvince.Location = new Point(672, 411);
             borderProvince.Name = "borderProvince";
             borderProvince.Size = new Size(108, 25);
             borderProvince.TabIndex = 107;
@@ -1157,7 +867,7 @@
             label12.AutoSize = true;
             label12.Font = new Font("Tahoma", 9.75F);
             label12.ForeColor = Color.DimGray;
-            label12.Location = new Point(556, 308);
+            label12.Location = new Point(556, 393);
             label12.Name = "label12";
             label12.Size = new Size(28, 16);
             label12.TabIndex = 106;
@@ -1170,7 +880,7 @@
             borderCity.Controls.Add(panel47);
             borderCity.Controls.Add(panel48);
             borderCity.Controls.Add(txtCity);
-            borderCity.Location = new Point(557, 326);
+            borderCity.Location = new Point(557, 411);
             borderCity.Name = "borderCity";
             borderCity.Size = new Size(108, 25);
             borderCity.TabIndex = 105;
@@ -1227,7 +937,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Tahoma", 9.75F);
             label11.ForeColor = Color.DimGray;
-            label11.Location = new Point(441, 308);
+            label11.Location = new Point(441, 393);
             label11.Name = "label11";
             label11.Size = new Size(60, 16);
             label11.TabIndex = 104;
@@ -1240,7 +950,7 @@
             borderBarangay.Controls.Add(panel41);
             borderBarangay.Controls.Add(panel42);
             borderBarangay.Controls.Add(txtBarangay);
-            borderBarangay.Location = new Point(442, 326);
+            borderBarangay.Location = new Point(442, 411);
             borderBarangay.Name = "borderBarangay";
             borderBarangay.Size = new Size(108, 25);
             borderBarangay.TabIndex = 103;
@@ -1297,7 +1007,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Tahoma", 9.75F);
             label10.ForeColor = Color.DimGray;
-            label10.Location = new Point(327, 308);
+            label10.Location = new Point(327, 393);
             label10.Name = "label10";
             label10.Size = new Size(42, 16);
             label10.TabIndex = 102;
@@ -1310,7 +1020,7 @@
             borderStreet.Controls.Add(panel31);
             borderStreet.Controls.Add(panel32);
             borderStreet.Controls.Add(txtStreet);
-            borderStreet.Location = new Point(328, 326);
+            borderStreet.Location = new Point(328, 411);
             borderStreet.Name = "borderStreet";
             borderStreet.Size = new Size(108, 25);
             borderStreet.TabIndex = 101;
@@ -1367,7 +1077,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Tahoma", 9.75F);
             label9.ForeColor = Color.DimGray;
-            label9.Location = new Point(262, 308);
+            label9.Location = new Point(262, 393);
             label9.Name = "label9";
             label9.Size = new Size(16, 16);
             label9.TabIndex = 100;
@@ -1380,7 +1090,7 @@
             borderNumber.Controls.Add(panel25);
             borderNumber.Controls.Add(panel26);
             borderNumber.Controls.Add(txtNumber);
-            borderNumber.Location = new Point(263, 326);
+            borderNumber.Location = new Point(263, 411);
             borderNumber.Name = "borderNumber";
             borderNumber.Size = new Size(59, 25);
             borderNumber.TabIndex = 92;
@@ -1436,7 +1146,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(14, 567);
+            label7.Location = new Point(14, 500);
             label7.Name = "label7";
             label7.Size = new Size(303, 19);
             label7.TabIndex = 99;
@@ -1448,9 +1158,9 @@
             viewDayTime.AllowUserToDeleteRows = false;
             viewDayTime.AllowUserToResizeColumns = false;
             viewDayTime.AllowUserToResizeRows = false;
-            dataGridViewCellStyle16.BackColor = Color.FromArgb(132, 202, 239);
+            dataGridViewCellStyle16.BackColor = Color.FromArgb(224, 241, 255);
             dataGridViewCellStyle16.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle16.ForeColor = Color.White;
+            dataGridViewCellStyle16.ForeColor = Color.DarkGray;
             dataGridViewCellStyle16.SelectionBackColor = Color.Gainsboro;
             dataGridViewCellStyle16.SelectionForeColor = Color.FromArgb(52, 152, 219);
             viewDayTime.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
@@ -1480,7 +1190,7 @@
             dataGridViewCellStyle18.WrapMode = DataGridViewTriState.True;
             viewDayTime.DefaultCellStyle = dataGridViewCellStyle18;
             viewDayTime.EnableHeadersVisualStyles = false;
-            viewDayTime.Location = new Point(26, 354);
+            viewDayTime.Location = new Point(25, 587);
             viewDayTime.Margin = new Padding(0, 0, 10, 0);
             viewDayTime.Name = "viewDayTime";
             viewDayTime.ReadOnly = true;
@@ -1503,7 +1213,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(14, 276);
+            label6.Location = new Point(14, 361);
             label6.Name = "label6";
             label6.Size = new Size(132, 19);
             label6.TabIndex = 97;
@@ -1511,15 +1221,128 @@
             // 
             // panel11
             // 
-            panel11.Location = new Point(1043, 507);
+            panel11.Location = new Point(1050, 564);
             panel11.Name = "panel11";
             panel11.Size = new Size(25, 242);
             panel11.TabIndex = 96;
+            // 
+            // panel27
+            // 
+            panel27.BackColor = Color.FromArgb(93, 173, 226);
+            panel27.Dock = DockStyle.Right;
+            panel27.Location = new Point(154, 1);
+            panel27.Name = "panel27";
+            panel27.Size = new Size(1, 22);
+            panel27.TabIndex = 3;
+            // 
+            // panel33
+            // 
+            panel33.BackColor = Color.FromArgb(93, 173, 226);
+            panel33.Dock = DockStyle.Bottom;
+            panel33.Location = new Point(1, 23);
+            panel33.Name = "panel33";
+            panel33.Size = new Size(154, 1);
+            panel33.TabIndex = 2;
+            // 
+            // panel43
+            // 
+            panel43.BackColor = Color.FromArgb(93, 173, 226);
+            panel43.Dock = DockStyle.Top;
+            panel43.Location = new Point(1, 0);
+            panel43.Name = "panel43";
+            panel43.Size = new Size(154, 1);
+            panel43.TabIndex = 1;
+            // 
+            // panel52
+            // 
+            panel52.BackColor = Color.FromArgb(93, 173, 226);
+            panel52.Dock = DockStyle.Left;
+            panel52.Location = new Point(0, 0);
+            panel52.Name = "panel52";
+            panel52.Size = new Size(1, 24);
+            panel52.TabIndex = 0;
+            // 
+            // comboBox1
+            // 
+            comboBox1.BackColor = SystemColors.InactiveBorder;
+            comboBox1.Dock = DockStyle.Fill;
+            comboBox1.DropDownHeight = 75;
+            comboBox1.Font = new Font("Tahoma", 9.75F);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.IntegralHeight = false;
+            comboBox1.ItemHeight = 16;
+            comboBox1.Location = new Point(0, 0);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(155, 24);
+            comboBox1.TabIndex = 56;
             // 
             // elipseControl2
             // 
             elipseControl2.CornerRadius = 15;
             elipseControl2.TargetControl = viewDayTime;
+            // 
+            // borderLimit
+            // 
+            borderLimit.Controls.Add(panel8);
+            borderLimit.Controls.Add(panel9);
+            borderLimit.Controls.Add(panel10);
+            borderLimit.Controls.Add(panel12);
+            borderLimit.Controls.Add(txtLimit);
+            borderLimit.Location = new Point(531, 554);
+            borderLimit.Name = "borderLimit";
+            borderLimit.Size = new Size(213, 24);
+            borderLimit.TabIndex = 81;
+            // 
+            // panel8
+            // 
+            panel8.BackColor = Color.FromArgb(93, 173, 226);
+            panel8.Dock = DockStyle.Right;
+            panel8.Location = new Point(212, 1);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(1, 22);
+            panel8.TabIndex = 3;
+            // 
+            // panel9
+            // 
+            panel9.BackColor = Color.FromArgb(93, 173, 226);
+            panel9.Dock = DockStyle.Bottom;
+            panel9.Location = new Point(1, 23);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(212, 1);
+            panel9.TabIndex = 2;
+            // 
+            // panel10
+            // 
+            panel10.BackColor = Color.FromArgb(93, 173, 226);
+            panel10.Dock = DockStyle.Top;
+            panel10.Location = new Point(1, 0);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(212, 1);
+            panel10.TabIndex = 1;
+            panel10.Paint += panel10_Paint;
+            // 
+            // panel12
+            // 
+            panel12.BackColor = Color.FromArgb(93, 173, 226);
+            panel12.Dock = DockStyle.Left;
+            panel12.Location = new Point(0, 0);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(1, 24);
+            panel12.TabIndex = 0;
+            // 
+            // txtLimit
+            // 
+            txtLimit.BackColor = SystemColors.InactiveBorder;
+            txtLimit.Dock = DockStyle.Fill;
+            txtLimit.DropDownHeight = 75;
+            txtLimit.Font = new Font("Tahoma", 9.75F);
+            txtLimit.FormattingEnabled = true;
+            txtLimit.IntegralHeight = false;
+            txtLimit.ItemHeight = 16;
+            txtLimit.Location = new Point(0, 0);
+            txtLimit.Name = "txtLimit";
+            txtLimit.Size = new Size(213, 24);
+            txtLimit.TabIndex = 56;
             // 
             // setupOnlineBooking
             // 
@@ -1539,14 +1362,9 @@
             borderStartTime.ResumeLayout(false);
             borderEndtime.ResumeLayout(false);
             borderBranch.ResumeLayout(false);
-            borderStatus.ResumeLayout(false);
-            borderDentalServices.ResumeLayout(false);
-            borderRangePrice.ResumeLayout(false);
-            borderRangePrice.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)viewDentalServices).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            panel21.ResumeLayout(false);
             boderZipCode.ResumeLayout(false);
             boderZipCode.PerformLayout();
             borderProvince.ResumeLayout(false);
@@ -1560,6 +1378,7 @@
             borderNumber.ResumeLayout(false);
             borderNumber.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)viewDayTime).EndInit();
+            borderLimit.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -1599,29 +1418,9 @@
         private Panel panel6;
         private ComboBox txtBranch;
         private Label label2;
-        private Button btnNewAccount;
+        private Button btnSave;
         private Button btnRefresh;
         private Button btnView;
-        private Panel borderStatus;
-        private Panel panel7;
-        private Panel panel8;
-        private Panel panel9;
-        private Panel panel10;
-        private ComboBox txtStatus;
-        private Label label3;
-        private Panel borderDentalServices;
-        private Panel panel12;
-        private Panel panel13;
-        private Panel panel14;
-        private Panel panel15;
-        private ComboBox txtDentalServices;
-        private Panel borderRangePrice;
-        private Panel panel16;
-        private Panel panel17;
-        private Panel panel18;
-        private Panel panel20;
-        private TextBox txtRangePrice;
-        private Label label4;
         private DataGridView viewDentalServices;
         private ElipseToolDemo.ElipseControl elipseControl1;
         private Label label5;
@@ -1673,7 +1472,6 @@
         private Panel panel61;
         private TextBox txtZipCode;
         private Label label15;
-        private Panel panel21;
         private Panel panel27;
         private Panel panel33;
         private Panel panel43;
@@ -1682,5 +1480,11 @@
         private Panel panel57;
         private Panel panel62;
         private ElipseToolDemo.ElipseControl elipseControl2;
+        private Panel borderLimit;
+        private Panel panel8;
+        private Panel panel9;
+        private Panel panel10;
+        private Panel panel12;
+        private ComboBox txtLimit;
     }
 }

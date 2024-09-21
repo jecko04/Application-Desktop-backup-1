@@ -94,9 +94,9 @@
             viewEmployeeDetails.AllowUserToDeleteRows = false;
             viewEmployeeDetails.AllowUserToResizeColumns = false;
             viewEmployeeDetails.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(132, 202, 239);
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(224, 241, 255);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.ForeColor = Color.Gray;
             dataGridViewCellStyle1.SelectionBackColor = Color.Gainsboro;
             dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(52, 152, 219);
             viewEmployeeDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;

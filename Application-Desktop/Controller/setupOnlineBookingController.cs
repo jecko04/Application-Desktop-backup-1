@@ -1,4 +1,9 @@
-﻿using Application_Desktop.Model;
+﻿using Application_Desktop.Method;
+using Application_Desktop.Model;
+using Application_Desktop.Models;
+using Application_Desktop.Sub_Views;
+using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Crypto;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,6 +11,7 @@ using System.Formats.Asn1;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace Application_Desktop.Controller
@@ -21,60 +27,75 @@ namespace Application_Desktop.Controller
 
 
         // start categories
-        public async Task LoadCategories(int admin, DataGridView viewDentalServices)
+        public async Task LoadCategories(int admin, string dayOfWeek, DataGridView viewDentalServices)
         {
             try
             {
-                DataTable categories = await _setupBookingModel.GetAllCategories(admin);
-
-                // Now that you have the data, pass it to the view (the DataGridView)
-                viewDentalServices.DataSource = null;
+                // Clear the DataGridView rows to avoid duplication
                 viewDentalServices.Rows.Clear();
-                viewDentalServices.Columns.Clear();
 
-                // Prevent automatic column generation
-                viewDentalServices.AutoGenerateColumns = false;
+                // Fetch the services from the model
+                DataTable services = await _setupBookingModel.GetAllCategories(admin, dayOfWeek);
 
-                // Add columns (this can be a method in your View/SetupOnlineBooking class)
-                AddColumnServices(viewDentalServices);
+                // Avoid adding columns multiple times
+                if (viewDentalServices.Columns.Count == 0)
+                {
+                    AddColumnServices(viewDentalServices);
+                }
 
-                // Assign the data to the DataGridView
-                viewDentalServices.DataSource = categories;
+                // Populate the DataGridView with services
+                foreach (DataRow service in services.Rows)
+                {
+                    // Add a new row to the DataGridView
+                    int rowIndex = viewDentalServices.Rows.Add();
+                    DataGridViewRow row = viewDentalServices.Rows[rowIndex];
+
+                    // Set the values for the newly added row
+                    row.Cells["Title"].Value = service["Title"];
+                    row.Cells["Description"].Value = service["Description"];
+                    row.Cells["Duration"].Value = service["Duration"];
+                    row.Cells["Frequency"].Value = service["Frequency"];
+                    row.Cells["Price"].Value = service["Price"];
+
+                    // Ensure 'isavailable' is properly handled
+                    if (viewDentalServices.Columns["DentalServices"] is DataGridViewCheckBoxColumn)
+                    {
+                        DataGridViewCheckBoxCell checkBoxCell = (DataGridViewCheckBoxCell)row.Cells["DentalServices"];
+
+                        // Assign the checkbox value directly based on isavailable
+                        checkBoxCell.Value = Convert.ToInt32(service["isavailable"]) == 1;
+                    }
+                }
             }
             catch (Exception ex)
             {
+                // Display error message if something goes wrong
                 MessageBox.Show($"Error loading categories: {ex.Message}");
             }
         }
 
-        public async Task LoadCategoriesDataBySearch(int admin, DataGridView viewDentalServices, ComboBox servicesComboBox)
+        public async Task LoadMaxAppointment(int admin, ComboBox dayofweek, ComboBox maxComboBox)
         {
             try
             {
-                string selectedTitle = servicesComboBox.SelectedItem?.ToString();
+                Status max = await _setupBookingModel.GetMaxAppointment(admin, dayofweek.Text);
 
-                DataTable categories = await _setupBookingModel.SearchCategoryData(admin, selectedTitle);
-
-                // Now that you have the data, pass it to the view (the DataGridView)
-                viewDentalServices.DataSource = null;
-                viewDentalServices.Rows.Clear();
-                viewDentalServices.Columns.Clear();
-
-                // Prevent automatic column generation
-                viewDentalServices.AutoGenerateColumns = false;
-
-                // Add columns (this can be a method in your View/SetupOnlineBooking class)
-                AddColumnServices(viewDentalServices);
-
-                // Assign the data to the DataGridView
-                viewDentalServices.DataSource = categories;
+                // Assuming you have a ComboBox for max appointments
+                if (max != null)
+                {
+                    maxComboBox.SelectedItem = max._max; 
+                }
+                else
+                {
+                    maxComboBox.SelectedItem = 0;
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading categories data by search: {ex.Message}");
+                MessageBox.Show($"Error loading max appointment: {ex.Message}");
             }
         }
-
+        
         private void AddColumnServices(DataGridView viewDentalServices)
         {
             viewDentalServices.RowHeadersVisible = false;
@@ -83,7 +104,9 @@ namespace Application_Desktop.Controller
             DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
             selectColumn.HeaderText = "";
             selectColumn.Name = "DentalServices";
+            selectColumn.DataPropertyName = "isavailable";
             selectColumn.Width = 30;
+            selectColumn.ReadOnly = false;
             viewDentalServices.Columns.Add(selectColumn);
             viewDentalServices.Columns["DentalServices"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
@@ -114,6 +137,13 @@ namespace Application_Desktop.Controller
             Frequency.DataPropertyName = "Frequency";
             Frequency.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             viewDentalServices.Columns.Add(Frequency);
+
+            DataGridViewTextBoxColumn Price = new DataGridViewTextBoxColumn();
+            Price.HeaderText = "Price";
+            Price.Name = "Price";
+            Price.DataPropertyName = "Price";
+            Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            viewDentalServices.Columns.Add(Price);
         }
 
         private Dictionary<string, Categories> _categories = new Dictionary<string, Categories>();
@@ -124,7 +154,7 @@ namespace Application_Desktop.Controller
                 List<Categories> categoriesList = await _setupBookingModel.GetAllCategoriesTitle(admin);
                 if (categoriesList != null && categoriesList.Count > 0)
                 {
-                    
+
 
                     foreach (var category in categoriesList)
                     {
@@ -262,6 +292,22 @@ namespace Application_Desktop.Controller
             status.SelectedItem = "Available";
         }
 
+        public void LoadMaxAppointment(ComboBox max)
+        {
+            int[] value = {
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+    };
+
+            max.Items.Clear();
+
+            foreach (var limit in value)
+            {
+                max.Items.Add(limit);
+            }
+
+            max.SelectedItem = 0;
+        }
+
         public async Task LoadOpenDayTime(int admin, DataGridView viewDayTime)
         {
             try
@@ -325,5 +371,85 @@ namespace Application_Desktop.Controller
             }
         }
         //end day time
-    } 
+
+        //start insert data
+
+        public async Task InsertToDatabase(DataGridView viewDentalServices, ComboBox dayComboBox, DateTimePicker start, DateTimePicker end, ComboBox maxComboBox)
+        {
+            if (viewDentalServices == null || dayComboBox.SelectedItem == null || maxComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Please ensure all required fields are filled out.");
+                return;
+            }
+
+            string selectedDay = dayComboBox.SelectedItem.ToString();
+            DateTime startTime = start.Value;
+            DateTime endTime = end.Value;
+            int maxAppointments = (int)maxComboBox.SelectedItem;
+
+            try
+            {
+                // Retrieve branch information
+                getBranchIdByUserId branchId = new getBranchIdByUserId();
+                BranchID b = await branchId.GetUserBranchId();
+
+                if (b != null)
+                {
+                    int admin = b._id;
+                    Branches branch = await _setupBookingModel.GetBranches(admin); // Assuming you have a method to get branch details
+
+                    if (branch == null)
+                    {
+                        MessageBox.Show("Branch information could not be retrieved.");
+                        return;
+                    }
+
+                    // Loop through selected services and insert or update them
+                    foreach (DataGridViewRow row in viewDentalServices.Rows)
+                    {
+                        if (row.IsNewRow) continue; // Skip the new row placeholder
+
+                        DataGridViewCheckBoxCell checkBoxCell = (DataGridViewCheckBoxCell)row.Cells["DentalServices"];
+                        bool isChecked = checkBoxCell.Value != null && (bool)checkBoxCell.Value; // Checked or unchecked state
+
+                        // Retrieve service details from the row
+                        string serviceTitle = row.Cells["Title"].Value?.ToString();
+                        string description = row.Cells["Description"].Value?.ToString();
+                        string duration = row.Cells["Duration"].Value?.ToString();
+                        string frequency = row.Cells["Frequency"].Value?.ToString();
+                        decimal price = decimal.Parse(row.Cells["Price"].Value?.ToString() ?? "0");
+
+                        Categories service = new Categories
+                        {
+                            _title = serviceTitle,
+                            _description = description,
+                            _duration = duration,
+                            _frequency = frequency,
+                            _price = price
+                        };
+
+                        DayTime dayTime = new DayTime
+                        {
+                            _days = selectedDay,
+                            _start = startTime,
+                            _end = endTime
+                        };
+
+                        Status status = new Status
+                        {
+                            _max = maxAppointments // Assign maxAppointments to the Status object
+                        };
+
+                        await _setupBookingModel.CreateService(service, dayTime, branch, isChecked, b._id, status);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inserting or updating data: {ex.Message}");
+            }
+        }
+
+
+    }
 }
