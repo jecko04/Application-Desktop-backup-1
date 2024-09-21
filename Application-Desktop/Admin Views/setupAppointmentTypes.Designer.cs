@@ -253,14 +253,6 @@
             this.errorProvider4 = (new global::System.Windows.Forms.ErrorProvider(this.components));
             this.errorProvider5 = (new global::System.Windows.Forms.ErrorProvider(this.components));
             this.elipseControl1 = (new global::ElipseToolDemo.ElipseControl());
-            this.btnSunday = (new global::System.Windows.Forms.Button());
-            this.btnSaturday = (new global::System.Windows.Forms.Button());
-            this.btnFriday = (new global::System.Windows.Forms.Button());
-            this.btnThursday = (new global::System.Windows.Forms.Button());
-            this.btnWednesday = (new global::System.Windows.Forms.Button());
-            this.btnTuesday = (new global::System.Windows.Forms.Button());
-            this.btnMonday = (new global::System.Windows.Forms.Button());
-            this.flowLayoutPanel2 = (new global::System.Windows.Forms.FlowLayoutPanel());
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((global::System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -296,7 +288,6 @@
             ((global::System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
             ((global::System.ComponentModel.ISupportInitialize)(this.errorProvider4)).BeginInit();
             ((global::System.ComponentModel.ISupportInitialize)(this.errorProvider5)).BeginInit();
-            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -405,7 +396,6 @@
             this.panel2.Controls.Add(this.borderFrequency);
             this.panel2.Controls.Add(this.borderDescription);
             this.panel2.Controls.Add(this.borderTitle);
-            this.panel2.Controls.Add(this.flowLayoutPanel2);
             this.panel2.Controls.Add(this.PanelOfficeHours);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label15);
@@ -2764,138 +2754,20 @@
             // 
             // btnSunday
             // 
-            this.btnSunday.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSunday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.btnSunday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.btnSunday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnSunday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
-            this.btnSunday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
-            this.btnSunday.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
-            this.btnSunday.Location = (new global::System.Drawing.Point(570, 0));
-            this.btnSunday.Margin = (new global::System.Windows.Forms.Padding(0));
-            this.btnSunday.Name = ("btnSunday");
-            this.btnSunday.Size = (new global::System.Drawing.Size(90, 30));
-            this.btnSunday.TabIndex = (80);
-            this.btnSunday.Text = ("Sunday");
-            this.btnSunday.UseVisualStyleBackColor = (false);
-            // 
             // btnSaturday
-            // 
-            this.btnSaturday.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaturday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.btnSaturday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.btnSaturday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnSaturday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
-            this.btnSaturday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
-            this.btnSaturday.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
-            this.btnSaturday.Location = (new global::System.Drawing.Point(475, 0));
-            this.btnSaturday.Margin = (new global::System.Windows.Forms.Padding(0, 0, 1, 0));
-            this.btnSaturday.Name = ("btnSaturday");
-            this.btnSaturday.Size = (new global::System.Drawing.Size(94, 30));
-            this.btnSaturday.TabIndex = (77);
-            this.btnSaturday.Text = ("Saturday");
-            this.btnSaturday.UseVisualStyleBackColor = (false);
             // 
             // btnFriday
             // 
-            this.btnFriday.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFriday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.btnFriday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.btnFriday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnFriday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
-            this.btnFriday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
-            this.btnFriday.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
-            this.btnFriday.Location = (new global::System.Drawing.Point(380, 0));
-            this.btnFriday.Margin = (new global::System.Windows.Forms.Padding(0, 0, 1, 0));
-            this.btnFriday.Name = ("btnFriday");
-            this.btnFriday.Size = (new global::System.Drawing.Size(94, 30));
-            this.btnFriday.TabIndex = (78);
-            this.btnFriday.Text = ("Friday");
-            this.btnFriday.UseVisualStyleBackColor = (false);
-            // 
             // btnThursday
-            // 
-            this.btnThursday.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.btnThursday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.btnThursday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.btnThursday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnThursday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
-            this.btnThursday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
-            this.btnThursday.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
-            this.btnThursday.Location = (new global::System.Drawing.Point(285, 0));
-            this.btnThursday.Margin = (new global::System.Windows.Forms.Padding(0, 0, 1, 0));
-            this.btnThursday.Name = ("btnThursday");
-            this.btnThursday.Size = (new global::System.Drawing.Size(94, 30));
-            this.btnThursday.TabIndex = (79);
-            this.btnThursday.Text = ("Thursday");
-            this.btnThursday.UseVisualStyleBackColor = (false);
             // 
             // btnWednesday
             // 
-            this.btnWednesday.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.btnWednesday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.btnWednesday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.btnWednesday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnWednesday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
-            this.btnWednesday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
-            this.btnWednesday.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
-            this.btnWednesday.Location = (new global::System.Drawing.Point(190, 0));
-            this.btnWednesday.Margin = (new global::System.Windows.Forms.Padding(0, 0, 1, 0));
-            this.btnWednesday.Name = ("btnWednesday");
-            this.btnWednesday.Size = (new global::System.Drawing.Size(94, 30));
-            this.btnWednesday.TabIndex = (74);
-            this.btnWednesday.Text = ("Wednesday");
-            this.btnWednesday.UseVisualStyleBackColor = (false);
             // 
             // btnTuesday
             // 
-            this.btnTuesday.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTuesday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.btnTuesday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.btnTuesday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnTuesday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
-            this.btnTuesday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
-            this.btnTuesday.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
-            this.btnTuesday.Location = (new global::System.Drawing.Point(95, 0));
-            this.btnTuesday.Margin = (new global::System.Windows.Forms.Padding(0, 0, 1, 0));
-            this.btnTuesday.Name = ("btnTuesday");
-            this.btnTuesday.Size = (new global::System.Drawing.Size(94, 30));
-            this.btnTuesday.TabIndex = (75);
-            this.btnTuesday.Text = ("Tuesday");
-            this.btnTuesday.UseVisualStyleBackColor = (false);
             // 
-            // btnMonday
-            // 
-            this.btnMonday.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMonday.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.btnMonday.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.btnMonday.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnMonday.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
-            this.btnMonday.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
-            this.btnMonday.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
-            this.btnMonday.Location = (new global::System.Drawing.Point(0, 0));
-            this.btnMonday.Margin = (new global::System.Windows.Forms.Padding(0, 0, 1, 0));
-            this.btnMonday.Name = ("btnMonday");
-            this.btnMonday.Size = (new global::System.Drawing.Size(94, 30));
-            this.btnMonday.TabIndex = (76);
-            this.btnMonday.Text = ("Monday");
-            this.btnMonday.UseVisualStyleBackColor = (false);
             // 
             // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel2.Controls.Add(this.btnMonday);
-            this.flowLayoutPanel2.Controls.Add(this.btnTuesday);
-            this.flowLayoutPanel2.Controls.Add(this.btnWednesday);
-            this.flowLayoutPanel2.Controls.Add(this.btnThursday);
-            this.flowLayoutPanel2.Controls.Add(this.btnFriday);
-            this.flowLayoutPanel2.Controls.Add(this.btnSaturday);
-            this.flowLayoutPanel2.Controls.Add(this.btnSunday);
-            this.flowLayoutPanel2.Location = (new global::System.Drawing.Point(402, 670));
-            this.flowLayoutPanel2.Name = ("flowLayoutPanel2");
-            this.flowLayoutPanel2.Size = (new global::System.Drawing.Size(660, 30));
-            this.flowLayoutPanel2.TabIndex = (71);
-            // 
             // setupAppointmentTypes
             // 
             this.AutoScaleDimensions = (new global::System.Drawing.SizeF(7F, 15F));
@@ -2952,7 +2824,6 @@
             ((global::System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
             ((global::System.ComponentModel.ISupportInitialize)(this.errorProvider4)).EndInit();
             ((global::System.ComponentModel.ISupportInitialize)(this.errorProvider5)).EndInit();
-            this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
         }
 
