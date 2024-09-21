@@ -1077,7 +1077,7 @@
             // panel122
             // 
             this.panel122.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel122.Location = (new global::System.Drawing.Point(27, 284));
+            this.panel122.Location = (new global::System.Drawing.Point(26, 253));
             this.panel122.Name = ("panel122");
             this.panel122.Size = (new global::System.Drawing.Size(615, 1));
             this.panel122.TabIndex = (86);
@@ -1092,7 +1092,7 @@
             this.panel117.Controls.Add(this.panel121);
             this.panel117.Controls.Add(this.dateTimePicker16);
             this.panel117.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.panel117.Location = (new global::System.Drawing.Point(215, 330));
+            this.panel117.Location = (new global::System.Drawing.Point(123, 267));
             this.panel117.Name = ("panel117");
             this.panel117.Size = (new global::System.Drawing.Size(107, 23));
             this.panel117.TabIndex = (116);
@@ -1163,7 +1163,7 @@
             // 
             this.label39.AutoSize = (true);
             this.label39.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label39.Location = (new global::System.Drawing.Point(350, 298));
+            this.label39.Location = (new global::System.Drawing.Point(236, 274));
             this.label39.Name = ("label39");
             this.label39.Size = (new global::System.Drawing.Size(76, 16));
             this.label39.TabIndex = (115);
@@ -1178,7 +1178,7 @@
             this.btnSaveOfficeHours.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnSaveOfficeHours.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnSaveOfficeHours.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
-            this.btnSaveOfficeHours.Location = (new global::System.Drawing.Point(562, 297));
+            this.btnSaveOfficeHours.Location = (new global::System.Drawing.Point(561, 266));
             this.btnSaveOfficeHours.Margin = (new global::System.Windows.Forms.Padding(0));
             this.btnSaveOfficeHours.Name = ("btnSaveOfficeHours");
             this.btnSaveOfficeHours.Size = (new global::System.Drawing.Size(70, 24));
@@ -1191,7 +1191,7 @@
             // 
             this.btnApplyToAll.AutoSize = (true);
             this.btnApplyToAll.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.btnApplyToAll.Location = (new global::System.Drawing.Point(440, 299));
+            this.btnApplyToAll.Location = (new global::System.Drawing.Point(439, 268));
             this.btnApplyToAll.Name = ("btnApplyToAll");
             this.btnApplyToAll.Size = (new global::System.Drawing.Size(119, 20));
             this.btnApplyToAll.TabIndex = (116);
@@ -1209,7 +1209,7 @@
             this.panel112.Controls.Add(this.panel116);
             this.panel112.Controls.Add(this.dateTimePicker15);
             this.panel112.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.panel112.Location = (new global::System.Drawing.Point(335, 330));
+            this.panel112.Location = (new global::System.Drawing.Point(324, 267));
             this.panel112.Name = ("panel112");
             this.panel112.Size = (new global::System.Drawing.Size(107, 23));
             this.panel112.TabIndex = (115);
@@ -1280,9 +1280,7 @@
             // 
             this.label38.AutoSize = (true);
             this.label38.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-
-            this.label38.Location = (new global::System.Drawing.Point(224, 302));
-
+            this.label38.Location = (new global::System.Drawing.Point(32, 274));
             this.label38.Name = ("label38");
             this.label38.Size = (new global::System.Drawing.Size(83, 16));
             this.label38.TabIndex = (114);
@@ -2581,7 +2579,7 @@
             // 
             this.lineDevider.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Left) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.lineDevider.AutoSize = (true);
-            this.lineDevider.Location = (new global::System.Drawing.Point(521, 15278));
+            this.lineDevider.Location = (new global::System.Drawing.Point(521, 14493));
             this.lineDevider.Name = ("lineDevider");
             this.lineDevider.Size = (new global::System.Drawing.Size(10, 15));
             this.lineDevider.TabIndex = (59);
@@ -3183,27 +3181,5 @@
         private global::System.Windows.Forms.TextBox txtNewTitle;
         private global::System.Windows.Forms.ErrorProvider errorProvider5;
         private global::ElipseToolDemo.ElipseControl elipseControl1;
-        private global::System.Windows.Forms.Label label42;
-        private global::System.Windows.Forms.Panel borderFetchPrice;
-        private global::System.Windows.Forms.Panel panel3;
-        private global::System.Windows.Forms.Panel panel5;
-        private global::System.Windows.Forms.Panel panel6;
-        private global::System.Windows.Forms.Panel panel7;
-        private global::System.Windows.Forms.TextBox txtFetchPrice;
-        private global::System.Windows.Forms.Label label43;
-        private global::System.Windows.Forms.Panel borderPrice;
-        private global::System.Windows.Forms.Panel panel127;
-        private global::System.Windows.Forms.Panel panel128;
-        private global::System.Windows.Forms.Panel panel129;
-        private global::System.Windows.Forms.Panel panel130;
-        private global::System.Windows.Forms.TextBox txtPrice;
-        private global::System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private global::System.Windows.Forms.Button btnMonday;
-        private global::System.Windows.Forms.Button btnTuesday;
-        private global::System.Windows.Forms.Button btnWednesday;
-        private global::System.Windows.Forms.Button btnThursday;
-        private global::System.Windows.Forms.Button btnFriday;
-        private global::System.Windows.Forms.Button btnSaturday;
-        private global::System.Windows.Forms.Button btnSunday;
     }
 }
