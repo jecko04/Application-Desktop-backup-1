@@ -23,11 +23,11 @@ namespace Application_Desktop.Controller
             _patientModel = new patientDetailsModel();
         }
 
-        public async Task CreateDentalRecord(DentalPatient patients, GenHealth genHealth, DentHealth dentHealth)
+        public async Task CreateDentalRecord(DentalPatient patients, GenHealth genHealth, DentHealth dentHealth, int admin)
         {
             string insertPatient = @"INSERT INTO `patients` 
-                             (`fullname`, `date_of_birth`, `age`, `gender`, `phone`, `email`, `address`, `emergency_contact`, `created_at`, `updated_at`)
-                             VALUES (@fullname, @dob, @age, @gender, @contact, @email, @address, @emergency, @createdAt, @updatedAt)";
+                             (`fullname`, `date_of_birth`, `age`, `gender`, `phone`, `email`, `address`, `emergency_contact`, `Branch_ID`, `created_at`, `updated_at`)
+                             VALUES (@fullname, @dob, @age, @gender, @contact, @email, @address, @emergency, @branchid, @createdAt, @updatedAt)";
 
             string insertGenHealth = @"INSERT INTO `medical_history`
                                (`patient_id`, `medical_conditions`, `current_medications`, `allergies`, `past_surgeries`, `family_medical_history`, `blood_pressure`, `heart_disease`, `diabetes`, `smoker`, `created_at`, `updated_at`)
@@ -64,6 +64,7 @@ namespace Application_Desktop.Controller
                                 patientCmd.Parameters.AddWithValue("@email", patients._email);
                                 patientCmd.Parameters.AddWithValue("@address", patients._address);
                                 patientCmd.Parameters.AddWithValue("@emergency", patients._emergency);
+                                patientCmd.Parameters.AddWithValue("@branchid", admin);
                                 patientCmd.Parameters.AddWithValue("@createdAt", now);
                                 patientCmd.Parameters.AddWithValue("@updatedAt", now);
 

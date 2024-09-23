@@ -1,4 +1,5 @@
 ﻿using Application_Desktop.Controller;
+using Application_Desktop.Method;
 using Application_Desktop.Model;
 using Application_Desktop.Screen;
 using Mysqlx;
@@ -120,33 +121,43 @@ namespace Application_Desktop.Admin_Sub_Views
         {
             try
             {
-                GenHealth genhealth = new GenHealth
-                {
-                    _medcondition = txtMedCondition.Text,
-                    _currmedication = txtCurrentMed.Text,
-                    _allergies = txtAllergies.Text,
-                    _pastsurg = txtPastSurg.Text,
-                    _fammedhistory = txtFamilyMed.Text,
-                    _bloodpressure = txtBloodPres.Text,
-                    _heartdisease = chkHeartDisease.Checked,
-                    _diabetes = chkDiabetes.Checked,
-                    _smoker = chkSmoker.Checked,
-                };
+                getBranchIdByUserId branchId = new getBranchIdByUserId();
+                BranchID branch = await branchId.GetUserBranchId();
 
-                DentHealth denthealth = new DentHealth
+                if (branch != null)
                 {
-                    _lastvisit = txtLastVisit.Value,
-                    _pastdenttreatment = txtPastDent.Text,
-                    _toothpain = chkToothPain.Checked,
-                    _gumdisease = chkGumDisease.Checked,
-                    _teethgrind = chkTeethGrin.Checked,
-                    _toothsens = txtToothSens.SelectedItem?.ToString() ?? string.Empty,
-                    _ortho = chkOrtho.Checked,
-                    _dentimps = chkDentImp.Checked,
-                    _bleedinggums = chkBleedGum.Checked
-                };
+                    int admin = branch._id;
+                    GenHealth genhealth = new GenHealth
+                    {
+                        _medcondition = txtMedCondition.Text,
+                        _currmedication = txtCurrentMed.Text,
+                        _allergies = txtAllergies.Text,
+                        _pastsurg = txtPastSurg.Text,
+                        _fammedhistory = txtFamilyMed.Text,
+                        _bloodpressure = txtBloodPres.Text,
+                        _heartdisease = chkHeartDisease.Checked,
+                        _diabetes = chkDiabetes.Checked,
+                        _smoker = chkSmoker.Checked,
+                    };
 
-                await _patientController.CreateDentalRecord(patient, genhealth, denthealth);
+                    DentHealth denthealth = new DentHealth
+                    {
+                        _lastvisit = txtLastVisit.Value,
+                        _pastdenttreatment = txtPastDent.Text,
+                        _toothpain = chkToothPain.Checked,
+                        _gumdisease = chkGumDisease.Checked,
+                        _teethgrind = chkTeethGrin.Checked,
+                        _toothsens = txtToothSens.SelectedItem?.ToString() ?? string.Empty,
+                        _ortho = chkOrtho.Checked,
+                        _dentimps = chkDentImp.Checked,
+                        _bleedinggums = chkBleedGum.Checked
+                    };
+                    await _patientController.CreateDentalRecord(patient, genhealth, denthealth, admin);
+                }
+                else
+                {
+                    MessageBox.Show("Branch ID not found for the current user.");
+                }
             }
             catch (Exception ex)
             {
