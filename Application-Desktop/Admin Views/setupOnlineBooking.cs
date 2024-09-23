@@ -56,7 +56,6 @@ namespace Application_Desktop.Admin_Views
                     await _OnlineBookingController.LoadOpenDayTime(admin, viewDayTime);
 
                     _OnlineBookingController.LoadMaxAppointment(txtLimit);
-                    //_OnlineBookingController.LoadStatus(txtStatus);
 
                 }
                 else

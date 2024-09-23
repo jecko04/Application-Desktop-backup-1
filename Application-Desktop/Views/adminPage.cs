@@ -24,7 +24,6 @@ namespace Application_Desktop.Views
 
         }
 
-
         //menu dropdown
         bool menuExpand = false;
 
@@ -39,7 +38,7 @@ namespace Application_Desktop.Views
             if (menuExpand == false)
             {
                 menuContainer.Height += 10;
-                if (menuContainer.Height >= 105)
+                if (menuContainer.Height >= 100)
                 {
                     menuTransition.Stop();
                     menuExpand = true;
@@ -66,7 +65,7 @@ namespace Application_Desktop.Views
             if (setupExpand == false)
             {
                 setupContainer.Height += 10;
-                if (setupContainer.Height >= 105)
+                if (setupContainer.Height >= 100)
                 {
                     setupTransition.Stop();
                     setupExpand = true;
@@ -143,7 +142,6 @@ namespace Application_Desktop.Views
 
             this.Close();
 
-            // Redirect to login form
             loginPage loginForm = new loginPage();
             loginForm.Show();
         }
@@ -164,32 +162,93 @@ namespace Application_Desktop.Views
             LoadForm(new employeeProfile());
         }
 
-        private void menuContainer_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void btnSetting_Click(object sender, EventArgs e)
         {
-            //var profileSetting = new adminProfileSettings(this);
             LoadForm(new adminProfileSettings(this));
         }
 
-        private void sidebarContainer_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
+
         }
 
-        private void btnPatientRecord_Click(object sender, EventArgs e)
+
+        bool patientExpand = false;
+        private void PatientTransition_Tick(object sender, EventArgs e)
         {
+            if (patientExpand == false)
+            {
+                recordContainer.Height += 10;
+                if (recordContainer.Height >= 68)
+                {
+                    PatientTransition.Stop();
+                    patientExpand = true;
+                }
+            }
+            else
+            {
+                recordContainer.Height -= 10;
+                if (recordContainer.Height <= 34)
+                {
+                    PatientTransition.Stop();
+                    patientExpand = false;
+                }
+            }
+        }
+
+        private void btnPatientRecord_Click_1(object sender, EventArgs e)
+        {
+            PatientTransition.Start();
+        }
+
+        bool appointExpand = false;
+        private void AppointTransition_Tick(object sender, EventArgs e)
+        {
+            if (appointExpand == false)
+            {
+                appointmentContainer.Height += 10;
+                if (appointmentContainer.Height >= 139)
+                {
+                    AppointTransition.Stop();
+                    appointExpand = true;
+                }
+            }
+            else
+            {
+                appointmentContainer.Height -= 10;
+                if (appointmentContainer.Height <= 34)
+                {
+                    AppointTransition.Stop();
+                    appointExpand = false;
+                }
+            }
         }
 
         private void btnAppointment_Click(object sender, EventArgs e)
         {
+            AppointTransition.Start();
+        }
+
+        private void btnViewPatient_Click(object sender, EventArgs e)
+        {
+            LoadForm(new patientRecord());
+        }
+
+        private void btnPending_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnViewAllAppointment_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancelAppointment_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

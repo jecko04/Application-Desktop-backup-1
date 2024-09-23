@@ -38,29 +38,41 @@
             this.panel9 = (new global::System.Windows.Forms.Panel());
             this.btnSubmit = (new global::System.Windows.Forms.Button());
             this.panel2 = (new global::System.Windows.Forms.Panel());
-            this.label43 = (new global::System.Windows.Forms.Label());
-            this.borderPrice = (new global::System.Windows.Forms.Panel());
-            this.panel127 = (new global::System.Windows.Forms.Panel());
-            this.panel128 = (new global::System.Windows.Forms.Panel());
-            this.panel129 = (new global::System.Windows.Forms.Panel());
-            this.panel130 = (new global::System.Windows.Forms.Panel());
-            this.txtPrice = (new global::System.Windows.Forms.TextBox());
+            this.updateDentalServicePanel = (new global::System.Windows.Forms.Panel());
+            this.label13 = (new global::System.Windows.Forms.Label());
+            this.label7 = (new global::System.Windows.Forms.Label());
             this.label42 = (new global::System.Windows.Forms.Label());
+            this.label8 = (new global::System.Windows.Forms.Label());
             this.borderFetchPrice = (new global::System.Windows.Forms.Panel());
             this.panel3 = (new global::System.Windows.Forms.Panel());
             this.panel5 = (new global::System.Windows.Forms.Panel());
             this.panel6 = (new global::System.Windows.Forms.Panel());
             this.panel7 = (new global::System.Windows.Forms.Panel());
             this.txtFetchPrice = (new global::System.Windows.Forms.TextBox());
+            this.label2 = (new global::System.Windows.Forms.Label());
             this.borderNewTitle = (new global::System.Windows.Forms.Panel());
             this.panel123 = (new global::System.Windows.Forms.Panel());
             this.panel124 = (new global::System.Windows.Forms.Panel());
             this.panel125 = (new global::System.Windows.Forms.Panel());
             this.panel126 = (new global::System.Windows.Forms.Panel());
             this.txtNewTitle = (new global::System.Windows.Forms.TextBox());
+            this.btnUpdate = (new global::System.Windows.Forms.Button());
             this.label41 = (new global::System.Windows.Forms.Label());
+            this.label11 = (new global::System.Windows.Forms.Label());
             this.btnUpdateRefresh = (new global::System.Windows.Forms.Button());
-            this.panel4 = (new global::System.Windows.Forms.Panel());
+            this.label12 = (new global::System.Windows.Forms.Label());
+            this.borderFetchFrequency = (new global::System.Windows.Forms.Panel());
+            this.panel30 = (new global::System.Windows.Forms.Panel());
+            this.panel31 = (new global::System.Windows.Forms.Panel());
+            this.panel32 = (new global::System.Windows.Forms.Panel());
+            this.panel33 = (new global::System.Windows.Forms.Panel());
+            this.txtFetchFrequency = (new global::System.Windows.Forms.TextBox());
+            this.borderFetchTitle = (new global::System.Windows.Forms.Panel());
+            this.panel35 = (new global::System.Windows.Forms.Panel());
+            this.panel36 = (new global::System.Windows.Forms.Panel());
+            this.panel37 = (new global::System.Windows.Forms.Panel());
+            this.panel38 = (new global::System.Windows.Forms.Panel());
+            this.txtFetchTitle = (new global::System.Windows.Forms.ComboBox());
             this.borderFetchDuration = (new global::System.Windows.Forms.Panel());
             this.panel45 = (new global::System.Windows.Forms.Panel());
             this.panel46 = (new global::System.Windows.Forms.Panel());
@@ -73,42 +85,45 @@
             this.panel42 = (new global::System.Windows.Forms.Panel());
             this.panel43 = (new global::System.Windows.Forms.Panel());
             this.txtFetchDescription = (new global::System.Windows.Forms.TextBox());
-            this.borderFetchTitle = (new global::System.Windows.Forms.Panel());
-            this.panel35 = (new global::System.Windows.Forms.Panel());
-            this.panel36 = (new global::System.Windows.Forms.Panel());
-            this.panel37 = (new global::System.Windows.Forms.Panel());
-            this.panel38 = (new global::System.Windows.Forms.Panel());
-            this.txtFetchTitle = (new global::System.Windows.Forms.ComboBox());
-            this.borderFetchFrequency = (new global::System.Windows.Forms.Panel());
-            this.panel30 = (new global::System.Windows.Forms.Panel());
-            this.panel31 = (new global::System.Windows.Forms.Panel());
-            this.panel32 = (new global::System.Windows.Forms.Panel());
-            this.panel33 = (new global::System.Windows.Forms.Panel());
-            this.txtFetchFrequency = (new global::System.Windows.Forms.TextBox());
-            this.borderDuration = (new global::System.Windows.Forms.Panel());
-            this.panel25 = (new global::System.Windows.Forms.Panel());
-            this.panel26 = (new global::System.Windows.Forms.Panel());
-            this.panel27 = (new global::System.Windows.Forms.Panel());
-            this.panel28 = (new global::System.Windows.Forms.Panel());
-            this.txtDuration = (new global::System.Windows.Forms.ComboBox());
-            this.borderFrequency = (new global::System.Windows.Forms.Panel());
-            this.panel20 = (new global::System.Windows.Forms.Panel());
-            this.panel21 = (new global::System.Windows.Forms.Panel());
-            this.panel22 = (new global::System.Windows.Forms.Panel());
-            this.panel23 = (new global::System.Windows.Forms.Panel());
-            this.txtFrequency = (new global::System.Windows.Forms.TextBox());
-            this.borderDescription = (new global::System.Windows.Forms.Panel());
-            this.panel15 = (new global::System.Windows.Forms.Panel());
-            this.panel16 = (new global::System.Windows.Forms.Panel());
-            this.panel17 = (new global::System.Windows.Forms.Panel());
-            this.panel18 = (new global::System.Windows.Forms.Panel());
-            this.txtDescription = (new global::System.Windows.Forms.TextBox());
+            this.dentalServicePanel = (new global::System.Windows.Forms.Panel());
+            this.label5 = (new global::System.Windows.Forms.Label());
+            this.label43 = (new global::System.Windows.Forms.Label());
+            this.label10 = (new global::System.Windows.Forms.Label());
+            this.borderPrice = (new global::System.Windows.Forms.Panel());
+            this.panel127 = (new global::System.Windows.Forms.Panel());
+            this.panel128 = (new global::System.Windows.Forms.Panel());
+            this.panel129 = (new global::System.Windows.Forms.Panel());
+            this.panel130 = (new global::System.Windows.Forms.Panel());
+            this.txtPrice = (new global::System.Windows.Forms.TextBox());
+            this.label1 = (new global::System.Windows.Forms.Label());
+            this.label3 = (new global::System.Windows.Forms.Label());
+            this.label4 = (new global::System.Windows.Forms.Label());
+            this.label9 = (new global::System.Windows.Forms.Label());
             this.borderTitle = (new global::System.Windows.Forms.Panel());
             this.panel10 = (new global::System.Windows.Forms.Panel());
             this.panel11 = (new global::System.Windows.Forms.Panel());
             this.panel12 = (new global::System.Windows.Forms.Panel());
             this.panel13 = (new global::System.Windows.Forms.Panel());
             this.txtTitle = (new global::System.Windows.Forms.TextBox());
+            this.borderDescription = (new global::System.Windows.Forms.Panel());
+            this.panel15 = (new global::System.Windows.Forms.Panel());
+            this.panel16 = (new global::System.Windows.Forms.Panel());
+            this.panel17 = (new global::System.Windows.Forms.Panel());
+            this.panel18 = (new global::System.Windows.Forms.Panel());
+            this.txtDescription = (new global::System.Windows.Forms.TextBox());
+            this.borderFrequency = (new global::System.Windows.Forms.Panel());
+            this.panel20 = (new global::System.Windows.Forms.Panel());
+            this.panel21 = (new global::System.Windows.Forms.Panel());
+            this.panel22 = (new global::System.Windows.Forms.Panel());
+            this.panel23 = (new global::System.Windows.Forms.Panel());
+            this.txtFrequency = (new global::System.Windows.Forms.TextBox());
+            this.borderDuration = (new global::System.Windows.Forms.Panel());
+            this.panel25 = (new global::System.Windows.Forms.Panel());
+            this.panel26 = (new global::System.Windows.Forms.Panel());
+            this.panel27 = (new global::System.Windows.Forms.Panel());
+            this.panel28 = (new global::System.Windows.Forms.Panel());
+            this.txtDuration = (new global::System.Windows.Forms.ComboBox());
+            this.panel4 = (new global::System.Windows.Forms.Panel());
             this.PanelOfficeHours = (new global::System.Windows.Forms.Panel());
             this.panel122 = (new global::System.Windows.Forms.Panel());
             this.panel117 = (new global::System.Windows.Forms.Panel());
@@ -121,6 +136,7 @@
             this.label39 = (new global::System.Windows.Forms.Label());
             this.btnSaveOfficeHours = (new global::System.Windows.Forms.Button());
             this.btnApplyToAll = (new global::System.Windows.Forms.CheckBox());
+            this.label14 = (new global::System.Windows.Forms.Label());
             this.panel112 = (new global::System.Windows.Forms.Panel());
             this.button22 = (new global::System.Windows.Forms.Button());
             this.panel113 = (new global::System.Windows.Forms.Panel());
@@ -128,6 +144,7 @@
             this.panel115 = (new global::System.Windows.Forms.Panel());
             this.panel116 = (new global::System.Windows.Forms.Panel());
             this.dateTimePicker15 = (new global::System.Windows.Forms.DateTimePicker());
+            this.label15 = (new global::System.Windows.Forms.Label());
             this.label38 = (new global::System.Windows.Forms.Label());
             this.panel102 = (new global::System.Windows.Forms.Panel());
             this.button19 = (new global::System.Windows.Forms.Button());
@@ -243,22 +260,7 @@
             this.label18 = (new global::System.Windows.Forms.Label());
             this.label17 = (new global::System.Windows.Forms.Label());
             this.label16 = (new global::System.Windows.Forms.Label());
-            this.label14 = (new global::System.Windows.Forms.Label());
-            this.label15 = (new global::System.Windows.Forms.Label());
-            this.label7 = (new global::System.Windows.Forms.Label());
-            this.label13 = (new global::System.Windows.Forms.Label());
             this.lineDevider = (new global::System.Windows.Forms.Label());
-            this.label12 = (new global::System.Windows.Forms.Label());
-            this.label10 = (new global::System.Windows.Forms.Label());
-            this.label5 = (new global::System.Windows.Forms.Label());
-            this.label11 = (new global::System.Windows.Forms.Label());
-            this.label9 = (new global::System.Windows.Forms.Label());
-            this.label8 = (new global::System.Windows.Forms.Label());
-            this.btnUpdate = (new global::System.Windows.Forms.Button());
-            this.label4 = (new global::System.Windows.Forms.Label());
-            this.label3 = (new global::System.Windows.Forms.Label());
-            this.label2 = (new global::System.Windows.Forms.Label());
-            this.label1 = (new global::System.Windows.Forms.Label());
             this.flowLayoutPanel2 = (new global::System.Windows.Forms.FlowLayoutPanel());
             this.btnMonday = (new global::System.Windows.Forms.Button());
             this.btnTuesday = (new global::System.Windows.Forms.Button());
@@ -276,17 +278,19 @@
             this.flowLayoutPanel1.SuspendLayout();
             ((global::System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel2.SuspendLayout();
-            this.borderPrice.SuspendLayout();
+            this.updateDentalServicePanel.SuspendLayout();
             this.borderFetchPrice.SuspendLayout();
             this.borderNewTitle.SuspendLayout();
+            this.borderFetchFrequency.SuspendLayout();
+            this.borderFetchTitle.SuspendLayout();
             this.borderFetchDuration.SuspendLayout();
             this.borderFetchDescription.SuspendLayout();
-            this.borderFetchTitle.SuspendLayout();
-            this.borderFetchFrequency.SuspendLayout();
-            this.borderDuration.SuspendLayout();
-            this.borderFrequency.SuspendLayout();
-            this.borderDescription.SuspendLayout();
+            this.dentalServicePanel.SuspendLayout();
+            this.borderPrice.SuspendLayout();
             this.borderTitle.SuspendLayout();
+            this.borderDescription.SuspendLayout();
+            this.borderFrequency.SuspendLayout();
+            this.borderDuration.SuspendLayout();
             this.PanelOfficeHours.SuspendLayout();
             this.panel117.SuspendLayout();
             this.panel112.SuspendLayout();
@@ -383,14 +387,13 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.btnSubmit.BackColor = (global::System.Drawing.Color.Black);
             this.btnSubmit.FlatAppearance.BorderColor = (global::System.Drawing.Color.Black);
             this.btnSubmit.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
             this.btnSubmit.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnSubmit.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnSubmit.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
-            this.btnSubmit.Location = (new global::System.Drawing.Point(528, 283));
+            this.btnSubmit.Location = (new global::System.Drawing.Point(20, 331));
             this.btnSubmit.Margin = (new global::System.Windows.Forms.Padding(0));
             this.btnSubmit.Name = ("btnSubmit");
             this.btnSubmit.Size = (new global::System.Drawing.Size(64, 24));
@@ -404,142 +407,95 @@
             this.panel2.Anchor = ((global::System.Windows.Forms.AnchorStyles)((((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Bottom)) | (global::System.Windows.Forms.AnchorStyles.Left)) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoScroll = (true);
             this.panel2.BackColor = (global::System.Drawing.Color.Transparent);
-            this.panel2.Controls.Add(this.label43);
-            this.panel2.Controls.Add(this.borderPrice);
-            this.panel2.Controls.Add(this.label42);
-            this.panel2.Controls.Add(this.borderFetchPrice);
-            this.panel2.Controls.Add(this.borderNewTitle);
-            this.panel2.Controls.Add(this.label41);
-            this.panel2.Controls.Add(this.btnUpdateRefresh);
+            this.panel2.Controls.Add(this.updateDentalServicePanel);
+            this.panel2.Controls.Add(this.dentalServicePanel);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel9);
-            this.panel2.Controls.Add(this.borderFetchDuration);
-            this.panel2.Controls.Add(this.borderFetchDescription);
-            this.panel2.Controls.Add(this.borderFetchTitle);
-            this.panel2.Controls.Add(this.borderFetchFrequency);
-            this.panel2.Controls.Add(this.borderDuration);
-            this.panel2.Controls.Add(this.borderFrequency);
-            this.panel2.Controls.Add(this.borderDescription);
-            this.panel2.Controls.Add(this.borderTitle);
             this.panel2.Controls.Add(this.PanelOfficeHours);
-            this.panel2.Controls.Add(this.label14);
-            this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.btnSubmit);
-            this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.lineDevider);
-            this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.btnUpdate);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
             this.panel2.Location = (new global::System.Drawing.Point(-1, 28));
             this.panel2.Name = ("panel2");
             this.panel2.Size = (new global::System.Drawing.Size(1096, 631));
             this.panel2.TabIndex = (1);
             this.panel2.Paint += (this.panel2_Paint);
             // 
-            // label43
+            // updateDentalServicePanel
             // 
-            this.label43.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.label43.AutoSize = (true);
-            this.label43.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label43.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.label43.Location = (new global::System.Drawing.Point(821, 53));
-            this.label43.Name = ("label43");
-            this.label43.Size = (new global::System.Drawing.Size(101, 16));
-            this.label43.TabIndex = (96);
-            this.label43.Text = ("Price: (Optional)");
+            this.updateDentalServicePanel.Anchor = ((global::System.Windows.Forms.AnchorStyles)(((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Left)) | (global::System.Windows.Forms.AnchorStyles.Right)));
+            this.updateDentalServicePanel.BackColor = (global::System.Drawing.Color.White);
+            this.updateDentalServicePanel.Controls.Add(this.label13);
+            this.updateDentalServicePanel.Controls.Add(this.label7);
+            this.updateDentalServicePanel.Controls.Add(this.label42);
+            this.updateDentalServicePanel.Controls.Add(this.label8);
+            this.updateDentalServicePanel.Controls.Add(this.borderFetchPrice);
+            this.updateDentalServicePanel.Controls.Add(this.label2);
+            this.updateDentalServicePanel.Controls.Add(this.borderNewTitle);
+            this.updateDentalServicePanel.Controls.Add(this.btnUpdate);
+            this.updateDentalServicePanel.Controls.Add(this.label41);
+            this.updateDentalServicePanel.Controls.Add(this.label11);
+            this.updateDentalServicePanel.Controls.Add(this.btnUpdateRefresh);
+            this.updateDentalServicePanel.Controls.Add(this.label12);
+            this.updateDentalServicePanel.Controls.Add(this.borderFetchFrequency);
+            this.updateDentalServicePanel.Controls.Add(this.borderFetchTitle);
+            this.updateDentalServicePanel.Controls.Add(this.borderFetchDuration);
+            this.updateDentalServicePanel.Controls.Add(this.borderFetchDescription);
+            this.updateDentalServicePanel.Location = (new global::System.Drawing.Point(13, 421));
+            this.updateDentalServicePanel.Name = ("updateDentalServicePanel");
+            this.updateDentalServicePanel.Size = (new global::System.Drawing.Size(834, 386));
+            this.updateDentalServicePanel.TabIndex = (98);
             // 
-            // borderPrice
+            // label13
             // 
-            this.borderPrice.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.borderPrice.Controls.Add(this.panel127);
-            this.borderPrice.Controls.Add(this.panel128);
-            this.borderPrice.Controls.Add(this.panel129);
-            this.borderPrice.Controls.Add(this.panel130);
-            this.borderPrice.Controls.Add(this.txtPrice);
-            this.borderPrice.Location = (new global::System.Drawing.Point(928, 53));
-            this.borderPrice.Name = ("borderPrice");
-            this.borderPrice.Size = (new global::System.Drawing.Size(134, 25));
-            this.borderPrice.TabIndex = (95);
+            this.label13.AutoSize = (true);
+            this.label13.Font = (new global::System.Drawing.Font("Tahoma", 12F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point, (global::System.Byte)(0)));
+            this.label13.Location = (new global::System.Drawing.Point(20, 20));
+            this.label13.Name = ("label13");
+            this.label13.Size = (new global::System.Drawing.Size(171, 19));
+            this.label13.TabIndex = (57);
+            this.label13.Text = ("Update Dental Services");
             // 
-            // panel127
+            // label7
             // 
-            this.panel127.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel127.Dock = (global::System.Windows.Forms.DockStyle.Right);
-            this.panel127.Location = (new global::System.Drawing.Point(133, 1));
-            this.panel127.Name = ("panel127");
-            this.panel127.Size = (new global::System.Drawing.Size(1, 23));
-            this.panel127.TabIndex = (3);
-            // 
-            // panel128
-            // 
-            this.panel128.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel128.Dock = (global::System.Windows.Forms.DockStyle.Bottom);
-            this.panel128.Location = (new global::System.Drawing.Point(1, 24));
-            this.panel128.Name = ("panel128");
-            this.panel128.Size = (new global::System.Drawing.Size(133, 1));
-            this.panel128.TabIndex = (2);
-            // 
-            // panel129
-            // 
-            this.panel129.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel129.Dock = (global::System.Windows.Forms.DockStyle.Top);
-            this.panel129.Location = (new global::System.Drawing.Point(1, 0));
-            this.panel129.Name = ("panel129");
-            this.panel129.Size = (new global::System.Drawing.Size(133, 1));
-            this.panel129.TabIndex = (1);
-            // 
-            // panel130
-            // 
-            this.panel130.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel130.Dock = (global::System.Windows.Forms.DockStyle.Left);
-            this.panel130.Location = (new global::System.Drawing.Point(0, 0));
-            this.panel130.Name = ("panel130");
-            this.panel130.Size = (new global::System.Drawing.Size(1, 25));
-            this.panel130.TabIndex = (0);
-            // 
-            // txtPrice
-            // 
-            this.txtPrice.BorderStyle = (global::System.Windows.Forms.BorderStyle.FixedSingle);
-            this.txtPrice.Dock = (global::System.Windows.Forms.DockStyle.Fill);
-            this.txtPrice.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F));
-            this.txtPrice.Location = (new global::System.Drawing.Point(0, 0));
-            this.txtPrice.Name = ("txtPrice");
-            this.txtPrice.Size = (new global::System.Drawing.Size(134, 25));
-            this.txtPrice.TabIndex = (1);
-            this.txtPrice.TextChanged += (this.txtPrice_TextChanged);
-            this.txtPrice.KeyPress += (this.txtPrice_KeyPress);
-            this.txtPrice.Leave += (this.txtPrice_Leave);
+            this.label7.AutoSize = (true);
+            this.label7.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
+            this.label7.ForeColor = (global::System.Drawing.Color.DimGray);
+            this.label7.Location = (new global::System.Drawing.Point(22, 39));
+            this.label7.Name = ("label7");
+            this.label7.Size = (new global::System.Drawing.Size(210, 16));
+            this.label7.TabIndex = (58);
+            this.label7.Text = ("Update Category for Online Booking");
+            this.label7.TextAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             // 
             // label42
             // 
-            this.label42.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label42.AutoSize = (true);
             this.label42.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label42.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.label42.Location = (new global::System.Drawing.Point(821, 359));
+            this.label42.Location = (new global::System.Drawing.Point(420, 78));
             this.label42.Name = ("label42");
             this.label42.Size = (new global::System.Drawing.Size(101, 16));
             this.label42.TabIndex = (94);
             this.label42.Text = ("Price: (Optional)");
             // 
+            // label8
+            // 
+            this.label8.AutoSize = (true);
+            this.label8.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
+            this.label8.ForeColor = (global::System.Drawing.Color.DimGray);
+            this.label8.Location = (new global::System.Drawing.Point(21, 78));
+            this.label8.Name = ("label8");
+            this.label8.Size = (new global::System.Drawing.Size(32, 16));
+            this.label8.TabIndex = (59);
+            this.label8.Text = ("Title");
+            // 
             // borderFetchPrice
             // 
-            this.borderFetchPrice.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.borderFetchPrice.Controls.Add(this.panel3);
             this.borderFetchPrice.Controls.Add(this.panel5);
             this.borderFetchPrice.Controls.Add(this.panel6);
             this.borderFetchPrice.Controls.Add(this.panel7);
             this.borderFetchPrice.Controls.Add(this.txtFetchPrice);
-            this.borderFetchPrice.Location = (new global::System.Drawing.Point(928, 359));
+            this.borderFetchPrice.Location = (new global::System.Drawing.Point(420, 97));
             this.borderFetchPrice.Name = ("borderFetchPrice");
             this.borderFetchPrice.Size = (new global::System.Drawing.Size(134, 25));
             this.borderFetchPrice.TabIndex = (93);
@@ -593,15 +549,25 @@
             this.txtFetchPrice.KeyPress += (this.txtFetchPrice_KeyPress);
             this.txtFetchPrice.Leave += (this.txtFetchPrice_Leave);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = (true);
+            this.label2.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
+            this.label2.ForeColor = (global::System.Drawing.Color.DimGray);
+            this.label2.Location = (new global::System.Drawing.Point(22, 174));
+            this.label2.Name = ("label2");
+            this.label2.Size = (new global::System.Drawing.Size(70, 16));
+            this.label2.TabIndex = (2);
+            this.label2.Text = ("Description");
+            // 
             // borderNewTitle
             // 
-            this.borderNewTitle.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.borderNewTitle.Controls.Add(this.panel123);
             this.borderNewTitle.Controls.Add(this.panel124);
             this.borderNewTitle.Controls.Add(this.panel125);
             this.borderNewTitle.Controls.Add(this.panel126);
             this.borderNewTitle.Controls.Add(this.txtNewTitle);
-            this.borderNewTitle.Location = (new global::System.Drawing.Point(528, 398));
+            this.borderNewTitle.Location = (new global::System.Drawing.Point(21, 148));
             this.borderNewTitle.Name = ("borderNewTitle");
             this.borderNewTitle.Size = (new global::System.Drawing.Size(534, 25));
             this.borderNewTitle.TabIndex = (76);
@@ -652,28 +618,53 @@
             this.txtNewTitle.Size = (new global::System.Drawing.Size(534, 25));
             this.txtNewTitle.TabIndex = (7);
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = (global::System.Drawing.Color.Black);
+            this.btnUpdate.FlatAppearance.BorderColor = (global::System.Drawing.Color.Black);
+            this.btnUpdate.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
+            this.btnUpdate.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
+            this.btnUpdate.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
+            this.btnUpdate.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
+            this.btnUpdate.Location = (new global::System.Drawing.Point(24, 347));
+            this.btnUpdate.Margin = (new global::System.Windows.Forms.Padding(0, 0, 1, 0));
+            this.btnUpdate.Name = ("btnUpdate");
+            this.btnUpdate.Size = (new global::System.Drawing.Size(64, 24));
+            this.btnUpdate.TabIndex = (58);
+            this.btnUpdate.Text = ("Update");
+            this.btnUpdate.UseVisualStyleBackColor = (false);
+            this.btnUpdate.Click += (this.btnUpdate_Click);
+            // 
             // label41
             // 
-            this.label41.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.label41.AutoSize = (true);
             this.label41.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label41.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.label41.Location = (new global::System.Drawing.Point(402, 400));
+            this.label41.Location = (new global::System.Drawing.Point(22, 129));
             this.label41.Name = ("label41");
             this.label41.Size = (new global::System.Drawing.Size(61, 16));
             this.label41.TabIndex = (79);
             this.label41.Text = ("New Title");
             // 
+            // label11
+            // 
+            this.label11.AutoSize = (true);
+            this.label11.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
+            this.label11.Location = (new global::System.Drawing.Point(245, 290));
+            this.label11.Name = ("label11");
+            this.label11.Size = (new global::System.Drawing.Size(66, 16));
+            this.label11.TabIndex = (63);
+            this.label11.Text = ("Frequency");
+            // 
             // btnUpdateRefresh
             // 
-            this.btnUpdateRefresh.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdateRefresh.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(52)), (global::System.Int32)((global::System.Byte)(152)), (global::System.Int32)((global::System.Byte)(219))));
             this.btnUpdateRefresh.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(52)), (global::System.Int32)((global::System.Byte)(152)), (global::System.Int32)((global::System.Byte)(219))));
             this.btnUpdateRefresh.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
             this.btnUpdateRefresh.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnUpdateRefresh.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnUpdateRefresh.Image = ((global::System.Drawing.Image)(resources.GetObject("btnUpdateRefresh.Image")));
-            this.btnUpdateRefresh.Location = (new global::System.Drawing.Point(593, 576));
+            this.btnUpdateRefresh.Location = (new global::System.Drawing.Point(89, 347));
             this.btnUpdateRefresh.Margin = (new global::System.Windows.Forms.Padding(0, 0, 0, 1));
             this.btnUpdateRefresh.Name = ("btnUpdateRefresh");
             this.btnUpdateRefresh.Size = (new global::System.Drawing.Size(38, 24));
@@ -682,23 +673,146 @@
             this.btnUpdateRefresh.UseVisualStyleBackColor = (false);
             this.btnUpdateRefresh.Click += (this.btnUpdateRefresh_Click);
             // 
-            // panel4
+            // label12
             // 
-            this.panel4.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Location = (new global::System.Drawing.Point(175, 1014));
-            this.panel4.Name = ("panel4");
-            this.panel4.Size = (new global::System.Drawing.Size(120, 184));
-            this.panel4.TabIndex = (81);
+            this.label12.AutoSize = (true);
+            this.label12.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
+            this.label12.ForeColor = (global::System.Drawing.Color.DimGray);
+            this.label12.Location = (new global::System.Drawing.Point(22, 290));
+            this.label12.Name = ("label12");
+            this.label12.Size = (new global::System.Drawing.Size(55, 16));
+            this.label12.TabIndex = (65);
+            this.label12.Text = ("Duration");
+            // 
+            // borderFetchFrequency
+            // 
+            this.borderFetchFrequency.Controls.Add(this.panel30);
+            this.borderFetchFrequency.Controls.Add(this.panel31);
+            this.borderFetchFrequency.Controls.Add(this.panel32);
+            this.borderFetchFrequency.Controls.Add(this.panel33);
+            this.borderFetchFrequency.Controls.Add(this.txtFetchFrequency);
+            this.borderFetchFrequency.Location = (new global::System.Drawing.Point(245, 309));
+            this.borderFetchFrequency.Name = ("borderFetchFrequency");
+            this.borderFetchFrequency.Size = (new global::System.Drawing.Size(186, 25));
+            this.borderFetchFrequency.TabIndex = (77);
+            // 
+            // panel30
+            // 
+            this.panel30.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel30.Dock = (global::System.Windows.Forms.DockStyle.Right);
+            this.panel30.Location = (new global::System.Drawing.Point(185, 1));
+            this.panel30.Name = ("panel30");
+            this.panel30.Size = (new global::System.Drawing.Size(1, 23));
+            this.panel30.TabIndex = (3);
+            // 
+            // panel31
+            // 
+            this.panel31.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel31.Dock = (global::System.Windows.Forms.DockStyle.Bottom);
+            this.panel31.Location = (new global::System.Drawing.Point(1, 24));
+            this.panel31.Name = ("panel31");
+            this.panel31.Size = (new global::System.Drawing.Size(185, 1));
+            this.panel31.TabIndex = (2);
+            // 
+            // panel32
+            // 
+            this.panel32.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel32.Dock = (global::System.Windows.Forms.DockStyle.Top);
+            this.panel32.Location = (new global::System.Drawing.Point(1, 0));
+            this.panel32.Name = ("panel32");
+            this.panel32.Size = (new global::System.Drawing.Size(185, 1));
+            this.panel32.TabIndex = (1);
+            // 
+            // panel33
+            // 
+            this.panel33.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel33.Dock = (global::System.Windows.Forms.DockStyle.Left);
+            this.panel33.Location = (new global::System.Drawing.Point(0, 0));
+            this.panel33.Name = ("panel33");
+            this.panel33.Size = (new global::System.Drawing.Size(1, 25));
+            this.panel33.TabIndex = (0);
+            // 
+            // txtFetchFrequency
+            // 
+            this.txtFetchFrequency.BorderStyle = (global::System.Windows.Forms.BorderStyle.FixedSingle);
+            this.txtFetchFrequency.Dock = (global::System.Windows.Forms.DockStyle.Fill);
+            this.txtFetchFrequency.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F));
+            this.txtFetchFrequency.Location = (new global::System.Drawing.Point(0, 0));
+            this.txtFetchFrequency.Name = ("txtFetchFrequency");
+            this.txtFetchFrequency.Size = (new global::System.Drawing.Size(186, 25));
+            this.txtFetchFrequency.TabIndex = (64);
+            // 
+            // borderFetchTitle
+            // 
+            this.borderFetchTitle.Controls.Add(this.panel35);
+            this.borderFetchTitle.Controls.Add(this.panel36);
+            this.borderFetchTitle.Controls.Add(this.panel37);
+            this.borderFetchTitle.Controls.Add(this.panel38);
+            this.borderFetchTitle.Controls.Add(this.txtFetchTitle);
+            this.borderFetchTitle.Location = (new global::System.Drawing.Point(20, 97));
+            this.borderFetchTitle.Name = ("borderFetchTitle");
+            this.borderFetchTitle.Size = (new global::System.Drawing.Size(275, 24));
+            this.borderFetchTitle.TabIndex = (78);
+            // 
+            // panel35
+            // 
+            this.panel35.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel35.Dock = (global::System.Windows.Forms.DockStyle.Right);
+            this.panel35.Location = (new global::System.Drawing.Point(274, 1));
+            this.panel35.Name = ("panel35");
+            this.panel35.Size = (new global::System.Drawing.Size(1, 22));
+            this.panel35.TabIndex = (3);
+            // 
+            // panel36
+            // 
+            this.panel36.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel36.Dock = (global::System.Windows.Forms.DockStyle.Bottom);
+            this.panel36.Location = (new global::System.Drawing.Point(1, 23));
+            this.panel36.Name = ("panel36");
+            this.panel36.Size = (new global::System.Drawing.Size(274, 1));
+            this.panel36.TabIndex = (2);
+            // 
+            // panel37
+            // 
+            this.panel37.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel37.Dock = (global::System.Windows.Forms.DockStyle.Top);
+            this.panel37.Location = (new global::System.Drawing.Point(1, 0));
+            this.panel37.Name = ("panel37");
+            this.panel37.Size = (new global::System.Drawing.Size(274, 1));
+            this.panel37.TabIndex = (1);
+            // 
+            // panel38
+            // 
+            this.panel38.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel38.Dock = (global::System.Windows.Forms.DockStyle.Left);
+            this.panel38.Location = (new global::System.Drawing.Point(0, 0));
+            this.panel38.Name = ("panel38");
+            this.panel38.Size = (new global::System.Drawing.Size(1, 24));
+            this.panel38.TabIndex = (0);
+            // 
+            // txtFetchTitle
+            // 
+            this.txtFetchTitle.BackColor = (global::System.Drawing.SystemColors.InactiveBorder);
+            this.txtFetchTitle.Dock = (global::System.Windows.Forms.DockStyle.Fill);
+            this.txtFetchTitle.DropDownHeight = (75);
+            this.txtFetchTitle.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
+            this.txtFetchTitle.FormattingEnabled = (true);
+            this.txtFetchTitle.IntegralHeight = (false);
+            this.txtFetchTitle.ItemHeight = (16);
+            this.txtFetchTitle.Location = (new global::System.Drawing.Point(0, 0));
+            this.txtFetchTitle.Name = ("txtFetchTitle");
+            this.txtFetchTitle.Size = (new global::System.Drawing.Size(275, 24));
+            this.txtFetchTitle.TabIndex = (56);
+            this.txtFetchTitle.SelectedIndexChanged += (this.txtFetchTitle_SelectedIndexChanged);
             // 
             // borderFetchDuration
             // 
-            this.borderFetchDuration.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.borderFetchDuration.Controls.Add(this.panel45);
             this.borderFetchDuration.Controls.Add(this.panel46);
             this.borderFetchDuration.Controls.Add(this.panel47);
             this.borderFetchDuration.Controls.Add(this.panel48);
             this.borderFetchDuration.Controls.Add(this.txtFetchDuration);
-            this.borderFetchDuration.Location = (new global::System.Drawing.Point(528, 549));
+            this.borderFetchDuration.Location = (new global::System.Drawing.Point(22, 309));
             this.borderFetchDuration.Name = ("borderFetchDuration");
             this.borderFetchDuration.Size = (new global::System.Drawing.Size(197, 24));
             this.borderFetchDuration.TabIndex = (78);
@@ -756,13 +870,12 @@
             // 
             // borderFetchDescription
             // 
-            this.borderFetchDescription.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.borderFetchDescription.Controls.Add(this.panel40);
             this.borderFetchDescription.Controls.Add(this.panel41);
             this.borderFetchDescription.Controls.Add(this.panel42);
             this.borderFetchDescription.Controls.Add(this.panel43);
             this.borderFetchDescription.Controls.Add(this.txtFetchDescription);
-            this.borderFetchDescription.Location = (new global::System.Drawing.Point(528, 436));
+            this.borderFetchDescription.Location = (new global::System.Drawing.Point(22, 193));
             this.borderFetchDescription.Name = ("borderFetchDescription");
             this.borderFetchDescription.Size = (new global::System.Drawing.Size(534, 95));
             this.borderFetchDescription.TabIndex = (79);
@@ -814,138 +927,349 @@
             this.txtFetchDescription.Size = (new global::System.Drawing.Size(534, 95));
             this.txtFetchDescription.TabIndex = (60);
             // 
-            // borderFetchTitle
+            // dentalServicePanel
             // 
-            this.borderFetchTitle.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.borderFetchTitle.Controls.Add(this.panel35);
-            this.borderFetchTitle.Controls.Add(this.panel36);
-            this.borderFetchTitle.Controls.Add(this.panel37);
-            this.borderFetchTitle.Controls.Add(this.panel38);
-            this.borderFetchTitle.Controls.Add(this.txtFetchTitle);
-            this.borderFetchTitle.Location = (new global::System.Drawing.Point(528, 359));
-            this.borderFetchTitle.Name = ("borderFetchTitle");
-            this.borderFetchTitle.Size = (new global::System.Drawing.Size(275, 24));
-            this.borderFetchTitle.TabIndex = (78);
+            this.dentalServicePanel.Anchor = ((global::System.Windows.Forms.AnchorStyles)(((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Left)) | (global::System.Windows.Forms.AnchorStyles.Right)));
+            this.dentalServicePanel.BackColor = (global::System.Drawing.Color.White);
+            this.dentalServicePanel.Controls.Add(this.label5);
+            this.dentalServicePanel.Controls.Add(this.label43);
+            this.dentalServicePanel.Controls.Add(this.label10);
+            this.dentalServicePanel.Controls.Add(this.borderPrice);
+            this.dentalServicePanel.Controls.Add(this.label1);
+            this.dentalServicePanel.Controls.Add(this.label3);
+            this.dentalServicePanel.Controls.Add(this.label4);
+            this.dentalServicePanel.Controls.Add(this.label9);
+            this.dentalServicePanel.Controls.Add(this.btnSubmit);
+            this.dentalServicePanel.Controls.Add(this.borderTitle);
+            this.dentalServicePanel.Controls.Add(this.borderDescription);
+            this.dentalServicePanel.Controls.Add(this.borderFrequency);
+            this.dentalServicePanel.Controls.Add(this.borderDuration);
+            this.dentalServicePanel.Location = (new global::System.Drawing.Point(13, 26));
+            this.dentalServicePanel.Name = ("dentalServicePanel");
+            this.dentalServicePanel.Size = (new global::System.Drawing.Size(834, 374));
+            this.dentalServicePanel.TabIndex = (97);
             // 
-            // panel35
+            // label5
             // 
-            this.panel35.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel35.Dock = (global::System.Windows.Forms.DockStyle.Right);
-            this.panel35.Location = (new global::System.Drawing.Point(274, 1));
-            this.panel35.Name = ("panel35");
-            this.panel35.Size = (new global::System.Drawing.Size(1, 22));
-            this.panel35.TabIndex = (3);
+            this.label5.AutoSize = (true);
+            this.label5.Font = (new global::System.Drawing.Font("Tahoma", 12F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point, (global::System.Byte)(0)));
+            this.label5.Location = (new global::System.Drawing.Point(20, 10));
+            this.label5.Name = ("label5");
+            this.label5.Size = (new global::System.Drawing.Size(116, 19));
+            this.label5.TabIndex = (2);
+            this.label5.Text = ("Dental Services");
             // 
-            // panel36
+            // label43
             // 
-            this.panel36.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel36.Dock = (global::System.Windows.Forms.DockStyle.Bottom);
-            this.panel36.Location = (new global::System.Drawing.Point(1, 23));
-            this.panel36.Name = ("panel36");
-            this.panel36.Size = (new global::System.Drawing.Size(274, 1));
-            this.panel36.TabIndex = (2);
+            this.label43.AutoSize = (true);
+            this.label43.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
+            this.label43.ForeColor = (global::System.Drawing.Color.DimGray);
+            this.label43.Location = (new global::System.Drawing.Point(420, 64));
+            this.label43.Name = ("label43");
+            this.label43.Size = (new global::System.Drawing.Size(101, 16));
+            this.label43.TabIndex = (96);
+            this.label43.Text = ("Price: (Optional)");
             // 
-            // panel37
+            // label10
             // 
-            this.panel37.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel37.Dock = (global::System.Windows.Forms.DockStyle.Top);
-            this.panel37.Location = (new global::System.Drawing.Point(1, 0));
-            this.panel37.Name = ("panel37");
-            this.panel37.Size = (new global::System.Drawing.Size(274, 1));
-            this.panel37.TabIndex = (1);
+            this.label10.AutoSize = (true);
+            this.label10.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
+            this.label10.ForeColor = (global::System.Drawing.Color.DimGray);
+            this.label10.Location = (new global::System.Drawing.Point(20, 29));
+            this.label10.Name = ("label10");
+            this.label10.Size = (new global::System.Drawing.Size(189, 16));
+            this.label10.TabIndex = (55);
+            this.label10.Text = ("Set Category for Online Booking");
+            this.label10.TextAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             // 
-            // panel38
+            // borderPrice
             // 
-            this.panel38.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel38.Dock = (global::System.Windows.Forms.DockStyle.Left);
-            this.panel38.Location = (new global::System.Drawing.Point(0, 0));
-            this.panel38.Name = ("panel38");
-            this.panel38.Size = (new global::System.Drawing.Size(1, 24));
-            this.panel38.TabIndex = (0);
+            this.borderPrice.Controls.Add(this.panel127);
+            this.borderPrice.Controls.Add(this.panel128);
+            this.borderPrice.Controls.Add(this.panel129);
+            this.borderPrice.Controls.Add(this.panel130);
+            this.borderPrice.Controls.Add(this.txtPrice);
+            this.borderPrice.Location = (new global::System.Drawing.Point(420, 84));
+            this.borderPrice.Name = ("borderPrice");
+            this.borderPrice.Size = (new global::System.Drawing.Size(134, 25));
+            this.borderPrice.TabIndex = (95);
             // 
-            // txtFetchTitle
+            // panel127
             // 
-            this.txtFetchTitle.BackColor = (global::System.Drawing.SystemColors.InactiveBorder);
-            this.txtFetchTitle.Dock = (global::System.Windows.Forms.DockStyle.Fill);
-            this.txtFetchTitle.DropDownHeight = (75);
-            this.txtFetchTitle.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.txtFetchTitle.FormattingEnabled = (true);
-            this.txtFetchTitle.IntegralHeight = (false);
-            this.txtFetchTitle.ItemHeight = (16);
-            this.txtFetchTitle.Location = (new global::System.Drawing.Point(0, 0));
-            this.txtFetchTitle.Name = ("txtFetchTitle");
-            this.txtFetchTitle.Size = (new global::System.Drawing.Size(275, 24));
-            this.txtFetchTitle.TabIndex = (56);
-            this.txtFetchTitle.SelectedIndexChanged += (this.txtFetchTitle_SelectedIndexChanged);
+            this.panel127.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel127.Dock = (global::System.Windows.Forms.DockStyle.Right);
+            this.panel127.Location = (new global::System.Drawing.Point(133, 1));
+            this.panel127.Name = ("panel127");
+            this.panel127.Size = (new global::System.Drawing.Size(1, 23));
+            this.panel127.TabIndex = (3);
             // 
-            // borderFetchFrequency
+            // panel128
             // 
-            this.borderFetchFrequency.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.borderFetchFrequency.Controls.Add(this.panel30);
-            this.borderFetchFrequency.Controls.Add(this.panel31);
-            this.borderFetchFrequency.Controls.Add(this.panel32);
-            this.borderFetchFrequency.Controls.Add(this.panel33);
-            this.borderFetchFrequency.Controls.Add(this.txtFetchFrequency);
-            this.borderFetchFrequency.Location = (new global::System.Drawing.Point(876, 550));
-            this.borderFetchFrequency.Name = ("borderFetchFrequency");
-            this.borderFetchFrequency.Size = (new global::System.Drawing.Size(186, 25));
-            this.borderFetchFrequency.TabIndex = (77);
+            this.panel128.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel128.Dock = (global::System.Windows.Forms.DockStyle.Bottom);
+            this.panel128.Location = (new global::System.Drawing.Point(1, 24));
+            this.panel128.Name = ("panel128");
+            this.panel128.Size = (new global::System.Drawing.Size(133, 1));
+            this.panel128.TabIndex = (2);
             // 
-            // panel30
+            // panel129
             // 
-            this.panel30.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel30.Dock = (global::System.Windows.Forms.DockStyle.Right);
-            this.panel30.Location = (new global::System.Drawing.Point(185, 1));
-            this.panel30.Name = ("panel30");
-            this.panel30.Size = (new global::System.Drawing.Size(1, 23));
-            this.panel30.TabIndex = (3);
+            this.panel129.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel129.Dock = (global::System.Windows.Forms.DockStyle.Top);
+            this.panel129.Location = (new global::System.Drawing.Point(1, 0));
+            this.panel129.Name = ("panel129");
+            this.panel129.Size = (new global::System.Drawing.Size(133, 1));
+            this.panel129.TabIndex = (1);
             // 
-            // panel31
+            // panel130
             // 
-            this.panel31.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel31.Dock = (global::System.Windows.Forms.DockStyle.Bottom);
-            this.panel31.Location = (new global::System.Drawing.Point(1, 24));
-            this.panel31.Name = ("panel31");
-            this.panel31.Size = (new global::System.Drawing.Size(185, 1));
-            this.panel31.TabIndex = (2);
+            this.panel130.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel130.Dock = (global::System.Windows.Forms.DockStyle.Left);
+            this.panel130.Location = (new global::System.Drawing.Point(0, 0));
+            this.panel130.Name = ("panel130");
+            this.panel130.Size = (new global::System.Drawing.Size(1, 25));
+            this.panel130.TabIndex = (0);
             // 
-            // panel32
+            // txtPrice
             // 
-            this.panel32.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel32.Dock = (global::System.Windows.Forms.DockStyle.Top);
-            this.panel32.Location = (new global::System.Drawing.Point(1, 0));
-            this.panel32.Name = ("panel32");
-            this.panel32.Size = (new global::System.Drawing.Size(185, 1));
-            this.panel32.TabIndex = (1);
+            this.txtPrice.BorderStyle = (global::System.Windows.Forms.BorderStyle.FixedSingle);
+            this.txtPrice.Dock = (global::System.Windows.Forms.DockStyle.Fill);
+            this.txtPrice.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F));
+            this.txtPrice.Location = (new global::System.Drawing.Point(0, 0));
+            this.txtPrice.Name = ("txtPrice");
+            this.txtPrice.Size = (new global::System.Drawing.Size(134, 25));
+            this.txtPrice.TabIndex = (1);
+            this.txtPrice.TextChanged += (this.txtPrice_TextChanged);
+            this.txtPrice.KeyPress += (this.txtPrice_KeyPress);
+            this.txtPrice.Leave += (this.txtPrice_Leave);
             // 
-            // panel33
+            // label1
             // 
-            this.panel33.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel33.Dock = (global::System.Windows.Forms.DockStyle.Left);
-            this.panel33.Location = (new global::System.Drawing.Point(0, 0));
-            this.panel33.Name = ("panel33");
-            this.panel33.Size = (new global::System.Drawing.Size(1, 25));
-            this.panel33.TabIndex = (0);
+            this.label1.AutoSize = (true);
+            this.label1.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
+            this.label1.ForeColor = (global::System.Drawing.Color.DimGray);
+            this.label1.Location = (new global::System.Drawing.Point(20, 64));
+            this.label1.Name = ("label1");
+            this.label1.Size = (new global::System.Drawing.Size(32, 16));
+            this.label1.TabIndex = (0);
+            this.label1.Text = ("Title");
             // 
-            // txtFetchFrequency
+            // label3
             // 
-            this.txtFetchFrequency.BorderStyle = (global::System.Windows.Forms.BorderStyle.FixedSingle);
-            this.txtFetchFrequency.Dock = (global::System.Windows.Forms.DockStyle.Fill);
-            this.txtFetchFrequency.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F));
-            this.txtFetchFrequency.Location = (new global::System.Drawing.Point(0, 0));
-            this.txtFetchFrequency.Name = ("txtFetchFrequency");
-            this.txtFetchFrequency.Size = (new global::System.Drawing.Size(186, 25));
-            this.txtFetchFrequency.TabIndex = (64);
+            this.label3.AutoSize = (true);
+            this.label3.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
+            this.label3.ForeColor = (global::System.Drawing.Color.DimGray);
+            this.label3.Location = (new global::System.Drawing.Point(20, 225));
+            this.label3.Name = ("label3");
+            this.label3.Size = (new global::System.Drawing.Size(55, 16));
+            this.label3.TabIndex = (4);
+            this.label3.Text = ("Duration");
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = (true);
+            this.label4.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
+            this.label4.ForeColor = (global::System.Drawing.Color.DimGray);
+            this.label4.Location = (new global::System.Drawing.Point(20, 274));
+            this.label4.Name = ("label4");
+            this.label4.Size = (new global::System.Drawing.Size(66, 16));
+            this.label4.TabIndex = (6);
+            this.label4.Text = ("Frequency");
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = (true);
+            this.label9.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
+            this.label9.ForeColor = (global::System.Drawing.Color.DimGray);
+            this.label9.Location = (new global::System.Drawing.Point(18, 110));
+            this.label9.Name = ("label9");
+            this.label9.Size = (new global::System.Drawing.Size(70, 16));
+            this.label9.TabIndex = (61);
+            this.label9.Text = ("Description");
+            // 
+            // borderTitle
+            // 
+            this.borderTitle.Controls.Add(this.panel10);
+            this.borderTitle.Controls.Add(this.panel11);
+            this.borderTitle.Controls.Add(this.panel12);
+            this.borderTitle.Controls.Add(this.panel13);
+            this.borderTitle.Controls.Add(this.txtTitle);
+            this.borderTitle.Location = (new global::System.Drawing.Point(20, 83));
+            this.borderTitle.Name = ("borderTitle");
+            this.borderTitle.Size = (new global::System.Drawing.Size(275, 25));
+            this.borderTitle.TabIndex = (73);
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel10.Dock = (global::System.Windows.Forms.DockStyle.Right);
+            this.panel10.Location = (new global::System.Drawing.Point(274, 1));
+            this.panel10.Name = ("panel10");
+            this.panel10.Size = (new global::System.Drawing.Size(1, 23));
+            this.panel10.TabIndex = (3);
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel11.Dock = (global::System.Windows.Forms.DockStyle.Bottom);
+            this.panel11.Location = (new global::System.Drawing.Point(1, 24));
+            this.panel11.Name = ("panel11");
+            this.panel11.Size = (new global::System.Drawing.Size(274, 1));
+            this.panel11.TabIndex = (2);
+            // 
+            // panel12
+            // 
+            this.panel12.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel12.Dock = (global::System.Windows.Forms.DockStyle.Top);
+            this.panel12.Location = (new global::System.Drawing.Point(1, 0));
+            this.panel12.Name = ("panel12");
+            this.panel12.Size = (new global::System.Drawing.Size(274, 1));
+            this.panel12.TabIndex = (1);
+            // 
+            // panel13
+            // 
+            this.panel13.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel13.Dock = (global::System.Windows.Forms.DockStyle.Left);
+            this.panel13.Location = (new global::System.Drawing.Point(0, 0));
+            this.panel13.Name = ("panel13");
+            this.panel13.Size = (new global::System.Drawing.Size(1, 25));
+            this.panel13.TabIndex = (0);
+            // 
+            // txtTitle
+            // 
+            this.txtTitle.BorderStyle = (global::System.Windows.Forms.BorderStyle.FixedSingle);
+            this.txtTitle.Dock = (global::System.Windows.Forms.DockStyle.Fill);
+            this.txtTitle.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F));
+            this.txtTitle.Location = (new global::System.Drawing.Point(0, 0));
+            this.txtTitle.Name = ("txtTitle");
+            this.txtTitle.Size = (new global::System.Drawing.Size(275, 25));
+            this.txtTitle.TabIndex = (1);
+            // 
+            // borderDescription
+            // 
+            this.borderDescription.Controls.Add(this.panel15);
+            this.borderDescription.Controls.Add(this.panel16);
+            this.borderDescription.Controls.Add(this.panel17);
+            this.borderDescription.Controls.Add(this.panel18);
+            this.borderDescription.Controls.Add(this.txtDescription);
+            this.borderDescription.Location = (new global::System.Drawing.Point(21, 127));
+            this.borderDescription.Name = ("borderDescription");
+            this.borderDescription.Size = (new global::System.Drawing.Size(534, 95));
+            this.borderDescription.TabIndex = (74);
+            // 
+            // panel15
+            // 
+            this.panel15.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel15.Dock = (global::System.Windows.Forms.DockStyle.Right);
+            this.panel15.Location = (new global::System.Drawing.Point(533, 1));
+            this.panel15.Name = ("panel15");
+            this.panel15.Size = (new global::System.Drawing.Size(1, 93));
+            this.panel15.TabIndex = (3);
+            // 
+            // panel16
+            // 
+            this.panel16.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel16.Dock = (global::System.Windows.Forms.DockStyle.Bottom);
+            this.panel16.Location = (new global::System.Drawing.Point(1, 94));
+            this.panel16.Name = ("panel16");
+            this.panel16.Size = (new global::System.Drawing.Size(533, 1));
+            this.panel16.TabIndex = (2);
+            // 
+            // panel17
+            // 
+            this.panel17.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel17.Dock = (global::System.Windows.Forms.DockStyle.Top);
+            this.panel17.Location = (new global::System.Drawing.Point(1, 0));
+            this.panel17.Name = ("panel17");
+            this.panel17.Size = (new global::System.Drawing.Size(533, 1));
+            this.panel17.TabIndex = (1);
+            // 
+            // panel18
+            // 
+            this.panel18.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel18.Dock = (global::System.Windows.Forms.DockStyle.Left);
+            this.panel18.Location = (new global::System.Drawing.Point(0, 0));
+            this.panel18.Name = ("panel18");
+            this.panel18.Size = (new global::System.Drawing.Size(1, 95));
+            this.panel18.TabIndex = (0);
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.BorderStyle = (global::System.Windows.Forms.BorderStyle.FixedSingle);
+            this.txtDescription.Dock = (global::System.Windows.Forms.DockStyle.Fill);
+            this.txtDescription.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F));
+            this.txtDescription.Location = (new global::System.Drawing.Point(0, 0));
+            this.txtDescription.Multiline = (true);
+            this.txtDescription.Name = ("txtDescription");
+            this.txtDescription.Size = (new global::System.Drawing.Size(534, 95));
+            this.txtDescription.TabIndex = (3);
+            // 
+            // borderFrequency
+            // 
+            this.borderFrequency.Controls.Add(this.panel20);
+            this.borderFrequency.Controls.Add(this.panel21);
+            this.borderFrequency.Controls.Add(this.panel22);
+            this.borderFrequency.Controls.Add(this.panel23);
+            this.borderFrequency.Controls.Add(this.txtFrequency);
+            this.borderFrequency.Location = (new global::System.Drawing.Point(20, 293));
+            this.borderFrequency.Name = ("borderFrequency");
+            this.borderFrequency.Size = (new global::System.Drawing.Size(534, 25));
+            this.borderFrequency.TabIndex = (75);
+            // 
+            // panel20
+            // 
+            this.panel20.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel20.Dock = (global::System.Windows.Forms.DockStyle.Right);
+            this.panel20.Location = (new global::System.Drawing.Point(533, 1));
+            this.panel20.Name = ("panel20");
+            this.panel20.Size = (new global::System.Drawing.Size(1, 23));
+            this.panel20.TabIndex = (3);
+            // 
+            // panel21
+            // 
+            this.panel21.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel21.Dock = (global::System.Windows.Forms.DockStyle.Bottom);
+            this.panel21.Location = (new global::System.Drawing.Point(1, 24));
+            this.panel21.Name = ("panel21");
+            this.panel21.Size = (new global::System.Drawing.Size(533, 1));
+            this.panel21.TabIndex = (2);
+            // 
+            // panel22
+            // 
+            this.panel22.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel22.Dock = (global::System.Windows.Forms.DockStyle.Top);
+            this.panel22.Location = (new global::System.Drawing.Point(1, 0));
+            this.panel22.Name = ("panel22");
+            this.panel22.Size = (new global::System.Drawing.Size(533, 1));
+            this.panel22.TabIndex = (1);
+            // 
+            // panel23
+            // 
+            this.panel23.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
+            this.panel23.Dock = (global::System.Windows.Forms.DockStyle.Left);
+            this.panel23.Location = (new global::System.Drawing.Point(0, 0));
+            this.panel23.Name = ("panel23");
+            this.panel23.Size = (new global::System.Drawing.Size(1, 25));
+            this.panel23.TabIndex = (0);
+            // 
+            // txtFrequency
+            // 
+            this.txtFrequency.BorderStyle = (global::System.Windows.Forms.BorderStyle.FixedSingle);
+            this.txtFrequency.Dock = (global::System.Windows.Forms.DockStyle.Fill);
+            this.txtFrequency.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F));
+            this.txtFrequency.Location = (new global::System.Drawing.Point(0, 0));
+            this.txtFrequency.Name = ("txtFrequency");
+            this.txtFrequency.Size = (new global::System.Drawing.Size(534, 25));
+            this.txtFrequency.TabIndex = (7);
             // 
             // borderDuration
             // 
-            this.borderDuration.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.borderDuration.Controls.Add(this.panel25);
             this.borderDuration.Controls.Add(this.panel26);
             this.borderDuration.Controls.Add(this.panel27);
             this.borderDuration.Controls.Add(this.panel28);
             this.borderDuration.Controls.Add(this.txtDuration);
-            this.borderDuration.Location = (new global::System.Drawing.Point(528, 215));
+            this.borderDuration.Location = (new global::System.Drawing.Point(21, 244));
             this.borderDuration.Name = ("borderDuration");
             this.borderDuration.Size = (new global::System.Drawing.Size(534, 24));
             this.borderDuration.TabIndex = (76);
@@ -1001,194 +1325,26 @@
             this.txtDuration.Size = (new global::System.Drawing.Size(534, 24));
             this.txtDuration.TabIndex = (55);
             // 
-            // borderFrequency
+            // panel4
             // 
-            this.borderFrequency.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.borderFrequency.Controls.Add(this.panel20);
-            this.borderFrequency.Controls.Add(this.panel21);
-            this.borderFrequency.Controls.Add(this.panel22);
-            this.borderFrequency.Controls.Add(this.panel23);
-            this.borderFrequency.Controls.Add(this.txtFrequency);
-            this.borderFrequency.Location = (new global::System.Drawing.Point(528, 255));
-            this.borderFrequency.Name = ("borderFrequency");
-            this.borderFrequency.Size = (new global::System.Drawing.Size(534, 25));
-            this.borderFrequency.TabIndex = (75);
-            // 
-            // panel20
-            // 
-            this.panel20.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel20.Dock = (global::System.Windows.Forms.DockStyle.Right);
-            this.panel20.Location = (new global::System.Drawing.Point(533, 1));
-            this.panel20.Name = ("panel20");
-            this.panel20.Size = (new global::System.Drawing.Size(1, 23));
-            this.panel20.TabIndex = (3);
-            // 
-            // panel21
-            // 
-            this.panel21.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel21.Dock = (global::System.Windows.Forms.DockStyle.Bottom);
-            this.panel21.Location = (new global::System.Drawing.Point(1, 24));
-            this.panel21.Name = ("panel21");
-            this.panel21.Size = (new global::System.Drawing.Size(533, 1));
-            this.panel21.TabIndex = (2);
-            // 
-            // panel22
-            // 
-            this.panel22.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel22.Dock = (global::System.Windows.Forms.DockStyle.Top);
-            this.panel22.Location = (new global::System.Drawing.Point(1, 0));
-            this.panel22.Name = ("panel22");
-            this.panel22.Size = (new global::System.Drawing.Size(533, 1));
-            this.panel22.TabIndex = (1);
-            // 
-            // panel23
-            // 
-            this.panel23.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel23.Dock = (global::System.Windows.Forms.DockStyle.Left);
-            this.panel23.Location = (new global::System.Drawing.Point(0, 0));
-            this.panel23.Name = ("panel23");
-            this.panel23.Size = (new global::System.Drawing.Size(1, 25));
-            this.panel23.TabIndex = (0);
-            // 
-            // txtFrequency
-            // 
-            this.txtFrequency.BorderStyle = (global::System.Windows.Forms.BorderStyle.FixedSingle);
-            this.txtFrequency.Dock = (global::System.Windows.Forms.DockStyle.Fill);
-            this.txtFrequency.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F));
-            this.txtFrequency.Location = (new global::System.Drawing.Point(0, 0));
-            this.txtFrequency.Name = ("txtFrequency");
-            this.txtFrequency.Size = (new global::System.Drawing.Size(534, 25));
-            this.txtFrequency.TabIndex = (7);
-            // 
-            // borderDescription
-            // 
-            this.borderDescription.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.borderDescription.Controls.Add(this.panel15);
-            this.borderDescription.Controls.Add(this.panel16);
-            this.borderDescription.Controls.Add(this.panel17);
-            this.borderDescription.Controls.Add(this.panel18);
-            this.borderDescription.Controls.Add(this.txtDescription);
-            this.borderDescription.Location = (new global::System.Drawing.Point(528, 97));
-            this.borderDescription.Name = ("borderDescription");
-            this.borderDescription.Size = (new global::System.Drawing.Size(534, 95));
-            this.borderDescription.TabIndex = (74);
-            // 
-            // panel15
-            // 
-            this.panel15.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel15.Dock = (global::System.Windows.Forms.DockStyle.Right);
-            this.panel15.Location = (new global::System.Drawing.Point(533, 1));
-            this.panel15.Name = ("panel15");
-            this.panel15.Size = (new global::System.Drawing.Size(1, 93));
-            this.panel15.TabIndex = (3);
-            // 
-            // panel16
-            // 
-            this.panel16.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel16.Dock = (global::System.Windows.Forms.DockStyle.Bottom);
-            this.panel16.Location = (new global::System.Drawing.Point(1, 94));
-            this.panel16.Name = ("panel16");
-            this.panel16.Size = (new global::System.Drawing.Size(533, 1));
-            this.panel16.TabIndex = (2);
-            // 
-            // panel17
-            // 
-            this.panel17.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel17.Dock = (global::System.Windows.Forms.DockStyle.Top);
-            this.panel17.Location = (new global::System.Drawing.Point(1, 0));
-            this.panel17.Name = ("panel17");
-            this.panel17.Size = (new global::System.Drawing.Size(533, 1));
-            this.panel17.TabIndex = (1);
-            // 
-            // panel18
-            // 
-            this.panel18.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel18.Dock = (global::System.Windows.Forms.DockStyle.Left);
-            this.panel18.Location = (new global::System.Drawing.Point(0, 0));
-            this.panel18.Name = ("panel18");
-            this.panel18.Size = (new global::System.Drawing.Size(1, 95));
-            this.panel18.TabIndex = (0);
-            // 
-            // txtDescription
-            // 
-            this.txtDescription.BorderStyle = (global::System.Windows.Forms.BorderStyle.FixedSingle);
-            this.txtDescription.Dock = (global::System.Windows.Forms.DockStyle.Fill);
-            this.txtDescription.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F));
-            this.txtDescription.Location = (new global::System.Drawing.Point(0, 0));
-            this.txtDescription.Multiline = (true);
-            this.txtDescription.Name = ("txtDescription");
-            this.txtDescription.Size = (new global::System.Drawing.Size(534, 95));
-            this.txtDescription.TabIndex = (3);
-            // 
-            // borderTitle
-            // 
-            this.borderTitle.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.borderTitle.Controls.Add(this.panel10);
-            this.borderTitle.Controls.Add(this.panel11);
-            this.borderTitle.Controls.Add(this.panel12);
-            this.borderTitle.Controls.Add(this.panel13);
-            this.borderTitle.Controls.Add(this.txtTitle);
-            this.borderTitle.Location = (new global::System.Drawing.Point(528, 52));
-            this.borderTitle.Name = ("borderTitle");
-            this.borderTitle.Size = (new global::System.Drawing.Size(275, 25));
-            this.borderTitle.TabIndex = (73);
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel10.Dock = (global::System.Windows.Forms.DockStyle.Right);
-            this.panel10.Location = (new global::System.Drawing.Point(274, 1));
-            this.panel10.Name = ("panel10");
-            this.panel10.Size = (new global::System.Drawing.Size(1, 23));
-            this.panel10.TabIndex = (3);
-            // 
-            // panel11
-            // 
-            this.panel11.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel11.Dock = (global::System.Windows.Forms.DockStyle.Bottom);
-            this.panel11.Location = (new global::System.Drawing.Point(1, 24));
-            this.panel11.Name = ("panel11");
-            this.panel11.Size = (new global::System.Drawing.Size(274, 1));
-            this.panel11.TabIndex = (2);
-            // 
-            // panel12
-            // 
-            this.panel12.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel12.Dock = (global::System.Windows.Forms.DockStyle.Top);
-            this.panel12.Location = (new global::System.Drawing.Point(1, 0));
-            this.panel12.Name = ("panel12");
-            this.panel12.Size = (new global::System.Drawing.Size(274, 1));
-            this.panel12.TabIndex = (1);
-            // 
-            // panel13
-            // 
-            this.panel13.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel13.Dock = (global::System.Windows.Forms.DockStyle.Left);
-            this.panel13.Location = (new global::System.Drawing.Point(0, 0));
-            this.panel13.Name = ("panel13");
-            this.panel13.Size = (new global::System.Drawing.Size(1, 25));
-            this.panel13.TabIndex = (0);
-            // 
-            // txtTitle
-            // 
-            this.txtTitle.BorderStyle = (global::System.Windows.Forms.BorderStyle.FixedSingle);
-            this.txtTitle.Dock = (global::System.Windows.Forms.DockStyle.Fill);
-            this.txtTitle.Font = (new global::System.Drawing.Font("Segoe UI", 9.75F));
-            this.txtTitle.Location = (new global::System.Drawing.Point(0, 0));
-            this.txtTitle.Name = ("txtTitle");
-            this.txtTitle.Size = (new global::System.Drawing.Size(275, 25));
-            this.txtTitle.TabIndex = (1);
+            this.panel4.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Location = (new global::System.Drawing.Point(944, 1118));
+            this.panel4.Name = ("panel4");
+            this.panel4.Size = (new global::System.Drawing.Size(120, 184));
+            this.panel4.TabIndex = (81);
             // 
             // PanelOfficeHours
             // 
-            this.PanelOfficeHours.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelOfficeHours.Anchor = ((global::System.Windows.Forms.AnchorStyles)(((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Left)) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.PanelOfficeHours.BackColor = (global::System.Drawing.Color.White);
             this.PanelOfficeHours.Controls.Add(this.panel122);
             this.PanelOfficeHours.Controls.Add(this.panel117);
             this.PanelOfficeHours.Controls.Add(this.label39);
             this.PanelOfficeHours.Controls.Add(this.btnSaveOfficeHours);
             this.PanelOfficeHours.Controls.Add(this.btnApplyToAll);
+            this.PanelOfficeHours.Controls.Add(this.label14);
             this.PanelOfficeHours.Controls.Add(this.panel112);
+            this.PanelOfficeHours.Controls.Add(this.label15);
             this.PanelOfficeHours.Controls.Add(this.label38);
             this.PanelOfficeHours.Controls.Add(this.panel102);
             this.PanelOfficeHours.Controls.Add(this.panel107);
@@ -1220,22 +1376,22 @@
             this.PanelOfficeHours.Controls.Add(this.label18);
             this.PanelOfficeHours.Controls.Add(this.label17);
             this.PanelOfficeHours.Controls.Add(this.label16);
-            this.PanelOfficeHours.Location = (new global::System.Drawing.Point(405, 670));
+            this.PanelOfficeHours.Location = (new global::System.Drawing.Point(13, 826));
             this.PanelOfficeHours.Name = ("PanelOfficeHours");
-            this.PanelOfficeHours.Size = (new global::System.Drawing.Size(657, 407));
+            this.PanelOfficeHours.Size = (new global::System.Drawing.Size(834, 421));
             this.PanelOfficeHours.TabIndex = (70);
             // 
             // panel122
             // 
             this.panel122.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(93)), (global::System.Int32)((global::System.Byte)(173)), (global::System.Int32)((global::System.Byte)(226))));
-            this.panel122.Location = (new global::System.Drawing.Point(109, 298));
+            this.panel122.Location = (new global::System.Drawing.Point(66, 329));
             this.panel122.Name = ("panel122");
             this.panel122.Size = (new global::System.Drawing.Size(444, 1));
             this.panel122.TabIndex = (86);
+            this.panel122.Paint += (this.panel122_Paint);
             // 
             // panel117
             // 
-            this.panel117.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel117.Controls.Add(this.button25);
             this.panel117.Controls.Add(this.panel118);
             this.panel117.Controls.Add(this.panel119);
@@ -1243,10 +1399,11 @@
             this.panel117.Controls.Add(this.panel121);
             this.panel117.Controls.Add(this.dateTimePicker16);
             this.panel117.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.panel117.Location = (new global::System.Drawing.Point(116, 328));
+            this.panel117.Location = (new global::System.Drawing.Point(73, 359));
             this.panel117.Name = ("panel117");
             this.panel117.Size = (new global::System.Drawing.Size(107, 23));
             this.panel117.TabIndex = (116);
+            this.panel117.Paint += (this.panel117_Paint);
             // 
             // button25
             // 
@@ -1314,22 +1471,22 @@
             // 
             this.label39.AutoSize = (true);
             this.label39.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label39.Location = (new global::System.Drawing.Point(261, 307));
+            this.label39.Location = (new global::System.Drawing.Point(218, 338));
             this.label39.Name = ("label39");
             this.label39.Size = (new global::System.Drawing.Size(76, 16));
             this.label39.TabIndex = (115);
             this.label39.Text = ("End of Time");
+            this.label39.Click += (this.label39_Click);
             // 
             // btnSaveOfficeHours
             // 
-            this.btnSaveOfficeHours.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.btnSaveOfficeHours.BackColor = (global::System.Drawing.Color.Black);
             this.btnSaveOfficeHours.FlatAppearance.BorderColor = (global::System.Drawing.Color.Black);
             this.btnSaveOfficeHours.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
             this.btnSaveOfficeHours.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnSaveOfficeHours.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
             this.btnSaveOfficeHours.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
-            this.btnSaveOfficeHours.Location = (new global::System.Drawing.Point(469, 327));
+            this.btnSaveOfficeHours.Location = (new global::System.Drawing.Point(426, 358));
             this.btnSaveOfficeHours.Margin = (new global::System.Windows.Forms.Padding(0));
             this.btnSaveOfficeHours.Name = ("btnSaveOfficeHours");
             this.btnSaveOfficeHours.Size = (new global::System.Drawing.Size(70, 24));
@@ -1342,7 +1499,7 @@
             // 
             this.btnApplyToAll.AutoSize = (true);
             this.btnApplyToAll.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.btnApplyToAll.Location = (new global::System.Drawing.Point(366, 332));
+            this.btnApplyToAll.Location = (new global::System.Drawing.Point(323, 363));
             this.btnApplyToAll.Name = ("btnApplyToAll");
             this.btnApplyToAll.Size = (new global::System.Drawing.Size(89, 20));
             this.btnApplyToAll.TabIndex = (116);
@@ -1350,9 +1507,20 @@
             this.btnApplyToAll.UseVisualStyleBackColor = (true);
             this.btnApplyToAll.CheckedChanged += (this.btnApplyToAll_CheckedChanged);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = (true);
+            this.label14.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
+            this.label14.ForeColor = (global::System.Drawing.Color.DimGray);
+            this.label14.Location = (new global::System.Drawing.Point(18, 34));
+            this.label14.Name = ("label14");
+            this.label14.Size = (new global::System.Drawing.Size(314, 16));
+            this.label14.TabIndex = (69);
+            this.label14.Text = ("Setup office hour availability for each day of the week");
+            this.label14.TextAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
+            // 
             // panel112
             // 
-            this.panel112.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel112.Controls.Add(this.button22);
             this.panel112.Controls.Add(this.panel113);
             this.panel112.Controls.Add(this.panel114);
@@ -1360,10 +1528,11 @@
             this.panel112.Controls.Add(this.panel116);
             this.panel112.Controls.Add(this.dateTimePicker15);
             this.panel112.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.panel112.Location = (new global::System.Drawing.Point(245, 328));
+            this.panel112.Location = (new global::System.Drawing.Point(202, 359));
             this.panel112.Name = ("panel112");
             this.panel112.Size = (new global::System.Drawing.Size(107, 23));
             this.panel112.TabIndex = (115);
+            this.panel112.Paint += (this.panel112_Paint);
             // 
             // button22
             // 
@@ -1427,19 +1596,29 @@
             this.dateTimePicker15.Size = (new global::System.Drawing.Size(107, 23));
             this.dateTimePicker15.TabIndex = (5);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = (true);
+            this.label15.Font = (new global::System.Drawing.Font("Tahoma", 12F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point, (global::System.Byte)(0)));
+            this.label15.Location = (new global::System.Drawing.Point(18, 15));
+            this.label15.Name = ("label15");
+            this.label15.Size = (new global::System.Drawing.Size(186, 19));
+            this.label15.TabIndex = (68);
+            this.label15.Text = ("Setup Appointment Hour");
+            // 
             // label38
             // 
             this.label38.AutoSize = (true);
             this.label38.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label38.Location = (new global::System.Drawing.Point(129, 307));
+            this.label38.Location = (new global::System.Drawing.Point(86, 338));
             this.label38.Name = ("label38");
             this.label38.Size = (new global::System.Drawing.Size(83, 16));
             this.label38.TabIndex = (114);
             this.label38.Text = ("Start of Time");
+            this.label38.Click += (this.label38_Click);
             // 
             // panel102
             // 
-            this.panel102.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel102.Controls.Add(this.button19);
             this.panel102.Controls.Add(this.panel103);
             this.panel102.Controls.Add(this.panel104);
@@ -1447,10 +1626,11 @@
             this.panel102.Controls.Add(this.panel106);
             this.panel102.Controls.Add(this.dateTimePicker13);
             this.panel102.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.panel102.Location = (new global::System.Drawing.Point(352, 266));
+            this.panel102.Location = (new global::System.Drawing.Point(309, 297));
             this.panel102.Name = ("panel102");
             this.panel102.Size = (new global::System.Drawing.Size(107, 23));
             this.panel102.TabIndex = (114);
+            this.panel102.Paint += (this.panel102_Paint);
             // 
             // button19
             // 
@@ -1516,7 +1696,6 @@
             // 
             // panel107
             // 
-            this.panel107.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel107.Controls.Add(this.button20);
             this.panel107.Controls.Add(this.panel108);
             this.panel107.Controls.Add(this.panel109);
@@ -1524,10 +1703,11 @@
             this.panel107.Controls.Add(this.panel111);
             this.panel107.Controls.Add(this.dateTimePicker14);
             this.panel107.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.panel107.Location = (new global::System.Drawing.Point(224, 266));
+            this.panel107.Location = (new global::System.Drawing.Point(181, 297));
             this.panel107.Name = ("panel107");
             this.panel107.Size = (new global::System.Drawing.Size(107, 23));
             this.panel107.TabIndex = (113);
+            this.panel107.Paint += (this.panel107_Paint);
             // 
             // button20
             // 
@@ -1595,26 +1775,27 @@
             // 
             this.sundayClose.AutoSize = (true);
             this.sundayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.sundayClose.Location = (new global::System.Drawing.Point(482, 271));
+            this.sundayClose.Location = (new global::System.Drawing.Point(439, 302));
             this.sundayClose.Name = ("sundayClose");
             this.sundayClose.Size = (new global::System.Drawing.Size(57, 20));
             this.sundayClose.TabIndex = (111);
             this.sundayClose.Text = ("Close");
             this.sundayClose.UseVisualStyleBackColor = (true);
+            this.sundayClose.CheckedChanged += (this.sundayClose_CheckedChanged);
             // 
             // label36
             // 
             this.label36.AutoSize = (true);
             this.label36.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label36.Location = (new global::System.Drawing.Point(123, 275));
+            this.label36.Location = (new global::System.Drawing.Point(80, 306));
             this.label36.Name = ("label36");
             this.label36.Size = (new global::System.Drawing.Size(49, 16));
             this.label36.TabIndex = (108);
             this.label36.Text = ("Sunday");
+            this.label36.Click += (this.label36_Click);
             // 
             // panel92
             // 
-            this.panel92.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel92.Controls.Add(this.button16);
             this.panel92.Controls.Add(this.panel93);
             this.panel92.Controls.Add(this.panel94);
@@ -1622,10 +1803,11 @@
             this.panel92.Controls.Add(this.panel96);
             this.panel92.Controls.Add(this.dateTimePicker11);
             this.panel92.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.panel92.Location = (new global::System.Drawing.Point(352, 235));
+            this.panel92.Location = (new global::System.Drawing.Point(309, 266));
             this.panel92.Name = ("panel92");
             this.panel92.Size = (new global::System.Drawing.Size(107, 23));
             this.panel92.TabIndex = (107);
+            this.panel92.Paint += (this.panel92_Paint);
             // 
             // button16
             // 
@@ -1691,7 +1873,6 @@
             // 
             // panel97
             // 
-            this.panel97.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel97.Controls.Add(this.button17);
             this.panel97.Controls.Add(this.panel98);
             this.panel97.Controls.Add(this.panel99);
@@ -1699,10 +1880,11 @@
             this.panel97.Controls.Add(this.panel101);
             this.panel97.Controls.Add(this.dateTimePicker12);
             this.panel97.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.panel97.Location = (new global::System.Drawing.Point(224, 235));
+            this.panel97.Location = (new global::System.Drawing.Point(181, 266));
             this.panel97.Name = ("panel97");
             this.panel97.Size = (new global::System.Drawing.Size(107, 23));
             this.panel97.TabIndex = (106);
+            this.panel97.Paint += (this.panel97_Paint);
             // 
             // button17
             // 
@@ -1770,26 +1952,27 @@
             // 
             this.saturdayClose.AutoSize = (true);
             this.saturdayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.saturdayClose.Location = (new global::System.Drawing.Point(482, 240));
+            this.saturdayClose.Location = (new global::System.Drawing.Point(439, 271));
             this.saturdayClose.Name = ("saturdayClose");
             this.saturdayClose.Size = (new global::System.Drawing.Size(57, 20));
             this.saturdayClose.TabIndex = (104);
             this.saturdayClose.Text = ("Close");
             this.saturdayClose.UseVisualStyleBackColor = (true);
+            this.saturdayClose.CheckedChanged += (this.saturdayClose_CheckedChanged);
             // 
             // label33
             // 
             this.label33.AutoSize = (true);
             this.label33.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label33.Location = (new global::System.Drawing.Point(123, 244));
+            this.label33.Location = (new global::System.Drawing.Point(80, 275));
             this.label33.Name = ("label33");
             this.label33.Size = (new global::System.Drawing.Size(58, 16));
             this.label33.TabIndex = (101);
             this.label33.Text = ("Saturday");
+            this.label33.Click += (this.label33_Click);
             // 
             // panel82
             // 
-            this.panel82.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel82.Controls.Add(this.button13);
             this.panel82.Controls.Add(this.panel83);
             this.panel82.Controls.Add(this.panel84);
@@ -1797,10 +1980,11 @@
             this.panel82.Controls.Add(this.panel86);
             this.panel82.Controls.Add(this.dateTimePicker9);
             this.panel82.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.panel82.Location = (new global::System.Drawing.Point(352, 204));
+            this.panel82.Location = (new global::System.Drawing.Point(309, 235));
             this.panel82.Name = ("panel82");
             this.panel82.Size = (new global::System.Drawing.Size(107, 23));
             this.panel82.TabIndex = (100);
+            this.panel82.Paint += (this.panel82_Paint);
             // 
             // button13
             // 
@@ -1866,7 +2050,6 @@
             // 
             // panel87
             // 
-            this.panel87.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel87.Controls.Add(this.button14);
             this.panel87.Controls.Add(this.panel88);
             this.panel87.Controls.Add(this.panel89);
@@ -1874,10 +2057,11 @@
             this.panel87.Controls.Add(this.panel91);
             this.panel87.Controls.Add(this.dateTimePicker10);
             this.panel87.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.panel87.Location = (new global::System.Drawing.Point(224, 204));
+            this.panel87.Location = (new global::System.Drawing.Point(181, 235));
             this.panel87.Name = ("panel87");
             this.panel87.Size = (new global::System.Drawing.Size(107, 23));
             this.panel87.TabIndex = (99);
+            this.panel87.Paint += (this.panel87_Paint);
             // 
             // button14
             // 
@@ -1945,26 +2129,27 @@
             // 
             this.fridayClose.AutoSize = (true);
             this.fridayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.fridayClose.Location = (new global::System.Drawing.Point(482, 209));
+            this.fridayClose.Location = (new global::System.Drawing.Point(439, 240));
             this.fridayClose.Name = ("fridayClose");
             this.fridayClose.Size = (new global::System.Drawing.Size(57, 20));
             this.fridayClose.TabIndex = (97);
             this.fridayClose.Text = ("Close");
             this.fridayClose.UseVisualStyleBackColor = (true);
+            this.fridayClose.CheckedChanged += (this.fridayClose_CheckedChanged);
             // 
             // label30
             // 
             this.label30.AutoSize = (true);
             this.label30.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label30.Location = (new global::System.Drawing.Point(123, 213));
+            this.label30.Location = (new global::System.Drawing.Point(80, 244));
             this.label30.Name = ("label30");
             this.label30.Size = (new global::System.Drawing.Size(42, 16));
             this.label30.TabIndex = (94);
             this.label30.Text = ("Friday");
+            this.label30.Click += (this.label30_Click);
             // 
             // panel72
             // 
-            this.panel72.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel72.Controls.Add(this.button10);
             this.panel72.Controls.Add(this.panel73);
             this.panel72.Controls.Add(this.panel74);
@@ -1972,10 +2157,11 @@
             this.panel72.Controls.Add(this.panel76);
             this.panel72.Controls.Add(this.dateTimePicker7);
             this.panel72.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.panel72.Location = (new global::System.Drawing.Point(352, 173));
+            this.panel72.Location = (new global::System.Drawing.Point(309, 204));
             this.panel72.Name = ("panel72");
             this.panel72.Size = (new global::System.Drawing.Size(107, 23));
             this.panel72.TabIndex = (93);
+            this.panel72.Paint += (this.panel72_Paint);
             // 
             // button10
             // 
@@ -2041,7 +2227,6 @@
             // 
             // panel77
             // 
-            this.panel77.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel77.Controls.Add(this.button11);
             this.panel77.Controls.Add(this.panel78);
             this.panel77.Controls.Add(this.panel79);
@@ -2049,10 +2234,11 @@
             this.panel77.Controls.Add(this.panel81);
             this.panel77.Controls.Add(this.dateTimePicker8);
             this.panel77.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.panel77.Location = (new global::System.Drawing.Point(224, 173));
+            this.panel77.Location = (new global::System.Drawing.Point(181, 204));
             this.panel77.Name = ("panel77");
             this.panel77.Size = (new global::System.Drawing.Size(107, 23));
             this.panel77.TabIndex = (92);
+            this.panel77.Paint += (this.panel77_Paint);
             // 
             // button11
             // 
@@ -2120,26 +2306,27 @@
             // 
             this.thursdayClose.AutoSize = (true);
             this.thursdayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.thursdayClose.Location = (new global::System.Drawing.Point(482, 178));
+            this.thursdayClose.Location = (new global::System.Drawing.Point(439, 209));
             this.thursdayClose.Name = ("thursdayClose");
             this.thursdayClose.Size = (new global::System.Drawing.Size(57, 20));
             this.thursdayClose.TabIndex = (90);
             this.thursdayClose.Text = ("Close");
             this.thursdayClose.UseVisualStyleBackColor = (true);
+            this.thursdayClose.CheckedChanged += (this.thursdayClose_CheckedChanged);
             // 
             // label27
             // 
             this.label27.AutoSize = (true);
             this.label27.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label27.Location = (new global::System.Drawing.Point(123, 182));
+            this.label27.Location = (new global::System.Drawing.Point(80, 213));
             this.label27.Name = ("label27");
             this.label27.Size = (new global::System.Drawing.Size(60, 16));
             this.label27.TabIndex = (87);
             this.label27.Text = ("Thursday");
+            this.label27.Click += (this.label27_Click);
             // 
             // panel62
             // 
-            this.panel62.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel62.Controls.Add(this.button7);
             this.panel62.Controls.Add(this.panel63);
             this.panel62.Controls.Add(this.panel64);
@@ -2147,10 +2334,11 @@
             this.panel62.Controls.Add(this.panel66);
             this.panel62.Controls.Add(this.dateTimePicker5);
             this.panel62.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.panel62.Location = (new global::System.Drawing.Point(352, 142));
+            this.panel62.Location = (new global::System.Drawing.Point(309, 173));
             this.panel62.Name = ("panel62");
             this.panel62.Size = (new global::System.Drawing.Size(107, 23));
             this.panel62.TabIndex = (86);
+            this.panel62.Paint += (this.panel62_Paint);
             // 
             // button7
             // 
@@ -2216,7 +2404,6 @@
             // 
             // panel67
             // 
-            this.panel67.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel67.Controls.Add(this.button8);
             this.panel67.Controls.Add(this.panel68);
             this.panel67.Controls.Add(this.panel69);
@@ -2224,10 +2411,11 @@
             this.panel67.Controls.Add(this.panel71);
             this.panel67.Controls.Add(this.dateTimePicker6);
             this.panel67.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.panel67.Location = (new global::System.Drawing.Point(224, 142));
+            this.panel67.Location = (new global::System.Drawing.Point(181, 173));
             this.panel67.Name = ("panel67");
             this.panel67.Size = (new global::System.Drawing.Size(107, 23));
             this.panel67.TabIndex = (85);
+            this.panel67.Paint += (this.panel67_Paint);
             // 
             // button8
             // 
@@ -2295,26 +2483,27 @@
             // 
             this.wednesdayClose.AutoSize = (true);
             this.wednesdayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.wednesdayClose.Location = (new global::System.Drawing.Point(482, 147));
+            this.wednesdayClose.Location = (new global::System.Drawing.Point(439, 178));
             this.wednesdayClose.Name = ("wednesdayClose");
             this.wednesdayClose.Size = (new global::System.Drawing.Size(57, 20));
             this.wednesdayClose.TabIndex = (83);
             this.wednesdayClose.Text = ("Close");
             this.wednesdayClose.UseVisualStyleBackColor = (true);
+            this.wednesdayClose.CheckedChanged += (this.wednesdayClose_CheckedChanged);
             // 
             // label24
             // 
             this.label24.AutoSize = (true);
             this.label24.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label24.Location = (new global::System.Drawing.Point(123, 151));
+            this.label24.Location = (new global::System.Drawing.Point(80, 182));
             this.label24.Name = ("label24");
             this.label24.Size = (new global::System.Drawing.Size(73, 16));
             this.label24.TabIndex = (80);
             this.label24.Text = ("Wednesday");
+            this.label24.Click += (this.label24_Click);
             // 
             // panel52
             // 
-            this.panel52.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel52.Controls.Add(this.button4);
             this.panel52.Controls.Add(this.panel53);
             this.panel52.Controls.Add(this.panel54);
@@ -2322,10 +2511,11 @@
             this.panel52.Controls.Add(this.panel56);
             this.panel52.Controls.Add(this.dateTimePicker3);
             this.panel52.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.panel52.Location = (new global::System.Drawing.Point(352, 111));
+            this.panel52.Location = (new global::System.Drawing.Point(309, 142));
             this.panel52.Name = ("panel52");
             this.panel52.Size = (new global::System.Drawing.Size(107, 23));
             this.panel52.TabIndex = (79);
+            this.panel52.Paint += (this.panel52_Paint);
             // 
             // button4
             // 
@@ -2391,7 +2581,6 @@
             // 
             // panel57
             // 
-            this.panel57.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel57.Controls.Add(this.button5);
             this.panel57.Controls.Add(this.panel58);
             this.panel57.Controls.Add(this.panel59);
@@ -2399,10 +2588,11 @@
             this.panel57.Controls.Add(this.panel61);
             this.panel57.Controls.Add(this.dateTimePicker4);
             this.panel57.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.panel57.Location = (new global::System.Drawing.Point(224, 111));
+            this.panel57.Location = (new global::System.Drawing.Point(181, 142));
             this.panel57.Name = ("panel57");
             this.panel57.Size = (new global::System.Drawing.Size(107, 23));
             this.panel57.TabIndex = (78);
+            this.panel57.Paint += (this.panel57_Paint);
             // 
             // button5
             // 
@@ -2470,26 +2660,27 @@
             // 
             this.tuesdayClose.AutoSize = (true);
             this.tuesdayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.tuesdayClose.Location = (new global::System.Drawing.Point(482, 116));
+            this.tuesdayClose.Location = (new global::System.Drawing.Point(439, 147));
             this.tuesdayClose.Name = ("tuesdayClose");
             this.tuesdayClose.Size = (new global::System.Drawing.Size(57, 20));
             this.tuesdayClose.TabIndex = (76);
             this.tuesdayClose.Text = ("Close");
             this.tuesdayClose.UseVisualStyleBackColor = (true);
+            this.tuesdayClose.CheckedChanged += (this.tuesdayClose_CheckedChanged);
             // 
             // label21
             // 
             this.label21.AutoSize = (true);
             this.label21.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label21.Location = (new global::System.Drawing.Point(123, 120));
+            this.label21.Location = (new global::System.Drawing.Point(80, 151));
             this.label21.Name = ("label21");
             this.label21.Size = (new global::System.Drawing.Size(55, 16));
             this.label21.TabIndex = (73);
             this.label21.Text = ("Tuesday");
+            this.label21.Click += (this.label21_Click);
             // 
             // panel39
             // 
-            this.panel39.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel39.Controls.Add(this.button3);
             this.panel39.Controls.Add(this.panel44);
             this.panel39.Controls.Add(this.panel49);
@@ -2497,10 +2688,11 @@
             this.panel39.Controls.Add(this.panel51);
             this.panel39.Controls.Add(this.dateTimePicker2);
             this.panel39.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.panel39.Location = (new global::System.Drawing.Point(224, 80));
+            this.panel39.Location = (new global::System.Drawing.Point(181, 111));
             this.panel39.Name = ("panel39");
             this.panel39.Size = (new global::System.Drawing.Size(107, 23));
             this.panel39.TabIndex = (72);
+            this.panel39.Paint += (this.panel39_Paint);
             // 
             // button3
             // 
@@ -2566,7 +2758,6 @@
             // 
             // panel14
             // 
-            this.panel14.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.panel14.Controls.Add(this.button2);
             this.panel14.Controls.Add(this.panel19);
             this.panel14.Controls.Add(this.panel24);
@@ -2574,10 +2765,11 @@
             this.panel14.Controls.Add(this.panel34);
             this.panel14.Controls.Add(this.dateTimePicker1);
             this.panel14.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.panel14.Location = (new global::System.Drawing.Point(352, 80));
+            this.panel14.Location = (new global::System.Drawing.Point(309, 111));
             this.panel14.Name = ("panel14");
             this.panel14.Size = (new global::System.Drawing.Size(107, 23));
             this.panel14.TabIndex = (71);
+            this.panel14.Paint += (this.panel14_Paint);
             // 
             // button2
             // 
@@ -2645,231 +2837,56 @@
             // 
             this.mondayClose.AutoSize = (true);
             this.mondayClose.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.mondayClose.Location = (new global::System.Drawing.Point(482, 84));
+            this.mondayClose.Location = (new global::System.Drawing.Point(439, 115));
             this.mondayClose.Name = ("mondayClose");
             this.mondayClose.Size = (new global::System.Drawing.Size(57, 20));
             this.mondayClose.TabIndex = (9);
             this.mondayClose.Text = ("Close");
             this.mondayClose.UseVisualStyleBackColor = (true);
+            this.mondayClose.CheckedChanged += (this.mondayClose_CheckedChanged);
             // 
             // label18
             // 
             this.label18.AutoSize = (true);
             this.label18.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label18.Location = (new global::System.Drawing.Point(366, 49));
+            this.label18.Location = (new global::System.Drawing.Point(323, 80));
             this.label18.Name = ("label18");
             this.label18.Size = (new global::System.Drawing.Size(76, 16));
             this.label18.TabIndex = (8);
             this.label18.Text = ("End of Time");
+            this.label18.Click += (this.label18_Click);
             // 
             // label17
             // 
             this.label17.AutoSize = (true);
             this.label17.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label17.Location = (new global::System.Drawing.Point(234, 49));
+            this.label17.Location = (new global::System.Drawing.Point(191, 80));
             this.label17.Name = ("label17");
             this.label17.Size = (new global::System.Drawing.Size(83, 16));
             this.label17.TabIndex = (6);
             this.label17.Text = ("Start of Time");
+            this.label17.Click += (this.label17_Click);
             // 
             // label16
             // 
             this.label16.AutoSize = (true);
             this.label16.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label16.Location = (new global::System.Drawing.Point(123, 88));
+            this.label16.Location = (new global::System.Drawing.Point(80, 119));
             this.label16.Name = ("label16");
             this.label16.Size = (new global::System.Drawing.Size(51, 16));
             this.label16.TabIndex = (4);
             this.label16.Text = ("Monday");
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = (true);
-            this.label14.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label14.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.label14.Location = (new global::System.Drawing.Point(13, 711));
-            this.label14.Name = ("label14");
-            this.label14.Size = (new global::System.Drawing.Size(314, 16));
-            this.label14.TabIndex = (69);
-            this.label14.Text = ("Setup office hour availability for each day of the week");
-            this.label14.TextAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = (true);
-            this.label15.Font = (new global::System.Drawing.Font("Tahoma", 12F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point, (global::System.Byte)(0)));
-            this.label15.Location = (new global::System.Drawing.Point(13, 670));
-            this.label15.Name = ("label15");
-            this.label15.Size = (new global::System.Drawing.Size(186, 19));
-            this.label15.TabIndex = (68);
-            this.label15.Text = ("Setup Appointment Hour");
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = (true);
-            this.label7.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label7.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.label7.Location = (new global::System.Drawing.Point(13, 398));
-            this.label7.Name = ("label7");
-            this.label7.Size = (new global::System.Drawing.Size(210, 16));
-            this.label7.TabIndex = (58);
-            this.label7.Text = ("Update Category for Online Booking");
-            this.label7.TextAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = (true);
-            this.label13.Font = (new global::System.Drawing.Font("Tahoma", 12F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point, (global::System.Byte)(0)));
-            this.label13.Location = (new global::System.Drawing.Point(13, 359));
-            this.label13.Name = ("label13");
-            this.label13.Size = (new global::System.Drawing.Size(171, 19));
-            this.label13.TabIndex = (57);
-            this.label13.Text = ("Update Dental Services");
+            this.label16.Click += (this.label16_Click);
             // 
             // lineDevider
             // 
             this.lineDevider.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Left) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.lineDevider.AutoSize = (true);
-            this.lineDevider.Location = (new global::System.Drawing.Point(521, 16481));
+            this.lineDevider.Location = (new global::System.Drawing.Point(521, 17153));
             this.lineDevider.Name = ("lineDevider");
             this.lineDevider.Size = (new global::System.Drawing.Size(10, 15));
             this.lineDevider.TabIndex = (59);
             this.lineDevider.Text = (".");
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = (true);
-            this.label12.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label12.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.label12.Location = (new global::System.Drawing.Point(402, 551));
-            this.label12.Name = ("label12");
-            this.label12.Size = (new global::System.Drawing.Size(55, 16));
-            this.label12.TabIndex = (65);
-            this.label12.Text = ("Duration");
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = (true);
-            this.label10.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label10.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.label10.Location = (new global::System.Drawing.Point(13, 100));
-            this.label10.Name = ("label10");
-            this.label10.Size = (new global::System.Drawing.Size(189, 16));
-            this.label10.TabIndex = (55);
-            this.label10.Text = ("Set Category for Online Booking");
-            this.label10.TextAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = (true);
-            this.label5.Font = (new global::System.Drawing.Font("Tahoma", 12F, global::System.Drawing.FontStyle.Regular, global::System.Drawing.GraphicsUnit.Point, (global::System.Byte)(0)));
-            this.label5.Location = (new global::System.Drawing.Point(13, 46));
-            this.label5.Name = ("label5");
-            this.label5.Size = (new global::System.Drawing.Size(116, 19));
-            this.label5.TabIndex = (2);
-            this.label5.Text = ("Dental Services");
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = (true);
-            this.label11.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label11.Location = (new global::System.Drawing.Point(769, 551));
-            this.label11.Name = ("label11");
-            this.label11.Size = (new global::System.Drawing.Size(66, 16));
-            this.label11.TabIndex = (63);
-            this.label11.Text = ("Frequency");
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = (true);
-            this.label9.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label9.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.label9.Location = (new global::System.Drawing.Point(402, 98));
-            this.label9.Name = ("label9");
-            this.label9.Size = (new global::System.Drawing.Size(70, 16));
-            this.label9.TabIndex = (61);
-            this.label9.Text = ("Description");
-            // 
-            // label8
-            // 
-            this.label8.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = (true);
-            this.label8.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label8.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.label8.Location = (new global::System.Drawing.Point(402, 361));
-            this.label8.Name = ("label8");
-            this.label8.Size = (new global::System.Drawing.Size(32, 16));
-            this.label8.TabIndex = (59);
-            this.label8.Text = ("Title");
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.BackColor = (global::System.Drawing.Color.Black);
-            this.btnUpdate.FlatAppearance.BorderColor = (global::System.Drawing.Color.Black);
-            this.btnUpdate.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
-            this.btnUpdate.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
-            this.btnUpdate.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
-            this.btnUpdate.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
-            this.btnUpdate.Location = (new global::System.Drawing.Point(528, 576));
-            this.btnUpdate.Margin = (new global::System.Windows.Forms.Padding(0, 0, 1, 0));
-            this.btnUpdate.Name = ("btnUpdate");
-            this.btnUpdate.Size = (new global::System.Drawing.Size(64, 24));
-            this.btnUpdate.TabIndex = (58);
-            this.btnUpdate.Text = ("Update");
-            this.btnUpdate.UseVisualStyleBackColor = (false);
-            this.btnUpdate.Click += (this.btnUpdate_Click);
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = (true);
-            this.label4.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label4.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.label4.Location = (new global::System.Drawing.Point(402, 255));
-            this.label4.Name = ("label4");
-            this.label4.Size = (new global::System.Drawing.Size(66, 16));
-            this.label4.TabIndex = (6);
-            this.label4.Text = ("Frequency");
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = (true);
-            this.label3.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label3.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.label3.Location = (new global::System.Drawing.Point(402, 215));
-            this.label3.Name = ("label3");
-            this.label3.Size = (new global::System.Drawing.Size(55, 16));
-            this.label3.TabIndex = (4);
-            this.label3.Text = ("Duration");
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = (true);
-            this.label2.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label2.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.label2.Location = (new global::System.Drawing.Point(402, 437));
-            this.label2.Name = ("label2");
-            this.label2.Size = (new global::System.Drawing.Size(70, 16));
-            this.label2.TabIndex = (2);
-            this.label2.Text = ("Description");
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = (true);
-            this.label1.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
-            this.label1.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.label1.Location = (new global::System.Drawing.Point(402, 52));
-            this.label1.Name = ("label1");
-            this.label1.Size = (new global::System.Drawing.Size(32, 16));
-            this.label1.TabIndex = (0);
-            this.label1.Text = ("Title");
             // 
             // flowLayoutPanel2
             // 
@@ -3048,25 +3065,29 @@
             ((global::System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.borderPrice.ResumeLayout(false);
-            this.borderPrice.PerformLayout();
+            this.updateDentalServicePanel.ResumeLayout(false);
+            this.updateDentalServicePanel.PerformLayout();
             this.borderFetchPrice.ResumeLayout(false);
             this.borderFetchPrice.PerformLayout();
             this.borderNewTitle.ResumeLayout(false);
             this.borderNewTitle.PerformLayout();
+            this.borderFetchFrequency.ResumeLayout(false);
+            this.borderFetchFrequency.PerformLayout();
+            this.borderFetchTitle.ResumeLayout(false);
             this.borderFetchDuration.ResumeLayout(false);
             this.borderFetchDescription.ResumeLayout(false);
             this.borderFetchDescription.PerformLayout();
-            this.borderFetchTitle.ResumeLayout(false);
-            this.borderFetchFrequency.ResumeLayout(false);
-            this.borderFetchFrequency.PerformLayout();
-            this.borderDuration.ResumeLayout(false);
-            this.borderFrequency.ResumeLayout(false);
-            this.borderFrequency.PerformLayout();
-            this.borderDescription.ResumeLayout(false);
-            this.borderDescription.PerformLayout();
+            this.dentalServicePanel.ResumeLayout(false);
+            this.dentalServicePanel.PerformLayout();
+            this.borderPrice.ResumeLayout(false);
+            this.borderPrice.PerformLayout();
             this.borderTitle.ResumeLayout(false);
             this.borderTitle.PerformLayout();
+            this.borderDescription.ResumeLayout(false);
+            this.borderDescription.PerformLayout();
+            this.borderFrequency.ResumeLayout(false);
+            this.borderFrequency.PerformLayout();
+            this.borderDuration.ResumeLayout(false);
             this.PanelOfficeHours.ResumeLayout(false);
             this.PanelOfficeHours.PerformLayout();
             this.panel117.ResumeLayout(false);
@@ -3338,5 +3359,7 @@
         private global::System.Windows.Forms.Panel panel129;
         private global::System.Windows.Forms.Panel panel130;
         private global::System.Windows.Forms.TextBox txtPrice;
+        private global::System.Windows.Forms.Panel dentalServicePanel;
+        private global::System.Windows.Forms.Panel updateDentalServicePanel;
     }
 }

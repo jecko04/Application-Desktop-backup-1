@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(setupOnlineBooking));
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle19 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle20 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             label40 = new Label();
@@ -80,6 +80,12 @@
             elipseControl1 = new ElipseToolDemo.ElipseControl();
             label5 = new Label();
             panel2 = new Panel();
+            borderLimit = new Panel();
+            panel8 = new Panel();
+            panel9 = new Panel();
+            panel10 = new Panel();
+            panel12 = new Panel();
+            txtLimit = new ComboBox();
             panel62 = new Panel();
             panel57 = new Panel();
             label15 = new Label();
@@ -135,12 +141,6 @@
             panel52 = new Panel();
             comboBox1 = new ComboBox();
             elipseControl2 = new ElipseToolDemo.ElipseControl();
-            borderLimit = new Panel();
-            panel8 = new Panel();
-            panel9 = new Panel();
-            panel10 = new Panel();
-            panel12 = new Panel();
-            txtLimit = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             borderDayofweek.SuspendLayout();
@@ -149,6 +149,7 @@
             borderBranch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)viewDentalServices).BeginInit();
             panel2.SuspendLayout();
+            borderLimit.SuspendLayout();
             boderZipCode.SuspendLayout();
             borderProvince.SuspendLayout();
             borderCity.SuspendLayout();
@@ -156,7 +157,6 @@
             borderStreet.SuspendLayout();
             borderNumber.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)viewDayTime).BeginInit();
-            borderLimit.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -197,7 +197,7 @@
             borderDayofweek.Controls.Add(panel37);
             borderDayofweek.Controls.Add(panel38);
             borderDayofweek.Controls.Add(txtDayofweek);
-            borderDayofweek.Location = new Point(25, 554);
+            borderDayofweek.Location = new Point(25, 105);
             borderDayofweek.Name = "borderDayofweek";
             borderDayofweek.Size = new Size(213, 24);
             borderDayofweek.TabIndex = 80;
@@ -258,7 +258,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Tahoma", 9.75F);
             label8.ForeColor = Color.DimGray;
-            label8.Location = new Point(26, 535);
+            label8.Location = new Point(26, 86);
             label8.Name = "label8";
             label8.Size = new Size(77, 16);
             label8.TabIndex = 79;
@@ -269,7 +269,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Tahoma", 9.75F);
             label1.ForeColor = Color.DimGray;
-            label1.Location = new Point(27, 58);
+            label1.Location = new Point(27, 402);
             label1.Name = "label1";
             label1.Size = new Size(95, 16);
             label1.TabIndex = 81;
@@ -284,7 +284,7 @@
             borderStartTime.Controls.Add(panel51);
             borderStartTime.Controls.Add(dtpStartTime);
             borderStartTime.Font = new Font("Tahoma", 9.75F);
-            borderStartTime.Location = new Point(262, 555);
+            borderStartTime.Location = new Point(262, 106);
             borderStartTime.Name = "borderStartTime";
             borderStartTime.Size = new Size(107, 23);
             borderStartTime.TabIndex = 85;
@@ -361,7 +361,7 @@
             borderEndtime.Controls.Add(panel34);
             borderEndtime.Controls.Add(dtpEndtime);
             borderEndtime.Font = new Font("Tahoma", 9.75F);
-            borderEndtime.Location = new Point(394, 554);
+            borderEndtime.Location = new Point(394, 105);
             borderEndtime.Name = "borderEndtime";
             borderEndtime.Size = new Size(107, 23);
             borderEndtime.TabIndex = 84;
@@ -434,7 +434,7 @@
             label18.AutoSize = true;
             label18.Font = new Font("Tahoma", 9.75F);
             label18.ForeColor = Color.DimGray;
-            label18.Location = new Point(394, 535);
+            label18.Location = new Point(394, 86);
             label18.Name = "label18";
             label18.Size = new Size(76, 16);
             label18.TabIndex = 83;
@@ -445,7 +445,7 @@
             label17.AutoSize = true;
             label17.Font = new Font("Tahoma", 9.75F);
             label17.ForeColor = Color.DimGray;
-            label17.Location = new Point(262, 534);
+            label17.Location = new Point(262, 85);
             label17.Name = "label17";
             label17.Size = new Size(83, 16);
             label17.TabIndex = 82;
@@ -458,7 +458,7 @@
             borderBranch.Controls.Add(panel5);
             borderBranch.Controls.Add(panel6);
             borderBranch.Controls.Add(txtBranch);
-            borderBranch.Location = new Point(26, 412);
+            borderBranch.Location = new Point(26, 754);
             borderBranch.Name = "borderBranch";
             borderBranch.Size = new Size(213, 24);
             borderBranch.TabIndex = 87;
@@ -519,7 +519,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Tahoma", 9.75F);
             label2.ForeColor = Color.DimGray;
-            label2.Location = new Point(27, 393);
+            label2.Location = new Point(27, 735);
             label2.Name = "label2";
             label2.Size = new Size(83, 16);
             label2.TabIndex = 86;
@@ -583,12 +583,12 @@
             viewDentalServices.AllowUserToDeleteRows = false;
             viewDentalServices.AllowUserToResizeColumns = false;
             viewDentalServices.AllowUserToResizeRows = false;
-            dataGridViewCellStyle11.BackColor = Color.FromArgb(224, 241, 255);
-            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle11.ForeColor = Color.Gray;
-            dataGridViewCellStyle11.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle11.SelectionForeColor = Color.FromArgb(52, 152, 219);
-            viewDentalServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(224, 241, 255);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Gray;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Gainsboro;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(52, 152, 219);
+            viewDentalServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             viewDentalServices.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             viewDentalServices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             viewDentalServices.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -596,39 +596,39 @@
             viewDentalServices.BorderStyle = BorderStyle.None;
             viewDentalServices.CellBorderStyle = DataGridViewCellBorderStyle.None;
             viewDentalServices.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle12.ForeColor = Color.White;
-            dataGridViewCellStyle12.Padding = new Padding(3);
-            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
-            viewDentalServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.Padding = new Padding(3);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            viewDentalServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             viewDentalServices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = SystemColors.Window;
-            dataGridViewCellStyle13.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle13.ForeColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle13.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle13.SelectionForeColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
-            viewDentalServices.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle3.SelectionBackColor = Color.Gainsboro;
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            viewDentalServices.DefaultCellStyle = dataGridViewCellStyle3;
             viewDentalServices.EnableHeadersVisualStyles = false;
-            viewDentalServices.Location = new Point(26, 78);
+            viewDentalServices.Location = new Point(26, 422);
             viewDentalServices.Margin = new Padding(0, 0, 10, 0);
             viewDentalServices.Name = "viewDentalServices";
             viewDentalServices.ReadOnly = true;
-            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = SystemColors.Control;
-            dataGridViewCellStyle14.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle14.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.False;
-            viewDentalServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.True;
-            viewDentalServices.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            viewDentalServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            viewDentalServices.RowsDefaultCellStyle = dataGridViewCellStyle5;
             viewDentalServices.RowTemplate.Height = 25;
             viewDentalServices.Size = new Size(922, 231);
             viewDentalServices.TabIndex = 94;
@@ -643,7 +643,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(14, 18);
+            label5.Location = new Point(14, 362);
             label5.Name = "label5";
             label5.Size = new Size(66, 19);
             label5.TabIndex = 95;
@@ -693,11 +693,74 @@
             panel2.TabIndex = 96;
             panel2.Paint += panel2_Paint;
             // 
+            // borderLimit
+            // 
+            borderLimit.Controls.Add(panel8);
+            borderLimit.Controls.Add(panel9);
+            borderLimit.Controls.Add(panel10);
+            borderLimit.Controls.Add(panel12);
+            borderLimit.Controls.Add(txtLimit);
+            borderLimit.Location = new Point(531, 105);
+            borderLimit.Name = "borderLimit";
+            borderLimit.Size = new Size(213, 24);
+            borderLimit.TabIndex = 81;
+            // 
+            // panel8
+            // 
+            panel8.BackColor = Color.FromArgb(93, 173, 226);
+            panel8.Dock = DockStyle.Right;
+            panel8.Location = new Point(212, 1);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(1, 22);
+            panel8.TabIndex = 3;
+            // 
+            // panel9
+            // 
+            panel9.BackColor = Color.FromArgb(93, 173, 226);
+            panel9.Dock = DockStyle.Bottom;
+            panel9.Location = new Point(1, 23);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(212, 1);
+            panel9.TabIndex = 2;
+            // 
+            // panel10
+            // 
+            panel10.BackColor = Color.FromArgb(93, 173, 226);
+            panel10.Dock = DockStyle.Top;
+            panel10.Location = new Point(1, 0);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(212, 1);
+            panel10.TabIndex = 1;
+            panel10.Paint += panel10_Paint;
+            // 
+            // panel12
+            // 
+            panel12.BackColor = Color.FromArgb(93, 173, 226);
+            panel12.Dock = DockStyle.Left;
+            panel12.Location = new Point(0, 0);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(1, 24);
+            panel12.TabIndex = 0;
+            // 
+            // txtLimit
+            // 
+            txtLimit.BackColor = SystemColors.InactiveBorder;
+            txtLimit.Dock = DockStyle.Fill;
+            txtLimit.DropDownHeight = 75;
+            txtLimit.Font = new Font("Tahoma", 9.75F);
+            txtLimit.FormattingEnabled = true;
+            txtLimit.IntegralHeight = false;
+            txtLimit.ItemHeight = 16;
+            txtLimit.Location = new Point(0, 0);
+            txtLimit.Name = "txtLimit";
+            txtLimit.Size = new Size(213, 24);
+            txtLimit.TabIndex = 56;
+            // 
             // panel62
             // 
             panel62.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel62.BackColor = Color.DimGray;
-            panel62.Location = new Point(25, 470);
+            panel62.Location = new Point(26, 675);
             panel62.Name = "panel62";
             panel62.Size = new Size(923, 1);
             panel62.TabIndex = 114;
@@ -716,7 +779,7 @@
             label15.AutoSize = true;
             label15.Font = new Font("Tahoma", 9.75F);
             label15.ForeColor = Color.DimGray;
-            label15.Location = new Point(531, 534);
+            label15.Location = new Point(531, 85);
             label15.Name = "label15";
             label15.Size = new Size(154, 16);
             label15.TabIndex = 111;
@@ -727,7 +790,7 @@
             label14.AutoSize = true;
             label14.Font = new Font("Tahoma", 9.75F);
             label14.ForeColor = Color.DimGray;
-            label14.Location = new Point(786, 393);
+            label14.Location = new Point(786, 735);
             label14.Name = "label14";
             label14.Size = new Size(55, 16);
             label14.TabIndex = 110;
@@ -740,7 +803,7 @@
             boderZipCode.Controls.Add(panel60);
             boderZipCode.Controls.Add(panel61);
             boderZipCode.Controls.Add(txtZipCode);
-            boderZipCode.Location = new Point(787, 411);
+            boderZipCode.Location = new Point(787, 753);
             boderZipCode.Name = "boderZipCode";
             boderZipCode.Size = new Size(59, 25);
             boderZipCode.TabIndex = 109;
@@ -797,7 +860,7 @@
             label13.AutoSize = true;
             label13.Font = new Font("Tahoma", 9.75F);
             label13.ForeColor = Color.DimGray;
-            label13.Location = new Point(671, 393);
+            label13.Location = new Point(671, 735);
             label13.Name = "label13";
             label13.Size = new Size(48, 16);
             label13.TabIndex = 108;
@@ -810,7 +873,7 @@
             borderProvince.Controls.Add(panel55);
             borderProvince.Controls.Add(panel56);
             borderProvince.Controls.Add(txtProvince);
-            borderProvince.Location = new Point(672, 411);
+            borderProvince.Location = new Point(672, 753);
             borderProvince.Name = "borderProvince";
             borderProvince.Size = new Size(108, 25);
             borderProvince.TabIndex = 107;
@@ -867,7 +930,7 @@
             label12.AutoSize = true;
             label12.Font = new Font("Tahoma", 9.75F);
             label12.ForeColor = Color.DimGray;
-            label12.Location = new Point(556, 393);
+            label12.Location = new Point(556, 735);
             label12.Name = "label12";
             label12.Size = new Size(28, 16);
             label12.TabIndex = 106;
@@ -880,7 +943,7 @@
             borderCity.Controls.Add(panel47);
             borderCity.Controls.Add(panel48);
             borderCity.Controls.Add(txtCity);
-            borderCity.Location = new Point(557, 411);
+            borderCity.Location = new Point(557, 753);
             borderCity.Name = "borderCity";
             borderCity.Size = new Size(108, 25);
             borderCity.TabIndex = 105;
@@ -937,7 +1000,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Tahoma", 9.75F);
             label11.ForeColor = Color.DimGray;
-            label11.Location = new Point(441, 393);
+            label11.Location = new Point(441, 735);
             label11.Name = "label11";
             label11.Size = new Size(60, 16);
             label11.TabIndex = 104;
@@ -950,7 +1013,7 @@
             borderBarangay.Controls.Add(panel41);
             borderBarangay.Controls.Add(panel42);
             borderBarangay.Controls.Add(txtBarangay);
-            borderBarangay.Location = new Point(442, 411);
+            borderBarangay.Location = new Point(442, 753);
             borderBarangay.Name = "borderBarangay";
             borderBarangay.Size = new Size(108, 25);
             borderBarangay.TabIndex = 103;
@@ -1007,7 +1070,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Tahoma", 9.75F);
             label10.ForeColor = Color.DimGray;
-            label10.Location = new Point(327, 393);
+            label10.Location = new Point(327, 735);
             label10.Name = "label10";
             label10.Size = new Size(42, 16);
             label10.TabIndex = 102;
@@ -1020,7 +1083,7 @@
             borderStreet.Controls.Add(panel31);
             borderStreet.Controls.Add(panel32);
             borderStreet.Controls.Add(txtStreet);
-            borderStreet.Location = new Point(328, 411);
+            borderStreet.Location = new Point(328, 753);
             borderStreet.Name = "borderStreet";
             borderStreet.Size = new Size(108, 25);
             borderStreet.TabIndex = 101;
@@ -1077,7 +1140,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Tahoma", 9.75F);
             label9.ForeColor = Color.DimGray;
-            label9.Location = new Point(262, 393);
+            label9.Location = new Point(262, 735);
             label9.Name = "label9";
             label9.Size = new Size(16, 16);
             label9.TabIndex = 100;
@@ -1090,7 +1153,7 @@
             borderNumber.Controls.Add(panel25);
             borderNumber.Controls.Add(panel26);
             borderNumber.Controls.Add(txtNumber);
-            borderNumber.Location = new Point(263, 411);
+            borderNumber.Location = new Point(263, 753);
             borderNumber.Name = "borderNumber";
             borderNumber.Size = new Size(59, 25);
             borderNumber.TabIndex = 92;
@@ -1146,7 +1209,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(14, 500);
+            label7.Location = new Point(14, 51);
             label7.Name = "label7";
             label7.Size = new Size(303, 19);
             label7.TabIndex = 99;
@@ -1158,12 +1221,12 @@
             viewDayTime.AllowUserToDeleteRows = false;
             viewDayTime.AllowUserToResizeColumns = false;
             viewDayTime.AllowUserToResizeRows = false;
-            dataGridViewCellStyle16.BackColor = Color.FromArgb(224, 241, 255);
-            dataGridViewCellStyle16.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle16.ForeColor = Color.DarkGray;
-            dataGridViewCellStyle16.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle16.SelectionForeColor = Color.FromArgb(52, 152, 219);
-            viewDayTime.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(224, 241, 255);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = Color.DarkGray;
+            dataGridViewCellStyle6.SelectionBackColor = Color.Gainsboro;
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(52, 152, 219);
+            viewDayTime.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             viewDayTime.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             viewDayTime.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             viewDayTime.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -1171,41 +1234,41 @@
             viewDayTime.BorderStyle = BorderStyle.None;
             viewDayTime.CellBorderStyle = DataGridViewCellBorderStyle.None;
             viewDayTime.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle17.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle17.ForeColor = Color.White;
-            dataGridViewCellStyle17.Padding = new Padding(3);
-            dataGridViewCellStyle17.SelectionBackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle17.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.True;
-            viewDayTime.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = Color.White;
+            dataGridViewCellStyle7.Padding = new Padding(3);
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            viewDayTime.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             viewDayTime.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = SystemColors.Window;
-            dataGridViewCellStyle18.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle18.ForeColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle18.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle18.SelectionForeColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.True;
-            viewDayTime.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle8.ForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle8.SelectionBackColor = Color.Gainsboro;
+            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            viewDayTime.DefaultCellStyle = dataGridViewCellStyle8;
             viewDayTime.EnableHeadersVisualStyles = false;
-            viewDayTime.Location = new Point(25, 587);
+            viewDayTime.Location = new Point(25, 138);
             viewDayTime.Margin = new Padding(0, 0, 10, 0);
             viewDayTime.Name = "viewDayTime";
             viewDayTime.ReadOnly = true;
-            dataGridViewCellStyle19.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = SystemColors.Control;
-            dataGridViewCellStyle19.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle19.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = DataGridViewTriState.False;
-            viewDayTime.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
-            dataGridViewCellStyle20.WrapMode = DataGridViewTriState.True;
-            viewDayTime.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = SystemColors.Control;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            viewDayTime.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            viewDayTime.RowsDefaultCellStyle = dataGridViewCellStyle10;
             viewDayTime.RowTemplate.Height = 25;
-            viewDayTime.Size = new Size(922, 143);
+            viewDayTime.Size = new Size(922, 182);
             viewDayTime.TabIndex = 98;
             viewDayTime.CellFormatting += viewDayTime_CellFormatting;
             // 
@@ -1213,7 +1276,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(14, 361);
+            label6.Location = new Point(14, 703);
             label6.Name = "label6";
             label6.Size = new Size(132, 19);
             label6.TabIndex = 97;
@@ -1221,7 +1284,7 @@
             // 
             // panel11
             // 
-            panel11.Location = new Point(1050, 564);
+            panel11.Location = new Point(996, 614);
             panel11.Name = "panel11";
             panel11.Size = new Size(25, 242);
             panel11.TabIndex = 96;
@@ -1281,69 +1344,6 @@
             elipseControl2.CornerRadius = 15;
             elipseControl2.TargetControl = viewDayTime;
             // 
-            // borderLimit
-            // 
-            borderLimit.Controls.Add(panel8);
-            borderLimit.Controls.Add(panel9);
-            borderLimit.Controls.Add(panel10);
-            borderLimit.Controls.Add(panel12);
-            borderLimit.Controls.Add(txtLimit);
-            borderLimit.Location = new Point(531, 554);
-            borderLimit.Name = "borderLimit";
-            borderLimit.Size = new Size(213, 24);
-            borderLimit.TabIndex = 81;
-            // 
-            // panel8
-            // 
-            panel8.BackColor = Color.FromArgb(93, 173, 226);
-            panel8.Dock = DockStyle.Right;
-            panel8.Location = new Point(212, 1);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(1, 22);
-            panel8.TabIndex = 3;
-            // 
-            // panel9
-            // 
-            panel9.BackColor = Color.FromArgb(93, 173, 226);
-            panel9.Dock = DockStyle.Bottom;
-            panel9.Location = new Point(1, 23);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(212, 1);
-            panel9.TabIndex = 2;
-            // 
-            // panel10
-            // 
-            panel10.BackColor = Color.FromArgb(93, 173, 226);
-            panel10.Dock = DockStyle.Top;
-            panel10.Location = new Point(1, 0);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(212, 1);
-            panel10.TabIndex = 1;
-            panel10.Paint += panel10_Paint;
-            // 
-            // panel12
-            // 
-            panel12.BackColor = Color.FromArgb(93, 173, 226);
-            panel12.Dock = DockStyle.Left;
-            panel12.Location = new Point(0, 0);
-            panel12.Name = "panel12";
-            panel12.Size = new Size(1, 24);
-            panel12.TabIndex = 0;
-            // 
-            // txtLimit
-            // 
-            txtLimit.BackColor = SystemColors.InactiveBorder;
-            txtLimit.Dock = DockStyle.Fill;
-            txtLimit.DropDownHeight = 75;
-            txtLimit.Font = new Font("Tahoma", 9.75F);
-            txtLimit.FormattingEnabled = true;
-            txtLimit.IntegralHeight = false;
-            txtLimit.ItemHeight = 16;
-            txtLimit.Location = new Point(0, 0);
-            txtLimit.Name = "txtLimit";
-            txtLimit.Size = new Size(213, 24);
-            txtLimit.TabIndex = 56;
-            // 
             // setupOnlineBooking
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1365,6 +1365,7 @@
             ((System.ComponentModel.ISupportInitialize)viewDentalServices).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            borderLimit.ResumeLayout(false);
             boderZipCode.ResumeLayout(false);
             boderZipCode.PerformLayout();
             borderProvince.ResumeLayout(false);
@@ -1378,7 +1379,6 @@
             borderNumber.ResumeLayout(false);
             borderNumber.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)viewDayTime).EndInit();
-            borderLimit.ResumeLayout(false);
             ResumeLayout(false);
         }
 

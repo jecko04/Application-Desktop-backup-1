@@ -29,6 +29,8 @@ namespace Application_Desktop.Admin_Views
 
             ElipseManager elipseManagerPanel = new ElipseManager(15);
             elipseManagerPanel.ApplyElipseToPanel(PanelOfficeHours);
+            elipseManagerPanel.ApplyElipseToPanel(dentalServicePanel);
+            elipseManagerPanel.ApplyElipseToPanel(updateDentalServicePanel);
 
         }
 
@@ -1021,6 +1023,147 @@ namespace Application_Desktop.Admin_Views
             {
                 textBox.Text = "₱0.00";
             }
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel117_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void label39_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void panel112_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void label38_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void panel102_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void panel107_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void sundayClose_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label36_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void panel92_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void panel97_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void saturdayClose_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label33_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void panel82_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void panel87_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void fridayClose_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label30_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void panel72_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void panel77_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void thursdayClose_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label27_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void panel62_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void panel67_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void wednesdayClose_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label24_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void panel52_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void panel57_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void tuesdayClose_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void panel39_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void panel14_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void mondayClose_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void panel122_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -283,15 +283,6 @@ namespace Application_Desktop.Controller
             }
         }
 
-        public void LoadStatus(ComboBox status)
-        {
-            status.Items.Clear();
-            status.Items.Add("Available");
-            status.Items.Add("Unavailable");
-
-            status.SelectedItem = "Available";
-        }
-
         public void LoadMaxAppointment(ComboBox max)
         {
             int[] value = {
