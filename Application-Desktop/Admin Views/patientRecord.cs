@@ -550,53 +550,60 @@ namespace Application_Desktop.Admin_Views
         public void ExportDataTableToCsv(DataTable dataTable, string filePath)
         {
             StringBuilder csvBuilder = new StringBuilder();
-
-            // Create header row
-            var columnNames = dataTable.Columns.Cast<DataColumn>()
-                .Select(column => $"\"{column.ColumnName}\"");
+            var columnNames = dataTable.Columns.Cast<DataColumn>().Select(column => $"\"{column.ColumnName}\"");
             csvBuilder.AppendLine(string.Join(",", columnNames));
 
-            // Iterate through each DataRow in the DataTable
             foreach (DataRow row in dataTable.Rows)
             {
-                // Prepare fields, handling null values and escaping quotes
                 var fields = row.ItemArray.Select(field =>
-                    field == DBNull.Value ? "\"\"" : $"\"{field.ToString().Replace("\"", "\"\"")}\""
-                );
+                {
+                    // Check if the field is a DateTime
+                    if (field is DateTime dateTime)
+                    {
+                        // Format the date as a string, e.g., "MM/dd/yyyy"
+                        return $"\"{dateTime.ToString("MM/dd/yyyy")}\"";
+                    }
+                    return $"\"{field.ToString().Replace("\"", "\"\"")}\"";
+                });
+
                 csvBuilder.AppendLine(string.Join(",", fields));
             }
 
-            // Write the CSV string to the specified file path with UTF-8 encoding
-            File.WriteAllText(filePath, csvBuilder.ToString(), Encoding.UTF8);
+            File.WriteAllText(filePath, csvBuilder.ToString());
         }
 
         public void ExportDataTableToExcel(DataTable dataTable, string filePath)
         {
             OfficeOpenXml.ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
 
-            try
+            using (ExcelPackage excelPackage = new ExcelPackage())
             {
-                using (ExcelPackage excelPackage = new ExcelPackage())
+                var worksheet = excelPackage.Workbook.Worksheets.Add("Patient Data");
+
+                // Load the DataTable into the worksheet, starting from cell A1
+                worksheet.Cells["A1"].LoadFromDataTable(dataTable, true);
+
+                // Format DateTime columns (example: assuming the date columns are known)
+                foreach (DataColumn column in dataTable.Columns)
                 {
-                    var worksheet = excelPackage.Workbook.Worksheets.Add("Patient Data");
-
-                    // Load the DataTable into the worksheet, starting from cell A1
-                    worksheet.Cells["A1"].LoadFromDataTable(dataTable, true);
-
-                    // Optional: Adjust column widths
-                    for (int i = 1; i <= dataTable.Columns.Count; i++)
+                    if (column.DataType == typeof(DateTime))
                     {
-                        worksheet.Column(i).AutoFit();
+                        // Assuming dates start from the second row (first is the header)
+                        var startRow = 2; 
+                        var endRow = dataTable.Rows.Count + 1; // +1 for header
+                        worksheet.Cells[startRow, column.Ordinal + 1, endRow, column.Ordinal + 1].Style.Numberformat.Format = "MM/dd/yyyy"; // or another desired format
                     }
-
-                    // Save to file
-                    FileInfo file = new FileInfo(filePath);
-                    excelPackage.SaveAs(file);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred while exporting data: {ex.Message}", "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Optional: Adjust column widths
+                for (int i = 1; i <= dataTable.Columns.Count; i++)
+                {
+                    worksheet.Column(i).AutoFit();
+                }
+
+                // Save to file
+                FileInfo file = new FileInfo(filePath);
+                excelPackage.SaveAs(file);
             }
         }
 

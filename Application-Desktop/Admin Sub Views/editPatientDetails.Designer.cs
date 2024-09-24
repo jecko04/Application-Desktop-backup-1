@@ -1004,7 +1004,7 @@
             btnUpdate.FlatStyle = FlatStyle.Flat;
             btnUpdate.Font = new Font("Microsoft Sans Serif", 9F);
             btnUpdate.ForeColor = SystemColors.ButtonFace;
-            btnUpdate.Location = new Point(774, 410);
+            btnUpdate.Location = new Point(765, 410);
             btnUpdate.Margin = new Padding(0, 0, 0, 1);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(85, 24);
@@ -1468,7 +1468,7 @@
             dentalPatientTab.Location = new Point(4, 28);
             dentalPatientTab.Name = "dentalPatientTab";
             dentalPatientTab.Padding = new Padding(3);
-            dentalPatientTab.Size = new Size(847, 361);
+            dentalPatientTab.Size = new Size(852, 361);
             dentalPatientTab.TabIndex = 0;
             dentalPatientTab.Text = "Dental Patient Details";
             // 
@@ -1686,13 +1686,13 @@
             dentHealthTab.Controls.Add(tapPage3);
             dentHealthTab.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dentHealthTab.ItemSize = new Size(87, 24);
-            dentHealthTab.Location = new Point(8, 5);
+            dentHealthTab.Location = new Point(3, 5);
             dentHealthTab.Multiline = true;
             dentHealthTab.Name = "dentHealthTab";
             dentHealthTab.Padding = new Point(10, 4);
             dentHealthTab.RightToLeft = RightToLeft.No;
             dentHealthTab.SelectedIndex = 0;
-            dentHealthTab.Size = new Size(855, 393);
+            dentHealthTab.Size = new Size(860, 393);
             dentHealthTab.TabIndex = 123;
             // 
             // genHealthTab
@@ -1858,7 +1858,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(875, 457);
+            ClientSize = new Size(866, 457);
             Controls.Add(btnClose);
             Controls.Add(btnUpdate);
             Controls.Add(dentHealthTab);
