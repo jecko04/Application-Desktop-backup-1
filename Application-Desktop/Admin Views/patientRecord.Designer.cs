@@ -51,18 +51,21 @@
             tabPage4 = new TabPage();
             viewPatientRecord = new DataGridView();
             tabPage2 = new TabPage();
-            tabPage3 = new TabPage();
-            elipseControl1 = new ElipseToolDemo.ElipseControl();
             viewGenHealth = new DataGridView();
+            tabPage3 = new TabPage();
             viewDentHealth = new DataGridView();
+            elipseControl1 = new ElipseToolDemo.ElipseControl();
+            elipseControl2 = new ElipseToolDemo.ElipseControl();
+            elipseControl3 = new ElipseToolDemo.ElipseControl();
+            btnExport = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl1.SuspendLayout();
             tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)viewPatientRecord).BeginInit();
             tabPage2.SuspendLayout();
-            tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)viewGenHealth).BeginInit();
+            tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)viewDentHealth).BeginInit();
             SuspendLayout();
             // 
@@ -128,6 +131,7 @@
             btnRefresh.TabIndex = 92;
             btnRefresh.TextAlign = ContentAlignment.MiddleLeft;
             btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // btnDelete
             // 
@@ -205,7 +209,7 @@
             tabControl1.Name = "tabControl1";
             tabControl1.Padding = new Point(15, 3);
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(981, 488);
+            tabControl1.Size = new Size(981, 377);
             tabControl1.TabIndex = 24;
             // 
             // tabPage4
@@ -215,7 +219,7 @@
             tabPage4.Location = new Point(4, 28);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(973, 456);
+            tabPage4.Size = new Size(973, 345);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Patient Record";
             tabPage4.UseVisualStyleBackColor = true;
@@ -241,7 +245,7 @@
             viewPatientRecord.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle2.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.NullValue = "N/A";
             dataGridViewCellStyle2.Padding = new Padding(3);
@@ -252,7 +256,7 @@
             viewPatientRecord.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle3.ForeColor = Color.Gray;
             dataGridViewCellStyle3.NullValue = "N/A";
             dataGridViewCellStyle3.SelectionBackColor = Color.Gainsboro;
@@ -263,9 +267,11 @@
             viewPatientRecord.Location = new Point(7, 13);
             viewPatientRecord.Margin = new Padding(0, 0, 10, 0);
             viewPatientRecord.Name = "viewPatientRecord";
+            viewPatientRecord.ReadOnly = true;
             viewPatientRecord.RowTemplate.Height = 25;
             viewPatientRecord.Size = new Size(959, 310);
             viewPatientRecord.TabIndex = 22;
+            viewPatientRecord.CellContentClick += viewPatientRecord_CellContentClick;
             // 
             // tabPage2
             // 
@@ -274,27 +280,10 @@
             tabPage2.Location = new Point(4, 28);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(973, 456);
+            tabPage2.Size = new Size(973, 345);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "General Health Information";
             tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            tabPage3.Controls.Add(viewDentHealth);
-            tabPage3.ForeColor = Color.Gray;
-            tabPage3.Location = new Point(4, 28);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(973, 456);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "Dental Health Information";
-            tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // elipseControl1
-            // 
-            elipseControl1.CornerRadius = 15;
-            elipseControl1.TargetControl = viewPatientRecord;
             // 
             // viewGenHealth
             // 
@@ -338,9 +327,22 @@
             viewGenHealth.Location = new Point(7, 13);
             viewGenHealth.Margin = new Padding(0, 0, 10, 0);
             viewGenHealth.Name = "viewGenHealth";
+            viewGenHealth.ReadOnly = true;
             viewGenHealth.RowTemplate.Height = 25;
             viewGenHealth.Size = new Size(959, 310);
             viewGenHealth.TabIndex = 23;
+            // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(viewDentHealth);
+            tabPage3.ForeColor = Color.Gray;
+            tabPage3.Location = new Point(4, 28);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(973, 345);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Dental Health Information";
+            tabPage3.UseVisualStyleBackColor = true;
             // 
             // viewDentHealth
             // 
@@ -384,15 +386,49 @@
             viewDentHealth.Location = new Point(7, 13);
             viewDentHealth.Margin = new Padding(0, 0, 10, 0);
             viewDentHealth.Name = "viewDentHealth";
+            viewDentHealth.ReadOnly = true;
             viewDentHealth.RowTemplate.Height = 25;
             viewDentHealth.Size = new Size(959, 310);
             viewDentHealth.TabIndex = 23;
+            // 
+            // elipseControl1
+            // 
+            elipseControl1.CornerRadius = 15;
+            elipseControl1.TargetControl = viewPatientRecord;
+            // 
+            // elipseControl2
+            // 
+            elipseControl2.CornerRadius = 15;
+            elipseControl2.TargetControl = viewGenHealth;
+            // 
+            // elipseControl3
+            // 
+            elipseControl3.CornerRadius = 15;
+            elipseControl3.TargetControl = viewDentHealth;
+            // 
+            // btnExport
+            // 
+            btnExport.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnExport.BackColor = Color.FromArgb(52, 152, 219);
+            btnExport.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnExport.FlatStyle = FlatStyle.Flat;
+            btnExport.Font = new Font("Microsoft Sans Serif", 9F);
+            btnExport.ForeColor = SystemColors.ButtonFace;
+            btnExport.Location = new Point(991, 98);
+            btnExport.Margin = new Padding(0, 0, 0, 1);
+            btnExport.Name = "btnExport";
+            btnExport.Size = new Size(85, 24);
+            btnExport.TabIndex = 25;
+            btnExport.Text = "Export ";
+            btnExport.UseVisualStyleBackColor = false;
+            btnExport.Click += btnExport_Click;
             // 
             // patientRecord
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1085, 621);
+            Controls.Add(btnExport);
             Controls.Add(tabControl1);
             Controls.Add(btnCreate);
             Controls.Add(panel1);
@@ -407,8 +443,8 @@
             tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)viewPatientRecord).EndInit();
             tabPage2.ResumeLayout(false);
-            tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)viewGenHealth).EndInit();
+            tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)viewDentHealth).EndInit();
             ResumeLayout(false);
         }
@@ -432,5 +468,8 @@
         private ElipseToolDemo.ElipseControl elipseControl1;
         private DataGridView viewGenHealth;
         private DataGridView viewDentHealth;
+        private ElipseToolDemo.ElipseControl elipseControl2;
+        private ElipseToolDemo.ElipseControl elipseControl3;
+        private Button btnExport;
     }
 }
