@@ -151,6 +151,7 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel2.AutoScroll = true;
+            panel2.BackColor = Color.WhiteSmoke;
             panel2.Controls.Add(borderEmployees);
             panel2.Controls.Add(label8);
             panel2.Controls.Add(borderRoles);

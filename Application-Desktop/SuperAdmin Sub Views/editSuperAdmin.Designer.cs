@@ -102,7 +102,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Tahoma", 9.75F);
             label1.ForeColor = Color.White;
             label1.Location = new Point(33, 10);
             label1.Name = "label1";
@@ -136,7 +136,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Tahoma", 9.75F);
             label2.ForeColor = Color.DimGray;
             label2.Location = new Point(25, 31);
             label2.Name = "label2";
@@ -148,7 +148,7 @@
             // 
             txtFirstName.BorderStyle = BorderStyle.FixedSingle;
             txtFirstName.Dock = DockStyle.Fill;
-            txtFirstName.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtFirstName.Font = new Font("Segoe UI", 9.75F);
             txtFirstName.Location = new Point(1, 0);
             txtFirstName.Name = "txtFirstName";
             txtFirstName.PlaceholderText = " First name";
@@ -159,7 +159,7 @@
             // 
             txtLastName.BorderStyle = BorderStyle.FixedSingle;
             txtLastName.Dock = DockStyle.Fill;
-            txtLastName.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtLastName.Font = new Font("Segoe UI", 9.75F);
             txtLastName.Location = new Point(0, 0);
             txtLastName.Name = "txtLastName";
             txtLastName.PlaceholderText = " Last name";
@@ -169,7 +169,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Font = new Font("Tahoma", 9.75F);
             label3.ForeColor = Color.DimGray;
             label3.Location = new Point(204, 31);
             label3.Name = "label3";
@@ -181,7 +181,7 @@
             // 
             txtEmail.BorderStyle = BorderStyle.FixedSingle;
             txtEmail.Dock = DockStyle.Fill;
-            txtEmail.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtEmail.Font = new Font("Segoe UI", 9.75F);
             txtEmail.Location = new Point(0, 0);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = " Email";
@@ -191,7 +191,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Font = new Font("Tahoma", 9.75F);
             label4.ForeColor = Color.DimGray;
             label4.Location = new Point(390, 31);
             label4.Name = "label4";
@@ -213,7 +213,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Font = new Font("Tahoma", 9.75F);
             label5.ForeColor = Color.DimGray;
             label5.Location = new Point(754, 29);
             label5.Name = "label5";
@@ -224,7 +224,7 @@
             // txtRoles
             // 
             txtRoles.Dock = DockStyle.Fill;
-            txtRoles.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtRoles.Font = new Font("Segoe UI", 9.75F);
             txtRoles.FormattingEnabled = true;
             txtRoles.Location = new Point(0, 0);
             txtRoles.Name = "txtRoles";
@@ -236,7 +236,7 @@
             button1.BackColor = Color.FromArgb(231, 76, 60);
             button1.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Font = new Font("Microsoft Sans Serif", 9F);
             button1.ForeColor = SystemColors.ButtonFace;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
             button1.Location = new Point(822, 107);
@@ -253,7 +253,7 @@
             btnUpdate.BackColor = Color.FromArgb(102, 204, 102);
             btnUpdate.FlatAppearance.BorderColor = Color.FromArgb(102, 204, 102);
             btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnUpdate.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnUpdate.Font = new Font("Microsoft Sans Serif", 9F);
             btnUpdate.ForeColor = SystemColors.ButtonFace;
             btnUpdate.ImageAlign = ContentAlignment.MiddleLeft;
             btnUpdate.Location = new Point(881, 107);
@@ -278,6 +278,7 @@
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel2.BackColor = Color.WhiteSmoke;
             panel2.Controls.Add(borderRole);
             panel2.Controls.Add(borderEmail);
             panel2.Controls.Add(borderLast);
@@ -513,7 +514,7 @@
             ClientSize = new Size(977, 193);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Tahoma", 9.75F);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "editSuperAdmin";

@@ -41,7 +41,6 @@
             appointmentContainer = new FlowLayoutPanel();
             panel19 = new Panel();
             btnAppointment = new Button();
-            panel20 = new Panel();
             panel21 = new Panel();
             btnPending = new Button();
             panel22 = new Panel();
@@ -50,13 +49,11 @@
             btnCancelAppointment = new Button();
             recordContainer = new FlowLayoutPanel();
             panel13 = new Panel();
-            panel23 = new Panel();
             btnPatientRecord = new Button();
             panel5 = new Panel();
             btnViewPatient = new Button();
             setupContainer = new FlowLayoutPanel();
             panel3 = new Panel();
-            panel17 = new Panel();
             btnSetup = new Button();
             panel15 = new Panel();
             btnCategory = new Button();
@@ -115,7 +112,7 @@
             sidebarContainer.Location = new Point(0, 0);
             sidebarContainer.Margin = new Padding(0);
             sidebarContainer.Name = "sidebarContainer";
-            sidebarContainer.Size = new Size(213, 690);
+            sidebarContainer.Size = new Size(185, 690);
             sidebarContainer.TabIndex = 2;
             // 
             // flowLayoutPanel2
@@ -161,7 +158,7 @@
             panel2.Location = new Point(0, 2);
             panel2.Margin = new Padding(0, 2, 0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(210, 34);
+            panel2.Size = new Size(182, 34);
             panel2.TabIndex = 2;
             // 
             // btnDashboard
@@ -177,7 +174,7 @@
             btnDashboard.Location = new Point(0, 0);
             btnDashboard.Margin = new Padding(0);
             btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(210, 34);
+            btnDashboard.Size = new Size(182, 34);
             btnDashboard.TabIndex = 3;
             btnDashboard.Text = "              Dashboard";
             btnDashboard.TextAlign = ContentAlignment.MiddleLeft;
@@ -190,7 +187,7 @@
             panel4.Location = new Point(0, 38);
             panel4.Margin = new Padding(0, 2, 0, 0);
             panel4.Name = "panel4";
-            panel4.Size = new Size(213, 34);
+            panel4.Size = new Size(185, 34);
             panel4.TabIndex = 4;
             // 
             // btnEmployee
@@ -205,7 +202,7 @@
             btnEmployee.ImageAlign = ContentAlignment.MiddleLeft;
             btnEmployee.Location = new Point(0, 0);
             btnEmployee.Name = "btnEmployee";
-            btnEmployee.Size = new Size(213, 34);
+            btnEmployee.Size = new Size(185, 34);
             btnEmployee.TabIndex = 3;
             btnEmployee.Text = "              Employee Profile";
             btnEmployee.TextAlign = ContentAlignment.MiddleLeft;
@@ -222,17 +219,16 @@
             appointmentContainer.Location = new Point(0, 74);
             appointmentContainer.Margin = new Padding(0, 2, 8, 0);
             appointmentContainer.Name = "appointmentContainer";
-            appointmentContainer.Size = new Size(213, 34);
+            appointmentContainer.Size = new Size(185, 34);
             appointmentContainer.TabIndex = 9;
             // 
             // panel19
             // 
             panel19.Controls.Add(btnAppointment);
-            panel19.Controls.Add(panel20);
             panel19.Location = new Point(0, 0);
             panel19.Margin = new Padding(0);
             panel19.Name = "panel19";
-            panel19.Size = new Size(213, 34);
+            panel19.Size = new Size(185, 34);
             panel19.TabIndex = 3;
             // 
             // btnAppointment
@@ -251,21 +247,12 @@
             btnAppointment.Name = "btnAppointment";
             btnAppointment.Padding = new Padding(0, 0, 15, 0);
             btnAppointment.RightToLeft = RightToLeft.No;
-            btnAppointment.Size = new Size(213, 33);
+            btnAppointment.Size = new Size(185, 34);
             btnAppointment.TabIndex = 3;
             btnAppointment.Text = "              Appointment";
             btnAppointment.TextAlign = ContentAlignment.MiddleLeft;
             btnAppointment.UseVisualStyleBackColor = false;
             btnAppointment.Click += btnAppointment_Click;
-            // 
-            // panel20
-            // 
-            panel20.BackColor = Color.White;
-            panel20.Dock = DockStyle.Bottom;
-            panel20.Location = new Point(0, 33);
-            panel20.Name = "panel20";
-            panel20.Size = new Size(213, 1);
-            panel20.TabIndex = 10;
             // 
             // panel21
             // 
@@ -362,27 +349,17 @@
             recordContainer.Location = new Point(0, 110);
             recordContainer.Margin = new Padding(0, 2, 0, 0);
             recordContainer.Name = "recordContainer";
-            recordContainer.Size = new Size(213, 34);
+            recordContainer.Size = new Size(185, 34);
             recordContainer.TabIndex = 9;
             // 
             // panel13
             // 
-            panel13.Controls.Add(panel23);
             panel13.Controls.Add(btnPatientRecord);
             panel13.Location = new Point(0, 0);
             panel13.Margin = new Padding(0);
             panel13.Name = "panel13";
-            panel13.Size = new Size(213, 34);
+            panel13.Size = new Size(185, 34);
             panel13.TabIndex = 11;
-            // 
-            // panel23
-            // 
-            panel23.BackColor = Color.White;
-            panel23.Dock = DockStyle.Bottom;
-            panel23.Location = new Point(0, 33);
-            panel23.Name = "panel23";
-            panel23.Size = new Size(213, 1);
-            panel23.TabIndex = 10;
             // 
             // btnPatientRecord
             // 
@@ -397,7 +374,7 @@
             btnPatientRecord.Location = new Point(0, 0);
             btnPatientRecord.Margin = new Padding(0);
             btnPatientRecord.Name = "btnPatientRecord";
-            btnPatientRecord.Size = new Size(213, 34);
+            btnPatientRecord.Size = new Size(185, 34);
             btnPatientRecord.TabIndex = 3;
             btnPatientRecord.Text = "              Patient Records";
             btnPatientRecord.TextAlign = ContentAlignment.MiddleLeft;
@@ -441,27 +418,17 @@
             setupContainer.Location = new Point(0, 146);
             setupContainer.Margin = new Padding(0, 2, 0, 0);
             setupContainer.Name = "setupContainer";
-            setupContainer.Size = new Size(213, 34);
+            setupContainer.Size = new Size(185, 34);
             setupContainer.TabIndex = 9;
             // 
             // panel3
             // 
-            panel3.Controls.Add(panel17);
             panel3.Controls.Add(btnSetup);
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(213, 34);
+            panel3.Size = new Size(185, 34);
             panel3.TabIndex = 3;
-            // 
-            // panel17
-            // 
-            panel17.BackColor = Color.White;
-            panel17.Dock = DockStyle.Bottom;
-            panel17.Location = new Point(0, 33);
-            panel17.Name = "panel17";
-            panel17.Size = new Size(213, 1);
-            panel17.TabIndex = 10;
             // 
             // btnSetup
             // 
@@ -476,9 +443,9 @@
             btnSetup.Location = new Point(0, 0);
             btnSetup.Margin = new Padding(0);
             btnSetup.Name = "btnSetup";
-            btnSetup.Size = new Size(213, 34);
+            btnSetup.Size = new Size(185, 34);
             btnSetup.TabIndex = 3;
-            btnSetup.Text = "              Services ";
+            btnSetup.Text = "              Setup Services ";
             btnSetup.TextAlign = ContentAlignment.MiddleLeft;
             btnSetup.UseVisualStyleBackColor = false;
             btnSetup.Click += btnSetup_Click;
@@ -550,7 +517,7 @@
             menuContainer.Location = new Point(0, 182);
             menuContainer.Margin = new Padding(0, 2, 0, 0);
             menuContainer.Name = "menuContainer";
-            menuContainer.Size = new Size(213, 34);
+            menuContainer.Size = new Size(185, 34);
             menuContainer.TabIndex = 8;
             // 
             // panel9
@@ -560,7 +527,7 @@
             panel9.Location = new Point(0, 0);
             panel9.Margin = new Padding(0);
             panel9.Name = "panel9";
-            panel9.Size = new Size(213, 34);
+            panel9.Size = new Size(185, 34);
             panel9.TabIndex = 3;
             // 
             // btnMenu
@@ -576,7 +543,7 @@
             btnMenu.Location = new Point(0, 0);
             btnMenu.Margin = new Padding(0);
             btnMenu.Name = "btnMenu";
-            btnMenu.Size = new Size(213, 33);
+            btnMenu.Size = new Size(185, 34);
             btnMenu.TabIndex = 3;
             btnMenu.Text = "              Account\r\n";
             btnMenu.TextAlign = ContentAlignment.MiddleLeft;
@@ -586,10 +553,9 @@
             // panel18
             // 
             panel18.BackColor = Color.White;
-            panel18.Dock = DockStyle.Bottom;
-            panel18.Location = new Point(0, 33);
+            panel18.Location = new Point(14, 33);
             panel18.Name = "panel18";
-            panel18.Size = new Size(213, 1);
+            panel18.Size = new Size(157, 1);
             panel18.TabIndex = 10;
             // 
             // panel10
@@ -654,11 +620,12 @@
             // 
             mainPanel.BackColor = Color.Transparent;
             mainPanel.Dock = DockStyle.Fill;
-            mainPanel.Location = new Point(213, 0);
+            mainPanel.Location = new Point(185, 0);
             mainPanel.Name = "mainPanel";
             mainPanel.Padding = new Padding(15, 0, 15, 0);
-            mainPanel.Size = new Size(1067, 690);
+            mainPanel.Size = new Size(1095, 690);
             mainPanel.TabIndex = 3;
+            mainPanel.Paint += mainPanel_Paint;
             // 
             // menuTransition
             // 
@@ -759,7 +726,6 @@
         private System.Windows.Forms.Timer setupTransition;
         private ElipseToolDemo.ElipseControl elipseControl1;
         private ElipseToolDemo.ElipseControl elipseControl2;
-        private Panel panel17;
         private FlowLayoutPanel recordContainer;
         private Panel panel5;
         private Button btnViewPatient;
@@ -767,7 +733,6 @@
         private FlowLayoutPanel appointmentContainer;
         private Panel panel19;
         private Button btnAppointment;
-        private Panel panel20;
         private Panel panel21;
         private Button btnPending;
         private Panel panel22;
@@ -775,7 +740,6 @@
         private Panel panel6;
         private Button btnCancelAppointment;
         private Panel panel13;
-        private Panel panel23;
         private Button btnPatientRecord;
         private System.Windows.Forms.Timer PatientTransition;
         private System.Windows.Forms.Timer AppointTransition;

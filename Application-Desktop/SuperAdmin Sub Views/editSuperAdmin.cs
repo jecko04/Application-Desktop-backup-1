@@ -242,13 +242,13 @@ namespace Application_Desktop.Sub_sub_Views
                 errorProvider1.SetError(borderEmail, string.Empty);
             }
 
-            if (errorProvider1.GetError(borderEmail) == string.Empty && 
-            errorProvider3.GetError(borderFirst) == string.Empty && 
-            errorProvider4.GetError(borderLast) == string.Empty && 
+            if (errorProvider1.GetError(borderEmail) == string.Empty &&
+            errorProvider3.GetError(borderFirst) == string.Empty &&
+            errorProvider4.GetError(borderLast) == string.Empty &&
             errorProvider5.GetError(borderRole) == string.Empty)
             {
-                    await UpdateSuperAdmin(superAdminID, fname, lname, email);
-                    this.Close();
+                await UpdateSuperAdmin(superAdminID, fname, lname, email);
+                this.Close();
             }
 
         }

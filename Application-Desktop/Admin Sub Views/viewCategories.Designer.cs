@@ -35,9 +35,9 @@
             viewCategoriesDetails = new DataGridView();
             btnClose = new PictureBox();
             panel2 = new Panel();
+            panel1 = new Panel();
             elipseControl1 = new ElipseToolDemo.ElipseControl();
             elipseControl2 = new ElipseToolDemo.ElipseControl();
-            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)viewCategoriesDetails).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
             panel2.SuspendLayout();
@@ -54,8 +54,7 @@
             dataGridViewCellStyle1.SelectionBackColor = Color.Gainsboro;
             dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(52, 152, 219);
             viewCategoriesDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            viewCategoriesDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            viewCategoriesDetails.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            viewCategoriesDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             viewCategoriesDetails.BackgroundColor = Color.White;
             viewCategoriesDetails.BorderStyle = BorderStyle.None;
             viewCategoriesDetails.CellBorderStyle = DataGridViewCellBorderStyle.None;
@@ -67,13 +66,14 @@
             dataGridViewCellStyle2.Padding = new Padding(3);
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(52, 152, 219);
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             viewCategoriesDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             viewCategoriesDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Window;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle3.ForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle3.Padding = new Padding(10, 0, 10, 0);
             dataGridViewCellStyle3.SelectionBackColor = Color.Gainsboro;
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(52, 152, 219);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
@@ -84,7 +84,7 @@
             viewCategoriesDetails.ReadOnly = true;
             viewCategoriesDetails.RowHeadersVisible = false;
             viewCategoriesDetails.RowTemplate.Height = 25;
-            viewCategoriesDetails.Size = new Size(1000, 258);
+            viewCategoriesDetails.Size = new Size(1000, 315);
             viewCategoriesDetails.TabIndex = 2;
             viewCategoriesDetails.CellContentClick += viewCategoriesDetails_CellContentClick;
             // 
@@ -109,8 +109,17 @@
             panel2.Controls.Add(viewCategoriesDetails);
             panel2.Location = new Point(0, -1);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1000, 290);
+            panel2.Size = new Size(1000, 350);
             panel2.TabIndex = 4;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.White;
+            panel1.Controls.Add(btnClose);
+            panel1.Location = new Point(0, -1);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1000, 33);
+            panel1.TabIndex = 3;
             // 
             // elipseControl1
             // 
@@ -122,20 +131,11 @@
             elipseControl2.CornerRadius = 15;
             elipseControl2.TargetControl = viewCategoriesDetails;
             // 
-            // panel1
-            // 
-            panel1.BackColor = Color.White;
-            panel1.Controls.Add(btnClose);
-            panel1.Location = new Point(0, -1);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1000, 33);
-            panel1.TabIndex = 3;
-            // 
             // viewCategories
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1000, 290);
+            ClientSize = new Size(1000, 346);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "viewCategories";

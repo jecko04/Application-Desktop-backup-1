@@ -71,7 +71,7 @@ namespace Application_Desktop.Admin_Sub_Views
                 if (branch == null)
                 {
                     MessageBox.Show("Branch ID not found for the current user.");
-                    return; 
+                    return;
                 }
 
                 int admin = branch._id;

@@ -120,7 +120,7 @@
             // 
             // panel
             // 
-            panel.BackColor = Color.FromArgb(248, 249, 250);
+            panel.BackColor = Color.WhiteSmoke;
             panel.Controls.Add(borderTerms);
             panel.Controls.Add(borderEmail);
             panel.Controls.Add(borderRePass);
@@ -136,7 +136,7 @@
             panel.Controls.Add(label4);
             panel.Controls.Add(label3);
             panel.Controls.Add(label2);
-            panel.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            panel.Font = new Font("Tahoma", 9.75F);
             panel.Location = new Point(0, 29);
             panel.Name = "panel";
             panel.Size = new Size(431, 470);
@@ -525,7 +525,7 @@
             // 
             label10.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label10.AutoSize = true;
-            label10.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Font = new Font("Tahoma", 9.75F);
             label10.ForeColor = Color.DimGray;
             label10.Location = new Point(46, 235);
             label10.Name = "label10";
@@ -537,7 +537,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Font = new Font("Tahoma", 9.75F);
             label7.ForeColor = Color.DimGray;
             label7.Location = new Point(33, 286);
             label7.Name = "label7";
@@ -550,7 +550,7 @@
             btnRegister.BackColor = Color.FromArgb(102, 204, 102);
             btnRegister.FlatAppearance.BorderColor = Color.FromArgb(102, 204, 102);
             btnRegister.FlatStyle = FlatStyle.Flat;
-            btnRegister.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRegister.Font = new Font("Tahoma", 9.75F);
             btnRegister.ForeColor = Color.White;
             btnRegister.Location = new Point(317, 380);
             btnRegister.Name = "btnRegister";
@@ -563,7 +563,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Font = new Font("Tahoma", 9.75F);
             label5.ForeColor = Color.DimGray;
             label5.Location = new Point(216, 171);
             label5.Name = "label5";
@@ -574,7 +574,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Font = new Font("Tahoma", 9.75F);
             label6.ForeColor = Color.DimGray;
             label6.Location = new Point(33, 171);
             label6.Name = "label6";
@@ -585,7 +585,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Font = new Font("Tahoma", 9.75F);
             label4.ForeColor = Color.DimGray;
             label4.Location = new Point(33, 101);
             label4.Name = "label4";
@@ -596,7 +596,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Font = new Font("Tahoma", 9.75F);
             label3.ForeColor = Color.DimGray;
             label3.Location = new Point(216, 37);
             label3.Name = "label3";
@@ -607,7 +607,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Tahoma", 9.75F);
             label2.ForeColor = Color.DimGray;
             label2.Location = new Point(33, 37);
             label2.Name = "label2";
@@ -698,7 +698,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Tahoma", 9F);
             label1.ForeColor = SystemColors.InactiveBorder;
             label1.Location = new Point(33, 12);
             label1.Name = "label1";

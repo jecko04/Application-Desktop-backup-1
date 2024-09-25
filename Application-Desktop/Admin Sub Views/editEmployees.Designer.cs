@@ -220,6 +220,7 @@
             // panel2
             // 
             panel2.AutoScroll = true;
+            panel2.BackColor = Color.WhiteSmoke;
             panel2.Controls.Add(borderHired);
             panel2.Controls.Add(borderDateofBirth);
             panel2.Controls.Add(btnSave);

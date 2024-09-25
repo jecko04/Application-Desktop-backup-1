@@ -756,6 +756,7 @@
             // panel32
             // 
             panel32.AutoScroll = true;
+            panel32.BackColor = Color.WhiteSmoke;
             panel32.Controls.Add(btnSave);
             panel32.Controls.Add(borderSpecial);
             panel32.Controls.Add(label15);

@@ -30,9 +30,6 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(superAdmin));
-            panel1 = new Panel();
-            label1 = new Label();
-            btnSidebar = new PictureBox();
             sidebarContainer = new FlowLayoutPanel();
             panel5 = new Panel();
             btnBranches = new Button();
@@ -54,8 +51,6 @@
             menuTransition = new System.Windows.Forms.Timer(components);
             sidebarTransition = new System.Windows.Forms.Timer(components);
             mainPanel = new Panel();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)btnSidebar).BeginInit();
             sidebarContainer.SuspendLayout();
             panel5.SuspendLayout();
             panel3.SuspendLayout();
@@ -68,40 +63,6 @@
             panel8.SuspendLayout();
             SuspendLayout();
             // 
-            // panel1
-            // 
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(btnSidebar);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1280, 30);
-            panel1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 9.75F);
-            label1.ForeColor = Color.Black;
-            label1.Location = new Point(37, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(131, 16);
-            label1.TabIndex = 2;
-            label1.Text = "DENTAL CLINIC NAME";
-            // 
-            // btnSidebar
-            // 
-            btnSidebar.Cursor = Cursors.Hand;
-            btnSidebar.Image = (Image)resources.GetObject("btnSidebar.Image");
-            btnSidebar.Location = new Point(3, 3);
-            btnSidebar.Margin = new Padding(0);
-            btnSidebar.Name = "btnSidebar";
-            btnSidebar.Size = new Size(31, 24);
-            btnSidebar.SizeMode = PictureBoxSizeMode.Zoom;
-            btnSidebar.TabIndex = 1;
-            btnSidebar.TabStop = false;
-            btnSidebar.Click += btnSidebar_Click;
-            // 
             // sidebarContainer
             // 
             sidebarContainer.BackColor = Color.FromArgb(41, 128, 185);
@@ -112,10 +73,10 @@
             sidebarContainer.Controls.Add(panel2);
             sidebarContainer.Controls.Add(menuContainer);
             sidebarContainer.Dock = DockStyle.Left;
-            sidebarContainer.Location = new Point(0, 30);
+            sidebarContainer.Location = new Point(0, 0);
             sidebarContainer.Margin = new Padding(0);
             sidebarContainer.Name = "sidebarContainer";
-            sidebarContainer.Size = new Size(179, 660);
+            sidebarContainer.Size = new Size(179, 690);
             sidebarContainer.TabIndex = 1;
             // 
             // panel5
@@ -372,16 +333,15 @@
             // sidebarTransition
             // 
             sidebarTransition.Interval = 10;
-            sidebarTransition.Tick += sidebarTransition_Tick;
             // 
             // mainPanel
             // 
             mainPanel.BackColor = SystemColors.Control;
             mainPanel.Dock = DockStyle.Fill;
-            mainPanel.Location = new Point(179, 30);
+            mainPanel.Location = new Point(179, 0);
             mainPanel.Name = "mainPanel";
             mainPanel.Padding = new Padding(15, 0, 15, 0);
-            mainPanel.Size = new Size(1101, 660);
+            mainPanel.Size = new Size(1101, 690);
             mainPanel.TabIndex = 2;
             mainPanel.Paint += mainPanel_Paint;
             // 
@@ -391,15 +351,11 @@
             ClientSize = new Size(1280, 690);
             Controls.Add(mainPanel);
             Controls.Add(sidebarContainer);
-            Controls.Add(panel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "superAdmin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Super Admin";
             Load += superAdmin_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)btnSidebar).EndInit();
             sidebarContainer.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel3.ResumeLayout(false);
@@ -414,10 +370,6 @@
         }
 
         #endregion
-
-        private Panel panel1;
-        private Label label1;
-        private PictureBox btnSidebar;
         private FlowLayoutPanel sidebarContainer;
         private Panel panel3;
         private Button btnAdmin;

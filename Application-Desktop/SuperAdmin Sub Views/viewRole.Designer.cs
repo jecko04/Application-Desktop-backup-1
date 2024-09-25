@@ -46,7 +46,7 @@
             btnClose.BackgroundImageLayout = ImageLayout.None;
             btnClose.Cursor = Cursors.Hand;
             btnClose.Image = (Image)resources.GetObject("btnClose.Image");
-            btnClose.Location = new Point(368, 0);
+            btnClose.Location = new Point(273, 0);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(27, 27);
             btnClose.SizeMode = PictureBoxSizeMode.Zoom;
@@ -106,7 +106,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(395, 206);
+            ClientSize = new Size(300, 163);
             Controls.Add(btnClose);
             Controls.Add(viewExistingRole);
             FormBorderStyle = FormBorderStyle.None;

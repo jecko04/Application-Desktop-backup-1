@@ -212,6 +212,7 @@
             // 
             // panel2
             // 
+            panel2.BackColor = Color.WhiteSmoke;
             panel2.BackgroundImageLayout = ImageLayout.None;
             panel2.Controls.Add(borderProvince);
             panel2.Controls.Add(borderCity);

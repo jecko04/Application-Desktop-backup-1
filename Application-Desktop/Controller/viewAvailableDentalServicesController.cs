@@ -130,6 +130,7 @@ namespace Application_Desktop.Controller
             Max.HeaderText = "Max Appointment";
             Max.Name = "max_appointment";
             Max.DataPropertyName = "max_appointment";
+            Max.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             viewDentalServices.Columns.Add(Max);
 
             DataGridViewImageColumn deleteButtonColumn = new DataGridViewImageColumn

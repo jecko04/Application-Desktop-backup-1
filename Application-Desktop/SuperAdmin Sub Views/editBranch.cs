@@ -137,5 +137,10 @@ namespace Application_Desktop.Sub_sub_Views
 
             this.Close();
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

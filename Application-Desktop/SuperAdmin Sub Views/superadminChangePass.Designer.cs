@@ -48,22 +48,22 @@
             panel1 = new Panel();
             errorProvider5 = new ErrorProvider(components);
             panel2 = new Panel();
-            elipseControl1 = new ElipseToolDemo.ElipseControl();
-            borderRepass = new Panel();
-            panel4 = new Panel();
-            panel5 = new Panel();
-            panel6 = new Panel();
-            panel7 = new Panel();
-            borderCurrent = new Panel();
-            panel9 = new Panel();
-            panel10 = new Panel();
-            panel11 = new Panel();
-            panel12 = new Panel();
             borderNew = new Panel();
             panel13 = new Panel();
             panel14 = new Panel();
             panel15 = new Panel();
             panel16 = new Panel();
+            borderCurrent = new Panel();
+            panel9 = new Panel();
+            panel10 = new Panel();
+            panel11 = new Panel();
+            panel12 = new Panel();
+            borderRepass = new Panel();
+            panel4 = new Panel();
+            panel7 = new Panel();
+            panel6 = new Panel();
+            panel5 = new Panel();
+            elipseControl1 = new ElipseToolDemo.ElipseControl();
             ((System.ComponentModel.ISupportInitialize)errorProvider4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
@@ -73,9 +73,9 @@
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider5).BeginInit();
             panel2.SuspendLayout();
-            borderRepass.SuspendLayout();
-            borderCurrent.SuspendLayout();
             borderNew.SuspendLayout();
+            borderCurrent.SuspendLayout();
+            borderRepass.SuspendLayout();
             SuspendLayout();
             // 
             // txtShowPassword
@@ -113,7 +113,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Font = new Font("Tahoma", 9.75F);
             label5.ForeColor = Color.DimGray;
             label5.Location = new Point(22, 26);
             label5.Name = "label5";
@@ -127,7 +127,7 @@
             btnChangePass.BackColor = Color.FromArgb(102, 204, 102);
             btnChangePass.FlatAppearance.BorderColor = Color.FromArgb(102, 204, 102);
             btnChangePass.FlatStyle = FlatStyle.Flat;
-            btnChangePass.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnChangePass.Font = new Font("Tahoma", 9.75F);
             btnChangePass.ForeColor = Color.White;
             btnChangePass.Location = new Point(733, 95);
             btnChangePass.Name = "btnChangePass";
@@ -141,7 +141,7 @@
             // 
             txtCurrentPass.BorderStyle = BorderStyle.FixedSingle;
             txtCurrentPass.Dock = DockStyle.Fill;
-            txtCurrentPass.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCurrentPass.Font = new Font("Segoe UI", 9.75F);
             txtCurrentPass.Location = new Point(0, 0);
             txtCurrentPass.Name = "txtCurrentPass";
             txtCurrentPass.PasswordChar = '*';
@@ -153,7 +153,7 @@
             // 
             txtConfirmPass.BorderStyle = BorderStyle.FixedSingle;
             txtConfirmPass.Dock = DockStyle.Fill;
-            txtConfirmPass.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtConfirmPass.Font = new Font("Segoe UI", 9.75F);
             txtConfirmPass.Location = new Point(0, 0);
             txtConfirmPass.Name = "txtConfirmPass";
             txtConfirmPass.PasswordChar = '*';
@@ -164,7 +164,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Tahoma", 9.75F);
             label2.ForeColor = Color.DimGray;
             label2.Location = new Point(287, 26);
             label2.Name = "label2";
@@ -176,7 +176,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Font = new Font("Tahoma", 9.75F);
             label3.ForeColor = Color.DimGray;
             label3.Location = new Point(555, 26);
             label3.Name = "label3";
@@ -189,7 +189,7 @@
             // 
             txtNewPass.BorderStyle = BorderStyle.FixedSingle;
             txtNewPass.Dock = DockStyle.Fill;
-            txtNewPass.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNewPass.Font = new Font("Segoe UI", 9.75F);
             txtNewPass.Location = new Point(0, 0);
             txtNewPass.Name = "txtNewPass";
             txtNewPass.PasswordChar = '*';
@@ -200,7 +200,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Tahoma", 9F);
             label1.ForeColor = SystemColors.InactiveBorder;
             label1.Location = new Point(33, 12);
             label1.Name = "label1";
@@ -250,6 +250,7 @@
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel2.BackColor = Color.WhiteSmoke;
             panel2.Controls.Add(borderNew);
             panel2.Controls.Add(borderCurrent);
             panel2.Controls.Add(borderRepass);
@@ -262,107 +263,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(847, 148);
             panel2.TabIndex = 17;
-            // 
-            // elipseControl1
-            // 
-            elipseControl1.CornerRadius = 15;
-            elipseControl1.TargetControl = this;
-            // 
-            // borderRepass
-            // 
-            borderRepass.Controls.Add(panel4);
-            borderRepass.Controls.Add(panel7);
-            borderRepass.Controls.Add(panel6);
-            borderRepass.Controls.Add(panel5);
-            borderRepass.Controls.Add(txtConfirmPass);
-            borderRepass.Location = new Point(566, 55);
-            borderRepass.Name = "borderRepass";
-            borderRepass.Size = new Size(230, 25);
-            borderRepass.TabIndex = 16;
-            // 
-            // panel4
-            // 
-            panel4.BackColor = Color.FromArgb(52, 152, 219);
-            panel4.Dock = DockStyle.Bottom;
-            panel4.Location = new Point(1, 24);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(228, 1);
-            panel4.TabIndex = 17;
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.FromArgb(52, 152, 219);
-            panel5.Dock = DockStyle.Left;
-            panel5.Location = new Point(0, 0);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(1, 25);
-            panel5.TabIndex = 18;
-            // 
-            // panel6
-            // 
-            panel6.BackColor = Color.FromArgb(52, 152, 219);
-            panel6.Dock = DockStyle.Right;
-            panel6.Location = new Point(229, 0);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(1, 25);
-            panel6.TabIndex = 18;
-            // 
-            // panel7
-            // 
-            panel7.BackColor = Color.FromArgb(52, 152, 219);
-            panel7.Dock = DockStyle.Top;
-            panel7.Location = new Point(1, 0);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(228, 1);
-            panel7.TabIndex = 18;
-            // 
-            // borderCurrent
-            // 
-            borderCurrent.Controls.Add(panel9);
-            borderCurrent.Controls.Add(panel10);
-            borderCurrent.Controls.Add(panel11);
-            borderCurrent.Controls.Add(panel12);
-            borderCurrent.Controls.Add(txtCurrentPass);
-            borderCurrent.Location = new Point(33, 55);
-            borderCurrent.Name = "borderCurrent";
-            borderCurrent.Size = new Size(230, 25);
-            borderCurrent.TabIndex = 19;
-            // 
-            // panel9
-            // 
-            panel9.BackColor = Color.FromArgb(52, 152, 219);
-            panel9.Dock = DockStyle.Bottom;
-            panel9.Location = new Point(1, 24);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(228, 1);
-            panel9.TabIndex = 17;
-            // 
-            // panel10
-            // 
-            panel10.BackColor = Color.FromArgb(52, 152, 219);
-            panel10.Dock = DockStyle.Top;
-            panel10.Location = new Point(1, 0);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(228, 1);
-            panel10.TabIndex = 18;
-            // 
-            // panel11
-            // 
-            panel11.BackColor = Color.FromArgb(52, 152, 219);
-            panel11.Dock = DockStyle.Right;
-            panel11.Location = new Point(229, 0);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(1, 25);
-            panel11.TabIndex = 18;
-            // 
-            // panel12
-            // 
-            panel12.BackColor = Color.FromArgb(52, 152, 219);
-            panel12.Dock = DockStyle.Left;
-            panel12.Location = new Point(0, 0);
-            panel12.Name = "panel12";
-            panel12.Size = new Size(1, 25);
-            panel12.TabIndex = 18;
             // 
             // borderNew
             // 
@@ -412,6 +312,107 @@
             panel16.Size = new Size(1, 25);
             panel16.TabIndex = 18;
             // 
+            // borderCurrent
+            // 
+            borderCurrent.Controls.Add(panel9);
+            borderCurrent.Controls.Add(panel10);
+            borderCurrent.Controls.Add(panel11);
+            borderCurrent.Controls.Add(panel12);
+            borderCurrent.Controls.Add(txtCurrentPass);
+            borderCurrent.Location = new Point(33, 55);
+            borderCurrent.Name = "borderCurrent";
+            borderCurrent.Size = new Size(230, 25);
+            borderCurrent.TabIndex = 19;
+            // 
+            // panel9
+            // 
+            panel9.BackColor = Color.FromArgb(52, 152, 219);
+            panel9.Dock = DockStyle.Bottom;
+            panel9.Location = new Point(1, 24);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(228, 1);
+            panel9.TabIndex = 17;
+            // 
+            // panel10
+            // 
+            panel10.BackColor = Color.FromArgb(52, 152, 219);
+            panel10.Dock = DockStyle.Top;
+            panel10.Location = new Point(1, 0);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(228, 1);
+            panel10.TabIndex = 18;
+            // 
+            // panel11
+            // 
+            panel11.BackColor = Color.FromArgb(52, 152, 219);
+            panel11.Dock = DockStyle.Right;
+            panel11.Location = new Point(229, 0);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(1, 25);
+            panel11.TabIndex = 18;
+            // 
+            // panel12
+            // 
+            panel12.BackColor = Color.FromArgb(52, 152, 219);
+            panel12.Dock = DockStyle.Left;
+            panel12.Location = new Point(0, 0);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(1, 25);
+            panel12.TabIndex = 18;
+            // 
+            // borderRepass
+            // 
+            borderRepass.Controls.Add(panel4);
+            borderRepass.Controls.Add(panel7);
+            borderRepass.Controls.Add(panel6);
+            borderRepass.Controls.Add(panel5);
+            borderRepass.Controls.Add(txtConfirmPass);
+            borderRepass.Location = new Point(566, 55);
+            borderRepass.Name = "borderRepass";
+            borderRepass.Size = new Size(230, 25);
+            borderRepass.TabIndex = 16;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.FromArgb(52, 152, 219);
+            panel4.Dock = DockStyle.Bottom;
+            panel4.Location = new Point(1, 24);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(228, 1);
+            panel4.TabIndex = 17;
+            // 
+            // panel7
+            // 
+            panel7.BackColor = Color.FromArgb(52, 152, 219);
+            panel7.Dock = DockStyle.Top;
+            panel7.Location = new Point(1, 0);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(228, 1);
+            panel7.TabIndex = 18;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.FromArgb(52, 152, 219);
+            panel6.Dock = DockStyle.Right;
+            panel6.Location = new Point(229, 0);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(1, 25);
+            panel6.TabIndex = 18;
+            // 
+            // panel5
+            // 
+            panel5.BackColor = Color.FromArgb(52, 152, 219);
+            panel5.Dock = DockStyle.Left;
+            panel5.Location = new Point(0, 0);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(1, 25);
+            panel5.TabIndex = 18;
+            // 
+            // elipseControl1
+            // 
+            elipseControl1.CornerRadius = 15;
+            elipseControl1.TargetControl = this;
+            // 
             // superadminChangePass
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -435,12 +436,12 @@
             ((System.ComponentModel.ISupportInitialize)errorProvider5).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            borderRepass.ResumeLayout(false);
-            borderRepass.PerformLayout();
-            borderCurrent.ResumeLayout(false);
-            borderCurrent.PerformLayout();
             borderNew.ResumeLayout(false);
             borderNew.PerformLayout();
+            borderCurrent.ResumeLayout(false);
+            borderCurrent.PerformLayout();
+            borderRepass.ResumeLayout(false);
+            borderRepass.PerformLayout();
             ResumeLayout(false);
         }
 

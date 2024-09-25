@@ -110,18 +110,12 @@ namespace Application_Desktop.Admin_Sub_Views
 
         private void AddcolumnForCategories()
         {
-            /*DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
-            selectColumn.HeaderText = "";
-            selectColumn.Name = "selectCategories";
-            selectColumn.Width = 30;
-            viewCategoriesDetails.Columns.Add(selectColumn);
-            viewCategoriesDetails.Columns["selectCategories"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;*/
 
             DataGridViewTextBoxColumn categoriesColumn = new DataGridViewTextBoxColumn();
             categoriesColumn.HeaderText = "ID";
             categoriesColumn.Name = "Categories_ID";
             categoriesColumn.DataPropertyName = "Categories_ID";
-            categoriesColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            categoriesColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewCategoriesDetails.Columns.Add(categoriesColumn);
 
             DataGridViewTextBoxColumn titleColumn = new DataGridViewTextBoxColumn();

@@ -1,4 +1,5 @@
 ﻿using Application_Desktop.Admin_Sub_Views;
+using Application_Desktop.Controller;
 using Application_Desktop.Models;
 using Application_Desktop.Screen;
 using MySql.Data.MySqlClient;
@@ -446,12 +447,28 @@ namespace Application_Desktop.Admin_Views
         private async void btnDelete_Click(object sender, EventArgs e)
         {
             bool hasSelectedRows = false;
+
+            for (int i = 0; i < viewEmployeeDetails.Rows.Count; i++)
+            {
+                DataGridViewRow row = viewEmployeeDetails.Rows[i];
+                DataGridViewCheckBoxCell checkBoxCell = row.Cells["selectEmployees"] as DataGridViewCheckBoxCell;
+
+                if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
+                {
+                    hasSelectedRows = true;
+                    break;
+                }
+            }
+
+            if (!hasSelectedRows)
+            {
+                AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No rows selected", "No rows were selected for deletion", Properties.Resources.information);
+                return;
+            }
+
             var result = MessageBox.Show("Are you sure you want to delete the selected rows?", "Confirm Deletion", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                viewEmployeeDetails.EndEdit();
-
-                // Deleting from viewDentalDoctorAccount
                 for (int i = viewEmployeeDetails.Rows.Count - 1; i >= 0; i--)
                 {
                     DataGridViewRow row = viewEmployeeDetails.Rows[i];
@@ -460,23 +477,13 @@ namespace Application_Desktop.Admin_Views
                     // Check if the checkbox is checked
                     if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
                     {
-                        hasSelectedRows = true;
-                        // Get the ID of the doctor to delete
                         int doctorsID = Convert.ToInt32(row.Cells["Employee_ID"].Value);
                         viewEmployeeDetails.Rows.RemoveAt(i);
                         await DeleteRowFromDatabase(doctorsID);
-                        AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been deleted successfully", Properties.Resources.success);
-
-
                     }
                 }
 
-                // If no rows were selected, show a message box
-                if (!hasSelectedRows)
-                {
-                    //MessageBox.Show("No rows were selected for deletion.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No rows selected", "No rows were selected for deletion", Properties.Resources.information);
-                }
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The selected data has been deleted successfully", Properties.Resources.success);
             }
         }
     }

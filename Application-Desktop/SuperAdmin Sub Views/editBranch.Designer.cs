@@ -48,7 +48,6 @@
             txtPostal = new TextBox();
             label8 = new Label();
             btnSave = new Button();
-            btnCancel = new Button();
             panel2 = new Panel();
             borderBuildingNumber = new Panel();
             panel29 = new Panel();
@@ -114,7 +113,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Font = new Font("Tahoma", 9.75F);
             label7.ForeColor = Color.White;
             label7.Location = new Point(43, 11);
             label7.Name = "label7";
@@ -147,7 +146,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Tahoma", 9.75F);
             label1.ForeColor = Color.DimGray;
             label1.Location = new Point(12, 29);
             label1.Name = "label1";
@@ -168,7 +167,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Tahoma", 9.75F);
             label2.ForeColor = Color.DimGray;
             label2.Location = new Point(12, 79);
             label2.Name = "label2";
@@ -199,7 +198,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Font = new Font("Tahoma", 9.75F);
             label3.ForeColor = Color.DimGray;
             label3.Location = new Point(12, 181);
             label3.Name = "label3";
@@ -220,7 +219,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Font = new Font("Tahoma", 9.75F);
             label4.ForeColor = Color.DimGray;
             label4.Location = new Point(12, 131);
             label4.Name = "label4";
@@ -241,7 +240,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Font = new Font("Tahoma", 9.75F);
             label5.ForeColor = Color.DimGray;
             label5.Location = new Point(12, 285);
             label5.Name = "label5";
@@ -262,7 +261,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Font = new Font("Tahoma", 9.75F);
             label6.ForeColor = Color.DimGray;
             label6.Location = new Point(12, 235);
             label6.Name = "label6";
@@ -283,7 +282,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Font = new Font("Tahoma", 9.75F);
             label8.ForeColor = Color.DimGray;
             label8.Location = new Point(12, 343);
             label8.Name = "label8";
@@ -296,7 +295,7 @@
             btnSave.BackColor = Color.FromArgb(102, 204, 102);
             btnSave.FlatAppearance.BorderColor = Color.FromArgb(102, 204, 102);
             btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSave.Font = new Font("Tahoma", 9F);
             btnSave.ForeColor = Color.White;
             btnSave.Location = new Point(388, 387);
             btnSave.Margin = new Padding(1, 0, 0, 0);
@@ -307,24 +306,9 @@
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
             // 
-            // btnCancel
-            // 
-            btnCancel.BackColor = Color.FromArgb(231, 76, 60);
-            btnCancel.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
-            btnCancel.FlatStyle = FlatStyle.Flat;
-            btnCancel.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCancel.ForeColor = Color.White;
-            btnCancel.Location = new Point(329, 387);
-            btnCancel.Margin = new Padding(0);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(58, 24);
-            btnCancel.TabIndex = 17;
-            btnCancel.Text = "Cancel";
-            btnCancel.UseVisualStyleBackColor = false;
-            btnCancel.Click += btnCancel_Click;
-            // 
             // panel2
             // 
+            panel2.BackColor = Color.WhiteSmoke;
             panel2.Controls.Add(borderBuildingNumber);
             panel2.Controls.Add(borderStreet);
             panel2.Controls.Add(borderBrgy);
@@ -333,7 +317,6 @@
             panel2.Controls.Add(borderPostal);
             panel2.Controls.Add(borderBranch);
             panel2.Controls.Add(label1);
-            panel2.Controls.Add(btnCancel);
             panel2.Controls.Add(btnSave);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label8);
@@ -345,6 +328,7 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(466, 438);
             panel2.TabIndex = 18;
+            panel2.Paint += panel2_Paint;
             // 
             // borderBuildingNumber
             // 
@@ -741,7 +725,6 @@
         private TextBox txtPostal;
         private Label label8;
         private Button btnSave;
-        private Button btnCancel;
         private PictureBox pictureBox1;
         private Label label7;
         private PictureBox btnClose;

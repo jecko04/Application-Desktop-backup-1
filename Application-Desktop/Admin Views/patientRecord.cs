@@ -435,7 +435,7 @@ namespace Application_Desktop.Admin_Views
             DataGridViewTextBoxColumn Sensitivity = new DataGridViewTextBoxColumn();
             Sensitivity.HeaderText = "Sensitivity";
             Sensitivity.Name = "Sensitivity";
-            Sensitivity.DataPropertyName = "sensitivity";
+            Sensitivity.DataPropertyName = "tooth_sensitivity";
             Sensitivity.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewDentalHistory.Columns.Add(Sensitivity);
 
@@ -470,12 +470,51 @@ namespace Application_Desktop.Admin_Views
         {
             await LoadRecord();
         }
-        private void btnDelete_Click(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
+            bool hasSelectedRows = false;
 
+            for (int i = 0; i < viewPatientRecord.Rows.Count; i++)
+            {
+                DataGridViewRow row = viewPatientRecord.Rows[i];
+                DataGridViewCheckBoxCell checkBoxCell = row.Cells["SelectPatient"] as DataGridViewCheckBoxCell;
+
+                if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
+                {
+                    hasSelectedRows = true;
+                    break;
+                }
+            }
+
+            if (!hasSelectedRows)
+            {
+                AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No rows selected", "No rows were selected for deletion", Properties.Resources.information);
+                return;
+            }
+
+            var result = MessageBox.Show("Are you sure you want to delete the selected rows?", "Confirm Deletion", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                for (int i = viewPatientRecord.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataGridViewRow row = viewPatientRecord.Rows[i];
+                    DataGridViewCheckBoxCell checkBoxCell = row.Cells["SelectPatient"] as DataGridViewCheckBoxCell;
+
+                    // Check if the checkbox is checked
+                    if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
+                    {
+                        int patientid = Convert.ToInt32(row.Cells["id"].Value);
+                        viewPatientRecord.Rows.RemoveAt(i);
+
+                        await _patientRecordController.Delete(patientid);
+                    }
+                }
+
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The selected patient records have been deleted successfully", Properties.Resources.success);
+            }
         }
 
-        
+
         private async void btnExport_Click(object sender, EventArgs e)
         {
             DataTable patientData = new DataTable();
@@ -589,7 +628,7 @@ namespace Application_Desktop.Admin_Views
                     if (column.DataType == typeof(DateTime))
                     {
                         // Assuming dates start from the second row (first is the header)
-                        var startRow = 2; 
+                        var startRow = 2;
                         var endRow = dataTable.Rows.Count + 1; // +1 for header
                         worksheet.Cells[startRow, column.Ordinal + 1, endRow, column.Ordinal + 1].Style.Numberformat.Format = "MM/dd/yyyy"; // or another desired format
                     }
@@ -607,5 +646,21 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
+        private async void btnSearch_Click(object sender, EventArgs e)
+        {
+            var (patientData, medicalData, dentalData) = await _patientRecordController.SearchPatientDataAsync(txtSearchBox.Text);
+
+            if (patientData != null && patientData.Rows.Count > 0)
+            {
+                viewPatientRecord.DataSource = patientData;
+                viewGenHealth.DataSource = medicalData;
+                viewDentHealth.DataSource = dentalData;
+                                                            
+            }
+            else
+            {
+                AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No results", "No patient found with the given search term", Properties.Resources.information);
+            }
+        }
     }
 }

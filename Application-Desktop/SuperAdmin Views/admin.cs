@@ -1,6 +1,7 @@
 ﻿using Application_Desktop.Models;
 using Application_Desktop.Screen;
 using Application_Desktop.Sub_sub_Views;
+using Application_Desktop.SuperAdmin_Sub_Views;
 using Google.Protobuf.WellKnownTypes;
 using MySql.Data.MySqlClient;
 using System;
@@ -482,96 +483,6 @@ namespace Application_Desktop.Sub_Views
             return superadminID;
         }
 
-        //Search Bar
-        private async Task LoadSearchBarS(string searchBarS)
-        {
-            string superAdminQuery = @"SELECT 
-                         superadmin.SuperAdmin_ID,
-                         superadmin.Name, 
-                         superadmin.Email,
-                         role.RoleName AS RoleName,
-                         superadmin.created_at,
-                         superadmin.updated_at
-                     FROM superadmin
-                     JOIN role ON superadmin.Role_ID = role.Role_ID
-                     WHERE superadmin.SuperAdmin_ID LIKE @search OR
-                           superadmin.Name LIKE @search OR
-                           superadmin.Email LIKE @search OR
-                           role.RoleName LIKE @search";
-
-            string adminQuery = @"SELECT 
-                             admin.Admin_ID,
-                             admin.Name, 
-                             admin.Email,
-                             branch.BranchName AS BranchName, 
-                             role.RoleName AS RoleName,
-                             admin.created_at,
-                             admin.updated_at,
-                             admin.Role_ID,
-                             admin.Branch_ID
-                      FROM admin
-                      JOIN branch ON admin.Branch_ID = branch.Branch_ID
-                      JOIN role ON admin.Role_ID = role.Role_ID
-                      WHERE admin.Admin_ID LIKE @search OR
-                               admin.Name LIKE @search OR
-                               admin.Email LIKE @search OR
-                               branch.BranchName LIKE @search OR
-                               role.RoleName LIKE @search OR
-                               superadmin.Name LIKE @search";
-
-            MySqlConnection conn = databaseHelper.getConnection();
-
-            try
-            {
-                if (conn.State != ConnectionState.Open)
-                {
-                    conn.Open();
-                }
-
-                MySqlCommand SuperAdminCmd = new MySqlCommand(superAdminQuery, conn);
-                SuperAdminCmd.Parameters.AddWithValue("@search", $"%{searchBarS}%");
-
-                MySqlDataAdapter SuperAdminAdapter = new MySqlDataAdapter(SuperAdminCmd);
-                DataTable SuperAdminTable = new DataTable();
-                await Task.Run(() => SuperAdminAdapter.Fill(SuperAdminTable));
-
-                MySqlCommand AdminCmd = new MySqlCommand(adminQuery, conn);
-                AdminCmd.Parameters.AddWithValue("@search", $"%{searchBarS}%");
-
-                MySqlDataAdapter AdminAdapter = new MySqlDataAdapter(AdminCmd);
-                DataTable AdminTable = new DataTable();
-                await Task.Run(() => AdminAdapter.Fill(AdminTable));
-
-                // Clear previous columns and rows
-                viewSuperAdminData.DataSource = null;
-                viewSuperAdminData.Rows.Clear();
-                viewSuperAdminData.Columns.Clear();
-
-                viewAdminData.DataSource = null;
-                viewAdminData.Rows.Clear();
-                viewAdminData.Columns.Clear();
-
-                // Add columns to DataGridView
-                AddColumnSuperAdmin();
-                AddColumnAdmin();
-
-                if (SuperAdminTable.Rows.Count > 0)
-                {
-                    viewSuperAdminData.DataSource = SuperAdminTable;
-                }
-
-                if (AdminTable.Rows.Count > 0)
-                {
-                    viewAdminData.DataSource = AdminTable;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}\n{ex.StackTrace}");
-            }
-            finally { await conn.CloseAsync(); }
-        }
-
         //Add Column
         private void AddColumnSuperAdmin()
         {
@@ -743,11 +654,7 @@ namespace Application_Desktop.Sub_Views
 
 
 
-        private async void btnSearchSuperAdmin_Click(object sender, EventArgs e)
-        {
-            string searchBarS = txtSearchBox.Text;
-            await LoadSearchBarS(searchBarS);
-        }
+
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
@@ -804,6 +711,42 @@ namespace Application_Desktop.Sub_Views
 
                 }
             }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private registerAccessAccount RegisterAccessAccountInstance;
+        private void btnAccess_Click(object sender, EventArgs e)
+        {
+            if (RegisterAccessAccountInstance == null || RegisterAccessAccountInstance.IsDisposed)
+            {
+                RegisterAccessAccountInstance = new registerAccessAccount();
+                RegisterAccessAccountInstance.Show();
+            }
+            else
+            {
+                if (RegisterAccessAccountInstance.Visible)
+                {
+                    RegisterAccessAccountInstance.BringToFront();
+                }
+                else
+                {
+                    RegisterAccessAccountInstance.Show();
+                }
+            }
+        }
+
+        private void viewAccessAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

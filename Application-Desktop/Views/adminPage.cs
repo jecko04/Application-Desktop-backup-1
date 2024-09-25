@@ -1,5 +1,7 @@
 ﻿using Application_Desktop.Admin_Views;
 using Application_Desktop.Models;
+using Application_Desktop.Screen;
+using Application_Desktop.Sub_Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +19,16 @@ namespace Application_Desktop.Views
         public adminPage()
         {
             InitializeComponent();
+        }
+        void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
+        {
+            alertBox alertbox = new alertBox();
+            alertbox.BackColor = backcolor;
+            alertbox.ColorAlertBox = color;
+            alertbox.TitleAlertBox = title;
+            alertbox.SubTitleAlertBox = subtitle;
+            alertbox.IconAlertBox = icon;
+            alertbox.Show();
         }
 
         private void adminPage_Load(object sender, EventArgs e)
@@ -233,7 +245,13 @@ namespace Application_Desktop.Views
 
         private void btnViewPatient_Click(object sender, EventArgs e)
         {
-            LoadForm(new patientRecord());
+            using (accessLogin access = new accessLogin())
+            {
+                if (access.ShowDialog() == DialogResult.OK)
+                {
+                    LoadForm(new patientRecord());
+                }
+            }
         }
 
         private void btnPending_Click(object sender, EventArgs e)
@@ -247,6 +265,11 @@ namespace Application_Desktop.Views
         }
 
         private void btnCancelAppointment_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mainPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }

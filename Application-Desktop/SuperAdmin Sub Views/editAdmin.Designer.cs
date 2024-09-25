@@ -148,6 +148,7 @@
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel2.BackColor = Color.WhiteSmoke;
             panel2.Controls.Add(borderRole);
             panel2.Controls.Add(borderEmail);
             panel2.Controls.Add(borderLast);
@@ -165,7 +166,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(425, 406);
             panel2.TabIndex = 2;
-            panel2.Paint += panel2_Paint;
             // 
             // borderRole
             // 
@@ -401,7 +401,6 @@
             txtfirstName.PlaceholderText = "First name";
             txtfirstName.Size = new Size(157, 25);
             txtfirstName.TabIndex = 1;
-            txtfirstName.TextChanged += txtfirstName_TextChanged;
             // 
             // borderBranch
             // 

@@ -1,5 +1,6 @@
 ﻿using Application_Desktop.Admin_Views;
 using Application_Desktop.Models;
+using Application_Desktop.Screen;
 using Application_Desktop.Sub_sub_Views;
 using Application_Desktop.Sub_Views;
 using Application_Desktop.SuperAdmin_Views;
@@ -11,9 +12,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Application_Desktop.Views
 {
@@ -22,6 +25,16 @@ namespace Application_Desktop.Views
         public superAdmin()
         {
             InitializeComponent();
+        }
+        void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
+        {
+            alertBox alertbox = new alertBox();
+            alertbox.BackColor = backcolor;
+            alertbox.ColorAlertBox = color;
+            alertbox.TitleAlertBox = title;
+            alertbox.SubTitleAlertBox = subtitle;
+            alertbox.IconAlertBox = icon;
+            alertbox.Show();
         }
 
         private void superAdmin_Load(object sender, EventArgs e)
@@ -57,38 +70,6 @@ namespace Application_Desktop.Views
         private void btnMenu_Click(object sender, EventArgs e)
         {
             menuTransition.Start();
-        }
-
-
-        //sidebar Slide
-        bool sidebarExpand = true;
-        private void sidebarTransition_Tick(object sender, EventArgs e)
-        {
-            if (sidebarExpand == true)
-            {
-                //179
-                //37
-                sidebarContainer.Width -= 10;
-                if (sidebarContainer.Width <= 39)
-                {
-                    sidebarExpand = false;
-                    sidebarTransition.Stop();
-                }
-            }
-            else
-            {
-                sidebarContainer.Width += 10;
-                if (sidebarContainer.Width >= 179)
-                {
-                    sidebarExpand = true;
-                    sidebarTransition.Stop();
-                }
-            }
-        }
-
-        private void btnSidebar_Click(object sender, EventArgs e)
-        {
-            sidebarTransition.Start();
         }
 
         public void LoadForm(Form form)
@@ -155,6 +136,10 @@ namespace Application_Desktop.Views
         private void btnUsers_Click(object sender, EventArgs e)
         {
             LoadForm(new usersAccount());
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
         }
     }
 }

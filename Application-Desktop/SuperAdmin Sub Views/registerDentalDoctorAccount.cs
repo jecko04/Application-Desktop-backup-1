@@ -157,7 +157,7 @@ namespace Application_Desktop.Admin_Sub_Views
         {
             int branchID = await GetBranchID();
 
-            string query = @"Select Fullname from employees Where Branch_ID = @branchID";
+            string query = @"Select Fullname from employees";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -169,7 +169,6 @@ namespace Application_Desktop.Admin_Sub_Views
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@branchID", branchID);
 
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (await reader.ReadAsync())
@@ -180,7 +179,7 @@ namespace Application_Desktop.Admin_Sub_Views
                 }
 
                 await reader.CloseAsync();
-                
+
             }
             catch (Exception ex)
             {
@@ -410,7 +409,7 @@ namespace Application_Desktop.Admin_Sub_Views
             int branchID = await GetBranchID();
             string employee = txtEmployees.Text;
 
-            string query = @"Select Email from employees Where Fullname = @fullname AND Branch_ID = @branchID";
+            string query = @"Select Email from employees Where Fullname = @fullname";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -422,7 +421,6 @@ namespace Application_Desktop.Admin_Sub_Views
                 }
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@branchID", branchID);
                 cmd.Parameters.AddWithValue("@fullname", employee);
 
                 MySqlDataReader reader = cmd.ExecuteReader();

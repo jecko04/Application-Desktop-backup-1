@@ -137,7 +137,11 @@ namespace Application_Desktop.Controller
             {
                 using (MySqlConnection conn = databaseHelper.getConnection())
                 {
-                    await conn.OpenAsync();
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+
+                    }
 
                     // Fetch patient data
                     DataTable patientData = new DataTable();
@@ -229,6 +233,108 @@ namespace Application_Desktop.Controller
             {
                 throw new Exception($"Error Fetching Data: {ex.Message}", ex);
             }
+        }
+
+
+        public async Task<int> Delete(int patientid)
+        {
+            string query = "Delete From patients Where id = @patientid";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@patientid", patientid);
+                        await cmd.ExecuteNonQueryAsync();
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error deleting data: {ex.Message}");
+            }
+            return patientid;
+        }
+
+        public async Task<(DataTable patientData, DataTable medicalData, DataTable dentalData)> SearchPatientDataAsync(string searchTerm)
+        {
+            string selectPatients = @"SELECT `id`, `fullname`, `date_of_birth`, `age`, `gender`, `phone`, `email`, `address`, `emergency_contact`
+                              FROM `patients` 
+                              WHERE (`fullname` LIKE CONCAT('%', @searchTerm, '%') 
+                                     OR `phone` LIKE CONCAT('%', @searchTerm, '%') 
+                                     OR `email` LIKE CONCAT('%', @searchTerm, '%'))";
+
+            int patientId = 0;
+            DataTable patientData = new DataTable();
+            DataTable medicalData = new DataTable();
+            DataTable dentalData = new DataTable();
+
+            using (MySqlConnection conn = databaseHelper.getConnection())
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    await conn.OpenAsync();
+                }
+
+                using (MySqlCommand cmd = new MySqlCommand(selectPatients, conn))
+                {
+                    cmd.Parameters.AddWithValue("@searchTerm", searchTerm);
+                    using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
+                    {
+                        if (reader.HasRows)
+                        {
+                            patientData.Load(reader);
+                            if (patientData.Rows.Count > 0)
+                            {
+                                patientId = Convert.ToInt32(patientData.Rows[0]["id"]);
+                            }
+                        }
+                    }
+                }
+
+                if (patientId == 0)
+                {
+                    return (null, null, null);
+                }
+
+                string selectGenHealth = @"SELECT mh.`patient_id`, p.`fullname`, mh.`medical_conditions`, mh.`current_medications`, mh.`allergies`, mh.`past_surgeries`, mh.`family_medical_history`, mh.`blood_pressure`, mh.`heart_disease`, mh.`diabetes`, mh.`smoker` 
+                                   FROM `medical_history` mh
+                                   JOIN `patients` p ON mh.patient_id = p.id
+                                   WHERE mh.patient_id = @patientid";
+
+                using (MySqlCommand cmd = new MySqlCommand(selectGenHealth, conn))
+                {
+                    cmd.Parameters.AddWithValue("@patientid", patientId);
+                    using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
+                    {
+                        medicalData.Load(reader);
+                    }
+                }
+
+                string selectDentHealth = @"SELECT dh.`patient_id`, p.`fullname`, dh.`last_dental_visit`, dh.`past_dental_treatments`, dh.`frequent_tooth_pain`, dh.`gum_disease_history`, dh.`teeth_grinding`, dh.`tooth_sensitivity`,
+                                    dh.`orthodontic_treatment`, dh.`dental_implants`, dh.`bleeding_gums` 
+                                    FROM `dental_history` dh
+                                    JOIN `patients` p ON dh.patient_id = p.id
+                                    WHERE dh.patient_id = @patientid";
+
+                using (MySqlCommand cmd = new MySqlCommand(selectDentHealth, conn))
+                {
+                    cmd.Parameters.AddWithValue("@patientid", patientId);
+                    using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
+                    {
+                        dentalData.Load(reader);
+                    }
+                }
+            }
+
+            return (patientData, medicalData, dentalData);
         }
 
 

@@ -101,8 +101,107 @@ namespace Application_Desktop.Sub_sub_Views
             this.Close();
         }
 
+        private async Task<bool> ValidateInputs()
+        {
+            bool isValid = true;
+
+            // Error provider for First Name
+            if (string.IsNullOrEmpty(txtfirstName.Text))
+            {
+                errorProvider1.SetError(borderFirst, "First Name is required.");
+                isValid = false;
+            }
+            else
+            {
+                errorProvider1.SetError(borderFirst, string.Empty);
+            }
+
+            // Error provider for Last Name
+            if (string.IsNullOrEmpty(txtLastName.Text))
+            {
+                errorProvider2.SetError(borderLast, "Last Name is required.");
+                isValid = false;
+            }
+            else
+            {
+                errorProvider2.SetError(borderLast, string.Empty);
+            }
+
+            // Error provider for Email
+            string email = txtEmail.Text;
+            if (string.IsNullOrEmpty(email))
+            {
+                errorProvider3.SetError(borderEmail, "Email is required.");
+                isValid = false;
+            }
+            else
+            {
+                if (!emailValidator.IsEmailValidate(email))
+                {
+                    errorProvider3.SetError(borderEmail, "Email is not valid.");
+                    isValid = false;
+                }
+                else if (await emailValidator.IsEmailAdminExist(email))
+                {
+                    errorProvider3.SetError(borderEmail, "Email already exists. Please use a different email.");
+                    isValid = false;
+                }
+                else
+                {
+                    errorProvider3.SetError(borderEmail, string.Empty);
+                }
+            }
+
+            // Error provider for Password
+            string pwd = txtPassword.Text;
+            if (string.IsNullOrEmpty(pwd))
+            {
+                errorProvider4.SetError(borderPass, "Password is required.");
+                isValid = false;
+            }
+            else if (!passwordValidator.IsPasswordValidate(pwd))
+            {
+                errorProvider4.SetError(borderPass, "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.");
+                isValid = false;
+            }
+            else
+            {
+                errorProvider4.SetError(borderPass, string.Empty);
+            }
+
+            // Error provider for Role
+            if (string.IsNullOrEmpty(txtRoles.Text))
+            {
+                errorProvider5.SetError(borderRole, "Role is required.");
+                isValid = false;
+            }
+            else
+            {
+                errorProvider5.SetError(borderRole, string.Empty);
+            }
+
+            // Error provider for Branch
+            if (string.IsNullOrEmpty(txtBranch.Text))
+            {
+                errorProvider7.SetError(borderBranch, "Branch is required.");
+                isValid = false;
+            }
+            else
+            {
+                errorProvider7.SetError(borderBranch, string.Empty);
+            }
+
+            return isValid;
+        }
         public async Task SignUp()
         {
+            // Validate inputs
+            if (!await ValidateInputs())
+            {
+                return; // Exit if validation fails
+            }
+
+            // Proceed with database operations
             string first = txtfirstName.Text;
             string last = txtLastName.Text;
             string email = txtEmail.Text;
@@ -110,163 +209,16 @@ namespace Application_Desktop.Sub_sub_Views
             string role = txtRoles.Text;
             string branch = txtBranch.Text;
 
-            //error provider
-            if (string.IsNullOrEmpty(first))
+            DialogResult result = MessageBox.Show("Do you want to create this account?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
             {
-                errorProvider1.SetError(borderFirst, "First Name is required.");
-            }
-            else
-            {
-                errorProvider1.SetError(borderFirst, string.Empty);
-            }
+                int createdBy = session.LoggedInSession;
 
-            if (string.IsNullOrEmpty(last))
-            {
-                errorProvider2.SetError(borderLast, "Last Name is required.");
-            }
-            else
-            {
-                errorProvider2.SetError(borderLast, string.Empty);
-            }
+                string query = "INSERT INTO admin (Name, Email, Password, Branch_ID, Role_ID, created_at, updated_at) " +
+                               "VALUES (@fullname, @email, @pwd, @branchID, @roleID, @createdAt, @updatedAt)";
 
-            if (string.IsNullOrEmpty(email))
-            {
-                errorProvider3.SetError(borderEmail, "Email is required.");
-            }
-            else
-            {
-                errorProvider3.SetError(borderEmail, string.Empty);
-            }
-
-            if (string.IsNullOrEmpty(role))
-            {
-                errorProvider5.SetError(borderRole, "Role is required.");
-            }
-            else
-            {
-                errorProvider5.SetError(borderRole, string.Empty);
-            }
-
-            if (string.IsNullOrEmpty(branch))
-            {
-                errorProvider7.SetError(borderBranch, "Branch is required.");
-            }
-            else
-            {
-                errorProvider7.SetError(borderBranch, string.Empty);
-            }
-
-            //password error provider
-            if (string.IsNullOrEmpty(pwd))
-            {
-                errorProvider4.SetError(borderPass, string.Empty);
-
-                errorProvider4.SetError(borderPass, "Password is required.");
-            }
-            else if (passwordValidator.IsPasswordValidate(pwd))
-            {
-
-                errorProvider4.SetError(borderPass, string.Empty);
-
-                errorProvider6.SetError(borderPass, "Password is valid");
-            }
-            else if (passwordValidator.isPasswordNotValid(pwd))
-            {
-
-                errorProvider4.SetError(borderPass, string.Empty);
-
-                errorProvider4.SetError(borderPass, "Password must be at least 8 characters long and contain at least" +
-                    " one uppercase letter, one lowercase letter, and one number.");
-            }
-            else
-            {
-                errorProvider4.SetError(borderPass, string.Empty);
-            }
-
-            //email error provider
-            if (string.IsNullOrEmpty(email))
-            {
-                errorProvider3.SetError(borderEmail, "Email is required.");
-                errorProvider6.SetError(borderEmail, string.Empty);
-            }
-            else
-            {
-                errorProvider3.SetError(borderEmail, string.Empty);
-
-                // Validate if email format is correct
-                if (!emailValidator.IsEmailValidate(email))
+                using (MySqlConnection conn = databaseHelper.getConnection())
                 {
-                    errorProvider3.SetError(borderEmail, "Email is not valid.");
-                    errorProvider6.SetError(borderEmail, string.Empty);
-                }
-                else
-                {
-                    errorProvider3.SetError(borderEmail, string.Empty);
-                    errorProvider6.SetError(borderEmail, "Email is valid.");
-
-                    // Check if email already exists
-                    try
-                    {
-                        if (await emailValidator.IsEmailAdminExist(email))
-                        {
-                            errorProvider3.SetError(borderEmail, "Email already exists. Please use a different email.");
-                            errorProvider6.SetError(borderEmail, string.Empty);
-                        }
-                        else
-                        {
-                            errorProvider3.SetError(borderEmail, string.Empty);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error checking email existence: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-
-            if (string.IsNullOrEmpty(first))
-            {
-                errorProvider1.SetError(borderFirst, "First Name is required.");
-            }
-            else if (string.IsNullOrEmpty(last))
-            {
-                errorProvider2.SetError(borderLast, "Last Name is required.");
-            }
-            else if (string.IsNullOrEmpty(email))
-            {
-                errorProvider3.SetError(borderEmail, "Email is required.");
-            }
-            else if (string.IsNullOrEmpty(role))
-            {
-                errorProvider5.SetError(borderRole, "Role is required.");
-            }
-            else if (string.IsNullOrEmpty(branch))
-            {
-                errorProvider7.SetError(borderBranch, "Branch is required.");
-            }
-            else if (errorProvider1.GetError(borderFirst) != string.Empty ||
-            errorProvider2.GetError(borderLast) != string.Empty ||
-            errorProvider3.GetError(borderEmail) != string.Empty ||
-            errorProvider4.GetError(borderPass) != string.Empty ||
-            errorProvider5.GetError(borderRole) != string.Empty ||
-            errorProvider5.GetError(borderBranch) != string.Empty
-            )
-            {
-
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show("Do you want to create this account?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    int createdBy = session.LoggedInSession;
-
-                    string query = "INSERT INTO admin (Name, Email, Password, Branch_ID, Role_ID, created_at, updated_at)" +
-                                   "VALUES" +
-                                   "(@fullname, @email, @pwd, @branchID, @roleID, @createdAt, @updatedAt)";
-
-                    MySqlConnection conn = databaseHelper.getConnection();
-
                     try
                     {
                         string fullname = $"{first} {last}";
@@ -283,11 +235,10 @@ namespace Application_Desktop.Sub_sub_Views
                             cmd.Parameters.AddWithValue("@fullname", fullname);
                             cmd.Parameters.AddWithValue("@email", email);
 
-                            //hash passowrd
+                            // Hash password
                             cryptography hasher = new cryptography();
                             string hashPassword = hasher.HashPassword(pwd);
                             cmd.Parameters.AddWithValue("@pwd", hashPassword);
-
 
                             idValue selectedBranch = (idValue)txtBranch.SelectedItem;
                             int branchId = selectedBranch.ID;
@@ -304,7 +255,6 @@ namespace Application_Desktop.Sub_sub_Views
 
                             await transaction.CommitAsync();
 
-                            //MessageBox.Show("Signed-Up Successful
                             AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The admin created successfully", Properties.Resources.success);
 
                             txtfirstName.Text = "";
@@ -313,21 +263,21 @@ namespace Application_Desktop.Sub_sub_Views
                             txtPassword.Text = "";
                             txtRoles.Text = "";
                             txtBranch.Text = "";
-
                         }
                         catch (Exception transEx)
                         {
-                            // Rollback the transaction in case of an error
                             await transaction.RollbackAsync();
                             MessageBox.Show("Transaction failed: " + transEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    finally { await conn.CloseAsync(); }
+                    finally
+                    {
+                        await conn.CloseAsync();
+                    }
                 }
             }
         }
