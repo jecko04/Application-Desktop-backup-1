@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Protobuf.WellKnownTypes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -63,5 +64,21 @@ namespace Application_Desktop.Model
 
             return error;
         }
+    }
+
+    public class AccessAccountLogs
+    {
+        [Required]
+        public string _username { get; set; }
+        [Required]
+        public int _branchId { get; set; }
+        [Required]
+        public DateTime _loginTime { get; set; }
+        [Required]
+        public int _success { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string _ipAddress { get; set; }
+
     }
 }

@@ -45,16 +45,19 @@ namespace Application_Desktop.Views
         {
             try
             {
-                getBranchIdByUserId branchId = new getBranchIdByUserId();
-                BranchID branch = await branchId.GetUserBranchId();
+                getBranchIdByUserId branchIdFetcher = new getBranchIdByUserId();
+                BranchID branch = await branchIdFetcher.GetUserBranchId();
 
                 if (branch != null)
                 {
-                    int admin = branch._id;
+                    int branchId = branch._id;
                     string username = txtUsername.Text;
                     string password = txtPassword.Text;
 
-                    bool isValid = await _accessAccountController.ValidateAccess(username, password, admin);
+                    IPAddressHelper addressHelper = new IPAddressHelper();
+                    string ipAddress = await addressHelper.GetPublicIPAddress();
+
+                    bool isValid = await _accessAccountController.ValidateAccess(username, password, branchId, ipAddress);
 
                     if (isValid)
                     {
@@ -64,7 +67,7 @@ namespace Application_Desktop.Views
                     }
                     else
                     {
-                        bool accountExists = await _accessAccountController.CheckAccountExists(username, admin); 
+                        bool accountExists = await _accessAccountController.CheckAccountExists(username, branchId);
 
                         if (accountExists)
                         {

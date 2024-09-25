@@ -1,4 +1,6 @@
-﻿using Application_Desktop.Models;
+﻿using Application_Desktop.Controller;
+using Application_Desktop.Method;
+using Application_Desktop.Models;
 using Application_Desktop.Screen;
 using Application_Desktop.Sub_sub_Views;
 using Application_Desktop.SuperAdmin_Sub_Views;
@@ -24,8 +26,10 @@ namespace Application_Desktop.Sub_Views
     //admin 800, 313 + 30
     public partial class admin : Form
     {
+        private accessAccountController _accessAccountController;
         public admin()
         {
+            _accessAccountController = new accessAccountController();
             InitializeComponent();
 
 
@@ -46,8 +50,69 @@ namespace Application_Desktop.Sub_Views
 
         private async void registerAdmin_Load(object sender, EventArgs e)
         {
-            await LoadData();
-            await LoadSuperAdmin();
+            try
+            {
+                await LoadData();
+                await LoadSuperAdmin();
+
+                DataTable accesslogs = await _accessAccountController.FetchAccessLogs();
+
+                if (accesslogs != null && accesslogs.Rows.Count > 0)
+                {
+                    AddColumnAccessLogs(viewAccessLogs);
+                    viewAccessLogs.DataSource = accesslogs;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while loading data: {ex.Message}");
+            }
+        }
+
+        private void AddColumnAccessLogs(DataGridView viewAccessLogs)
+        {
+            viewAccessLogs.RowHeadersVisible = false;
+            viewAccessLogs.ColumnHeadersHeight = 40;
+
+            DataGridViewTextBoxColumn Id = new DataGridViewTextBoxColumn();
+            Id.HeaderText = "ID";
+            Id.Name = "id";
+            Id.DataPropertyName = "id";
+            viewAccessLogs.Columns.Add(Id);
+
+            DataGridViewTextBoxColumn username = new DataGridViewTextBoxColumn();
+            username.HeaderText = "Username";
+            username.Name = "username";
+            username.DataPropertyName = "username";
+            username.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            viewAccessLogs.Columns.Add(username);
+
+            DataGridViewTextBoxColumn branchid = new DataGridViewTextBoxColumn();
+            branchid.HeaderText = "Branch Name";
+            branchid.Name = "branchId";
+            branchid.DataPropertyName = "BranchName";
+            branchid.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            viewAccessLogs.Columns.Add(branchid);
+
+            DataGridViewTextBoxColumn loginTime = new DataGridViewTextBoxColumn();
+            loginTime.HeaderText = "Login Time";
+            loginTime.Name = "loginTime";
+            loginTime.DataPropertyName = "login_time";
+            viewAccessLogs.Columns.Add(loginTime);
+
+            DataGridViewTextBoxColumn successful = new DataGridViewTextBoxColumn();
+            successful.HeaderText = "Successfull";
+            successful.Name = "successful";
+            successful.DataPropertyName = "successful";
+            successful.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            viewAccessLogs.Columns.Add(successful);
+
+            DataGridViewTextBoxColumn ipAddress = new DataGridViewTextBoxColumn();
+            ipAddress.HeaderText = "Ip Address";
+            ipAddress.Name = "ipAddress";
+            ipAddress.DataPropertyName = "ip_address";
+            ipAddress.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            viewAccessLogs.Columns.Add(ipAddress);
         }
 
         //Load Super Admin Data
@@ -178,6 +243,30 @@ namespace Application_Desktop.Sub_Views
             //Refresh Button
             await LoadData();
             await LoadSuperAdmin();
+
+            try
+            {
+                viewAccessLogs.DataSource = null;
+                viewAccessLogs.Columns.Clear();
+
+                DataTable accessLogs = await _accessAccountController.FetchAccessLogs();
+
+                if (accessLogs != null && accessLogs.Rows.Count > 0)
+                {
+                    AddColumnAccessLogs(viewAccessLogs);
+
+                    viewAccessLogs.DataSource = accessLogs;
+                }
+                else
+                {
+                    MessageBox.Show("No access logs found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while refreshing data: {ex.Message}");
+            }
+
         }
 
 
@@ -745,6 +834,11 @@ namespace Application_Desktop.Sub_Views
         }
 
         private void viewAccessAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
         {
 
         }

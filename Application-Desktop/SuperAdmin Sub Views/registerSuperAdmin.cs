@@ -81,15 +81,6 @@ namespace Application_Desktop
             }
         }
 
-        private void txtCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            //Check box checker
-            if (txtCheckBox.Checked)
-            {
-                errorProvider7.SetError(txtLink, string.Empty);
-            }
-        }
-
         public async Task RegSuperAdmin(string fname, string lname, string email, string pwd, string rePwd, string roles)
         {
             // Input data to database
@@ -282,6 +273,11 @@ namespace Application_Desktop
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

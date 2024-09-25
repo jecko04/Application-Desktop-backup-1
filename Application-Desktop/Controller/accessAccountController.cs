@@ -1,9 +1,11 @@
-﻿using Application_Desktop.Model;
+﻿using Application_Desktop.Method;
+using Application_Desktop.Model;
 using Application_Desktop.Models;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Asn1.IsisMtt.X509;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,10 +20,10 @@ namespace Application_Desktop.Controller
             _accessAccountModel = new accessAccountModel();
         }
 
-        // ACCESS START
-        public async Task<bool> ValidateAccess(string username, string password, int admin)
+        // ACCESS LOGIN START
+        public async Task<bool> ValidateAccess(string username, string password, int branchId, string ipAddress)
         {
-            string query = @"SELECT password FROM access_account WHERE username = @username AND Branch_ID = @admin";
+            string query = @"SELECT password FROM access_account WHERE username = @username AND Branch_ID = @branchId";
 
             try
             {
@@ -32,29 +34,36 @@ namespace Application_Desktop.Controller
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@username", username);
-                        cmd.Parameters.AddWithValue("@admin", admin);
+                        cmd.Parameters.AddWithValue("@branchId", branchId);
 
-                        object result = await cmd.ExecuteScalarAsync(); // Use object to handle null
+                        // Retrieve the stored hashed password
+                        object result = await cmd.ExecuteScalarAsync();
+                        string storedHashedPassword = result as string;
 
-                        if (result != null)
+                        // If no user found, log the failed attempt and return false
+                        if (storedHashedPassword == null)
                         {
-                            string storedHashedPassword = (string)result;
+                            await LogLoginAttempt(username, branchId, false, ipAddress);
+                            return false;
+                        }
 
-                            cryptography hash = new cryptography();
-                            return hash.VerifyPassword(password, storedHashedPassword);
-                        }
-                        else
-                        {
-                            return false; // No access account found for this branch
-                        }
+                        // Verify the password
+                        cryptography hash = new cryptography();
+                        bool isValid = hash.VerifyPassword(password, storedHashedPassword);
+
+                        // Log the login attempt
+                        await LogLoginAttempt(username, branchId, isValid, ipAddress);
+
+                        return isValid;
                     }
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error validating access: {ex.Message}");
+                throw new Exception($"Error validating access: {ex.Message}", ex);
             }
         }
+
 
         public async Task<bool> CheckAccountExists(string username, int admin)
         {
@@ -81,9 +90,41 @@ namespace Application_Desktop.Controller
                 throw new Exception($"Error checking account existence: {ex.Message}");
             }
         }
-        //ACCESS END
+
+        public async Task LogLoginAttempt(string username, int admin, bool successful, string ipAddress)
+        {
+            string query = @"INSERT INTO access_account_logs (Username, Branch_ID, Login_Time, Successful, IP_Address)
+                     VALUES (@username, @admin, @loginTime, @successful, @ipAddress)";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != System.Data.ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@admin", admin);
+                        cmd.Parameters.AddWithValue("@loginTime", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@successful", successful);
+                        cmd.Parameters.AddWithValue("@ipAddress", ipAddress);
+
+                        await cmd.ExecuteNonQueryAsync();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Failed insert logs attempt: {ex.Message}");
+            }
+        }
+        //ACCESS LOGIN END
 
 
+        //FETCH DATA
         public async Task<List<AccessAccount>> SelectAdmin()
         {
             string query = @"SELECT Email FROM admin";
@@ -198,6 +239,9 @@ namespace Application_Desktop.Controller
             }
         }
 
+        //FETCH DATA
+
+        //VALIDATION
         public async Task<bool> UsernameExists(string username)
         {
             string query = @"SELECT COUNT(*) FROM access_account WHERE username = @username";
@@ -252,6 +296,7 @@ namespace Application_Desktop.Controller
             }
         }
 
+        //VALIDATION
 
         public async Task Create(AccessAccount accessAccount)
         {
@@ -302,5 +347,40 @@ namespace Application_Desktop.Controller
             }
         }
 
+        public async Task<DataTable> FetchAccessLogs()
+        {
+            string query = @"SELECT a.id, a.username, b.Branch_ID, b.BranchName, a.login_time, a.successful, a.ip_address 
+                 FROM access_account_logs a
+                 INNER JOIN branch b ON a.Branch_ID = b.Branch_ID";
+
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dataTable = new DataTable();
+
+                            await Task.Run(() => adapter.Fill(dataTable));
+
+                            return dataTable.Rows.Count > 0 ? dataTable : new DataTable();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error Fetch access logs: {ex.Message}");
+            }
+        }
+
+        
     }
 }

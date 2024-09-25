@@ -13,7 +13,7 @@ namespace Application_Desktop.Method
         public async Task<BranchID> GetUserBranchId()
         {
             int admin = session.LoggedInSession;
-            string query = @"SELECT Branch_ID FROM Branch WHERE Branch_ID = @admin";
+            string query = @"SELECT Branch_ID FROM admin WHERE Admin_ID = @admin";
 
             try
             {

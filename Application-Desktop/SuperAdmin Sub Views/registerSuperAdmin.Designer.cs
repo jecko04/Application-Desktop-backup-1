@@ -31,9 +31,6 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(registerSuperAdmin));
             panel = new Panel();
-            borderTerms = new Panel();
-            txtCheckBox = new CheckBox();
-            txtLink = new LinkLabel();
             borderEmail = new Panel();
             panel24 = new Panel();
             panel25 = new Panel();
@@ -95,7 +92,6 @@
             pictureBox1 = new PictureBox();
             elipseControl1 = new ElipseToolDemo.ElipseControl();
             panel.SuspendLayout();
-            borderTerms.SuspendLayout();
             borderEmail.SuspendLayout();
             borderRePass.SuspendLayout();
             borderPass.SuspendLayout();
@@ -121,7 +117,6 @@
             // panel
             // 
             panel.BackColor = Color.WhiteSmoke;
-            panel.Controls.Add(borderTerms);
             panel.Controls.Add(borderEmail);
             panel.Controls.Add(borderRePass);
             panel.Controls.Add(borderPass);
@@ -139,38 +134,8 @@
             panel.Font = new Font("Tahoma", 9.75F);
             panel.Location = new Point(0, 29);
             panel.Name = "panel";
-            panel.Size = new Size(431, 470);
+            panel.Size = new Size(431, 421);
             panel.TabIndex = 1;
-            // 
-            // borderTerms
-            // 
-            borderTerms.Controls.Add(txtCheckBox);
-            borderTerms.Controls.Add(txtLink);
-            borderTerms.Location = new Point(45, 344);
-            borderTerms.Name = "borderTerms";
-            borderTerms.Size = new Size(157, 23);
-            borderTerms.TabIndex = 64;
-            // 
-            // txtCheckBox
-            // 
-            txtCheckBox.AutoSize = true;
-            txtCheckBox.Location = new Point(4, 6);
-            txtCheckBox.Name = "txtCheckBox";
-            txtCheckBox.Size = new Size(15, 14);
-            txtCheckBox.TabIndex = 12;
-            txtCheckBox.UseVisualStyleBackColor = true;
-            txtCheckBox.CheckedChanged += txtCheckBox_CheckedChanged;
-            // 
-            // txtLink
-            // 
-            txtLink.ActiveLinkColor = Color.FromArgb(123, 44, 191);
-            txtLink.AutoSize = true;
-            txtLink.Location = new Point(25, 4);
-            txtLink.Name = "txtLink";
-            txtLink.Size = new Size(126, 16);
-            txtLink.TabIndex = 13;
-            txtLink.TabStop = true;
-            txtLink.Text = "Terms and Condition";
             // 
             // borderEmail
             // 
@@ -532,7 +497,7 @@
             label10.Size = new Size(341, 32);
             label10.TabIndex = 55;
             label10.Text = "Password must be at least 8 characters long, including an \r\nuppercase letter, a lowercase letter, and a number.\r\n";
-            label10.TextAlign = ContentAlignment.MiddleLeft;
+            label10.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
@@ -552,7 +517,7 @@
             btnRegister.FlatStyle = FlatStyle.Flat;
             btnRegister.Font = new Font("Tahoma", 9.75F);
             btnRegister.ForeColor = Color.White;
-            btnRegister.Location = new Point(317, 380);
+            btnRegister.Location = new Point(317, 365);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(74, 24);
             btnRegister.TabIndex = 11;
@@ -694,6 +659,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(434, 30);
             panel1.TabIndex = 56;
+            panel1.Paint += panel1_Paint;
             // 
             // label1
             // 
@@ -725,7 +691,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(429, 462);
+            ClientSize = new Size(429, 449);
             Controls.Add(panel1);
             Controls.Add(panel);
             ForeColor = SystemColors.ActiveCaptionText;
@@ -736,8 +702,6 @@
             Load += registerSuperAdmin_Load;
             panel.ResumeLayout(false);
             panel.PerformLayout();
-            borderTerms.ResumeLayout(false);
-            borderTerms.PerformLayout();
             borderEmail.ResumeLayout(false);
             borderEmail.PerformLayout();
             borderRePass.ResumeLayout(false);
@@ -773,8 +737,6 @@
         private Label label2;
         private TextBox txtLastName;
         private Label label3;
-        private LinkLabel txtLink;
-        private CheckBox txtCheckBox;
         private Button btnRegister;
         private TextBox txtRePwd;
         private Label label5;
@@ -831,6 +793,5 @@
         private Panel panel9;
         private Panel panel10;
         private Panel panel11;
-        private Panel borderTerms;
     }
 }
