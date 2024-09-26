@@ -1825,8 +1825,8 @@
             // btnCreate
             // 
             btnCreate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnCreate.BackColor = Color.FromArgb(52, 152, 219);
-            btnCreate.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnCreate.BackColor = Color.FromArgb(255, 66, 0);
+            btnCreate.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
             btnCreate.FlatStyle = FlatStyle.Flat;
             btnCreate.Font = new Font("Microsoft Sans Serif", 9F);
             btnCreate.ForeColor = SystemColors.ButtonFace;

@@ -42,8 +42,10 @@ namespace Application_Desktop.Admin_Sub_Views
                     int admin = branch._id;
 
                     await _viewAvailableServicesController.LoadAvailableDentalServices(admin, viewDentalServices);
-                    //_OnlineBookingController.LoadStatus(txtStatus);
 
+                    List<string> result = await _viewAvailableServicesController.SelectSortedBy();
+                    txtServices.Items.Clear();
+                    txtServices.Items.AddRange(result.ToArray());
                 }
                 else
                 {
@@ -54,6 +56,33 @@ namespace Application_Desktop.Admin_Sub_Views
             {
                 MessageBox.Show($"An error occurred while loading data: {ex.Message}");
             }
+        }
+
+        public async Task SortedBy()
+        {
+            int isAvailable = btnAvailable.Checked ? 1 : 0;
+
+            string selectedService = txtServices.SelectedItem?.ToString();
+
+            DataTable result;
+
+            if (btnAvailable.Checked && selectedService == null)
+            {
+                result = await _viewAvailableServicesController.SortedBy(null, isAvailable);
+            }
+            else if (selectedService != null)
+            {
+                result = await _viewAvailableServicesController.SortedBy(selectedService, isAvailable);
+            }
+            else
+            {
+                return;
+            }
+
+            viewDentalServices.DataSource = null;
+            viewDentalServices.Rows.Clear();
+
+            viewDentalServices.DataSource = result;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -90,6 +119,16 @@ namespace Application_Desktop.Admin_Sub_Views
         private void viewDentalServices_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             _viewAvailableServicesController.FormatAvailableCell(e, (DataGridView)sender);
+        }
+
+        private async void txtServices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            await SortedBy();
+        }
+
+        private async void btnAvailable_CheckedChanged(object sender, EventArgs e)
+        {
+            await SortedBy();
         }
     }
 }

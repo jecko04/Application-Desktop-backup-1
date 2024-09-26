@@ -34,19 +34,10 @@
             flowLayoutPanel2 = new FlowLayoutPanel();
             panel7 = new Panel();
             button6 = new Button();
+            panel1 = new Panel();
+            label1 = new Label();
             panel2 = new Panel();
             btnDashboard = new Button();
-            panel4 = new Panel();
-            btnEmployee = new Button();
-            appointmentContainer = new FlowLayoutPanel();
-            panel19 = new Panel();
-            btnAppointment = new Button();
-            panel21 = new Panel();
-            btnPending = new Button();
-            panel22 = new Panel();
-            btnViewAllAppointment = new Button();
-            panel6 = new Panel();
-            btnCancelAppointment = new Button();
             recordContainer = new FlowLayoutPanel();
             panel13 = new Panel();
             btnPatientRecord = new Button();
@@ -59,6 +50,17 @@
             btnCategory = new Button();
             panel16 = new Panel();
             btnOnlineBooking = new Button();
+            appointmentContainer = new FlowLayoutPanel();
+            panel19 = new Panel();
+            btnAppointment = new Button();
+            panel21 = new Panel();
+            btnPending = new Button();
+            panel22 = new Panel();
+            btnViewAllAppointment = new Button();
+            panel6 = new Panel();
+            btnCancelAppointment = new Button();
+            panel4 = new Panel();
+            btnEmployee = new Button();
             menuContainer = new FlowLayoutPanel();
             panel9 = new Panel();
             btnMenu = new Button();
@@ -78,13 +80,8 @@
             sidebarContainer.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             panel7.SuspendLayout();
+            panel1.SuspendLayout();
             panel2.SuspendLayout();
-            panel4.SuspendLayout();
-            appointmentContainer.SuspendLayout();
-            panel19.SuspendLayout();
-            panel21.SuspendLayout();
-            panel22.SuspendLayout();
-            panel6.SuspendLayout();
             recordContainer.SuspendLayout();
             panel13.SuspendLayout();
             panel5.SuspendLayout();
@@ -92,6 +89,12 @@
             panel3.SuspendLayout();
             panel15.SuspendLayout();
             panel16.SuspendLayout();
+            appointmentContainer.SuspendLayout();
+            panel19.SuspendLayout();
+            panel21.SuspendLayout();
+            panel22.SuspendLayout();
+            panel6.SuspendLayout();
+            panel4.SuspendLayout();
             menuContainer.SuspendLayout();
             panel9.SuspendLayout();
             panel10.SuspendLayout();
@@ -100,13 +103,14 @@
             // 
             // sidebarContainer
             // 
-            sidebarContainer.BackColor = Color.FromArgb(52, 152, 219);
+            sidebarContainer.BackColor = Color.FromArgb(250, 220, 18);
             sidebarContainer.Controls.Add(flowLayoutPanel2);
+            sidebarContainer.Controls.Add(panel1);
             sidebarContainer.Controls.Add(panel2);
-            sidebarContainer.Controls.Add(panel4);
-            sidebarContainer.Controls.Add(appointmentContainer);
             sidebarContainer.Controls.Add(recordContainer);
             sidebarContainer.Controls.Add(setupContainer);
+            sidebarContainer.Controls.Add(appointmentContainer);
+            sidebarContainer.Controls.Add(panel4);
             sidebarContainer.Controls.Add(menuContainer);
             sidebarContainer.Dock = DockStyle.Left;
             sidebarContainer.Location = new Point(0, 0);
@@ -152,74 +156,235 @@
             button6.TextAlign = ContentAlignment.MiddleLeft;
             button6.UseVisualStyleBackColor = false;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(label1);
+            panel1.Location = new Point(3, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(182, 116);
+            panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(11, 37);
+            label1.Name = "label1";
+            label1.Size = new Size(160, 45);
+            label1.TabIndex = 0;
+            label1.Text = "ORALease: Online \r\nAppointment Reservation for\r\nLocal Dental Services";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // panel2
             // 
+            panel2.BackColor = Color.FromArgb(250, 220, 18);
             panel2.Controls.Add(btnDashboard);
-            panel2.Location = new Point(0, 2);
+            panel2.Location = new Point(0, 124);
             panel2.Margin = new Padding(0, 2, 0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(182, 34);
+            panel2.Size = new Size(184, 34);
             panel2.TabIndex = 2;
             // 
             // btnDashboard
             // 
-            btnDashboard.BackColor = Color.FromArgb(52, 152, 219);
+            btnDashboard.BackColor = Color.FromArgb(250, 220, 18);
             btnDashboard.Dock = DockStyle.Fill;
-            btnDashboard.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnDashboard.FlatAppearance.BorderColor = Color.FromArgb(250, 220, 18);
             btnDashboard.FlatStyle = FlatStyle.Flat;
             btnDashboard.Font = new Font("Microsoft Sans Serif", 9F);
-            btnDashboard.ForeColor = SystemColors.ButtonFace;
+            btnDashboard.ForeColor = Color.Black;
             btnDashboard.Image = (Image)resources.GetObject("btnDashboard.Image");
             btnDashboard.ImageAlign = ContentAlignment.MiddleLeft;
             btnDashboard.Location = new Point(0, 0);
             btnDashboard.Margin = new Padding(0);
             btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(182, 34);
+            btnDashboard.Size = new Size(184, 34);
             btnDashboard.TabIndex = 3;
             btnDashboard.Text = "              Dashboard";
             btnDashboard.TextAlign = ContentAlignment.MiddleLeft;
             btnDashboard.UseVisualStyleBackColor = false;
             btnDashboard.Click += btnDashboard_Click;
             // 
-            // panel4
+            // recordContainer
             // 
-            panel4.Controls.Add(btnEmployee);
-            panel4.Location = new Point(0, 38);
-            panel4.Margin = new Padding(0, 2, 0, 0);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(185, 34);
-            panel4.TabIndex = 4;
+            recordContainer.BackColor = Color.FromArgb(250, 220, 18);
+            recordContainer.Controls.Add(panel13);
+            recordContainer.Controls.Add(panel5);
+            recordContainer.Location = new Point(0, 160);
+            recordContainer.Margin = new Padding(0, 2, 0, 0);
+            recordContainer.Name = "recordContainer";
+            recordContainer.Size = new Size(184, 34);
+            recordContainer.TabIndex = 9;
             // 
-            // btnEmployee
+            // panel13
             // 
-            btnEmployee.BackColor = Color.FromArgb(52, 152, 219);
-            btnEmployee.Dock = DockStyle.Fill;
-            btnEmployee.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
-            btnEmployee.FlatStyle = FlatStyle.Flat;
-            btnEmployee.Font = new Font("Microsoft Sans Serif", 9F);
-            btnEmployee.ForeColor = SystemColors.ButtonFace;
-            btnEmployee.Image = (Image)resources.GetObject("btnEmployee.Image");
-            btnEmployee.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmployee.Location = new Point(0, 0);
-            btnEmployee.Name = "btnEmployee";
-            btnEmployee.Size = new Size(185, 34);
-            btnEmployee.TabIndex = 3;
-            btnEmployee.Text = "              Employee Profile";
-            btnEmployee.TextAlign = ContentAlignment.MiddleLeft;
-            btnEmployee.UseVisualStyleBackColor = false;
-            btnEmployee.Click += btnEmployee_Click;
+            panel13.Controls.Add(btnPatientRecord);
+            panel13.Location = new Point(0, 0);
+            panel13.Margin = new Padding(0);
+            panel13.Name = "panel13";
+            panel13.Size = new Size(185, 34);
+            panel13.TabIndex = 11;
+            // 
+            // btnPatientRecord
+            // 
+            btnPatientRecord.BackColor = Color.FromArgb(250, 220, 18);
+            btnPatientRecord.Dock = DockStyle.Fill;
+            btnPatientRecord.FlatAppearance.BorderColor = Color.FromArgb(250, 220, 18);
+            btnPatientRecord.FlatStyle = FlatStyle.Flat;
+            btnPatientRecord.Font = new Font("Microsoft Sans Serif", 9F);
+            btnPatientRecord.ForeColor = Color.Black;
+            btnPatientRecord.Image = (Image)resources.GetObject("btnPatientRecord.Image");
+            btnPatientRecord.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPatientRecord.Location = new Point(0, 0);
+            btnPatientRecord.Margin = new Padding(0);
+            btnPatientRecord.Name = "btnPatientRecord";
+            btnPatientRecord.Size = new Size(185, 34);
+            btnPatientRecord.TabIndex = 3;
+            btnPatientRecord.Text = "              Patient Records";
+            btnPatientRecord.TextAlign = ContentAlignment.MiddleLeft;
+            btnPatientRecord.UseVisualStyleBackColor = false;
+            btnPatientRecord.Click += btnPatientRecord_Click_1;
+            // 
+            // panel5
+            // 
+            panel5.Controls.Add(btnViewPatient);
+            panel5.Location = new Point(0, 34);
+            panel5.Margin = new Padding(0);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(213, 34);
+            panel5.TabIndex = 3;
+            // 
+            // btnViewPatient
+            // 
+            btnViewPatient.BackColor = Color.FromArgb(250, 220, 18);
+            btnViewPatient.Dock = DockStyle.Fill;
+            btnViewPatient.FlatAppearance.BorderColor = Color.FromArgb(250, 220, 18);
+            btnViewPatient.FlatStyle = FlatStyle.Flat;
+            btnViewPatient.Font = new Font("Microsoft Sans Serif", 9F);
+            btnViewPatient.ForeColor = Color.Black;
+            btnViewPatient.ImageAlign = ContentAlignment.MiddleLeft;
+            btnViewPatient.Location = new Point(0, 0);
+            btnViewPatient.Margin = new Padding(0);
+            btnViewPatient.Name = "btnViewPatient";
+            btnViewPatient.Size = new Size(213, 34);
+            btnViewPatient.TabIndex = 3;
+            btnViewPatient.Text = "              View Patient Records";
+            btnViewPatient.TextAlign = ContentAlignment.MiddleLeft;
+            btnViewPatient.UseVisualStyleBackColor = false;
+            btnViewPatient.Click += btnViewPatient_Click;
+            // 
+            // setupContainer
+            // 
+            setupContainer.BackColor = Color.FromArgb(250, 220, 18);
+            setupContainer.Controls.Add(panel3);
+            setupContainer.Controls.Add(panel15);
+            setupContainer.Controls.Add(panel16);
+            setupContainer.Location = new Point(0, 196);
+            setupContainer.Margin = new Padding(0, 2, 0, 0);
+            setupContainer.Name = "setupContainer";
+            setupContainer.Size = new Size(184, 34);
+            setupContainer.TabIndex = 9;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(btnSetup);
+            panel3.Location = new Point(0, 0);
+            panel3.Margin = new Padding(0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(185, 34);
+            panel3.TabIndex = 3;
+            // 
+            // btnSetup
+            // 
+            btnSetup.BackColor = Color.FromArgb(250, 220, 18);
+            btnSetup.Dock = DockStyle.Fill;
+            btnSetup.FlatAppearance.BorderColor = Color.FromArgb(250, 220, 18);
+            btnSetup.FlatStyle = FlatStyle.Flat;
+            btnSetup.Font = new Font("Microsoft Sans Serif", 9F);
+            btnSetup.ForeColor = Color.Black;
+            btnSetup.Image = (Image)resources.GetObject("btnSetup.Image");
+            btnSetup.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSetup.Location = new Point(0, 0);
+            btnSetup.Margin = new Padding(0);
+            btnSetup.Name = "btnSetup";
+            btnSetup.Size = new Size(185, 34);
+            btnSetup.TabIndex = 3;
+            btnSetup.Text = "              Setup Services ";
+            btnSetup.TextAlign = ContentAlignment.MiddleLeft;
+            btnSetup.UseVisualStyleBackColor = false;
+            btnSetup.Click += btnSetup_Click;
+            // 
+            // panel15
+            // 
+            panel15.Controls.Add(btnCategory);
+            panel15.Location = new Point(1, 34);
+            panel15.Margin = new Padding(1, 0, 0, 0);
+            panel15.Name = "panel15";
+            panel15.Size = new Size(213, 34);
+            panel15.TabIndex = 4;
+            // 
+            // btnCategory
+            // 
+            btnCategory.BackColor = Color.Transparent;
+            btnCategory.Dock = DockStyle.Fill;
+            btnCategory.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
+            btnCategory.FlatAppearance.BorderSize = 0;
+            btnCategory.FlatStyle = FlatStyle.Flat;
+            btnCategory.Font = new Font("Microsoft Sans Serif", 9F);
+            btnCategory.ForeColor = Color.Black;
+            btnCategory.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCategory.Location = new Point(0, 0);
+            btnCategory.Margin = new Padding(0);
+            btnCategory.Name = "btnCategory";
+            btnCategory.Size = new Size(213, 34);
+            btnCategory.TabIndex = 3;
+            btnCategory.Text = "              Services / OpenHours";
+            btnCategory.TextAlign = ContentAlignment.MiddleLeft;
+            btnCategory.UseVisualStyleBackColor = false;
+            btnCategory.Click += btnCategory_Click;
+            // 
+            // panel16
+            // 
+            panel16.Controls.Add(btnOnlineBooking);
+            panel16.Location = new Point(1, 68);
+            panel16.Margin = new Padding(1, 0, 0, 0);
+            panel16.Name = "panel16";
+            panel16.Size = new Size(213, 34);
+            panel16.TabIndex = 5;
+            // 
+            // btnOnlineBooking
+            // 
+            btnOnlineBooking.BackColor = Color.Transparent;
+            btnOnlineBooking.Dock = DockStyle.Fill;
+            btnOnlineBooking.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
+            btnOnlineBooking.FlatAppearance.BorderSize = 0;
+            btnOnlineBooking.FlatStyle = FlatStyle.Flat;
+            btnOnlineBooking.Font = new Font("Microsoft Sans Serif", 9F);
+            btnOnlineBooking.ForeColor = Color.Black;
+            btnOnlineBooking.ImageAlign = ContentAlignment.MiddleLeft;
+            btnOnlineBooking.Location = new Point(0, 0);
+            btnOnlineBooking.Margin = new Padding(0);
+            btnOnlineBooking.Name = "btnOnlineBooking";
+            btnOnlineBooking.Size = new Size(213, 34);
+            btnOnlineBooking.TabIndex = 3;
+            btnOnlineBooking.Text = "              Services Availability\r\n";
+            btnOnlineBooking.TextAlign = ContentAlignment.MiddleLeft;
+            btnOnlineBooking.UseVisualStyleBackColor = false;
+            btnOnlineBooking.Click += btnOnlineBooking_Click;
             // 
             // appointmentContainer
             // 
-            appointmentContainer.BackColor = Color.FromArgb(41, 128, 185);
+            appointmentContainer.BackColor = Color.FromArgb(250, 220, 18);
             appointmentContainer.Controls.Add(panel19);
             appointmentContainer.Controls.Add(panel21);
             appointmentContainer.Controls.Add(panel22);
             appointmentContainer.Controls.Add(panel6);
-            appointmentContainer.Location = new Point(0, 74);
+            appointmentContainer.Location = new Point(0, 232);
             appointmentContainer.Margin = new Padding(0, 2, 8, 0);
             appointmentContainer.Name = "appointmentContainer";
-            appointmentContainer.Size = new Size(185, 34);
+            appointmentContainer.Size = new Size(184, 34);
             appointmentContainer.TabIndex = 9;
             // 
             // panel19
@@ -233,13 +398,13 @@
             // 
             // btnAppointment
             // 
-            btnAppointment.BackColor = Color.FromArgb(52, 152, 219);
+            btnAppointment.BackColor = Color.FromArgb(250, 220, 18);
             btnAppointment.BackgroundImageLayout = ImageLayout.Center;
             btnAppointment.Dock = DockStyle.Fill;
-            btnAppointment.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnAppointment.FlatAppearance.BorderColor = Color.FromArgb(250, 220, 18);
             btnAppointment.FlatStyle = FlatStyle.Flat;
             btnAppointment.Font = new Font("Microsoft Sans Serif", 9F);
-            btnAppointment.ForeColor = SystemColors.ButtonFace;
+            btnAppointment.ForeColor = Color.Black;
             btnAppointment.Image = (Image)resources.GetObject("btnAppointment.Image");
             btnAppointment.ImageAlign = ContentAlignment.MiddleLeft;
             btnAppointment.Location = new Point(0, 0);
@@ -271,7 +436,7 @@
             btnPending.FlatAppearance.BorderSize = 0;
             btnPending.FlatStyle = FlatStyle.Flat;
             btnPending.Font = new Font("Microsoft Sans Serif", 9F);
-            btnPending.ForeColor = SystemColors.ButtonFace;
+            btnPending.ForeColor = Color.Black;
             btnPending.ImageAlign = ContentAlignment.MiddleLeft;
             btnPending.Location = new Point(0, 0);
             btnPending.Margin = new Padding(0);
@@ -300,7 +465,7 @@
             btnViewAllAppointment.FlatAppearance.BorderSize = 0;
             btnViewAllAppointment.FlatStyle = FlatStyle.Flat;
             btnViewAllAppointment.Font = new Font("Microsoft Sans Serif", 9F);
-            btnViewAllAppointment.ForeColor = SystemColors.ButtonFace;
+            btnViewAllAppointment.ForeColor = Color.Black;
             btnViewAllAppointment.ImageAlign = ContentAlignment.MiddleLeft;
             btnViewAllAppointment.Location = new Point(0, 0);
             btnViewAllAppointment.Margin = new Padding(0);
@@ -329,7 +494,7 @@
             btnCancelAppointment.FlatAppearance.BorderSize = 0;
             btnCancelAppointment.FlatStyle = FlatStyle.Flat;
             btnCancelAppointment.Font = new Font("Microsoft Sans Serif", 9F);
-            btnCancelAppointment.ForeColor = SystemColors.ButtonFace;
+            btnCancelAppointment.ForeColor = Color.Black;
             btnCancelAppointment.ImageAlign = ContentAlignment.MiddleLeft;
             btnCancelAppointment.Location = new Point(0, 0);
             btnCancelAppointment.Margin = new Padding(0);
@@ -341,183 +506,45 @@
             btnCancelAppointment.UseVisualStyleBackColor = false;
             btnCancelAppointment.Click += btnCancelAppointment_Click;
             // 
-            // recordContainer
+            // panel4
             // 
-            recordContainer.BackColor = Color.FromArgb(41, 128, 185);
-            recordContainer.Controls.Add(panel13);
-            recordContainer.Controls.Add(panel5);
-            recordContainer.Location = new Point(0, 110);
-            recordContainer.Margin = new Padding(0, 2, 0, 0);
-            recordContainer.Name = "recordContainer";
-            recordContainer.Size = new Size(185, 34);
-            recordContainer.TabIndex = 9;
+            panel4.BackColor = Color.FromArgb(250, 220, 18);
+            panel4.Controls.Add(btnEmployee);
+            panel4.Location = new Point(0, 268);
+            panel4.Margin = new Padding(0, 2, 0, 0);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(184, 34);
+            panel4.TabIndex = 4;
             // 
-            // panel13
+            // btnEmployee
             // 
-            panel13.Controls.Add(btnPatientRecord);
-            panel13.Location = new Point(0, 0);
-            panel13.Margin = new Padding(0);
-            panel13.Name = "panel13";
-            panel13.Size = new Size(185, 34);
-            panel13.TabIndex = 11;
-            // 
-            // btnPatientRecord
-            // 
-            btnPatientRecord.BackColor = Color.FromArgb(52, 152, 219);
-            btnPatientRecord.Dock = DockStyle.Fill;
-            btnPatientRecord.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
-            btnPatientRecord.FlatStyle = FlatStyle.Flat;
-            btnPatientRecord.Font = new Font("Microsoft Sans Serif", 9F);
-            btnPatientRecord.ForeColor = SystemColors.ButtonFace;
-            btnPatientRecord.Image = (Image)resources.GetObject("btnPatientRecord.Image");
-            btnPatientRecord.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPatientRecord.Location = new Point(0, 0);
-            btnPatientRecord.Margin = new Padding(0);
-            btnPatientRecord.Name = "btnPatientRecord";
-            btnPatientRecord.Size = new Size(185, 34);
-            btnPatientRecord.TabIndex = 3;
-            btnPatientRecord.Text = "              Patient Records";
-            btnPatientRecord.TextAlign = ContentAlignment.MiddleLeft;
-            btnPatientRecord.UseVisualStyleBackColor = false;
-            btnPatientRecord.Click += btnPatientRecord_Click_1;
-            // 
-            // panel5
-            // 
-            panel5.Controls.Add(btnViewPatient);
-            panel5.Location = new Point(0, 34);
-            panel5.Margin = new Padding(0);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(213, 34);
-            panel5.TabIndex = 3;
-            // 
-            // btnViewPatient
-            // 
-            btnViewPatient.BackColor = Color.FromArgb(41, 128, 185);
-            btnViewPatient.Dock = DockStyle.Fill;
-            btnViewPatient.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
-            btnViewPatient.FlatStyle = FlatStyle.Flat;
-            btnViewPatient.Font = new Font("Microsoft Sans Serif", 9F);
-            btnViewPatient.ForeColor = SystemColors.ButtonFace;
-            btnViewPatient.ImageAlign = ContentAlignment.MiddleLeft;
-            btnViewPatient.Location = new Point(0, 0);
-            btnViewPatient.Margin = new Padding(0);
-            btnViewPatient.Name = "btnViewPatient";
-            btnViewPatient.Size = new Size(213, 34);
-            btnViewPatient.TabIndex = 3;
-            btnViewPatient.Text = "              View Patient Records";
-            btnViewPatient.TextAlign = ContentAlignment.MiddleLeft;
-            btnViewPatient.UseVisualStyleBackColor = false;
-            btnViewPatient.Click += btnViewPatient_Click;
-            // 
-            // setupContainer
-            // 
-            setupContainer.BackColor = Color.FromArgb(41, 128, 185);
-            setupContainer.Controls.Add(panel3);
-            setupContainer.Controls.Add(panel15);
-            setupContainer.Controls.Add(panel16);
-            setupContainer.Location = new Point(0, 146);
-            setupContainer.Margin = new Padding(0, 2, 0, 0);
-            setupContainer.Name = "setupContainer";
-            setupContainer.Size = new Size(185, 34);
-            setupContainer.TabIndex = 9;
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(btnSetup);
-            panel3.Location = new Point(0, 0);
-            panel3.Margin = new Padding(0);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(185, 34);
-            panel3.TabIndex = 3;
-            // 
-            // btnSetup
-            // 
-            btnSetup.BackColor = Color.FromArgb(52, 152, 219);
-            btnSetup.Dock = DockStyle.Fill;
-            btnSetup.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
-            btnSetup.FlatStyle = FlatStyle.Flat;
-            btnSetup.Font = new Font("Microsoft Sans Serif", 9F);
-            btnSetup.ForeColor = SystemColors.ButtonFace;
-            btnSetup.Image = (Image)resources.GetObject("btnSetup.Image");
-            btnSetup.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSetup.Location = new Point(0, 0);
-            btnSetup.Margin = new Padding(0);
-            btnSetup.Name = "btnSetup";
-            btnSetup.Size = new Size(185, 34);
-            btnSetup.TabIndex = 3;
-            btnSetup.Text = "              Setup Services ";
-            btnSetup.TextAlign = ContentAlignment.MiddleLeft;
-            btnSetup.UseVisualStyleBackColor = false;
-            btnSetup.Click += btnSetup_Click;
-            // 
-            // panel15
-            // 
-            panel15.Controls.Add(btnCategory);
-            panel15.Location = new Point(1, 34);
-            panel15.Margin = new Padding(1, 0, 0, 0);
-            panel15.Name = "panel15";
-            panel15.Size = new Size(213, 34);
-            panel15.TabIndex = 4;
-            // 
-            // btnCategory
-            // 
-            btnCategory.BackColor = Color.Transparent;
-            btnCategory.Dock = DockStyle.Fill;
-            btnCategory.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
-            btnCategory.FlatAppearance.BorderSize = 0;
-            btnCategory.FlatStyle = FlatStyle.Flat;
-            btnCategory.Font = new Font("Microsoft Sans Serif", 9F);
-            btnCategory.ForeColor = SystemColors.ButtonFace;
-            btnCategory.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCategory.Location = new Point(0, 0);
-            btnCategory.Margin = new Padding(0);
-            btnCategory.Name = "btnCategory";
-            btnCategory.Size = new Size(213, 34);
-            btnCategory.TabIndex = 3;
-            btnCategory.Text = "              Services / OpenHours";
-            btnCategory.TextAlign = ContentAlignment.MiddleLeft;
-            btnCategory.UseVisualStyleBackColor = false;
-            btnCategory.Click += btnCategory_Click;
-            // 
-            // panel16
-            // 
-            panel16.Controls.Add(btnOnlineBooking);
-            panel16.Location = new Point(1, 68);
-            panel16.Margin = new Padding(1, 0, 0, 0);
-            panel16.Name = "panel16";
-            panel16.Size = new Size(213, 34);
-            panel16.TabIndex = 5;
-            // 
-            // btnOnlineBooking
-            // 
-            btnOnlineBooking.BackColor = Color.Transparent;
-            btnOnlineBooking.Dock = DockStyle.Fill;
-            btnOnlineBooking.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
-            btnOnlineBooking.FlatAppearance.BorderSize = 0;
-            btnOnlineBooking.FlatStyle = FlatStyle.Flat;
-            btnOnlineBooking.Font = new Font("Microsoft Sans Serif", 9F);
-            btnOnlineBooking.ForeColor = SystemColors.ButtonFace;
-            btnOnlineBooking.ImageAlign = ContentAlignment.MiddleLeft;
-            btnOnlineBooking.Location = new Point(0, 0);
-            btnOnlineBooking.Margin = new Padding(0);
-            btnOnlineBooking.Name = "btnOnlineBooking";
-            btnOnlineBooking.Size = new Size(213, 34);
-            btnOnlineBooking.TabIndex = 3;
-            btnOnlineBooking.Text = "              Services Availability\r\n";
-            btnOnlineBooking.TextAlign = ContentAlignment.MiddleLeft;
-            btnOnlineBooking.UseVisualStyleBackColor = false;
-            btnOnlineBooking.Click += btnOnlineBooking_Click;
+            btnEmployee.BackColor = Color.FromArgb(250, 220, 18);
+            btnEmployee.Dock = DockStyle.Fill;
+            btnEmployee.FlatAppearance.BorderColor = Color.FromArgb(250, 220, 18);
+            btnEmployee.FlatStyle = FlatStyle.Flat;
+            btnEmployee.Font = new Font("Microsoft Sans Serif", 9F);
+            btnEmployee.ForeColor = Color.Black;
+            btnEmployee.Image = (Image)resources.GetObject("btnEmployee.Image");
+            btnEmployee.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEmployee.Location = new Point(0, 0);
+            btnEmployee.Name = "btnEmployee";
+            btnEmployee.Size = new Size(184, 34);
+            btnEmployee.TabIndex = 3;
+            btnEmployee.Text = "              Employee Profile";
+            btnEmployee.TextAlign = ContentAlignment.MiddleLeft;
+            btnEmployee.UseVisualStyleBackColor = false;
+            btnEmployee.Click += btnEmployee_Click;
             // 
             // menuContainer
             // 
-            menuContainer.BackColor = Color.FromArgb(41, 128, 185);
+            menuContainer.BackColor = Color.FromArgb(250, 220, 18);
             menuContainer.Controls.Add(panel9);
             menuContainer.Controls.Add(panel10);
             menuContainer.Controls.Add(panel8);
-            menuContainer.Location = new Point(0, 182);
+            menuContainer.Location = new Point(0, 304);
             menuContainer.Margin = new Padding(0, 2, 0, 0);
             menuContainer.Name = "menuContainer";
-            menuContainer.Size = new Size(185, 34);
+            menuContainer.Size = new Size(184, 34);
             menuContainer.TabIndex = 8;
             // 
             // panel9
@@ -532,12 +559,12 @@
             // 
             // btnMenu
             // 
-            btnMenu.BackColor = Color.FromArgb(52, 152, 219);
+            btnMenu.BackColor = Color.FromArgb(250, 220, 18);
             btnMenu.Dock = DockStyle.Fill;
-            btnMenu.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnMenu.FlatAppearance.BorderColor = Color.FromArgb(250, 220, 18);
             btnMenu.FlatStyle = FlatStyle.Flat;
             btnMenu.Font = new Font("Microsoft Sans Serif", 9F);
-            btnMenu.ForeColor = SystemColors.ButtonFace;
+            btnMenu.ForeColor = Color.Black;
             btnMenu.Image = (Image)resources.GetObject("btnMenu.Image");
             btnMenu.ImageAlign = ContentAlignment.MiddleLeft;
             btnMenu.Location = new Point(0, 0);
@@ -575,7 +602,7 @@
             btnSetting.FlatAppearance.BorderSize = 0;
             btnSetting.FlatStyle = FlatStyle.Flat;
             btnSetting.Font = new Font("Microsoft Sans Serif", 9F);
-            btnSetting.ForeColor = SystemColors.ButtonFace;
+            btnSetting.ForeColor = Color.Black;
             btnSetting.ImageAlign = ContentAlignment.MiddleLeft;
             btnSetting.Location = new Point(0, 0);
             btnSetting.Margin = new Padding(0);
@@ -604,7 +631,7 @@
             btnLogout.FlatAppearance.BorderSize = 0;
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.Font = new Font("Microsoft Sans Serif", 9F);
-            btnLogout.ForeColor = SystemColors.ButtonFace;
+            btnLogout.ForeColor = Color.Black;
             btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
             btnLogout.Location = new Point(0, 0);
             btnLogout.Margin = new Padding(0);
@@ -676,13 +703,9 @@
             sidebarContainer.ResumeLayout(false);
             flowLayoutPanel2.ResumeLayout(false);
             panel7.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             panel2.ResumeLayout(false);
-            panel4.ResumeLayout(false);
-            appointmentContainer.ResumeLayout(false);
-            panel19.ResumeLayout(false);
-            panel21.ResumeLayout(false);
-            panel22.ResumeLayout(false);
-            panel6.ResumeLayout(false);
             recordContainer.ResumeLayout(false);
             panel13.ResumeLayout(false);
             panel5.ResumeLayout(false);
@@ -690,6 +713,12 @@
             panel3.ResumeLayout(false);
             panel15.ResumeLayout(false);
             panel16.ResumeLayout(false);
+            appointmentContainer.ResumeLayout(false);
+            panel19.ResumeLayout(false);
+            panel21.ResumeLayout(false);
+            panel22.ResumeLayout(false);
+            panel6.ResumeLayout(false);
+            panel4.ResumeLayout(false);
             menuContainer.ResumeLayout(false);
             panel9.ResumeLayout(false);
             panel10.ResumeLayout(false);
@@ -743,5 +772,7 @@
         private Button btnPatientRecord;
         private System.Windows.Forms.Timer PatientTransition;
         private System.Windows.Forms.Timer AppointTransition;
+        private Panel panel1;
+        private Label label1;
     }
 }

@@ -351,8 +351,8 @@
             // btnViewCategories
             // 
             this.btnViewCategories.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Right)));
-            this.btnViewCategories.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(52)), (global::System.Int32)((global::System.Byte)(152)), (global::System.Int32)((global::System.Byte)(219))));
-            this.btnViewCategories.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(52)), (global::System.Int32)((global::System.Byte)(152)), (global::System.Int32)((global::System.Byte)(219))));
+            this.btnViewCategories.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(255)), (global::System.Int32)((global::System.Byte)(66)), (global::System.Int32)((global::System.Byte)(0))));
+            this.btnViewCategories.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(255)), (global::System.Int32)((global::System.Byte)(66)), (global::System.Int32)((global::System.Byte)(0))));
             this.btnViewCategories.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
             this.btnViewCategories.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnViewCategories.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
@@ -387,11 +387,11 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.BackColor = (global::System.Drawing.Color.Black);
-            this.btnSubmit.FlatAppearance.BorderColor = (global::System.Drawing.Color.Black);
+            this.btnSubmit.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(255)), (global::System.Int32)((global::System.Byte)(66)), (global::System.Int32)((global::System.Byte)(0))));
+            this.btnSubmit.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(255)), (global::System.Int32)((global::System.Byte)(66)), (global::System.Int32)((global::System.Byte)(0))));
             this.btnSubmit.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
             this.btnSubmit.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
-            this.btnSubmit.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
+            this.btnSubmit.ForeColor = (global::System.Drawing.Color.BurlyWood);
             this.btnSubmit.ImageAlign = (global::System.Drawing.ContentAlignment.MiddleLeft);
             this.btnSubmit.Location = (new global::System.Drawing.Point(20, 331));
             this.btnSubmit.Margin = (new global::System.Windows.Forms.Padding(0));
@@ -620,8 +620,8 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.BackColor = (global::System.Drawing.Color.Black);
-            this.btnUpdate.FlatAppearance.BorderColor = (global::System.Drawing.Color.Black);
+            this.btnUpdate.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(255)), (global::System.Int32)((global::System.Byte)(66)), (global::System.Int32)((global::System.Byte)(0))));
+            this.btnUpdate.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(255)), (global::System.Int32)((global::System.Byte)(66)), (global::System.Int32)((global::System.Byte)(0))));
             this.btnUpdate.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
             this.btnUpdate.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnUpdate.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
@@ -658,8 +658,8 @@
             // 
             // btnUpdateRefresh
             // 
-            this.btnUpdateRefresh.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(52)), (global::System.Int32)((global::System.Byte)(152)), (global::System.Int32)((global::System.Byte)(219))));
-            this.btnUpdateRefresh.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(52)), (global::System.Int32)((global::System.Byte)(152)), (global::System.Int32)((global::System.Byte)(219))));
+            this.btnUpdateRefresh.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(41)), (global::System.Int32)((global::System.Byte)(56)), (global::System.Int32)((global::System.Byte)(218))));
+            this.btnUpdateRefresh.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(41)), (global::System.Int32)((global::System.Byte)(56)), (global::System.Int32)((global::System.Byte)(218))));
             this.btnUpdateRefresh.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
             this.btnUpdateRefresh.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnUpdateRefresh.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
@@ -1480,8 +1480,8 @@
             // 
             // btnSaveOfficeHours
             // 
-            this.btnSaveOfficeHours.BackColor = (global::System.Drawing.Color.Black);
-            this.btnSaveOfficeHours.FlatAppearance.BorderColor = (global::System.Drawing.Color.Black);
+            this.btnSaveOfficeHours.BackColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(255)), (global::System.Int32)((global::System.Byte)(66)), (global::System.Int32)((global::System.Byte)(0))));
+            this.btnSaveOfficeHours.FlatAppearance.BorderColor = (global::System.Drawing.Color.FromArgb((global::System.Int32)((global::System.Byte)(255)), (global::System.Int32)((global::System.Byte)(66)), (global::System.Int32)((global::System.Byte)(0))));
             this.btnSaveOfficeHours.FlatStyle = (global::System.Windows.Forms.FlatStyle.Flat);
             this.btnSaveOfficeHours.Font = (new global::System.Drawing.Font("Microsoft Sans Serif", 9F));
             this.btnSaveOfficeHours.ForeColor = (global::System.Drawing.SystemColors.ButtonFace);
@@ -2882,7 +2882,7 @@
             // 
             this.lineDevider.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Left) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.lineDevider.AutoSize = (true);
-            this.lineDevider.Location = (new global::System.Drawing.Point(521, 17153));
+            this.lineDevider.Location = (new global::System.Drawing.Point(521, 17489));
             this.lineDevider.Name = ("lineDevider");
             this.lineDevider.Size = (new global::System.Drawing.Size(10, 15));
             this.lineDevider.TabIndex = (59);

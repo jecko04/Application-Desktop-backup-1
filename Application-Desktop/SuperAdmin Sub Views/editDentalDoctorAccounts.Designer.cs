@@ -66,7 +66,6 @@
             panel12 = new Panel();
             txtfirstName = new TextBox();
             txtPassword = new TextBox();
-            button1 = new Button();
             btnUpdate = new Button();
             label7 = new Label();
             label6 = new Label();
@@ -98,7 +97,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BackColor = Color.FromArgb(52, 152, 219);
+            panel1.BackColor = Color.FromArgb(41, 56, 218);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(btnClose);
@@ -151,7 +150,6 @@
             panel2.Controls.Add(borderLast);
             panel2.Controls.Add(borderFirst);
             panel2.Controls.Add(txtPassword);
-            panel2.Controls.Add(button1);
             panel2.Controls.Add(btnUpdate);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(label6);
@@ -467,27 +465,10 @@
             txtPassword.TabIndex = 19;
             txtPassword.Visible = false;
             // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(231, 76, 60);
-            button1.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Microsoft Sans Serif", 9F);
-            button1.ForeColor = SystemColors.ButtonFace;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(263, 349);
-            button1.Margin = new Padding(0, 0, 1, 0);
-            button1.Name = "button1";
-            button1.Size = new Size(58, 24);
-            button1.TabIndex = 17;
-            button1.Text = "Cancel";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            // 
             // btnUpdate
             // 
-            btnUpdate.BackColor = Color.FromArgb(102, 204, 102);
-            btnUpdate.FlatAppearance.BorderColor = Color.FromArgb(102, 204, 102);
+            btnUpdate.BackColor = Color.FromArgb(255, 66, 0);
+            btnUpdate.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
             btnUpdate.FlatStyle = FlatStyle.Flat;
             btnUpdate.Font = new Font("Microsoft Sans Serif", 9F);
             btnUpdate.ForeColor = SystemColors.ButtonFace;
@@ -627,7 +608,6 @@
         private PictureBox btnClose;
         private Panel panel2;
         private TextBox txtPassword;
-        private Button button1;
         private Button btnUpdate;
         private Label label7;
         private ComboBox txtBranch;

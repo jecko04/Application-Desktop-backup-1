@@ -1,5 +1,7 @@
 ﻿using Application_Desktop.Model;
+using Application_Desktop.Models;
 using Application_Desktop.Screen;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -48,7 +50,7 @@ namespace Application_Desktop.Controller
             }
         }
 
-        private void AddColumnServices(DataGridView viewDentalServices)
+        public void AddColumnServices(DataGridView viewDentalServices)
         {
             viewDentalServices.RowHeadersVisible = false;
             viewDentalServices.ColumnHeadersHeight = 40;
@@ -187,5 +189,98 @@ namespace Application_Desktop.Controller
                 }
             }
         }
+
+
+        public async Task<DataTable> SortedBy(string dentalServices, int isAvailable)
+        {
+            // Base query for selecting dental services
+            string query = @"SELECT `dentalservices_id`, `dentalservices`, `description`, `duration`, `frequency`, `price`, 
+                     `dayofweek`, `starttime`, `endtime`, `Branch_ID`, `address`, `isavailable`, 
+                     `max_appointment`, `created_at`, `updated_at` 
+                     FROM `dental_services` 
+                     WHERE `isavailable` = @isavailable";
+
+            if (!string.IsNullOrEmpty(dentalServices))
+            {
+                query += " AND `dentalservices` = @dentalservices"; 
+            }
+
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    await conn.OpenAsync();
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@isavailable", isAvailable);
+
+                        // Only add this parameter if dentalServices is provided
+                        if (!string.IsNullOrEmpty(dentalServices))
+                        {
+                            cmd.Parameters.AddWithValue("@dentalservices", dentalServices);
+                        }
+
+                        // Executing the command and filling the DataTable
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            await Task.Run(() => adapter.Fill(dataTable));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in SortedBy: {ex.Message}");
+            }
+
+            return dataTable;
+        }
+
+
+
+        public async Task<List<string>> SelectSortedBy()
+        {
+            string query = @"SELECT DISTINCT `dentalservices` FROM `dental_services`";
+
+            List<string> dentalServicesList = new List<string>();
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    await conn.OpenAsync();
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                string dentalService = reader["dentalservices"] != DBNull.Value ? reader["dentalservices"].ToString() : null;
+
+                                if (!string.IsNullOrEmpty(dentalService) && !dentalServicesList.Contains(dentalService))
+                                {
+                                    dentalServicesList.Add(dentalService);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            // Return the list of dental services
+            return dentalServicesList;
+        }
+
+
+
+
     }
 }

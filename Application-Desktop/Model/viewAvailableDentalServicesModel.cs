@@ -77,4 +77,14 @@ namespace Application_Desktop.Model
         [Required]
         public int _id { get; set; }
     }
+
+    public class Select
+    {
+        [Required]
+        public string _days { get; set; }
+        [Required]
+        public string _service { get; set; }
+        [Required]
+        public bool _isAvailable { get; set; }
+    }
 }

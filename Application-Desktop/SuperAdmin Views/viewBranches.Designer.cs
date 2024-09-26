@@ -52,11 +52,11 @@
             viewBranchData.AllowUserToDeleteRows = false;
             viewBranchData.AllowUserToResizeColumns = false;
             viewBranchData.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(224, 241, 255);
+            dataGridViewCellStyle1.BackColor = Color.LightYellow;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Gray;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.LightYellow;
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             viewBranchData.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             viewBranchData.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             viewBranchData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -66,21 +66,21 @@
             viewBranchData.CellBorderStyle = DataGridViewCellBorderStyle.None;
             viewBranchData.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(250, 220, 18);
             dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
             dataGridViewCellStyle2.Padding = new Padding(3);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             viewBranchData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             viewBranchData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Tahoma", 9F);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle3.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle3.ForeColor = Color.Gray;
+            dataGridViewCellStyle3.SelectionBackColor = Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             viewBranchData.DefaultCellStyle = dataGridViewCellStyle3;
             viewBranchData.EnableHeadersVisualStyles = false;
@@ -106,8 +106,8 @@
             // btnAddBranch
             // 
             btnAddBranch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnAddBranch.BackColor = Color.FromArgb(52, 152, 219);
-            btnAddBranch.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnAddBranch.BackColor = Color.FromArgb(255, 66, 0);
+            btnAddBranch.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
             btnAddBranch.FlatStyle = FlatStyle.Flat;
             btnAddBranch.Font = new Font("Microsoft Sans Serif", 9F);
             btnAddBranch.ForeColor = SystemColors.ButtonFace;
@@ -161,8 +161,8 @@
             // btnSearch
             // 
             btnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSearch.BackColor = Color.FromArgb(52, 152, 219);
-            btnSearch.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnSearch.BackColor = Color.FromArgb(41, 56, 218);
+            btnSearch.FlatAppearance.BorderColor = Color.FromArgb(41, 56, 218);
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Microsoft Sans Serif", 9F);
             btnSearch.ForeColor = SystemColors.ButtonFace;
@@ -180,8 +180,8 @@
             // btnRefresh
             // 
             btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnRefresh.BackColor = Color.FromArgb(52, 152, 219);
-            btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnRefresh.BackColor = Color.FromArgb(41, 56, 218);
+            btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(41, 56, 218);
             btnRefresh.FlatStyle = FlatStyle.Flat;
             btnRefresh.Font = new Font("Microsoft Sans Serif", 9F);
             btnRefresh.ForeColor = SystemColors.ButtonFace;

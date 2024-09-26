@@ -58,6 +58,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAADgSURBVEhL7dQ9
+        C0FRHIDx62VAGSRvYTGRzRfAapWBfAgvSSllNCmT0W6yWJhtvoFsDIR8BM//yqJb5w5ncOs+9at7Trdu
+        nXvOMdz+shgGGKIuE7rrYAP5wB0BeBCxQd5T1sfo82hcEEYbTxtaUFbDAyec4Yf2EsghZI6cVgFr7LCQ
+        Cd31MEcRVySRRcOGDJR1MUMJN6RQwcqGMpTlsccBS3jhvOKQbRo0R5qTUytrLwftCB+0NoHcQ9L3qqjC
+        6qf+ks2gTG7SLeQjL8gyyfaz2pa/0lAWxRhTNGXCzckZxhtI4jgz12QIJAAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btnSearch.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
@@ -91,16 +101,6 @@
         d9C175b8ifbsJ9CQryTCNZjbxwbogMOAOdTkK4uCF19jA861Z19kk0TRwtfYAPkwoMgmKRSpiZrZ/68B
         sTM4KvmVziA24LjkVxowhR3oQd9r8j37vu+VmWotSRSNQF/xLoSnLv479i3vKTPSWpIo0tf8Ds/w0/9H
         aE+ZA5dttXHKsm8s+TowThzH2QAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAADgSURBVEhL7dQ9
-        C0FRHIDx62VAGSRvYTGRzRfAapWBfAgvSSllNCmT0W6yWJhtvoFsDIR8BM//yqJb5w5ncOs+9at7Trdu
-        nXvOMdz+shgGGKIuE7rrYAP5wB0BeBCxQd5T1sfo82hcEEYbTxtaUFbDAyec4Yf2EsghZI6cVgFr7LCQ
-        Cd31MEcRVySRRcOGDJR1MUMJN6RQwcqGMpTlsccBS3jhvOKQbRo0R5qTUytrLwftCB+0NoHcQ9L3qqjC
-        6qf+ks2gTG7SLeQjL8gyyfaz2pa/0lAWxRhTNGXCzckZxhtI4jgz12QIJAAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="elipseControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

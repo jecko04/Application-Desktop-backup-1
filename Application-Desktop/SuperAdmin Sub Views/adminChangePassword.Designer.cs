@@ -81,7 +81,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BackColor = Color.FromArgb(52, 152, 219);
+            panel1.BackColor = Color.FromArgb(41, 56, 218);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(btnClose);
@@ -198,8 +198,8 @@
             // 
             // btnChangePass
             // 
-            btnChangePass.BackColor = Color.FromArgb(102, 204, 102);
-            btnChangePass.FlatAppearance.BorderColor = Color.FromArgb(102, 204, 102);
+            btnChangePass.BackColor = Color.FromArgb(255, 66, 0);
+            btnChangePass.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
             btnChangePass.FlatStyle = FlatStyle.Flat;
             btnChangePass.Font = new Font("Tahoma", 9.75F);
             btnChangePass.ForeColor = Color.White;

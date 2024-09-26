@@ -28,6 +28,11 @@ namespace Application_Desktop.Admin_Views
             _OnlineBookingController = new setupOnlineBookingController();
             ElipseManager elipseManager = new ElipseManager(5);
             elipseManager.ApplyElipseToAllButtons(this);
+
+            ElipseManager elipseManagerPanel = new ElipseManager(15);
+            elipseManagerPanel.ApplyElipseToPanel(dayTimePanel);
+            elipseManagerPanel.ApplyElipseToPanel(servicePanel);
+            elipseManagerPanel.ApplyElipseToPanel(branchPanel);
         }
 
         void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)

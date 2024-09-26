@@ -94,11 +94,6 @@ namespace Application_Desktop.Views
             }
         }
 
-
-
-
-
-
         //sidebar Slide
         bool sidebarExpand = true;
 
@@ -133,10 +128,15 @@ namespace Application_Desktop.Views
         public void LoadForm(Form form)
         {
             // Clear existing controls from the panel
-            if (this.mainPanel.Controls.Count > 0)
+            foreach (Control ctrl in this.mainPanel.Controls)
             {
-                this.mainPanel.Controls.RemoveAt(0);
+                if (ctrl is Form oldForm)
+                {
+                    oldForm.Dispose(); // Dispose of the old form to free resources
+                }
             }
+
+            this.mainPanel.Controls.Clear(); // Clear all controls
 
             // Set up the new form
             form.TopLevel = false;
@@ -270,6 +270,11 @@ namespace Application_Desktop.Views
         }
 
         private void mainPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

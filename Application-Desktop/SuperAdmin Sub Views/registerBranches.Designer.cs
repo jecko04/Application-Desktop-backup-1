@@ -85,7 +85,6 @@
             panel6 = new Panel();
             panel5 = new Panel();
             txtPostal = new TextBox();
-            button1 = new Button();
             label2 = new Label();
             label10 = new Label();
             btnSave = new Button();
@@ -153,7 +152,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = Color.FromArgb(41, 128, 185);
+            panel4.BackColor = Color.FromArgb(41, 56, 218);
             panel4.Controls.Add(btnClose);
             panel4.Controls.Add(label4);
             panel4.Controls.Add(pictureBox1);
@@ -221,7 +220,6 @@
             panel2.Controls.Add(borderBuildingNumber);
             panel2.Controls.Add(borderBranch);
             panel2.Controls.Add(borderPostal);
-            panel2.Controls.Add(button1);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label10);
             panel2.Controls.Add(btnSave);
@@ -671,21 +669,6 @@
             txtPostal.Size = new Size(315, 25);
             txtPostal.TabIndex = 45;
             // 
-            // button1
-            // 
-            button1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            button1.BackColor = Color.FromArgb(231, 76, 60);
-            button1.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(583, 345);
-            button1.Margin = new Padding(0);
-            button1.Name = "button1";
-            button1.Size = new Size(60, 24);
-            button1.TabIndex = 57;
-            button1.Text = "Cancel";
-            button1.UseVisualStyleBackColor = false;
-            // 
             // label2
             // 
             label2.Anchor = AnchorStyles.Top;
@@ -713,8 +696,8 @@
             // btnSave
             // 
             btnSave.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnSave.BackColor = Color.FromArgb(102, 204, 102);
-            btnSave.FlatAppearance.BorderColor = Color.FromArgb(102, 204, 102);
+            btnSave.BackColor = Color.FromArgb(255, 66, 0);
+            btnSave.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.ForeColor = Color.White;
             btnSave.Location = new Point(644, 345);
@@ -876,7 +859,6 @@
         private Panel panel4;
         private ComboBox txtProvinceList;
         private ComboBox txtCityLists;
-        private Button button1;
         private ElipseToolDemo.ElipseControl elipseControl1;
         private Panel panel3;
         private Panel borderPostal;

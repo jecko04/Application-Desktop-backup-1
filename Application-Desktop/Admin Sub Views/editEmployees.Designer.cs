@@ -174,7 +174,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BackColor = Color.FromArgb(52, 152, 219);
+            panel1.BackColor = Color.FromArgb(41, 56, 218);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(btnClose);
@@ -190,9 +190,9 @@
             label1.ForeColor = SystemColors.InactiveBorder;
             label1.Location = new Point(33, 12);
             label1.Name = "label1";
-            label1.Size = new Size(108, 14);
+            label1.Size = new Size(85, 14);
             label1.TabIndex = 3;
-            label1.Text = "Register Employee";
+            label1.Text = "Edit Employee";
             // 
             // pictureBox1
             // 
@@ -382,8 +382,8 @@
             // 
             // btnSave
             // 
-            btnSave.BackColor = Color.FromArgb(102, 204, 102);
-            btnSave.FlatAppearance.BorderColor = Color.FromArgb(102, 204, 102);
+            btnSave.BackColor = Color.FromArgb(255, 66, 0);
+            btnSave.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Tahoma", 9.75F);
             btnSave.ForeColor = Color.White;

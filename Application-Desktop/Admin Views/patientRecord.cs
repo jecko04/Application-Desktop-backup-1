@@ -655,12 +655,17 @@ namespace Application_Desktop.Admin_Views
                 viewPatientRecord.DataSource = patientData;
                 viewGenHealth.DataSource = medicalData;
                 viewDentHealth.DataSource = dentalData;
-                                                            
+
             }
             else
             {
                 AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No results", "No patient found with the given search term", Properties.Resources.information);
             }
+        }
+
+        private void viewGenHealth_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -112,8 +112,8 @@
             // 
             // btnProfileSave
             // 
-            btnProfileSave.BackColor = Color.FromArgb(52, 152, 219);
-            btnProfileSave.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnProfileSave.BackColor = Color.FromArgb(255, 66, 0);
+            btnProfileSave.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
             btnProfileSave.FlatStyle = FlatStyle.Flat;
             btnProfileSave.Font = new Font("Microsoft Sans Serif", 9F);
             btnProfileSave.ForeColor = SystemColors.ButtonFace;
@@ -128,8 +128,8 @@
             // 
             // btnDelete
             // 
-            btnDelete.BackColor = Color.FromArgb(231, 76, 60);
-            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
+            btnDelete.BackColor = Color.FromArgb(255, 66, 0);
+            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Microsoft Sans Serif", 9F);
             btnDelete.ForeColor = SystemColors.ButtonFace;
@@ -317,8 +317,8 @@
             // 
             // btnSavePass
             // 
-            btnSavePass.BackColor = Color.FromArgb(52, 152, 219);
-            btnSavePass.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnSavePass.BackColor = Color.FromArgb(255, 66, 0);
+            btnSavePass.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
             btnSavePass.FlatStyle = FlatStyle.Flat;
             btnSavePass.Font = new Font("Microsoft Sans Serif", 9F);
             btnSavePass.ForeColor = SystemColors.ButtonFace;

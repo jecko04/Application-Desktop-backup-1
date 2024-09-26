@@ -43,7 +43,6 @@
             txtPassword = new TextBox();
             label5 = new Label();
             txtRoles = new ComboBox();
-            button1 = new Button();
             btnUpdate = new Button();
             errorProvider1 = new ErrorProvider(components);
             errorProvider2 = new ErrorProvider(components);
@@ -90,7 +89,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BackColor = Color.FromArgb(52, 152, 219);
+            panel1.BackColor = Color.FromArgb(41, 56, 218);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(pictureBox1);
@@ -231,23 +230,6 @@
             txtRoles.Size = new Size(165, 25);
             txtRoles.TabIndex = 10;
             // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(231, 76, 60);
-            button1.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Microsoft Sans Serif", 9F);
-            button1.ForeColor = SystemColors.ButtonFace;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(822, 107);
-            button1.Margin = new Padding(0, 0, 1, 0);
-            button1.Name = "button1";
-            button1.Size = new Size(58, 24);
-            button1.TabIndex = 19;
-            button1.Text = "Cancel";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            // 
             // btnUpdate
             // 
             btnUpdate.BackColor = Color.FromArgb(102, 204, 102);
@@ -283,7 +265,6 @@
             panel2.Controls.Add(borderEmail);
             panel2.Controls.Add(borderLast);
             panel2.Controls.Add(borderFirst);
-            panel2.Controls.Add(button1);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(btnUpdate);
             panel2.Controls.Add(label3);
@@ -557,7 +538,6 @@
         private TextBox txtPassword;
         private Label label5;
         private ComboBox txtRoles;
-        private Button button1;
         private Button btnUpdate;
         private ErrorProvider errorProvider1;
         private ErrorProvider errorProvider2;

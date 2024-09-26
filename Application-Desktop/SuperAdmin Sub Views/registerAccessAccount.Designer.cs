@@ -64,6 +64,7 @@
             label4 = new Label();
             label1 = new Label();
             errorProvider1 = new ErrorProvider(components);
+            label2 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
             borderEmail.SuspendLayout();
@@ -76,7 +77,8 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BackColor = Color.FromArgb(52, 152, 219);
+            panel1.BackColor = Color.FromArgb(41, 56, 218);
+            panel1.Controls.Add(label2);
             panel1.Controls.Add(btnClose);
             panel1.Location = new Point(0, -2);
             panel1.Name = "panel1";
@@ -415,6 +417,17 @@
             errorProvider1.ContainerControl = this;
             errorProvider1.Icon = (Icon)resources.GetObject("errorProvider1.Icon");
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Tahoma", 9.75F);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(22, 11);
+            label2.Name = "label2";
+            label2.Size = new Size(224, 16);
+            label2.TabIndex = 75;
+            label2.Text = "Create Access Patient Record Account";
+            // 
             // registerAccessAccount
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -438,6 +451,7 @@
             Text = "registerAccessAccount";
             Load += registerAccessAccount_Load;
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)btnClose).EndInit();
             borderEmail.ResumeLayout(false);
             borderPass.ResumeLayout(false);
@@ -486,5 +500,6 @@
         private Label label4;
         private Label label1;
         private ErrorProvider errorProvider1;
+        private Label label2;
     }
 }

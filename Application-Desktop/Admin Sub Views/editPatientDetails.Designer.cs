@@ -619,7 +619,7 @@
             tapPage3.Location = new Point(4, 28);
             tapPage3.Name = "tapPage3";
             tapPage3.Padding = new Padding(3);
-            tapPage3.Size = new Size(847, 361);
+            tapPage3.Size = new Size(852, 361);
             tapPage3.TabIndex = 2;
             tapPage3.Text = "Dental Health Information";
             // 
@@ -999,8 +999,8 @@
             // btnUpdate
             // 
             btnUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnUpdate.BackColor = Color.FromArgb(52, 152, 219);
-            btnUpdate.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnUpdate.BackColor = Color.FromArgb(255, 66, 0);
+            btnUpdate.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
             btnUpdate.FlatStyle = FlatStyle.Flat;
             btnUpdate.Font = new Font("Microsoft Sans Serif", 9F);
             btnUpdate.ForeColor = SystemColors.ButtonFace;
@@ -1723,7 +1723,7 @@
             genHealthTab.Location = new Point(4, 28);
             genHealthTab.Name = "genHealthTab";
             genHealthTab.Padding = new Padding(3);
-            genHealthTab.Size = new Size(847, 361);
+            genHealthTab.Size = new Size(852, 361);
             genHealthTab.TabIndex = 1;
             genHealthTab.Text = "General Health Information";
             // 

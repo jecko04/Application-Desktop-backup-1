@@ -51,17 +51,21 @@
             panel8 = new Panel();
             panel9 = new Panel();
             panel10 = new Panel();
+            pictureBox1 = new PictureBox();
+            label1 = new Label();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
             borderEmail.SuspendLayout();
             borderPassword.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Bottom;
-            panel1.BackColor = Color.FromArgb(52, 152, 219);
+            panel1.BackColor = Color.FromArgb(250, 220, 18);
             panel1.ForeColor = SystemColors.ControlText;
             panel1.Location = new Point(-17, 260);
             panel1.Name = "panel1";
@@ -73,7 +77,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Tahoma", 9.75F);
             label2.ForeColor = Color.DimGray;
-            label2.Location = new Point(32, 48);
+            label2.Location = new Point(32, 74);
             label2.Name = "label2";
             label2.Size = new Size(38, 16);
             label2.TabIndex = 2;
@@ -107,7 +111,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Tahoma", 9.75F);
             label3.ForeColor = Color.DimGray;
-            label3.Location = new Point(32, 115);
+            label3.Location = new Point(32, 125);
             label3.Name = "label3";
             label3.Size = new Size(62, 16);
             label3.TabIndex = 4;
@@ -115,8 +119,8 @@
             // 
             // btnLogin
             // 
-            btnLogin.BackColor = Color.Black;
-            btnLogin.FlatAppearance.BorderColor = Color.Black;
+            btnLogin.BackColor = Color.FromArgb(255, 66, 0);
+            btnLogin.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
             btnLogin.FlatStyle = FlatStyle.Flat;
             btnLogin.Font = new Font("Tahoma", 9.75F);
             btnLogin.ForeColor = Color.White;
@@ -175,7 +179,7 @@
             borderEmail.Controls.Add(panel5);
             borderEmail.Controls.Add(panel4);
             borderEmail.Controls.Add(txtEmail);
-            borderEmail.Location = new Point(47, 76);
+            borderEmail.Location = new Point(47, 93);
             borderEmail.Name = "borderEmail";
             borderEmail.Size = new Size(342, 27);
             borderEmail.TabIndex = 20;
@@ -264,11 +268,47 @@
             panel10.Size = new Size(1, 27);
             panel10.TabIndex = 22;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(32, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(47, 45);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 24;
+            pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Tahoma", 9.75F);
+            label1.ForeColor = Color.FromArgb(255, 66, 0);
+            label1.Location = new Point(85, 41);
+            label1.Name = "label1";
+            label1.Size = new Size(41, 16);
+            label1.TabIndex = 25;
+            label1.Text = "SMTC";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.FromArgb(41, 56, 218);
+            label4.Location = new Point(122, 41);
+            label4.Name = "label4";
+            label4.Size = new Size(74, 16);
+            label4.TabIndex = 26;
+            label4.Text = "Dental Care";
+            // 
             // loginPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(433, 352);
+            Controls.Add(label4);
+            Controls.Add(label1);
+            Controls.Add(pictureBox1);
             Controls.Add(borderPassword);
             Controls.Add(borderEmail);
             Controls.Add(btnClose);
@@ -291,6 +331,7 @@
             borderEmail.PerformLayout();
             borderPassword.ResumeLayout(false);
             borderPassword.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -317,5 +358,8 @@
         private Panel panel8;
         private Panel panel9;
         private Panel panel10;
+        private PictureBox pictureBox1;
+        private Label label4;
+        private Label label1;
     }
 }

@@ -226,5 +226,10 @@ namespace Application_Desktop.Admin_Sub_Views
                 txtCurrentPass.PasswordChar = '*';
             }
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

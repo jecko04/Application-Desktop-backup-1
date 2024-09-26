@@ -176,7 +176,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BackColor = Color.FromArgb(52, 152, 219);
+            panel1.BackColor = Color.FromArgb(41, 56, 218);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(btnClose);
@@ -794,8 +794,8 @@
             // 
             // btnSave
             // 
-            btnSave.BackColor = Color.FromArgb(102, 204, 102);
-            btnSave.FlatAppearance.BorderColor = Color.FromArgb(102, 204, 102);
+            btnSave.BackColor = Color.FromArgb(255, 66, 0);
+            btnSave.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Tahoma", 9.75F);
             btnSave.ForeColor = Color.White;

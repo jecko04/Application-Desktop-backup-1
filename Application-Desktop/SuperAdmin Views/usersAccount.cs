@@ -77,7 +77,7 @@ namespace Application_Desktop.SuperAdmin_Views
                 if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
                 {
                     hasSelectedRows = true;
-                    break; 
+                    break;
                 }
             }
             if (!hasSelectedRows)

@@ -58,11 +58,11 @@
             // 
             viewExistingRole.AllowUserToAddRows = false;
             viewExistingRole.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(224, 241, 255);
+            dataGridViewCellStyle1.BackColor = Color.LightYellow;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Gray;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.LightYellow;
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             viewExistingRole.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             viewExistingRole.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             viewExistingRole.BackgroundColor = Color.White;
@@ -70,21 +70,21 @@
             viewExistingRole.CellBorderStyle = DataGridViewCellBorderStyle.None;
             viewExistingRole.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle2.BackColor = Color.White;
             dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
             dataGridViewCellStyle2.Padding = new Padding(3);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             viewExistingRole.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             viewExistingRole.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.BackColor = Color.WhiteSmoke;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle3.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle3.ForeColor = Color.Gray;
+            dataGridViewCellStyle3.SelectionBackColor = Color.LightYellow;
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             viewExistingRole.DefaultCellStyle = dataGridViewCellStyle3;
             viewExistingRole.EnableHeadersVisualStyles = false;
@@ -92,7 +92,7 @@
             viewExistingRole.Name = "viewExistingRole";
             viewExistingRole.ReadOnly = true;
             viewExistingRole.RowTemplate.Height = 25;
-            viewExistingRole.Size = new Size(395, 180);
+            viewExistingRole.Size = new Size(300, 137);
             viewExistingRole.TabIndex = 3;
             viewExistingRole.CellContentClick += viewExistingRole_CellContentClick;
             // 

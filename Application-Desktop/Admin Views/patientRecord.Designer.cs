@@ -29,23 +29,23 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(patientRecord));
-            DataGridViewCellStyle dataGridViewCellStyle28 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle29 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle30 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle31 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle32 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle33 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle34 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle35 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle36 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            label40 = new Label();
+            pictureBox1 = new PictureBox();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             txtSearchBox = new TextBox();
             btnSearch = new Button();
             btnRefresh = new Button();
             btnDelete = new Button();
-            label40 = new Label();
-            pictureBox1 = new PictureBox();
-            flowLayoutPanel1 = new FlowLayoutPanel();
             btnCreate = new Button();
             tabControl1 = new TabControl();
             tabPage4 = new TabPage();
@@ -81,72 +81,6 @@
             panel1.Size = new Size(1088, 30);
             panel1.TabIndex = 2;
             // 
-            // txtSearchBox
-            // 
-            txtSearchBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            txtSearchBox.BorderStyle = BorderStyle.FixedSingle;
-            txtSearchBox.Cursor = Cursors.IBeam;
-            txtSearchBox.Font = new Font("Tahoma", 9.75F);
-            txtSearchBox.Location = new Point(754, 47);
-            txtSearchBox.Name = "txtSearchBox";
-            txtSearchBox.PlaceholderText = " Search";
-            txtSearchBox.Size = new Size(194, 23);
-            txtSearchBox.TabIndex = 90;
-            // 
-            // btnSearch
-            // 
-            btnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSearch.BackColor = Color.FromArgb(52, 152, 219);
-            btnSearch.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
-            btnSearch.FlatStyle = FlatStyle.Flat;
-            btnSearch.Font = new Font("Microsoft Sans Serif", 9F);
-            btnSearch.ForeColor = SystemColors.ButtonFace;
-            btnSearch.Image = (Image)resources.GetObject("btnSearch.Image");
-            btnSearch.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSearch.Location = new Point(951, 46);
-            btnSearch.Margin = new Padding(0);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(32, 24);
-            btnSearch.TabIndex = 91;
-            btnSearch.TextAlign = ContentAlignment.MiddleLeft;
-            btnSearch.UseVisualStyleBackColor = false;
-            btnSearch.Click += btnSearch_Click;
-            // 
-            // btnRefresh
-            // 
-            btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnRefresh.BackColor = Color.FromArgb(52, 152, 219);
-            btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
-            btnRefresh.FlatStyle = FlatStyle.Flat;
-            btnRefresh.Font = new Font("Microsoft Sans Serif", 9F);
-            btnRefresh.ForeColor = SystemColors.ButtonFace;
-            btnRefresh.Image = (Image)resources.GetObject("btnRefresh.Image");
-            btnRefresh.Location = new Point(991, 125);
-            btnRefresh.Margin = new Padding(1, 1, 0, 0);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(42, 24);
-            btnRefresh.TabIndex = 92;
-            btnRefresh.TextAlign = ContentAlignment.MiddleLeft;
-            btnRefresh.UseVisualStyleBackColor = false;
-            btnRefresh.Click += btnRefresh_Click;
-            // 
-            // btnDelete
-            // 
-            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnDelete.BackColor = Color.FromArgb(231, 76, 60);
-            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Microsoft Sans Serif", 9F);
-            btnDelete.ForeColor = SystemColors.ButtonFace;
-            btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
-            btnDelete.Location = new Point(1035, 125);
-            btnDelete.Margin = new Padding(1, 1, 0, 0);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(41, 24);
-            btnDelete.TabIndex = 22;
-            btnDelete.UseVisualStyleBackColor = false;
-            btnDelete.Click += btnDelete_Click;
-            // 
             // label40
             // 
             label40.AutoSize = true;
@@ -177,11 +111,77 @@
             flowLayoutPanel1.Size = new Size(502, 30);
             flowLayoutPanel1.TabIndex = 1;
             // 
+            // txtSearchBox
+            // 
+            txtSearchBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            txtSearchBox.BorderStyle = BorderStyle.FixedSingle;
+            txtSearchBox.Cursor = Cursors.IBeam;
+            txtSearchBox.Font = new Font("Tahoma", 9.75F);
+            txtSearchBox.Location = new Point(754, 47);
+            txtSearchBox.Name = "txtSearchBox";
+            txtSearchBox.PlaceholderText = " Search";
+            txtSearchBox.Size = new Size(194, 23);
+            txtSearchBox.TabIndex = 90;
+            // 
+            // btnSearch
+            // 
+            btnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSearch.BackColor = Color.FromArgb(41, 56, 218);
+            btnSearch.FlatAppearance.BorderColor = Color.FromArgb(41, 56, 218);
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Font = new Font("Microsoft Sans Serif", 9F);
+            btnSearch.ForeColor = SystemColors.ButtonFace;
+            btnSearch.Image = (Image)resources.GetObject("btnSearch.Image");
+            btnSearch.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSearch.Location = new Point(951, 46);
+            btnSearch.Margin = new Padding(0);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(32, 24);
+            btnSearch.TabIndex = 91;
+            btnSearch.TextAlign = ContentAlignment.MiddleLeft;
+            btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnRefresh.BackColor = Color.FromArgb(41, 56, 218);
+            btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(41, 56, 218);
+            btnRefresh.FlatStyle = FlatStyle.Flat;
+            btnRefresh.Font = new Font("Microsoft Sans Serif", 9F);
+            btnRefresh.ForeColor = SystemColors.ButtonFace;
+            btnRefresh.Image = (Image)resources.GetObject("btnRefresh.Image");
+            btnRefresh.Location = new Point(991, 125);
+            btnRefresh.Margin = new Padding(1, 1, 0, 0);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(42, 24);
+            btnRefresh.TabIndex = 92;
+            btnRefresh.TextAlign = ContentAlignment.MiddleLeft;
+            btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnDelete.BackColor = Color.FromArgb(41, 56, 218);
+            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(41, 56, 218);
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Font = new Font("Microsoft Sans Serif", 9F);
+            btnDelete.ForeColor = SystemColors.ButtonFace;
+            btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
+            btnDelete.Location = new Point(1035, 125);
+            btnDelete.Margin = new Padding(1, 1, 0, 0);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(41, 24);
+            btnDelete.TabIndex = 22;
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
+            // 
             // btnCreate
             // 
             btnCreate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnCreate.BackColor = Color.FromArgb(52, 152, 219);
-            btnCreate.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnCreate.BackColor = Color.FromArgb(255, 66, 0);
+            btnCreate.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
             btnCreate.FlatStyle = FlatStyle.Flat;
             btnCreate.Font = new Font("Microsoft Sans Serif", 9F);
             btnCreate.ForeColor = SystemColors.ButtonFace;
@@ -228,39 +228,39 @@
             viewPatientRecord.AllowUserToDeleteRows = false;
             viewPatientRecord.AllowUserToResizeColumns = false;
             viewPatientRecord.AllowUserToResizeRows = false;
-            dataGridViewCellStyle28.BackColor = Color.FromArgb(224, 241, 255);
-            dataGridViewCellStyle28.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle28.ForeColor = Color.Gray;
-            dataGridViewCellStyle28.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle28.SelectionForeColor = Color.FromArgb(52, 152, 219);
-            viewPatientRecord.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle1.BackColor = Color.LightYellow;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.LightYellow;
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            viewPatientRecord.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             viewPatientRecord.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             viewPatientRecord.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             viewPatientRecord.BackgroundColor = Color.White;
             viewPatientRecord.BorderStyle = BorderStyle.None;
             viewPatientRecord.CellBorderStyle = DataGridViewCellBorderStyle.None;
             viewPatientRecord.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle29.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle29.BackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle29.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle29.ForeColor = Color.White;
-            dataGridViewCellStyle29.NullValue = "N/A";
-            dataGridViewCellStyle29.Padding = new Padding(3);
-            dataGridViewCellStyle29.SelectionBackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle29.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = DataGridViewTriState.True;
-            viewPatientRecord.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle2.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.NullValue = "N/A";
+            dataGridViewCellStyle2.Padding = new Padding(3);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            viewPatientRecord.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             viewPatientRecord.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle30.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = SystemColors.Window;
-            dataGridViewCellStyle30.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle30.ForeColor = Color.Gray;
-            dataGridViewCellStyle30.NullValue = "N/A";
-            dataGridViewCellStyle30.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle30.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle30.SelectionForeColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle30.WrapMode = DataGridViewTriState.True;
-            viewPatientRecord.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.Gray;
+            dataGridViewCellStyle3.NullValue = "N/A";
+            dataGridViewCellStyle3.Padding = new Padding(10, 0, 10, 0);
+            dataGridViewCellStyle3.SelectionBackColor = Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            viewPatientRecord.DefaultCellStyle = dataGridViewCellStyle3;
             viewPatientRecord.EnableHeadersVisualStyles = false;
             viewPatientRecord.Location = new Point(7, 13);
             viewPatientRecord.Margin = new Padding(0, 0, 10, 0);
@@ -278,7 +278,7 @@
             tabPage2.Location = new Point(4, 28);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(973, 345);
+            tabPage2.Size = new Size(973, 339);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "General Health Information";
             tabPage2.UseVisualStyleBackColor = true;
@@ -289,39 +289,39 @@
             viewGenHealth.AllowUserToDeleteRows = false;
             viewGenHealth.AllowUserToResizeColumns = false;
             viewGenHealth.AllowUserToResizeRows = false;
-            dataGridViewCellStyle31.BackColor = Color.FromArgb(224, 241, 255);
-            dataGridViewCellStyle31.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle31.ForeColor = Color.Gray;
-            dataGridViewCellStyle31.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle31.SelectionForeColor = Color.FromArgb(52, 152, 219);
-            viewGenHealth.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle4.BackColor = Color.LightYellow;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = Color.LightYellow;
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            viewGenHealth.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             viewGenHealth.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             viewGenHealth.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             viewGenHealth.BackgroundColor = Color.White;
             viewGenHealth.BorderStyle = BorderStyle.None;
             viewGenHealth.CellBorderStyle = DataGridViewCellBorderStyle.None;
             viewGenHealth.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle32.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle32.BackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle32.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle32.ForeColor = Color.White;
-            dataGridViewCellStyle32.NullValue = "N/A";
-            dataGridViewCellStyle32.Padding = new Padding(3);
-            dataGridViewCellStyle32.SelectionBackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle32.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle32.WrapMode = DataGridViewTriState.True;
-            viewGenHealth.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle5.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.NullValue = "N/A";
+            dataGridViewCellStyle5.Padding = new Padding(3);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            viewGenHealth.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             viewGenHealth.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle33.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle33.BackColor = SystemColors.Window;
-            dataGridViewCellStyle33.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle33.ForeColor = Color.Gray;
-            dataGridViewCellStyle33.NullValue = "N/A";
-            dataGridViewCellStyle33.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle33.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle33.SelectionForeColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle33.WrapMode = DataGridViewTriState.True;
-            viewGenHealth.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Window;
+            dataGridViewCellStyle6.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = Color.Gray;
+            dataGridViewCellStyle6.NullValue = "N/A";
+            dataGridViewCellStyle6.Padding = new Padding(10, 0, 10, 0);
+            dataGridViewCellStyle6.SelectionBackColor = Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            viewGenHealth.DefaultCellStyle = dataGridViewCellStyle6;
             viewGenHealth.EnableHeadersVisualStyles = false;
             viewGenHealth.Location = new Point(7, 13);
             viewGenHealth.Margin = new Padding(0, 0, 10, 0);
@@ -330,6 +330,7 @@
             viewGenHealth.RowTemplate.Height = 25;
             viewGenHealth.Size = new Size(959, 310);
             viewGenHealth.TabIndex = 23;
+            viewGenHealth.CellContentClick += viewGenHealth_CellContentClick;
             // 
             // tabPage3
             // 
@@ -338,7 +339,7 @@
             tabPage3.Location = new Point(4, 28);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(973, 345);
+            tabPage3.Size = new Size(973, 339);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Dental Health Information";
             tabPage3.UseVisualStyleBackColor = true;
@@ -349,39 +350,39 @@
             viewDentHealth.AllowUserToDeleteRows = false;
             viewDentHealth.AllowUserToResizeColumns = false;
             viewDentHealth.AllowUserToResizeRows = false;
-            dataGridViewCellStyle34.BackColor = Color.FromArgb(224, 241, 255);
-            dataGridViewCellStyle34.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle34.ForeColor = Color.Gray;
-            dataGridViewCellStyle34.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle34.SelectionForeColor = Color.FromArgb(52, 152, 219);
-            viewDentHealth.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle7.BackColor = Color.LightYellow;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = Color.LightYellow;
+            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
+            viewDentHealth.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             viewDentHealth.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             viewDentHealth.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             viewDentHealth.BackgroundColor = Color.White;
             viewDentHealth.BorderStyle = BorderStyle.None;
             viewDentHealth.CellBorderStyle = DataGridViewCellBorderStyle.None;
             viewDentHealth.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle35.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle35.BackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle35.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle35.ForeColor = Color.White;
-            dataGridViewCellStyle35.NullValue = "N/A";
-            dataGridViewCellStyle35.Padding = new Padding(3);
-            dataGridViewCellStyle35.SelectionBackColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle35.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle35.WrapMode = DataGridViewTriState.True;
-            viewDentHealth.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle8.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle8.ForeColor = Color.Black;
+            dataGridViewCellStyle8.NullValue = "N/A";
+            dataGridViewCellStyle8.Padding = new Padding(3);
+            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            viewDentHealth.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             viewDentHealth.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle36.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle36.BackColor = SystemColors.Window;
-            dataGridViewCellStyle36.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle36.ForeColor = Color.Gray;
-            dataGridViewCellStyle36.NullValue = "N/A";
-            dataGridViewCellStyle36.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle36.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle36.SelectionForeColor = Color.FromArgb(52, 152, 219);
-            dataGridViewCellStyle36.WrapMode = DataGridViewTriState.True;
-            viewDentHealth.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.Window;
+            dataGridViewCellStyle9.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.ForeColor = Color.Gray;
+            dataGridViewCellStyle9.NullValue = "N/A";
+            dataGridViewCellStyle9.Padding = new Padding(10, 0, 10, 0);
+            dataGridViewCellStyle9.SelectionBackColor = Color.White;
+            dataGridViewCellStyle9.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            viewDentHealth.DefaultCellStyle = dataGridViewCellStyle9;
             viewDentHealth.EnableHeadersVisualStyles = false;
             viewDentHealth.Location = new Point(7, 13);
             viewDentHealth.Margin = new Padding(0, 0, 10, 0);
@@ -409,8 +410,8 @@
             // btnExport
             // 
             btnExport.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnExport.BackColor = Color.FromArgb(52, 152, 219);
-            btnExport.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnExport.BackColor = Color.FromArgb(255, 66, 0);
+            btnExport.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
             btnExport.FlatStyle = FlatStyle.Flat;
             btnExport.Font = new Font("Microsoft Sans Serif", 9F);
             btnExport.ForeColor = SystemColors.ButtonFace;

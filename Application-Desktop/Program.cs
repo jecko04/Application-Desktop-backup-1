@@ -23,18 +23,8 @@ namespace Application_Desktop
 
             //Close the database
 
-            //wag kalimutan yung email sa login
-            //wag kalimutan yung forgot password sa login
 
-            //gumawa ka ng polling the database para every 5 second ma fetch lagi yung data
-
-            //latest
-            //gawa na ng para sa staff information
-            
-            //add debounce click sa every datagridview na may select checkbox
-
-            //add employee id references in mobile users account
-            //change to drop down in creating doctors account
+            //Add method sa role na cannot be add if already added
         }
     }
 }

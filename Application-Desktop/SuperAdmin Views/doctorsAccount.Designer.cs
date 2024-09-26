@@ -92,8 +92,8 @@
             // btnDelete
             // 
             btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnDelete.BackColor = Color.FromArgb(231, 76, 60);
-            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(231, 76, 60);
+            btnDelete.BackColor = Color.FromArgb(41, 56, 218);
+            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(41, 56, 218);
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Microsoft Sans Serif", 9F);
             btnDelete.ForeColor = SystemColors.ButtonFace;
@@ -109,8 +109,8 @@
             // btnNewAccount
             // 
             btnNewAccount.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnNewAccount.BackColor = Color.FromArgb(52, 152, 219);
-            btnNewAccount.FlatAppearance.BorderColor = Color.FromArgb(41, 128, 185);
+            btnNewAccount.BackColor = Color.FromArgb(255, 66, 0);
+            btnNewAccount.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
             btnNewAccount.FlatStyle = FlatStyle.Flat;
             btnNewAccount.Font = new Font("Microsoft Sans Serif", 9F);
             btnNewAccount.ForeColor = SystemColors.ButtonFace;
@@ -126,8 +126,8 @@
             // btnRefresh
             // 
             btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnRefresh.BackColor = Color.FromArgb(52, 152, 219);
-            btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnRefresh.BackColor = Color.FromArgb(41, 56, 218);
+            btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(41, 56, 218);
             btnRefresh.FlatStyle = FlatStyle.Flat;
             btnRefresh.Font = new Font("Microsoft Sans Serif", 9F);
             btnRefresh.ForeColor = SystemColors.ButtonFace;
@@ -147,11 +147,11 @@
             viewDentalDoctorAccount.AllowUserToDeleteRows = false;
             viewDentalDoctorAccount.AllowUserToResizeColumns = false;
             viewDentalDoctorAccount.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(224, 241, 255);
+            dataGridViewCellStyle1.BackColor = Color.LightYellow;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Gray;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.LightYellow;
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             viewDentalDoctorAccount.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             viewDentalDoctorAccount.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             viewDentalDoctorAccount.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -160,23 +160,23 @@
             viewDentalDoctorAccount.CellBorderStyle = DataGridViewCellBorderStyle.None;
             viewDentalDoctorAccount.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(250, 220, 18);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
             dataGridViewCellStyle2.NullValue = "N/A";
             dataGridViewCellStyle2.Padding = new Padding(3);
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             viewDentalDoctorAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             viewDentalDoctorAccount.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = SystemColors.Window;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle3.ForeColor = Color.Gray;
             dataGridViewCellStyle3.NullValue = "N/A";
-            dataGridViewCellStyle3.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(52, 152, 219);
+            dataGridViewCellStyle3.SelectionBackColor = Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             viewDentalDoctorAccount.DefaultCellStyle = dataGridViewCellStyle3;
             viewDentalDoctorAccount.EnableHeadersVisualStyles = false;

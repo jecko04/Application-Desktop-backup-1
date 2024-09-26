@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(accessLogin));
             panel1 = new Panel();
+            label1 = new Label();
             btnClose = new PictureBox();
             borderPassword = new Panel();
             panel7 = new Panel();
@@ -47,7 +48,6 @@
             label3 = new Label();
             label2 = new Label();
             elipseControl1 = new ElipseToolDemo.ElipseControl();
-            label1 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
             borderPassword.SuspendLayout();
@@ -57,7 +57,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BackColor = Color.FromArgb(52, 152, 219);
+            panel1.BackColor = Color.FromArgb(250, 220, 18);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(btnClose);
             panel1.Location = new Point(-2, -2);
@@ -65,12 +65,24 @@
             panel1.Size = new Size(411, 30);
             panel1.TabIndex = 1;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Tahoma", 9.75F);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(14, 11);
+            label1.Name = "label1";
+            label1.Size = new Size(98, 16);
+            label1.TabIndex = 30;
+            label1.Text = "Login to access.";
+            label1.Click += label1_Click;
+            // 
             // btnClose
             // 
             btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnClose.Cursor = Cursors.Hand;
             btnClose.Image = (Image)resources.GetObject("btnClose.Image");
-            btnClose.Location = new Point(387, 3);
+            btnClose.Location = new Point(384, 3);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(24, 24);
             btnClose.SizeMode = PictureBoxSizeMode.Zoom;
@@ -199,8 +211,8 @@
             // 
             // btnLogin
             // 
-            btnLogin.BackColor = Color.Black;
-            btnLogin.FlatAppearance.BorderColor = Color.Black;
+            btnLogin.BackColor = Color.FromArgb(255, 66, 0);
+            btnLogin.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
             btnLogin.FlatStyle = FlatStyle.Flat;
             btnLogin.Font = new Font("Tahoma", 9.75F);
             btnLogin.ForeColor = Color.White;
@@ -238,18 +250,6 @@
             // 
             elipseControl1.CornerRadius = 15;
             elipseControl1.TargetControl = this;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 9.75F);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(14, 11);
-            label1.Name = "label1";
-            label1.Size = new Size(98, 16);
-            label1.TabIndex = 30;
-            label1.Text = "Login to access.";
-            label1.Click += label1_Click;
             // 
             // accessLogin
             // 
