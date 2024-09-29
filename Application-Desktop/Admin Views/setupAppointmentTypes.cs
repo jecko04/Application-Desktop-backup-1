@@ -112,14 +112,17 @@ namespace Application_Desktop.Admin_Views
 
                 string rawPrice = txtPrice.Text.Replace("₱", "").Replace(",", "").Trim();
 
+                bool IscheckedMed = chkRequiredMed.Checked;
+                bool IscheckedDent = chkRequiredDent.Checked;
+
                 if (!decimal.TryParse(rawPrice, out decimal price))
                 {
                     MessageBox.Show("Invalid price input.");
                     return;
                 }
 
-                string query = @"INSERT INTO categories (Title, Description, Duration, Frequency, Price, Branch_ID, created_at, updated_at)
-                            VALUES (@title, @description, @duration, @frequency, @price, @branchID, @createdAt, @updatedAt)";
+                string query = @"INSERT INTO categories (Title, Description, Duration, Frequency, Price, Branch_ID, required_med_history, required_dent_history, created_at, updated_at)
+                            VALUES (@title, @description, @duration, @frequency, @price, @branchID, @requiredMed, @requiredDent, @createdAt, @updatedAt)";
 
                 MySqlConnection conn = databaseHelper.getConnection();
 
@@ -139,6 +142,10 @@ namespace Application_Desktop.Admin_Views
 
                     cmd.Parameters.AddWithValue("@branchID", branchID);
 
+                    cmd.Parameters.AddWithValue("@requiredMed", IscheckedMed);
+                    cmd.Parameters.AddWithValue("@requiredDent", IscheckedDent);
+
+
                     DateTime now = DateTime.Now;
                     cmd.Parameters.AddWithValue("@createdAt", now);
                     cmd.Parameters.AddWithValue("@updatedAt", now);
@@ -151,6 +158,9 @@ namespace Application_Desktop.Admin_Views
                     txtDuration.Text = "";
                     txtFrequency.Text = "";
                     txtPrice.Text = "";
+
+                    chkRequiredMed.Checked = false;
+                    chkRequiredDent.Checked = false;
 
                     errorProvider1.SetError(txtTitle, string.Empty);
                     errorProvider2.SetError(txtDescription, string.Empty);
@@ -328,7 +338,7 @@ namespace Application_Desktop.Admin_Views
 
             int branchID = await GetAdminBranch();
             int categories = await GetSelectedCategoryId();
-            string query = @"SELECT Title, Description, Duration, Frequency, Price FROM categories WHERE Categories_ID = @categories AND Branch_ID = @branchid";
+            string query = @"SELECT Title, Description, Duration, Frequency, Price, required_med_history, required_dent_history FROM categories WHERE Categories_ID = @categories AND Branch_ID = @branchid";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -352,6 +362,9 @@ namespace Application_Desktop.Admin_Views
                     txtFetchDuration.Text = reader["Duration"].ToString();
                     txtFetchFrequency.Text = reader["Frequency"].ToString();
                     txtFetchPrice.Text = reader["Price"].ToString();
+
+                    chkUpdateRequiredMed.Checked = reader.GetBoolean("required_med_history");
+                    chkUpdateRequiredDent.Checked = reader.GetBoolean("required_dent_history");
                 }
 
                 await reader.CloseAsync();
@@ -393,6 +406,9 @@ namespace Application_Desktop.Admin_Views
 
                 string rawPrice = txtFetchPrice.Text.Replace("₱", "").Replace(",", "").Trim();
 
+                bool isCheckedMed = chkUpdateRequiredMed.Checked;
+                bool isCheckedDent = chkUpdateRequiredDent.Checked;
+
                 if (!decimal.TryParse(rawPrice, out decimal price))
                 {
                     MessageBox.Show("Invalid price input.");
@@ -405,6 +421,8 @@ namespace Application_Desktop.Admin_Views
                          Duration = @duration, 
                          Frequency = @frequency,
                          Price = @price,
+                         required_med_history = @requiredMed,
+                         required_dent_history = @requiredDent,
                          updated_at = @updatedAt";
 
                 if (!string.IsNullOrEmpty(newTitle))
@@ -427,6 +445,10 @@ namespace Application_Desktop.Admin_Views
                     cmd.Parameters.AddWithValue("@duration", duration);
                     cmd.Parameters.AddWithValue("@frequency", frequency);
                     cmd.Parameters.AddWithValue("@price", price);
+
+                    cmd.Parameters.AddWithValue("@requiredMed", isCheckedMed);
+                    cmd.Parameters.AddWithValue("@requiredDent", isCheckedDent);
+
 
 
                     DateTime updatedAt = DateTime.Now;
@@ -456,6 +478,9 @@ namespace Application_Desktop.Admin_Views
                     txtFetchFrequency.Text = "";
                     txtNewTitle.Text = "";
                     txtFetchPrice.Text = "";
+
+                    chkUpdateRequiredMed.Checked = false;
+                    chkUpdateRequiredDent.Checked = false;
 
                     errorProvider1.SetError(borderFetchTitle, string.Empty);
                     errorProvider2.SetError(borderFetchDescription, string.Empty);
@@ -1025,144 +1050,22 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
-        private void label17_Click(object sender, EventArgs e)
+        private void label43_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void panel117_Paint(object sender, PaintEventArgs e)
+        private void dentalServicePanel_Paint(object sender, PaintEventArgs e)
         {
+
         }
 
-        private void label39_Click(object sender, EventArgs e)
+        private void chkRequiredMed_CheckedChanged(object sender, EventArgs e)
         {
+
         }
 
-        private void panel112_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void label38_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void panel102_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void panel107_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void sundayClose_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label36_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void panel92_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void panel97_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void saturdayClose_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label33_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void panel82_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void panel87_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void fridayClose_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label30_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void panel72_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void panel77_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void thursdayClose_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label27_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void panel62_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void panel67_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void wednesdayClose_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label24_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void panel52_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void panel57_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void tuesdayClose_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label21_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void panel39_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void panel14_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void mondayClose_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label18_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void panel122_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void label16_Click(object sender, EventArgs e)
+        private void chkRequiredDent_CheckedChanged(object sender, EventArgs e)
         {
         }
     }

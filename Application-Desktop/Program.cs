@@ -25,6 +25,8 @@ namespace Application_Desktop
 
 
             //Add method sa role na cannot be add if already added
+
+            //fix the view all avaiable services
         }
     }
 }

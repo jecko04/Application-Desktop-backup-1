@@ -80,41 +80,7 @@ namespace Application_Desktop.Controller
             Title.DataPropertyName = "dentalservices";
             viewDentalServices.Columns.Add(Title);
 
-            DataGridViewTextBoxColumn Description = new DataGridViewTextBoxColumn();
-            Description.HeaderText = "Description";
-            Description.Name = "description";
-            Description.DataPropertyName = "description";
-            viewDentalServices.Columns.Add(Description);
 
-            DataGridViewTextBoxColumn Duration = new DataGridViewTextBoxColumn();
-            Duration.HeaderText = "Duraiton";
-            Duration.Name = "duration";
-            Duration.DataPropertyName = "duration";
-            viewDentalServices.Columns.Add(Duration);
-
-            DataGridViewTextBoxColumn Frequency = new DataGridViewTextBoxColumn();
-            Frequency.HeaderText = "Frequency";
-            Frequency.Name = "frequency";
-            Frequency.DataPropertyName = "frequency";
-            viewDentalServices.Columns.Add(Frequency);
-
-            DataGridViewTextBoxColumn Price = new DataGridViewTextBoxColumn();
-            Price.HeaderText = "Price";
-            Price.Name = "price";
-            Price.DataPropertyName = "price";
-            viewDentalServices.Columns.Add(Price);
-
-            DataGridViewTextBoxColumn Start = new DataGridViewTextBoxColumn();
-            Start.HeaderText = "Start";
-            Start.Name = "starttime";
-            Start.DataPropertyName = "starttime";
-            viewDentalServices.Columns.Add(Start);
-
-            DataGridViewTextBoxColumn End = new DataGridViewTextBoxColumn();
-            End.HeaderText = "End";
-            End.Name = "endtime";
-            End.DataPropertyName = "endtime";
-            viewDentalServices.Columns.Add(End);
 
             DataGridViewTextBoxColumn Branch = new DataGridViewTextBoxColumn();
             Branch.HeaderText = "Branch Name";

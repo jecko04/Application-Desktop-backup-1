@@ -31,10 +31,8 @@ namespace Application_Desktop.Controller
         {
             try
             {
-                // Clear the DataGridView rows to avoid duplication
                 viewDentalServices.Rows.Clear();
 
-                // Fetch the services from the model
                 DataTable services = await _setupBookingModel.GetAllCategories(admin, dayOfWeek);
 
                 // Avoid adding columns multiple times
@@ -43,36 +41,38 @@ namespace Application_Desktop.Controller
                     AddColumnServices(viewDentalServices);
                 }
 
-                // Populate the DataGridView with services
                 foreach (DataRow service in services.Rows)
                 {
-                    // Add a new row to the DataGridView
                     int rowIndex = viewDentalServices.Rows.Add();
                     DataGridViewRow row = viewDentalServices.Rows[rowIndex];
 
                     // Set the values for the newly added row
+                    row.Cells["Categories_ID"].Value = service["Categories_ID"];
                     row.Cells["Title"].Value = service["Title"];
                     row.Cells["Description"].Value = service["Description"];
                     row.Cells["Duration"].Value = service["Duration"];
                     row.Cells["Frequency"].Value = service["Frequency"];
                     row.Cells["Price"].Value = service["Price"];
 
+                    // Set required_med_history and required_dent_history values
+                    row.Cells["RequiredMedHistory"].Value = Convert.ToBoolean(service["required_med_history"]);
+                    row.Cells["RequiredDentHistory"].Value = Convert.ToBoolean(service["required_dent_history"]);
+
                     // Ensure 'isavailable' is properly handled
                     if (viewDentalServices.Columns["DentalServices"] is DataGridViewCheckBoxColumn)
                     {
                         DataGridViewCheckBoxCell checkBoxCell = (DataGridViewCheckBoxCell)row.Cells["DentalServices"];
-
-                        // Assign the checkbox value directly based on isavailable
                         checkBoxCell.Value = Convert.ToInt32(service["isavailable"]) == 1;
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Display error message if something goes wrong
                 MessageBox.Show($"Error loading categories: {ex.Message}");
             }
         }
+
+
 
         public async Task LoadMaxAppointment(int admin, ComboBox dayofweek, ComboBox maxComboBox)
         {
@@ -95,56 +95,94 @@ namespace Application_Desktop.Controller
                 MessageBox.Show($"Error loading max appointment: {ex.Message}");
             }
         }
-        
+
         private void AddColumnServices(DataGridView viewDentalServices)
         {
             viewDentalServices.RowHeadersVisible = false;
             viewDentalServices.ColumnHeadersHeight = 40;
 
-            DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
-            selectColumn.HeaderText = "";
-            selectColumn.Name = "DentalServices";
-            selectColumn.DataPropertyName = "isavailable";
-            selectColumn.Width = 30;
-            selectColumn.ReadOnly = false;
+            // Add the checkbox column for isavailable
+            DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn
+            {
+                HeaderText = "",
+                Name = "DentalServices",
+                DataPropertyName = "isavailable",
+                Width = 30,
+                ReadOnly = false
+            };
             viewDentalServices.Columns.Add(selectColumn);
             viewDentalServices.Columns["DentalServices"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-            DataGridViewTextBoxColumn Title = new DataGridViewTextBoxColumn();
-            Title.HeaderText = "Services";
-            Title.Name = "Title";
-            Title.DataPropertyName = "Title";
-            Title.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            viewDentalServices.Columns.Add(Title);
+            // Add other columns
+            viewDentalServices.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Category ID",
+                Name = "Categories_ID", 
+                DataPropertyName = "Categories_ID",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                Visible = false
+            });
 
-            DataGridViewTextBoxColumn Description = new DataGridViewTextBoxColumn();
-            Description.HeaderText = "Description";
-            Description.Name = "Description";
-            Description.DataPropertyName = "Description";
-            Description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            viewDentalServices.Columns.Add(Description);
 
-            DataGridViewTextBoxColumn Duration = new DataGridViewTextBoxColumn();
-            Duration.HeaderText = "Duration";
-            Duration.Name = "Duration";
-            Duration.DataPropertyName = "Duration";
-            Duration.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            viewDentalServices.Columns.Add(Duration);
+            viewDentalServices.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Services",
+                Name = "Title",
+                DataPropertyName = "Title",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
 
-            DataGridViewTextBoxColumn Frequency = new DataGridViewTextBoxColumn();
-            Frequency.HeaderText = "Frequency";
-            Frequency.Name = "Frequency";
-            Frequency.DataPropertyName = "Frequency";
-            Frequency.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            viewDentalServices.Columns.Add(Frequency);
+            viewDentalServices.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Description",
+                Name = "Description",
+                DataPropertyName = "Description",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
 
-            DataGridViewTextBoxColumn Price = new DataGridViewTextBoxColumn();
-            Price.HeaderText = "Price";
-            Price.Name = "Price";
-            Price.DataPropertyName = "Price";
-            Price.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            viewDentalServices.Columns.Add(Price);
+            viewDentalServices.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Duration",
+                Name = "Duration",
+                DataPropertyName = "Duration",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+
+            viewDentalServices.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Frequency",
+                Name = "Frequency",
+                DataPropertyName = "Frequency",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+
+            viewDentalServices.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Price",
+                Name = "Price",
+                DataPropertyName = "Price",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+
+            // Add columns for required_med_history and required_dent_history
+            viewDentalServices.Columns.Add(new DataGridViewCheckBoxColumn
+            {
+                HeaderText = "Med",
+                Name = "RequiredMedHistory",
+                DataPropertyName = "required_med_history",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            });
+
+            viewDentalServices.Columns.Add(new DataGridViewCheckBoxColumn
+            {
+                HeaderText = "Dent",
+                Name = "RequiredDentHistory",
+                DataPropertyName = "required_dent_history",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            });
         }
+
+
 
         private Dictionary<string, Categories> _categories = new Dictionary<string, Categories>();
         public async Task LoadCategoryList(int admin, ComboBox categoryComboBox)
@@ -376,68 +414,88 @@ namespace Application_Desktop.Controller
             string selectedDay = dayComboBox.SelectedItem.ToString();
             DateTime startTime = start.Value;
             DateTime endTime = end.Value;
-            int maxAppointments = (int)maxComboBox.SelectedItem;
+
+            if (!int.TryParse(maxComboBox.SelectedItem?.ToString(), out int maxAppointments))
+            {
+                MessageBox.Show("Please select a valid maximum appointment value.");
+                return;
+            }
+
+            // Validate the start and end times
+            if (startTime >= endTime)
+            {
+                MessageBox.Show("Start time must be before end time.");
+                return;
+            }
 
             try
             {
-                // Retrieve branch information
                 getBranchIdByUserId branchId = new getBranchIdByUserId();
                 BranchID b = await branchId.GetUserBranchId();
 
-                if (b != null)
+                if (b == null)
                 {
-                    int admin = b._id;
-                    Branches branch = await _setupBookingModel.GetBranches(admin); // Assuming you have a method to get branch details
-
-                    if (branch == null)
-                    {
-                        MessageBox.Show("Branch information could not be retrieved.");
-                        return;
-                    }
-
-                    // Loop through selected services and insert or update them
-                    foreach (DataGridViewRow row in viewDentalServices.Rows)
-                    {
-                        if (row.IsNewRow) continue; // Skip the new row placeholder
-
-                        DataGridViewCheckBoxCell checkBoxCell = (DataGridViewCheckBoxCell)row.Cells["DentalServices"];
-                        bool isChecked = checkBoxCell.Value != null && (bool)checkBoxCell.Value; // Checked or unchecked state
-
-                        // Retrieve service details from the row
-                        string serviceTitle = row.Cells["Title"].Value?.ToString();
-                        string description = row.Cells["Description"].Value?.ToString();
-                        string duration = row.Cells["Duration"].Value?.ToString();
-                        string frequency = row.Cells["Frequency"].Value?.ToString();
-                        decimal price = decimal.Parse(row.Cells["Price"].Value?.ToString() ?? "0");
-
-                        Categories service = new Categories
-                        {
-                            _title = serviceTitle,
-                            _description = description,
-                            _duration = duration,
-                            _frequency = frequency,
-                            _price = price
-                        };
-
-                        DayTime dayTime = new DayTime
-                        {
-                            _days = selectedDay,
-                            _start = startTime,
-                            _end = endTime
-                        };
-
-                        Status status = new Status
-                        {
-                            _max = maxAppointments // Assign maxAppointments to the Status object
-                        };
-
-                        await _setupBookingModel.CreateService(service, dayTime, branch, isChecked, b._id, status);
-                    }
+                    MessageBox.Show("Branch ID could not be retrieved.");
+                    return; // Handle as necessary
                 }
+
+                Branches branchDetails = await _setupBookingModel.GetBranches(b._id);
+
+                if (branchDetails == null)
+                {
+                    MessageBox.Show("Branch details could not be retrieved.");
+                    return; // Handle as necessary
+                }
+
+
+                List<DentalService> services = new List<DentalService>();
+
+                foreach (DataGridViewRow row in viewDentalServices.Rows)
+                {
+                    if (row.IsNewRow) continue;
+
+                    DataGridViewCheckBoxCell checkBoxCell = (DataGridViewCheckBoxCell)row.Cells["DentalServices"];
+                    bool isChecked = checkBoxCell.Value != null && (bool)checkBoxCell.Value;
+
+                    string serviceTitle = row.Cells["Title"].Value?.ToString();
+                    if (string.IsNullOrEmpty(serviceTitle))
+                    {
+                        MessageBox.Show("Service title is null or empty for a row. Please check your data.");
+                        return; // Handle as necessary
+                    }
+
+                    if (row.Cells["Categories_ID"].Value == null)
+                    {
+                        MessageBox.Show("Category ID is null for a row. Please check your data.");
+                        return; // Handle as necessary
+                    }
+                    int categoryId = Convert.ToInt32(row.Cells["Categories_ID"].Value); // Ensure this value exists
+
+                    DentalService service = new DentalService
+                    {
+                        CategoriesId = categoryId,
+                        DentalServices = serviceTitle,
+                        BranchId = b._id,
+                        IsAvailable = isChecked,
+                        MaxAppointment = maxAppointments,
+                        CreatedAt = DateTime.Now,
+                        UpdatedAt = DateTime.Now,
+
+
+                        Address = $"{branchDetails._buildingnumber} {branchDetails._street}, {branchDetails._barangay}, {branchDetails._city}, {branchDetails._province}, {branchDetails._postalcode}"
+
+
+                    };
+
+                    services.Add(service);
+                }
+
+                int officeHourId = await _setupBookingModel.GetOfficeHourIdByDay(selectedDay);
+                await _setupBookingModel.SaveDentalServices(services, officeHourId, selectedDay);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error inserting or updating data: {ex.Message}");
+                MessageBox.Show($"Error retrieving branch information: {ex.Message}");
             }
         }
 

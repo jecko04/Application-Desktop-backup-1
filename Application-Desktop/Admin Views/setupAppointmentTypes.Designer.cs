@@ -39,7 +39,10 @@
             this.btnSubmit = (new global::System.Windows.Forms.Button());
             this.panel2 = (new global::System.Windows.Forms.Panel());
             this.updateDentalServicePanel = (new global::System.Windows.Forms.Panel());
+            this.label19 = (new global::System.Windows.Forms.Label());
+            this.chkUpdateRequiredDent = (new global::System.Windows.Forms.CheckBox());
             this.label13 = (new global::System.Windows.Forms.Label());
+            this.chkUpdateRequiredMed = (new global::System.Windows.Forms.CheckBox());
             this.label7 = (new global::System.Windows.Forms.Label());
             this.label42 = (new global::System.Windows.Forms.Label());
             this.label8 = (new global::System.Windows.Forms.Label());
@@ -86,6 +89,9 @@
             this.panel43 = (new global::System.Windows.Forms.Panel());
             this.txtFetchDescription = (new global::System.Windows.Forms.TextBox());
             this.dentalServicePanel = (new global::System.Windows.Forms.Panel());
+            this.label6 = (new global::System.Windows.Forms.Label());
+            this.chkRequiredDent = (new global::System.Windows.Forms.CheckBox());
+            this.chkRequiredMed = (new global::System.Windows.Forms.CheckBox());
             this.label5 = (new global::System.Windows.Forms.Label());
             this.label43 = (new global::System.Windows.Forms.Label());
             this.label10 = (new global::System.Windows.Forms.Label());
@@ -423,7 +429,10 @@
             // 
             this.updateDentalServicePanel.Anchor = ((global::System.Windows.Forms.AnchorStyles)(((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Left)) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.updateDentalServicePanel.BackColor = (global::System.Drawing.Color.White);
+            this.updateDentalServicePanel.Controls.Add(this.label19);
+            this.updateDentalServicePanel.Controls.Add(this.chkUpdateRequiredDent);
             this.updateDentalServicePanel.Controls.Add(this.label13);
+            this.updateDentalServicePanel.Controls.Add(this.chkUpdateRequiredMed);
             this.updateDentalServicePanel.Controls.Add(this.label7);
             this.updateDentalServicePanel.Controls.Add(this.label42);
             this.updateDentalServicePanel.Controls.Add(this.label8);
@@ -441,8 +450,32 @@
             this.updateDentalServicePanel.Controls.Add(this.borderFetchDescription);
             this.updateDentalServicePanel.Location = (new global::System.Drawing.Point(13, 421));
             this.updateDentalServicePanel.Name = ("updateDentalServicePanel");
-            this.updateDentalServicePanel.Size = (new global::System.Drawing.Size(834, 386));
+            this.updateDentalServicePanel.Size = (new global::System.Drawing.Size(881, 386));
             this.updateDentalServicePanel.TabIndex = (98);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = (true);
+            this.label19.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
+            this.label19.ForeColor = (global::System.Drawing.Color.DimGray);
+            this.label19.Location = (new global::System.Drawing.Point(571, 98));
+            this.label19.Name = ("label19");
+            this.label19.Size = (new global::System.Drawing.Size(251, 32));
+            this.label19.TabIndex = (102);
+            this.label19.Text = ("Check if the \"Dental Services\" are required\r\nmedical history and dental history");
+            this.label19.TextAlign = (global::System.Drawing.ContentAlignment.MiddleCenter);
+            // 
+            // chkUpdateRequiredDent
+            // 
+            this.chkUpdateRequiredDent.AutoSize = (true);
+            this.chkUpdateRequiredDent.CheckAlign = (global::System.Drawing.ContentAlignment.MiddleRight);
+            this.chkUpdateRequiredDent.ForeColor = (global::System.Drawing.Color.DimGray);
+            this.chkUpdateRequiredDent.Location = (new global::System.Drawing.Point(580, 174));
+            this.chkUpdateRequiredDent.Name = ("chkUpdateRequiredDent");
+            this.chkUpdateRequiredDent.Size = (new global::System.Drawing.Size(156, 19));
+            this.chkUpdateRequiredDent.TabIndex = (101);
+            this.chkUpdateRequiredDent.Text = ("Required Dental History?");
+            this.chkUpdateRequiredDent.UseVisualStyleBackColor = (false);
             // 
             // label13
             // 
@@ -453,6 +486,18 @@
             this.label13.Size = (new global::System.Drawing.Size(171, 19));
             this.label13.TabIndex = (57);
             this.label13.Text = ("Update Dental Services");
+            // 
+            // chkUpdateRequiredMed
+            // 
+            this.chkUpdateRequiredMed.AutoSize = (true);
+            this.chkUpdateRequiredMed.CheckAlign = (global::System.Drawing.ContentAlignment.MiddleRight);
+            this.chkUpdateRequiredMed.ForeColor = (global::System.Drawing.Color.DimGray);
+            this.chkUpdateRequiredMed.Location = (new global::System.Drawing.Point(580, 150));
+            this.chkUpdateRequiredMed.Name = ("chkUpdateRequiredMed");
+            this.chkUpdateRequiredMed.Size = (new global::System.Drawing.Size(164, 19));
+            this.chkUpdateRequiredMed.TabIndex = (100);
+            this.chkUpdateRequiredMed.Text = ("Required Medical History?");
+            this.chkUpdateRequiredMed.UseVisualStyleBackColor = (false);
             // 
             // label7
             // 
@@ -473,9 +518,9 @@
             this.label42.ForeColor = (global::System.Drawing.Color.DimGray);
             this.label42.Location = (new global::System.Drawing.Point(420, 78));
             this.label42.Name = ("label42");
-            this.label42.Size = (new global::System.Drawing.Size(101, 16));
+            this.label42.Size = (new global::System.Drawing.Size(35, 16));
             this.label42.TabIndex = (94);
-            this.label42.Text = ("Price: (Optional)");
+            this.label42.Text = ("Price");
             // 
             // label8
             // 
@@ -931,6 +976,9 @@
             // 
             this.dentalServicePanel.Anchor = ((global::System.Windows.Forms.AnchorStyles)(((global::System.Windows.Forms.AnchorStyles.Top) | (global::System.Windows.Forms.AnchorStyles.Left)) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.dentalServicePanel.BackColor = (global::System.Drawing.Color.White);
+            this.dentalServicePanel.Controls.Add(this.label6);
+            this.dentalServicePanel.Controls.Add(this.chkRequiredDent);
+            this.dentalServicePanel.Controls.Add(this.chkRequiredMed);
             this.dentalServicePanel.Controls.Add(this.label5);
             this.dentalServicePanel.Controls.Add(this.label43);
             this.dentalServicePanel.Controls.Add(this.label10);
@@ -946,8 +994,47 @@
             this.dentalServicePanel.Controls.Add(this.borderDuration);
             this.dentalServicePanel.Location = (new global::System.Drawing.Point(13, 26));
             this.dentalServicePanel.Name = ("dentalServicePanel");
-            this.dentalServicePanel.Size = (new global::System.Drawing.Size(834, 374));
+            this.dentalServicePanel.Size = (new global::System.Drawing.Size(881, 374));
             this.dentalServicePanel.TabIndex = (97);
+            this.dentalServicePanel.Paint += (this.dentalServicePanel_Paint);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = (true);
+            this.label6.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
+            this.label6.ForeColor = (global::System.Drawing.Color.DimGray);
+            this.label6.Location = (new global::System.Drawing.Point(571, 78));
+            this.label6.Name = ("label6");
+            this.label6.Size = (new global::System.Drawing.Size(251, 32));
+            this.label6.TabIndex = (99);
+            this.label6.Text = ("Check if the \"Dental Services\" are required\r\nmedical history and dental history");
+            this.label6.TextAlign = (global::System.Drawing.ContentAlignment.MiddleCenter);
+            // 
+            // chkRequiredDent
+            // 
+            this.chkRequiredDent.AutoSize = (true);
+            this.chkRequiredDent.CheckAlign = (global::System.Drawing.ContentAlignment.MiddleRight);
+            this.chkRequiredDent.ForeColor = (global::System.Drawing.Color.DimGray);
+            this.chkRequiredDent.Location = (new global::System.Drawing.Point(580, 154));
+            this.chkRequiredDent.Name = ("chkRequiredDent");
+            this.chkRequiredDent.Size = (new global::System.Drawing.Size(156, 19));
+            this.chkRequiredDent.TabIndex = (98);
+            this.chkRequiredDent.Text = ("Required Dental History?");
+            this.chkRequiredDent.UseVisualStyleBackColor = (false);
+            this.chkRequiredDent.CheckedChanged += (this.chkRequiredDent_CheckedChanged);
+            // 
+            // chkRequiredMed
+            // 
+            this.chkRequiredMed.AutoSize = (true);
+            this.chkRequiredMed.CheckAlign = (global::System.Drawing.ContentAlignment.MiddleRight);
+            this.chkRequiredMed.ForeColor = (global::System.Drawing.Color.DimGray);
+            this.chkRequiredMed.Location = (new global::System.Drawing.Point(580, 130));
+            this.chkRequiredMed.Name = ("chkRequiredMed");
+            this.chkRequiredMed.Size = (new global::System.Drawing.Size(164, 19));
+            this.chkRequiredMed.TabIndex = (97);
+            this.chkRequiredMed.Text = ("Required Medical History?");
+            this.chkRequiredMed.UseVisualStyleBackColor = (false);
+            this.chkRequiredMed.CheckedChanged += (this.chkRequiredMed_CheckedChanged);
             // 
             // label5
             // 
@@ -966,9 +1053,10 @@
             this.label43.ForeColor = (global::System.Drawing.Color.DimGray);
             this.label43.Location = (new global::System.Drawing.Point(420, 64));
             this.label43.Name = ("label43");
-            this.label43.Size = (new global::System.Drawing.Size(101, 16));
+            this.label43.Size = (new global::System.Drawing.Size(35, 16));
             this.label43.TabIndex = (96);
-            this.label43.Text = ("Price: (Optional)");
+            this.label43.Text = ("Price");
+            this.label43.Click += (this.label43_Click);
             // 
             // label10
             // 
@@ -1378,7 +1466,7 @@
             this.PanelOfficeHours.Controls.Add(this.label16);
             this.PanelOfficeHours.Location = (new global::System.Drawing.Point(13, 826));
             this.PanelOfficeHours.Name = ("PanelOfficeHours");
-            this.PanelOfficeHours.Size = (new global::System.Drawing.Size(834, 421));
+            this.PanelOfficeHours.Size = (new global::System.Drawing.Size(881, 421));
             this.PanelOfficeHours.TabIndex = (70);
             // 
             // panel122
@@ -1388,7 +1476,6 @@
             this.panel122.Name = ("panel122");
             this.panel122.Size = (new global::System.Drawing.Size(444, 1));
             this.panel122.TabIndex = (86);
-            this.panel122.Paint += (this.panel122_Paint);
             // 
             // panel117
             // 
@@ -1403,7 +1490,6 @@
             this.panel117.Name = ("panel117");
             this.panel117.Size = (new global::System.Drawing.Size(107, 23));
             this.panel117.TabIndex = (116);
-            this.panel117.Paint += (this.panel117_Paint);
             // 
             // button25
             // 
@@ -1476,7 +1562,6 @@
             this.label39.Size = (new global::System.Drawing.Size(76, 16));
             this.label39.TabIndex = (115);
             this.label39.Text = ("End of Time");
-            this.label39.Click += (this.label39_Click);
             // 
             // btnSaveOfficeHours
             // 
@@ -1532,7 +1617,6 @@
             this.panel112.Name = ("panel112");
             this.panel112.Size = (new global::System.Drawing.Size(107, 23));
             this.panel112.TabIndex = (115);
-            this.panel112.Paint += (this.panel112_Paint);
             // 
             // button22
             // 
@@ -1615,7 +1699,6 @@
             this.label38.Size = (new global::System.Drawing.Size(83, 16));
             this.label38.TabIndex = (114);
             this.label38.Text = ("Start of Time");
-            this.label38.Click += (this.label38_Click);
             // 
             // panel102
             // 
@@ -1630,7 +1713,6 @@
             this.panel102.Name = ("panel102");
             this.panel102.Size = (new global::System.Drawing.Size(107, 23));
             this.panel102.TabIndex = (114);
-            this.panel102.Paint += (this.panel102_Paint);
             // 
             // button19
             // 
@@ -1707,7 +1789,6 @@
             this.panel107.Name = ("panel107");
             this.panel107.Size = (new global::System.Drawing.Size(107, 23));
             this.panel107.TabIndex = (113);
-            this.panel107.Paint += (this.panel107_Paint);
             // 
             // button20
             // 
@@ -1781,7 +1862,6 @@
             this.sundayClose.TabIndex = (111);
             this.sundayClose.Text = ("Close");
             this.sundayClose.UseVisualStyleBackColor = (true);
-            this.sundayClose.CheckedChanged += (this.sundayClose_CheckedChanged);
             // 
             // label36
             // 
@@ -1792,7 +1872,6 @@
             this.label36.Size = (new global::System.Drawing.Size(49, 16));
             this.label36.TabIndex = (108);
             this.label36.Text = ("Sunday");
-            this.label36.Click += (this.label36_Click);
             // 
             // panel92
             // 
@@ -1807,7 +1886,6 @@
             this.panel92.Name = ("panel92");
             this.panel92.Size = (new global::System.Drawing.Size(107, 23));
             this.panel92.TabIndex = (107);
-            this.panel92.Paint += (this.panel92_Paint);
             // 
             // button16
             // 
@@ -1884,7 +1962,6 @@
             this.panel97.Name = ("panel97");
             this.panel97.Size = (new global::System.Drawing.Size(107, 23));
             this.panel97.TabIndex = (106);
-            this.panel97.Paint += (this.panel97_Paint);
             // 
             // button17
             // 
@@ -1958,7 +2035,6 @@
             this.saturdayClose.TabIndex = (104);
             this.saturdayClose.Text = ("Close");
             this.saturdayClose.UseVisualStyleBackColor = (true);
-            this.saturdayClose.CheckedChanged += (this.saturdayClose_CheckedChanged);
             // 
             // label33
             // 
@@ -1969,7 +2045,6 @@
             this.label33.Size = (new global::System.Drawing.Size(58, 16));
             this.label33.TabIndex = (101);
             this.label33.Text = ("Saturday");
-            this.label33.Click += (this.label33_Click);
             // 
             // panel82
             // 
@@ -1984,7 +2059,6 @@
             this.panel82.Name = ("panel82");
             this.panel82.Size = (new global::System.Drawing.Size(107, 23));
             this.panel82.TabIndex = (100);
-            this.panel82.Paint += (this.panel82_Paint);
             // 
             // button13
             // 
@@ -2061,7 +2135,6 @@
             this.panel87.Name = ("panel87");
             this.panel87.Size = (new global::System.Drawing.Size(107, 23));
             this.panel87.TabIndex = (99);
-            this.panel87.Paint += (this.panel87_Paint);
             // 
             // button14
             // 
@@ -2135,7 +2208,6 @@
             this.fridayClose.TabIndex = (97);
             this.fridayClose.Text = ("Close");
             this.fridayClose.UseVisualStyleBackColor = (true);
-            this.fridayClose.CheckedChanged += (this.fridayClose_CheckedChanged);
             // 
             // label30
             // 
@@ -2146,7 +2218,6 @@
             this.label30.Size = (new global::System.Drawing.Size(42, 16));
             this.label30.TabIndex = (94);
             this.label30.Text = ("Friday");
-            this.label30.Click += (this.label30_Click);
             // 
             // panel72
             // 
@@ -2161,7 +2232,6 @@
             this.panel72.Name = ("panel72");
             this.panel72.Size = (new global::System.Drawing.Size(107, 23));
             this.panel72.TabIndex = (93);
-            this.panel72.Paint += (this.panel72_Paint);
             // 
             // button10
             // 
@@ -2238,7 +2308,6 @@
             this.panel77.Name = ("panel77");
             this.panel77.Size = (new global::System.Drawing.Size(107, 23));
             this.panel77.TabIndex = (92);
-            this.panel77.Paint += (this.panel77_Paint);
             // 
             // button11
             // 
@@ -2312,7 +2381,6 @@
             this.thursdayClose.TabIndex = (90);
             this.thursdayClose.Text = ("Close");
             this.thursdayClose.UseVisualStyleBackColor = (true);
-            this.thursdayClose.CheckedChanged += (this.thursdayClose_CheckedChanged);
             // 
             // label27
             // 
@@ -2323,7 +2391,6 @@
             this.label27.Size = (new global::System.Drawing.Size(60, 16));
             this.label27.TabIndex = (87);
             this.label27.Text = ("Thursday");
-            this.label27.Click += (this.label27_Click);
             // 
             // panel62
             // 
@@ -2338,7 +2405,6 @@
             this.panel62.Name = ("panel62");
             this.panel62.Size = (new global::System.Drawing.Size(107, 23));
             this.panel62.TabIndex = (86);
-            this.panel62.Paint += (this.panel62_Paint);
             // 
             // button7
             // 
@@ -2415,7 +2481,6 @@
             this.panel67.Name = ("panel67");
             this.panel67.Size = (new global::System.Drawing.Size(107, 23));
             this.panel67.TabIndex = (85);
-            this.panel67.Paint += (this.panel67_Paint);
             // 
             // button8
             // 
@@ -2489,7 +2554,6 @@
             this.wednesdayClose.TabIndex = (83);
             this.wednesdayClose.Text = ("Close");
             this.wednesdayClose.UseVisualStyleBackColor = (true);
-            this.wednesdayClose.CheckedChanged += (this.wednesdayClose_CheckedChanged);
             // 
             // label24
             // 
@@ -2500,7 +2564,6 @@
             this.label24.Size = (new global::System.Drawing.Size(73, 16));
             this.label24.TabIndex = (80);
             this.label24.Text = ("Wednesday");
-            this.label24.Click += (this.label24_Click);
             // 
             // panel52
             // 
@@ -2515,7 +2578,6 @@
             this.panel52.Name = ("panel52");
             this.panel52.Size = (new global::System.Drawing.Size(107, 23));
             this.panel52.TabIndex = (79);
-            this.panel52.Paint += (this.panel52_Paint);
             // 
             // button4
             // 
@@ -2592,7 +2654,6 @@
             this.panel57.Name = ("panel57");
             this.panel57.Size = (new global::System.Drawing.Size(107, 23));
             this.panel57.TabIndex = (78);
-            this.panel57.Paint += (this.panel57_Paint);
             // 
             // button5
             // 
@@ -2666,7 +2727,6 @@
             this.tuesdayClose.TabIndex = (76);
             this.tuesdayClose.Text = ("Close");
             this.tuesdayClose.UseVisualStyleBackColor = (true);
-            this.tuesdayClose.CheckedChanged += (this.tuesdayClose_CheckedChanged);
             // 
             // label21
             // 
@@ -2677,7 +2737,6 @@
             this.label21.Size = (new global::System.Drawing.Size(55, 16));
             this.label21.TabIndex = (73);
             this.label21.Text = ("Tuesday");
-            this.label21.Click += (this.label21_Click);
             // 
             // panel39
             // 
@@ -2692,7 +2751,6 @@
             this.panel39.Name = ("panel39");
             this.panel39.Size = (new global::System.Drawing.Size(107, 23));
             this.panel39.TabIndex = (72);
-            this.panel39.Paint += (this.panel39_Paint);
             // 
             // button3
             // 
@@ -2769,7 +2827,6 @@
             this.panel14.Name = ("panel14");
             this.panel14.Size = (new global::System.Drawing.Size(107, 23));
             this.panel14.TabIndex = (71);
-            this.panel14.Paint += (this.panel14_Paint);
             // 
             // button2
             // 
@@ -2843,7 +2900,6 @@
             this.mondayClose.TabIndex = (9);
             this.mondayClose.Text = ("Close");
             this.mondayClose.UseVisualStyleBackColor = (true);
-            this.mondayClose.CheckedChanged += (this.mondayClose_CheckedChanged);
             // 
             // label18
             // 
@@ -2854,7 +2910,6 @@
             this.label18.Size = (new global::System.Drawing.Size(76, 16));
             this.label18.TabIndex = (8);
             this.label18.Text = ("End of Time");
-            this.label18.Click += (this.label18_Click);
             // 
             // label17
             // 
@@ -2865,7 +2920,6 @@
             this.label17.Size = (new global::System.Drawing.Size(83, 16));
             this.label17.TabIndex = (6);
             this.label17.Text = ("Start of Time");
-            this.label17.Click += (this.label17_Click);
             // 
             // label16
             // 
@@ -2876,13 +2930,12 @@
             this.label16.Size = (new global::System.Drawing.Size(51, 16));
             this.label16.TabIndex = (4);
             this.label16.Text = ("Monday");
-            this.label16.Click += (this.label16_Click);
             // 
             // lineDevider
             // 
             this.lineDevider.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Left) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.lineDevider.AutoSize = (true);
-            this.lineDevider.Location = (new global::System.Drawing.Point(521, 17489));
+            this.lineDevider.Location = (new global::System.Drawing.Point(521, 18497));
             this.lineDevider.Name = ("lineDevider");
             this.lineDevider.Size = (new global::System.Drawing.Size(10, 15));
             this.lineDevider.TabIndex = (59);
@@ -3361,5 +3414,11 @@
         private global::System.Windows.Forms.TextBox txtPrice;
         private global::System.Windows.Forms.Panel dentalServicePanel;
         private global::System.Windows.Forms.Panel updateDentalServicePanel;
+        private global::System.Windows.Forms.CheckBox chkRequiredDent;
+        private global::System.Windows.Forms.CheckBox chkRequiredMed;
+        private global::System.Windows.Forms.Label label6;
+        private global::System.Windows.Forms.Label label19;
+        private global::System.Windows.Forms.CheckBox chkUpdateRequiredDent;
+        private global::System.Windows.Forms.CheckBox chkUpdateRequiredMed;
     }
 }
