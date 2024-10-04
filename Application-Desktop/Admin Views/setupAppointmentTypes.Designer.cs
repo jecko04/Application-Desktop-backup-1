@@ -458,7 +458,7 @@
             this.label19.AutoSize = (true);
             this.label19.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label19.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.label19.Location = (new global::System.Drawing.Point(571, 98));
+            this.label19.Location = (new global::System.Drawing.Point(560, 98));
             this.label19.Name = ("label19");
             this.label19.Size = (new global::System.Drawing.Size(251, 32));
             this.label19.TabIndex = (102);
@@ -470,7 +470,7 @@
             this.chkUpdateRequiredDent.AutoSize = (true);
             this.chkUpdateRequiredDent.CheckAlign = (global::System.Drawing.ContentAlignment.MiddleRight);
             this.chkUpdateRequiredDent.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.chkUpdateRequiredDent.Location = (new global::System.Drawing.Point(580, 174));
+            this.chkUpdateRequiredDent.Location = (new global::System.Drawing.Point(569, 174));
             this.chkUpdateRequiredDent.Name = ("chkUpdateRequiredDent");
             this.chkUpdateRequiredDent.Size = (new global::System.Drawing.Size(156, 19));
             this.chkUpdateRequiredDent.TabIndex = (101);
@@ -492,7 +492,7 @@
             this.chkUpdateRequiredMed.AutoSize = (true);
             this.chkUpdateRequiredMed.CheckAlign = (global::System.Drawing.ContentAlignment.MiddleRight);
             this.chkUpdateRequiredMed.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.chkUpdateRequiredMed.Location = (new global::System.Drawing.Point(580, 150));
+            this.chkUpdateRequiredMed.Location = (new global::System.Drawing.Point(569, 150));
             this.chkUpdateRequiredMed.Name = ("chkUpdateRequiredMed");
             this.chkUpdateRequiredMed.Size = (new global::System.Drawing.Size(164, 19));
             this.chkUpdateRequiredMed.TabIndex = (100);
@@ -996,14 +996,13 @@
             this.dentalServicePanel.Name = ("dentalServicePanel");
             this.dentalServicePanel.Size = (new global::System.Drawing.Size(881, 374));
             this.dentalServicePanel.TabIndex = (97);
-            this.dentalServicePanel.Paint += (this.dentalServicePanel_Paint);
             // 
             // label6
             // 
             this.label6.AutoSize = (true);
             this.label6.Font = (new global::System.Drawing.Font("Tahoma", 9.75F));
             this.label6.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.label6.Location = (new global::System.Drawing.Point(571, 78));
+            this.label6.Location = (new global::System.Drawing.Point(560, 79));
             this.label6.Name = ("label6");
             this.label6.Size = (new global::System.Drawing.Size(251, 32));
             this.label6.TabIndex = (99);
@@ -1015,26 +1014,24 @@
             this.chkRequiredDent.AutoSize = (true);
             this.chkRequiredDent.CheckAlign = (global::System.Drawing.ContentAlignment.MiddleRight);
             this.chkRequiredDent.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.chkRequiredDent.Location = (new global::System.Drawing.Point(580, 154));
+            this.chkRequiredDent.Location = (new global::System.Drawing.Point(569, 155));
             this.chkRequiredDent.Name = ("chkRequiredDent");
             this.chkRequiredDent.Size = (new global::System.Drawing.Size(156, 19));
             this.chkRequiredDent.TabIndex = (98);
             this.chkRequiredDent.Text = ("Required Dental History?");
             this.chkRequiredDent.UseVisualStyleBackColor = (false);
-            this.chkRequiredDent.CheckedChanged += (this.chkRequiredDent_CheckedChanged);
             // 
             // chkRequiredMed
             // 
             this.chkRequiredMed.AutoSize = (true);
             this.chkRequiredMed.CheckAlign = (global::System.Drawing.ContentAlignment.MiddleRight);
             this.chkRequiredMed.ForeColor = (global::System.Drawing.Color.DimGray);
-            this.chkRequiredMed.Location = (new global::System.Drawing.Point(580, 130));
+            this.chkRequiredMed.Location = (new global::System.Drawing.Point(569, 131));
             this.chkRequiredMed.Name = ("chkRequiredMed");
             this.chkRequiredMed.Size = (new global::System.Drawing.Size(164, 19));
             this.chkRequiredMed.TabIndex = (97);
             this.chkRequiredMed.Text = ("Required Medical History?");
             this.chkRequiredMed.UseVisualStyleBackColor = (false);
-            this.chkRequiredMed.CheckedChanged += (this.chkRequiredMed_CheckedChanged);
             // 
             // label5
             // 
@@ -1056,7 +1053,6 @@
             this.label43.Size = (new global::System.Drawing.Size(35, 16));
             this.label43.TabIndex = (96);
             this.label43.Text = ("Price");
-            this.label43.Click += (this.label43_Click);
             // 
             // label10
             // 
@@ -2935,7 +2931,7 @@
             // 
             this.lineDevider.Anchor = ((global::System.Windows.Forms.AnchorStyles)((global::System.Windows.Forms.AnchorStyles.Left) | (global::System.Windows.Forms.AnchorStyles.Right)));
             this.lineDevider.AutoSize = (true);
-            this.lineDevider.Location = (new global::System.Drawing.Point(521, 18497));
+            this.lineDevider.Location = (new global::System.Drawing.Point(521, 18833));
             this.lineDevider.Name = ("lineDevider");
             this.lineDevider.Size = (new global::System.Drawing.Size(10, 15));
             this.lineDevider.TabIndex = (59);

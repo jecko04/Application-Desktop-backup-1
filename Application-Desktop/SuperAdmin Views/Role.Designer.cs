@@ -167,8 +167,8 @@
             // 
             // btnAddRoles
             // 
-            btnAddRoles.BackColor = Color.FromArgb(52, 152, 219);
-            btnAddRoles.FlatAppearance.BorderColor = Color.FromArgb(52, 152, 219);
+            btnAddRoles.BackColor = Color.FromArgb(255, 66, 0);
+            btnAddRoles.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
             btnAddRoles.FlatStyle = FlatStyle.Flat;
             btnAddRoles.ForeColor = Color.White;
             btnAddRoles.Location = new Point(28, 181);

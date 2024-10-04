@@ -14,7 +14,7 @@ namespace Application_Desktop.Model
     {
         public async Task <DataTable> GetAllDentalServices(int admin)
         {
-            string query = @"SELECT dental_services.dentalservices_id, dental_services.dentalservices, dental_services.description, dental_services.duration, dental_services.frequency, dental_services.price, dental_services.dayofweek, dental_services.starttime, dental_services.endtime, dental_services.Branch_ID, dental_services.address, dental_services.isavailable, dental_services.max_appointment, branch.BranchName AS BranchName
+            string query = @"SELECT dental_services.dentalservices_id, dental_services.dentalservices, dental_services.dayofweek, dental_services.Branch_ID, dental_services.address, dental_services.isavailable, dental_services.max_appointment, branch.BranchName AS BranchName
                             FROM dental_services
                             JOIN branch ON dental_services.Branch_ID = branch.Branch_ID
                             WHERE dental_services.Branch_ID = @admin";

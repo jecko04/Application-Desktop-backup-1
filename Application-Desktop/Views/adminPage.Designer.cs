@@ -35,7 +35,6 @@
             panel7 = new Panel();
             button6 = new Button();
             panel1 = new Panel();
-            label1 = new Label();
             panel2 = new Panel();
             btnDashboard = new Button();
             recordContainer = new FlowLayoutPanel();
@@ -53,12 +52,8 @@
             appointmentContainer = new FlowLayoutPanel();
             panel19 = new Panel();
             btnAppointment = new Button();
-            panel21 = new Panel();
-            btnPending = new Button();
             panel22 = new Panel();
             btnViewAllAppointment = new Button();
-            panel6 = new Panel();
-            btnCancelAppointment = new Button();
             panel4 = new Panel();
             btnEmployee = new Button();
             menuContainer = new FlowLayoutPanel();
@@ -80,7 +75,6 @@
             sidebarContainer.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             panel7.SuspendLayout();
-            panel1.SuspendLayout();
             panel2.SuspendLayout();
             recordContainer.SuspendLayout();
             panel13.SuspendLayout();
@@ -91,9 +85,7 @@
             panel16.SuspendLayout();
             appointmentContainer.SuspendLayout();
             panel19.SuspendLayout();
-            panel21.SuspendLayout();
             panel22.SuspendLayout();
-            panel6.SuspendLayout();
             panel4.SuspendLayout();
             menuContainer.SuspendLayout();
             panel9.SuspendLayout();
@@ -158,30 +150,17 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(label1);
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(182, 116);
+            panel1.Size = new Size(182, 40);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.ForeColor = Color.Black;
-            label1.Location = new Point(11, 37);
-            label1.Name = "label1";
-            label1.Size = new Size(160, 45);
-            label1.TabIndex = 0;
-            label1.Text = "ORALease: Online \r\nAppointment Reservation for\r\nLocal Dental Services";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(250, 220, 18);
             panel2.Controls.Add(btnDashboard);
-            panel2.Location = new Point(0, 124);
+            panel2.Location = new Point(0, 48);
             panel2.Margin = new Padding(0, 2, 0, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(184, 34);
@@ -212,7 +191,7 @@
             recordContainer.BackColor = Color.FromArgb(250, 220, 18);
             recordContainer.Controls.Add(panel13);
             recordContainer.Controls.Add(panel5);
-            recordContainer.Location = new Point(0, 160);
+            recordContainer.Location = new Point(0, 84);
             recordContainer.Margin = new Padding(0, 2, 0, 0);
             recordContainer.Name = "recordContainer";
             recordContainer.Size = new Size(184, 34);
@@ -281,7 +260,7 @@
             setupContainer.Controls.Add(panel3);
             setupContainer.Controls.Add(panel15);
             setupContainer.Controls.Add(panel16);
-            setupContainer.Location = new Point(0, 196);
+            setupContainer.Location = new Point(0, 120);
             setupContainer.Margin = new Padding(0, 2, 0, 0);
             setupContainer.Name = "setupContainer";
             setupContainer.Size = new Size(184, 34);
@@ -378,10 +357,8 @@
             // 
             appointmentContainer.BackColor = Color.FromArgb(250, 220, 18);
             appointmentContainer.Controls.Add(panel19);
-            appointmentContainer.Controls.Add(panel21);
             appointmentContainer.Controls.Add(panel22);
-            appointmentContainer.Controls.Add(panel6);
-            appointmentContainer.Location = new Point(0, 232);
+            appointmentContainer.Location = new Point(0, 156);
             appointmentContainer.Margin = new Padding(0, 2, 8, 0);
             appointmentContainer.Name = "appointmentContainer";
             appointmentContainer.Size = new Size(184, 34);
@@ -419,39 +396,10 @@
             btnAppointment.UseVisualStyleBackColor = false;
             btnAppointment.Click += btnAppointment_Click;
             // 
-            // panel21
-            // 
-            panel21.Controls.Add(btnPending);
-            panel21.Location = new Point(0, 34);
-            panel21.Margin = new Padding(0);
-            panel21.Name = "panel21";
-            panel21.Size = new Size(213, 34);
-            panel21.TabIndex = 4;
-            // 
-            // btnPending
-            // 
-            btnPending.BackColor = Color.Transparent;
-            btnPending.Dock = DockStyle.Fill;
-            btnPending.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
-            btnPending.FlatAppearance.BorderSize = 0;
-            btnPending.FlatStyle = FlatStyle.Flat;
-            btnPending.Font = new Font("Microsoft Sans Serif", 9F);
-            btnPending.ForeColor = Color.Black;
-            btnPending.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPending.Location = new Point(0, 0);
-            btnPending.Margin = new Padding(0);
-            btnPending.Name = "btnPending";
-            btnPending.Size = new Size(213, 34);
-            btnPending.TabIndex = 3;
-            btnPending.Text = "              Pending Approvals";
-            btnPending.TextAlign = ContentAlignment.MiddleLeft;
-            btnPending.UseVisualStyleBackColor = false;
-            btnPending.Click += btnPending_Click;
-            // 
             // panel22
             // 
             panel22.Controls.Add(btnViewAllAppointment);
-            panel22.Location = new Point(0, 68);
+            panel22.Location = new Point(0, 34);
             panel22.Margin = new Padding(0);
             panel22.Name = "panel22";
             panel22.Size = new Size(213, 34);
@@ -477,40 +425,11 @@
             btnViewAllAppointment.UseVisualStyleBackColor = false;
             btnViewAllAppointment.Click += btnViewAllAppointment_Click;
             // 
-            // panel6
-            // 
-            panel6.Controls.Add(btnCancelAppointment);
-            panel6.Location = new Point(0, 102);
-            panel6.Margin = new Padding(0);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(213, 34);
-            panel6.TabIndex = 5;
-            // 
-            // btnCancelAppointment
-            // 
-            btnCancelAppointment.BackColor = Color.Transparent;
-            btnCancelAppointment.Dock = DockStyle.Fill;
-            btnCancelAppointment.FlatAppearance.BorderColor = Color.FromArgb(31, 97, 141);
-            btnCancelAppointment.FlatAppearance.BorderSize = 0;
-            btnCancelAppointment.FlatStyle = FlatStyle.Flat;
-            btnCancelAppointment.Font = new Font("Microsoft Sans Serif", 9F);
-            btnCancelAppointment.ForeColor = Color.Black;
-            btnCancelAppointment.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancelAppointment.Location = new Point(0, 0);
-            btnCancelAppointment.Margin = new Padding(0);
-            btnCancelAppointment.Name = "btnCancelAppointment";
-            btnCancelAppointment.Size = new Size(213, 34);
-            btnCancelAppointment.TabIndex = 3;
-            btnCancelAppointment.Text = "              Cancel Appointment\r\n";
-            btnCancelAppointment.TextAlign = ContentAlignment.MiddleLeft;
-            btnCancelAppointment.UseVisualStyleBackColor = false;
-            btnCancelAppointment.Click += btnCancelAppointment_Click;
-            // 
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(250, 220, 18);
             panel4.Controls.Add(btnEmployee);
-            panel4.Location = new Point(0, 268);
+            panel4.Location = new Point(0, 192);
             panel4.Margin = new Padding(0, 2, 0, 0);
             panel4.Name = "panel4";
             panel4.Size = new Size(184, 34);
@@ -541,7 +460,7 @@
             menuContainer.Controls.Add(panel9);
             menuContainer.Controls.Add(panel10);
             menuContainer.Controls.Add(panel8);
-            menuContainer.Location = new Point(0, 304);
+            menuContainer.Location = new Point(0, 228);
             menuContainer.Margin = new Padding(0, 2, 0, 0);
             menuContainer.Name = "menuContainer";
             menuContainer.Size = new Size(184, 34);
@@ -703,8 +622,6 @@
             sidebarContainer.ResumeLayout(false);
             flowLayoutPanel2.ResumeLayout(false);
             panel7.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             panel2.ResumeLayout(false);
             recordContainer.ResumeLayout(false);
             panel13.ResumeLayout(false);
@@ -715,9 +632,7 @@
             panel16.ResumeLayout(false);
             appointmentContainer.ResumeLayout(false);
             panel19.ResumeLayout(false);
-            panel21.ResumeLayout(false);
             panel22.ResumeLayout(false);
-            panel6.ResumeLayout(false);
             panel4.ResumeLayout(false);
             menuContainer.ResumeLayout(false);
             panel9.ResumeLayout(false);
@@ -762,17 +677,12 @@
         private FlowLayoutPanel appointmentContainer;
         private Panel panel19;
         private Button btnAppointment;
-        private Panel panel21;
-        private Button btnPending;
         private Panel panel22;
         private Button btnViewAllAppointment;
-        private Panel panel6;
-        private Button btnCancelAppointment;
         private Panel panel13;
         private Button btnPatientRecord;
         private System.Windows.Forms.Timer PatientTransition;
         private System.Windows.Forms.Timer AppointTransition;
         private Panel panel1;
-        private Label label1;
     }
 }

@@ -76,6 +76,9 @@ namespace Application_Desktop.Admin_Sub_Views
                  categories.Description, 
                  categories.Duration, 
                  categories.Frequency,
+                 categories.Price,
+                 categories.required_med_history,
+                 categories.required_dent_history,
                  branch.BranchName AS BranchName,
                  categories.Branch_ID,
                  categories.created_at,
@@ -150,6 +153,24 @@ namespace Application_Desktop.Admin_Sub_Views
             branchColumn.Name = "Branch_ID";
             branchColumn.DataPropertyName = "BranchName";
             viewCategoriesDetails.Columns.Add(branchColumn);
+
+            DataGridViewTextBoxColumn price = new DataGridViewTextBoxColumn();
+            price.HeaderText = "Price";
+            price.Name = "Price";
+            price.DataPropertyName = "Price";
+            viewCategoriesDetails.Columns.Add(price);
+
+            DataGridViewTextBoxColumn requiredMed = new DataGridViewTextBoxColumn();
+            requiredMed.HeaderText = "Required Medical History";
+            requiredMed.Name = "required_med_history";
+            requiredMed.DataPropertyName = "required_med_history";
+            viewCategoriesDetails.Columns.Add(requiredMed);
+
+            DataGridViewTextBoxColumn requiredDent = new DataGridViewTextBoxColumn();
+            requiredDent.HeaderText = "Required Dental History";
+            requiredDent.Name = "required_dent_history";
+            requiredDent.DataPropertyName = "required_dent_history";
+            viewCategoriesDetails.Columns.Add(requiredDent);
 
             DataGridViewTextBoxColumn createdAtColumn = new DataGridViewTextBoxColumn();
             createdAtColumn.HeaderText = "Created At";
@@ -230,41 +251,5 @@ namespace Application_Desktop.Admin_Sub_Views
             }
             finally { await conn.CloseAsync(); }
         }
-
-
-        //not use yet baka sa susunod lmao
-        /*private void DeleteSelected()
-        {
-            bool hasSelectedRows = false;
-            var result = MessageBox.Show("Are you sure you want to delete the selected rows?", "Confirm Deletion", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                viewCategoriesDetails.EndEdit();
-
-                // Deleting from viewDentalDoctorAccount
-                for (int i = viewCategoriesDetails.Rows.Count - 1; i >= 0; i--)
-                {
-                    DataGridViewRow row = viewCategoriesDetails.Rows[i];
-                    DataGridViewCheckBoxCell checkBoxCell = row.Cells["selectCategories"] as DataGridViewCheckBoxCell;
-
-                    // Check if the checkbox is checked
-                    if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
-                    {
-                        hasSelectedRows = true;
-                        // Get the ID of the doctor to delete
-                        int categoriesID = Convert.ToInt32(row.Cells["Categories_ID"].Value);
-                        viewCategoriesDetails.Rows.RemoveAt(i);
-                        DeleteFromDatabase(categoriesID);
-                    }
-                }
-
-                // If no rows were selected, show a message box
-                if (!hasSelectedRows)
-                {
-                    MessageBox.Show("No rows were selected for deletion.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-        }*/
-
     }
 }

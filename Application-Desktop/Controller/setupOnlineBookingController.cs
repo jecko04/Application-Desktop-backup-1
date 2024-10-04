@@ -167,7 +167,7 @@ namespace Application_Desktop.Controller
             // Add columns for required_med_history and required_dent_history
             viewDentalServices.Columns.Add(new DataGridViewCheckBoxColumn
             {
-                HeaderText = "Med",
+                HeaderText = "RQD",
                 Name = "RequiredMedHistory",
                 DataPropertyName = "required_med_history",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
@@ -175,7 +175,7 @@ namespace Application_Desktop.Controller
 
             viewDentalServices.Columns.Add(new DataGridViewCheckBoxColumn
             {
-                HeaderText = "Dent",
+                HeaderText = "RQD",
                 Name = "RequiredDentHistory",
                 DataPropertyName = "required_dent_history",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells

@@ -23,10 +23,7 @@ namespace Application_Desktop
 
             //Close the database
 
-
-            //Add method sa role na cannot be add if already added
-
-            //fix the view all avaiable services
+            //Fix Dental Doctor Branch on Edit and Create It should Enable to use
         }
     }
 }

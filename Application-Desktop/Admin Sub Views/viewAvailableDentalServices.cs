@@ -118,7 +118,7 @@ namespace Application_Desktop.Admin_Sub_Views
 
         private void viewDentalServices_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            _viewAvailableServicesController.FormatAvailableCell(e, (DataGridView)sender);
+
         }
 
         private async void txtServices_SelectedIndexChanged(object sender, EventArgs e)

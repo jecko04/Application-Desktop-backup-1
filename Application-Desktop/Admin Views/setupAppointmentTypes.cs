@@ -1049,24 +1049,5 @@ namespace Application_Desktop.Admin_Views
                 textBox.Text = "₱0.00";
             }
         }
-
-        private void label43_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dentalServicePanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void chkRequiredMed_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chkRequiredDent_CheckedChanged(object sender, EventArgs e)
-        {
-        }
     }
 }

@@ -81,7 +81,6 @@ namespace Application_Desktop.Controller
             viewDentalServices.Columns.Add(Title);
 
 
-
             DataGridViewTextBoxColumn Branch = new DataGridViewTextBoxColumn();
             Branch.HeaderText = "Branch Name";
             Branch.Name = "Branch_ID";
@@ -111,20 +110,6 @@ namespace Application_Desktop.Controller
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
             };
             viewDentalServices.Columns.Add(deleteButtonColumn);
-        }
-
-        public void FormatAvailableCell(DataGridViewCellFormattingEventArgs e, DataGridView viewDentalServices)
-        {
-            if (e.ColumnIndex == viewDentalServices.Columns["StartTime"].Index ||
-                e.ColumnIndex == viewDentalServices.Columns["EndTime"].Index)
-            {
-                if (e.Value != null && DateTime.TryParse(e.Value.ToString(), out DateTime time))
-                {
-                    // Format the time to 12-hour format with AM/PM
-                    e.Value = time.ToString("hh:mm tt");
-                    e.FormattingApplied = true;
-                }
-            }
         }
 
         public async Task LoadDeleteData(DataGridViewCellEventArgs e, int admin, DataGridView viewDentalService)
@@ -160,8 +145,8 @@ namespace Application_Desktop.Controller
         public async Task<DataTable> SortedBy(string dentalServices, int isAvailable)
         {
             // Base query for selecting dental services
-            string query = @"SELECT `dentalservices_id`, `dentalservices`, `description`, `duration`, `frequency`, `price`, 
-                     `dayofweek`, `starttime`, `endtime`, `Branch_ID`, `address`, `isavailable`, 
+            string query = @"SELECT `dentalservices_id`, `dentalservices`, 
+                     `dayofweek`, `Branch_ID`, `address`, `isavailable`, 
                      `max_appointment`, `created_at`, `updated_at` 
                      FROM `dental_services` 
                      WHERE `isavailable` = @isavailable";
