@@ -77,8 +77,6 @@ namespace Application_Desktop.Admin_Sub_Views
                  categories.Duration, 
                  categories.Frequency,
                  categories.Price,
-                 categories.required_med_history,
-                 categories.required_dent_history,
                  branch.BranchName AS BranchName,
                  categories.Branch_ID,
                  categories.created_at,
@@ -159,18 +157,6 @@ namespace Application_Desktop.Admin_Sub_Views
             price.Name = "Price";
             price.DataPropertyName = "Price";
             viewCategoriesDetails.Columns.Add(price);
-
-            DataGridViewTextBoxColumn requiredMed = new DataGridViewTextBoxColumn();
-            requiredMed.HeaderText = "Required Medical History";
-            requiredMed.Name = "required_med_history";
-            requiredMed.DataPropertyName = "required_med_history";
-            viewCategoriesDetails.Columns.Add(requiredMed);
-
-            DataGridViewTextBoxColumn requiredDent = new DataGridViewTextBoxColumn();
-            requiredDent.HeaderText = "Required Dental History";
-            requiredDent.Name = "required_dent_history";
-            requiredDent.DataPropertyName = "required_dent_history";
-            viewCategoriesDetails.Columns.Add(requiredDent);
 
             DataGridViewTextBoxColumn createdAtColumn = new DataGridViewTextBoxColumn();
             createdAtColumn.HeaderText = "Created At";

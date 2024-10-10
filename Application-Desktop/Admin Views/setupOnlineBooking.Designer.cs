@@ -594,8 +594,7 @@
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             viewDentalServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             viewDentalServices.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            viewDentalServices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            viewDentalServices.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            viewDentalServices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             viewDentalServices.BackgroundColor = Color.WhiteSmoke;
             viewDentalServices.BorderStyle = BorderStyle.None;
             viewDentalServices.CellBorderStyle = DataGridViewCellBorderStyle.None;
@@ -616,7 +615,7 @@
             dataGridViewCellStyle3.ForeColor = Color.Gray;
             dataGridViewCellStyle3.SelectionBackColor = Color.White;
             dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             viewDentalServices.DefaultCellStyle = dataGridViewCellStyle3;
             viewDentalServices.EnableHeadersVisualStyles = false;
             viewDentalServices.Location = new Point(26, 84);
@@ -631,7 +630,7 @@
             dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
             viewDentalServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
             viewDentalServices.RowsDefaultCellStyle = dataGridViewCellStyle5;
             viewDentalServices.RowTemplate.Height = 25;
             viewDentalServices.Size = new Size(883, 231);

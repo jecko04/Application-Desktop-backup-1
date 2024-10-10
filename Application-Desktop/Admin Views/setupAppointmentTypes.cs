@@ -112,8 +112,8 @@ namespace Application_Desktop.Admin_Views
 
                 string rawPrice = txtPrice.Text.Replace("₱", "").Replace(",", "").Trim();
 
-                bool IscheckedMed = chkRequiredMed.Checked;
-                bool IscheckedDent = chkRequiredDent.Checked;
+                /*bool IscheckedMed = chkRequiredMed.Checked;
+                bool IscheckedDent = chkRequiredDent.Checked;*/
 
                 if (!decimal.TryParse(rawPrice, out decimal price))
                 {
@@ -121,8 +121,8 @@ namespace Application_Desktop.Admin_Views
                     return;
                 }
 
-                string query = @"INSERT INTO categories (Title, Description, Duration, Frequency, Price, Branch_ID, required_med_history, required_dent_history, created_at, updated_at)
-                            VALUES (@title, @description, @duration, @frequency, @price, @branchID, @requiredMed, @requiredDent, @createdAt, @updatedAt)";
+                string query = @"INSERT INTO categories (Title, Description, Duration, Frequency, Price, Branch_ID, created_at, updated_at)
+                            VALUES (@title, @description, @duration, @frequency, @price, @branchID, @createdAt, @updatedAt)";
 
                 MySqlConnection conn = databaseHelper.getConnection();
 
@@ -142,9 +142,6 @@ namespace Application_Desktop.Admin_Views
 
                     cmd.Parameters.AddWithValue("@branchID", branchID);
 
-                    cmd.Parameters.AddWithValue("@requiredMed", IscheckedMed);
-                    cmd.Parameters.AddWithValue("@requiredDent", IscheckedDent);
-
 
                     DateTime now = DateTime.Now;
                     cmd.Parameters.AddWithValue("@createdAt", now);
@@ -159,9 +156,7 @@ namespace Application_Desktop.Admin_Views
                     txtFrequency.Text = "";
                     txtPrice.Text = "";
 
-                    chkRequiredMed.Checked = false;
-                    chkRequiredDent.Checked = false;
-
+               
                     errorProvider1.SetError(txtTitle, string.Empty);
                     errorProvider2.SetError(txtDescription, string.Empty);
                     errorProvider3.SetError(txtDuration, string.Empty);
@@ -338,7 +333,7 @@ namespace Application_Desktop.Admin_Views
 
             int branchID = await GetAdminBranch();
             int categories = await GetSelectedCategoryId();
-            string query = @"SELECT Title, Description, Duration, Frequency, Price, required_med_history, required_dent_history FROM categories WHERE Categories_ID = @categories AND Branch_ID = @branchid";
+            string query = @"SELECT Title, Description, Duration, Frequency, Price FROM categories WHERE Categories_ID = @categories AND Branch_ID = @branchid";
 
             MySqlConnection conn = databaseHelper.getConnection();
 
@@ -363,8 +358,6 @@ namespace Application_Desktop.Admin_Views
                     txtFetchFrequency.Text = reader["Frequency"].ToString();
                     txtFetchPrice.Text = reader["Price"].ToString();
 
-                    chkUpdateRequiredMed.Checked = reader.GetBoolean("required_med_history");
-                    chkUpdateRequiredDent.Checked = reader.GetBoolean("required_dent_history");
                 }
 
                 await reader.CloseAsync();
@@ -406,8 +399,6 @@ namespace Application_Desktop.Admin_Views
 
                 string rawPrice = txtFetchPrice.Text.Replace("₱", "").Replace(",", "").Trim();
 
-                bool isCheckedMed = chkUpdateRequiredMed.Checked;
-                bool isCheckedDent = chkUpdateRequiredDent.Checked;
 
                 if (!decimal.TryParse(rawPrice, out decimal price))
                 {
@@ -421,8 +412,6 @@ namespace Application_Desktop.Admin_Views
                          Duration = @duration, 
                          Frequency = @frequency,
                          Price = @price,
-                         required_med_history = @requiredMed,
-                         required_dent_history = @requiredDent,
                          updated_at = @updatedAt";
 
                 if (!string.IsNullOrEmpty(newTitle))
@@ -446,8 +435,6 @@ namespace Application_Desktop.Admin_Views
                     cmd.Parameters.AddWithValue("@frequency", frequency);
                     cmd.Parameters.AddWithValue("@price", price);
 
-                    cmd.Parameters.AddWithValue("@requiredMed", isCheckedMed);
-                    cmd.Parameters.AddWithValue("@requiredDent", isCheckedDent);
 
 
 
@@ -479,8 +466,6 @@ namespace Application_Desktop.Admin_Views
                     txtNewTitle.Text = "";
                     txtFetchPrice.Text = "";
 
-                    chkUpdateRequiredMed.Checked = false;
-                    chkUpdateRequiredDent.Checked = false;
 
                     errorProvider1.SetError(borderFetchTitle, string.Empty);
                     errorProvider2.SetError(borderFetchDescription, string.Empty);
