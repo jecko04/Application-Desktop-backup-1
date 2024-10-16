@@ -1,5 +1,6 @@
 ﻿using Application_Desktop.Models;
 using Application_Desktop.Sub_Views;
+using MaterialSkin.Controls;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,8 @@ namespace Application_Desktop.Views
         public loginPage()
         {
             InitializeComponent();
-            this.AcceptButton = btnLogin;
+            
+            this.AcceptButton = btnLogins;
 
             ElipseManager elipseManager = new ElipseManager(5);
             elipseManager.ApplyElipseToAllButtons(this);
@@ -33,48 +35,48 @@ namespace Application_Desktop.Views
         private async Task Login()
         {
             string email = txtEmail.Text;
-            string pwd = txtPassword.Text;
+            string pwd = txtPass.Text;
 
             //Error Provider
             if (string.IsNullOrEmpty(email))
             {
-                errorProvider1.SetError(borderEmail, "Email is required");
+                errorProvider1.SetError(txtEmail, "Email is required");
             }
             else
             {
-                errorProvider1.SetError(borderEmail, string.Empty);
+                errorProvider1.SetError(txtEmail, string.Empty);
             }
             if (string.IsNullOrEmpty(pwd))
             {
-                errorProvider2.SetError(borderPassword, "Password is required");
+                errorProvider2.SetError(txtPass, "Password is required");
             }
             else
             {
-                errorProvider2.SetError(borderPassword, string.Empty);
+                errorProvider2.SetError(txtPass, string.Empty);
             }
 
             //Select Data
             if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(pwd))
             {
-                errorProvider1.SetError(borderEmail, "Email is required");
-                errorProvider2.SetError(borderPassword, "Password is required");
+                errorProvider1.SetError(txtEmail, "Email is required");
+                errorProvider2.SetError(txtPass, "Password is required");
             }
             else if (string.IsNullOrEmpty(email))
             {
-                errorProvider2.SetError(borderPassword, string.Empty);
+                errorProvider2.SetError(txtPass, string.Empty);
 
-                errorProvider1.SetError(borderEmail, "Email is required");
+                errorProvider1.SetError(txtEmail, "Email is required");
 
             }
             else if (string.IsNullOrEmpty(pwd))
             {
-                errorProvider1.SetError(borderEmail, string.Empty);
+                errorProvider1.SetError(txtEmail, string.Empty);
 
-                errorProvider2.SetError(borderPassword, "Password is required");
+                errorProvider2.SetError(txtPass, "Password is required");
             }
             else if (
-            errorProvider1.GetError(borderEmail) != string.Empty ||
-            errorProvider2.GetError(borderPassword) != string.Empty
+            errorProvider1.GetError(txtEmail) != string.Empty ||
+            errorProvider2.GetError(txtPass) != string.Empty
             )
             {
 
@@ -149,8 +151,8 @@ namespace Application_Desktop.Views
                                 }
 
                                 this.Hide();
-                                errorProvider1.SetError(borderEmail, string.Empty);
-                                errorProvider2.SetError(borderPassword, string.Empty);
+                                errorProvider1.SetError(txtEmail, string.Empty);
+                                errorProvider2.SetError(txtPass, string.Empty);
                                 break;
                             }
 
@@ -158,19 +160,19 @@ namespace Application_Desktop.Views
                     }
                     if (!emailFound)
                     {
-                        errorProvider1.SetError(borderEmail, "Email not found");
+                        errorProvider1.SetError(txtEmail, "Email not found");
                     }
                     else
                     {
-                        errorProvider1.SetError(borderEmail, string.Empty);
+                        errorProvider1.SetError(txtEmail, string.Empty);
                     }
                     if (!passwordVerified)
                     {
-                        errorProvider2.SetError(borderPassword, "Password is incorrect");
+                        errorProvider2.SetError(txtPass, "Password is incorrect");
                     }
                     else
                     {
-                        errorProvider2.SetError(borderPassword, string.Empty);
+                        errorProvider2.SetError(txtPass, string.Empty);
                     }
                 }
                 catch (Exception ex)
@@ -183,27 +185,28 @@ namespace Application_Desktop.Views
                 }
             }
         }
-        private async void btnLogin_Click(object sender, EventArgs e)
-        {
-            await Login();
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            //Show Password
-            if (txtPassword.PasswordChar == '*')
-            {
-                txtPassword.PasswordChar = '\0';
-            }
-            else
-            {
-                txtPassword.PasswordChar = '*';
-            }
-        }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private async void btnLogins_Click(object sender, EventArgs e)
+        {
+            await Login();
+        }
+
+        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
+        {
+            //Show Password
+            if (txtPass.PasswordChar == '*')
+            {
+                txtPass.PasswordChar = '\0';
+            }
+            else
+            {
+                txtPass.PasswordChar = '*';
+            }
         }
     }
 }
