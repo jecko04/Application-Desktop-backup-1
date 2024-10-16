@@ -68,54 +68,6 @@ namespace Application_Desktop.Admin_Sub_Views
             toothsens.SelectedItem = "None";
         }
 
-        private async void btnCreate_Click(object sender, EventArgs e)
-        {
-            var patient = new DentalPatient
-            {
-                _fullname = txtFullname.Text,
-                _age = int.TryParse(txtAge.Text, out int age) ? age : -1,
-                _dob = txtDOB.Value,
-                _gender = txtMale.Checked ? "Male" : txtFemale.Checked ? "Female" : string.Empty,
-                _contact = txtContact1.Text,
-                _email = txtEmail.Text,
-                _address = txtAddress.Text,
-                _emergency = $"{txtEmergFullname.Text} - {txtEmergContact.Text}"
-            };
-
-            var validationErrors = patient.validate();
-            errorProvider1.Clear();
-
-            foreach (var error in validationErrors)
-            {
-                switch (error.Key)
-                {
-                    case "Fullname":
-                        errorProvider1.SetError(borderFullname, error.Value);
-                        break;
-                    case "Age":
-                        errorProvider1.SetError(borderAge, error.Value);
-                        break;
-                    case "Gender":
-                        errorProvider1.SetError(txtgenter, error.Value);
-                        break;
-                    case "Contact":
-                        errorProvider1.SetError(borderContact1, error.Value);
-                        break;
-                    case "Email":
-                        errorProvider1.SetError(borderEmail, error.Value);
-                        break;
-                    case "Address":
-                        errorProvider1.SetError(borderAddress, error.Value);
-                        break;
-                }
-            }
-
-            if (validationErrors.Count == 0)
-            {
-                await Create(patient);
-                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The patient record saved successfully", Properties.Resources.success);
-            }
-        }
 
         private async Task Create(DentalPatient patient)
         {
@@ -201,6 +153,70 @@ namespace Application_Desktop.Admin_Sub_Views
             {
                 e.Handled = true; // Block additional decimal points
             }
+        }
+
+        private void dentalPatientTab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void btnSaveRecord_Click(object sender, EventArgs e)
+        {
+            var patient = new DentalPatient
+            {
+                _fullname = txtFullnames.Text,
+                _age = int.TryParse(txtAge.Text, out int age) ? age : -1,
+                _dob = txtDOB.Value,
+                _gender = txtMale.Checked ? "Male" : txtFemale.Checked ? "Female" : string.Empty,
+                _contact = txtContact.Text,
+                _email = txtEmail.Text,
+                _address = txtAddress.Text,
+                _emergency = $"{txtEmergFullname.Text} - {txtEmergContact.Text}"
+            };
+
+            var validationErrors = patient.validate();
+            errorProvider1.Clear();
+
+            foreach (var error in validationErrors)
+            {
+                switch (error.Key)
+                {
+                    case "Fullname":
+                        errorProvider1.SetError(txtFullnames, error.Value);
+                        break;
+                    case "Age":
+                        errorProvider1.SetError(txtAge, error.Value);
+                        break;
+                    case "Gender":
+                        errorProvider1.SetError(txtgenter, error.Value);
+                        break;
+                    case "Contact":
+                        errorProvider1.SetError(txtContact, error.Value);
+                        break;
+                    case "Email":
+                        errorProvider1.SetError(txtEmail, error.Value);
+                        break;
+                    case "Address":
+                        errorProvider1.SetError(txtAddress, error.Value);
+                        break;
+                }
+            }
+
+            if (validationErrors.Count == 0)
+            {
+                await Create(patient);
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The patient record saved successfully", Properties.Resources.success);
+            }
+        }
+
+        private void materialLabel14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tapPage3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

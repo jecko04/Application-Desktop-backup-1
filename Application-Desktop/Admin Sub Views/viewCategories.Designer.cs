@@ -31,6 +31,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(viewCategories));
             viewCategoriesDetails = new DataGridView();
             btnClose = new PictureBox();
@@ -49,7 +50,7 @@
             viewCategoriesDetails.AllowUserToAddRows = false;
             viewCategoriesDetails.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.LightYellow;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Sans Serif Collection", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = Color.LightYellow;
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
@@ -60,9 +61,9 @@
             viewCategoriesDetails.CellBorderStyle = DataGridViewCellBorderStyle.None;
             viewCategoriesDetails.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(250, 220, 18);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 66, 0);
+            dataGridViewCellStyle2.Font = new Font("Sans Serif Collection", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.Padding = new Padding(3);
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(250, 220, 18);
             dataGridViewCellStyle2.SelectionForeColor = Color.Black;
@@ -83,6 +84,8 @@
             viewCategoriesDetails.Name = "viewCategoriesDetails";
             viewCategoriesDetails.ReadOnly = true;
             viewCategoriesDetails.RowHeadersVisible = false;
+            dataGridViewCellStyle4.Font = new Font("Sans Serif Collection", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            viewCategoriesDetails.RowsDefaultCellStyle = dataGridViewCellStyle4;
             viewCategoriesDetails.RowTemplate.Height = 25;
             viewCategoriesDetails.Size = new Size(1000, 315);
             viewCategoriesDetails.TabIndex = 2;
@@ -114,7 +117,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.White;
+            panel1.BackColor = Color.FromArgb(250, 220, 18);
             panel1.Controls.Add(btnClose);
             panel1.Location = new Point(0, -1);
             panel1.Name = "panel1";

@@ -31,8 +31,6 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loginPage));
             panel1 = new Panel();
-            label2 = new Label();
-            label3 = new Label();
             errorProvider1 = new ErrorProvider(components);
             errorProvider2 = new ErrorProvider(components);
             btnClose = new PictureBox();
@@ -44,6 +42,8 @@
             txtEmail = new MaterialSkin.Controls.MaterialTextBox2();
             checkBox1 = new MaterialSkin.Controls.MaterialCheckbox();
             txtPass = new MaterialSkin.Controls.MaterialTextBox2();
+            materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
@@ -55,32 +55,10 @@
             panel1.Anchor = AnchorStyles.Bottom;
             panel1.BackColor = Color.FromArgb(250, 220, 18);
             panel1.ForeColor = SystemColors.ControlText;
-            panel1.Location = new Point(-17, 274);
+            panel1.Location = new Point(-4, 360);
             panel1.Name = "panel1";
-            panel1.Size = new Size(467, 86);
+            panel1.Size = new Size(610, 86);
             panel1.TabIndex = 1;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Tahoma", 9.75F);
-            label2.ForeColor = Color.DimGray;
-            label2.Location = new Point(32, 67);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 16);
-            label2.TabIndex = 2;
-            label2.Text = "Email";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Tahoma", 9.75F);
-            label3.ForeColor = Color.DimGray;
-            label3.Location = new Point(32, 125);
-            label3.Name = "label3";
-            label3.Size = new Size(62, 16);
-            label3.TabIndex = 4;
-            label3.Text = "Password";
             // 
             // errorProvider1
             // 
@@ -96,7 +74,7 @@
             // 
             btnClose.Cursor = Cursors.Hand;
             btnClose.Image = (Image)resources.GetObject("btnClose.Image");
-            btnClose.Location = new Point(407, 2);
+            btnClose.Location = new Point(570, 12);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(24, 24);
             btnClose.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -112,9 +90,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(32, 12);
+            pictureBox1.Location = new Point(46, 13);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(47, 45);
+            pictureBox1.Size = new Size(80, 66);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 24;
             pictureBox1.TabStop = false;
@@ -123,22 +101,22 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Tahoma", 9.75F);
+            label1.Font = new Font("Sans Serif Collection", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(255, 66, 0);
-            label1.Location = new Point(85, 41);
+            label1.Location = new Point(132, 47);
             label1.Name = "label1";
-            label1.Size = new Size(41, 16);
+            label1.Size = new Size(74, 32);
             label1.TabIndex = 25;
             label1.Text = "SMTC";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Sans Serif Collection", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.FromArgb(41, 56, 218);
-            label4.Location = new Point(122, 41);
+            label4.Location = new Point(202, 47);
             label4.Name = "label4";
-            label4.Size = new Size(74, 16);
+            label4.Size = new Size(125, 32);
             label4.TabIndex = 26;
             label4.Text = "Dental Care";
             // 
@@ -150,12 +128,12 @@
             btnLogins.Depth = 0;
             btnLogins.HighEmphasis = true;
             btnLogins.Icon = null;
-            btnLogins.Location = new Point(72, 229);
+            btnLogins.Location = new Point(46, 303);
             btnLogins.Margin = new Padding(4, 6, 4, 6);
             btnLogins.MouseState = MaterialSkin.MouseState.HOVER;
             btnLogins.Name = "btnLogins";
             btnLogins.NoAccentTextColor = Color.Empty;
-            btnLogins.Size = new Size(295, 36);
+            btnLogins.Size = new Size(500, 36);
             btnLogins.TabIndex = 27;
             btnLogins.Text = "Login";
             btnLogins.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -173,7 +151,7 @@
             txtEmail.HideSelection = true;
             txtEmail.Hint = "Email";
             txtEmail.LeadingIcon = null;
-            txtEmail.Location = new Point(49, 86);
+            txtEmail.Location = new Point(46, 134);
             txtEmail.MaxLength = 32767;
             txtEmail.MouseState = MaterialSkin.MouseState.OUT;
             txtEmail.Name = "txtEmail";
@@ -185,7 +163,7 @@
             txtEmail.SelectionLength = 0;
             txtEmail.SelectionStart = 0;
             txtEmail.ShortcutsEnabled = true;
-            txtEmail.Size = new Size(341, 36);
+            txtEmail.Size = new Size(500, 36);
             txtEmail.TabIndex = 28;
             txtEmail.TabStop = false;
             txtEmail.TextAlign = HorizontalAlignment.Left;
@@ -196,7 +174,7 @@
             // checkBox1
             // 
             checkBox1.Depth = 0;
-            checkBox1.Location = new Point(49, 183);
+            checkBox1.Location = new Point(46, 252);
             checkBox1.Margin = new Padding(0);
             checkBox1.MouseLocation = new Point(-1, -1);
             checkBox1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -219,7 +197,7 @@
             txtPass.HideSelection = true;
             txtPass.Hint = "Password";
             txtPass.LeadingIcon = null;
-            txtPass.Location = new Point(49, 144);
+            txtPass.Location = new Point(46, 206);
             txtPass.MaxLength = 32767;
             txtPass.MouseState = MaterialSkin.MouseState.OUT;
             txtPass.Name = "txtPass";
@@ -231,7 +209,7 @@
             txtPass.SelectionLength = 0;
             txtPass.SelectionStart = 0;
             txtPass.ShortcutsEnabled = true;
-            txtPass.Size = new Size(341, 36);
+            txtPass.Size = new Size(500, 36);
             txtPass.TabIndex = 31;
             txtPass.TabStop = false;
             txtPass.TextAlign = HorizontalAlignment.Left;
@@ -239,11 +217,37 @@
             txtPass.UseSystemPasswordChar = false;
             txtPass.UseTallSize = false;
             // 
+            // materialLabel1
+            // 
+            materialLabel1.AutoSize = true;
+            materialLabel1.Depth = 0;
+            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel1.Location = new Point(46, 112);
+            materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel1.Name = "materialLabel1";
+            materialLabel1.Size = new Size(41, 19);
+            materialLabel1.TabIndex = 32;
+            materialLabel1.Text = "Email";
+            // 
+            // materialLabel2
+            // 
+            materialLabel2.AutoSize = true;
+            materialLabel2.Depth = 0;
+            materialLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel2.Location = new Point(46, 184);
+            materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel2.Name = "materialLabel2";
+            materialLabel2.Size = new Size(71, 19);
+            materialLabel2.TabIndex = 33;
+            materialLabel2.Text = "Password";
+            // 
             // loginPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(433, 352);
+            ClientSize = new Size(606, 438);
+            Controls.Add(materialLabel2);
+            Controls.Add(materialLabel1);
             Controls.Add(txtPass);
             Controls.Add(checkBox1);
             Controls.Add(txtEmail);
@@ -252,8 +256,6 @@
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Controls.Add(btnClose);
-            Controls.Add(label3);
-            Controls.Add(label2);
             Controls.Add(panel1);
             ForeColor = SystemColors.ActiveCaptionText;
             FormBorderStyle = FormBorderStyle.None;
@@ -272,9 +274,7 @@
 
         #endregion
         private Panel panel1;
-        private Label label2;
         private TextBox txtPassword;
-        private Label label3;
         private ErrorProvider errorProvider1;
         private ErrorProvider errorProvider2;
         private PictureBox btnClose;
@@ -291,5 +291,7 @@
         private MaterialSkin.Controls.MaterialTextBox2 txtEmail;
         private MaterialSkin.Controls.MaterialCheckbox checkBox1;
         private MaterialSkin.Controls.MaterialTextBox2 txtPass;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
     }
 }

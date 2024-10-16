@@ -20,7 +20,7 @@ namespace Application_Desktop.Views
         public loginPage()
         {
             InitializeComponent();
-            
+
             this.AcceptButton = btnLogins;
 
             ElipseManager elipseManager = new ElipseManager(5);

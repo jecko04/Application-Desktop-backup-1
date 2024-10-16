@@ -41,7 +41,18 @@ namespace Application_Desktop.Views
 
         }
 
-        private async void btnLogin_Click(object sender, EventArgs e)
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void btnAccessLogin_Click(object sender, EventArgs e)
         {
             try
             {
@@ -88,17 +99,6 @@ namespace Application_Desktop.Views
             {
                 MessageBox.Show($"An error occurred while loading data: {ex.Message}");
             }
-
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

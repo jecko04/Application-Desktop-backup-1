@@ -263,13 +263,15 @@ namespace Application_Desktop.Controller
             return patientid;
         }
 
-        public async Task<(DataTable patientData, DataTable medicalData, DataTable dentalData)> SearchPatientDataAsync(string searchTerm)
+        public async Task<(DataTable patientData, DataTable medicalData, DataTable dentalData)> SearchPatientDataAsync(string searchTerm, int adminId)
         {
             string selectPatients = @"SELECT `id`, `fullname`, `date_of_birth`, `age`, `gender`, `phone`, `email`, `address`, `emergency_contact`
                               FROM `patients` 
                               WHERE (`fullname` LIKE CONCAT('%', @searchTerm, '%') 
                                      OR `phone` LIKE CONCAT('%', @searchTerm, '%') 
-                                     OR `email` LIKE CONCAT('%', @searchTerm, '%'))";
+                                     OR `email` LIKE CONCAT('%', @searchTerm, '%')) AND `Branch_ID` = @admin";
+                                
+
 
             int patientId = 0;
             DataTable patientData = new DataTable();
@@ -286,6 +288,7 @@ namespace Application_Desktop.Controller
                 using (MySqlCommand cmd = new MySqlCommand(selectPatients, conn))
                 {
                     cmd.Parameters.AddWithValue("@searchTerm", searchTerm);
+                    cmd.Parameters.AddWithValue("@admin", adminId);
                     using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
                     {
                         if (reader.HasRows)

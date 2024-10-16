@@ -15,6 +15,8 @@ using System.Windows.Forms;
 using OfficeOpenXml;
 using System.IO;
 using static Application_Desktop.Models.EllipseManager;
+using MaterialSkin.Controls;
+using MaterialSkin;
 
 namespace Application_Desktop.Admin_Views
 {
@@ -27,6 +29,8 @@ namespace Application_Desktop.Admin_Views
             InitializeComponent();
             ElipseManager elipseManager = new ElipseManager(5);
             elipseManager.ApplyElipseToAllButtons(this);
+
+
         }
 
         void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
@@ -43,6 +47,8 @@ namespace Application_Desktop.Admin_Views
         private async void patientRecord_Load(object sender, EventArgs e)
         {
             await LoadRecord();
+
+            btnDeketeRecord.BackColor = ColorTranslator.FromHtml("#ff4200");
         }
 
         private async Task LoadRecord()
@@ -169,35 +175,13 @@ namespace Application_Desktop.Admin_Views
         }
 
         private patientDetails PatientDetailsInstance;
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            if (PatientDetailsInstance == null || PatientDetailsInstance.IsDisposed)
-            {
-                PatientDetailsInstance = new patientDetails();
-                PatientDetailsInstance.Show();
-            }
-            else
-            {
-                if (PatientDetailsInstance.Visible)
-                {
-                    PatientDetailsInstance.BringToFront();
-                }
-                else
-                {
-                    PatientDetailsInstance.Show();
-                }
-            }
-        }
-        private void tabPage4_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        //Add Column start
         private void AddColumnPatients(DataGridView viewPatients)
         {
             viewPatients.RowHeadersVisible = false;
             viewPatients.ColumnHeadersHeight = 40;
+
 
             DataGridViewImageColumn editButtonColumn = new DataGridViewImageColumn();
             editButtonColumn.HeaderText = "";
@@ -214,7 +198,6 @@ namespace Application_Desktop.Admin_Views
             selectColumn.Width = 30;
             selectColumn.ReadOnly = false;
             viewPatients.Columns.Add(selectColumn);
-            viewPatients.Columns["SelectPatient"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             DataGridViewTextBoxColumn Id = new DataGridViewTextBoxColumn();
             Id.HeaderText = "ID";
@@ -468,54 +451,134 @@ namespace Application_Desktop.Admin_Views
         //refresh
         private async void btnRefresh_Click(object sender, EventArgs e)
         {
-            await LoadRecord();
+
         }
         private async void btnDelete_Click(object sender, EventArgs e)
         {
-            bool hasSelectedRows = false;
 
-            for (int i = 0; i < viewPatientRecord.Rows.Count; i++)
-            {
-                DataGridViewRow row = viewPatientRecord.Rows[i];
-                DataGridViewCheckBoxCell checkBoxCell = row.Cells["SelectPatient"] as DataGridViewCheckBoxCell;
-
-                if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
-                {
-                    hasSelectedRows = true;
-                    break;
-                }
-            }
-
-            if (!hasSelectedRows)
-            {
-                AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No rows selected", "No rows were selected for deletion", Properties.Resources.information);
-                return;
-            }
-
-            var result = MessageBox.Show("Are you sure you want to delete the selected rows?", "Confirm Deletion", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                for (int i = viewPatientRecord.Rows.Count - 1; i >= 0; i--)
-                {
-                    DataGridViewRow row = viewPatientRecord.Rows[i];
-                    DataGridViewCheckBoxCell checkBoxCell = row.Cells["SelectPatient"] as DataGridViewCheckBoxCell;
-
-                    // Check if the checkbox is checked
-                    if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
-                    {
-                        int patientid = Convert.ToInt32(row.Cells["id"].Value);
-                        viewPatientRecord.Rows.RemoveAt(i);
-
-                        await _patientRecordController.Delete(patientid);
-                    }
-                }
-
-                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The selected patient records have been deleted successfully", Properties.Resources.success);
-            }
         }
 
 
         private async void btnExport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void ExportDataTableToCsv(DataTable dataTable, string filePath)
+        {
+            StringBuilder csvBuilder = new StringBuilder();
+            var columnNames = dataTable.Columns.Cast<DataColumn>().Select(column => $"\"{column.ColumnName}\"");
+            csvBuilder.AppendLine(string.Join(",", columnNames));
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                var fields = row.ItemArray.Select(field =>
+                {
+                    // Check if the field is a DateTime
+                    if (field is DateTime dateTime)
+                    {
+                        // Format the date as a string, e.g., "MM/dd/yyyy"
+                        return $"\"{dateTime.ToString("MM/dd/yyyy")}\"";
+                    }
+                    return $"\"{field.ToString().Replace("\"", "\"\"")}\"";
+                });
+
+                csvBuilder.AppendLine(string.Join(",", fields));
+            }
+
+            File.WriteAllText(filePath, csvBuilder.ToString());
+        }
+
+        public void ExportDataTableToExcel(DataTable dataTable, string filePath)
+        {
+            OfficeOpenXml.ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+
+            using (ExcelPackage excelPackage = new ExcelPackage())
+            {
+                var worksheet = excelPackage.Workbook.Worksheets.Add("Patient Data");
+
+                // Load the DataTable into the worksheet, starting from cell A1
+                worksheet.Cells["A1"].LoadFromDataTable(dataTable, true);
+
+                // Format DateTime columns (example: assuming the date columns are known)
+                foreach (DataColumn column in dataTable.Columns)
+                {
+                    if (column.DataType == typeof(DateTime))
+                    {
+                        // Assuming dates start from the second row (first is the header)
+                        var startRow = 2;
+                        var endRow = dataTable.Rows.Count + 1; // +1 for header
+                        worksheet.Cells[startRow, column.Ordinal + 1, endRow, column.Ordinal + 1].Style.Numberformat.Format = "MM/dd/yyyy"; // or another desired format
+                    }
+                }
+
+                // Optional: Adjust column widths
+                for (int i = 1; i <= dataTable.Columns.Count; i++)
+                {
+                    worksheet.Column(i).AutoFit();
+                }
+
+                // Save to file
+                FileInfo file = new FileInfo(filePath);
+                excelPackage.SaveAs(file);
+            }
+        }
+
+        private void viewGenHealth_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private async void btnSearcher_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                getBranchIdByUserId branchId = new getBranchIdByUserId();
+                BranchID adminId = await branchId.GetUserBranchId();
+
+                var (patientData, medicalData, dentalData) = await _patientRecordController.SearchPatientDataAsync(txtSearchBoxes.Text, adminId._id);
+
+                if (patientData != null && patientData.Rows.Count > 0)
+                {
+                    viewPatientRecord.DataSource = patientData;
+                    viewGenHealth.DataSource = medicalData;
+                    viewDentHealth.DataSource = dentalData;
+
+                }
+                else
+                {
+                    AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No results", "No patient found with the given search term", Properties.Resources.information);
+                }
+            }
+            catch (Exception ex)
+            {
+                AlertBox(Color.LightCoral, Color.Red, "Error", "An error occurred while searching for patient data", Properties.Resources.error);
+            }
+        }
+
+    
+
+        private void btnCreateRecord_Click(object sender, EventArgs e)
+        {
+            if (PatientDetailsInstance == null || PatientDetailsInstance.IsDisposed)
+            {
+                PatientDetailsInstance = new patientDetails();
+                PatientDetailsInstance.Show();
+            }
+            else
+            {
+                if (PatientDetailsInstance.Visible)
+                {
+                    PatientDetailsInstance.BringToFront();
+                }
+                else
+                {
+                    PatientDetailsInstance.Show();
+                }
+            }
+        }
+
+        private async void btnExportRecord_Click(object sender, EventArgs e)
         {
             DataTable patientData = new DataTable();
 
@@ -586,86 +649,69 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
-        public void ExportDataTableToCsv(DataTable dataTable, string filePath)
+        private async void btnRefresher_Click(object sender, EventArgs e)
         {
-            StringBuilder csvBuilder = new StringBuilder();
-            var columnNames = dataTable.Columns.Cast<DataColumn>().Select(column => $"\"{column.ColumnName}\"");
-            csvBuilder.AppendLine(string.Join(",", columnNames));
-
-            foreach (DataRow row in dataTable.Rows)
-            {
-                var fields = row.ItemArray.Select(field =>
-                {
-                    // Check if the field is a DateTime
-                    if (field is DateTime dateTime)
-                    {
-                        // Format the date as a string, e.g., "MM/dd/yyyy"
-                        return $"\"{dateTime.ToString("MM/dd/yyyy")}\"";
-                    }
-                    return $"\"{field.ToString().Replace("\"", "\"\"")}\"";
-                });
-
-                csvBuilder.AppendLine(string.Join(",", fields));
-            }
-
-            File.WriteAllText(filePath, csvBuilder.ToString());
+            await LoadRecord();
         }
 
-        public void ExportDataTableToExcel(DataTable dataTable, string filePath)
+        private async void btnDeketeRecord_Click(object sender, EventArgs e)
         {
-            OfficeOpenXml.ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+            bool hasSelectedRows = false;
 
-            using (ExcelPackage excelPackage = new ExcelPackage())
+            for (int i = 0; i < viewPatientRecord.Rows.Count; i++)
             {
-                var worksheet = excelPackage.Workbook.Worksheets.Add("Patient Data");
+                DataGridViewRow row = viewPatientRecord.Rows[i];
+                DataGridViewCheckBoxCell checkBoxCell = row.Cells["SelectPatient"] as DataGridViewCheckBoxCell;
 
-                // Load the DataTable into the worksheet, starting from cell A1
-                worksheet.Cells["A1"].LoadFromDataTable(dataTable, true);
-
-                // Format DateTime columns (example: assuming the date columns are known)
-                foreach (DataColumn column in dataTable.Columns)
+                if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
                 {
-                    if (column.DataType == typeof(DateTime))
+                    hasSelectedRows = true;
+                    break;
+                }
+            }
+
+            if (!hasSelectedRows)
+            {
+                AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No rows selected", "No rows were selected for deletion", Properties.Resources.information);
+                return;
+            }
+
+            var result = MessageBox.Show("Are you sure you want to delete the selected rows?", "Confirm Deletion", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                for (int i = viewPatientRecord.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataGridViewRow row = viewPatientRecord.Rows[i];
+                    DataGridViewCheckBoxCell checkBoxCell = row.Cells["SelectPatient"] as DataGridViewCheckBoxCell;
+
+                    // Check if the checkbox is checked
+                    if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
                     {
-                        // Assuming dates start from the second row (first is the header)
-                        var startRow = 2;
-                        var endRow = dataTable.Rows.Count + 1; // +1 for header
-                        worksheet.Cells[startRow, column.Ordinal + 1, endRow, column.Ordinal + 1].Style.Numberformat.Format = "MM/dd/yyyy"; // or another desired format
+                        int patientid = Convert.ToInt32(row.Cells["id"].Value);
+                        viewPatientRecord.Rows.RemoveAt(i);
+
+                        await _patientRecordController.Delete(patientid);
                     }
                 }
 
-                // Optional: Adjust column widths
-                for (int i = 1; i <= dataTable.Columns.Count; i++)
-                {
-                    worksheet.Column(i).AutoFit();
-                }
-
-                // Save to file
-                FileInfo file = new FileInfo(filePath);
-                excelPackage.SaveAs(file);
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The selected patient records have been deleted successfully", Properties.Resources.success);
             }
         }
 
-        private async void btnSearch_Click(object sender, EventArgs e)
+        private void btnSelectAll_CheckedChanged(object sender, EventArgs e)
         {
-            var (patientData, medicalData, dentalData) = await _patientRecordController.SearchPatientDataAsync(txtSearchBox.Text);
+            bool selectAllChecked = btnSelectAll.Checked;
 
-            if (patientData != null && patientData.Rows.Count > 0)
+            // Loop through each row in the DataGridView
+            foreach (DataGridViewRow row in viewPatientRecord.Rows)
             {
-                viewPatientRecord.DataSource = patientData;
-                viewGenHealth.DataSource = medicalData;
-                viewDentHealth.DataSource = dentalData;
-
+                // Find the checkbox cell and set its value to the same state as "Select All"
+                DataGridViewCheckBoxCell checkBoxCell = (DataGridViewCheckBoxCell)row.Cells["SelectPatient"];
+                checkBoxCell.Value = selectAllChecked;
             }
-            else
-            {
-                AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No results", "No patient found with the given search term", Properties.Resources.information);
-            }
-        }
 
-        private void viewGenHealth_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            // Commit the changes made to the DataGridView
+            viewPatientRecord.EndEdit();
         }
     }
 }
