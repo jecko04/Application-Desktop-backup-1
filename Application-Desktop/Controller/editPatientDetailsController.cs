@@ -20,11 +20,11 @@ namespace Application_Desktop.Controller
             _editPatientModel = new editPatientDetailsModel();
         }
 
-        public async Task<(EditPatientData, EditGenHealth, EditDentHealth)> EditPatient(int patientid)
+        public async Task<(EditPatientData, EditGenHealth, EditDentHealth)> EditPatient(int patientid, int admin)
         {
             string selectPatients = @"SELECT `id`, `fullname`, `date_of_birth`, `age`, `gender`, `phone`, `email`, `address`, `emergency_contact`
                               FROM `patients` 
-                              WHERE `id` = @patientid";
+                              WHERE `id` = @patientid AND Branch_ID = @admin";
             string selectGenHealth = @"SELECT `patient_id`, `medical_conditions`, `current_medications`, `allergies`, `past_surgeries`, `family_medical_history`, `blood_pressure`, `heart_disease`, `diabetes`, `smoker` 
                                FROM `medical_history` 
                                WHERE `patient_id` = @patientid";
@@ -50,6 +50,7 @@ namespace Application_Desktop.Controller
                     using (MySqlCommand patientCmd = new MySqlCommand(selectPatients, conn))
                     {
                         patientCmd.Parameters.AddWithValue("@patientid", patientid);
+                        patientCmd.Parameters.AddWithValue("@admin", admin);
                         using (MySqlDataReader reader = (MySqlDataReader)await patientCmd.ExecuteReaderAsync())
                         {
                             if (await reader.ReadAsync())

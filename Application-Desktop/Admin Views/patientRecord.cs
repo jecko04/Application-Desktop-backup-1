@@ -411,7 +411,7 @@ namespace Application_Desktop.Admin_Views
             DataGridViewTextBoxColumn GrindingTeeth = new DataGridViewTextBoxColumn();
             GrindingTeeth.HeaderText = "Grinding Teeth";
             GrindingTeeth.Name = "GrindingTeeth";
-            GrindingTeeth.DataPropertyName = "grinding_teeth";
+            GrindingTeeth.DataPropertyName = "teeth_grinding";
             GrindingTeeth.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewDentalHistory.Columns.Add(GrindingTeeth);
 
@@ -439,7 +439,7 @@ namespace Application_Desktop.Admin_Views
             DataGridViewTextBoxColumn GumBleeding = new DataGridViewTextBoxColumn();
             GumBleeding.HeaderText = "Gum Bleeding";
             GumBleeding.Name = "GumBleeding";
-            GumBleeding.DataPropertyName = "gum_bleeding";
+            GumBleeding.DataPropertyName = "bleeding_gums";
             GumBleeding.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewDentalHistory.Columns.Add(GumBleeding);
 

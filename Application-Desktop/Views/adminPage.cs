@@ -47,6 +47,23 @@ namespace Application_Desktop.Views
 
         private void MyNavigationPanel_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (MyNavigationPanel.SelectedTab == tabPage4)
+            {
+                // Create an instance of your services form
+                handleAppointment appointment = new handleAppointment();
+
+                // Set the form as a non-top-level control, so it can be added to the panel
+                appointment.TopLevel = false;
+                appointment.FormBorderStyle = FormBorderStyle.None; // Optional: remove borders
+                appointment.Dock = DockStyle.Fill; // Fill the panel with the form
+
+                // Clear the panel in case there are existing controls
+                appointmentPanel.Controls.Clear();
+
+                appointmentPanel.Controls.Add(appointment);
+                appointment.Show();
+            }
+
             if (MyNavigationPanel.SelectedTab == tabPage5)
             {
                 // Create an instance of your services form

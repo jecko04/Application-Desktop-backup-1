@@ -41,10 +41,12 @@
             tabPage5 = new TabPage();
             accountPanel = new Panel();
             imageList1 = new ImageList(components);
+            appointmentPanel = new Panel();
             MyNavigationPanel.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
+            tabPage4.SuspendLayout();
             tabPage5.SuspendLayout();
             SuspendLayout();
             // 
@@ -132,6 +134,7 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(appointmentPanel);
             tabPage4.ImageKey = "check-in-calendar.png";
             tabPage4.Location = new Point(4, 31);
             tabPage4.Name = "tabPage4";
@@ -170,6 +173,14 @@
             imageList1.Images.SetKeyName(3, "account-pin-box-line (3).png");
             imageList1.Images.SetKeyName(4, "check-in-calendar.png");
             // 
+            // appointmentPanel
+            // 
+            appointmentPanel.Dock = DockStyle.Fill;
+            appointmentPanel.Location = new Point(0, 0);
+            appointmentPanel.Name = "appointmentPanel";
+            appointmentPanel.Size = new Size(1266, 588);
+            appointmentPanel.TabIndex = 0;
+            // 
             // adminPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -185,6 +196,7 @@
             tabPage1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
             tabPage3.ResumeLayout(false);
+            tabPage4.ResumeLayout(false);
             tabPage5.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -202,5 +214,6 @@
         private Panel servicesPanel;
         private Panel patientRecordPanel;
         private Panel accountPanel;
+        private Panel appointmentPanel;
     }
 }
