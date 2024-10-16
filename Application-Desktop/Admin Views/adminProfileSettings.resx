@@ -57,20 +57,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAPBJREFUSEvt
-        lOsNwjAMhDsKozAKo7AJozAKo4C/opOc6ExIVP5x0kmt4+fF7fbHLM7BR/C5SGLJUeIedIEzpEgJOa1i
-        GF85nILXIGd0yLPDcgEnnZNCZyWcwyUoO5NALUJ/oS6+gXOQNLf97Q2esfVSufgGzoEusWkF8wRMl+Hi
-        GzgHEro7wNZDZyUqB20RncPDt+hbLBWge7TPE3DJ6M9ZxnSBSn+RYnlVZS+RHUiud+mODdK9VjXfSY63
-        yA4kIdhtiyDZNMVUAdBrPMKwwEhvOtaHV/HTxHvwqIizi1muadC9EvW/iMNAkZ8lX8C2vQCagrKVLind
-        PgAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="errorProvider1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAkAEBAAAAEAIABoBAAAlgAAABgYAAABACAAiAkAAP4EAAAgIAAAAQAgAKgQAACGDgAAMDAAAAEA

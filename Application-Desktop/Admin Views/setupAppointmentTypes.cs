@@ -3,6 +3,7 @@ using Application_Desktop.Model;
 using Application_Desktop.Models;
 using Application_Desktop.Screen;
 using ElipseToolDemo;
+using MaterialSkin.Controls;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,14 @@ namespace Application_Desktop.Admin_Views
             elipseManagerPanel.ApplyElipseToPanel(PanelOfficeHours);
             elipseManagerPanel.ApplyElipseToPanel(dentalServicePanel);
             elipseManagerPanel.ApplyElipseToPanel(updateDentalServicePanel);
+
+            txtPrice.TextChanged += new EventHandler(txtPrice_TextChanged_1);
+            this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress_1);
+            this.txtPrice.Leave += new System.EventHandler(this.txtPrice_Leave_1);
+
+            txtFetchPrice.TextChanged += new EventHandler(txtFetchPrice_TextChanged);
+            this.txtFetchPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFetchPrice_KeyPress);
+            this.txtFetchPrice.Leave += new System.EventHandler(this.txtFetchPrice_Leave);
 
         }
 
@@ -156,7 +165,7 @@ namespace Application_Desktop.Admin_Views
                     txtFrequency.Text = "";
                     txtPrice.Text = "";
 
-               
+
                     errorProvider1.SetError(txtTitle, string.Empty);
                     errorProvider2.SetError(txtDescription, string.Empty);
                     errorProvider3.SetError(txtDuration, string.Empty);
@@ -171,71 +180,6 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
-        private async void btnSubmit_Click(object sender, EventArgs e)
-        {
-            string title = txtTitle.Text;
-            string description = txtDescription.Text;
-            string duration = txtDuration.Text;
-            string frequency = txtFrequency.Text;
-
-            bool valid = true;
-
-            if (string.IsNullOrEmpty(title))
-            {
-                errorProvider5.SetError(borderTitle, "Title is required");
-                valid = false;
-            }
-            else
-            {
-                errorProvider5.SetError(borderTitle, string.Empty);
-            }
-            if (await categoriesValidator.IsCategoryExist(title))
-            {
-                errorProvider1.SetError(borderTitle, "Title is already exist");
-                this.BeginInvoke(new Action(() =>
-                {
-                    AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "Already Exist", "Title is already exist. Please use different title", Properties.Resources.information);
-                }));
-                valid = false;
-            }
-            else
-            {
-                errorProvider1.SetError(borderTitle, string.Empty);
-            }
-
-            if (string.IsNullOrEmpty(description))
-            {
-                errorProvider2.SetError(borderDescription, "Description is required");
-                valid = false;
-            }
-            else
-            {
-                errorProvider2.SetError(borderDescription, string.Empty);
-            }
-            if (string.IsNullOrEmpty(duration))
-            {
-                errorProvider3.SetError(borderDuration, "Duration is required");
-                valid = false;
-            }
-            else
-            {
-                errorProvider3.SetError(borderDuration, string.Empty);
-            }
-            if (string.IsNullOrEmpty(frequency))
-            {
-                errorProvider4.SetError(borderFrequency, "Frequency is required");
-                valid = false;
-            }
-            else
-            {
-                errorProvider4.SetError(borderFrequency, string.Empty);
-            }
-
-            if (valid == true)
-            {
-                await CreateCategory();
-            }
-        }
 
         //Fetch Titles
         private async Task GetTitle()
@@ -467,10 +411,10 @@ namespace Application_Desktop.Admin_Views
                     txtFetchPrice.Text = "";
 
 
-                    errorProvider1.SetError(borderFetchTitle, string.Empty);
-                    errorProvider2.SetError(borderFetchDescription, string.Empty);
-                    errorProvider3.SetError(borderFetchDuration, string.Empty);
-                    errorProvider4.SetError(borderFetchFrequency, string.Empty);
+                    errorProvider1.SetError(txtFetchTitle, string.Empty);
+                    errorProvider2.SetError(txtFetchDescription, string.Empty);
+                    errorProvider3.SetError(txtFetchDuration, string.Empty);
+                    errorProvider4.SetError(txtFetchFrequency, string.Empty);
                 }
                 catch (Exception ex)
                 {
@@ -519,108 +463,7 @@ namespace Application_Desktop.Admin_Views
             finally { conn.Close(); }
             return categoriesId;
         }
-        private async void btnUpdate_Click(object sender, EventArgs e)
-        {
-            string title = txtFetchTitle.Text;
-            string description = txtFetchDescription.Text;
-            string duration = txtFetchDuration.Text;
-            string frequency = txtFetchFrequency.Text;
 
-            string newTitle = txtNewTitle.Text;
-
-            // Initialize a flag for validation status
-            bool valid = true;
-
-            // Check if the title is empty
-            if (string.IsNullOrEmpty(title))
-            {
-                errorProvider1.SetError(borderFetchTitle, "Please Select Categories");
-
-                AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No title selected", "Please select a title before proceeding", Properties.Resources.information);
-
-                valid = false;
-            }
-            else
-            {
-                errorProvider1.SetError(borderFetchTitle, string.Empty);
-                // If title is not empty, proceed with fetching the category ID
-                int categoryId = await GetSelectedCategoryId();
-                if (categoryId == -1)
-                {
-                    AlertBox(Color.LightPink, Color.DarkRed, "No Matching Found", "Please check the title and try again", Properties.Resources.error);
-                    valid = false;
-                }
-                else
-                {
-                    // Proceed with other validations only if category ID is valid
-                    if (string.IsNullOrEmpty(description))
-                    {
-                        errorProvider2.SetError(borderFetchDescription, "Description is required");
-                        valid = false;
-                    }
-                    else
-                    {
-                        errorProvider2.SetError(borderFetchDescription, string.Empty);
-                    }
-
-                    if (string.IsNullOrEmpty(duration))
-                    {
-                        errorProvider3.SetError(borderFetchDuration, "Duration is required");
-                        valid = false;
-                    }
-                    else
-                    {
-                        errorProvider3.SetError(borderFetchDescription, string.Empty);
-                    }
-
-                    if (string.IsNullOrEmpty(frequency))
-                    {
-                        errorProvider4.SetError(borderFetchFrequency, "Frequency is required");
-                        valid = false;
-                    }
-                    else
-                    {
-                        errorProvider4.SetError(borderFetchFrequency, string.Empty);
-                    }
-
-                    if (await categoriesValidator.IsCategoryExist(newTitle))
-                    {
-                        errorProvider1.SetError(borderNewTitle, "Categories title is alread exist");
-                        valid = false;
-                    }
-                    else
-                    {
-                        errorProvider1.SetError(borderNewTitle, string.Empty);
-                    }
-
-                    // Update the category if all validations pass
-
-                    if (valid)
-                    {
-                        await UpdateCategory();
-                    }
-                }
-            }
-        }
-
-        private viewCategories ViewCategoriesInstance;
-        private void btnViewCategories_Click(object sender, EventArgs e)
-        {
-
-            if (ViewCategoriesInstance == null || ViewCategoriesInstance.IsDisposed)
-            {
-                ViewCategoriesInstance = new viewCategories();
-                ViewCategoriesInstance.Show();
-            }
-            else
-            {
-                if (ViewCategoriesInstance.Visible)
-                {
-                    ViewCategoriesInstance.BringToFront();
-                }
-                else { ViewCategoriesInstance.Show(); }
-            }
-        }
 
 
         // It save setup office hours
@@ -690,10 +533,6 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
-        private async void btnSaveOfficeHours_Click(object sender, EventArgs e)
-        {
-            await SaveOfficeHours();
-        }
 
 
         //Apply to All CheckBox
@@ -893,145 +732,347 @@ namespace Application_Desktop.Admin_Views
         }
 
 
-        private async void btnUpdateRefresh_Click(object sender, EventArgs e)
-        {
-            await GetTitle();
-
-            // Optionally, clear details if needed
-            txtFetchTitle.Text = "";
-            txtFetchDescription.Text = "";
-            txtFetchDuration.Text = "";
-            txtFetchFrequency.Text = "";
-        }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void txtPrice_TextChanged(object sender, EventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-
-            // Avoid empty input
-            if (string.IsNullOrWhiteSpace(textBox.Text))
-                return;
-
-            // Store the current cursor position before any modification
-            int originalSelectionStart = textBox.SelectionStart;
-            int originalLength = textBox.Text.Length;
-
-            // Remove the peso symbol and any commas to work with the raw numeric value
-            string rawText = textBox.Text.Replace("₱", "").Replace(",", "").Trim();
-
-            if (decimal.TryParse(rawText, out decimal value))
-            {
-                // Reformat the text with the peso symbol and two decimal places
-                textBox.Text = "₱" + value.ToString("N2");
-
-                // Adjust the cursor position after reformatting
-                int newLength = textBox.Text.Length;
-                int lengthDifference = newLength - originalLength;
-
-                // Move the cursor back to the original position, adjusting for the new text length
-                textBox.SelectionStart = originalSelectionStart + lengthDifference;
-            }
-            else
-            {
-                // If the input is not a valid number, reset to just the peso symbol
-                textBox.Text = "₱";
-                textBox.SelectionStart = textBox.Text.Length; // Set cursor at the end
-            }
-        }
-
-        private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txtPrice_Leave(object sender, EventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-            string rawText = textBox.Text.Replace("₱", "").Replace(",", "").Trim();
-
-            if (decimal.TryParse(rawText, out decimal value))
-            {
-                textBox.Text = "₱" + value.ToString("N2");
-            }
-            else
-            {
-                textBox.Text = "₱0.00";
-            }
-        }
 
         private void txtFetchPrice_TextChanged(object sender, EventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-
-            // Avoid empty input
-            if (string.IsNullOrWhiteSpace(textBox.Text))
-                return;
-
-            // Store the current cursor position before any modification
-            int originalSelectionStart = textBox.SelectionStart;
-            int originalLength = textBox.Text.Length;
-
-            // Remove the peso symbol and any commas to work with the raw numeric value
-            string rawText = textBox.Text.Replace("₱", "").Replace(",", "").Trim();
-
-            if (decimal.TryParse(rawText, out decimal value))
+            if (sender is TextBox textBox)
             {
-                // Reformat the text with the peso symbol and two decimal places
-                textBox.Text = "₱" + value.ToString("N2");
+                // Avoid empty input
+                if (string.IsNullOrWhiteSpace(textBox.Text))
+                    return;
 
-                // Adjust the cursor position after reformatting
-                int newLength = textBox.Text.Length;
-                int lengthDifference = newLength - originalLength;
+                // Store the current cursor position before any modification
+                int originalSelectionStart = textBox.SelectionStart;
+                int originalLength = textBox.Text.Length;
 
-                // Move the cursor back to the original position, adjusting for the new text length
-                textBox.SelectionStart = originalSelectionStart + lengthDifference;
-            }
-            else
-            {
-                // If the input is not a valid number, reset to just the peso symbol
-                textBox.Text = "₱";
-                textBox.SelectionStart = textBox.Text.Length; // Set cursor at the end
+                // Remove the peso symbol and any commas to work with the raw numeric value
+                string rawText = textBox.Text.Replace("₱", "").Replace(",", "").Trim();
+
+                if (decimal.TryParse(rawText, out decimal value))
+                {
+                    // Reformat the text with the peso symbol and two decimal places
+                    textBox.Text = "₱" + value.ToString("N2");
+
+                    // Adjust the cursor position after reformatting
+                    int newLength = textBox.Text.Length;
+                    int lengthDifference = newLength - originalLength;
+
+                    // Move the cursor back to the original position, adjusting for the new text length
+                    textBox.SelectionStart = originalSelectionStart + lengthDifference;
+                }
+                else
+                {
+                    // If the input is not a valid number, reset to just the peso symbol
+                    textBox.Text = "₱";
+                    textBox.SelectionStart = textBox.Text.Length; // Set cursor at the end
+                }
             }
         }
 
         private void txtFetchPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (sender is MaterialSkin.Controls.MaterialTextBox textBox)
             {
-                e.Handled = true;
-            }
+                // Allow only digits, control keys (like backspace), and a single decimal point
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+                {
+                    e.Handled = true; // Reject the input
+                }
 
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
+                // Allow only one decimal point
+                if (e.KeyChar == '.' && textBox.Text.IndexOf('.') > -1)
+                {
+                    e.Handled = true; // Reject additional decimal points
+                }
             }
         }
 
         private void txtFetchPrice_Leave(object sender, EventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            string rawText = textBox.Text.Replace("₱", "").Replace(",", "").Trim();
-
-            if (decimal.TryParse(rawText, out decimal value))
+            if (sender is MaterialSkin.Controls.MaterialTextBox textBox)
             {
-                textBox.Text = "₱" + value.ToString("N2");
+                // Remove the peso symbol and commas for parsing
+                string rawText = textBox.Text.Replace("₱", "").Replace(",", "").Trim();
+
+                if (decimal.TryParse(rawText, out decimal value))
+                {
+                    // Format the number with the peso symbol and two decimal places
+                    textBox.Text = "₱" + value.ToString("N2");
+                }
+                else
+                {
+                    // If the input is invalid, reset to ₱0.00
+                    textBox.Text = "₱0.00";
+                }
+            }
+        }
+
+        private async void btnSubmits_Click(object sender, EventArgs e)
+        {
+            string title = txtTitle.Text;
+            string description = txtDescription.Text;
+            string duration = txtDuration.Text;
+            string frequency = txtFrequency.Text;
+
+            bool valid = true;
+
+            if (string.IsNullOrEmpty(title))
+            {
+                errorProvider5.SetError(txtTitle, "Title is required");
+                valid = false;
             }
             else
             {
-                textBox.Text = "₱0.00";
+                errorProvider5.SetError(txtTitle, string.Empty);
+            }
+            if (await categoriesValidator.IsCategoryExist(title))
+            {
+                errorProvider1.SetError(txtTitle, "Title is already exist");
+                this.BeginInvoke(new Action(() =>
+                {
+                    AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "Already Exist", "Title is already exist. Please use different title", Properties.Resources.information);
+                }));
+                valid = false;
+            }
+            else
+            {
+                errorProvider1.SetError(txtTitle, string.Empty);
+            }
+
+            if (string.IsNullOrEmpty(description))
+            {
+                errorProvider2.SetError(txtDescription, "Description is required");
+                valid = false;
+            }
+            else
+            {
+                errorProvider2.SetError(txtDescription, string.Empty);
+            }
+            if (string.IsNullOrEmpty(duration))
+            {
+                errorProvider3.SetError(txtDuration, "Duration is required");
+                valid = false;
+            }
+            else
+            {
+                errorProvider3.SetError(txtDuration, string.Empty);
+            }
+            if (string.IsNullOrEmpty(frequency))
+            {
+                errorProvider4.SetError(txtFrequency, "Frequency is required");
+                valid = false;
+            }
+            else
+            {
+                errorProvider4.SetError(txtFrequency, string.Empty);
+            }
+
+            if (valid == true)
+            {
+                await CreateCategory();
+            }
+        }
+
+        private void txtPrice_TextChanged_1(object sender, EventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                // Avoid empty input
+                if (string.IsNullOrWhiteSpace(textBox.Text))
+                    return;
+
+                // Store the current cursor position before any modification
+                int originalSelectionStart = textBox.SelectionStart;
+                int originalLength = textBox.Text.Length;
+
+                // Remove the peso symbol and any commas to work with the raw numeric value
+                string rawText = textBox.Text.Replace("₱", "").Replace(",", "").Trim();
+
+                if (decimal.TryParse(rawText, out decimal value))
+                {
+                    // Reformat the text with the peso symbol and two decimal places
+                    textBox.Text = "₱" + value.ToString("N2");
+
+                    // Adjust the cursor position after reformatting
+                    int newLength = textBox.Text.Length;
+                    int lengthDifference = newLength - originalLength;
+
+                    // Move the cursor back to the original position, adjusting for the new text length
+                    textBox.SelectionStart = originalSelectionStart + lengthDifference;
+                }
+                else
+                {
+                    // If the input is not a valid number, reset to just the peso symbol
+                    textBox.Text = "₱";
+                    textBox.SelectionStart = textBox.Text.Length; // Set cursor at the end
+                }
+            }
+        }
+
+        private void txtPrice_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (sender is MaterialSkin.Controls.MaterialTextBox textBox)
+            {
+                // Allow only digits, control keys (like backspace), and a single decimal point
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+                {
+                    e.Handled = true; // Reject the input
+                }
+
+                // Allow only one decimal point
+                if (e.KeyChar == '.' && textBox.Text.IndexOf('.') > -1)
+                {
+                    e.Handled = true; // Reject additional decimal points
+                }
+            }
+        }
+
+        private void txtPrice_Leave_1(object sender, EventArgs e)
+        {
+            if (sender is MaterialSkin.Controls.MaterialTextBox textBox)
+            {
+                // Remove the peso symbol and commas for parsing
+                string rawText = textBox.Text.Replace("₱", "").Replace(",", "").Trim();
+
+                if (decimal.TryParse(rawText, out decimal value))
+                {
+                    // Format the number with the peso symbol and two decimal places
+                    textBox.Text = "₱" + value.ToString("N2");
+                }
+                else
+                {
+                    // If the input is invalid, reset to ₱0.00
+                    textBox.Text = "₱0.00";
+                }
+            }
+        }
+
+        private async void btnUpdates_Click(object sender, EventArgs e)
+        {
+            string title = txtFetchTitle.Text;
+            string description = txtFetchDescription.Text;
+            string duration = txtFetchDuration.Text;
+            string frequency = txtFetchFrequency.Text;
+
+            string newTitle = txtNewTitle.Text;
+
+            // Initialize a flag for validation status
+            bool valid = true;
+
+            // Check if the title is empty
+            if (string.IsNullOrEmpty(title))
+            {
+                errorProvider1.SetError(txtFetchTitle, "Please Select Categories");
+
+                AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No title selected", "Please select a title before proceeding", Properties.Resources.information);
+
+                valid = false;
+            }
+            else
+            {
+                errorProvider1.SetError(txtFetchTitle, string.Empty);
+                // If title is not empty, proceed with fetching the category ID
+                int categoryId = await GetSelectedCategoryId();
+                if (categoryId == -1)
+                {
+                    AlertBox(Color.LightPink, Color.DarkRed, "No Matching Found", "Please check the title and try again", Properties.Resources.error);
+                    valid = false;
+                }
+                else
+                {
+                    // Proceed with other validations only if category ID is valid
+                    if (string.IsNullOrEmpty(description))
+                    {
+                        errorProvider2.SetError(txtFetchDescription, "Description is required");
+                        valid = false;
+                    }
+                    else
+                    {
+                        errorProvider2.SetError(txtFetchDescription, string.Empty);
+                    }
+
+                    if (string.IsNullOrEmpty(duration))
+                    {
+                        errorProvider3.SetError(txtFetchDuration, "Duration is required");
+                        valid = false;
+                    }
+                    else
+                    {
+                        errorProvider3.SetError(txtFetchDuration, string.Empty);
+                    }
+
+                    if (string.IsNullOrEmpty(frequency))
+                    {
+                        errorProvider4.SetError(txtFetchFrequency, "Frequency is required");
+                        valid = false;
+                    }
+                    else
+                    {
+                        errorProvider4.SetError(txtFetchFrequency, string.Empty);
+                    }
+
+                    if (await categoriesValidator.IsCategoryExist(newTitle))
+                    {
+                        errorProvider1.SetError(txtNewTitle, "Categories title is alread exist");
+                        valid = false;
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(txtNewTitle, string.Empty);
+                    }
+
+                    // Update the category if all validations pass
+
+                    if (valid)
+                    {
+                        await UpdateCategory();
+                    }
+                }
+            }
+        }
+
+        private async void btnUpdateRefesher_Click(object sender, EventArgs e)
+        {
+            await GetTitle();
+
+            txtFetchTitle.Text = "";
+            txtFetchDescription.Text = "";
+            txtFetchDuration.Text = "";
+            txtFetchFrequency.Text = "";
+        }
+
+        private void PanelOfficeHours_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private async void btnSaveOfficeHour_Click(object sender, EventArgs e)
+        {
+            await SaveOfficeHours();
+        }
+
+        private viewCategories ViewCategoriesInstance;
+
+        private void btnViewServices_Click(object sender, EventArgs e)
+        {
+            if (ViewCategoriesInstance == null || ViewCategoriesInstance.IsDisposed)
+            {
+                ViewCategoriesInstance = new viewCategories();
+                ViewCategoriesInstance.Show();
+            }
+            else
+            {
+                if (ViewCategoriesInstance.Visible)
+                {
+                    ViewCategoriesInstance.BringToFront();
+                }
+                else { ViewCategoriesInstance.Show(); }
             }
         }
     }

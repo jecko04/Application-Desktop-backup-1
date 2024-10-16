@@ -59,49 +59,6 @@ namespace Application_Desktop.Admin_Views
         }
 
 
-        private async void btnProfileSave_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var profileInfo = new profileUpdateInfoModel
-                {
-                    _name = txtFirstname.Text + " " + txtLastname.Text,
-                    _email = txtEmail.Text,
-                    _firstname = txtFirstname.Text,
-                    _lastname = txtLastname.Text
-                };
-
-                var validationErrors = profileInfo.validate();
-
-                errorProvider1.Clear();
-                errorProvider2.Clear();
-
-                foreach (var error in validationErrors)
-                {
-                    if (error.Key == "Firstname")
-                        errorProvider1.SetError(borderFirst, error.Value);
-                    if (error.Key == "Lastname")
-                        errorProvider1.SetError(borderLast, error.Value);
-                    if (error.Key == "Email")
-                        errorProvider2.SetError(borderEmail, error.Value);
-                    // Add other fields as necessary
-                }
-
-                if (validationErrors.Count == 0)
-                {
-                    profileUpdateInfoModel updateProfile = new profileUpdateInfoModel
-                    {
-                        _name = txtFirstname.Text + " " + txtLastname.Text,
-                        _email = txtEmail.Text,
-                    };
-                    await UpdateProfileInfo(updateProfile);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
 
         //Select Name and Email of Current User
@@ -138,8 +95,8 @@ namespace Application_Desktop.Admin_Views
 
                     // Set the first and last names as needed
 
-                    txtFirstname.Text = adminNames._firstname = firstName;
-                    txtLastname.Text = adminNames._lastname = lastName;
+                    txtFirstNames.Text = adminNames._firstname = firstName;
+                    txtLastNames.Text = adminNames._lastname = lastName;
                     txtEmail.Text = adminNames._email;
                 }
                 await reader.CloseAsync();
@@ -233,14 +190,14 @@ namespace Application_Desktop.Admin_Views
                     if (verify.VerifyPassword(adminPassword._currentPassword, storedHash))
                     {
                         passwordVerify = true;
-                        errorProvider1.SetError(borderCurrent, string.Empty);
-                        errorProvider3.SetError(borderCurrent, "Verified Password");
+                        errorProvider1.SetError(txtCurrent, string.Empty);
+                        errorProvider3.SetError(txtCurrent, "Verified Password");
                     }
                     else
                     {
-                        errorProvider3.SetError(borderCurrent, string.Empty);
+                        errorProvider3.SetError(txtCurrent, string.Empty);
 
-                        errorProvider1.SetError(borderCurrent, "Wrong Password");
+                        errorProvider1.SetError(txtCurrent, "Wrong Password");
                     }
                 }
             }
@@ -290,7 +247,88 @@ namespace Application_Desktop.Admin_Views
             return false;
         }
 
-        private async void btnSavePass_Click(object sender, EventArgs e)
+
+        //Delete Account
+        private async Task<bool> DeleteAccount()
+        {
+            int adminId = session.LoggedInSession;
+            string query = @"DELETE from admin Where Admin_ID = @admin";
+
+            MySqlConnection conn = databaseHelper.getConnection();
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    await conn.OpenAsync();
+                }
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@admin", adminId);
+                int rowsAffected = await cmd.ExecuteNonQueryAsync();
+
+
+
+                return rowsAffected > 0;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { await conn.CloseAsync(); }
+            return false;
+        }
+
+
+        private void profileInfoPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private async void btnProfileSaves_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var profileInfo = new profileUpdateInfoModel
+                {
+                    _name = txtFirstNames.Text + " " + txtLastNames.Text,
+                    _email = txtEmail.Text,
+                    _firstname = txtFirstNames.Text,
+                    _lastname = txtLastNames.Text
+                };
+
+                var validationErrors = profileInfo.validate();
+
+                errorProvider1.Clear();
+                errorProvider2.Clear();
+
+                foreach (var error in validationErrors)
+                {
+                    if (error.Key == "Firstname")
+                        errorProvider1.SetError(txtFirstNames, error.Value);
+                    if (error.Key == "Lastname")
+                        errorProvider1.SetError(txtLastNames, error.Value);
+                    if (error.Key == "Email")
+                        errorProvider2.SetError(txtEmail, error.Value);
+                    // Add other fields as necessary
+                }
+
+                if (validationErrors.Count == 0)
+                {
+                    profileUpdateInfoModel updateProfile = new profileUpdateInfoModel
+                    {
+                        _name = txtFirstNames.Text + " " + txtLastNames.Text,
+                        _email = txtEmail.Text,
+                    };
+                    await UpdateProfileInfo(updateProfile);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private async void btnSavePassword_Click(object sender, EventArgs e)
         {
             try
             {
@@ -311,15 +349,15 @@ namespace Application_Desktop.Admin_Views
                     switch (error.Key)
                     {
                         case "Current":
-                            errorProvider1.SetError(borderCurrent, error.Value);
+                            errorProvider1.SetError(txtCurrent, error.Value);
                             break;
                         case "NotValid":
-                            errorProvider1.SetError(borderNew, error.Value);
-                            errorProvider1.SetError(borderConfirm, error.Value);
+                            errorProvider1.SetError(txtNew, error.Value);
+                            errorProvider1.SetError(txtConfirm, error.Value);
                             break;
                         case "NotMatch":
-                            errorProvider1.SetError(borderNew, error.Value);
-                            errorProvider1.SetError(borderConfirm, error.Value);
+                            errorProvider1.SetError(txtNew, error.Value);
+                            errorProvider1.SetError(txtConfirm, error.Value);
                             break;
                     }
                 }
@@ -369,45 +407,14 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
-        //Delete Account
-        private async Task<bool> DeleteAccount()
+        private async void btnDeleteAcc_Click(object sender, EventArgs e)
         {
-            int adminId = session.LoggedInSession;
-            string query = @"DELETE from admin Where Admin_ID = @admin";
-
-            MySqlConnection conn = databaseHelper.getConnection();
-            try
-            {
-                if (conn.State != ConnectionState.Open)
-                {
-                    await conn.OpenAsync();
-                }
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@admin", adminId);
-                int rowsAffected = await cmd.ExecuteNonQueryAsync();
-
-
-
-                return rowsAffected > 0;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally { await conn.CloseAsync(); }
-            return false;
-        }
-
-        private async void btnDelete_Click(object sender, EventArgs e)
-        {
-
             DialogResult result = MessageBox.Show(
-                "Warning: Deleting your account will permanently delete all of its data. Are you sure you want to proceed?",
-                "Delete Account",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-                );
+               "Warning: Deleting your account will permanently delete all of its data. Are you sure you want to proceed?",
+               "Delete Account",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Warning
+               );
             if (result == DialogResult.Yes)
             {
                 // Proceed with deletion

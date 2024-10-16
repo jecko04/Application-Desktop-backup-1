@@ -30,207 +30,92 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminProfileSettings));
-            btnProfileSave = new Button();
-            btnDelete = new Button();
-            panel1 = new Panel();
-            label40 = new Label();
-            pictureBox1 = new PictureBox();
-            flowLayoutPanel1 = new FlowLayoutPanel();
             panel2 = new Panel();
             deleteAccountPanel = new Panel();
-            label14 = new Label();
-            label15 = new Label();
+            btnDeleteAcc = new MaterialSkin.Controls.MaterialButton();
             panel31 = new Panel();
             updatePasswordPanel = new Panel();
-            borderNew = new Panel();
-            panel9 = new Panel();
-            panel18 = new Panel();
-            panel19 = new Panel();
-            panel20 = new Panel();
-            txtNew = new TextBox();
-            btnSavePass = new Button();
-            label4 = new Label();
-            borderConfirm = new Panel();
-            panel22 = new Panel();
-            panel23 = new Panel();
-            panel24 = new Panel();
-            panel25 = new Panel();
-            txtConfirm = new TextBox();
-            label6 = new Label();
-            borderCurrent = new Panel();
-            panel27 = new Panel();
-            panel28 = new Panel();
-            panel29 = new Panel();
-            panel30 = new Panel();
-            txtCurrent = new TextBox();
-            label7 = new Label();
-            label8 = new Label();
-            label9 = new Label();
+            btnSavePassword = new MaterialSkin.Controls.MaterialButton();
+            materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
+            txtConfirm = new MaterialSkin.Controls.MaterialTextBox2();
+            txtNew = new MaterialSkin.Controls.MaterialTextBox2();
+            txtCurrent = new MaterialSkin.Controls.MaterialTextBox2();
+            materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             profileInfoPanel = new Panel();
-            borderEmail = new Panel();
-            panel14 = new Panel();
-            panel15 = new Panel();
-            panel16 = new Panel();
-            panel17 = new Panel();
-            txtEmail = new TextBox();
-            label3 = new Label();
-            borderLast = new Panel();
-            panel5 = new Panel();
-            panel6 = new Panel();
-            panel7 = new Panel();
-            panel8 = new Panel();
-            txtLastname = new TextBox();
-            label2 = new Label();
-            borderFirst = new Panel();
-            panel10 = new Panel();
-            panel11 = new Panel();
-            panel12 = new Panel();
-            panel13 = new Panel();
-            txtFirstname = new TextBox();
-            label1 = new Label();
-            label10 = new Label();
-            label5 = new Label();
+            materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            btnProfileSaves = new MaterialSkin.Controls.MaterialButton();
+            txtEmail = new MaterialSkin.Controls.MaterialTextBox2();
+            txtLastNames = new MaterialSkin.Controls.MaterialTextBox2();
+            txtFirstNames = new MaterialSkin.Controls.MaterialTextBox2();
             errorProvider1 = new ErrorProvider(components);
             errorProvider2 = new ErrorProvider(components);
             errorProvider3 = new ErrorProvider(components);
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1 = new Panel();
+            materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
             panel2.SuspendLayout();
             deleteAccountPanel.SuspendLayout();
             updatePasswordPanel.SuspendLayout();
-            borderNew.SuspendLayout();
-            borderConfirm.SuspendLayout();
-            borderCurrent.SuspendLayout();
             profileInfoPanel.SuspendLayout();
-            borderEmail.SuspendLayout();
-            borderLast.SuspendLayout();
-            borderFirst.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider3).BeginInit();
             SuspendLayout();
-            // 
-            // btnProfileSave
-            // 
-            btnProfileSave.BackColor = Color.FromArgb(255, 66, 0);
-            btnProfileSave.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
-            btnProfileSave.FlatStyle = FlatStyle.Flat;
-            btnProfileSave.Font = new Font("Microsoft Sans Serif", 9F);
-            btnProfileSave.ForeColor = SystemColors.ButtonFace;
-            btnProfileSave.Location = new Point(27, 221);
-            btnProfileSave.Margin = new Padding(0, 0, 0, 1);
-            btnProfileSave.Name = "btnProfileSave";
-            btnProfileSave.Size = new Size(56, 24);
-            btnProfileSave.TabIndex = 19;
-            btnProfileSave.Text = "Save";
-            btnProfileSave.UseVisualStyleBackColor = false;
-            btnProfileSave.Click += btnProfileSave_Click;
-            // 
-            // btnDelete
-            // 
-            btnDelete.BackColor = Color.FromArgb(255, 66, 0);
-            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Microsoft Sans Serif", 9F);
-            btnDelete.ForeColor = SystemColors.ButtonFace;
-            btnDelete.Location = new Point(28, 78);
-            btnDelete.Margin = new Padding(0, 0, 0, 1);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(122, 24);
-            btnDelete.TabIndex = 18;
-            btnDelete.Text = "Delete Account";
-            btnDelete.UseVisualStyleBackColor = false;
-            btnDelete.Click += btnDelete_Click;
-            // 
-            // panel1
-            // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BackColor = Color.Transparent;
-            panel1.Controls.Add(label40);
-            panel1.Controls.Add(pictureBox1);
-            panel1.Controls.Add(flowLayoutPanel1);
-            panel1.Location = new Point(0, -1);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1101, 30);
-            panel1.TabIndex = 21;
-            // 
-            // label40
-            // 
-            label40.AutoSize = true;
-            label40.Font = new Font("Tahoma", 9.75F, FontStyle.Bold);
-            label40.Location = new Point(37, 9);
-            label40.Name = "label40";
-            label40.Size = new Size(133, 16);
-            label40.TabIndex = 89;
-            label40.Text = "Account  >  Profile ";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(7, 3);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(24, 24);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 88;
-            pictureBox1.TabStop = false;
-            // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutPanel1.Location = new Point(1503, 0);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(502, 30);
-            flowLayoutPanel1.TabIndex = 1;
             // 
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel2.AutoScroll = true;
             panel2.BackColor = Color.Transparent;
+            panel2.Controls.Add(panel1);
             panel2.Controls.Add(deleteAccountPanel);
             panel2.Controls.Add(panel31);
             panel2.Controls.Add(updatePasswordPanel);
             panel2.Controls.Add(profileInfoPanel);
-            panel2.Location = new Point(0, 27);
+            panel2.Location = new Point(0, -2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1101, 660);
+            panel2.Size = new Size(1101, 689);
             panel2.TabIndex = 22;
             panel2.Paint += panel2_Paint;
             // 
             // deleteAccountPanel
             // 
             deleteAccountPanel.BackColor = Color.White;
-            deleteAccountPanel.Controls.Add(label14);
-            deleteAccountPanel.Controls.Add(label15);
-            deleteAccountPanel.Controls.Add(btnDelete);
-            deleteAccountPanel.Location = new Point(0, 664);
+            deleteAccountPanel.Controls.Add(materialLabel11);
+            deleteAccountPanel.Controls.Add(materialLabel12);
+            deleteAccountPanel.Controls.Add(btnDeleteAcc);
+            deleteAccountPanel.Location = new Point(12, 756);
             deleteAccountPanel.Name = "deleteAccountPanel";
             deleteAccountPanel.Size = new Size(899, 148);
             deleteAccountPanel.TabIndex = 78;
             // 
-            // label14
+            // btnDeleteAcc
             // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Tahoma", 9.75F);
-            label14.ForeColor = Color.DimGray;
-            label14.Location = new Point(27, 46);
-            label14.Name = "label14";
-            label14.Size = new Size(501, 16);
-            label14.TabIndex = 57;
-            label14.Text = "Once your account is deleted all of its resources and data will be permanently deleted.";
-            label14.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label15.Location = new Point(27, 23);
-            label15.Name = "label15";
-            label15.Size = new Size(92, 16);
-            label15.TabIndex = 56;
-            label15.Text = "Delete Account";
+            btnDeleteAcc.AutoSize = false;
+            btnDeleteAcc.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnDeleteAcc.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnDeleteAcc.Depth = 0;
+            btnDeleteAcc.HighEmphasis = true;
+            btnDeleteAcc.Icon = null;
+            btnDeleteAcc.Location = new Point(27, 87);
+            btnDeleteAcc.Margin = new Padding(4, 6, 4, 6);
+            btnDeleteAcc.MouseState = MaterialSkin.MouseState.HOVER;
+            btnDeleteAcc.Name = "btnDeleteAcc";
+            btnDeleteAcc.NoAccentTextColor = Color.Empty;
+            btnDeleteAcc.Size = new Size(146, 36);
+            btnDeleteAcc.TabIndex = 58;
+            btnDeleteAcc.Text = "Delete Account";
+            btnDeleteAcc.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnDeleteAcc.UseAccentColor = false;
+            btnDeleteAcc.UseVisualStyleBackColor = true;
+            btnDeleteAcc.Click += btnDeleteAcc_Click;
             // 
             // panel31
             // 
@@ -242,513 +127,375 @@
             // updatePasswordPanel
             // 
             updatePasswordPanel.BackColor = Color.White;
-            updatePasswordPanel.Controls.Add(borderNew);
-            updatePasswordPanel.Controls.Add(btnSavePass);
-            updatePasswordPanel.Controls.Add(label4);
-            updatePasswordPanel.Controls.Add(borderConfirm);
-            updatePasswordPanel.Controls.Add(label6);
-            updatePasswordPanel.Controls.Add(borderCurrent);
-            updatePasswordPanel.Controls.Add(label7);
-            updatePasswordPanel.Controls.Add(label8);
-            updatePasswordPanel.Controls.Add(label9);
-            updatePasswordPanel.Location = new Point(0, 308);
+            updatePasswordPanel.Controls.Add(btnSavePassword);
+            updatePasswordPanel.Controls.Add(materialLabel10);
+            updatePasswordPanel.Controls.Add(materialLabel9);
+            updatePasswordPanel.Controls.Add(materialLabel8);
+            updatePasswordPanel.Controls.Add(txtConfirm);
+            updatePasswordPanel.Controls.Add(txtNew);
+            updatePasswordPanel.Controls.Add(txtCurrent);
+            updatePasswordPanel.Controls.Add(materialLabel6);
+            updatePasswordPanel.Controls.Add(materialLabel7);
+            updatePasswordPanel.Location = new Point(12, 351);
             updatePasswordPanel.Name = "updatePasswordPanel";
-            updatePasswordPanel.Size = new Size(899, 338);
+            updatePasswordPanel.Size = new Size(899, 383);
             updatePasswordPanel.TabIndex = 22;
             // 
-            // borderNew
+            // btnSavePassword
             // 
-            borderNew.Controls.Add(panel9);
-            borderNew.Controls.Add(panel18);
-            borderNew.Controls.Add(panel19);
-            borderNew.Controls.Add(panel20);
-            borderNew.Controls.Add(txtNew);
-            borderNew.Location = new Point(28, 175);
-            borderNew.Name = "borderNew";
-            borderNew.Size = new Size(457, 25);
-            borderNew.TabIndex = 77;
+            btnSavePassword.AutoSize = false;
+            btnSavePassword.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnSavePassword.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnSavePassword.Depth = 0;
+            btnSavePassword.HighEmphasis = true;
+            btnSavePassword.Icon = null;
+            btnSavePassword.Location = new Point(27, 311);
+            btnSavePassword.Margin = new Padding(4, 6, 4, 6);
+            btnSavePassword.MouseState = MaterialSkin.MouseState.HOVER;
+            btnSavePassword.Name = "btnSavePassword";
+            btnSavePassword.NoAccentTextColor = Color.Empty;
+            btnSavePassword.Size = new Size(116, 36);
+            btnSavePassword.TabIndex = 92;
+            btnSavePassword.Text = "Save";
+            btnSavePassword.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnSavePassword.UseAccentColor = false;
+            btnSavePassword.UseVisualStyleBackColor = true;
+            btnSavePassword.Click += btnSavePassword_Click;
             // 
-            // panel9
+            // materialLabel10
             // 
-            panel9.BackColor = Color.FromArgb(93, 173, 226);
-            panel9.Dock = DockStyle.Right;
-            panel9.Location = new Point(456, 1);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(1, 23);
-            panel9.TabIndex = 3;
+            materialLabel10.AutoSize = true;
+            materialLabel10.Depth = 0;
+            materialLabel10.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel10.Location = new Point(29, 230);
+            materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel10.Name = "materialLabel10";
+            materialLabel10.Size = new Size(132, 19);
+            materialLabel10.TabIndex = 91;
+            materialLabel10.Text = "Confirm Password";
             // 
-            // panel18
+            // materialLabel9
             // 
-            panel18.BackColor = Color.FromArgb(93, 173, 226);
-            panel18.Dock = DockStyle.Bottom;
-            panel18.Location = new Point(1, 24);
-            panel18.Name = "panel18";
-            panel18.Size = new Size(456, 1);
-            panel18.TabIndex = 2;
+            materialLabel9.AutoSize = true;
+            materialLabel9.Depth = 0;
+            materialLabel9.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel9.Location = new Point(28, 159);
+            materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel9.Name = "materialLabel9";
+            materialLabel9.Size = new Size(106, 19);
+            materialLabel9.TabIndex = 90;
+            materialLabel9.Text = "New Password";
             // 
-            // panel19
+            // materialLabel8
             // 
-            panel19.BackColor = Color.FromArgb(93, 173, 226);
-            panel19.Dock = DockStyle.Top;
-            panel19.Location = new Point(1, 0);
-            panel19.Name = "panel19";
-            panel19.Size = new Size(456, 1);
-            panel19.TabIndex = 1;
-            // 
-            // panel20
-            // 
-            panel20.BackColor = Color.FromArgb(93, 173, 226);
-            panel20.Dock = DockStyle.Left;
-            panel20.Location = new Point(0, 0);
-            panel20.Name = "panel20";
-            panel20.Size = new Size(1, 25);
-            panel20.TabIndex = 0;
-            // 
-            // txtNew
-            // 
-            txtNew.BorderStyle = BorderStyle.FixedSingle;
-            txtNew.Dock = DockStyle.Fill;
-            txtNew.Font = new Font("Segoe UI", 9.75F);
-            txtNew.Location = new Point(0, 0);
-            txtNew.Name = "txtNew";
-            txtNew.PasswordChar = '*';
-            txtNew.Size = new Size(457, 25);
-            txtNew.TabIndex = 1;
-            // 
-            // btnSavePass
-            // 
-            btnSavePass.BackColor = Color.FromArgb(255, 66, 0);
-            btnSavePass.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
-            btnSavePass.FlatStyle = FlatStyle.Flat;
-            btnSavePass.Font = new Font("Microsoft Sans Serif", 9F);
-            btnSavePass.ForeColor = SystemColors.ButtonFace;
-            btnSavePass.Location = new Point(27, 289);
-            btnSavePass.Margin = new Padding(0, 0, 0, 1);
-            btnSavePass.Name = "btnSavePass";
-            btnSavePass.Size = new Size(56, 24);
-            btnSavePass.TabIndex = 19;
-            btnSavePass.Text = "Save";
-            btnSavePass.UseVisualStyleBackColor = false;
-            btnSavePass.Click += btnSavePass_Click;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Tahoma", 9.75F);
-            label4.ForeColor = Color.DimGray;
-            label4.Location = new Point(28, 151);
-            label4.Name = "label4";
-            label4.Size = new Size(91, 16);
-            label4.TabIndex = 76;
-            label4.Text = "New Password";
-            // 
-            // borderConfirm
-            // 
-            borderConfirm.Controls.Add(panel22);
-            borderConfirm.Controls.Add(panel23);
-            borderConfirm.Controls.Add(panel24);
-            borderConfirm.Controls.Add(panel25);
-            borderConfirm.Controls.Add(txtConfirm);
-            borderConfirm.Location = new Point(27, 244);
-            borderConfirm.Name = "borderConfirm";
-            borderConfirm.Size = new Size(458, 25);
-            borderConfirm.TabIndex = 77;
-            // 
-            // panel22
-            // 
-            panel22.BackColor = Color.FromArgb(93, 173, 226);
-            panel22.Dock = DockStyle.Right;
-            panel22.Location = new Point(457, 1);
-            panel22.Name = "panel22";
-            panel22.Size = new Size(1, 23);
-            panel22.TabIndex = 3;
-            // 
-            // panel23
-            // 
-            panel23.BackColor = Color.FromArgb(93, 173, 226);
-            panel23.Dock = DockStyle.Bottom;
-            panel23.Location = new Point(1, 24);
-            panel23.Name = "panel23";
-            panel23.Size = new Size(457, 1);
-            panel23.TabIndex = 2;
-            // 
-            // panel24
-            // 
-            panel24.BackColor = Color.FromArgb(93, 173, 226);
-            panel24.Dock = DockStyle.Top;
-            panel24.Location = new Point(1, 0);
-            panel24.Name = "panel24";
-            panel24.Size = new Size(457, 1);
-            panel24.TabIndex = 1;
-            // 
-            // panel25
-            // 
-            panel25.BackColor = Color.FromArgb(93, 173, 226);
-            panel25.Dock = DockStyle.Left;
-            panel25.Location = new Point(0, 0);
-            panel25.Name = "panel25";
-            panel25.Size = new Size(1, 25);
-            panel25.TabIndex = 0;
+            materialLabel8.AutoSize = true;
+            materialLabel8.Depth = 0;
+            materialLabel8.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel8.Location = new Point(29, 90);
+            materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel8.Name = "materialLabel8";
+            materialLabel8.Size = new Size(126, 19);
+            materialLabel8.TabIndex = 89;
+            materialLabel8.Text = "Current Password";
             // 
             // txtConfirm
             // 
-            txtConfirm.BorderStyle = BorderStyle.FixedSingle;
-            txtConfirm.Dock = DockStyle.Fill;
-            txtConfirm.Font = new Font("Segoe UI", 9.75F);
-            txtConfirm.Location = new Point(0, 0);
+            txtConfirm.AnimateReadOnly = false;
+            txtConfirm.BackgroundImageLayout = ImageLayout.None;
+            txtConfirm.CharacterCasing = CharacterCasing.Normal;
+            txtConfirm.Depth = 0;
+            txtConfirm.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtConfirm.HideSelection = true;
+            txtConfirm.LeadingIcon = null;
+            txtConfirm.Location = new Point(27, 252);
+            txtConfirm.MaxLength = 32767;
+            txtConfirm.MouseState = MaterialSkin.MouseState.OUT;
             txtConfirm.Name = "txtConfirm";
             txtConfirm.PasswordChar = '*';
-            txtConfirm.Size = new Size(458, 25);
-            txtConfirm.TabIndex = 1;
+            txtConfirm.PrefixSuffixText = null;
+            txtConfirm.ReadOnly = false;
+            txtConfirm.RightToLeft = RightToLeft.No;
+            txtConfirm.SelectedText = "";
+            txtConfirm.SelectionLength = 0;
+            txtConfirm.SelectionStart = 0;
+            txtConfirm.ShortcutsEnabled = true;
+            txtConfirm.Size = new Size(626, 36);
+            txtConfirm.TabIndex = 88;
+            txtConfirm.TabStop = false;
+            txtConfirm.TextAlign = HorizontalAlignment.Left;
+            txtConfirm.TrailingIcon = null;
+            txtConfirm.UseSystemPasswordChar = false;
+            txtConfirm.UseTallSize = false;
             // 
-            // label6
+            // txtNew
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Tahoma", 9.75F);
-            label6.ForeColor = Color.DimGray;
-            label6.Location = new Point(27, 220);
-            label6.Name = "label6";
-            label6.Size = new Size(111, 16);
-            label6.TabIndex = 76;
-            label6.Text = "Confirm Password";
-            // 
-            // borderCurrent
-            // 
-            borderCurrent.Controls.Add(panel27);
-            borderCurrent.Controls.Add(panel28);
-            borderCurrent.Controls.Add(panel29);
-            borderCurrent.Controls.Add(panel30);
-            borderCurrent.Controls.Add(txtCurrent);
-            borderCurrent.Location = new Point(27, 115);
-            borderCurrent.Name = "borderCurrent";
-            borderCurrent.Size = new Size(458, 25);
-            borderCurrent.TabIndex = 75;
-            // 
-            // panel27
-            // 
-            panel27.BackColor = Color.FromArgb(93, 173, 226);
-            panel27.Dock = DockStyle.Right;
-            panel27.Location = new Point(457, 1);
-            panel27.Name = "panel27";
-            panel27.Size = new Size(1, 23);
-            panel27.TabIndex = 3;
-            // 
-            // panel28
-            // 
-            panel28.BackColor = Color.FromArgb(93, 173, 226);
-            panel28.Dock = DockStyle.Bottom;
-            panel28.Location = new Point(1, 24);
-            panel28.Name = "panel28";
-            panel28.Size = new Size(457, 1);
-            panel28.TabIndex = 2;
-            // 
-            // panel29
-            // 
-            panel29.BackColor = Color.FromArgb(93, 173, 226);
-            panel29.Dock = DockStyle.Top;
-            panel29.Location = new Point(1, 0);
-            panel29.Name = "panel29";
-            panel29.Size = new Size(457, 1);
-            panel29.TabIndex = 1;
-            // 
-            // panel30
-            // 
-            panel30.BackColor = Color.FromArgb(93, 173, 226);
-            panel30.Dock = DockStyle.Left;
-            panel30.Location = new Point(0, 0);
-            panel30.Name = "panel30";
-            panel30.Size = new Size(1, 25);
-            panel30.TabIndex = 0;
+            txtNew.AnimateReadOnly = false;
+            txtNew.BackgroundImageLayout = ImageLayout.None;
+            txtNew.CharacterCasing = CharacterCasing.Normal;
+            txtNew.Depth = 0;
+            txtNew.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtNew.HideSelection = true;
+            txtNew.LeadingIcon = null;
+            txtNew.Location = new Point(27, 181);
+            txtNew.MaxLength = 32767;
+            txtNew.MouseState = MaterialSkin.MouseState.OUT;
+            txtNew.Name = "txtNew";
+            txtNew.PasswordChar = '*';
+            txtNew.PrefixSuffixText = null;
+            txtNew.ReadOnly = false;
+            txtNew.RightToLeft = RightToLeft.No;
+            txtNew.SelectedText = "";
+            txtNew.SelectionLength = 0;
+            txtNew.SelectionStart = 0;
+            txtNew.ShortcutsEnabled = true;
+            txtNew.Size = new Size(626, 36);
+            txtNew.TabIndex = 87;
+            txtNew.TabStop = false;
+            txtNew.TextAlign = HorizontalAlignment.Left;
+            txtNew.TrailingIcon = null;
+            txtNew.UseSystemPasswordChar = false;
+            txtNew.UseTallSize = false;
             // 
             // txtCurrent
             // 
-            txtCurrent.BorderStyle = BorderStyle.FixedSingle;
-            txtCurrent.Dock = DockStyle.Fill;
-            txtCurrent.Font = new Font("Segoe UI", 9.75F);
-            txtCurrent.Location = new Point(0, 0);
+            txtCurrent.AnimateReadOnly = false;
+            txtCurrent.BackgroundImageLayout = ImageLayout.None;
+            txtCurrent.CharacterCasing = CharacterCasing.Normal;
+            txtCurrent.Depth = 0;
+            txtCurrent.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtCurrent.HideSelection = true;
+            txtCurrent.LeadingIcon = null;
+            txtCurrent.Location = new Point(27, 112);
+            txtCurrent.MaxLength = 32767;
+            txtCurrent.MouseState = MaterialSkin.MouseState.OUT;
             txtCurrent.Name = "txtCurrent";
             txtCurrent.PasswordChar = '*';
-            txtCurrent.Size = new Size(458, 25);
-            txtCurrent.TabIndex = 1;
+            txtCurrent.PrefixSuffixText = null;
+            txtCurrent.ReadOnly = false;
+            txtCurrent.RightToLeft = RightToLeft.No;
+            txtCurrent.SelectedText = "";
+            txtCurrent.SelectionLength = 0;
+            txtCurrent.SelectionStart = 0;
+            txtCurrent.ShortcutsEnabled = true;
+            txtCurrent.Size = new Size(626, 36);
+            txtCurrent.TabIndex = 86;
+            txtCurrent.TabStop = false;
+            txtCurrent.TextAlign = HorizontalAlignment.Left;
+            txtCurrent.TrailingIcon = null;
+            txtCurrent.UseSystemPasswordChar = false;
+            txtCurrent.UseTallSize = false;
             // 
-            // label7
+            // materialLabel6
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Tahoma", 9.75F);
-            label7.ForeColor = Color.DimGray;
-            label7.Location = new Point(27, 91);
-            label7.Name = "label7";
-            label7.Size = new Size(109, 16);
-            label7.TabIndex = 74;
-            label7.Text = "Current Password";
+            materialLabel6.AutoSize = true;
+            materialLabel6.Depth = 0;
+            materialLabel6.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel6.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2;
+            materialLabel6.Location = new Point(29, 48);
+            materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel6.Name = "materialLabel6";
+            materialLabel6.Size = new Size(425, 17);
+            materialLabel6.TabIndex = 85;
+            materialLabel6.Text = "Ensure our account is using a long random password to stay secure";
             // 
-            // label8
+            // materialLabel7
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Tahoma", 9.75F);
-            label8.ForeColor = Color.DimGray;
-            label8.Location = new Point(27, 46);
-            label8.Name = "label8";
-            label8.Size = new Size(394, 16);
-            label8.TabIndex = 57;
-            label8.Text = "Ensure our account is using a long random password to stay secure";
-            label8.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(27, 23);
-            label9.Name = "label9";
-            label9.Size = new Size(106, 16);
-            label9.TabIndex = 56;
-            label9.Text = "Update Password";
+            materialLabel7.AutoSize = true;
+            materialLabel7.Depth = 0;
+            materialLabel7.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel7.Location = new Point(29, 19);
+            materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel7.Name = "materialLabel7";
+            materialLabel7.Size = new Size(125, 19);
+            materialLabel7.TabIndex = 84;
+            materialLabel7.Text = "Update Password";
             // 
             // profileInfoPanel
             // 
             profileInfoPanel.BackColor = Color.White;
-            profileInfoPanel.Controls.Add(borderEmail);
-            profileInfoPanel.Controls.Add(btnProfileSave);
-            profileInfoPanel.Controls.Add(label3);
-            profileInfoPanel.Controls.Add(borderLast);
-            profileInfoPanel.Controls.Add(label2);
-            profileInfoPanel.Controls.Add(borderFirst);
-            profileInfoPanel.Controls.Add(label1);
-            profileInfoPanel.Controls.Add(label10);
-            profileInfoPanel.Controls.Add(label5);
-            profileInfoPanel.Location = new Point(0, 20);
+            profileInfoPanel.Controls.Add(materialLabel5);
+            profileInfoPanel.Controls.Add(materialLabel4);
+            profileInfoPanel.Controls.Add(materialLabel3);
+            profileInfoPanel.Controls.Add(materialLabel2);
+            profileInfoPanel.Controls.Add(materialLabel1);
+            profileInfoPanel.Controls.Add(btnProfileSaves);
+            profileInfoPanel.Controls.Add(txtEmail);
+            profileInfoPanel.Controls.Add(txtLastNames);
+            profileInfoPanel.Controls.Add(txtFirstNames);
+            profileInfoPanel.Location = new Point(12, 20);
             profileInfoPanel.Name = "profileInfoPanel";
-            profileInfoPanel.Size = new Size(899, 274);
+            profileInfoPanel.Size = new Size(899, 308);
             profileInfoPanel.TabIndex = 21;
+            profileInfoPanel.Paint += profileInfoPanel_Paint;
             // 
-            // borderEmail
+            // materialLabel5
             // 
-            borderEmail.Controls.Add(panel14);
-            borderEmail.Controls.Add(panel15);
-            borderEmail.Controls.Add(panel16);
-            borderEmail.Controls.Add(panel17);
-            borderEmail.Controls.Add(txtEmail);
-            borderEmail.Location = new Point(28, 174);
-            borderEmail.Name = "borderEmail";
-            borderEmail.Size = new Size(457, 25);
-            borderEmail.TabIndex = 77;
+            materialLabel5.AutoSize = true;
+            materialLabel5.Depth = 0;
+            materialLabel5.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel5.Location = new Point(27, 160);
+            materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel5.Name = "materialLabel5";
+            materialLabel5.Size = new Size(41, 19);
+            materialLabel5.TabIndex = 86;
+            materialLabel5.Text = "Email";
             // 
-            // panel14
+            // materialLabel4
             // 
-            panel14.BackColor = Color.FromArgb(93, 173, 226);
-            panel14.Dock = DockStyle.Right;
-            panel14.Location = new Point(456, 1);
-            panel14.Name = "panel14";
-            panel14.Size = new Size(1, 23);
-            panel14.TabIndex = 3;
+            materialLabel4.AutoSize = true;
+            materialLabel4.Depth = 0;
+            materialLabel4.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel4.Location = new Point(361, 89);
+            materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel4.Name = "materialLabel4";
+            materialLabel4.Size = new Size(76, 19);
+            materialLabel4.TabIndex = 85;
+            materialLabel4.Text = "Last name";
             // 
-            // panel15
+            // materialLabel3
             // 
-            panel15.BackColor = Color.FromArgb(93, 173, 226);
-            panel15.Dock = DockStyle.Bottom;
-            panel15.Location = new Point(1, 24);
-            panel15.Name = "panel15";
-            panel15.Size = new Size(456, 1);
-            panel15.TabIndex = 2;
+            materialLabel3.AutoSize = true;
+            materialLabel3.Depth = 0;
+            materialLabel3.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel3.Location = new Point(29, 92);
+            materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel3.Name = "materialLabel3";
+            materialLabel3.Size = new Size(76, 19);
+            materialLabel3.TabIndex = 84;
+            materialLabel3.Text = "First name";
             // 
-            // panel16
+            // materialLabel2
             // 
-            panel16.BackColor = Color.FromArgb(93, 173, 226);
-            panel16.Dock = DockStyle.Top;
-            panel16.Location = new Point(1, 0);
-            panel16.Name = "panel16";
-            panel16.Size = new Size(456, 1);
-            panel16.TabIndex = 1;
+            materialLabel2.AutoSize = true;
+            materialLabel2.Depth = 0;
+            materialLabel2.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel2.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2;
+            materialLabel2.Location = new Point(29, 55);
+            materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel2.Name = "materialLabel2";
+            materialLabel2.Size = new Size(385, 17);
+            materialLabel2.TabIndex = 83;
+            materialLabel2.Text = "Update your account’s profile information and email address";
             // 
-            // panel17
+            // materialLabel1
             // 
-            panel17.BackColor = Color.FromArgb(93, 173, 226);
-            panel17.Dock = DockStyle.Left;
-            panel17.Location = new Point(0, 0);
-            panel17.Name = "panel17";
-            panel17.Size = new Size(1, 25);
-            panel17.TabIndex = 0;
+            materialLabel1.AutoSize = true;
+            materialLabel1.Depth = 0;
+            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel1.Location = new Point(29, 26);
+            materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel1.Name = "materialLabel1";
+            materialLabel1.Size = new Size(134, 19);
+            materialLabel1.TabIndex = 82;
+            materialLabel1.Text = "Profile Information";
+            // 
+            // btnProfileSaves
+            // 
+            btnProfileSaves.AutoSize = false;
+            btnProfileSaves.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnProfileSaves.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnProfileSaves.Depth = 0;
+            btnProfileSaves.HighEmphasis = true;
+            btnProfileSaves.Icon = null;
+            btnProfileSaves.Location = new Point(27, 244);
+            btnProfileSaves.Margin = new Padding(4, 6, 4, 6);
+            btnProfileSaves.MouseState = MaterialSkin.MouseState.HOVER;
+            btnProfileSaves.Name = "btnProfileSaves";
+            btnProfileSaves.NoAccentTextColor = Color.Empty;
+            btnProfileSaves.Size = new Size(116, 36);
+            btnProfileSaves.TabIndex = 81;
+            btnProfileSaves.Text = "Save";
+            btnProfileSaves.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnProfileSaves.UseAccentColor = false;
+            btnProfileSaves.UseVisualStyleBackColor = true;
+            btnProfileSaves.Click += btnProfileSaves_Click;
             // 
             // txtEmail
             // 
-            txtEmail.BorderStyle = BorderStyle.FixedSingle;
-            txtEmail.Dock = DockStyle.Fill;
-            txtEmail.Font = new Font("Segoe UI", 9.75F);
-            txtEmail.Location = new Point(0, 0);
+            txtEmail.AnimateReadOnly = false;
+            txtEmail.BackgroundImageLayout = ImageLayout.None;
+            txtEmail.CharacterCasing = CharacterCasing.Normal;
+            txtEmail.Depth = 0;
+            txtEmail.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtEmail.HideSelection = true;
+            txtEmail.LeadingIcon = null;
+            txtEmail.Location = new Point(27, 182);
+            txtEmail.MaxLength = 32767;
+            txtEmail.MouseState = MaterialSkin.MouseState.OUT;
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(457, 25);
-            txtEmail.TabIndex = 1;
+            txtEmail.PasswordChar = '\0';
+            txtEmail.PrefixSuffixText = null;
+            txtEmail.ReadOnly = false;
+            txtEmail.RightToLeft = RightToLeft.No;
+            txtEmail.SelectedText = "";
+            txtEmail.SelectionLength = 0;
+            txtEmail.SelectionStart = 0;
+            txtEmail.ShortcutsEnabled = true;
+            txtEmail.Size = new Size(626, 36);
+            txtEmail.TabIndex = 80;
+            txtEmail.TabStop = false;
+            txtEmail.TextAlign = HorizontalAlignment.Left;
+            txtEmail.TrailingIcon = null;
+            txtEmail.UseSystemPasswordChar = false;
+            txtEmail.UseTallSize = false;
             // 
-            // label3
+            // txtLastNames
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Tahoma", 9.75F);
-            label3.ForeColor = Color.DimGray;
-            label3.Location = new Point(28, 150);
-            label3.Name = "label3";
-            label3.Size = new Size(38, 16);
-            label3.TabIndex = 76;
-            label3.Text = "Email";
+            txtLastNames.AnimateReadOnly = false;
+            txtLastNames.BackgroundImageLayout = ImageLayout.None;
+            txtLastNames.CharacterCasing = CharacterCasing.Normal;
+            txtLastNames.Depth = 0;
+            txtLastNames.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtLastNames.HideSelection = true;
+            txtLastNames.LeadingIcon = null;
+            txtLastNames.Location = new Point(361, 111);
+            txtLastNames.MaxLength = 32767;
+            txtLastNames.MouseState = MaterialSkin.MouseState.OUT;
+            txtLastNames.Name = "txtLastNames";
+            txtLastNames.PasswordChar = '\0';
+            txtLastNames.PrefixSuffixText = null;
+            txtLastNames.ReadOnly = false;
+            txtLastNames.RightToLeft = RightToLeft.No;
+            txtLastNames.SelectedText = "";
+            txtLastNames.SelectionLength = 0;
+            txtLastNames.SelectionStart = 0;
+            txtLastNames.ShortcutsEnabled = true;
+            txtLastNames.Size = new Size(292, 36);
+            txtLastNames.TabIndex = 79;
+            txtLastNames.TabStop = false;
+            txtLastNames.TextAlign = HorizontalAlignment.Left;
+            txtLastNames.TrailingIcon = null;
+            txtLastNames.UseSystemPasswordChar = false;
+            txtLastNames.UseTallSize = false;
             // 
-            // borderLast
+            // txtFirstNames
             // 
-            borderLast.Controls.Add(panel5);
-            borderLast.Controls.Add(panel6);
-            borderLast.Controls.Add(panel7);
-            borderLast.Controls.Add(panel8);
-            borderLast.Controls.Add(txtLastname);
-            borderLast.Location = new Point(276, 114);
-            borderLast.Name = "borderLast";
-            borderLast.Size = new Size(209, 25);
-            borderLast.TabIndex = 77;
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.FromArgb(93, 173, 226);
-            panel5.Dock = DockStyle.Right;
-            panel5.Location = new Point(208, 1);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(1, 23);
-            panel5.TabIndex = 3;
-            // 
-            // panel6
-            // 
-            panel6.BackColor = Color.FromArgb(93, 173, 226);
-            panel6.Dock = DockStyle.Bottom;
-            panel6.Location = new Point(1, 24);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(208, 1);
-            panel6.TabIndex = 2;
-            // 
-            // panel7
-            // 
-            panel7.BackColor = Color.FromArgb(93, 173, 226);
-            panel7.Dock = DockStyle.Top;
-            panel7.Location = new Point(1, 0);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(208, 1);
-            panel7.TabIndex = 1;
-            // 
-            // panel8
-            // 
-            panel8.BackColor = Color.FromArgb(93, 173, 226);
-            panel8.Dock = DockStyle.Left;
-            panel8.Location = new Point(0, 0);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(1, 25);
-            panel8.TabIndex = 0;
-            // 
-            // txtLastname
-            // 
-            txtLastname.BorderStyle = BorderStyle.FixedSingle;
-            txtLastname.Dock = DockStyle.Fill;
-            txtLastname.Font = new Font("Segoe UI", 9.75F);
-            txtLastname.Location = new Point(0, 0);
-            txtLastname.Name = "txtLastname";
-            txtLastname.Size = new Size(209, 25);
-            txtLastname.TabIndex = 1;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Tahoma", 9.75F);
-            label2.ForeColor = Color.DimGray;
-            label2.Location = new Point(276, 90);
-            label2.Name = "label2";
-            label2.Size = new Size(66, 16);
-            label2.TabIndex = 76;
-            label2.Text = "Last name";
-            // 
-            // borderFirst
-            // 
-            borderFirst.Controls.Add(panel10);
-            borderFirst.Controls.Add(panel11);
-            borderFirst.Controls.Add(panel12);
-            borderFirst.Controls.Add(panel13);
-            borderFirst.Controls.Add(txtFirstname);
-            borderFirst.Location = new Point(27, 114);
-            borderFirst.Name = "borderFirst";
-            borderFirst.Size = new Size(209, 25);
-            borderFirst.TabIndex = 75;
-            // 
-            // panel10
-            // 
-            panel10.BackColor = Color.FromArgb(93, 173, 226);
-            panel10.Dock = DockStyle.Right;
-            panel10.Location = new Point(208, 1);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(1, 23);
-            panel10.TabIndex = 3;
-            // 
-            // panel11
-            // 
-            panel11.BackColor = Color.FromArgb(93, 173, 226);
-            panel11.Dock = DockStyle.Bottom;
-            panel11.Location = new Point(1, 24);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(208, 1);
-            panel11.TabIndex = 2;
-            // 
-            // panel12
-            // 
-            panel12.BackColor = Color.FromArgb(93, 173, 226);
-            panel12.Dock = DockStyle.Top;
-            panel12.Location = new Point(1, 0);
-            panel12.Name = "panel12";
-            panel12.Size = new Size(208, 1);
-            panel12.TabIndex = 1;
-            // 
-            // panel13
-            // 
-            panel13.BackColor = Color.FromArgb(93, 173, 226);
-            panel13.Dock = DockStyle.Left;
-            panel13.Location = new Point(0, 0);
-            panel13.Name = "panel13";
-            panel13.Size = new Size(1, 25);
-            panel13.TabIndex = 0;
-            // 
-            // txtFirstname
-            // 
-            txtFirstname.BorderStyle = BorderStyle.FixedSingle;
-            txtFirstname.Dock = DockStyle.Fill;
-            txtFirstname.Font = new Font("Segoe UI", 9.75F);
-            txtFirstname.Location = new Point(0, 0);
-            txtFirstname.Name = "txtFirstname";
-            txtFirstname.Size = new Size(209, 25);
-            txtFirstname.TabIndex = 1;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 9.75F);
-            label1.ForeColor = Color.DimGray;
-            label1.Location = new Point(27, 90);
-            label1.Name = "label1";
-            label1.Size = new Size(68, 16);
-            label1.TabIndex = 74;
-            label1.Text = "First name";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Tahoma", 9.75F);
-            label10.ForeColor = Color.DimGray;
-            label10.Location = new Point(27, 45);
-            label10.Name = "label10";
-            label10.Size = new Size(351, 16);
-            label10.TabIndex = 57;
-            label10.Text = "Update your account’s profile information and email address";
-            label10.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(27, 22);
-            label5.Name = "label5";
-            label5.Size = new Size(113, 16);
-            label5.TabIndex = 56;
-            label5.Text = "Profile Information";
+            txtFirstNames.AnimateReadOnly = false;
+            txtFirstNames.BackgroundImageLayout = ImageLayout.None;
+            txtFirstNames.CharacterCasing = CharacterCasing.Normal;
+            txtFirstNames.Depth = 0;
+            txtFirstNames.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtFirstNames.HideSelection = true;
+            txtFirstNames.LeadingIcon = null;
+            txtFirstNames.Location = new Point(27, 111);
+            txtFirstNames.MaxLength = 32767;
+            txtFirstNames.MouseState = MaterialSkin.MouseState.OUT;
+            txtFirstNames.Name = "txtFirstNames";
+            txtFirstNames.PasswordChar = '\0';
+            txtFirstNames.PrefixSuffixText = null;
+            txtFirstNames.ReadOnly = false;
+            txtFirstNames.RightToLeft = RightToLeft.No;
+            txtFirstNames.SelectedText = "";
+            txtFirstNames.SelectionLength = 0;
+            txtFirstNames.SelectionStart = 0;
+            txtFirstNames.ShortcutsEnabled = true;
+            txtFirstNames.Size = new Size(292, 36);
+            txtFirstNames.TabIndex = 78;
+            txtFirstNames.TabStop = false;
+            txtFirstNames.TextAlign = HorizontalAlignment.Left;
+            txtFirstNames.TrailingIcon = null;
+            txtFirstNames.UseSystemPasswordChar = false;
+            txtFirstNames.UseTallSize = false;
             // 
             // errorProvider1
             // 
@@ -765,39 +512,55 @@
             errorProvider3.ContainerControl = this;
             errorProvider3.Icon = (Icon)resources.GetObject("errorProvider3.Icon");
             // 
+            // panel1
+            // 
+            panel1.Location = new Point(949, 829);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(108, 122);
+            panel1.TabIndex = 79;
+            // 
+            // materialLabel11
+            // 
+            materialLabel11.AutoSize = true;
+            materialLabel11.Depth = 0;
+            materialLabel11.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel11.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2;
+            materialLabel11.Location = new Point(27, 54);
+            materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel11.Name = "materialLabel11";
+            materialLabel11.Size = new Size(548, 17);
+            materialLabel11.TabIndex = 87;
+            materialLabel11.Text = "Once your account is deleted all of its resources and data will be permanently deleted.";
+            // 
+            // materialLabel12
+            // 
+            materialLabel12.AutoSize = true;
+            materialLabel12.Depth = 0;
+            materialLabel12.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel12.Location = new Point(27, 25);
+            materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel12.Name = "materialLabel12";
+            materialLabel12.Size = new Size(107, 19);
+            materialLabel12.TabIndex = 86;
+            materialLabel12.Text = "Delete Account";
+            // 
             // adminProfileSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1101, 660);
             Controls.Add(panel2);
-            Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "adminProfileSettings";
             Text = "adminProfileSettings";
             Load += adminProfileSettings_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             deleteAccountPanel.ResumeLayout(false);
             deleteAccountPanel.PerformLayout();
             updatePasswordPanel.ResumeLayout(false);
             updatePasswordPanel.PerformLayout();
-            borderNew.ResumeLayout(false);
-            borderNew.PerformLayout();
-            borderConfirm.ResumeLayout(false);
-            borderConfirm.PerformLayout();
-            borderCurrent.ResumeLayout(false);
-            borderCurrent.PerformLayout();
             profileInfoPanel.ResumeLayout(false);
             profileInfoPanel.PerformLayout();
-            borderEmail.ResumeLayout(false);
-            borderEmail.PerformLayout();
-            borderLast.ResumeLayout(false);
-            borderLast.PerformLayout();
-            borderFirst.ResumeLayout(false);
-            borderFirst.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider2).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider3).EndInit();
@@ -805,69 +568,47 @@
         }
 
         #endregion
-
-        private Button btnProfileSave;
-        private Button btnDelete;
-        private Panel panel1;
-        private Label label40;
-        private PictureBox pictureBox1;
-        private FlowLayoutPanel flowLayoutPanel1;
         private Panel panel2;
         private Panel profileInfoPanel;
-        private Label label10;
-        private Label label5;
         private Panel borderFirst;
         private Panel panel10;
         private Panel panel11;
         private Panel panel12;
         private Panel panel13;
         private TextBox txtFirstname;
-        private Label label1;
-        private Panel borderEmail;
-        private Panel panel14;
-        private Panel panel15;
-        private Panel panel16;
-        private Panel panel17;
-        private TextBox txtEmail;
-        private Label label3;
         private Panel borderLast;
         private Panel panel5;
         private Panel panel6;
         private Panel panel7;
         private Panel panel8;
         private TextBox txtLastname;
-        private Label label2;
         private Panel updatePasswordPanel;
-        private Panel borderNew;
-        private Panel panel9;
-        private Panel panel18;
-        private Panel panel19;
-        private Panel panel20;
-        private TextBox txtNew;
-        private Button btnSavePass;
-        private Label label4;
-        private Panel borderConfirm;
-        private Panel panel22;
-        private Panel panel23;
-        private Panel panel24;
-        private Panel panel25;
-        private TextBox txtConfirm;
-        private Label label6;
-        private Panel borderCurrent;
-        private Panel panel27;
-        private Panel panel28;
-        private Panel panel29;
-        private Panel panel30;
-        private TextBox txtCurrent;
-        private Label label7;
-        private Label label8;
-        private Label label9;
         private Panel panel31;
         private Panel deleteAccountPanel;
-        private Label label14;
-        private Label label15;
         private ErrorProvider errorProvider1;
         private ErrorProvider errorProvider2;
         private ErrorProvider errorProvider3;
+        private MaterialSkin.Controls.MaterialTextBox2 txtFirstNames;
+        private MaterialSkin.Controls.MaterialTextBox2 txtLastNames;
+        private MaterialSkin.Controls.MaterialTextBox2 txtEmail;
+        private MaterialSkin.Controls.MaterialButton btnProfileSaves;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
+        private MaterialSkin.Controls.MaterialLabel materialLabel7;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private MaterialSkin.Controls.MaterialLabel materialLabel4;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialTextBox2 txtCurrent;
+        private MaterialSkin.Controls.MaterialTextBox2 txtConfirm;
+        private MaterialSkin.Controls.MaterialTextBox2 txtNew;
+        private MaterialSkin.Controls.MaterialLabel materialLabel10;
+        private MaterialSkin.Controls.MaterialLabel materialLabel9;
+        private MaterialSkin.Controls.MaterialLabel materialLabel8;
+        private MaterialSkin.Controls.MaterialButton btnSavePassword;
+        private MaterialSkin.Controls.MaterialButton btnDeleteAcc;
+        private Panel panel1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel11;
+        private MaterialSkin.Controls.MaterialLabel materialLabel12;
     }
 }
