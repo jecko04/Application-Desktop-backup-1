@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle25 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle26 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle27 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle28 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle29 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle30 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle31 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle32 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle33 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle34 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle35 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle36 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(handleAppointment));
             tabControl1 = new TabControl();
             tabPage2 = new TabPage();
@@ -50,13 +51,18 @@
             viewCancelledAppointment = new DataGridView();
             tabPage1 = new TabPage();
             viewCompletedAppointment = new DataGridView();
-            btnDeketeRecord = new MaterialSkin.Controls.MaterialButton();
+            btnCancel = new MaterialSkin.Controls.MaterialButton();
             btnRefresher = new MaterialSkin.Controls.MaterialButton();
-            btnExportRecord = new MaterialSkin.Controls.MaterialButton();
-            btnCreateRecord = new MaterialSkin.Controls.MaterialButton();
+            btnPrintReceipt = new MaterialSkin.Controls.MaterialButton();
+            btnApprove = new MaterialSkin.Controls.MaterialButton();
             txtSearchBoxes = new MaterialSkin.Controls.MaterialTextBox();
             btnSearcher = new MaterialSkin.Controls.MaterialButton();
-            materialButton1 = new MaterialSkin.Controls.MaterialButton();
+            btnComplete = new MaterialSkin.Controls.MaterialButton();
+            btnReschedule = new MaterialSkin.Controls.MaterialButton();
+            QRCode = new MaterialSkin.Controls.MaterialMaskedTextBox();
+            btnQRCode = new MaterialSkin.Controls.MaterialButton();
+            qrCodePanel = new FlowLayoutPanel();
+            timer1 = new System.Windows.Forms.Timer(components);
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)viewPendingAppointment).BeginInit();
@@ -66,6 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)viewCancelledAppointment).BeginInit();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)viewCompletedAppointment).BeginInit();
+            qrCodePanel.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -82,6 +89,8 @@
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(837, 593);
             tabControl1.TabIndex = 95;
+            tabControl1.TabStop = false;
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
             // tabPage2
             // 
@@ -100,38 +109,38 @@
             viewPendingAppointment.AllowUserToDeleteRows = false;
             viewPendingAppointment.AllowUserToResizeColumns = false;
             viewPendingAppointment.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.LightYellow;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.LightYellow;
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            viewPendingAppointment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle25.BackColor = Color.LightYellow;
+            dataGridViewCellStyle25.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle25.ForeColor = Color.Black;
+            dataGridViewCellStyle25.SelectionBackColor = Color.LightYellow;
+            dataGridViewCellStyle25.SelectionForeColor = Color.Black;
+            viewPendingAppointment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
             viewPendingAppointment.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             viewPendingAppointment.BackgroundColor = Color.White;
             viewPendingAppointment.BorderStyle = BorderStyle.None;
             viewPendingAppointment.CellBorderStyle = DataGridViewCellBorderStyle.None;
             viewPendingAppointment.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(250, 220, 18);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.NullValue = "N/A";
-            dataGridViewCellStyle2.Padding = new Padding(3);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(250, 220, 18);
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            viewPendingAppointment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle26.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle26.BackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle26.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle26.ForeColor = Color.Black;
+            dataGridViewCellStyle26.NullValue = "N/A";
+            dataGridViewCellStyle26.Padding = new Padding(3);
+            dataGridViewCellStyle26.SelectionBackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle26.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle26.WrapMode = DataGridViewTriState.False;
+            viewPendingAppointment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
             viewPendingAppointment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.NullValue = "N/A";
-            dataGridViewCellStyle3.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle3.SelectionBackColor = Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            viewPendingAppointment.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle27.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = Color.White;
+            dataGridViewCellStyle27.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle27.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle27.NullValue = "N/A";
+            dataGridViewCellStyle27.Padding = new Padding(10, 0, 10, 0);
+            dataGridViewCellStyle27.SelectionBackColor = Color.White;
+            dataGridViewCellStyle27.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle27.WrapMode = DataGridViewTriState.True;
+            viewPendingAppointment.DefaultCellStyle = dataGridViewCellStyle27;
             viewPendingAppointment.Dock = DockStyle.Fill;
             viewPendingAppointment.EnableHeadersVisualStyles = false;
             viewPendingAppointment.Location = new Point(3, 3);
@@ -141,6 +150,7 @@
             viewPendingAppointment.RowTemplate.Height = 25;
             viewPendingAppointment.Size = new Size(823, 549);
             viewPendingAppointment.TabIndex = 22;
+            viewPendingAppointment.CellContentClick += viewPendingAppointment_CellContentClick;
             // 
             // tabPage3
             // 
@@ -160,38 +170,39 @@
             viewApprovedAppointment.AllowUserToDeleteRows = false;
             viewApprovedAppointment.AllowUserToResizeColumns = false;
             viewApprovedAppointment.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = Color.LightYellow;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = Color.LightYellow;
-            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
-            viewApprovedAppointment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle28.BackColor = Color.LightYellow;
+            dataGridViewCellStyle28.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle28.ForeColor = Color.Black;
+            dataGridViewCellStyle28.SelectionBackColor = Color.LightYellow;
+            dataGridViewCellStyle28.SelectionForeColor = Color.Black;
+            viewApprovedAppointment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle28;
             viewApprovedAppointment.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             viewApprovedAppointment.BackgroundColor = Color.White;
             viewApprovedAppointment.BorderStyle = BorderStyle.None;
             viewApprovedAppointment.CellBorderStyle = DataGridViewCellBorderStyle.None;
             viewApprovedAppointment.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(250, 220, 18);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCellStyle5.NullValue = "N/A";
-            dataGridViewCellStyle5.Padding = new Padding(3);
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(250, 220, 18);
-            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            viewApprovedAppointment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle29.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle29.BackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle29.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle29.ForeColor = Color.Black;
+            dataGridViewCellStyle29.NullValue = "N/A";
+            dataGridViewCellStyle29.Padding = new Padding(3);
+            dataGridViewCellStyle29.SelectionBackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle29.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle29.WrapMode = DataGridViewTriState.False;
+            viewApprovedAppointment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
             viewApprovedAppointment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.NullValue = "N/A";
-            dataGridViewCellStyle6.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle6.SelectionBackColor = Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            viewApprovedAppointment.DefaultCellStyle = dataGridViewCellStyle6;
+            viewApprovedAppointment.Cursor = Cursors.Default;
+            dataGridViewCellStyle30.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = SystemColors.Window;
+            dataGridViewCellStyle30.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle30.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle30.NullValue = "N/A";
+            dataGridViewCellStyle30.Padding = new Padding(10, 0, 10, 0);
+            dataGridViewCellStyle30.SelectionBackColor = Color.White;
+            dataGridViewCellStyle30.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle30.WrapMode = DataGridViewTriState.True;
+            viewApprovedAppointment.DefaultCellStyle = dataGridViewCellStyle30;
             viewApprovedAppointment.Dock = DockStyle.Fill;
             viewApprovedAppointment.EnableHeadersVisualStyles = false;
             viewApprovedAppointment.Location = new Point(3, 3);
@@ -201,6 +212,7 @@
             viewApprovedAppointment.RowTemplate.Height = 25;
             viewApprovedAppointment.Size = new Size(823, 549);
             viewApprovedAppointment.TabIndex = 23;
+            viewApprovedAppointment.CellContentClick += viewApprovedAppointment_CellContentClick;
             // 
             // tabPage4
             // 
@@ -218,38 +230,38 @@
             viewCancelledAppointment.AllowUserToDeleteRows = false;
             viewCancelledAppointment.AllowUserToResizeColumns = false;
             viewCancelledAppointment.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = Color.LightYellow;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = Color.LightYellow;
-            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
-            viewCancelledAppointment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle31.BackColor = Color.LightYellow;
+            dataGridViewCellStyle31.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle31.ForeColor = Color.Black;
+            dataGridViewCellStyle31.SelectionBackColor = Color.LightYellow;
+            dataGridViewCellStyle31.SelectionForeColor = Color.Black;
+            viewCancelledAppointment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
             viewCancelledAppointment.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             viewCancelledAppointment.BackgroundColor = Color.White;
             viewCancelledAppointment.BorderStyle = BorderStyle.None;
             viewCancelledAppointment.CellBorderStyle = DataGridViewCellBorderStyle.None;
             viewCancelledAppointment.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(250, 220, 18);
-            dataGridViewCellStyle8.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = Color.Black;
-            dataGridViewCellStyle8.NullValue = "N/A";
-            dataGridViewCellStyle8.Padding = new Padding(3);
-            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(250, 220, 18);
-            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            viewCancelledAppointment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle32.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle32.BackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle32.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle32.ForeColor = Color.Black;
+            dataGridViewCellStyle32.NullValue = "N/A";
+            dataGridViewCellStyle32.Padding = new Padding(3);
+            dataGridViewCellStyle32.SelectionBackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle32.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle32.WrapMode = DataGridViewTriState.False;
+            viewCancelledAppointment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
             viewCancelledAppointment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = SystemColors.Window;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle9.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle9.NullValue = "N/A";
-            dataGridViewCellStyle9.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle9.SelectionBackColor = Color.White;
-            dataGridViewCellStyle9.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            viewCancelledAppointment.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle33.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle33.BackColor = SystemColors.Window;
+            dataGridViewCellStyle33.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle33.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle33.NullValue = "N/A";
+            dataGridViewCellStyle33.Padding = new Padding(10, 0, 10, 0);
+            dataGridViewCellStyle33.SelectionBackColor = Color.White;
+            dataGridViewCellStyle33.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle33.WrapMode = DataGridViewTriState.True;
+            viewCancelledAppointment.DefaultCellStyle = dataGridViewCellStyle33;
             viewCancelledAppointment.Dock = DockStyle.Fill;
             viewCancelledAppointment.EnableHeadersVisualStyles = false;
             viewCancelledAppointment.Location = new Point(0, 0);
@@ -277,38 +289,38 @@
             viewCompletedAppointment.AllowUserToDeleteRows = false;
             viewCompletedAppointment.AllowUserToResizeColumns = false;
             viewCompletedAppointment.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = Color.LightYellow;
-            dataGridViewCellStyle10.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle10.ForeColor = Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = Color.LightYellow;
-            dataGridViewCellStyle10.SelectionForeColor = Color.Black;
-            viewCompletedAppointment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle34.BackColor = Color.LightYellow;
+            dataGridViewCellStyle34.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle34.ForeColor = Color.Black;
+            dataGridViewCellStyle34.SelectionBackColor = Color.LightYellow;
+            dataGridViewCellStyle34.SelectionForeColor = Color.Black;
+            viewCompletedAppointment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle34;
             viewCompletedAppointment.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             viewCompletedAppointment.BackgroundColor = Color.White;
             viewCompletedAppointment.BorderStyle = BorderStyle.None;
             viewCompletedAppointment.CellBorderStyle = DataGridViewCellBorderStyle.None;
             viewCompletedAppointment.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = Color.FromArgb(250, 220, 18);
-            dataGridViewCellStyle11.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle11.ForeColor = Color.Black;
-            dataGridViewCellStyle11.NullValue = "N/A";
-            dataGridViewCellStyle11.Padding = new Padding(3);
-            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(250, 220, 18);
-            dataGridViewCellStyle11.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
-            viewCompletedAppointment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle35.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle35.BackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle35.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle35.ForeColor = Color.Black;
+            dataGridViewCellStyle35.NullValue = "N/A";
+            dataGridViewCellStyle35.Padding = new Padding(3);
+            dataGridViewCellStyle35.SelectionBackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle35.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle35.WrapMode = DataGridViewTriState.False;
+            viewCompletedAppointment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle35;
             viewCompletedAppointment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = SystemColors.Window;
-            dataGridViewCellStyle12.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle12.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle12.NullValue = "N/A";
-            dataGridViewCellStyle12.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle12.SelectionBackColor = Color.White;
-            dataGridViewCellStyle12.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
-            viewCompletedAppointment.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle36.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle36.BackColor = SystemColors.Window;
+            dataGridViewCellStyle36.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle36.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle36.NullValue = "N/A";
+            dataGridViewCellStyle36.Padding = new Padding(10, 0, 10, 0);
+            dataGridViewCellStyle36.SelectionBackColor = Color.White;
+            dataGridViewCellStyle36.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle36.WrapMode = DataGridViewTriState.True;
+            viewCompletedAppointment.DefaultCellStyle = dataGridViewCellStyle36;
             viewCompletedAppointment.Dock = DockStyle.Fill;
             viewCompletedAppointment.EnableHeadersVisualStyles = false;
             viewCompletedAppointment.Location = new Point(3, 3);
@@ -319,26 +331,27 @@
             viewCompletedAppointment.Size = new Size(823, 549);
             viewCompletedAppointment.TabIndex = 24;
             // 
-            // btnDeketeRecord
+            // btnCancel
             // 
-            btnDeketeRecord.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnDeketeRecord.AutoSize = false;
-            btnDeketeRecord.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnDeketeRecord.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnDeketeRecord.Depth = 0;
-            btnDeketeRecord.HighEmphasis = true;
-            btnDeketeRecord.Icon = null;
-            btnDeketeRecord.Location = new Point(964, 111);
-            btnDeketeRecord.Margin = new Padding(4, 6, 4, 6);
-            btnDeketeRecord.MouseState = MaterialSkin.MouseState.HOVER;
-            btnDeketeRecord.Name = "btnDeketeRecord";
-            btnDeketeRecord.NoAccentTextColor = Color.Empty;
-            btnDeketeRecord.Size = new Size(111, 36);
-            btnDeketeRecord.TabIndex = 107;
-            btnDeketeRecord.Text = "Cancel";
-            btnDeketeRecord.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnDeketeRecord.UseAccentColor = true;
-            btnDeketeRecord.UseVisualStyleBackColor = true;
+            btnCancel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCancel.AutoSize = false;
+            btnCancel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnCancel.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnCancel.Depth = 0;
+            btnCancel.HighEmphasis = true;
+            btnCancel.Icon = null;
+            btnCancel.Location = new Point(964, 111);
+            btnCancel.Margin = new Padding(4, 6, 4, 6);
+            btnCancel.MouseState = MaterialSkin.MouseState.HOVER;
+            btnCancel.Name = "btnCancel";
+            btnCancel.NoAccentTextColor = Color.Empty;
+            btnCancel.Size = new Size(107, 36);
+            btnCancel.TabIndex = 107;
+            btnCancel.Text = "Cancel";
+            btnCancel.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnCancel.UseAccentColor = true;
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnRefresher
             // 
@@ -349,59 +362,62 @@
             btnRefresher.Depth = 0;
             btnRefresher.HighEmphasis = true;
             btnRefresher.Icon = null;
-            btnRefresher.Location = new Point(964, 150);
+            btnRefresher.Location = new Point(850, 264);
             btnRefresher.Margin = new Padding(4, 6, 4, 6);
             btnRefresher.MouseState = MaterialSkin.MouseState.HOVER;
             btnRefresher.Name = "btnRefresher";
             btnRefresher.NoAccentTextColor = Color.Empty;
-            btnRefresher.Size = new Size(111, 36);
+            btnRefresher.Size = new Size(221, 36);
             btnRefresher.TabIndex = 106;
-            btnRefresher.Text = "Refesh";
+            btnRefresher.TabStop = false;
+            btnRefresher.Text = "Reload";
             btnRefresher.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnRefresher.UseAccentColor = false;
             btnRefresher.UseVisualStyleBackColor = true;
+            btnRefresher.Click += btnRefresher_Click;
             // 
-            // btnExportRecord
+            // btnPrintReceipt
             // 
-            btnExportRecord.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnExportRecord.AutoSize = false;
-            btnExportRecord.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnExportRecord.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnExportRecord.Depth = 0;
-            btnExportRecord.HighEmphasis = true;
-            btnExportRecord.Icon = null;
-            btnExportRecord.Location = new Point(846, 554);
-            btnExportRecord.Margin = new Padding(4, 6, 4, 6);
-            btnExportRecord.MouseState = MaterialSkin.MouseState.HOVER;
-            btnExportRecord.Name = "btnExportRecord";
-            btnExportRecord.NoAccentTextColor = Color.Empty;
-            btnExportRecord.Size = new Size(228, 36);
-            btnExportRecord.TabIndex = 105;
-            btnExportRecord.Text = "Print Receipt";
-            btnExportRecord.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnExportRecord.UseAccentColor = false;
-            btnExportRecord.UseVisualStyleBackColor = true;
+            btnPrintReceipt.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnPrintReceipt.AutoSize = false;
+            btnPrintReceipt.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnPrintReceipt.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnPrintReceipt.Depth = 0;
+            btnPrintReceipt.HighEmphasis = true;
+            btnPrintReceipt.Icon = null;
+            btnPrintReceipt.Location = new Point(846, 554);
+            btnPrintReceipt.Margin = new Padding(4, 6, 4, 6);
+            btnPrintReceipt.MouseState = MaterialSkin.MouseState.HOVER;
+            btnPrintReceipt.Name = "btnPrintReceipt";
+            btnPrintReceipt.NoAccentTextColor = Color.Empty;
+            btnPrintReceipt.Size = new Size(228, 36);
+            btnPrintReceipt.TabIndex = 105;
+            btnPrintReceipt.Text = "Print Receipt";
+            btnPrintReceipt.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnPrintReceipt.UseAccentColor = false;
+            btnPrintReceipt.UseVisualStyleBackColor = true;
             // 
-            // btnCreateRecord
+            // btnApprove
             // 
-            btnCreateRecord.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnCreateRecord.AutoSize = false;
-            btnCreateRecord.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnCreateRecord.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnCreateRecord.Depth = 0;
-            btnCreateRecord.HighEmphasis = true;
-            btnCreateRecord.Icon = null;
-            btnCreateRecord.Location = new Point(847, 111);
-            btnCreateRecord.Margin = new Padding(4, 6, 4, 6);
-            btnCreateRecord.MouseState = MaterialSkin.MouseState.HOVER;
-            btnCreateRecord.Name = "btnCreateRecord";
-            btnCreateRecord.NoAccentTextColor = Color.Empty;
-            btnCreateRecord.Size = new Size(115, 36);
-            btnCreateRecord.TabIndex = 104;
-            btnCreateRecord.Text = "Approve";
-            btnCreateRecord.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnCreateRecord.UseAccentColor = false;
-            btnCreateRecord.UseVisualStyleBackColor = true;
+            btnApprove.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnApprove.AutoSize = false;
+            btnApprove.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnApprove.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnApprove.Depth = 0;
+            btnApprove.HighEmphasis = true;
+            btnApprove.Icon = null;
+            btnApprove.Location = new Point(850, 111);
+            btnApprove.Margin = new Padding(4, 6, 4, 6);
+            btnApprove.MouseState = MaterialSkin.MouseState.HOVER;
+            btnApprove.Name = "btnApprove";
+            btnApprove.NoAccentTextColor = Color.Empty;
+            btnApprove.Size = new Size(112, 36);
+            btnApprove.TabIndex = 104;
+            btnApprove.Text = "Approve";
+            btnApprove.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnApprove.UseAccentColor = false;
+            btnApprove.UseVisualStyleBackColor = true;
+            btnApprove.Click += btnApprove_Click;
             // 
             // txtSearchBoxes
             // 
@@ -410,7 +426,7 @@
             txtSearchBoxes.BorderStyle = BorderStyle.None;
             txtSearchBoxes.Depth = 0;
             txtSearchBoxes.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            txtSearchBoxes.Hint = "Search Appointment";
+            txtSearchBoxes.Hint = "Search by name";
             txtSearchBoxes.LeadingIcon = null;
             txtSearchBoxes.Location = new Point(846, 35);
             txtSearchBoxes.MaxLength = 50;
@@ -419,6 +435,7 @@
             txtSearchBoxes.Name = "txtSearchBoxes";
             txtSearchBoxes.Size = new Size(183, 36);
             txtSearchBoxes.TabIndex = 103;
+            txtSearchBoxes.TabStop = false;
             txtSearchBoxes.Text = "";
             txtSearchBoxes.TrailingIcon = null;
             txtSearchBoxes.UseTallSize = false;
@@ -439,41 +456,150 @@
             btnSearcher.NoAccentTextColor = Color.Empty;
             btnSearcher.Size = new Size(39, 36);
             btnSearcher.TabIndex = 102;
+            btnSearcher.TabStop = false;
             btnSearcher.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnSearcher.UseAccentColor = false;
             btnSearcher.UseVisualStyleBackColor = true;
             // 
-            // materialButton1
+            // btnComplete
             // 
-            materialButton1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            materialButton1.AutoSize = false;
-            materialButton1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButton1.Depth = 0;
-            materialButton1.HighEmphasis = true;
-            materialButton1.Icon = null;
-            materialButton1.Location = new Point(847, 150);
-            materialButton1.Margin = new Padding(4, 6, 4, 6);
-            materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButton1.Name = "materialButton1";
-            materialButton1.NoAccentTextColor = Color.Empty;
-            materialButton1.Size = new Size(115, 36);
-            materialButton1.TabIndex = 108;
-            materialButton1.Text = "Complete";
-            materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButton1.UseAccentColor = false;
-            materialButton1.UseVisualStyleBackColor = true;
+            btnComplete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnComplete.AutoSize = false;
+            btnComplete.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnComplete.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnComplete.Depth = 0;
+            btnComplete.HighEmphasis = true;
+            btnComplete.Icon = null;
+            btnComplete.Location = new Point(850, 149);
+            btnComplete.Margin = new Padding(4, 6, 4, 6);
+            btnComplete.MouseState = MaterialSkin.MouseState.HOVER;
+            btnComplete.Name = "btnComplete";
+            btnComplete.NoAccentTextColor = Color.Empty;
+            btnComplete.Size = new Size(221, 36);
+            btnComplete.TabIndex = 108;
+            btnComplete.Text = "Complete";
+            btnComplete.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnComplete.UseAccentColor = false;
+            btnComplete.UseVisualStyleBackColor = true;
+            // 
+            // btnReschedule
+            // 
+            btnReschedule.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnReschedule.AutoSize = false;
+            btnReschedule.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnReschedule.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnReschedule.Depth = 0;
+            btnReschedule.HighEmphasis = true;
+            btnReschedule.Icon = null;
+            btnReschedule.Location = new Point(850, 219);
+            btnReschedule.Margin = new Padding(4, 6, 4, 6);
+            btnReschedule.MouseState = MaterialSkin.MouseState.HOVER;
+            btnReschedule.Name = "btnReschedule";
+            btnReschedule.NoAccentTextColor = Color.Empty;
+            btnReschedule.Size = new Size(221, 36);
+            btnReschedule.TabIndex = 109;
+            btnReschedule.TabStop = false;
+            btnReschedule.Text = "Reschedule";
+            btnReschedule.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
+            btnReschedule.UseAccentColor = false;
+            btnReschedule.UseVisualStyleBackColor = true;
+            // 
+            // QRCode
+            // 
+            QRCode.AllowPromptAsInput = true;
+            QRCode.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            QRCode.AnimateReadOnly = false;
+            QRCode.AsciiOnly = false;
+            QRCode.BackgroundImageLayout = ImageLayout.None;
+            QRCode.BeepOnError = false;
+            QRCode.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            QRCode.Depth = 0;
+            QRCode.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            QRCode.HidePromptOnLeave = false;
+            QRCode.HideSelection = true;
+            QRCode.Hint = " Click Here! Then Scan QR";
+            QRCode.InsertKeyMode = InsertKeyMode.Default;
+            QRCode.LeadingIcon = null;
+            QRCode.Location = new Point(3, 54);
+            QRCode.Mask = "";
+            QRCode.MaxLength = 32767;
+            QRCode.MouseState = MaterialSkin.MouseState.OUT;
+            QRCode.Name = "QRCode";
+            QRCode.PasswordChar = '\0';
+            QRCode.PrefixSuffixText = null;
+            QRCode.PromptChar = '_';
+            QRCode.ReadOnly = false;
+            QRCode.RejectInputOnFirstFailure = false;
+            QRCode.ResetOnPrompt = true;
+            QRCode.ResetOnSpace = true;
+            QRCode.RightToLeft = RightToLeft.No;
+            QRCode.SelectedText = "";
+            QRCode.SelectionLength = 0;
+            QRCode.SelectionStart = 0;
+            QRCode.ShortcutsEnabled = true;
+            QRCode.Size = new Size(222, 36);
+            QRCode.SkipLiterals = true;
+            QRCode.TabIndex = 110;
+            QRCode.TabStop = false;
+            QRCode.TextAlign = HorizontalAlignment.Left;
+            QRCode.TextMaskFormat = MaskFormat.IncludeLiterals;
+            QRCode.TrailingIcon = null;
+            QRCode.UseSystemPasswordChar = false;
+            QRCode.UseTallSize = false;
+            QRCode.ValidatingType = null;
+            QRCode.KeyDown += QRCode_KeyDown;
+            // 
+            // btnQRCode
+            // 
+            btnQRCode.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnQRCode.AutoSize = false;
+            btnQRCode.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnQRCode.CharacterCasing = MaterialSkin.Controls.MaterialButton.CharacterCasingEnum.Normal;
+            btnQRCode.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnQRCode.Depth = 0;
+            btnQRCode.HighEmphasis = true;
+            btnQRCode.Icon = null;
+            btnQRCode.Location = new Point(4, 6);
+            btnQRCode.Margin = new Padding(4, 6, 4, 6);
+            btnQRCode.MouseState = MaterialSkin.MouseState.HOVER;
+            btnQRCode.Name = "btnQRCode";
+            btnQRCode.NoAccentTextColor = Color.Empty;
+            btnQRCode.Size = new Size(221, 39);
+            btnQRCode.TabIndex = 112;
+            btnQRCode.TabStop = false;
+            btnQRCode.Text = "QRCode";
+            btnQRCode.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
+            btnQRCode.UseAccentColor = false;
+            btnQRCode.UseVisualStyleBackColor = true;
+            btnQRCode.Click += btnQRCode_Click;
+            // 
+            // qrCodePanel
+            // 
+            qrCodePanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            qrCodePanel.Controls.Add(btnQRCode);
+            qrCodePanel.Controls.Add(QRCode);
+            qrCodePanel.Location = new Point(847, 309);
+            qrCodePanel.Name = "qrCodePanel";
+            qrCodePanel.Size = new Size(227, 50);
+            qrCodePanel.TabIndex = 113;
+            // 
+            // timer1
+            // 
+            timer1.Interval = 10;
+            timer1.Tick += timer1_Tick;
             // 
             // handleAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1085, 621);
-            Controls.Add(materialButton1);
-            Controls.Add(btnDeketeRecord);
+            Controls.Add(qrCodePanel);
+            Controls.Add(btnReschedule);
+            Controls.Add(btnComplete);
+            Controls.Add(btnCancel);
             Controls.Add(btnRefresher);
-            Controls.Add(btnExportRecord);
-            Controls.Add(btnCreateRecord);
+            Controls.Add(btnPrintReceipt);
+            Controls.Add(btnApprove);
             Controls.Add(txtSearchBoxes);
             Controls.Add(btnSearcher);
             Controls.Add(tabControl1);
@@ -490,6 +616,7 @@
             ((System.ComponentModel.ISupportInitialize)viewCancelledAppointment).EndInit();
             tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)viewCompletedAppointment).EndInit();
+            qrCodePanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -504,12 +631,17 @@
         private DataGridView viewCancelledAppointment;
         private TabPage tabPage1;
         private DataGridView viewCompletedAppointment;
-        private MaterialSkin.Controls.MaterialButton btnDeketeRecord;
+        private MaterialSkin.Controls.MaterialButton btnCancel;
         private MaterialSkin.Controls.MaterialButton btnRefresher;
-        private MaterialSkin.Controls.MaterialButton btnExportRecord;
-        private MaterialSkin.Controls.MaterialButton btnCreateRecord;
+        private MaterialSkin.Controls.MaterialButton btnPrintReceipt;
+        private MaterialSkin.Controls.MaterialButton btnApprove;
         private MaterialSkin.Controls.MaterialTextBox txtSearchBoxes;
         private MaterialSkin.Controls.MaterialButton btnSearcher;
-        private MaterialSkin.Controls.MaterialButton materialButton1;
+        private MaterialSkin.Controls.MaterialButton btnComplete;
+        private MaterialSkin.Controls.MaterialButton btnReschedule;
+        private MaterialSkin.Controls.MaterialMaskedTextBox QRCode;
+        private MaterialSkin.Controls.MaterialButton btnQRCode;
+        private FlowLayoutPanel qrCodePanel;
+        private System.Windows.Forms.Timer timer1;
     }
 }
