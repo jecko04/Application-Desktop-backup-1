@@ -993,39 +993,38 @@ namespace Application_Desktop.Admin_Views
         {
             if (tabControl1.SelectedTab == tabPage3)
             {
-                btnComplete.Visible = true;
+                btnComplete.Enabled = true;
             }
             else
             {
-                btnComplete.Visible = false;
+                btnComplete.Enabled = false;
             }
 
-            /* if (tabControl1.SelectedTab == tabPage1)
-             {
-                 btnReschedule.Visible = true;
-                 btnPrintReceipt.Visible = true;
-             }
-             else
-             {
-                 btnReschedule.Visible = false;
-                 btnPrintReceipt.Visible = false;
-             }
+            if (tabControl1.SelectedTab == tabPage1)
+            {
+                btnInqueue.Visible = true;
+            }
+            else
+            {
+                btnInqueue.Visible = false;
+            }
 
-             if (tabControl1.SelectedTab == tabPage2)
-             {
-                 btnApprove.Visible = true;
-                 btnCancel.Visible = true;
-             }
-             else
-             {
-                 btnApprove.Visible = false;
-                 btnCancel.Visible = false;
-             }*/
+            /*if (tabControl1.SelectedTab == tabPage2)
+            {
+                btnApprove.Visible = true;
+                btnCancel.Visible = true;
+            }
+            else
+            {
+                btnApprove.Visible = false;
+                btnCancel.Visible = false;
+            }*/
         }
 
         private void LoadButton()
         {
-            btnComplete.Visible = false;
+            btnComplete.Enabled = false;
+            btnInqueue.Visible = false;
             /*btnPrintReceipt.Visible = false;
             btnReschedule.Visible = false;
             btnApprove.Visible = true;
@@ -1150,19 +1149,16 @@ namespace Application_Desktop.Admin_Views
         {
             if (viewCompletedAppointment.SelectedRows.Count > 0)
             {
-                // Retrieve selected row data for branchId and categoriesId
                 var selectedRow = viewCompletedAppointment.SelectedRows[0];
                 int branchId = Convert.ToInt32(selectedRow.Cells["branch_id"].Value);
                 int categoriesId = Convert.ToInt32(selectedRow.Cells["categories_id"].Value);
 
-                // Get the receipt details
                 var receiptDetails = await _handleAppointmentController.PrintReceiptDetails(branchId, categoriesId);
 
-                // Show or bring the receiptForm to the front
                 if (ReceiptFormInstance == null || ReceiptFormInstance.IsDisposed)
                 {
                     ReceiptFormInstance = new receiptForm();
-                    // Pass the receipt details to the receiptForm before showing it
+
                     ReceiptFormInstance.SetReceiptDetails(receiptDetails);
                     ReceiptFormInstance.Show();
                 }
@@ -1181,6 +1177,28 @@ namespace Application_Desktop.Admin_Views
             else
             {
                 MessageBox.Show("Please select an appointment to print the receipt.");
+            }
+        }
+
+        private printJobManagerForm PrintJobManagementInstance;
+        private void btnInqueue_Click(object sender, EventArgs e)
+        {
+            if (PrintJobManagementInstance == null || PrintJobManagementInstance.IsDisposed)
+            {
+                PrintJobManagementInstance = new printJobManagerForm();
+
+                PrintJobManagementInstance.Show();
+            }
+            else
+            {
+                if (PrintJobManagementInstance.Visible)
+                {
+                    PrintJobManagementInstance.BringToFront();
+                }
+                else
+                {
+                    PrintJobManagementInstance.Show();
+                }
             }
         }
     }

@@ -62,6 +62,7 @@
             btnQRCode = new MaterialSkin.Controls.MaterialButton();
             qrCodePanel = new FlowLayoutPanel();
             timer1 = new System.Windows.Forms.Timer(components);
+            btnInqueue = new MaterialSkin.Controls.MaterialButton();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)viewPendingAppointment).BeginInit();
@@ -470,7 +471,7 @@
             btnReschedule.Depth = 0;
             btnReschedule.HighEmphasis = true;
             btnReschedule.Icon = null;
-            btnReschedule.Location = new Point(850, 219);
+            btnReschedule.Location = new Point(850, 187);
             btnReschedule.Margin = new Padding(4, 6, 4, 6);
             btnReschedule.MouseState = MaterialSkin.MouseState.HOVER;
             btnReschedule.Name = "btnReschedule";
@@ -478,7 +479,7 @@
             btnReschedule.Size = new Size(221, 36);
             btnReschedule.TabIndex = 109;
             btnReschedule.TabStop = false;
-            btnReschedule.Text = "Reschedule";
+            btnReschedule.Text = "follow-up appointment.";
             btnReschedule.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
             btnReschedule.UseAccentColor = false;
             btnReschedule.UseVisualStyleBackColor = true;
@@ -567,11 +568,36 @@
             timer1.Interval = 10;
             timer1.Tick += timer1_Tick;
             // 
+            // btnInqueue
+            // 
+            btnInqueue.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnInqueue.AutoSize = false;
+            btnInqueue.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnInqueue.CharacterCasing = MaterialSkin.Controls.MaterialButton.CharacterCasingEnum.Normal;
+            btnInqueue.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnInqueue.Depth = 0;
+            btnInqueue.HighEmphasis = true;
+            btnInqueue.Icon = null;
+            btnInqueue.Location = new Point(850, 551);
+            btnInqueue.Margin = new Padding(4, 6, 4, 6);
+            btnInqueue.MouseState = MaterialSkin.MouseState.HOVER;
+            btnInqueue.Name = "btnInqueue";
+            btnInqueue.NoAccentTextColor = Color.Empty;
+            btnInqueue.Size = new Size(221, 36);
+            btnInqueue.TabIndex = 114;
+            btnInqueue.TabStop = false;
+            btnInqueue.Text = "Check Receipt Inqueue";
+            btnInqueue.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnInqueue.UseAccentColor = false;
+            btnInqueue.UseVisualStyleBackColor = true;
+            btnInqueue.Click += btnInqueue_Click;
+            // 
             // handleAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1085, 621);
+            Controls.Add(btnInqueue);
             Controls.Add(qrCodePanel);
             Controls.Add(btnReschedule);
             Controls.Add(btnComplete);
@@ -620,5 +646,6 @@
         private MaterialSkin.Controls.MaterialButton btnQRCode;
         private FlowLayoutPanel qrCodePanel;
         private System.Windows.Forms.Timer timer1;
+        private MaterialSkin.Controls.MaterialButton btnInqueue;
     }
 }

@@ -23,7 +23,7 @@ namespace Application_Desktop
 
             //Close the database
 
-            //Fix Dental Doctor Branch on Edit and Create It should Enable to use
+            //fix the dental and general search patient record
         }
     }
 }

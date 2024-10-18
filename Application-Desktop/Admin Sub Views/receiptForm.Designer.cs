@@ -57,7 +57,7 @@
             btnPrintReceipt.Depth = 0;
             btnPrintReceipt.HighEmphasis = true;
             btnPrintReceipt.Icon = null;
-            btnPrintReceipt.Location = new Point(127, 449);
+            btnPrintReceipt.Location = new Point(127, 446);
             btnPrintReceipt.Margin = new Padding(4, 6, 4, 6);
             btnPrintReceipt.MouseState = MaterialSkin.MouseState.HOVER;
             btnPrintReceipt.Name = "btnPrintReceipt";

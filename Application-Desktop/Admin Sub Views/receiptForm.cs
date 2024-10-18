@@ -35,7 +35,6 @@ namespace Application_Desktop.Admin_Sub_Views
 
         public void SetReceiptDetails(ReceiptDetails receiptDetails)
         {
-            // Assuming you have labels or text boxes in your form to display the details
             txtBranch.Text = receiptDetails.BranchName;
             txtFullname.Text = receiptDetails.UserName;
             txtServices.Text = receiptDetails.ServiceTitle;
@@ -76,7 +75,6 @@ namespace Application_Desktop.Admin_Sub_Views
         public static extern bool WritePrinter(IntPtr hPrinter, byte[] pBuf, int cdBuf, out int pWritten);
 
 
-
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
         public struct DOCINFO
         {
@@ -84,10 +82,7 @@ namespace Application_Desktop.Admin_Sub_Views
             public string pOutputFile;
             public string pDatatype;
         }
-
-
-
-        private void SendCommandToPrinter(string command)
+        private void SendCommandToPrinterAsync(string command)
         {
             IntPtr hPrinter;
             // Attempt to open the printer
@@ -96,7 +91,7 @@ namespace Application_Desktop.Admin_Sub_Views
             // Check if the printer was successfully opened
             if (!success || hPrinter == IntPtr.Zero)
             {
-                AlertBox(Color.LightCoral, Color.Red, "Error", "Printer is not available. Please check the connection.", Properties.Resources.error);
+                AlertBox(Color.LightCoral, Color.Red, "Error", "Printer is not available.", Properties.Resources.error);
                 return;
             }
 
@@ -139,13 +134,13 @@ namespace Application_Desktop.Admin_Sub_Views
             if (printSuccess && written > 0)
             {
                 AlertBox(Color.LightGreen, Color.SeaGreen, "Print Receipt", "Thank you for Coming!", Properties.Resources.success);
-
             }
             else
             {
-                AlertBox(Color.LightCoral, Color.Red, "Error", "Failed to print the receipt. Please check the printer.", Properties.Resources.error);
+                AlertBox(Color.LightCoral, Color.Red, "Error", "Failed to print the receipt.", Properties.Resources.error);
             }
         }
+
 
 
         private void btnPrintReceipt_Click(object sender, EventArgs e)
@@ -207,7 +202,7 @@ namespace Application_Desktop.Admin_Sub_Views
             command += "\n\n"; // Additional line breaks
 
             // Send to printer
-            SendCommandToPrinter(command);
+            SendCommandToPrinterAsync(command);
         }
 
 
@@ -441,5 +436,6 @@ namespace Application_Desktop.Admin_Sub_Views
         {
             this.Close();
         }
+
     }
 }
