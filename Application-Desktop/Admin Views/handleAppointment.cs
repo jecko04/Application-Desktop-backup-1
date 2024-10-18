@@ -16,6 +16,9 @@ using System.Windows.Forms;
 using System.Formats.Asn1;
 using Application_Desktop.Model;
 using Newtonsoft.Json;
+using System.IO.Ports;
+using System.Drawing.Printing;
+using System.Runtime.InteropServices;
 
 namespace Application_Desktop.Admin_Views
 {
@@ -918,6 +921,46 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
+        private async Task completed()
+        {
+            string value = "completed";
+
+            if (ApprovedAppointmentId > 0)
+            {
+                await _handleAppointmentController.Complete(value, ApprovedAppointmentId);
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Completed", "Appointment Completed Successfully!", Properties.Resources.success);
+
+                // Clear the selection and reset the selectedAppointmentId
+                viewApprovedAppointment.ClearSelection();
+                ApprovedAppointmentId = 0;
+            }
+
+        }
+
+        private async void btnComplete_Click(object sender, EventArgs e)
+        {
+            if (ApprovedAppointmentId > 0)
+            {
+                DialogResult dialogResult = MessageBox.Show(
+                    "Do you want to change this dental appointment status to complete?",
+                    "Confirm Completion",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    await completed();
+
+                    await LoadApproved();
+                }
+                else
+                {
+                    MessageBox.Show("User email not found. Cannot send cancellation notification.");
+                }
+            }
+        }
+
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl1.SelectedTab == tabPage3)
@@ -1064,6 +1107,119 @@ namespace Application_Desktop.Admin_Views
                 {
                     timer1.Stop();
                     isCollapsed = true;
+                }
+            }
+        }
+
+
+
+        [DllImport("winspool.drv", CharSet = CharSet.Auto)]
+        public static extern bool OpenPrinter(string pPrinterName, out IntPtr phPrinter, IntPtr pDefault);
+
+        [DllImport("winspool.drv", CharSet = CharSet.Auto)]
+        public static extern bool ClosePrinter(IntPtr hPrinter);
+
+        [DllImport("winspool.drv", CharSet = CharSet.Auto)]
+        public static extern bool StartDocPrinter(IntPtr hPrinter, int Level, [In] DOCINFO pDocInfo);
+
+        [DllImport("winspool.drv", CharSet = CharSet.Auto)]
+        public static extern bool EndDocPrinter(IntPtr hPrinter);
+
+        [DllImport("winspool.drv", CharSet = CharSet.Auto)]
+        public static extern bool StartPagePrinter(IntPtr hPrinter);
+
+        [DllImport("winspool.drv", CharSet = CharSet.Auto)]
+        public static extern bool EndPagePrinter(IntPtr hPrinter);
+
+        [DllImport("winspool.drv", CharSet = CharSet.Auto)]
+        public static extern bool WritePrinter(IntPtr hPrinter, byte[] pBuf, int cdBuf, out int pWritten);
+
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+        public struct DOCINFO
+        {
+            public string pDocName;
+            public string pOutputFile;
+            public string pDatatype;
+        }
+
+
+        private void SendCommandToPrinter(string command)
+        {
+            IntPtr hPrinter;
+            bool success = OpenPrinter("XP-58", out hPrinter, IntPtr.Zero);
+
+            if (success && hPrinter != IntPtr.Zero)
+            {
+                DOCINFO docInfo = new DOCINFO
+                {
+                    pDocName = "My Print Job",
+                    pOutputFile = null,
+                    pDatatype = null
+                };
+
+                StartDocPrinter(hPrinter, 1, docInfo);
+                StartPagePrinter(hPrinter);
+
+                // Convert string command to byte array
+                byte[] bytes = Encoding.ASCII.GetBytes(command);
+                int written;
+                WritePrinter(hPrinter, bytes, bytes.Length, out written);
+
+                EndPagePrinter(hPrinter);
+                EndDocPrinter(hPrinter);
+                ClosePrinter(hPrinter);
+            }
+            else
+            {
+                MessageBox.Show("Could not open printer.");
+            }
+        }
+        private async void btnPrintReceipt_Click(object sender, EventArgs e)
+        {
+            string command = "\x1B\x40"; // ESC @ to initialize the printer
+
+            // Add a header
+            command += "          MY STORE          \n"; // Centered store name
+            command += "      123 Main St, City      \n";
+            command += "          (123) 456-7890      \n";
+            command += "------------------------------\n";
+
+            // Add items
+            command += "Item          Price\n";
+            command += "------------------------------\n";
+            command += "Item 1      $10.00\n";
+            command += "Item 2      $5.50\n";
+            command += "Item 3      $2.00\n";
+            command += "------------------------------\n";
+
+            // Add total
+            command += "Total        $17.50\n";
+            command += "------------------------------\n";
+
+            // Add footer
+            command += "  Thank you for shopping!  \n";
+            command += "      Please come again!    \n";
+            command += "\n\n"; // Additional line breaks; // ESC @ to initialize, followed by the text
+            SendCommandToPrinter(command);
+        }
+
+
+        private async void viewCompletedAppointment_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = viewApprovedAppointment.Rows[e.RowIndex];
+
+                if (selectedRow.Cells["id"].Value != null &&
+                    Int32.TryParse(selectedRow.Cells["id"].Value.ToString(), out ApprovedAppointmentId) &&
+                    selectedRow.Cells["user_id"].Value != null &&
+                    Int32.TryParse(selectedRow.Cells["user_id"].Value.ToString(), out selectedApprovedUserId))
+                {
+
+                }
+                else
+                {
+                    MessageBox.Show("Failed to convert Appointment ID to integer.");
                 }
             }
         }

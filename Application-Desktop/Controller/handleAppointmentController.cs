@@ -296,6 +296,44 @@ namespace Application_Desktop.Controller
             }
         }
 
+        public async Task Complete(string status, int id)
+        {
+            string query = "UPDATE appointments SET status = @newStatus WHERE id = @appointmentId";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@newStatus", status);
+                        cmd.Parameters.AddWithValue("@appointmentId", id);
+
+                        await cmd.ExecuteNonQueryAsync();
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to cancel appointment status.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error updating to approve : {ex.Message}");
+            }
+        }
+
         public async Task<string> SelectEmail(int userId)
         {
             string query = @"SELECT email FROM users WHERE id = @user_id";
@@ -394,6 +432,28 @@ namespace Application_Desktop.Controller
             {
                 throw new Exception($"Error updating check-in status: {ex.Message}");
             }
+        }
+
+        private async Task PrintReceiptDetails(int id, int userId)
+        {
+            string query = @"SELECT 
+                                a.id,
+                                a.user_id,
+                                u.name AS UserName,
+                                b.BranchName,
+                                c.Title AS ServiceTitle,
+                                a.appointment_date,
+                                a.appointment_time,
+                                a.reschedule_date,
+                                a.reschedule_time,
+                                a.status,
+                                a.check_in
+                            FROM appointments a
+                            INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
+                            INNER JOIN categories c ON a.selectServices = c.Categories_ID
+                            INNER JOIN users u ON a.user_id = u.id
+                            WHERE a.selectedBranch = @admin AND a.status = 'approved'";
+                            
         }
 
     }
