@@ -176,7 +176,9 @@ namespace Application_Desktop.Controller
                                 a.id,
                                 a.user_id,
                                 u.name AS UserName,
+                                a.selectedBranch,
                                 b.BranchName,
+                                a.selectServices,
                                 c.Title AS ServiceTitle,
                                 a.appointment_date,
                                 a.appointment_time,
@@ -434,26 +436,64 @@ namespace Application_Desktop.Controller
             }
         }
 
-        private async Task PrintReceiptDetails(int id, int userId)
+        public async Task<ReceiptDetails> PrintReceiptDetails(int branchId, int categoriesId)
         {
             string query = @"SELECT 
-                                a.id,
-                                a.user_id,
-                                u.name AS UserName,
-                                b.BranchName,
-                                c.Title AS ServiceTitle,
-                                a.appointment_date,
-                                a.appointment_time,
-                                a.reschedule_date,
-                                a.reschedule_time,
-                                a.status,
-                                a.check_in
-                            FROM appointments a
-                            INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
-                            INNER JOIN categories c ON a.selectServices = c.Categories_ID
-                            INNER JOIN users u ON a.user_id = u.id
-                            WHERE a.selectedBranch = @admin AND a.status = 'approved'";
-                            
+                        b.BranchName,
+                        u.name AS UserName,
+                        c.Title AS ServiceTitle,
+                        c.Price,
+                        a.status
+                    FROM appointments a
+                    INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
+                    INNER JOIN categories c ON a.selectServices = c.Categories_ID
+                    INNER JOIN users u ON a.user_id = u.id
+                    WHERE a.selectedBranch = @branchId
+                    AND a.selectServices = @categoriesId";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        // Add parameters to prevent SQL injection
+                        cmd.Parameters.AddWithValue("@branchId", branchId);
+                        cmd.Parameters.AddWithValue("@categoriesId", categoriesId);
+
+                        using (MySqlDataReader reader = (MySqlDataReader) await cmd.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                // Map the query result to the ReceiptDetails object
+                                var receiptDetails = new ReceiptDetails
+                                {
+                                    BranchName = reader.GetString("BranchName"),
+                                    UserName = reader.GetString("UserName"),
+                                    ServiceTitle = reader.GetString("ServiceTitle"),
+                                    Price = reader.GetDecimal("Price"),
+                                    Status = reader.GetString("status")
+                                };
+
+                                return receiptDetails;
+                            }
+                            else
+                            {
+                                throw new Exception("No data found for the specified branch and service.");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error getting receipt details: {ex.Message}");
+            }
         }
 
     }

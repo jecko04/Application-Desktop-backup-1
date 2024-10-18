@@ -18,4 +18,13 @@ namespace Application_Desktop.Model
         public DateTime appointment_date { get; set; }
         public string appointment_time { get; set; }
     }
+
+    public class ReceiptDetails
+    {
+        public string BranchName { get; set; }
+        public string UserName { get; set; }
+        public string ServiceTitle { get; set; }
+        public string Status { get; set; }
+        public decimal Price { get; set; }
+    }
 }

@@ -53,7 +53,6 @@
             viewCompletedAppointment = new DataGridView();
             btnCancel = new MaterialSkin.Controls.MaterialButton();
             btnRefresher = new MaterialSkin.Controls.MaterialButton();
-            btnPrintReceipt = new MaterialSkin.Controls.MaterialButton();
             btnApprove = new MaterialSkin.Controls.MaterialButton();
             txtSearchBoxes = new MaterialSkin.Controls.MaterialTextBox();
             btnSearcher = new MaterialSkin.Controls.MaterialButton();
@@ -376,28 +375,6 @@
             btnRefresher.UseVisualStyleBackColor = true;
             btnRefresher.Click += btnRefresher_Click;
             // 
-            // btnPrintReceipt
-            // 
-            btnPrintReceipt.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnPrintReceipt.AutoSize = false;
-            btnPrintReceipt.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnPrintReceipt.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnPrintReceipt.Depth = 0;
-            btnPrintReceipt.HighEmphasis = true;
-            btnPrintReceipt.Icon = null;
-            btnPrintReceipt.Location = new Point(846, 554);
-            btnPrintReceipt.Margin = new Padding(4, 6, 4, 6);
-            btnPrintReceipt.MouseState = MaterialSkin.MouseState.HOVER;
-            btnPrintReceipt.Name = "btnPrintReceipt";
-            btnPrintReceipt.NoAccentTextColor = Color.Empty;
-            btnPrintReceipt.Size = new Size(228, 36);
-            btnPrintReceipt.TabIndex = 105;
-            btnPrintReceipt.Text = "Print Receipt";
-            btnPrintReceipt.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnPrintReceipt.UseAccentColor = false;
-            btnPrintReceipt.UseVisualStyleBackColor = true;
-            btnPrintReceipt.Click += btnPrintReceipt_Click;
-            // 
             // btnApprove
             // 
             btnApprove.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -600,7 +577,6 @@
             Controls.Add(btnComplete);
             Controls.Add(btnCancel);
             Controls.Add(btnRefresher);
-            Controls.Add(btnPrintReceipt);
             Controls.Add(btnApprove);
             Controls.Add(txtSearchBoxes);
             Controls.Add(btnSearcher);
@@ -635,7 +611,6 @@
         private DataGridView viewCompletedAppointment;
         private MaterialSkin.Controls.MaterialButton btnCancel;
         private MaterialSkin.Controls.MaterialButton btnRefresher;
-        private MaterialSkin.Controls.MaterialButton btnPrintReceipt;
         private MaterialSkin.Controls.MaterialButton btnApprove;
         private MaterialSkin.Controls.MaterialTextBox txtSearchBoxes;
         private MaterialSkin.Controls.MaterialButton btnSearcher;
