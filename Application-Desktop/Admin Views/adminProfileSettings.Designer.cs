@@ -31,8 +31,10 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminProfileSettings));
             panel2 = new Panel();
+            panel1 = new Panel();
             deleteAccountPanel = new Panel();
-            btnDeleteAcc = new MaterialSkin.Controls.MaterialButton();
+            materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
+            btnLogout = new MaterialSkin.Controls.MaterialButton();
             panel31 = new Panel();
             updatePasswordPanel = new Panel();
             btnSavePassword = new MaterialSkin.Controls.MaterialButton();
@@ -57,9 +59,6 @@
             errorProvider1 = new ErrorProvider(components);
             errorProvider2 = new ErrorProvider(components);
             errorProvider3 = new ErrorProvider(components);
-            panel1 = new Panel();
-            materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
-            materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
             panel2.SuspendLayout();
             deleteAccountPanel.SuspendLayout();
             updatePasswordPanel.SuspendLayout();
@@ -85,37 +84,55 @@
             panel2.TabIndex = 22;
             panel2.Paint += panel2_Paint;
             // 
+            // panel1
+            // 
+            panel1.Location = new Point(949, 829);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(108, 122);
+            panel1.TabIndex = 79;
+            // 
             // deleteAccountPanel
             // 
             deleteAccountPanel.BackColor = Color.White;
-            deleteAccountPanel.Controls.Add(materialLabel11);
             deleteAccountPanel.Controls.Add(materialLabel12);
-            deleteAccountPanel.Controls.Add(btnDeleteAcc);
+            deleteAccountPanel.Controls.Add(btnLogout);
             deleteAccountPanel.Location = new Point(12, 756);
             deleteAccountPanel.Name = "deleteAccountPanel";
             deleteAccountPanel.Size = new Size(899, 148);
             deleteAccountPanel.TabIndex = 78;
             // 
-            // btnDeleteAcc
+            // materialLabel12
             // 
-            btnDeleteAcc.AutoSize = false;
-            btnDeleteAcc.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnDeleteAcc.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnDeleteAcc.Depth = 0;
-            btnDeleteAcc.HighEmphasis = true;
-            btnDeleteAcc.Icon = null;
-            btnDeleteAcc.Location = new Point(27, 87);
-            btnDeleteAcc.Margin = new Padding(4, 6, 4, 6);
-            btnDeleteAcc.MouseState = MaterialSkin.MouseState.HOVER;
-            btnDeleteAcc.Name = "btnDeleteAcc";
-            btnDeleteAcc.NoAccentTextColor = Color.Empty;
-            btnDeleteAcc.Size = new Size(146, 36);
-            btnDeleteAcc.TabIndex = 58;
-            btnDeleteAcc.Text = "Delete Account";
-            btnDeleteAcc.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnDeleteAcc.UseAccentColor = false;
-            btnDeleteAcc.UseVisualStyleBackColor = true;
-            btnDeleteAcc.Click += btnDeleteAcc_Click;
+            materialLabel12.AutoSize = true;
+            materialLabel12.Depth = 0;
+            materialLabel12.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel12.Location = new Point(27, 25);
+            materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel12.Name = "materialLabel12";
+            materialLabel12.Size = new Size(113, 19);
+            materialLabel12.TabIndex = 86;
+            materialLabel12.Text = "Logout Account";
+            // 
+            // btnLogout
+            // 
+            btnLogout.AutoSize = false;
+            btnLogout.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnLogout.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnLogout.Depth = 0;
+            btnLogout.HighEmphasis = true;
+            btnLogout.Icon = null;
+            btnLogout.Location = new Point(27, 87);
+            btnLogout.Margin = new Padding(4, 6, 4, 6);
+            btnLogout.MouseState = MaterialSkin.MouseState.HOVER;
+            btnLogout.Name = "btnLogout";
+            btnLogout.NoAccentTextColor = Color.Empty;
+            btnLogout.Size = new Size(116, 36);
+            btnLogout.TabIndex = 58;
+            btnLogout.Text = "Logout";
+            btnLogout.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnLogout.UseAccentColor = false;
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // panel31
             // 
@@ -512,38 +529,6 @@
             errorProvider3.ContainerControl = this;
             errorProvider3.Icon = (Icon)resources.GetObject("errorProvider3.Icon");
             // 
-            // panel1
-            // 
-            panel1.Location = new Point(949, 829);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(108, 122);
-            panel1.TabIndex = 79;
-            // 
-            // materialLabel11
-            // 
-            materialLabel11.AutoSize = true;
-            materialLabel11.Depth = 0;
-            materialLabel11.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialLabel11.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2;
-            materialLabel11.Location = new Point(27, 54);
-            materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel11.Name = "materialLabel11";
-            materialLabel11.Size = new Size(548, 17);
-            materialLabel11.TabIndex = 87;
-            materialLabel11.Text = "Once your account is deleted all of its resources and data will be permanently deleted.";
-            // 
-            // materialLabel12
-            // 
-            materialLabel12.AutoSize = true;
-            materialLabel12.Depth = 0;
-            materialLabel12.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel12.Location = new Point(27, 25);
-            materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel12.Name = "materialLabel12";
-            materialLabel12.Size = new Size(107, 19);
-            materialLabel12.TabIndex = 86;
-            materialLabel12.Text = "Delete Account";
-            // 
             // adminProfileSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -606,9 +591,8 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel9;
         private MaterialSkin.Controls.MaterialLabel materialLabel8;
         private MaterialSkin.Controls.MaterialButton btnSavePassword;
-        private MaterialSkin.Controls.MaterialButton btnDeleteAcc;
+        private MaterialSkin.Controls.MaterialButton btnLogout;
         private Panel panel1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel11;
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
     }
 }

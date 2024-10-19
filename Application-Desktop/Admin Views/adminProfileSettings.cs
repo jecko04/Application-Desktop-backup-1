@@ -442,5 +442,28 @@ namespace Application_Desktop.Admin_Views
                 }
             }
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            session.Logout();
+
+            this.Hide();
+
+            this.BeginInvoke(new Action(() =>
+            {
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Logout Success", "You have been logged out successfully.", Properties.Resources.success);
+
+                Task.Delay(2000).ContinueWith(t =>
+                {
+                    this.Invoke(new Action(() =>
+                    {
+                        _adminPage.Hide();
+
+                        loginPage loginForm = new loginPage();
+                        loginForm.Show();
+                    }));
+                });
+            }));
+        }
     }
 }
