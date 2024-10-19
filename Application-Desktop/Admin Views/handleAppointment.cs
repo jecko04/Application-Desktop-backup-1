@@ -1196,5 +1196,40 @@ namespace Application_Desktop.Admin_Views
                 }
             }
         }
+
+        private async void btnSearcher_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable appointment = await _handleAppointmentController.SearchByName(txtSearchBoxes.Text);
+
+                if (appointment != null && appointment.Rows.Count > 0)
+                {
+                    DataView pendingView = new DataView(appointment);
+                    pendingView.RowFilter = "status = 'pending'";
+                    viewPendingAppointment.DataSource = pendingView;
+
+                    DataView approvedView = new DataView(appointment);
+                    approvedView.RowFilter = "status = 'approved'";
+                    viewApprovedAppointment.DataSource = approvedView;
+
+                    DataView cancelledView = new DataView(appointment);
+                    cancelledView.RowFilter = "status = 'cancelled'";
+                    viewCancelledAppointment.DataSource = cancelledView;
+
+                    DataView completeView = new DataView(appointment);
+                    completeView.RowFilter = "status = 'completed'";
+                    viewCompletedAppointment.DataSource = completeView;
+                }
+                else
+                {
+                    AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No results", "No patient found with the given search term", Properties.Resources.information);
+                }
+            }
+            catch (Exception ex)
+            {
+                AlertBox(Color.LightCoral, Color.Red, "Error", "An error occurred while searching for patient data: " + ex.Message, Properties.Resources.error);
+            }
+        }
     }
 }

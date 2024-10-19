@@ -438,6 +438,7 @@
             btnSearcher.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnSearcher.UseAccentColor = false;
             btnSearcher.UseVisualStyleBackColor = true;
+            btnSearcher.Click += btnSearcher_Click;
             // 
             // btnComplete
             // 

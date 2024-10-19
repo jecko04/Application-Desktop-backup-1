@@ -139,6 +139,7 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Dashboard";
             tabPage1.UseVisualStyleBackColor = true;
+            tabPage1.Click += tabPage1_Click;
             // 
             // btnUpdateRefesher
             // 
@@ -173,7 +174,7 @@
             calendarPanel.Controls.Add(label9);
             calendarPanel.Controls.Add(label8);
             calendarPanel.Controls.Add(label7);
-            calendarPanel.Location = new Point(874, 226);
+            calendarPanel.Location = new Point(874, 250);
             calendarPanel.Name = "calendarPanel";
             calendarPanel.Size = new Size(357, 298);
             calendarPanel.TabIndex = 24;
@@ -201,7 +202,7 @@
             // btnPrev
             // 
             btnPrev.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnPrev.BackColor = Color.FromArgb(255, 128, 0);
+            btnPrev.BackColor = Color.FromArgb(255, 66, 0);
             btnPrev.FlatAppearance.BorderSize = 0;
             btnPrev.FlatStyle = FlatStyle.Flat;
             btnPrev.ForeColor = SystemColors.ControlLight;
@@ -216,7 +217,7 @@
             // btnNext
             // 
             btnNext.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnNext.BackColor = Color.FromArgb(255, 128, 0);
+            btnNext.BackColor = Color.FromArgb(255, 66, 0);
             btnNext.FlatAppearance.BorderSize = 0;
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.ForeColor = SystemColors.ControlLight;
@@ -355,7 +356,7 @@
             viewPending.DefaultCellStyle = dataGridViewCellStyle3;
             viewPending.EnableHeadersVisualStyles = false;
             viewPending.GridColor = Color.White;
-            viewPending.Location = new Point(38, 231);
+            viewPending.Location = new Point(38, 255);
             viewPending.Margin = new Padding(0);
             viewPending.Name = "viewPending";
             viewPending.ReadOnly = true;
@@ -371,7 +372,7 @@
             flowLayoutPanel1.Controls.Add(panel3);
             flowLayoutPanel1.Controls.Add(panel4);
             flowLayoutPanel1.Controls.Add(panel5);
-            flowLayoutPanel1.Location = new Point(38, 70);
+            flowLayoutPanel1.Location = new Point(38, 94);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(1193, 158);
             flowLayoutPanel1.TabIndex = 6;
@@ -379,7 +380,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BackColor = Color.DodgerBlue;
+            panel1.BackColor = Color.FromArgb(41, 56, 218);
             panel1.Controls.Add(txtPending);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
@@ -422,7 +423,7 @@
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel2.BackColor = Color.FromArgb(255, 128, 0);
+            panel2.BackColor = Color.FromArgb(255, 66, 0);
             panel2.Controls.Add(txtApproved);
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(label2);
@@ -465,7 +466,7 @@
             // panel3
             // 
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel3.BackColor = Color.Tomato;
+            panel3.BackColor = Color.FromArgb(250, 220, 18);
             panel3.Controls.Add(txtCancel);
             panel3.Controls.Add(pictureBox3);
             panel3.Controls.Add(label4);
@@ -508,7 +509,7 @@
             // panel4
             // 
             panel4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel4.BackColor = Color.GreenYellow;
+            panel4.BackColor = Color.FromArgb(255, 66, 0);
             panel4.Controls.Add(txtCompleted);
             panel4.Controls.Add(pictureBox4);
             panel4.Controls.Add(label5);
@@ -551,7 +552,7 @@
             // panel5
             // 
             panel5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel5.BackColor = Color.Tomato;
+            panel5.BackColor = Color.FromArgb(41, 56, 218);
             panel5.Controls.Add(txtDentalPatient);
             panel5.Controls.Add(pictureBox5);
             panel5.Controls.Add(label6);
@@ -596,7 +597,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(38, 20);
+            label3.Location = new Point(38, 15);
             label3.Name = "label3";
             label3.Size = new Size(118, 30);
             label3.TabIndex = 2;
@@ -609,7 +610,7 @@
             tabPage2.Location = new Point(4, 31);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1266, 588);
+            tabPage2.Size = new Size(1266, 628);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Patient Record";
             tabPage2.UseVisualStyleBackColor = true;
@@ -619,7 +620,7 @@
             patientRecordPanel.Dock = DockStyle.Fill;
             patientRecordPanel.Location = new Point(3, 3);
             patientRecordPanel.Name = "patientRecordPanel";
-            patientRecordPanel.Size = new Size(1260, 582);
+            patientRecordPanel.Size = new Size(1260, 622);
             patientRecordPanel.TabIndex = 0;
             // 
             // tabPage3
@@ -628,7 +629,7 @@
             tabPage3.ImageKey = "appointment-book (5).png";
             tabPage3.Location = new Point(4, 31);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(1266, 588);
+            tabPage3.Size = new Size(1266, 628);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Setup Services";
             tabPage3.UseVisualStyleBackColor = true;
@@ -639,7 +640,7 @@
             servicesPanel.Dock = DockStyle.Fill;
             servicesPanel.Location = new Point(0, 0);
             servicesPanel.Name = "servicesPanel";
-            servicesPanel.Size = new Size(1266, 588);
+            servicesPanel.Size = new Size(1266, 628);
             servicesPanel.TabIndex = 0;
             // 
             // tabPage4
@@ -648,7 +649,7 @@
             tabPage4.ImageKey = "check-in-calendar.png";
             tabPage4.Location = new Point(4, 31);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(1266, 588);
+            tabPage4.Size = new Size(1266, 628);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Appointment";
             tabPage4.UseVisualStyleBackColor = true;
@@ -658,7 +659,7 @@
             appointmentPanel.Dock = DockStyle.Fill;
             appointmentPanel.Location = new Point(0, 0);
             appointmentPanel.Name = "appointmentPanel";
-            appointmentPanel.Size = new Size(1266, 588);
+            appointmentPanel.Size = new Size(1266, 628);
             appointmentPanel.TabIndex = 0;
             // 
             // tabPage5
@@ -667,7 +668,7 @@
             tabPage5.ImageKey = "account-pin-box-line (3).png";
             tabPage5.Location = new Point(4, 31);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(1266, 588);
+            tabPage5.Size = new Size(1266, 628);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Account";
             tabPage5.UseVisualStyleBackColor = true;
@@ -677,7 +678,7 @@
             accountPanel.Dock = DockStyle.Fill;
             accountPanel.Location = new Point(0, 0);
             accountPanel.Name = "accountPanel";
-            accountPanel.Size = new Size(1266, 588);
+            accountPanel.Size = new Size(1266, 628);
             accountPanel.TabIndex = 0;
             // 
             // imageList1
@@ -705,7 +706,7 @@
             DrawerTabControl = MyNavigationPanel;
             Name = "adminPage";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Admin";
+            Text = "SMTC Dental Care";
             Load += adminPage_Load;
             MyNavigationPanel.ResumeLayout(false);
             tabPage1.ResumeLayout(false);

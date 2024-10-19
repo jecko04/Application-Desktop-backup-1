@@ -97,14 +97,14 @@
             btnCancelJob.Depth = 0;
             btnCancelJob.HighEmphasis = true;
             btnCancelJob.Icon = null;
-            btnCancelJob.Location = new Point(556, 217);
+            btnCancelJob.Location = new Point(556, 189);
             btnCancelJob.Margin = new Padding(4, 6, 4, 6);
             btnCancelJob.MouseState = MaterialSkin.MouseState.HOVER;
             btnCancelJob.Name = "btnCancelJob";
             btnCancelJob.NoAccentTextColor = Color.Empty;
-            btnCancelJob.Size = new Size(156, 36);
+            btnCancelJob.Size = new Size(156, 64);
             btnCancelJob.TabIndex = 26;
-            btnCancelJob.Text = "Cancel";
+            btnCancelJob.Text = "Cancel Pending Receipt";
             btnCancelJob.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnCancelJob.UseAccentColor = false;
             btnCancelJob.UseVisualStyleBackColor = true;

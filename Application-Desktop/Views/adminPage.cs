@@ -4,6 +4,7 @@ using Application_Desktop.Method;
 using Application_Desktop.Models;
 using Application_Desktop.Screen;
 using Application_Desktop.Sub_Views;
+using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,16 @@ namespace Application_Desktop.Views
             elipseManagerPanel.ApplyElipseToPanel(panel3);
             elipseManagerPanel.ApplyElipseToPanel(panel4);
             elipseManagerPanel.ApplyElipseToPanel(panel5);
+
+            var materialSkinManager = MaterialSkinManager.Instance;
+
+            materialSkinManager.ColorScheme = new ColorScheme(
+            Color.FromArgb(250, 220, 18),  // Primary color
+            Color.FromArgb(200, 180, 10),  // Darker primary color for the toolbar
+            Color.FromArgb(255, 66, 0),  // Light primary color for buttons
+            Color.FromArgb(255, 66, 0),  // Accent color
+            TextShade.BLACK                // Text color
+);
 
         }
         void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
@@ -423,6 +434,11 @@ namespace Application_Desktop.Views
             await CountAll();
 
             displayDays();
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
