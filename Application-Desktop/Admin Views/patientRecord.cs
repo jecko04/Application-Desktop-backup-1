@@ -556,7 +556,7 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
-    
+
 
         private void btnCreateRecord_Click(object sender, EventArgs e)
         {

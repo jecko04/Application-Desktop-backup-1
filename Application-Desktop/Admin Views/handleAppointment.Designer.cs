@@ -57,7 +57,6 @@
             txtSearchBoxes = new MaterialSkin.Controls.MaterialTextBox();
             btnSearcher = new MaterialSkin.Controls.MaterialButton();
             btnComplete = new MaterialSkin.Controls.MaterialButton();
-            btnReschedule = new MaterialSkin.Controls.MaterialButton();
             QRCode = new MaterialSkin.Controls.MaterialMaskedTextBox();
             btnQRCode = new MaterialSkin.Controls.MaterialButton();
             qrCodePanel = new FlowLayoutPanel();
@@ -462,28 +461,6 @@
             btnComplete.UseVisualStyleBackColor = true;
             btnComplete.Click += btnComplete_Click;
             // 
-            // btnReschedule
-            // 
-            btnReschedule.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnReschedule.AutoSize = false;
-            btnReschedule.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnReschedule.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnReschedule.Depth = 0;
-            btnReschedule.HighEmphasis = true;
-            btnReschedule.Icon = null;
-            btnReschedule.Location = new Point(850, 187);
-            btnReschedule.Margin = new Padding(4, 6, 4, 6);
-            btnReschedule.MouseState = MaterialSkin.MouseState.HOVER;
-            btnReschedule.Name = "btnReschedule";
-            btnReschedule.NoAccentTextColor = Color.Empty;
-            btnReschedule.Size = new Size(221, 36);
-            btnReschedule.TabIndex = 109;
-            btnReschedule.TabStop = false;
-            btnReschedule.Text = "follow-up appointment.";
-            btnReschedule.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
-            btnReschedule.UseAccentColor = false;
-            btnReschedule.UseVisualStyleBackColor = true;
-            // 
             // QRCode
             // 
             QRCode.AllowPromptAsInput = true;
@@ -599,7 +576,6 @@
             ClientSize = new Size(1085, 621);
             Controls.Add(btnInqueue);
             Controls.Add(qrCodePanel);
-            Controls.Add(btnReschedule);
             Controls.Add(btnComplete);
             Controls.Add(btnCancel);
             Controls.Add(btnRefresher);
@@ -641,7 +617,6 @@
         private MaterialSkin.Controls.MaterialTextBox txtSearchBoxes;
         private MaterialSkin.Controls.MaterialButton btnSearcher;
         private MaterialSkin.Controls.MaterialButton btnComplete;
-        private MaterialSkin.Controls.MaterialButton btnReschedule;
         private MaterialSkin.Controls.MaterialMaskedTextBox QRCode;
         private MaterialSkin.Controls.MaterialButton btnQRCode;
         private FlowLayoutPanel qrCodePanel;

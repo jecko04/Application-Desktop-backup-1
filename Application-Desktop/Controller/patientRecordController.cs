@@ -269,76 +269,84 @@ namespace Application_Desktop.Controller
                               FROM `patients` 
                               WHERE (`fullname` LIKE CONCAT('%', @searchTerm, '%') 
                                      OR `phone` LIKE CONCAT('%', @searchTerm, '%') 
-                                     OR `email` LIKE CONCAT('%', @searchTerm, '%')) AND `Branch_ID` = @admin";
-                                
+                                     OR `email` LIKE CONCAT('%', @searchTerm, '%')) 
+                                     AND `Branch_ID` = @adminId";
 
-
-            int patientId = 0;
             DataTable patientData = new DataTable();
             DataTable medicalData = new DataTable();
             DataTable dentalData = new DataTable();
 
-            using (MySqlConnection conn = databaseHelper.getConnection())
+            try
             {
-                if (conn.State != ConnectionState.Open)
+                using (MySqlConnection conn = databaseHelper.getConnection())
                 {
-                    await conn.OpenAsync();
-                }
-
-                using (MySqlCommand cmd = new MySqlCommand(selectPatients, conn))
-                {
-                    cmd.Parameters.AddWithValue("@searchTerm", searchTerm);
-                    cmd.Parameters.AddWithValue("@admin", adminId);
-                    using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
+                    if (conn.State != ConnectionState.Open)
                     {
-                        if (reader.HasRows)
+                        await conn.OpenAsync();
+                    }
+
+                    // Fetch patient data
+                    using (MySqlCommand cmd = new MySqlCommand(selectPatients, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@searchTerm", searchTerm);
+                        cmd.Parameters.AddWithValue("@adminId", adminId);
+
+                        using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
                         {
                             patientData.Load(reader);
-                            if (patientData.Rows.Count > 0)
-                            {
-                                patientId = Convert.ToInt32(patientData.Rows[0]["id"]);
-                            }
+                        }
+                    }
+
+                    // If no patients are found, return empty DataTables
+                    if (patientData.Rows.Count == 0)
+                    {
+                        return (patientData, medicalData, dentalData);
+                    }
+
+                    // Create a list to hold patient IDs
+                    List<int> patientIds = patientData.AsEnumerable().Select(row => Convert.ToInt32(row["id"])).ToList();
+
+                    // Fetch Medical History for all matching patients
+                    string selectGenHealth = @"SELECT mh.`patient_id`, p.`fullname`, mh.`medical_conditions`, mh.`current_medications`, mh.`allergies`, mh.`past_surgeries`, 
+                                           mh.`family_medical_history`, mh.`blood_pressure`, mh.`heart_disease`, mh.`diabetes`, mh.`smoker`
+                                      FROM `medical_history` mh
+                                      JOIN `patients` p ON mh.patient_id = p.id
+                                      WHERE mh.`patient_id` IN (" + string.Join(",", patientIds) + ")";
+
+                    using (MySqlCommand cmd = new MySqlCommand(selectGenHealth, conn))
+                    {
+                        using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
+                        {
+                            medicalData.Load(reader);
+                        }
+                    }
+
+                    // Fetch Dental History for all matching patients
+                    string selectDentHealth = @"SELECT dh.`patient_id`, p.`fullname`, dh.`last_dental_visit`, dh.`past_dental_treatments`, dh.`frequent_tooth_pain`, dh.`gum_disease_history`, 
+                                               dh.`teeth_grinding`, dh.`tooth_sensitivity`, dh.`orthodontic_treatment`, dh.`dental_implants`, dh.`bleeding_gums`
+                                        FROM `dental_history` dh
+                                        JOIN `patients` p ON dh.patient_id = p.id
+                                        WHERE dh.`patient_id` IN (" + string.Join(",", patientIds) + ")";
+
+                    using (MySqlCommand cmd = new MySqlCommand(selectDentHealth, conn))
+                    {
+                        using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
+                        {
+                            dentalData.Load(reader);
                         }
                     }
                 }
-
-                if (patientId == 0)
-                {
-                    return (null, null, null);
-                }
-
-                string selectGenHealth = @"SELECT mh.`patient_id`, p.`fullname`, mh.`medical_conditions`, mh.`current_medications`, mh.`allergies`, mh.`past_surgeries`, mh.`family_medical_history`, mh.`blood_pressure`, mh.`heart_disease`, mh.`diabetes`, mh.`smoker` 
-                                   FROM `medical_history` mh
-                                   JOIN `patients` p ON mh.patient_id = p.id
-                                   WHERE mh.patient_id = @patientid";
-
-                using (MySqlCommand cmd = new MySqlCommand(selectGenHealth, conn))
-                {
-                    cmd.Parameters.AddWithValue("@patientid", patientId);
-                    using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
-                    {
-                        medicalData.Load(reader);
-                    }
-                }
-
-                string selectDentHealth = @"SELECT dh.`patient_id`, p.`fullname`, dh.`last_dental_visit`, dh.`past_dental_treatments`, dh.`frequent_tooth_pain`, dh.`gum_disease_history`, dh.`teeth_grinding`, dh.`tooth_sensitivity`,
-                                    dh.`orthodontic_treatment`, dh.`dental_implants`, dh.`bleeding_gums` 
-                                    FROM `dental_history` dh
-                                    JOIN `patients` p ON dh.patient_id = p.id
-                                    WHERE dh.patient_id = @patientid";
-
-                using (MySqlCommand cmd = new MySqlCommand(selectDentHealth, conn))
-                {
-                    cmd.Parameters.AddWithValue("@patientid", patientId);
-                    using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
-                    {
-                        dentalData.Load(reader);
-                    }
-                }
+            }
+            catch (Exception ex)
+            {
+                // Handle/log exception appropriately
+                throw new Exception("An error occurred while fetching patient data.", ex);
             }
 
             return (patientData, medicalData, dentalData);
         }
+
+
 
 
     }

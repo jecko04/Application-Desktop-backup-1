@@ -33,9 +33,6 @@ namespace Application_Desktop.Admin_Views
             _handleAppointmentController = new handleAppointmentController();
 
         }
-
-
-
         void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
         {
             alertBox alertbox = new alertBox();
@@ -88,9 +85,7 @@ namespace Application_Desktop.Admin_Views
         {
             try
             {
-                getBranchIdByUserId branchId = new getBranchIdByUserId();
-                BranchID adminId = await branchId.GetUserBranchId();
-                DataTable inqueue = await _handleAppointmentController.InqueueAppointment(adminId._id);
+                DataTable inqueue = await _handleAppointmentController.InqueueAppointment();
                 viewPendingAppointment.DataSource = null;
                 viewPendingAppointment.Rows.Clear();
                 viewPendingAppointment.Columns.Clear();
@@ -113,7 +108,7 @@ namespace Application_Desktop.Admin_Views
             {
                 getBranchIdByUserId branchId = new getBranchIdByUserId();
                 BranchID adminId = await branchId.GetUserBranchId();
-                DataTable approved = await _handleAppointmentController.ApprovedAppointment(adminId._id);
+                DataTable approved = await _handleAppointmentController.ApprovedAppointment();
                 viewApprovedAppointment.DataSource = null;
                 viewApprovedAppointment.Rows.Clear();
                 viewApprovedAppointment.Columns.Clear();
@@ -136,7 +131,7 @@ namespace Application_Desktop.Admin_Views
             {
                 getBranchIdByUserId branchId = new getBranchIdByUserId();
                 BranchID adminId = await branchId.GetUserBranchId();
-                DataTable cancelled = await _handleAppointmentController.CancelledAppointment(adminId._id);
+                DataTable cancelled = await _handleAppointmentController.CancelledAppointment();
                 viewCancelledAppointment.DataSource = null;
                 viewCancelledAppointment.Rows.Clear();
                 viewCancelledAppointment.Columns.Clear();
@@ -159,7 +154,7 @@ namespace Application_Desktop.Admin_Views
             {
                 getBranchIdByUserId branchId = new getBranchIdByUserId();
                 BranchID adminId = await branchId.GetUserBranchId();
-                DataTable completed = await _handleAppointmentController.CompletedAppointment(adminId._id);
+                DataTable completed = await _handleAppointmentController.CompletedAppointment();
                 viewCompletedAppointment.DataSource = null;
                 viewCompletedAppointment.Rows.Clear();
                 viewCompletedAppointment.Columns.Clear();

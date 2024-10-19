@@ -19,7 +19,61 @@ namespace Application_Desktop.Controller
             _handleAppointmentModel = new handleAppointmentModel();
         }
 
-        public async Task<DataTable> InqueueAppointment(int admin)
+        public async Task<DataTable> InqueueAppointment()
+        {
+            string query = @"
+                    SELECT 
+                        a.id,
+                        a.user_id,
+                        u.name AS UserName,
+                        b.BranchName,
+                        c.Title AS ServiceTitle,
+                        a.appointment_date,
+                        a.appointment_time,
+                        a.reschedule_date,
+                        a.reschedule_time,
+                        a.status,
+                        a.check_in
+                    FROM appointments a
+                    INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
+                    INNER JOIN categories c ON a.selectServices = c.Categories_ID
+                    INNER JOIN users u ON a.user_id = u.id
+                    WHERE a.status = 'pending'";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dataTable = new DataTable();
+
+                            adapter.Fill(dataTable);
+
+                            return dataTable.Rows.Count > 0 ? dataTable : null;
+                        }
+                    }
+                }
+            }
+            catch (MySqlException dbEx)
+            {
+                throw new Exception($"Database error occurred while selecting Inqueue: {dbEx.Message}", dbEx);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error on selecting Inqueue: {ex.Message}", ex);
+            }
+        }
+
+        public async Task<DataTable> ApprovedAppointment()
         {
             string query = @"
                             SELECT 
@@ -38,7 +92,7 @@ namespace Application_Desktop.Controller
                             INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
                             INNER JOIN categories c ON a.selectServices = c.Categories_ID
                             INNER JOIN users u ON a.user_id = u.id
-                            WHERE a.selectedBranch = @admin AND a.status = 'pending'";
+                            WHERE a.status = 'approved'";
 
             try
             {
@@ -50,7 +104,6 @@ namespace Application_Desktop.Controller
                     }
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@admin", admin);
                         using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                         {
                             DataTable dataTable = new DataTable();
@@ -69,7 +122,7 @@ namespace Application_Desktop.Controller
 
         }
 
-        public async Task<DataTable> ApprovedAppointment(int admin)
+        public async Task<DataTable> CancelledAppointment()
         {
             string query = @"
                             SELECT 
@@ -88,7 +141,7 @@ namespace Application_Desktop.Controller
                             INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
                             INNER JOIN categories c ON a.selectServices = c.Categories_ID
                             INNER JOIN users u ON a.user_id = u.id
-                            WHERE a.selectedBranch = @admin AND a.status = 'approved'";
+                            WHERE a.status = 'cancelled'";
 
             try
             {
@@ -100,7 +153,6 @@ namespace Application_Desktop.Controller
                     }
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@admin", admin);
                         using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                         {
                             DataTable dataTable = new DataTable();
@@ -119,57 +171,7 @@ namespace Application_Desktop.Controller
 
         }
 
-        public async Task<DataTable> CancelledAppointment(int admin)
-        {
-            string query = @"
-                            SELECT 
-                                a.id,
-                                a.user_id,
-                                u.name AS UserName,
-                                b.BranchName,
-                                c.Title AS ServiceTitle,
-                                a.appointment_date,
-                                a.appointment_time,
-                                a.reschedule_date,
-                                a.reschedule_time,
-                                a.status,
-                                a.check_in
-                            FROM appointments a
-                            INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
-                            INNER JOIN categories c ON a.selectServices = c.Categories_ID
-                            INNER JOIN users u ON a.user_id = u.id
-                            WHERE a.selectedBranch = @admin AND a.status = 'cancelled'";
-
-            try
-            {
-                using (MySqlConnection conn = databaseHelper.getConnection())
-                {
-                    if (conn.State != ConnectionState.Open)
-                    {
-                        await conn.OpenAsync();
-                    }
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@admin", admin);
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
-                        {
-                            DataTable dataTable = new DataTable();
-
-                            await Task.Run(() => adapter.Fill(dataTable));
-
-                            return dataTable.Rows.Count > 0 ? dataTable : new DataTable();
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error on selecting Inqueue : {ex.Message}");
-            }
-
-        }
-
-        public async Task<DataTable> CompletedAppointment(int admin)
+        public async Task<DataTable> CompletedAppointment()
         {
             string query = @"
                             SELECT 
@@ -190,7 +192,7 @@ namespace Application_Desktop.Controller
                             INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
                             INNER JOIN categories c ON a.selectServices = c.Categories_ID
                             INNER JOIN users u ON a.user_id = u.id
-                            WHERE a.selectedBranch = @admin AND a.status = 'completed'";
+                            WHERE a.status = 'completed'";
 
             try
             {
@@ -202,7 +204,6 @@ namespace Application_Desktop.Controller
                     }
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@admin", admin);
                         using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                         {
                             DataTable dataTable = new DataTable();
