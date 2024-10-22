@@ -358,7 +358,7 @@ namespace Application_Desktop.Controller
                         {
                             if (await reader.ReadAsync())
                             {
-                                email = reader.GetString("email");
+                                email = reader.GetString(reader.GetOrdinal("email"));
                             }
                         }
                     }

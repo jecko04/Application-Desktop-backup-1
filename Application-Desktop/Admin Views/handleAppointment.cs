@@ -727,12 +727,20 @@ namespace Application_Desktop.Admin_Views
             try
             {
                 await smtpClient.SendMailAsync(mail);
-                AlertBox(Color.LightGreen, Color.SeaGreen, "Email Sent!", "Notification sent successfully!", Properties.Resources.success);
+                this.BeginInvoke((MethodInvoker)delegate
+                {
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Email Sent!", "Notification sent successfully!", Properties.Resources.success);
+
+                });
                 return true; // Email sent successfully
             }
             catch (Exception ex)
             {
-                AlertBox(Color.LightCoral, Color.Red, "Failed to Send Email", "Unable to send email notification.", Properties.Resources.error);
+                this.BeginInvoke((MethodInvoker)delegate
+                {
+                    AlertBox(Color.LightCoral, Color.Red, "Failed to Send Email", "Unable to send notification.", Properties.Resources.error);
+
+                });
                 return false; // Failed to send email
             }
         }
@@ -745,15 +753,39 @@ namespace Application_Desktop.Admin_Views
 
             if (selectedAppointmentId > 0)
             {
-                await _handleAppointmentController.Approved(value, selectedAppointmentId);
+                string userEmail = await _handleAppointmentController.SelectEmail(selectedUserId);
 
-                // Clear selection and reset the selectedAppointmentId
-                viewPendingAppointment.ClearSelection();
-                selectedAppointmentId = 0;
+                if (string.IsNullOrEmpty(userEmail))
+                {
+                    this.BeginInvoke((MethodInvoker)delegate
+                    {
+                        AlertBox(Color.LightCoral, Color.Red, "Email Not Found", "User email not found, approval not processed.", Properties.Resources.error);
+                    });
+                    return; 
+                }
 
-                AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Approved", "Appointment Set Successfully!", Properties.Resources.success);
+                bool emailSent = await SendEmailNotification(userEmail, selectedAppointmentId.ToString(), value);
+
+                if (emailSent)
+                {
+                    await _handleAppointmentController.Approved(value, selectedAppointmentId);
+
+                    viewPendingAppointment.ClearSelection();
+                    selectedAppointmentId = 0;
+
+                    this.BeginInvoke((MethodInvoker)delegate
+                    {
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Approved", "Appointment Set Successfully!", Properties.Resources.success);
+                    });
+                }
+                else
+                {
+                    this.BeginInvoke((MethodInvoker)delegate
+                    {
+                        AlertBox(Color.LightCoral, Color.Red, "Approval Failed", "Email notification failed, approval not processed.", Properties.Resources.error);
+                    });
+                }
             }
-
         }
 
         private async void btnApprove_Click(object sender, EventArgs e)
@@ -849,12 +881,20 @@ namespace Application_Desktop.Admin_Views
             try
             {
                 await smtpClient.SendMailAsync(mail);
-                AlertBox(Color.LightGreen, Color.SeaGreen, "Email Sent!", "Cancellation notification sent successfully!", Properties.Resources.success);
+
+                this.BeginInvoke((MethodInvoker)delegate
+                {
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Email Sent!", "Cancellation notification sent successfully!", Properties.Resources.success);
+
+                });
                 return true;
             }
             catch (Exception ex)
             {
-                AlertBox(Color.LightCoral, Color.Red, "Failed to Send Email", $"Unable to send cancellation email: {ex.Message}", Properties.Resources.error);
+                this.BeginInvoke((MethodInvoker)delegate
+                {
+                    AlertBox(Color.LightCoral, Color.Red, "Failed to Send Email", $"Unable to send email: {ex.Message}", Properties.Resources.error);
+                });
                 return false;
             }
         }
@@ -864,12 +904,38 @@ namespace Application_Desktop.Admin_Views
 
             if (selectedAppointmentId > 0)
             {
-                await _handleAppointmentController.Cancel(value, selectedAppointmentId);
-                AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Cancelled", "Appointment Cancelled Successfully!", Properties.Resources.success);
+                string userEmail = await _handleAppointmentController.SelectEmail(selectedUserId);
 
-                // Clear the selection and reset the selectedAppointmentId
-                viewPendingAppointment.ClearSelection();
-                selectedAppointmentId = 0;
+                if (string.IsNullOrEmpty(userEmail))
+                {
+                    this.BeginInvoke((MethodInvoker)delegate
+                    {
+                        AlertBox(Color.LightCoral, Color.Red, "Email Not Found", "User email not found, approval not processed.", Properties.Resources.error);
+                    });
+                    return;
+                }
+
+                bool emailSent = await SendCancelledNotification(userEmail, selectedAppointmentId.ToString(), value);
+
+                if (emailSent)
+                {
+                    await _handleAppointmentController.Cancel(value, selectedAppointmentId);
+
+                    viewPendingAppointment.ClearSelection();
+                    selectedAppointmentId = 0;
+
+                    this.BeginInvoke((MethodInvoker)delegate
+                    {
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Cancelled", "Appointment Cancelled Successfully!", Properties.Resources.success);
+                    });
+                }
+                else
+                {
+                    this.BeginInvoke((MethodInvoker)delegate
+                    {
+                        AlertBox(Color.LightCoral, Color.Red, "Cancel Failed", "Email notification failed, approval not processed.", Properties.Resources.error);
+                    });
+                }
             }
         }
 
@@ -886,7 +952,6 @@ namespace Application_Desktop.Admin_Views
 
                 if (dialogResult == DialogResult.Yes)
                 {
-                    await cancelled();
 
                     string userEmail = await _handleAppointmentController.SelectEmail(selectedUserId);
 
@@ -897,6 +962,7 @@ namespace Application_Desktop.Admin_Views
 
                         if (emailSent)
                         {
+                            await cancelled();
                             await LoadInqueue();
                         }
                     }
@@ -1050,13 +1116,19 @@ namespace Application_Desktop.Admin_Views
                     // Update the check_in status in the database
                     await _handleAppointmentController.UpdateCheckInStatus(AppointmentData.userId, AppointmentData.appointment_date, AppointmentData.appointment_time);
 
-                    AlertBox(Color.LightGreen, Color.SeaGreen, "Valid QRCode", "Check-in successful!", Properties.Resources.success);
+                    this.BeginInvoke((MethodInvoker)delegate
+                    {
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Valid QRCode", "Check-in successful!", Properties.Resources.success);
+                    });
+
 
                 }
                 else
                 {
-                    AlertBox(Color.LightCoral, Color.Red, "Not Valid QRCode", "Appointment is not approved or does not exist.", Properties.Resources.error);
-
+                    this.BeginInvoke((MethodInvoker)delegate
+                    {
+                        AlertBox(Color.LightCoral, Color.Red, "Not Valid QRCode", "Appointment is not approved or does not exist.", Properties.Resources.error);
+                    });
                 }
             }
             catch (Exception ex)
