@@ -39,16 +39,18 @@ namespace Application_Desktop.Admin_Sub_Views
         private async void registerDentalDoctorAccount_Load(object sender, EventArgs e)
         {
             await GettingRoleBranchName();
-            await GetEmployeeNames();
+            //await GetEmployeeNames();
         }
 
 
-        private static async Task<int> GetBranchID()
+        private static async Task<int[]> GetBranchID()
         {
             int adminBranchID = session.LoggedInSession;
             int branchID = -1;
 
-            string getBranchID = "SELECT Branch_ID FROM admin WHERE Admin_ID = @adminID";
+
+            List<int> branchIDs = new List<int>();
+            string getBranchID = "SELECT Branch_ID FROM branch";
 
             MySqlConnection conn = databaseHelper.getConnection();
             try
@@ -59,19 +61,18 @@ namespace Application_Desktop.Admin_Sub_Views
                 }
 
                 MySqlCommand getBranchIDCmd = new MySqlCommand(getBranchID, conn);
-                getBranchIDCmd.Parameters.AddWithValue("@adminID", adminBranchID);
+                MySqlDataReader branchIDReader = (MySqlDataReader) await getBranchIDCmd.ExecuteReaderAsync();
 
-                MySqlDataReader branchIDReader = getBranchIDCmd.ExecuteReader();
-                if (await branchIDReader.ReadAsync())
+                while (await branchIDReader.ReadAsync())
                 {
-                    branchID = Convert.ToInt32(branchIDReader["Branch_ID"]);
+                    branchIDs.Add(Convert.ToInt32(branchIDReader["Branch_ID"]));
                 }
                 await branchIDReader.CloseAsync();
 
                 // Check if adminBranchID was correctly retrieved
-                if (branchID == -1)
+                if (branchIDs.Count == 0)
                 {
-                    MessageBox.Show("Failed to retrieve the admin's branch ID.");
+                    MessageBox.Show("No branch IDs were retrieved.");
                 }
             }
             catch (Exception ex)
@@ -83,13 +84,14 @@ namespace Application_Desktop.Admin_Sub_Views
                 await conn.CloseAsync();
             }
 
-            return branchID; // Return branchID
+            return branchIDs.ToArray();
         }
 
 
         private async Task GettingRoleBranchName()
         {
-            int branchID = await GetBranchID();
+
+            int[] branchID = await GetBranchID();
 
 
             MySqlConnection conn = databaseHelper.getConnection();
@@ -100,17 +102,21 @@ namespace Application_Desktop.Admin_Sub_Views
                     await conn.OpenAsync();
                 }
 
-                string query = @"
-                SELECT 'role' AS Type, Role_ID AS ID, RoleName AS Name 
-                FROM role 
-                UNION ALL 
-                SELECT 'branch' AS Type, Branch_ID AS ID, BranchName AS Name 
-                FROM branch 
-                WHERE Branch_ID = @branchID";
+                string inClause = string.Join(",", branchID.Select((_, index) => $"@branchID{index}"));
+                string query = $@"
+                    SELECT 'role' AS Type, Role_ID AS ID, RoleName AS Name 
+                    FROM role 
+                    UNION ALL 
+                    SELECT 'branch' AS Type, Branch_ID AS ID, BranchName AS Name 
+                    FROM branch 
+                    WHERE Branch_ID IN ({inClause})";
 
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@branchID", branchID);
+                for (int i = 0; i < branchID.Length; i++)
+                {
+                    cmd.Parameters.AddWithValue($"@branchID{i}", branchID[i]);
+                }
 
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (await reader.ReadAsync())
@@ -153,57 +159,33 @@ namespace Application_Desktop.Admin_Sub_Views
             }
         }
 
-        private async Task GetEmployeeNames()
-        {
-            int branchID = await GetBranchID();
-
-            string query = @"Select Fullname from employees";
-
-            MySqlConnection conn = databaseHelper.getConnection();
-
-            try
-            {
-                if (conn.State != ConnectionState.Open)
-                {
-                    await conn.OpenAsync();
-                }
-
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-
-                MySqlDataReader reader = cmd.ExecuteReader();
-                while (await reader.ReadAsync())
-                {
-                    string fullname = reader["Fullname"].ToString();
-
-                    txtEmployees.Items.Add(fullname);
-                }
-
-                await reader.CloseAsync();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally { await conn.CloseAsync(); }
-        }
 
         private async Task SignUp()
         {
-            string employees = txtEmployees.Text;
+            string first = txtfirstName.Text;
+            string last = txtLastName.Text;
             string email = txtEmail.Text;
             string pwd = txtPassword.Text;
             string role = txtRoles.Text;
             string branch = txtBranch.Text;
 
             //error provider
-            if (string.IsNullOrEmpty(employees))
+            if (string.IsNullOrEmpty(first))
             {
-                errorProvider1.SetError(borderEmployees, "First Name is required.");
+                errorProvider1.SetError(borderFirst, "First Name is required.");
             }
             else
             {
-                errorProvider1.SetError(borderEmployees, string.Empty);
+                errorProvider1.SetError(borderFirst, string.Empty);
+            }
+
+            if (string.IsNullOrEmpty(last))
+            {
+                errorProvider1.SetError(borderLast, "First Name is required.");
+            }
+            else
+            {
+                errorProvider1.SetError(borderLast, string.Empty);
             }
 
             if (string.IsNullOrEmpty(email))
@@ -301,9 +283,13 @@ namespace Application_Desktop.Admin_Sub_Views
                 }
             }
 
-            if (string.IsNullOrEmpty(employees))
+            if (string.IsNullOrEmpty(first))
             {
-                errorProvider1.SetError(borderEmployees, "First Name is required.");
+                errorProvider1.SetError(borderFirst, "First Name is required.");
+            }
+            else if (string.IsNullOrEmpty(last))
+            {
+                errorProvider3.SetError(borderLast, "Email is required.");
             }
             else if (string.IsNullOrEmpty(email))
             {
@@ -317,7 +303,7 @@ namespace Application_Desktop.Admin_Sub_Views
             {
                 errorProvider7.SetError(borderBranch, "Branch is required.");
             }
-            else if (errorProvider1.GetError(borderEmployees) != string.Empty ||
+            else if (errorProvider1.GetError(borderFirst) != string.Empty || errorProvider1.GetError(borderLast) != string.Empty ||
             errorProvider3.GetError(borderEmail) != string.Empty ||
             errorProvider4.GetError(borderPass) != string.Empty ||
             errorProvider5.GetError(borderRoles) != string.Empty ||
@@ -340,7 +326,7 @@ namespace Application_Desktop.Admin_Sub_Views
                     MySqlConnection conn = databaseHelper.getConnection();
                     try
                     {
-                        string fullname = $"{employees}";
+                        string fullname = $"{first} {last}";
 
                         if (conn.State != ConnectionState.Open)
                         {
@@ -373,7 +359,9 @@ namespace Application_Desktop.Admin_Sub_Views
 
                         //MessageBox.Show("Signed-Up Successful");
                         AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account created successfully", Properties.Resources.success);
-                        txtEmployees.Text = "";
+                        //txtEmployees.Text = "";
+                        txtfirstName.Text = "";
+                        txtLastName.Text = "";
                         txtEmail.Text = "";
                         txtPassword.Text = "";
 
@@ -402,46 +390,6 @@ namespace Application_Desktop.Admin_Sub_Views
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        private async Task GetEmployeeEmail()
-        {
-            int branchID = await GetBranchID();
-            string employee = txtEmployees.Text;
-
-            string query = @"Select Email from employees Where Fullname = @fullname";
-
-            MySqlConnection conn = databaseHelper.getConnection();
-
-            try
-            {
-                if (conn.State != ConnectionState.Open)
-                {
-                    await conn.OpenAsync();
-                }
-
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@fullname", employee);
-
-                MySqlDataReader reader = cmd.ExecuteReader();
-                if (await reader.ReadAsync())
-                {
-                    string email = reader["Email"].ToString();
-                    txtEmail.Text = email;
-                }
-
-                await reader.CloseAsync();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally { await conn.CloseAsync(); }
-        }
-
-        private async void txtEmployees_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            await GetEmployeeEmail();
         }
     }
 }

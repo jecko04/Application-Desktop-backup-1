@@ -22,23 +22,24 @@ namespace Application_Desktop.Controller
         public async Task<DataTable> InqueueAppointment()
         {
             string query = @"
-                    SELECT 
-                        a.id,
-                        a.user_id,
-                        u.name AS UserName,
-                        b.BranchName,
-                        c.Title AS ServiceTitle,
-                        a.appointment_date,
-                        a.appointment_time,
-                        a.reschedule_date,
-                        a.reschedule_time,
-                        a.status,
-                        a.check_in
-                    FROM appointments a
-                    INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
-                    INNER JOIN categories c ON a.selectServices = c.Categories_ID
-                    INNER JOIN users u ON a.user_id = u.id
-                    WHERE a.status = 'pending'";
+                        SELECT 
+                            a.id,
+                            a.user_id,
+                            u.name AS UserName,
+                            b.BranchName,
+                            c.Title AS ServiceTitle,
+                            a.appointment_date,
+                            a.appointment_time,
+                            a.reschedule_date,
+                            a.reschedule_time,
+                            a.status,
+                            a.check_in
+                        FROM appointments a
+                        INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
+                        INNER JOIN categories c ON a.selectServices = c.Categories_ID
+                        INNER JOIN users u ON a.user_id = u.id
+                        WHERE a.status = 'pending'
+                        ORDER BY a.created_at DESC";
 
             try
             {
@@ -76,23 +77,24 @@ namespace Application_Desktop.Controller
         public async Task<DataTable> ApprovedAppointment()
         {
             string query = @"
-                            SELECT 
-                                a.id,
-                                a.user_id,
-                                u.name AS UserName,
-                                b.BranchName,
-                                c.Title AS ServiceTitle,
-                                a.appointment_date,
-                                a.appointment_time,
-                                a.reschedule_date,
-                                a.reschedule_time,
-                                a.status,
-                                a.check_in
-                            FROM appointments a
-                            INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
-                            INNER JOIN categories c ON a.selectServices = c.Categories_ID
-                            INNER JOIN users u ON a.user_id = u.id
-                            WHERE a.status = 'approved'";
+                        SELECT 
+                            a.id,
+                            a.user_id,
+                            u.name AS UserName,
+                            b.BranchName,
+                            c.Title AS ServiceTitle,
+                            a.appointment_date,
+                            a.appointment_time,
+                            a.reschedule_date,
+                            a.reschedule_time,
+                            a.status,
+                            a.check_in
+                        FROM appointments a
+                        INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
+                        INNER JOIN categories c ON a.selectServices = c.Categories_ID
+                        INNER JOIN users u ON a.user_id = u.id
+                        WHERE a.status = 'approved'
+                        ORDER BY a.created_at DESC";
 
             try
             {
@@ -125,23 +127,24 @@ namespace Application_Desktop.Controller
         public async Task<DataTable> CancelledAppointment()
         {
             string query = @"
-                            SELECT 
-                                a.id,
-                                a.user_id,
-                                u.name AS UserName,
-                                b.BranchName,
-                                c.Title AS ServiceTitle,
-                                a.appointment_date,
-                                a.appointment_time,
-                                a.reschedule_date,
-                                a.reschedule_time,
-                                a.status,
-                                a.check_in
-                            FROM appointments a
-                            INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
-                            INNER JOIN categories c ON a.selectServices = c.Categories_ID
-                            INNER JOIN users u ON a.user_id = u.id
-                            WHERE a.status = 'cancelled'";
+                        SELECT 
+                            a.id,
+                            a.user_id,
+                            u.name AS UserName,
+                            b.BranchName,
+                            c.Title AS ServiceTitle,
+                            a.appointment_date,
+                            a.appointment_time,
+                            a.reschedule_date,
+                            a.reschedule_time,
+                            a.status,
+                            a.check_in
+                        FROM appointments a
+                        INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
+                        INNER JOIN categories c ON a.selectServices = c.Categories_ID
+                        INNER JOIN users u ON a.user_id = u.id
+                        WHERE a.status = 'cancelled'
+                        ORDER BY a.created_at DESC";
 
             try
             {
@@ -192,7 +195,8 @@ namespace Application_Desktop.Controller
                             INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
                             INNER JOIN categories c ON a.selectServices = c.Categories_ID
                             INNER JOIN users u ON a.user_id = u.id
-                            WHERE a.status = 'completed'";
+                            WHERE a.status = 'completed'
+                            ORDER BY a.created_at DESC";
 
             try
             {

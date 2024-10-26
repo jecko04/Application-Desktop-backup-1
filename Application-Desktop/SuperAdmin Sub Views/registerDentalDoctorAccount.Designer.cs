@@ -35,13 +35,20 @@
             pictureBox1 = new PictureBox();
             btnClose = new PictureBox();
             panel2 = new Panel();
-            borderEmployees = new Panel();
-            panel9 = new Panel();
-            panel18 = new Panel();
-            panel23 = new Panel();
-            panel28 = new Panel();
-            txtEmployees = new ComboBox();
-            label8 = new Label();
+            borderLast = new Panel();
+            panel13 = new Panel();
+            panel14 = new Panel();
+            panel15 = new Panel();
+            panel16 = new Panel();
+            txtLastName = new TextBox();
+            borderFirst = new Panel();
+            panel4 = new Panel();
+            panel10 = new Panel();
+            panel11 = new Panel();
+            panel12 = new Panel();
+            txtfirstName = new TextBox();
+            label3 = new Label();
+            label2 = new Label();
             borderRoles = new Panel();
             panel29 = new Panel();
             panel30 = new Panel();
@@ -86,7 +93,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
             panel2.SuspendLayout();
-            borderEmployees.SuspendLayout();
+            borderLast.SuspendLayout();
+            borderFirst.SuspendLayout();
             borderRoles.SuspendLayout();
             borderPass.SuspendLayout();
             borderEmail.SuspendLayout();
@@ -152,8 +160,10 @@
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel2.AutoScroll = true;
             panel2.BackColor = Color.WhiteSmoke;
-            panel2.Controls.Add(borderEmployees);
-            panel2.Controls.Add(label8);
+            panel2.Controls.Add(borderLast);
+            panel2.Controls.Add(borderFirst);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(label2);
             panel2.Controls.Add(borderRoles);
             panel2.Controls.Add(borderPass);
             panel2.Controls.Add(borderEmail);
@@ -171,74 +181,145 @@
             panel2.TabIndex = 2;
             panel2.Paint += panel2_Paint;
             // 
-            // borderEmployees
+            // borderLast
             // 
-            borderEmployees.Controls.Add(panel9);
-            borderEmployees.Controls.Add(panel18);
-            borderEmployees.Controls.Add(panel23);
-            borderEmployees.Controls.Add(panel28);
-            borderEmployees.Controls.Add(txtEmployees);
-            borderEmployees.Location = new Point(30, 74);
-            borderEmployees.Name = "borderEmployees";
-            borderEmployees.Size = new Size(347, 23);
-            borderEmployees.TabIndex = 61;
+            borderLast.Controls.Add(panel13);
+            borderLast.Controls.Add(panel14);
+            borderLast.Controls.Add(panel15);
+            borderLast.Controls.Add(panel16);
+            borderLast.Controls.Add(txtLastName);
+            borderLast.Location = new Point(223, 70);
+            borderLast.Name = "borderLast";
+            borderLast.Size = new Size(157, 23);
+            borderLast.TabIndex = 64;
             // 
-            // panel9
+            // panel13
             // 
-            panel9.BackColor = Color.FromArgb(52, 152, 219);
-            panel9.Dock = DockStyle.Bottom;
-            panel9.Location = new Point(1, 22);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(345, 1);
-            panel9.TabIndex = 58;
+            panel13.BackColor = Color.FromArgb(52, 152, 219);
+            panel13.Dock = DockStyle.Left;
+            panel13.Location = new Point(0, 1);
+            panel13.Name = "panel13";
+            panel13.Size = new Size(1, 21);
+            panel13.TabIndex = 21;
             // 
-            // panel18
+            // panel14
             // 
-            panel18.BackColor = Color.FromArgb(52, 152, 219);
-            panel18.Dock = DockStyle.Top;
-            panel18.Location = new Point(1, 0);
-            panel18.Name = "panel18";
-            panel18.Size = new Size(345, 1);
-            panel18.TabIndex = 58;
+            panel14.BackColor = Color.FromArgb(52, 152, 219);
+            panel14.Dock = DockStyle.Right;
+            panel14.Location = new Point(156, 1);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(1, 21);
+            panel14.TabIndex = 22;
             // 
-            // panel23
+            // panel15
             // 
-            panel23.BackColor = Color.FromArgb(52, 152, 219);
-            panel23.Dock = DockStyle.Left;
-            panel23.Location = new Point(0, 0);
-            panel23.Name = "panel23";
-            panel23.Size = new Size(1, 23);
-            panel23.TabIndex = 57;
+            panel15.BackColor = Color.FromArgb(52, 152, 219);
+            panel15.Dock = DockStyle.Top;
+            panel15.Location = new Point(0, 0);
+            panel15.Name = "panel15";
+            panel15.Size = new Size(157, 1);
+            panel15.TabIndex = 22;
             // 
-            // panel28
+            // panel16
             // 
-            panel28.BackColor = Color.FromArgb(52, 152, 219);
-            panel28.Dock = DockStyle.Right;
-            panel28.Location = new Point(346, 0);
-            panel28.Name = "panel28";
-            panel28.Size = new Size(1, 23);
-            panel28.TabIndex = 58;
+            panel16.BackColor = Color.FromArgb(52, 152, 219);
+            panel16.Dock = DockStyle.Bottom;
+            panel16.Location = new Point(0, 22);
+            panel16.Name = "panel16";
+            panel16.Size = new Size(157, 1);
+            panel16.TabIndex = 22;
             // 
-            // txtEmployees
+            // txtLastName
             // 
-            txtEmployees.Dock = DockStyle.Fill;
-            txtEmployees.FormattingEnabled = true;
-            txtEmployees.Location = new Point(0, 0);
-            txtEmployees.Name = "txtEmployees";
-            txtEmployees.Size = new Size(347, 23);
-            txtEmployees.TabIndex = 9;
-            txtEmployees.SelectedIndexChanged += txtEmployees_SelectedIndexChanged;
+            txtLastName.BorderStyle = BorderStyle.FixedSingle;
+            txtLastName.Dock = DockStyle.Fill;
+            txtLastName.Font = new Font("Tahoma", 9.75F);
+            txtLastName.Location = new Point(0, 0);
+            txtLastName.Name = "txtLastName";
+            txtLastName.PlaceholderText = "Last name";
+            txtLastName.Size = new Size(157, 23);
+            txtLastName.TabIndex = 3;
             // 
-            // label8
+            // borderFirst
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Tahoma", 9.75F);
-            label8.ForeColor = Color.DimGray;
-            label8.Location = new Point(21, 43);
-            label8.Name = "label8";
-            label8.Size = new Size(129, 16);
-            label8.TabIndex = 60;
-            label8.Text = "Employees Fullname:";
+            borderFirst.Controls.Add(panel4);
+            borderFirst.Controls.Add(panel10);
+            borderFirst.Controls.Add(panel11);
+            borderFirst.Controls.Add(panel12);
+            borderFirst.Controls.Add(txtfirstName);
+            borderFirst.Location = new Point(33, 71);
+            borderFirst.Name = "borderFirst";
+            borderFirst.Size = new Size(157, 23);
+            borderFirst.TabIndex = 65;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.FromArgb(52, 152, 219);
+            panel4.Dock = DockStyle.Left;
+            panel4.Location = new Point(0, 1);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(1, 21);
+            panel4.TabIndex = 21;
+            // 
+            // panel10
+            // 
+            panel10.BackColor = Color.FromArgb(52, 152, 219);
+            panel10.Dock = DockStyle.Right;
+            panel10.Location = new Point(156, 1);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(1, 21);
+            panel10.TabIndex = 22;
+            // 
+            // panel11
+            // 
+            panel11.BackColor = Color.FromArgb(52, 152, 219);
+            panel11.Dock = DockStyle.Top;
+            panel11.Location = new Point(0, 0);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(157, 1);
+            panel11.TabIndex = 22;
+            // 
+            // panel12
+            // 
+            panel12.BackColor = Color.FromArgb(52, 152, 219);
+            panel12.Dock = DockStyle.Bottom;
+            panel12.Location = new Point(0, 22);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(157, 1);
+            panel12.TabIndex = 22;
+            // 
+            // txtfirstName
+            // 
+            txtfirstName.BorderStyle = BorderStyle.FixedSingle;
+            txtfirstName.Dock = DockStyle.Fill;
+            txtfirstName.Font = new Font("Tahoma", 9.75F);
+            txtfirstName.Location = new Point(0, 0);
+            txtfirstName.Name = "txtfirstName";
+            txtfirstName.PlaceholderText = "First name";
+            txtfirstName.Size = new Size(157, 23);
+            txtfirstName.TabIndex = 1;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Tahoma", 9.75F);
+            label3.ForeColor = Color.DimGray;
+            label3.Location = new Point(212, 42);
+            label3.Name = "label3";
+            label3.Size = new Size(74, 16);
+            label3.TabIndex = 63;
+            label3.Text = "Last name*";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Tahoma", 9.75F);
+            label2.ForeColor = Color.DimGray;
+            label2.Location = new Point(22, 42);
+            label2.Name = "label2";
+            label2.Size = new Size(76, 16);
+            label2.TabIndex = 62;
+            label2.Text = "First name*";
             // 
             // borderRoles
             // 
@@ -468,7 +549,6 @@
             // txtBranch
             // 
             txtBranch.Dock = DockStyle.Fill;
-            txtBranch.Enabled = false;
             txtBranch.FormattingEnabled = true;
             txtBranch.Location = new Point(0, 0);
             txtBranch.Name = "txtBranch";
@@ -617,7 +697,10 @@
             ((System.ComponentModel.ISupportInitialize)btnClose).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            borderEmployees.ResumeLayout(false);
+            borderLast.ResumeLayout(false);
+            borderLast.PerformLayout();
+            borderFirst.ResumeLayout(false);
+            borderFirst.PerformLayout();
             borderRoles.ResumeLayout(false);
             borderPass.ResumeLayout(false);
             borderPass.PerformLayout();
@@ -682,12 +765,19 @@
         private Panel panel20;
         private Panel panel21;
         private Panel panel22;
-        private Panel borderEmployees;
-        private Panel panel9;
-        private Panel panel18;
-        private Panel panel23;
-        private Panel panel28;
-        private ComboBox txtEmployees;
-        private Label label8;
+        private Panel borderLast;
+        private Panel panel13;
+        private Panel panel14;
+        private Panel panel15;
+        private Panel panel16;
+        private TextBox txtLastName;
+        private Panel borderFirst;
+        private Panel panel4;
+        private Panel panel10;
+        private Panel panel11;
+        private Panel panel12;
+        private TextBox txtfirstName;
+        private Label label3;
+        private Label label2;
     }
 }

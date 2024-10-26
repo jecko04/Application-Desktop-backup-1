@@ -43,7 +43,7 @@ namespace Application_Desktop.Admin_Views
             int adminBranchID = session.LoggedInSession;
             int branchID = -1;
 
-            string getBranchID = "SELECT Branch_ID FROM admin WHERE Admin_ID = @adminID";
+            string getBranchID = "SELECT Branch_ID FROM branch";
 
             MySqlConnection conn = databaseHelper.getConnection();
             try
@@ -54,7 +54,6 @@ namespace Application_Desktop.Admin_Views
                 }
 
                 MySqlCommand getBranchIDCmd = new MySqlCommand(getBranchID, conn);
-                getBranchIDCmd.Parameters.AddWithValue("@adminID", adminBranchID);
 
                 MySqlDataReader branchIDReader = getBranchIDCmd.ExecuteReader();
                 if (branchIDReader.Read())

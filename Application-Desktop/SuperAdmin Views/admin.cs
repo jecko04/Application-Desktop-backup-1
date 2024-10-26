@@ -54,6 +54,7 @@ namespace Application_Desktop.Sub_Views
             {
                 await LoadData();
                 await LoadSuperAdmin();
+                await LoadAccessAcc();
 
                 DataTable accesslogs = await _accessAccountController.FetchAccessLogs();
 
@@ -217,6 +218,51 @@ namespace Application_Desktop.Sub_Views
             }
         }
 
+        private async Task LoadAccessAcc()
+        {
+            string query = @"SELECT 
+                             access_id,
+                             Admin_ID,
+                             email, 
+                             username, 
+                             Branch_ID
+                             FROM access_account";
+
+            MySqlConnection conn = databaseHelper.getConnection();
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    await conn.OpenAsync();
+                }
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                viewAccessAccount.DataSource = null;
+                viewAccessAccount.Rows.Clear();
+                viewAccessAccount.Columns.Clear();
+
+                viewAccessAccount.AutoGenerateColumns = false;
+
+                AddColumnAcessAcc();
+
+                viewAccessAccount.DataSource = dataTable;
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                await conn.CloseAsync();
+            }
+        }
+
         private registerAdmin registerAdminInstance;
         private void btnNewAdmin_Click_1(object sender, EventArgs e)
         {
@@ -243,6 +289,7 @@ namespace Application_Desktop.Sub_Views
             //Refresh Button
             await LoadData();
             await LoadSuperAdmin();
+            await LoadAccessAcc();
 
             try
             {
@@ -643,15 +690,6 @@ namespace Application_Desktop.Sub_Views
             deleteButtonColumn.Width = 50;
             deleteButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             viewSuperAdminData.Columns.Add(deleteButtonColumn);
-
-            DataGridViewImageColumn changeButtonColumn = new DataGridViewImageColumn();
-            changeButtonColumn.HeaderText = "";
-            changeButtonColumn.Name = "changeSuperAdmin";
-            changeButtonColumn.Image = Properties.Resources.change;
-            changeButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            changeButtonColumn.Width = 50;
-            changeButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            viewSuperAdminData.Columns.Add(changeButtonColumn);
         }
 
         private void AddColumnAdmin()
@@ -729,15 +767,6 @@ namespace Application_Desktop.Sub_Views
             deleteButtonColumn.Width = 50;
             deleteButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             viewAdminData.Columns.Add(deleteButtonColumn);
-
-            DataGridViewImageColumn changeButtonColumn = new DataGridViewImageColumn();
-            changeButtonColumn.HeaderText = "";
-            changeButtonColumn.Name = "change";
-            changeButtonColumn.Image = Properties.Resources.change;
-            changeButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            changeButtonColumn.Width = 50;
-            changeButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            viewAdminData.Columns.Add(changeButtonColumn);
         }
 
 
@@ -785,6 +814,22 @@ namespace Application_Desktop.Sub_Views
                         int adminID = Convert.ToInt32(row.Cells["Admin_ID"].Value);
                         viewAdminData.Rows.RemoveAt(i);
                         await DeleteRowFromDatabase(adminID);
+                    }
+                }
+
+                for (int i = viewAccessAccount.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataGridViewRow row = viewAccessAccount.Rows[i];
+                    DataGridViewCheckBoxCell checkBoxCell = row.Cells["selectAccessAcc"] as DataGridViewCheckBoxCell;
+
+                    // Check if the checkbox is checked
+                    if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
+                    {
+                        hasSelectedRows = true;
+                        // Get the ID of the admin to delete
+                        int accessacc = Convert.ToInt32(row.Cells["access_id"].Value);
+                        viewAccessAccount.Rows.RemoveAt(i);
+                        await DeleteAccessAcc(accessacc);
                     }
                 }
 
@@ -841,6 +886,138 @@ namespace Application_Desktop.Sub_Views
         private void tabPage2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private async void viewPatientRecordAccessAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //delete
+            if (e.RowIndex >= 0 && e.ColumnIndex == viewAccessAccount.Columns["deleteAccess"].Index)
+            {
+                DialogResult result = MessageBox.Show("Would you like to proceed with deleting this account?", "Confirm Deletions", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    int accessAcc = Convert.ToInt32(viewAccessAccount.Rows[e.RowIndex].Cells["access_id"].Value);
+
+                    // Delete row from database
+                    await DeleteAccessAcc(accessAcc);
+                    await LoadAccessAcc();
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The data has been deleted successfully", Properties.Resources.success);
+                }
+            }
+
+            //Select Check Box
+            if (isProcessingClick) return; // Ignore the click if already processing
+
+            isProcessingClick = true;
+
+            try
+            {
+                // Your checkbox toggle logic here
+                if (e.ColumnIndex == viewAccessAccount.Columns["selectAccessAcc"].Index)
+                {
+                    DataGridViewCheckBoxCell cell = (DataGridViewCheckBoxCell)viewAccessAccount.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    bool isChecked = cell.Value != null && (bool)cell.Value;
+                    cell.Value = !isChecked;
+                }
+            }
+            finally
+            {
+                // Allow clicks again after processing
+                isProcessingClick = false;
+            }
+
+
+        }
+
+        private void AddColumnAcessAcc()
+        {
+            viewAccessAccount.RowHeadersVisible = false;
+            viewAccessAccount.ColumnHeadersHeight = 40;
+
+            DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
+            selectColumn.HeaderText = "";
+            selectColumn.Name = "selectAccessAcc";
+            selectColumn.Width = 30;
+            viewAccessAccount.Columns.Add(selectColumn);
+            viewAccessAccount.Columns["selectAccessAcc"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            DataGridViewTextBoxColumn accessColumn = new DataGridViewTextBoxColumn();
+            accessColumn.HeaderText = "ID";
+            accessColumn.Name = "access_id";
+            accessColumn.DataPropertyName = "access_id";
+            viewAccessAccount.Columns.Add(accessColumn);
+
+            DataGridViewTextBoxColumn adminColumn = new DataGridViewTextBoxColumn();
+            adminColumn.HeaderText = "ID";
+            adminColumn.Name = "Admin_ID";
+            adminColumn.DataPropertyName = "Admin_ID";
+            viewAccessAccount.Columns.Add(adminColumn);
+
+            DataGridViewTextBoxColumn emailColumn = new DataGridViewTextBoxColumn();
+            emailColumn.HeaderText = "Email";
+            emailColumn.Name = "email";
+            emailColumn.DataPropertyName = "email";
+            emailColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            viewAccessAccount.Columns.Add(emailColumn);
+
+            DataGridViewTextBoxColumn Username = new DataGridViewTextBoxColumn();
+            Username.HeaderText = "Username";
+            Username.Name = "username";
+            Username.DataPropertyName = "username";
+            viewAccessAccount.Columns.Add(Username);
+
+            DataGridViewTextBoxColumn roleColumn = new DataGridViewTextBoxColumn();
+            roleColumn.HeaderText = "Branch";
+            roleColumn.Name = "Branch_ID";
+            roleColumn.DataPropertyName = "Branch_ID";
+            viewAccessAccount.Columns.Add(roleColumn);
+
+            DataGridViewImageColumn deleteButtonColumn = new DataGridViewImageColumn();
+            deleteButtonColumn.HeaderText = "";
+            deleteButtonColumn.Name = "deleteAccess";
+            deleteButtonColumn.Image = Properties.Resources.delete_img;
+            deleteButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            deleteButtonColumn.Width = 50;
+            deleteButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            viewAccessAccount.Columns.Add(deleteButtonColumn);
+        }
+
+        public async Task<int> DeleteAccessAcc(int accessAccount)
+        {
+            string query = "Delete from access_account Where access_id = @accessAccount";
+
+            MySqlConnection conn = databaseHelper.getConnection();
+
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    await conn.OpenAsync();
+                }
+
+                MySqlTransaction transaction = conn.BeginTransaction();
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@accessAccount", accessAccount);
+                    await cmd.ExecuteNonQueryAsync();
+
+                    await transaction.CommitAsync();
+                }
+                catch (Exception transEx)
+                {
+                    // Rollback the transaction in case of an error
+                    await transaction.RollbackAsync();
+                    MessageBox.Show("Transaction failed: " + transEx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { await conn.CloseAsync(); }
+            return accessAccount;
         }
     }
 }
