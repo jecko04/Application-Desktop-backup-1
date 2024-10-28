@@ -34,6 +34,7 @@ namespace Application_Desktop.Views
             elipseManagerPanel.ApplyElipseToPanel(panel3);
             elipseManagerPanel.ApplyElipseToPanel(panel4);
             elipseManagerPanel.ApplyElipseToPanel(panel5);
+            elipseManagerPanel.ApplyElipseToPanel(panel10);
 
             var materialSkinManager = MaterialSkinManager.Instance;
 
@@ -61,6 +62,7 @@ namespace Application_Desktop.Views
         {
             await CountAll();
             await LoadInqueue();
+            await LoadApproved();
 
             displayDays();
         }
@@ -72,12 +74,14 @@ namespace Application_Desktop.Views
                 int pendingCount = await _adminDashboardController.CountAllPending();
                 int approvedCount = await _adminDashboardController.CountAllApproved();
                 int cancelledCount = await _adminDashboardController.CountAllCancelled();
+                int missedCount = await _adminDashboardController.CountAllMissed();
                 int completedCount = await _adminDashboardController.CountAllCompleted();
                 int patientCount = await _adminDashboardController.CountAllPatient();
 
                 txtPending.Text = pendingCount.ToString();
                 txtApproved.Text = approvedCount.ToString();
                 txtCancel.Text = cancelledCount.ToString();
+                txtMissed.Text = missedCount.ToString();
                 txtCompleted.Text = completedCount.ToString();
                 txtDentalPatient.Text = patientCount.ToString();
             }
@@ -108,29 +112,31 @@ namespace Application_Desktop.Views
             }
         }
 
+        private async Task LoadApproved()
+        {
+            try
+            {
+                DataTable approved = await _adminDashboardController.ApprovedAppointment();
+                viewApproved.DataSource = null;
+                viewApproved.Rows.Clear();
+                viewApproved.Columns.Clear();
+
+                viewApproved.AutoGenerateColumns = false;
+                AddColumnApproved(viewApproved);
+
+                viewApproved.DataSource = approved;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to load patient records: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void AddColumnInqueue(DataGridView Inqueue)
         {
             Inqueue.RowHeadersVisible = false;
             Inqueue.ColumnHeadersHeight = 40;
-
-            DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "ID",
-                Name = "id",
-                DataPropertyName = "id",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            Inqueue.Columns.Add(id);
-
-            DataGridViewTextBoxColumn userIdColumn = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "User ID",
-                Name = "user_id",
-                DataPropertyName = "user_id",
-                Visible = false
-            };
-            Inqueue.Columns.Add(userIdColumn);
 
             DataGridViewTextBoxColumn fullname = new DataGridViewTextBoxColumn
             {
@@ -161,56 +167,43 @@ namespace Application_Desktop.Views
 
             };
             Inqueue.Columns.Add(services);
+        }
 
-            DataGridViewTextBoxColumn appointment_date = new DataGridViewTextBoxColumn
+        private void AddColumnApproved(DataGridView Approved)
+        {
+            Approved.RowHeadersVisible = false;
+            Approved.ColumnHeadersHeight = 40;
+
+
+            DataGridViewTextBoxColumn fullname = new DataGridViewTextBoxColumn
             {
-                HeaderText = "Appointment Date",
-                Name = "appointmentDate",
-                DataPropertyName = "appointment_date",
+                HeaderText = "Fullname",
+                Name = "fullname",
+                DataPropertyName = "UserName",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
 
             };
-            Inqueue.Columns.Add(appointment_date);
+            Approved.Columns.Add(fullname);
 
-            DataGridViewTextBoxColumn appointment_time = new DataGridViewTextBoxColumn
+            DataGridViewTextBoxColumn branches = new DataGridViewTextBoxColumn
             {
-                HeaderText = "Appointment Time",
-                Name = "appointmentTime",
-                DataPropertyName = "appointment_time",
+                HeaderText = "Branch",
+                Name = "branches",
+                DataPropertyName = "BranchName",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
 
             };
-            Inqueue.Columns.Add(appointment_time);
+            Approved.Columns.Add(branches);
 
-            DataGridViewTextBoxColumn reschedule_date = new DataGridViewTextBoxColumn
+            DataGridViewTextBoxColumn services = new DataGridViewTextBoxColumn
             {
-                HeaderText = "Reschedule Date",
-                Name = "rescheduleDate",
-                DataPropertyName = "reschedule_date",
+                HeaderText = "Services",
+                Name = "services",
+                DataPropertyName = "ServiceTitle",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
 
             };
-            Inqueue.Columns.Add(reschedule_date);
-
-            DataGridViewTextBoxColumn reschedule_time = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Reschedule Time",
-                Name = "rescheduleTime",
-                DataPropertyName = "reschedule_time",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            Inqueue.Columns.Add(reschedule_time);
-
-            DataGridViewTextBoxColumn status = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Status",
-                Name = "status",
-                DataPropertyName = "status",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            Inqueue.Columns.Add(status);
+            Approved.Columns.Add(services);
         }
 
 
@@ -432,11 +425,12 @@ namespace Application_Desktop.Views
         {
             await LoadInqueue();
             await CountAll();
+            await LoadApproved();
 
             displayDays();
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

@@ -33,8 +33,30 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             MyNavigationPanel = new MaterialSkin.Controls.MaterialTabControl();
             tabPage1 = new TabPage();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            panel4 = new Panel();
+            txtCompleted = new Label();
+            pictureBox4 = new PictureBox();
+            label5 = new Label();
+            panel10 = new Panel();
+            txtMissed = new Label();
+            pictureBox6 = new PictureBox();
+            label17 = new Label();
+            panel5 = new Panel();
+            txtDentalPatient = new Label();
+            pictureBox5 = new PictureBox();
+            label6 = new Label();
+            panel9 = new Panel();
+            panel8 = new Panel();
+            label15 = new Label();
+            viewApproved = new DataGridView();
+            panel7 = new Panel();
+            label14 = new Label();
             btnUpdateRefesher = new MaterialSkin.Controls.MaterialButton();
             calendarPanel = new Panel();
             panel6 = new Panel();
@@ -63,14 +85,6 @@
             txtCancel = new Label();
             pictureBox3 = new PictureBox();
             label4 = new Label();
-            panel4 = new Panel();
-            txtCompleted = new Label();
-            pictureBox4 = new PictureBox();
-            label5 = new Label();
-            panel5 = new Panel();
-            txtDentalPatient = new Label();
-            pictureBox5 = new PictureBox();
-            label6 = new Label();
             label3 = new Label();
             tabPage2 = new TabPage();
             patientRecordPanel = new Panel();
@@ -84,6 +98,16 @@
             elipseControl1 = new ElipseToolDemo.ElipseControl();
             MyNavigationPanel.SuspendLayout();
             tabPage1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)viewApproved).BeginInit();
+            panel7.SuspendLayout();
             calendarPanel.SuspendLayout();
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)viewPending).BeginInit();
@@ -94,10 +118,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
             tabPage4.SuspendLayout();
@@ -126,6 +146,12 @@
             // 
             // tabPage1
             // 
+            tabPage1.AutoScroll = true;
+            tabPage1.Controls.Add(flowLayoutPanel2);
+            tabPage1.Controls.Add(panel9);
+            tabPage1.Controls.Add(panel8);
+            tabPage1.Controls.Add(viewApproved);
+            tabPage1.Controls.Add(panel7);
             tabPage1.Controls.Add(btnUpdateRefesher);
             tabPage1.Controls.Add(calendarPanel);
             tabPage1.Controls.Add(viewPending);
@@ -139,7 +165,239 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Dashboard";
             tabPage1.UseVisualStyleBackColor = true;
-            tabPage1.Click += tabPage1_Click;
+            // 
+            // flowLayoutPanel2
+            // 
+            flowLayoutPanel2.Controls.Add(panel4);
+            flowLayoutPanel2.Controls.Add(panel10);
+            flowLayoutPanel2.Controls.Add(panel5);
+            flowLayoutPanel2.Location = new Point(38, 241);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(1173, 130);
+            flowLayoutPanel2.TabIndex = 114;
+            // 
+            // panel4
+            // 
+            panel4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel4.BackColor = Color.FromArgb(250, 220, 18);
+            panel4.Controls.Add(txtCompleted);
+            panel4.Controls.Add(pictureBox4);
+            panel4.Controls.Add(label5);
+            panel4.Location = new Point(3, 3);
+            panel4.Margin = new Padding(3, 3, 7, 3);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(397, 120);
+            panel4.TabIndex = 3;
+            // 
+            // txtCompleted
+            // 
+            txtCompleted.AutoSize = true;
+            txtCompleted.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtCompleted.ForeColor = Color.White;
+            txtCompleted.Location = new Point(24, 64);
+            txtCompleted.Name = "txtCompleted";
+            txtCompleted.Size = new Size(71, 30);
+            txtCompleted.TabIndex = 5;
+            txtCompleted.Text = "Count";
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(306, 54);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(80, 50);
+            pictureBox4.TabIndex = 4;
+            pictureBox4.TabStop = false;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(24, 28);
+            label5.Name = "label5";
+            label5.Size = new Size(92, 21);
+            label5.TabIndex = 1;
+            label5.Text = "Completed";
+            // 
+            // panel10
+            // 
+            panel10.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel10.BackColor = Color.FromArgb(255, 66, 0);
+            panel10.Controls.Add(txtMissed);
+            panel10.Controls.Add(pictureBox6);
+            panel10.Controls.Add(label17);
+            panel10.Location = new Point(410, 3);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(400, 120);
+            panel10.TabIndex = 6;
+            // 
+            // txtMissed
+            // 
+            txtMissed.AutoSize = true;
+            txtMissed.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtMissed.ForeColor = Color.White;
+            txtMissed.Location = new Point(24, 64);
+            txtMissed.Name = "txtMissed";
+            txtMissed.Size = new Size(71, 30);
+            txtMissed.TabIndex = 5;
+            txtMissed.Text = "Count";
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
+            pictureBox6.Location = new Point(303, 54);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(80, 50);
+            pictureBox6.TabIndex = 4;
+            pictureBox6.TabStop = false;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label17.ForeColor = Color.White;
+            label17.Location = new Point(24, 28);
+            label17.Name = "label17";
+            label17.Size = new Size(62, 21);
+            label17.TabIndex = 1;
+            label17.Text = "Missed";
+            // 
+            // panel5
+            // 
+            panel5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel5.BackColor = Color.FromArgb(41, 56, 218);
+            panel5.Controls.Add(txtDentalPatient);
+            panel5.Controls.Add(pictureBox5);
+            panel5.Controls.Add(label6);
+            panel5.Location = new Point(816, 3);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(351, 120);
+            panel5.TabIndex = 5;
+            // 
+            // txtDentalPatient
+            // 
+            txtDentalPatient.AutoSize = true;
+            txtDentalPatient.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtDentalPatient.ForeColor = Color.White;
+            txtDentalPatient.Location = new Point(24, 64);
+            txtDentalPatient.Name = "txtDentalPatient";
+            txtDentalPatient.Size = new Size(71, 30);
+            txtDentalPatient.TabIndex = 6;
+            txtDentalPatient.Text = "Count";
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
+            pictureBox5.Location = new Point(265, 54);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(80, 50);
+            pictureBox5.TabIndex = 4;
+            pictureBox5.TabStop = false;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(24, 28);
+            label6.Name = "label6";
+            label6.Size = new Size(112, 21);
+            label6.TabIndex = 1;
+            label6.Text = "Dental Patient";
+            // 
+            // panel9
+            // 
+            panel9.Location = new Point(816, 697);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(23, 54);
+            panel9.TabIndex = 113;
+            // 
+            // panel8
+            // 
+            panel8.BackColor = Color.FromArgb(250, 220, 18);
+            panel8.Controls.Add(label15);
+            panel8.Location = new Point(448, 389);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(400, 30);
+            panel8.TabIndex = 112;
+            // 
+            // label15
+            // 
+            label15.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label15.Location = new Point(57, 5);
+            label15.Name = "label15";
+            label15.Size = new Size(290, 21);
+            label15.TabIndex = 12;
+            label15.Text = "APPROVED APPOINTMENT";
+            label15.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // viewApproved
+            // 
+            viewApproved.AllowUserToAddRows = false;
+            viewApproved.AllowUserToDeleteRows = false;
+            viewApproved.AllowUserToResizeColumns = false;
+            viewApproved.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.LightYellow;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.LightYellow;
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            viewApproved.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            viewApproved.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            viewApproved.BackgroundColor = Color.White;
+            viewApproved.BorderStyle = BorderStyle.None;
+            viewApproved.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            viewApproved.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.NullValue = "N/A";
+            dataGridViewCellStyle2.Padding = new Padding(3);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            viewApproved.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            viewApproved.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.NullValue = "N/A";
+            dataGridViewCellStyle3.Padding = new Padding(10, 0, 10, 0);
+            dataGridViewCellStyle3.SelectionBackColor = Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            viewApproved.DefaultCellStyle = dataGridViewCellStyle3;
+            viewApproved.EnableHeadersVisualStyles = false;
+            viewApproved.GridColor = Color.White;
+            viewApproved.Location = new Point(448, 434);
+            viewApproved.Margin = new Padding(0);
+            viewApproved.Name = "viewApproved";
+            viewApproved.ReadOnly = true;
+            viewApproved.RowTemplate.Height = 25;
+            viewApproved.Size = new Size(400, 246);
+            viewApproved.TabIndex = 111;
+            // 
+            // panel7
+            // 
+            panel7.BackColor = Color.FromArgb(250, 220, 18);
+            panel7.Controls.Add(label14);
+            panel7.Location = new Point(38, 389);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(400, 30);
+            panel7.TabIndex = 110;
+            // 
+            // label14
+            // 
+            label14.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label14.Location = new Point(33, 5);
+            label14.Name = "label14";
+            label14.Size = new Size(290, 21);
+            label14.TabIndex = 12;
+            label14.Text = "PENDING APPOINTMENT";
+            label14.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnUpdateRefesher
             // 
@@ -174,7 +432,7 @@
             calendarPanel.Controls.Add(label9);
             calendarPanel.Controls.Add(label8);
             calendarPanel.Controls.Add(label7);
-            calendarPanel.Location = new Point(874, 250);
+            calendarPanel.Location = new Point(854, 386);
             calendarPanel.Name = "calendarPanel";
             calendarPanel.Size = new Size(357, 298);
             calendarPanel.TabIndex = 24;
@@ -322,60 +580,58 @@
             viewPending.AllowUserToDeleteRows = false;
             viewPending.AllowUserToResizeColumns = false;
             viewPending.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.LightYellow;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.LightYellow;
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            viewPending.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            viewPending.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCellStyle4.BackColor = Color.LightYellow;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = Color.LightYellow;
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            viewPending.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            viewPending.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             viewPending.BackgroundColor = Color.White;
             viewPending.BorderStyle = BorderStyle.None;
             viewPending.CellBorderStyle = DataGridViewCellBorderStyle.None;
             viewPending.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(250, 220, 18);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.NullValue = "N/A";
-            dataGridViewCellStyle2.Padding = new Padding(3);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(250, 220, 18);
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            viewPending.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.NullValue = "N/A";
+            dataGridViewCellStyle5.Padding = new Padding(3);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            viewPending.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             viewPending.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.NullValue = "N/A";
-            dataGridViewCellStyle3.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle3.SelectionBackColor = Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            viewPending.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle6.NullValue = "N/A";
+            dataGridViewCellStyle6.Padding = new Padding(10, 0, 10, 0);
+            dataGridViewCellStyle6.SelectionBackColor = Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            viewPending.DefaultCellStyle = dataGridViewCellStyle6;
             viewPending.EnableHeadersVisualStyles = false;
             viewPending.GridColor = Color.White;
-            viewPending.Location = new Point(38, 255);
+            viewPending.Location = new Point(38, 434);
             viewPending.Margin = new Padding(0);
             viewPending.Name = "viewPending";
             viewPending.ReadOnly = true;
             viewPending.RowTemplate.Height = 25;
-            viewPending.Size = new Size(833, 293);
+            viewPending.Size = new Size(400, 247);
             viewPending.TabIndex = 23;
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             flowLayoutPanel1.Controls.Add(panel1);
             flowLayoutPanel1.Controls.Add(panel2);
             flowLayoutPanel1.Controls.Add(panel3);
-            flowLayoutPanel1.Controls.Add(panel4);
-            flowLayoutPanel1.Controls.Add(panel5);
             flowLayoutPanel1.Location = new Point(38, 94);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1193, 158);
+            flowLayoutPanel1.Size = new Size(1173, 198);
             flowLayoutPanel1.TabIndex = 6;
+            flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
             // 
             // panel1
             // 
@@ -385,8 +641,9 @@
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(3, 3);
+            panel1.Margin = new Padding(3, 3, 7, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(232, 120);
+            panel1.Size = new Size(397, 120);
             panel1.TabIndex = 0;
             // 
             // txtPending
@@ -403,9 +660,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(165, 54);
+            pictureBox1.Location = new Point(306, 54);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(67, 50);
+            pictureBox1.Size = new Size(77, 50);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
@@ -423,13 +680,13 @@
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel2.BackColor = Color.FromArgb(255, 66, 0);
+            panel2.BackColor = Color.FromArgb(250, 220, 18);
             panel2.Controls.Add(txtApproved);
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(label2);
-            panel2.Location = new Point(241, 3);
+            panel2.Location = new Point(410, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(232, 120);
+            panel2.Size = new Size(400, 120);
             panel2.TabIndex = 1;
             // 
             // txtApproved
@@ -446,7 +703,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(164, 54);
+            pictureBox2.Location = new Point(303, 54);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(80, 50);
             pictureBox2.TabIndex = 2;
@@ -466,13 +723,13 @@
             // panel3
             // 
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel3.BackColor = Color.FromArgb(250, 220, 18);
+            panel3.BackColor = Color.FromArgb(255, 66, 0);
             panel3.Controls.Add(txtCancel);
             panel3.Controls.Add(pictureBox3);
             panel3.Controls.Add(label4);
-            panel3.Location = new Point(479, 3);
+            panel3.Location = new Point(816, 3);
             panel3.Name = "panel3";
-            panel3.Size = new Size(232, 120);
+            panel3.Size = new Size(351, 120);
             panel3.TabIndex = 2;
             // 
             // txtCancel
@@ -489,7 +746,7 @@
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(164, 54);
+            pictureBox3.Location = new Point(265, 54);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(80, 50);
             pictureBox3.TabIndex = 3;
@@ -505,92 +762,6 @@
             label4.Size = new Size(81, 21);
             label4.TabIndex = 1;
             label4.Text = "Cancelled";
-            // 
-            // panel4
-            // 
-            panel4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel4.BackColor = Color.FromArgb(255, 66, 0);
-            panel4.Controls.Add(txtCompleted);
-            panel4.Controls.Add(pictureBox4);
-            panel4.Controls.Add(label5);
-            panel4.Location = new Point(717, 3);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(232, 120);
-            panel4.TabIndex = 3;
-            // 
-            // txtCompleted
-            // 
-            txtCompleted.AutoSize = true;
-            txtCompleted.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtCompleted.ForeColor = Color.White;
-            txtCompleted.Location = new Point(24, 64);
-            txtCompleted.Name = "txtCompleted";
-            txtCompleted.Size = new Size(71, 30);
-            txtCompleted.TabIndex = 5;
-            txtCompleted.Text = "Count";
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(170, 54);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(80, 50);
-            pictureBox4.TabIndex = 4;
-            pictureBox4.TabStop = false;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(24, 28);
-            label5.Name = "label5";
-            label5.Size = new Size(92, 21);
-            label5.TabIndex = 1;
-            label5.Text = "Completed";
-            // 
-            // panel5
-            // 
-            panel5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel5.BackColor = Color.FromArgb(41, 56, 218);
-            panel5.Controls.Add(txtDentalPatient);
-            panel5.Controls.Add(pictureBox5);
-            panel5.Controls.Add(label6);
-            panel5.Location = new Point(955, 3);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(232, 120);
-            panel5.TabIndex = 5;
-            // 
-            // txtDentalPatient
-            // 
-            txtDentalPatient.AutoSize = true;
-            txtDentalPatient.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtDentalPatient.ForeColor = Color.White;
-            txtDentalPatient.Location = new Point(24, 64);
-            txtDentalPatient.Name = "txtDentalPatient";
-            txtDentalPatient.Size = new Size(71, 30);
-            txtDentalPatient.TabIndex = 6;
-            txtDentalPatient.Text = "Count";
-            // 
-            // pictureBox5
-            // 
-            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(168, 54);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(80, 50);
-            pictureBox5.TabIndex = 4;
-            pictureBox5.TabStop = false;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(24, 28);
-            label6.Name = "label6";
-            label6.Size = new Size(112, 21);
-            label6.TabIndex = 1;
-            label6.Text = "Dental Patient";
             // 
             // label3
             // 
@@ -610,7 +781,7 @@
             tabPage2.Location = new Point(4, 31);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1266, 628);
+            tabPage2.Size = new Size(1266, 588);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Patient Record";
             tabPage2.UseVisualStyleBackColor = true;
@@ -620,7 +791,7 @@
             patientRecordPanel.Dock = DockStyle.Fill;
             patientRecordPanel.Location = new Point(3, 3);
             patientRecordPanel.Name = "patientRecordPanel";
-            patientRecordPanel.Size = new Size(1260, 622);
+            patientRecordPanel.Size = new Size(1260, 582);
             patientRecordPanel.TabIndex = 0;
             // 
             // tabPage3
@@ -629,7 +800,7 @@
             tabPage3.ImageKey = "appointment-book (5).png";
             tabPage3.Location = new Point(4, 31);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(1266, 628);
+            tabPage3.Size = new Size(1266, 588);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Setup Services";
             tabPage3.UseVisualStyleBackColor = true;
@@ -640,7 +811,7 @@
             servicesPanel.Dock = DockStyle.Fill;
             servicesPanel.Location = new Point(0, 0);
             servicesPanel.Name = "servicesPanel";
-            servicesPanel.Size = new Size(1266, 628);
+            servicesPanel.Size = new Size(1266, 588);
             servicesPanel.TabIndex = 0;
             // 
             // tabPage4
@@ -649,7 +820,7 @@
             tabPage4.ImageKey = "check-in-calendar.png";
             tabPage4.Location = new Point(4, 31);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(1266, 628);
+            tabPage4.Size = new Size(1266, 588);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Appointment";
             tabPage4.UseVisualStyleBackColor = true;
@@ -659,7 +830,7 @@
             appointmentPanel.Dock = DockStyle.Fill;
             appointmentPanel.Location = new Point(0, 0);
             appointmentPanel.Name = "appointmentPanel";
-            appointmentPanel.Size = new Size(1266, 628);
+            appointmentPanel.Size = new Size(1266, 588);
             appointmentPanel.TabIndex = 0;
             // 
             // tabPage5
@@ -668,7 +839,7 @@
             tabPage5.ImageKey = "account-pin-box-line (3).png";
             tabPage5.Location = new Point(4, 31);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(1266, 628);
+            tabPage5.Size = new Size(1266, 588);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Account";
             tabPage5.UseVisualStyleBackColor = true;
@@ -678,7 +849,7 @@
             accountPanel.Dock = DockStyle.Fill;
             accountPanel.Location = new Point(0, 0);
             accountPanel.Name = "accountPanel";
-            accountPanel.Size = new Size(1266, 628);
+            accountPanel.Size = new Size(1266, 588);
             accountPanel.TabIndex = 0;
             // 
             // imageList1
@@ -711,6 +882,19 @@
             MyNavigationPanel.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            panel10.ResumeLayout(false);
+            panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            panel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)viewApproved).EndInit();
+            panel7.ResumeLayout(false);
             calendarPanel.ResumeLayout(false);
             calendarPanel.PerformLayout();
             panel6.ResumeLayout(false);
@@ -725,12 +909,6 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             tabPage2.ResumeLayout(false);
             tabPage3.ResumeLayout(false);
             tabPage4.ResumeLayout(false);
@@ -789,5 +967,16 @@
         private Button btnNext;
         private Panel panel6;
         private MaterialSkin.Controls.MaterialButton btnUpdateRefesher;
+        private Panel panel7;
+        private Label label14;
+        private Panel panel8;
+        private Label label15;
+        private DataGridView viewApproved;
+        private Panel panel9;
+        private Panel panel10;
+        private Label txtMissed;
+        private PictureBox pictureBox6;
+        private Label label17;
+        private FlowLayoutPanel flowLayoutPanel2;
     }
 }

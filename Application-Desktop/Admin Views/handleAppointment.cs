@@ -1518,6 +1518,10 @@ namespace Application_Desktop.Admin_Views
                     cancelledView.RowFilter = "status = 'cancelled'";
                     viewCancelledAppointment.DataSource = cancelledView;
 
+                    DataView missedView = new DataView(appointment);
+                    missedView.RowFilter = "status = 'missed'";
+                    viewMissedAppointment.DataSource = missedView;
+
                     DataView completeView = new DataView(appointment);
                     completeView.RowFilter = "status = 'completed'";
                     viewCompletedAppointment.DataSource = completeView;
