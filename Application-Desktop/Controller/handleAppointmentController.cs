@@ -174,6 +174,56 @@ namespace Application_Desktop.Controller
 
         }
 
+        public async Task<DataTable> MissedAppointment()
+        {
+            string query = @"
+                        SELECT 
+                            a.id,
+                            a.user_id,
+                            u.name AS UserName,
+                            b.BranchName,
+                            c.Title AS ServiceTitle,
+                            a.appointment_date,
+                            a.appointment_time,
+                            a.reschedule_date,
+                            a.reschedule_time,
+                            a.status,
+                            a.check_in
+                        FROM appointments a
+                        INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
+                        INNER JOIN categories c ON a.selectServices = c.Categories_ID
+                        INNER JOIN users u ON a.user_id = u.id
+                        WHERE a.status = 'missed'
+                        ORDER BY a.created_at DESC";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dataTable = new DataTable();
+
+                            await Task.Run(() => adapter.Fill(dataTable));
+
+                            return dataTable.Rows.Count > 0 ? dataTable : new DataTable();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error on selecting Inqueue : {ex.Message}");
+            }
+
+        }
+
         public async Task<DataTable> CompletedAppointment()
         {
             string query = @"
@@ -266,6 +316,44 @@ namespace Application_Desktop.Controller
         }
 
         public async Task Cancel(string status, int id)
+        {
+            string query = "UPDATE appointments SET status = @newStatus WHERE id = @appointmentId";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@newStatus", status);
+                        cmd.Parameters.AddWithValue("@appointmentId", id);
+
+                        await cmd.ExecuteNonQueryAsync();
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to cancel appointment status.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error updating to approve : {ex.Message}");
+            }
+        }
+
+        public async Task Missed(string status, int id)
         {
             string query = "UPDATE appointments SET status = @newStatus WHERE id = @appointmentId";
 

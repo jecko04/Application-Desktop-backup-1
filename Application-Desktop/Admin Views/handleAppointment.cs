@@ -53,6 +53,7 @@ namespace Application_Desktop.Admin_Views
             await LoadInqueue();
             await LoadApproved();
             await LoadCancelled();
+            await LoadMissed();
             await LoadCompleted();
 
             viewPendingAppointment.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -140,6 +141,29 @@ namespace Application_Desktop.Admin_Views
                 AddColumnCancelled(viewCancelledAppointment);
 
                 viewCancelledAppointment.DataSource = cancelled;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to load patient records: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async Task LoadMissed()
+        {
+            try
+            {
+                getBranchIdByUserId branchId = new getBranchIdByUserId();
+                BranchID adminId = await branchId.GetUserBranchId();
+                DataTable missed = await _handleAppointmentController.MissedAppointment();
+                viewMissedAppointment.DataSource = null;
+                viewMissedAppointment.Rows.Clear();
+                viewMissedAppointment.Columns.Clear();
+
+                viewMissedAppointment.AutoGenerateColumns = false;
+                AddColumnMissed(viewMissedAppointment);
+
+                viewMissedAppointment.DataSource = missed;
 
             }
             catch (Exception ex)
@@ -506,6 +530,122 @@ namespace Application_Desktop.Admin_Views
             cancelled.Columns.Add(check_in);
 
         }
+
+        private void AddColumnMissed(DataGridView missed)
+        {
+            missed.RowHeadersVisible = false;
+            missed.ColumnHeadersHeight = 40;
+
+            DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "ID",
+                Name = "id",
+                DataPropertyName = "id",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            missed.Columns.Add(id);
+
+            DataGridViewTextBoxColumn userIdColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "User ID",
+                Name = "user_id",
+                DataPropertyName = "user_id",
+                Visible = false
+            };
+            missed.Columns.Add(userIdColumn);
+
+            DataGridViewTextBoxColumn fullname = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Fullname",
+                Name = "fullname",
+                DataPropertyName = "UserName",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            missed.Columns.Add(fullname);
+
+            DataGridViewTextBoxColumn branches = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Branch",
+                Name = "branches",
+                DataPropertyName = "BranchName",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            missed.Columns.Add(branches);
+
+            DataGridViewTextBoxColumn services = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Services",
+                Name = "services",
+                DataPropertyName = "ServiceTitle",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            missed.Columns.Add(services);
+
+            DataGridViewTextBoxColumn appointment_date = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Appointment Date",
+                Name = "appointmentDate",
+                DataPropertyName = "appointment_date",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            missed.Columns.Add(appointment_date);
+
+            DataGridViewTextBoxColumn appointment_time = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Appointment Time",
+                Name = "appointmentTime",
+                DataPropertyName = "appointment_time",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            missed.Columns.Add(appointment_time);
+
+            DataGridViewTextBoxColumn reschedule_date = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Reschedule Date",
+                Name = "rescheduleDate",
+                DataPropertyName = "reschedule_date",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            missed.Columns.Add(reschedule_date);
+
+            DataGridViewTextBoxColumn reschedule_time = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Reschedule Time",
+                Name = "rescheduleTime",
+                DataPropertyName = "reschedule_time",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            missed.Columns.Add(reschedule_time);
+
+            DataGridViewTextBoxColumn status = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Status",
+                Name = "status",
+                DataPropertyName = "status",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            missed.Columns.Add(status);
+
+            DataGridViewTextBoxColumn check_in = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Check In",
+                Name = "check_in",
+                DataPropertyName = "check_in",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            missed.Columns.Add(check_in);
+
+        }
         private void AddColumnCompleted(DataGridView completed)
         {
             completed.RowHeadersVisible = false;
@@ -690,7 +830,7 @@ namespace Application_Desktop.Admin_Views
                         <p>Dear Valued Patient,</p>
 
                         <p>
-                            This is to notify you that your appointment with User ID 
+                            This is to notify you that your appointment with Appointment ID 
                             <strong>{appointmentId}</strong> has been marked as 
                             <strong style=""color: #27ae60;"">{status}</strong>.
                         </p>
@@ -761,7 +901,7 @@ namespace Application_Desktop.Admin_Views
                     {
                         AlertBox(Color.LightCoral, Color.Red, "Email Not Found", "User email not found, approval not processed.", Properties.Resources.error);
                     });
-                    return; 
+                    return;
                 }
 
                 bool emailSent = await SendEmailNotification(userEmail, selectedAppointmentId.ToString(), value);
@@ -775,7 +915,7 @@ namespace Application_Desktop.Admin_Views
 
                     this.BeginInvoke((MethodInvoker)delegate
                     {
-                        AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Approved", "Appointment Set Successfully!", Properties.Resources.success);
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Approved", "Appointment Change Status Successfully!", Properties.Resources.success);
                     });
                 }
                 else
@@ -844,7 +984,7 @@ namespace Application_Desktop.Admin_Views
                             <p>Dear Valued Patient,</p>
 
                             <p>
-                                We regret to inform you that your appointment with User ID 
+                                We regret to inform you that your appointment with Appointment ID 
                                 <strong>{appointmentId}</strong> has been <strong style=""color: #e74c3c;"">{status}</strong>.
                             </p>
 
@@ -898,50 +1038,144 @@ namespace Application_Desktop.Admin_Views
                 return false;
             }
         }
+
+        private async Task<bool> SendMissedNotification(string userEmail, string appointmentId, string status)
+        {
+            string fromEmail = "smtc.dentalcare@gmail.com";
+            string appPassword = "pskv swrc tyqh hldz"; // Use the App Password here
+
+            // Create a new MailMessage object
+            MailMessage mail = new MailMessage(fromEmail, userEmail);
+            mail.Subject = $"Update on Your Appointment Status";
+            mail.IsBodyHtml = true;
+
+            mail.Body = $@"<html>
+                    <body style=""font-family: Arial, sans-serif; color: #333; line-height: 1.6;"">
+                        <div style=""max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px;"">
+                            <h2 style=""color: #c0392b; text-align: center;"">Appointment Status Update</h2>
+                            <p>Dear Valued Patient,</p>
+
+                            <p>
+                                We regret to inform you that your appointment with Appointment ID 
+                                <strong>{appointmentId}</strong> has been changed to <strong style=""color: #e74c3c;"">{status}</strong> due to missed appointment.
+                            </p>
+
+                            <p>We understand that this may be disappointing and apologize for any inconvenience caused. If you have any questions, please contact us at your earliest convenience.</p>
+
+                            <p style=""text-align: center; font-style: italic; color: #7f8c8d;"">
+                                ""Your smile is still our top priority!""
+                            </p>
+
+                            <hr style=""border: 1px solid #ddd;"">
+
+                            <footer style=""text-align: center;"">
+                                <p style=""color: #2980b9; font-size: 16px; margin: 0;"">Ynares, DMJ Bldg, A. Mabini St, Rodriguez, Rizal</p>
+                                <p style=""color: #2980b9; font-size: 16px; margin: 0;"">0933 821 2439</p>
+                                <p style=""color: #2980b9; font-size: 16px; margin: 10px 0;"">P4JR+4J4, L.M.Santos St, Rosario, Rodriguez, 1860 Rizal</p>
+                                <p style=""color: #2980b9; font-size: 16px; margin: 0;"">0933 821 2439</p>
+                            </footer>
+
+                            <p style=""text-align: center; color: #7f8c8d; font-size: 14px; margin-top: 20px;"">
+                                Thank you for understanding. We hope to serve you in the future!
+                            </p>
+                        </div>
+                    </body>
+                  </html>";
+
+            // Set up the SMTP client
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential(fromEmail, appPassword),
+                EnableSsl = true
+            };
+
+            // Send the email
+            try
+            {
+                await smtpClient.SendMailAsync(mail);
+
+                this.BeginInvoke((MethodInvoker)delegate
+                {
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Email Sent!", "Cancellation notification sent successfully!", Properties.Resources.success);
+
+                });
+                return true;
+            }
+            catch (Exception ex)
+            {
+                this.BeginInvoke((MethodInvoker)delegate
+                {
+                    AlertBox(Color.LightCoral, Color.Red, "Failed to Send Email", $"Unable to send email: {ex.Message}", Properties.Resources.error);
+                });
+                return false;
+            }
+        }
+
+
         public async Task cancelled()
         {
-            string value = "cancelled";
 
+            string userEmailPending = await _handleAppointmentController.SelectEmail(selectedUserId);
+            string userEmailApproved = await _handleAppointmentController.SelectEmail(selectedApprovedUserId);
+            MessageBox.Show($"{userEmailApproved} {userEmailPending}");
+
+
+            if (string.IsNullOrEmpty(userEmailPending) && string.IsNullOrEmpty(userEmailApproved))
+            {
+                AlertBox(Color.LightCoral, Color.Red, "Email Not Found", "User email not found.", Properties.Resources.error);
+                return;
+            }
             if (selectedAppointmentId > 0)
             {
-                string userEmail = await _handleAppointmentController.SelectEmail(selectedUserId);
-
-                if (string.IsNullOrEmpty(userEmail))
-                {
-                    this.BeginInvoke((MethodInvoker)delegate
-                    {
-                        AlertBox(Color.LightCoral, Color.Red, "Email Not Found", "User email not found, approval not processed.", Properties.Resources.error);
-                    });
-                    return;
-                }
-
-                bool emailSent = await SendCancelledNotification(userEmail, selectedAppointmentId.ToString(), value);
-
-                if (emailSent)
-                {
-                    await _handleAppointmentController.Cancel(value, selectedAppointmentId);
-
-                    viewPendingAppointment.ClearSelection();
-                    selectedAppointmentId = 0;
-
-                    this.BeginInvoke((MethodInvoker)delegate
-                    {
-                        AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Cancelled", "Appointment Cancelled Successfully!", Properties.Resources.success);
-                    });
-                }
-                else
-                {
-                    this.BeginInvoke((MethodInvoker)delegate
-                    {
-                        AlertBox(Color.LightCoral, Color.Red, "Cancel Failed", "Email notification failed, approval not processed.", Properties.Resources.error);
-                    });
-                }
+                await ProcessCancellation(userEmailPending, selectedAppointmentId, viewPendingAppointment, "cancelled");
             }
+
+            if (ApprovedAppointmentId > 0)
+            {
+                await ProcessCancellation(userEmailApproved, ApprovedAppointmentId, viewApprovedAppointment, "missed");
+            }
+        }
+
+        private async Task ProcessCancellation(string userEmail, int appointmentId, DataGridView view, string cancellationType)
+        {
+            bool emailSent = false;
+
+            if (cancellationType == "cancelled")
+            {
+                await SendCancelledNotification(userEmail, appointmentId.ToString(), cancellationType);
+            }
+            else if (cancellationType == "missed")
+            {
+                await SendMissedNotification(userEmail, appointmentId.ToString(), cancellationType);
+            }
+
+
+
+            if (emailSent)
+            {
+                if (cancellationType == "cancelled")
+                {
+                    await _handleAppointmentController.Cancel(cancellationType, appointmentId);
+                }
+                else if (cancellationType == "missed")
+                {
+                    await _handleAppointmentController.Missed(cancellationType, appointmentId);
+                }
+
+                view.ClearSelection();
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Cancelled", "Appointment Change Status Successfully!", Properties.Resources.success);
+            }
+            else
+            {
+                AlertBox(Color.LightCoral, Color.Red, "Cancel Failed", "Email notification failed, approval not processed.", Properties.Resources.error);
+            }
+
         }
 
         private async void btnCancel_Click(object sender, EventArgs e)
         {
-            if (selectedAppointmentId > 0)
+
+            if (selectedAppointmentId > 0 || ApprovedAppointmentId > 0)
             {
                 DialogResult dialogResult = MessageBox.Show(
                     "Do you want to cancel this dental appointment?",
@@ -953,33 +1187,25 @@ namespace Application_Desktop.Admin_Views
                 if (dialogResult == DialogResult.Yes)
                 {
 
-                    string userEmail = await _handleAppointmentController.SelectEmail(selectedUserId);
+                    await cancelled();
+                    if (selectedAppointmentId > 0)
+                        await LoadInqueue();
 
-                    if (!string.IsNullOrEmpty(userEmail))
-                    {
-                        // Send email notification
-                        bool emailSent = await SendCancelledNotification(userEmail, selectedUserId.ToString(), "cancelled");
+                    if (ApprovedAppointmentId > 0)
+                        await LoadApproved();
 
-                        if (emailSent)
-                        {
-                            await cancelled();
-                            await LoadInqueue();
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("User email not found. Cannot send cancellation notification.");
-                    }
                 }
             }
             else
             {
                 AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No Selected Appointment", "Select an appointment first to cancel.", Properties.Resources.information);
             }
+
         }
 
         private int ApprovedAppointmentId;
         private int selectedApprovedUserId;
+
         private async void viewApprovedAppointment_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -1017,7 +1243,7 @@ namespace Application_Desktop.Admin_Views
             if (ApprovedAppointmentId > 0)
             {
                 await _handleAppointmentController.Complete(value, ApprovedAppointmentId);
-                AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Completed", "Appointment Completed Successfully!", Properties.Resources.success);
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Completed", "Appointment Change Status Successfully!", Properties.Resources.success);
 
                 // Clear the selection and reset the selectedAppointmentId
                 viewApprovedAppointment.ClearSelection();
@@ -1172,6 +1398,9 @@ namespace Application_Desktop.Admin_Views
             await LoadCancelled();
             viewCancelledAppointment.ClearSelection();
 
+            await LoadMissed();
+            viewMissedAppointment.ClearSelection();
+
             await LoadCompleted();
             viewCompletedAppointment.ClearSelection();
         }
@@ -1302,6 +1531,21 @@ namespace Application_Desktop.Admin_Views
             {
                 AlertBox(Color.LightCoral, Color.Red, "Error", "An error occurred while searching for patient data: " + ex.Message, Properties.Resources.error);
             }
+        }
+
+        private void viewPendingAppointment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void viewApprovedAppointment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void viewCompletedAppointment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
