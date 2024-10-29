@@ -21,6 +21,7 @@ using System.Drawing.Printing;
 using System.Runtime.InteropServices;
 using Application_Desktop.Admin_Sub_Views;
 using Org.BouncyCastle.Asn1.Cmp;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Application_Desktop.Admin_Views
 {
@@ -1321,72 +1322,6 @@ namespace Application_Desktop.Admin_Views
             tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
         }
 
-        private async Task ConfirmCheckIn(string scannedValue)
-        {
-            try
-            {
-                // Deserialize the scanned JSON string
-                var AppointmentData = JsonConvert.DeserializeObject<AppointmentData>(scannedValue);
-
-                if (AppointmentData == null)
-                {
-                    MessageBox.Show("Invalid appointment data.");
-                    return;
-                }
-
-                // Check if the appointment is approved
-                var isApproved = await _handleAppointmentController.CheckAppointmentStatus(AppointmentData.userId, AppointmentData.appointment_date, AppointmentData.appointment_time);
-
-                if (isApproved)
-                {
-                    // Update the check_in status in the database
-                    await _handleAppointmentController.UpdateCheckInStatus(AppointmentData.userId, AppointmentData.appointment_date, AppointmentData.appointment_time);
-
-                    this.BeginInvoke((MethodInvoker)delegate
-                    {
-                        AlertBox(Color.LightGreen, Color.SeaGreen, "Valid QRCode", "Check-in successful!", Properties.Resources.success);
-                    });
-
-
-                }
-                else
-                {
-                    this.BeginInvoke((MethodInvoker)delegate
-                    {
-                        AlertBox(Color.LightCoral, Color.Red, "Not Valid QRCode", "Appointment is not approved or does not exist.", Properties.Resources.error);
-                    });
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error during check-in: {ex.Message}");
-            }
-            finally
-            {
-                QRCode.Focus();
-            }
-        }
-
-
-        private void QRCode_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                e.SuppressKeyPress = true;
-
-                string scannedValue = QRCode.Text.Trim();
-
-                _ = ConfirmCheckIn(scannedValue);
-
-                QRCode.Clear();
-
-                this.BeginInvoke((MethodInvoker)delegate
-                {
-                    QRCode.Focus();
-                });
-            }
-        }
-
         private async void btnRefresher_Click(object sender, EventArgs e)
         {
             await LoadInqueue();
@@ -1407,9 +1342,105 @@ namespace Application_Desktop.Admin_Views
 
         bool isCollapsed = true;
 
+        private async Task ConfirmCheckIn(string scannedValue)
+        {
+            LoadingState.Visible = true;
+            lblScanning.Visible = true;
+            lvlScanQRC.Visible = false;
+
+            try
+            {
+                await Task.Delay(3000);
+
+                // Deserialize the scanned JSON string
+                var AppointmentData = JsonConvert.DeserializeObject<AppointmentData>(scannedValue);
+
+                if (AppointmentData == null)
+                {
+                    MessageBox.Show("Invalid appointment data.");
+                    return;
+                }
+
+                // Check if the appointment is approved
+                var isApproved = await _handleAppointmentController.CheckAppointmentStatus(AppointmentData.userId, AppointmentData.appointment_date, AppointmentData.appointment_time);
+
+                if (isApproved)
+                {
+                    // Update the check_in status in the database
+                    await _handleAppointmentController.UpdateCheckInStatus(AppointmentData.userId, AppointmentData.appointment_date, AppointmentData.appointment_time);
+
+                    this.BeginInvoke((MethodInvoker)delegate
+                    {
+                        LoadingState.Visible = false;
+                        lvlScanQRC.Visible = true;
+                        lblScanning.Visible = false;
+
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Valid QRCode", "Check-in successful!", Properties.Resources.success);
+                    });
+
+
+                }
+                else
+                {
+                    this.BeginInvoke((MethodInvoker)delegate
+                    {
+                        lblScanning.Visible = false;
+                        lvlScanQRC.Visible = true;
+                        LoadingState.Visible = false;
+                        AlertBox(Color.LightCoral, Color.Red, "Not Valid QRCode", "Appointment is not approved or does not exist.", Properties.Resources.error);
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error during check-in: {ex.Message}");
+            }
+            finally
+            {
+                LoadingState.Visible = false;
+                lblScanning.Visible = false;
+                lvlScanQRC.Visible = true;
+
+                textBox1.Focus();
+
+            }
+        }
+
+        private scanQRCode ScanQRCodeInstance;
+
+        private bool IsScanning = false;
+
         private void btnQRCode_Click(object sender, EventArgs e)
         {
-            timer1.Start();
+            //timer1.Start();
+
+            if (!IsScanning)
+            {
+                IsScanning = true;
+                btnQRCode.Text = "Stop Scanning";
+                lvlScanQRC.Visible = true;
+
+                StartScanning();
+            }
+            else
+            {
+                IsScanning = false;
+                btnQRCode.Text = "Start Scanning";
+                lvlScanQRC.Visible = false;
+
+                StopScanning();
+            }
+        }
+
+        private void StartScanning()
+        {
+            textBox1.Focus();
+        }
+
+        private void StopScanning()
+        {
+            textBox1.Focus();
+            textBox1.Clear();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -1433,7 +1464,23 @@ namespace Application_Desktop.Admin_Views
                 }
             }
         }
+        private void btnQRCode_KeyDown(object sender, KeyEventArgs e)
+        {
 
+        }
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && IsScanning)
+            {
+                e.SuppressKeyPress = true;
+
+                string scannedValue = textBox1.Text.Trim();
+
+                _ = ConfirmCheckIn(scannedValue);
+
+                textBox1.Clear();
+            }
+        }
 
 
 
@@ -1551,5 +1598,6 @@ namespace Application_Desktop.Admin_Views
         {
 
         }
+
     }
 }

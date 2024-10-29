@@ -147,6 +147,7 @@
             // tabPage1
             // 
             tabPage1.AutoScroll = true;
+            tabPage1.BackgroundImageLayout = ImageLayout.None;
             tabPage1.Controls.Add(flowLayoutPanel2);
             tabPage1.Controls.Add(panel9);
             tabPage1.Controls.Add(panel8);
@@ -339,7 +340,7 @@
             viewApproved.AllowUserToResizeColumns = false;
             viewApproved.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.LightYellow;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = Color.LightYellow;
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
@@ -362,7 +363,7 @@
             viewApproved.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle3.NullValue = "N/A";
             dataGridViewCellStyle3.Padding = new Padding(10, 0, 10, 0);
@@ -581,7 +582,7 @@
             viewPending.AllowUserToResizeColumns = false;
             viewPending.AllowUserToResizeRows = false;
             dataGridViewCellStyle4.BackColor = Color.LightYellow;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle4.ForeColor = Color.Black;
             dataGridViewCellStyle4.SelectionBackColor = Color.LightYellow;
             dataGridViewCellStyle4.SelectionForeColor = Color.Black;
@@ -604,7 +605,7 @@
             viewPending.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle6.NullValue = "N/A";
             dataGridViewCellStyle6.Padding = new Padding(10, 0, 10, 0);

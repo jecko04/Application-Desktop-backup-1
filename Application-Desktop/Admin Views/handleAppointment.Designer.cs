@@ -38,13 +38,13 @@
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(handleAppointment));
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage2 = new TabPage();
             viewPendingAppointment = new DataGridView();
@@ -52,6 +52,8 @@
             viewApprovedAppointment = new DataGridView();
             tabPage4 = new TabPage();
             viewCancelledAppointment = new DataGridView();
+            tabPage5 = new TabPage();
+            viewMissedAppointment = new DataGridView();
             tabPage1 = new TabPage();
             viewCompletedAppointment = new DataGridView();
             btnCancel = new MaterialSkin.Controls.MaterialButton();
@@ -65,8 +67,11 @@
             qrCodePanel = new FlowLayoutPanel();
             timer1 = new System.Windows.Forms.Timer(components);
             btnInqueue = new MaterialSkin.Controls.MaterialButton();
-            tabPage5 = new TabPage();
-            viewMissedAppointment = new DataGridView();
+            panel1 = new Panel();
+            textBox1 = new TextBox();
+            lvlScanQRC = new Label();
+            lblScanning = new Label();
+            LoadingState = new PictureBox();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)viewPendingAppointment).BeginInit();
@@ -74,11 +79,13 @@
             ((System.ComponentModel.ISupportInitialize)viewApprovedAppointment).BeginInit();
             tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)viewCancelledAppointment).BeginInit();
+            tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)viewMissedAppointment).BeginInit();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)viewCompletedAppointment).BeginInit();
             qrCodePanel.SuspendLayout();
-            tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)viewMissedAppointment).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)LoadingState).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -118,7 +125,7 @@
             viewPendingAppointment.AllowUserToResizeColumns = false;
             viewPendingAppointment.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.LightYellow;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = Color.LightYellow;
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
@@ -141,7 +148,7 @@
             viewPendingAppointment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle3.NullValue = "N/A";
             dataGridViewCellStyle3.Padding = new Padding(10, 0, 10, 0);
@@ -159,7 +166,6 @@
             viewPendingAppointment.Size = new Size(823, 549);
             viewPendingAppointment.TabIndex = 22;
             viewPendingAppointment.CellContentClick += viewPendingAppointment_CellContentClick;
-            viewPendingAppointment.CellContentDoubleClick += viewPendingAppointment_CellContentDoubleClick;
             // 
             // tabPage3
             // 
@@ -180,7 +186,7 @@
             viewApprovedAppointment.AllowUserToResizeColumns = false;
             viewApprovedAppointment.AllowUserToResizeRows = false;
             dataGridViewCellStyle4.BackColor = Color.LightYellow;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle4.ForeColor = Color.Black;
             dataGridViewCellStyle4.SelectionBackColor = Color.LightYellow;
             dataGridViewCellStyle4.SelectionForeColor = Color.Black;
@@ -203,7 +209,7 @@
             viewApprovedAppointment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle6.NullValue = "N/A";
             dataGridViewCellStyle6.Padding = new Padding(10, 0, 10, 0);
@@ -240,7 +246,7 @@
             viewCancelledAppointment.AllowUserToResizeColumns = false;
             viewCancelledAppointment.AllowUserToResizeRows = false;
             dataGridViewCellStyle7.BackColor = Color.LightYellow;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle7.ForeColor = Color.Black;
             dataGridViewCellStyle7.SelectionBackColor = Color.LightYellow;
             dataGridViewCellStyle7.SelectionForeColor = Color.Black;
@@ -263,7 +269,7 @@
             viewCancelledAppointment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = SystemColors.Window;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle9.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle9.NullValue = "N/A";
             dataGridViewCellStyle9.Padding = new Padding(10, 0, 10, 0);
@@ -280,6 +286,65 @@
             viewCancelledAppointment.RowTemplate.Height = 25;
             viewCancelledAppointment.Size = new Size(829, 555);
             viewCancelledAppointment.TabIndex = 23;
+            // 
+            // tabPage5
+            // 
+            tabPage5.Controls.Add(viewMissedAppointment);
+            tabPage5.Location = new Point(4, 34);
+            tabPage5.Name = "tabPage5";
+            tabPage5.Padding = new Padding(3);
+            tabPage5.Size = new Size(829, 555);
+            tabPage5.TabIndex = 4;
+            tabPage5.Text = "Missed";
+            tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // viewMissedAppointment
+            // 
+            viewMissedAppointment.AllowUserToAddRows = false;
+            viewMissedAppointment.AllowUserToDeleteRows = false;
+            viewMissedAppointment.AllowUserToResizeColumns = false;
+            viewMissedAppointment.AllowUserToResizeRows = false;
+            dataGridViewCellStyle10.BackColor = Color.LightYellow;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle10.ForeColor = Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = Color.LightYellow;
+            dataGridViewCellStyle10.SelectionForeColor = Color.Black;
+            viewMissedAppointment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            viewMissedAppointment.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            viewMissedAppointment.BackgroundColor = Color.White;
+            viewMissedAppointment.BorderStyle = BorderStyle.None;
+            viewMissedAppointment.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            viewMissedAppointment.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle11.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle11.ForeColor = Color.Black;
+            dataGridViewCellStyle11.NullValue = "N/A";
+            dataGridViewCellStyle11.Padding = new Padding(3);
+            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle11.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+            viewMissedAppointment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            viewMissedAppointment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = SystemColors.Window;
+            dataGridViewCellStyle12.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle12.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle12.NullValue = "N/A";
+            dataGridViewCellStyle12.Padding = new Padding(10, 0, 10, 0);
+            dataGridViewCellStyle12.SelectionBackColor = Color.White;
+            dataGridViewCellStyle12.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
+            viewMissedAppointment.DefaultCellStyle = dataGridViewCellStyle12;
+            viewMissedAppointment.Dock = DockStyle.Fill;
+            viewMissedAppointment.EnableHeadersVisualStyles = false;
+            viewMissedAppointment.Location = new Point(3, 3);
+            viewMissedAppointment.Margin = new Padding(0);
+            viewMissedAppointment.Name = "viewMissedAppointment";
+            viewMissedAppointment.ReadOnly = true;
+            viewMissedAppointment.RowTemplate.Height = 25;
+            viewMissedAppointment.Size = new Size(823, 549);
+            viewMissedAppointment.TabIndex = 24;
             // 
             // tabPage1
             // 
@@ -299,7 +364,7 @@
             viewCompletedAppointment.AllowUserToResizeColumns = false;
             viewCompletedAppointment.AllowUserToResizeRows = false;
             dataGridViewCellStyle13.BackColor = Color.LightYellow;
-            dataGridViewCellStyle13.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle13.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle13.ForeColor = Color.Black;
             dataGridViewCellStyle13.SelectionBackColor = Color.LightYellow;
             dataGridViewCellStyle13.SelectionForeColor = Color.Black;
@@ -322,7 +387,7 @@
             viewCompletedAppointment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle15.BackColor = SystemColors.Window;
-            dataGridViewCellStyle15.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle15.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle15.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle15.NullValue = "N/A";
             dataGridViewCellStyle15.Padding = new Padding(10, 0, 10, 0);
@@ -490,7 +555,7 @@
             QRCode.Hint = " Click Here! Then Scan QR";
             QRCode.InsertKeyMode = InsertKeyMode.Default;
             QRCode.LeadingIcon = null;
-            QRCode.Location = new Point(3, 54);
+            QRCode.Location = new Point(3, 51);
             QRCode.Mask = "";
             QRCode.MaxLength = 32767;
             QRCode.MouseState = MaterialSkin.MouseState.OUT;
@@ -517,14 +582,12 @@
             QRCode.UseSystemPasswordChar = false;
             QRCode.UseTallSize = false;
             QRCode.ValidatingType = null;
-            QRCode.KeyDown += QRCode_KeyDown;
             // 
             // btnQRCode
             // 
             btnQRCode.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnQRCode.AutoSize = false;
             btnQRCode.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnQRCode.CharacterCasing = MaterialSkin.Controls.MaterialButton.CharacterCasingEnum.Normal;
             btnQRCode.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             btnQRCode.Depth = 0;
             btnQRCode.HighEmphasis = true;
@@ -534,12 +597,12 @@
             btnQRCode.MouseState = MaterialSkin.MouseState.HOVER;
             btnQRCode.Name = "btnQRCode";
             btnQRCode.NoAccentTextColor = Color.Empty;
-            btnQRCode.Size = new Size(221, 39);
+            btnQRCode.Size = new Size(221, 36);
             btnQRCode.TabIndex = 112;
             btnQRCode.TabStop = false;
-            btnQRCode.Text = "QRCode";
-            btnQRCode.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
-            btnQRCode.UseAccentColor = false;
+            btnQRCode.Text = "Start Scanning";
+            btnQRCode.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnQRCode.UseAccentColor = true;
             btnQRCode.UseVisualStyleBackColor = true;
             btnQRCode.Click += btnQRCode_Click;
             // 
@@ -582,70 +645,72 @@
             btnInqueue.UseVisualStyleBackColor = true;
             btnInqueue.Click += btnInqueue_Click;
             // 
-            // tabPage5
+            // panel1
             // 
-            tabPage5.Controls.Add(viewMissedAppointment);
-            tabPage5.Location = new Point(4, 34);
-            tabPage5.Name = "tabPage5";
-            tabPage5.Padding = new Padding(3);
-            tabPage5.Size = new Size(829, 555);
-            tabPage5.TabIndex = 4;
-            tabPage5.Text = "Missed";
-            tabPage5.UseVisualStyleBackColor = true;
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            panel1.Controls.Add(textBox1);
+            panel1.Location = new Point(1069, 606);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(200, 100);
+            panel1.TabIndex = 115;
             // 
-            // viewMissedAppointment
+            // textBox1
             // 
-            viewMissedAppointment.AllowUserToAddRows = false;
-            viewMissedAppointment.AllowUserToDeleteRows = false;
-            viewMissedAppointment.AllowUserToResizeColumns = false;
-            viewMissedAppointment.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = Color.LightYellow;
-            dataGridViewCellStyle10.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle10.ForeColor = Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = Color.LightYellow;
-            dataGridViewCellStyle10.SelectionForeColor = Color.Black;
-            viewMissedAppointment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
-            viewMissedAppointment.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            viewMissedAppointment.BackgroundColor = Color.White;
-            viewMissedAppointment.BorderStyle = BorderStyle.None;
-            viewMissedAppointment.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            viewMissedAppointment.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = Color.FromArgb(250, 220, 18);
-            dataGridViewCellStyle11.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle11.ForeColor = Color.Black;
-            dataGridViewCellStyle11.NullValue = "N/A";
-            dataGridViewCellStyle11.Padding = new Padding(3);
-            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(250, 220, 18);
-            dataGridViewCellStyle11.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
-            viewMissedAppointment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            viewMissedAppointment.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = SystemColors.Window;
-            dataGridViewCellStyle12.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle12.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle12.NullValue = "N/A";
-            dataGridViewCellStyle12.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle12.SelectionBackColor = Color.White;
-            dataGridViewCellStyle12.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
-            viewMissedAppointment.DefaultCellStyle = dataGridViewCellStyle12;
-            viewMissedAppointment.Dock = DockStyle.Fill;
-            viewMissedAppointment.EnableHeadersVisualStyles = false;
-            viewMissedAppointment.Location = new Point(3, 3);
-            viewMissedAppointment.Margin = new Padding(0);
-            viewMissedAppointment.Name = "viewMissedAppointment";
-            viewMissedAppointment.ReadOnly = true;
-            viewMissedAppointment.RowTemplate.Height = 25;
-            viewMissedAppointment.Size = new Size(823, 549);
-            viewMissedAppointment.TabIndex = 24;
+            textBox1.Location = new Point(3, 48);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(222, 23);
+            textBox1.TabIndex = 112;
+            textBox1.KeyDown += textBox1_KeyDown;
+            // 
+            // lvlScanQRC
+            // 
+            lvlScanQRC.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lvlScanQRC.AutoSize = true;
+            lvlScanQRC.Font = new Font("Segoe UI Semilight", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lvlScanQRC.Location = new Point(904, 374);
+            lvlScanQRC.Name = "lvlScanQRC";
+            lvlScanQRC.Size = new Size(125, 25);
+            lvlScanQRC.TabIndex = 119;
+            lvlScanQRC.Text = "Scan QRCode";
+            lvlScanQRC.TextAlign = ContentAlignment.MiddleCenter;
+            lvlScanQRC.Visible = false;
+            // 
+            // lblScanning
+            // 
+            lblScanning.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblScanning.AutoSize = true;
+            lblScanning.Font = new Font("Segoe UI Semilight", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblScanning.Location = new Point(917, 485);
+            lblScanning.Name = "lblScanning";
+            lblScanning.Size = new Size(98, 25);
+            lblScanning.TabIndex = 118;
+            lblScanning.Text = "Scanning...";
+            lblScanning.TextAlign = ContentAlignment.MiddleCenter;
+            lblScanning.Visible = false;
+            // 
+            // LoadingState
+            // 
+            LoadingState.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            LoadingState.BackColor = Color.WhiteSmoke;
+            LoadingState.Image = (Image)resources.GetObject("LoadingState.Image");
+            LoadingState.Location = new Point(847, 365);
+            LoadingState.Name = "LoadingState";
+            LoadingState.Size = new Size(229, 117);
+            LoadingState.SizeMode = PictureBoxSizeMode.CenterImage;
+            LoadingState.TabIndex = 117;
+            LoadingState.TabStop = false;
+            LoadingState.Visible = false;
             // 
             // handleAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1085, 621);
+            Controls.Add(lvlScanQRC);
+            Controls.Add(panel1);
+            Controls.Add(lblScanning);
+            Controls.Add(LoadingState);
             Controls.Add(btnInqueue);
             Controls.Add(qrCodePanel);
             Controls.Add(btnComplete);
@@ -666,12 +731,16 @@
             ((System.ComponentModel.ISupportInitialize)viewApprovedAppointment).EndInit();
             tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)viewCancelledAppointment).EndInit();
+            tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)viewMissedAppointment).EndInit();
             tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)viewCompletedAppointment).EndInit();
             qrCodePanel.ResumeLayout(false);
-            tabPage5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)viewMissedAppointment).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)LoadingState).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -698,5 +767,10 @@
         private MaterialSkin.Controls.MaterialButton btnInqueue;
         private TabPage tabPage5;
         private DataGridView viewMissedAppointment;
+        private Panel panel1;
+        private TextBox textBox1;
+        private Label lvlScanQRC;
+        private Label lblScanning;
+        private PictureBox LoadingState;
     }
 }

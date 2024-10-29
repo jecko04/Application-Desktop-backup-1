@@ -158,18 +158,6 @@ namespace Application_Desktop.Admin_Sub_Views
             price.DataPropertyName = "Price";
             viewCategoriesDetails.Columns.Add(price);
 
-            DataGridViewTextBoxColumn createdAtColumn = new DataGridViewTextBoxColumn();
-            createdAtColumn.HeaderText = "Created At";
-            createdAtColumn.Name = "created_at";
-            createdAtColumn.DataPropertyName = "created_at";
-            viewCategoriesDetails.Columns.Add(createdAtColumn);
-
-            DataGridViewTextBoxColumn updatedAtColumn = new DataGridViewTextBoxColumn();
-            updatedAtColumn.HeaderText = "Updated At";
-            updatedAtColumn.Name = "updated_at";
-            updatedAtColumn.DataPropertyName = "updated_at";
-            viewCategoriesDetails.Columns.Add(updatedAtColumn);
-
             DataGridViewImageColumn deleteButtonColumn = new DataGridViewImageColumn();
             deleteButtonColumn.HeaderText = "";
             deleteButtonColumn.Name = "delete";
