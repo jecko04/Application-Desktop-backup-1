@@ -143,7 +143,7 @@ namespace Application_Desktop.Views
                 HeaderText = "Fullname",
                 Name = "fullname",
                 DataPropertyName = "UserName",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
 
             };
             Inqueue.Columns.Add(fullname);
@@ -153,7 +153,7 @@ namespace Application_Desktop.Views
                 HeaderText = "Branch",
                 Name = "branches",
                 DataPropertyName = "BranchName",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
 
             };
             Inqueue.Columns.Add(branches);
@@ -163,7 +163,7 @@ namespace Application_Desktop.Views
                 HeaderText = "Services",
                 Name = "services",
                 DataPropertyName = "ServiceTitle",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
 
             };
             Inqueue.Columns.Add(services);
@@ -180,7 +180,7 @@ namespace Application_Desktop.Views
                 HeaderText = "Fullname",
                 Name = "fullname",
                 DataPropertyName = "UserName",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
 
             };
             Approved.Columns.Add(fullname);
@@ -190,7 +190,7 @@ namespace Application_Desktop.Views
                 HeaderText = "Branch",
                 Name = "branches",
                 DataPropertyName = "BranchName",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
 
             };
             Approved.Columns.Add(branches);
@@ -200,7 +200,7 @@ namespace Application_Desktop.Views
                 HeaderText = "Services",
                 Name = "services",
                 DataPropertyName = "ServiceTitle",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
 
             };
             Approved.Columns.Add(services);
