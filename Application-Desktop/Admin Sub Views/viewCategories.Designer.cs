@@ -32,6 +32,7 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(viewCategories));
             viewCategoriesDetails = new DataGridView();
             btnClose = new PictureBox();
@@ -55,7 +56,7 @@
             dataGridViewCellStyle1.SelectionBackColor = Color.LightYellow;
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             viewCategoriesDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            viewCategoriesDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            viewCategoriesDetails.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             viewCategoriesDetails.BackgroundColor = Color.White;
             viewCategoriesDetails.BorderStyle = BorderStyle.None;
             viewCategoriesDetails.CellBorderStyle = DataGridViewCellBorderStyle.None;
@@ -83,9 +84,17 @@
             viewCategoriesDetails.Location = new Point(0, 32);
             viewCategoriesDetails.Name = "viewCategoriesDetails";
             viewCategoriesDetails.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            viewCategoriesDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             viewCategoriesDetails.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Font = new Font("Sans Serif Collection", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            viewCategoriesDetails.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            viewCategoriesDetails.RowsDefaultCellStyle = dataGridViewCellStyle5;
             viewCategoriesDetails.RowTemplate.Height = 25;
             viewCategoriesDetails.Size = new Size(1000, 315);
             viewCategoriesDetails.TabIndex = 2;

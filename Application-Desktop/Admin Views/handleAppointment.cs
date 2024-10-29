@@ -865,15 +865,17 @@ namespace Application_Desktop.Admin_Views
                 EnableSsl = true
             };
 
+
+
             try
             {
                 await smtpClient.SendMailAsync(mail);
-                this.BeginInvoke((MethodInvoker)delegate
+                /*this.BeginInvoke((MethodInvoker)delegate
                 {
                     AlertBox(Color.LightGreen, Color.SeaGreen, "Email Sent!", "Notification sent successfully!", Properties.Resources.success);
 
-                });
-                return true; // Email sent successfully
+                });*/
+                return true; 
             }
             catch (Exception ex)
             {
@@ -882,7 +884,7 @@ namespace Application_Desktop.Admin_Views
                     AlertBox(Color.LightCoral, Color.Red, "Failed to Send Email", "Unable to send notification.", Properties.Resources.error);
 
                 });
-                return false; // Failed to send email
+                return false; 
             }
         }
 
@@ -894,38 +896,62 @@ namespace Application_Desktop.Admin_Views
 
             if (selectedAppointmentId > 0)
             {
-                string userEmail = await _handleAppointmentController.SelectEmail(selectedUserId);
+                
+                LoadingState.Visible = true;
 
-                if (string.IsNullOrEmpty(userEmail))
+                try
                 {
-                    this.BeginInvoke((MethodInvoker)delegate
+                    //await Task.Delay(3000);
+
+                    string userEmail = await _handleAppointmentController.SelectEmail(selectedUserId);
+
+                    if (string.IsNullOrEmpty(userEmail))
                     {
-                        AlertBox(Color.LightCoral, Color.Red, "Email Not Found", "User email not found, approval not processed.", Properties.Resources.error);
-                    });
-                    return;
+                        this.BeginInvoke((MethodInvoker)delegate
+                        {
+                            AlertBox(Color.LightCoral, Color.Red, "Email Not Found", "User email not found, approval not processed.", Properties.Resources.error);
+                        });
+                        return;
+                    }
+
+                    bool emailSent = await SendEmailNotification(userEmail, selectedAppointmentId.ToString(), value);
+
+                    if (emailSent)
+                    {
+
+                        await _handleAppointmentController.Approved(value, selectedAppointmentId);
+
+                        viewPendingAppointment.ClearSelection();
+                        selectedAppointmentId = 0;
+
+                        this.BeginInvoke((MethodInvoker)delegate
+                        {
+                            LoadingState.Visible = false;
+                            AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Approved", "Appointment Change Status Successfully!", Properties.Resources.success);
+                        });
+
+
+                    }
+                    else
+                    {
+                        this.BeginInvoke((MethodInvoker)delegate
+                        {
+                            LoadingState.Visible = false;
+                            AlertBox(Color.LightCoral, Color.Red, "Approval Failed", "Email notification failed, approval not processed.", Properties.Resources.error);
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"error something when wrong: {ex.Message}");
+                }
+                finally
+                {
+                    LoadingState.Visible = false;
+
                 }
 
-                bool emailSent = await SendEmailNotification(userEmail, selectedAppointmentId.ToString(), value);
-
-                if (emailSent)
-                {
-                    await _handleAppointmentController.Approved(value, selectedAppointmentId);
-
-                    viewPendingAppointment.ClearSelection();
-                    selectedAppointmentId = 0;
-
-                    this.BeginInvoke((MethodInvoker)delegate
-                    {
-                        AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Approved", "Appointment Change Status Successfully!", Properties.Resources.success);
-                    });
-                }
-                else
-                {
-                    this.BeginInvoke((MethodInvoker)delegate
-                    {
-                        AlertBox(Color.LightCoral, Color.Red, "Approval Failed", "Email notification failed, approval not processed.", Properties.Resources.error);
-                    });
-                }
+                
             }
         }
 
@@ -1023,11 +1049,11 @@ namespace Application_Desktop.Admin_Views
             {
                 await smtpClient.SendMailAsync(mail);
 
-                this.BeginInvoke((MethodInvoker)delegate
+                /*this.BeginInvoke((MethodInvoker)delegate
                 {
                     AlertBox(Color.LightGreen, Color.SeaGreen, "Email Sent!", "Cancellation notification sent successfully!", Properties.Resources.success);
 
-                });
+                });*/
                 return true;
             }
             catch (Exception ex)
@@ -1095,11 +1121,11 @@ namespace Application_Desktop.Admin_Views
             {
                 await smtpClient.SendMailAsync(mail);
 
-                this.BeginInvoke((MethodInvoker)delegate
+               /* this.BeginInvoke((MethodInvoker)delegate
                 {
                     AlertBox(Color.LightGreen, Color.SeaGreen, "Email Sent!", "Cancellation notification sent successfully!", Properties.Resources.success);
 
-                });
+                });*/
                 return true;
             }
             catch (Exception ex)
@@ -1129,47 +1155,73 @@ namespace Application_Desktop.Admin_Views
             if (selectedAppointmentId > 0)
             {
                 await ProcessCancellation(userEmailPending, selectedAppointmentId, viewPendingAppointment, "cancelled");
+                userEmailPending = string.Empty;
+                selectedAppointmentId = 0;
             }
 
             if (ApprovedAppointmentId > 0)
             {
                 await ProcessCancellation(userEmailApproved, ApprovedAppointmentId, viewApprovedAppointment, "missed");
+                userEmailApproved = string.Empty;
+                ApprovedAppointmentId = 0;
             }
         }
 
         private async Task ProcessCancellation(string userEmail, int appointmentId, DataGridView view, string cancellationType)
         {
-            bool emailSent = false;
+            LoadingState.Visible = true;
 
-            if (cancellationType == "cancelled")
+            try
             {
-                await SendCancelledNotification(userEmail, appointmentId.ToString(), cancellationType);
-            }
-            else if (cancellationType == "missed")
-            {
-                await SendMissedNotification(userEmail, appointmentId.ToString(), cancellationType);
-            }
+                //await Task.Delay(3000);
+                bool emailSent = false;
 
-
-
-            if (emailSent)
-            {
                 if (cancellationType == "cancelled")
                 {
-                    await _handleAppointmentController.Cancel(cancellationType, appointmentId);
+                    emailSent = await SendCancelledNotification(userEmail, appointmentId.ToString(), cancellationType);
                 }
                 else if (cancellationType == "missed")
                 {
-                    await _handleAppointmentController.Missed(cancellationType, appointmentId);
+                    emailSent = await SendMissedNotification(userEmail, appointmentId.ToString(), cancellationType);
                 }
 
-                view.ClearSelection();
-                AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Cancelled", "Appointment Change Status Successfully!", Properties.Resources.success);
+                if (emailSent)
+                {
+
+                    if (cancellationType == "cancelled")
+                    {
+                        await _handleAppointmentController.Cancel(cancellationType, appointmentId);
+                    }
+                    else if (cancellationType == "missed")
+                    {
+                        await _handleAppointmentController.Missed(cancellationType, appointmentId);
+                    }
+
+                    view.ClearSelection();
+                    this.BeginInvoke((MethodInvoker)delegate
+                    {
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Cancelled", "Appointment Change Status Successfully!", Properties.Resources.success);
+                        LoadingState.Visible = false; 
+                    });
+                }
+                else
+                {
+                    this.BeginInvoke((MethodInvoker)delegate
+                    {
+                        AlertBox(Color.LightCoral, Color.Red, "Cancel Failed", "Email notification failed.", Properties.Resources.error);
+                        LoadingState.Visible = false; 
+                    });
+                }
             }
-            else
+            catch (Exception ex)
             {
-                AlertBox(Color.LightCoral, Color.Red, "Cancel Failed", "Email notification failed, approval not processed.", Properties.Resources.error);
+                throw new Exception($"error {ex.Message}");
             }
+            finally
+            {
+                LoadingState.Visible = false;
+            }
+            
 
         }
 
@@ -1243,12 +1295,31 @@ namespace Application_Desktop.Admin_Views
 
             if (ApprovedAppointmentId > 0)
             {
-                await _handleAppointmentController.Complete(value, ApprovedAppointmentId);
-                AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Completed", "Appointment Change Status Successfully!", Properties.Resources.success);
+                LoadingState.Visible = true;
 
-                // Clear the selection and reset the selectedAppointmentId
-                viewApprovedAppointment.ClearSelection();
-                ApprovedAppointmentId = 0;
+                try
+                {
+                    await Task.Delay(3000);
+
+                    await _handleAppointmentController.Complete(value, ApprovedAppointmentId);
+
+                    LoadingState.Visible = false;
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Completed", "Appointment Change Status Successfully!", Properties.Resources.success);
+
+                    // Clear the selection and reset the selectedAppointmentId
+                    viewApprovedAppointment.ClearSelection();
+                    ApprovedAppointmentId = 0;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Error {ex.Message}");
+                }
+                finally
+                {
+                    LoadingState.Visible = false;
+
+                }
+
             }
 
         }
