@@ -41,6 +41,8 @@ namespace Application_Desktop.Admin_Views
             this.txtFetchPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFetchPrice_KeyPress);
             this.txtFetchPrice.Leave += new System.EventHandler(this.txtFetchPrice_Leave);
 
+            ApplyCustomFormatToDateTimePickers(this.Controls);
+
         }
 
         void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
@@ -60,6 +62,24 @@ namespace Application_Desktop.Admin_Views
             await LoadOfficeHour();
             await LoadIsClosed();
 
+           
+
+        }
+
+        private void ApplyCustomFormatToDateTimePickers(Control.ControlCollection controls)
+        {
+            foreach (Control control in controls)
+            {
+                if (control is DateTimePicker dateTimePicker)
+                {
+                    dateTimePicker.Format = DateTimePickerFormat.Custom;
+                    dateTimePicker.CustomFormat = "hh mm tt"; // Custom format as 'HH mm A'
+                }
+                else if (control.HasChildren) // Recursively apply to child controls
+                {
+                    ApplyCustomFormatToDateTimePickers(control.Controls);
+                }
+            }
         }
 
         // It get branch Id
@@ -1074,6 +1094,11 @@ namespace Application_Desktop.Admin_Views
                 }
                 else { ViewCategoriesInstance.Show(); }
             }
+        }
+
+        private void dateTimePicker14_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

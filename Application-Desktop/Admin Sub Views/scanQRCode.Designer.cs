@@ -72,7 +72,7 @@
             btnClose.Image = (Image)resources.GetObject("btnClose.Image");
             btnClose.Location = new Point(458, 2);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(27, 27);
+            btnClose.Size = new Size(541, 27);
             btnClose.SizeMode = PictureBoxSizeMode.Zoom;
             btnClose.TabIndex = 19;
             btnClose.TabStop = false;
@@ -101,7 +101,7 @@
             // panel1
             // 
             panel1.Controls.Add(textBox1);
-            panel1.Location = new Point(458, 171);
+            panel1.Location = new Point(366, 35);
             panel1.Name = "panel1";
             panel1.Size = new Size(200, 100);
             panel1.TabIndex = 114;
@@ -140,7 +140,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(487, 189);
+            ClientSize = new Size(1001, 491);
             Controls.Add(lvlScanQRC);
             Controls.Add(lblScanning);
             Controls.Add(panel1);

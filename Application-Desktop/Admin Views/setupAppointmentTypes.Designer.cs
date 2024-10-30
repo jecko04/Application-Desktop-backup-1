@@ -1502,6 +1502,7 @@
             dateTimePicker14.ShowUpDown = true;
             dateTimePicker14.Size = new Size(107, 23);
             dateTimePicker14.TabIndex = 5;
+            dateTimePicker14.ValueChanged += dateTimePicker14_ValueChanged;
             // 
             // panel92
             // 
@@ -2431,7 +2432,7 @@
             // 
             lineDevider.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lineDevider.AutoSize = true;
-            lineDevider.Location = new Point(521, 28126);
+            lineDevider.Location = new Point(521, 29488);
             lineDevider.Name = "lineDevider";
             lineDevider.Size = new Size(10, 15);
             lineDevider.TabIndex = 59;
