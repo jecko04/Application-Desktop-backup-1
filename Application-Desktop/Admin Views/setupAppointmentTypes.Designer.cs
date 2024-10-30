@@ -66,6 +66,8 @@
             txtTitle = new MaterialSkin.Controls.MaterialTextBox();
             panel4 = new Panel();
             PanelOfficeHours = new Panel();
+            materialLabel22 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel23 = new MaterialSkin.Controls.MaterialLabel();
             materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
             materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
             btnApplyToAll = new MaterialSkin.Controls.MaterialCheckbox();
@@ -826,6 +828,8 @@
             // 
             PanelOfficeHours.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             PanelOfficeHours.BackColor = Color.White;
+            PanelOfficeHours.Controls.Add(materialLabel22);
+            PanelOfficeHours.Controls.Add(materialLabel23);
             PanelOfficeHours.Controls.Add(materialLabel12);
             PanelOfficeHours.Controls.Add(materialLabel11);
             PanelOfficeHours.Controls.Add(btnApplyToAll);
@@ -870,6 +874,30 @@
             PanelOfficeHours.TabIndex = 70;
             PanelOfficeHours.Paint += PanelOfficeHours_Paint;
             // 
+            // materialLabel22
+            // 
+            materialLabel22.AutoSize = true;
+            materialLabel22.Depth = 0;
+            materialLabel22.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel22.Location = new Point(735, 126);
+            materialLabel22.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel22.Name = "materialLabel22";
+            materialLabel22.Size = new Size(68, 19);
+            materialLabel22.TabIndex = 143;
+            materialLabel22.Text = "End Time";
+            // 
+            // materialLabel23
+            // 
+            materialLabel23.AutoSize = true;
+            materialLabel23.Depth = 0;
+            materialLabel23.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel23.Location = new Point(615, 126);
+            materialLabel23.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel23.Name = "materialLabel23";
+            materialLabel23.Size = new Size(75, 19);
+            materialLabel23.TabIndex = 142;
+            materialLabel23.Text = "Start Time";
+            // 
             // materialLabel12
             // 
             materialLabel12.AutoSize = true;
@@ -878,9 +906,9 @@
             materialLabel12.Location = new Point(21, 21);
             materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel12.Name = "materialLabel12";
-            materialLabel12.Size = new Size(225, 19);
+            materialLabel12.Size = new Size(125, 19);
             materialLabel12.TabIndex = 141;
-            materialLabel12.Text = "Setup Availability Day and Hour";
+            materialLabel12.Text = "Set Available Day";
             // 
             // materialLabel11
             // 
@@ -891,24 +919,24 @@
             materialLabel11.Location = new Point(22, 51);
             materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel11.Name = "materialLabel11";
-            materialLabel11.Size = new Size(341, 17);
+            materialLabel11.Size = new Size(425, 17);
             materialLabel11.TabIndex = 140;
-            materialLabel11.Text = "Setup office hour availability for each day of the week";
+            materialLabel11.Text = "Set the clinic's availability for office hours on each day of the week.";
             // 
             // btnApplyToAll
             // 
             btnApplyToAll.AutoSize = true;
             btnApplyToAll.Depth = 0;
-            btnApplyToAll.Location = new Point(668, 304);
+            btnApplyToAll.Location = new Point(598, 191);
             btnApplyToAll.Margin = new Padding(0);
             btnApplyToAll.MouseLocation = new Point(-1, -1);
             btnApplyToAll.MouseState = MaterialSkin.MouseState.HOVER;
             btnApplyToAll.Name = "btnApplyToAll";
             btnApplyToAll.ReadOnly = false;
             btnApplyToAll.Ripple = true;
-            btnApplyToAll.Size = new Size(114, 37);
+            btnApplyToAll.Size = new Size(113, 37);
             btnApplyToAll.TabIndex = 139;
-            btnApplyToAll.Text = "Apply to all";
+            btnApplyToAll.Text = "apply to all";
             btnApplyToAll.UseVisualStyleBackColor = true;
             btnApplyToAll.CheckedChanged += btnApplyToAll_CheckedChanged;
             // 
@@ -921,9 +949,9 @@
             panel117.Controls.Add(panel121);
             panel117.Controls.Add(dateTimePicker16);
             panel117.Font = new Font("Tahoma", 9.75F);
-            panel117.Location = new Point(667, 243);
+            panel117.Location = new Point(603, 164);
             panel117.Name = "panel117";
-            panel117.Size = new Size(123, 23);
+            panel117.Size = new Size(107, 23);
             panel117.TabIndex = 116;
             // 
             // button25
@@ -935,7 +963,7 @@
             button25.Font = new Font("Microsoft Sans Serif", 9F);
             button25.ForeColor = SystemColors.ButtonFace;
             button25.ImageAlign = ContentAlignment.MiddleLeft;
-            button25.Location = new Point(145, 32);
+            button25.Location = new Point(129, 32);
             button25.Margin = new Padding(0);
             button25.Name = "button25";
             button25.Size = new Size(48, 25);
@@ -947,7 +975,7 @@
             // 
             panel118.BackColor = Color.FromArgb(93, 173, 226);
             panel118.Dock = DockStyle.Right;
-            panel118.Location = new Point(122, 1);
+            panel118.Location = new Point(106, 1);
             panel118.Name = "panel118";
             panel118.Size = new Size(1, 21);
             panel118.TabIndex = 3;
@@ -958,7 +986,7 @@
             panel119.Dock = DockStyle.Bottom;
             panel119.Location = new Point(1, 22);
             panel119.Name = "panel119";
-            panel119.Size = new Size(122, 1);
+            panel119.Size = new Size(106, 1);
             panel119.TabIndex = 2;
             // 
             // panel120
@@ -967,7 +995,7 @@
             panel120.Dock = DockStyle.Top;
             panel120.Location = new Point(1, 0);
             panel120.Name = "panel120";
-            panel120.Size = new Size(122, 1);
+            panel120.Size = new Size(106, 1);
             panel120.TabIndex = 1;
             // 
             // panel121
@@ -985,7 +1013,8 @@
             dateTimePicker16.Format = DateTimePickerFormat.Time;
             dateTimePicker16.Location = new Point(0, 0);
             dateTimePicker16.Name = "dateTimePicker16";
-            dateTimePicker16.Size = new Size(123, 23);
+            dateTimePicker16.ShowUpDown = true;
+            dateTimePicker16.Size = new Size(107, 23);
             dateTimePicker16.TabIndex = 5;
             // 
             // panel112
@@ -997,9 +1026,9 @@
             panel112.Controls.Add(panel116);
             panel112.Controls.Add(dateTimePicker15);
             panel112.Font = new Font("Tahoma", 9.75F);
-            panel112.Location = new Point(667, 272);
+            panel112.Location = new Point(716, 164);
             panel112.Name = "panel112";
-            panel112.Size = new Size(123, 23);
+            panel112.Size = new Size(107, 23);
             panel112.TabIndex = 115;
             // 
             // button22
@@ -1011,7 +1040,7 @@
             button22.Font = new Font("Microsoft Sans Serif", 9F);
             button22.ForeColor = SystemColors.ButtonFace;
             button22.ImageAlign = ContentAlignment.MiddleLeft;
-            button22.Location = new Point(238, 32);
+            button22.Location = new Point(222, 32);
             button22.Margin = new Padding(0);
             button22.Name = "button22";
             button22.Size = new Size(48, 25);
@@ -1023,7 +1052,7 @@
             // 
             panel113.BackColor = Color.FromArgb(93, 173, 226);
             panel113.Dock = DockStyle.Right;
-            panel113.Location = new Point(122, 1);
+            panel113.Location = new Point(106, 1);
             panel113.Name = "panel113";
             panel113.Size = new Size(1, 21);
             panel113.TabIndex = 3;
@@ -1034,7 +1063,7 @@
             panel114.Dock = DockStyle.Bottom;
             panel114.Location = new Point(1, 22);
             panel114.Name = "panel114";
-            panel114.Size = new Size(122, 1);
+            panel114.Size = new Size(106, 1);
             panel114.TabIndex = 2;
             // 
             // panel115
@@ -1043,7 +1072,7 @@
             panel115.Dock = DockStyle.Top;
             panel115.Location = new Point(1, 0);
             panel115.Name = "panel115";
-            panel115.Size = new Size(122, 1);
+            panel115.Size = new Size(106, 1);
             panel115.TabIndex = 1;
             // 
             // panel116
@@ -1061,7 +1090,8 @@
             dateTimePicker15.Format = DateTimePickerFormat.Time;
             dateTimePicker15.Location = new Point(0, 0);
             dateTimePicker15.Name = "dateTimePicker15";
-            dateTimePicker15.Size = new Size(123, 23);
+            dateTimePicker15.ShowUpDown = true;
+            dateTimePicker15.Size = new Size(107, 23);
             dateTimePicker15.TabIndex = 5;
             // 
             // btnSaveOfficeHour
@@ -1072,7 +1102,7 @@
             btnSaveOfficeHour.Depth = 0;
             btnSaveOfficeHour.HighEmphasis = true;
             btnSaveOfficeHour.Icon = null;
-            btnSaveOfficeHour.Location = new Point(668, 347);
+            btnSaveOfficeHour.Location = new Point(701, 341);
             btnSaveOfficeHour.Margin = new Padding(4, 6, 4, 6);
             btnSaveOfficeHour.MouseState = MaterialSkin.MouseState.HOVER;
             btnSaveOfficeHour.Name = "btnSaveOfficeHour";
@@ -1089,7 +1119,7 @@
             // 
             sundayClose.AutoSize = true;
             sundayClose.Depth = 0;
-            sundayClose.Location = new Point(574, 347);
+            sundayClose.Location = new Point(522, 346);
             sundayClose.Margin = new Padding(0);
             sundayClose.MouseLocation = new Point(-1, -1);
             sundayClose.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1104,7 +1134,7 @@
             // 
             saturdayClose.AutoSize = true;
             saturdayClose.Depth = 0;
-            saturdayClose.Location = new Point(574, 315);
+            saturdayClose.Location = new Point(522, 314);
             saturdayClose.Margin = new Padding(0);
             saturdayClose.MouseLocation = new Point(-1, -1);
             saturdayClose.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1119,7 +1149,7 @@
             // 
             fridayClose.AutoSize = true;
             fridayClose.Depth = 0;
-            fridayClose.Location = new Point(574, 285);
+            fridayClose.Location = new Point(522, 284);
             fridayClose.Margin = new Padding(0);
             fridayClose.MouseLocation = new Point(-1, -1);
             fridayClose.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1134,7 +1164,7 @@
             // 
             thursdayClose.AutoSize = true;
             thursdayClose.Depth = 0;
-            thursdayClose.Location = new Point(574, 253);
+            thursdayClose.Location = new Point(522, 252);
             thursdayClose.Margin = new Padding(0);
             thursdayClose.MouseLocation = new Point(-1, -1);
             thursdayClose.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1149,7 +1179,7 @@
             // 
             wednesdayClose.AutoSize = true;
             wednesdayClose.Depth = 0;
-            wednesdayClose.Location = new Point(574, 222);
+            wednesdayClose.Location = new Point(522, 221);
             wednesdayClose.Margin = new Padding(0);
             wednesdayClose.MouseLocation = new Point(-1, -1);
             wednesdayClose.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1164,7 +1194,7 @@
             // 
             tuesdayClose.AutoSize = true;
             tuesdayClose.Depth = 0;
-            tuesdayClose.Location = new Point(574, 192);
+            tuesdayClose.Location = new Point(522, 191);
             tuesdayClose.Margin = new Padding(0);
             tuesdayClose.MouseLocation = new Point(-1, -1);
             tuesdayClose.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1192,7 +1222,7 @@
             // 
             mondayClose.AutoSize = true;
             mondayClose.Depth = 0;
-            mondayClose.Location = new Point(574, 160);
+            mondayClose.Location = new Point(522, 159);
             mondayClose.Margin = new Padding(0);
             mondayClose.MouseLocation = new Point(-1, -1);
             mondayClose.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1208,7 +1238,7 @@
             materialLabel9.AutoSize = true;
             materialLabel9.Depth = 0;
             materialLabel9.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel9.Location = new Point(469, 127);
+            materialLabel9.Location = new Point(417, 126);
             materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel9.Name = "materialLabel9";
             materialLabel9.Size = new Size(68, 19);
@@ -1220,7 +1250,7 @@
             materialLabel8.AutoSize = true;
             materialLabel8.Depth = 0;
             materialLabel8.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel8.Location = new Point(314, 127);
+            materialLabel8.Location = new Point(262, 126);
             materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel8.Name = "materialLabel8";
             materialLabel8.Size = new Size(75, 19);
@@ -1232,7 +1262,7 @@
             materialLabel7.AutoSize = true;
             materialLabel7.Depth = 0;
             materialLabel7.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel7.Location = new Point(145, 352);
+            materialLabel7.Location = new Point(113, 351);
             materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel7.Name = "materialLabel7";
             materialLabel7.Size = new Size(55, 19);
@@ -1244,7 +1274,7 @@
             materialLabel5.AutoSize = true;
             materialLabel5.Depth = 0;
             materialLabel5.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel5.Location = new Point(145, 320);
+            materialLabel5.Location = new Point(113, 319);
             materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel5.Name = "materialLabel5";
             materialLabel5.Size = new Size(65, 19);
@@ -1256,7 +1286,7 @@
             materialLabel6.AutoSize = true;
             materialLabel6.Depth = 0;
             materialLabel6.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel6.Location = new Point(145, 289);
+            materialLabel6.Location = new Point(113, 288);
             materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel6.Name = "materialLabel6";
             materialLabel6.Size = new Size(45, 19);
@@ -1268,7 +1298,7 @@
             materialLabel3.AutoSize = true;
             materialLabel3.Depth = 0;
             materialLabel3.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel3.Location = new Point(145, 257);
+            materialLabel3.Location = new Point(113, 256);
             materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel3.Name = "materialLabel3";
             materialLabel3.Size = new Size(68, 19);
@@ -1280,7 +1310,7 @@
             materialLabel4.AutoSize = true;
             materialLabel4.Depth = 0;
             materialLabel4.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel4.Location = new Point(145, 226);
+            materialLabel4.Location = new Point(113, 225);
             materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel4.Name = "materialLabel4";
             materialLabel4.Size = new Size(83, 19);
@@ -1292,7 +1322,7 @@
             materialLabel2.AutoSize = true;
             materialLabel2.Depth = 0;
             materialLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel2.Location = new Point(145, 195);
+            materialLabel2.Location = new Point(113, 194);
             materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel2.Name = "materialLabel2";
             materialLabel2.Size = new Size(62, 19);
@@ -1304,7 +1334,7 @@
             materialLabel1.AutoSize = true;
             materialLabel1.Depth = 0;
             materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel1.Location = new Point(145, 164);
+            materialLabel1.Location = new Point(113, 163);
             materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel1.Name = "materialLabel1";
             materialLabel1.Size = new Size(59, 19);
@@ -1314,9 +1344,9 @@
             // panel122
             // 
             panel122.BackColor = Color.FromArgb(93, 173, 226);
-            panel122.Location = new Point(129, 405);
+            panel122.Location = new Point(572, 126);
             panel122.Name = "panel122";
-            panel122.Size = new Size(444, 1);
+            panel122.Size = new Size(10, 257);
             panel122.TabIndex = 86;
             // 
             // panel102
@@ -1328,7 +1358,7 @@
             panel102.Controls.Add(panel106);
             panel102.Controls.Add(dateTimePicker13);
             panel102.Font = new Font("Tahoma", 9.75F);
-            panel102.Location = new Point(446, 352);
+            panel102.Location = new Point(394, 351);
             panel102.Name = "panel102";
             panel102.Size = new Size(107, 23);
             panel102.TabIndex = 114;
@@ -1392,6 +1422,7 @@
             dateTimePicker13.Format = DateTimePickerFormat.Time;
             dateTimePicker13.Location = new Point(0, 0);
             dateTimePicker13.Name = "dateTimePicker13";
+            dateTimePicker13.ShowUpDown = true;
             dateTimePicker13.Size = new Size(107, 23);
             dateTimePicker13.TabIndex = 5;
             // 
@@ -1404,7 +1435,7 @@
             panel107.Controls.Add(panel111);
             panel107.Controls.Add(dateTimePicker14);
             panel107.Font = new Font("Tahoma", 9.75F);
-            panel107.Location = new Point(294, 352);
+            panel107.Location = new Point(242, 351);
             panel107.Name = "panel107";
             panel107.Size = new Size(107, 23);
             panel107.TabIndex = 113;
@@ -1468,6 +1499,7 @@
             dateTimePicker14.Format = DateTimePickerFormat.Time;
             dateTimePicker14.Location = new Point(0, 0);
             dateTimePicker14.Name = "dateTimePicker14";
+            dateTimePicker14.ShowUpDown = true;
             dateTimePicker14.Size = new Size(107, 23);
             dateTimePicker14.TabIndex = 5;
             // 
@@ -1480,7 +1512,7 @@
             panel92.Controls.Add(panel96);
             panel92.Controls.Add(dateTimePicker11);
             panel92.Font = new Font("Tahoma", 9.75F);
-            panel92.Location = new Point(446, 319);
+            panel92.Location = new Point(394, 318);
             panel92.Name = "panel92";
             panel92.Size = new Size(107, 23);
             panel92.TabIndex = 107;
@@ -1544,6 +1576,7 @@
             dateTimePicker11.Format = DateTimePickerFormat.Time;
             dateTimePicker11.Location = new Point(0, 0);
             dateTimePicker11.Name = "dateTimePicker11";
+            dateTimePicker11.ShowUpDown = true;
             dateTimePicker11.Size = new Size(107, 23);
             dateTimePicker11.TabIndex = 5;
             // 
@@ -1556,7 +1589,7 @@
             panel97.Controls.Add(panel101);
             panel97.Controls.Add(dateTimePicker12);
             panel97.Font = new Font("Tahoma", 9.75F);
-            panel97.Location = new Point(294, 319);
+            panel97.Location = new Point(242, 318);
             panel97.Name = "panel97";
             panel97.Size = new Size(107, 23);
             panel97.TabIndex = 106;
@@ -1620,6 +1653,7 @@
             dateTimePicker12.Format = DateTimePickerFormat.Time;
             dateTimePicker12.Location = new Point(0, 0);
             dateTimePicker12.Name = "dateTimePicker12";
+            dateTimePicker12.ShowUpDown = true;
             dateTimePicker12.Size = new Size(107, 23);
             dateTimePicker12.TabIndex = 5;
             // 
@@ -1632,7 +1666,7 @@
             panel82.Controls.Add(panel86);
             panel82.Controls.Add(dateTimePicker9);
             panel82.Font = new Font("Tahoma", 9.75F);
-            panel82.Location = new Point(446, 289);
+            panel82.Location = new Point(394, 288);
             panel82.Name = "panel82";
             panel82.Size = new Size(107, 23);
             panel82.TabIndex = 100;
@@ -1696,6 +1730,7 @@
             dateTimePicker9.Format = DateTimePickerFormat.Time;
             dateTimePicker9.Location = new Point(0, 0);
             dateTimePicker9.Name = "dateTimePicker9";
+            dateTimePicker9.ShowUpDown = true;
             dateTimePicker9.Size = new Size(107, 23);
             dateTimePicker9.TabIndex = 5;
             // 
@@ -1708,7 +1743,7 @@
             panel87.Controls.Add(panel91);
             panel87.Controls.Add(dateTimePicker10);
             panel87.Font = new Font("Tahoma", 9.75F);
-            panel87.Location = new Point(294, 289);
+            panel87.Location = new Point(242, 288);
             panel87.Name = "panel87";
             panel87.Size = new Size(107, 23);
             panel87.TabIndex = 99;
@@ -1772,6 +1807,7 @@
             dateTimePicker10.Format = DateTimePickerFormat.Time;
             dateTimePicker10.Location = new Point(0, 0);
             dateTimePicker10.Name = "dateTimePicker10";
+            dateTimePicker10.ShowUpDown = true;
             dateTimePicker10.Size = new Size(107, 23);
             dateTimePicker10.TabIndex = 5;
             // 
@@ -1784,7 +1820,7 @@
             panel72.Controls.Add(panel76);
             panel72.Controls.Add(dateTimePicker7);
             panel72.Font = new Font("Tahoma", 9.75F);
-            panel72.Location = new Point(446, 257);
+            panel72.Location = new Point(394, 256);
             panel72.Name = "panel72";
             panel72.Size = new Size(107, 23);
             panel72.TabIndex = 93;
@@ -1848,6 +1884,7 @@
             dateTimePicker7.Format = DateTimePickerFormat.Time;
             dateTimePicker7.Location = new Point(0, 0);
             dateTimePicker7.Name = "dateTimePicker7";
+            dateTimePicker7.ShowUpDown = true;
             dateTimePicker7.Size = new Size(107, 23);
             dateTimePicker7.TabIndex = 5;
             // 
@@ -1860,7 +1897,7 @@
             panel77.Controls.Add(panel81);
             panel77.Controls.Add(dateTimePicker8);
             panel77.Font = new Font("Tahoma", 9.75F);
-            panel77.Location = new Point(294, 257);
+            panel77.Location = new Point(242, 256);
             panel77.Name = "panel77";
             panel77.Size = new Size(107, 23);
             panel77.TabIndex = 92;
@@ -1924,6 +1961,7 @@
             dateTimePicker8.Format = DateTimePickerFormat.Time;
             dateTimePicker8.Location = new Point(0, 0);
             dateTimePicker8.Name = "dateTimePicker8";
+            dateTimePicker8.ShowUpDown = true;
             dateTimePicker8.Size = new Size(107, 23);
             dateTimePicker8.TabIndex = 5;
             // 
@@ -1936,7 +1974,7 @@
             panel62.Controls.Add(panel66);
             panel62.Controls.Add(dateTimePicker5);
             panel62.Font = new Font("Tahoma", 9.75F);
-            panel62.Location = new Point(446, 226);
+            panel62.Location = new Point(394, 225);
             panel62.Name = "panel62";
             panel62.Size = new Size(107, 23);
             panel62.TabIndex = 86;
@@ -2000,6 +2038,7 @@
             dateTimePicker5.Format = DateTimePickerFormat.Time;
             dateTimePicker5.Location = new Point(0, 0);
             dateTimePicker5.Name = "dateTimePicker5";
+            dateTimePicker5.ShowUpDown = true;
             dateTimePicker5.Size = new Size(107, 23);
             dateTimePicker5.TabIndex = 5;
             // 
@@ -2012,7 +2051,7 @@
             panel67.Controls.Add(panel71);
             panel67.Controls.Add(dateTimePicker6);
             panel67.Font = new Font("Tahoma", 9.75F);
-            panel67.Location = new Point(294, 226);
+            panel67.Location = new Point(242, 225);
             panel67.Name = "panel67";
             panel67.Size = new Size(107, 23);
             panel67.TabIndex = 85;
@@ -2076,6 +2115,7 @@
             dateTimePicker6.Format = DateTimePickerFormat.Time;
             dateTimePicker6.Location = new Point(0, 0);
             dateTimePicker6.Name = "dateTimePicker6";
+            dateTimePicker6.ShowUpDown = true;
             dateTimePicker6.Size = new Size(107, 23);
             dateTimePicker6.TabIndex = 5;
             // 
@@ -2088,7 +2128,7 @@
             panel52.Controls.Add(panel56);
             panel52.Controls.Add(dateTimePicker3);
             panel52.Font = new Font("Tahoma", 9.75F);
-            panel52.Location = new Point(446, 197);
+            panel52.Location = new Point(394, 196);
             panel52.Name = "panel52";
             panel52.Size = new Size(107, 23);
             panel52.TabIndex = 79;
@@ -2152,6 +2192,7 @@
             dateTimePicker3.Format = DateTimePickerFormat.Time;
             dateTimePicker3.Location = new Point(0, 0);
             dateTimePicker3.Name = "dateTimePicker3";
+            dateTimePicker3.ShowUpDown = true;
             dateTimePicker3.Size = new Size(107, 23);
             dateTimePicker3.TabIndex = 5;
             // 
@@ -2164,7 +2205,7 @@
             panel57.Controls.Add(panel61);
             panel57.Controls.Add(dateTimePicker4);
             panel57.Font = new Font("Tahoma", 9.75F);
-            panel57.Location = new Point(294, 197);
+            panel57.Location = new Point(242, 196);
             panel57.Name = "panel57";
             panel57.Size = new Size(107, 23);
             panel57.TabIndex = 78;
@@ -2228,6 +2269,7 @@
             dateTimePicker4.Format = DateTimePickerFormat.Time;
             dateTimePicker4.Location = new Point(0, 0);
             dateTimePicker4.Name = "dateTimePicker4";
+            dateTimePicker4.ShowUpDown = true;
             dateTimePicker4.Size = new Size(107, 23);
             dateTimePicker4.TabIndex = 5;
             // 
@@ -2240,7 +2282,7 @@
             panel39.Controls.Add(panel51);
             panel39.Controls.Add(dateTimePicker2);
             panel39.Font = new Font("Tahoma", 9.75F);
-            panel39.Location = new Point(294, 164);
+            panel39.Location = new Point(242, 163);
             panel39.Name = "panel39";
             panel39.Size = new Size(107, 23);
             panel39.TabIndex = 72;
@@ -2304,6 +2346,7 @@
             dateTimePicker2.Format = DateTimePickerFormat.Time;
             dateTimePicker2.Location = new Point(0, 0);
             dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.ShowUpDown = true;
             dateTimePicker2.Size = new Size(107, 23);
             dateTimePicker2.TabIndex = 5;
             // 
@@ -2316,7 +2359,7 @@
             panel14.Controls.Add(panel34);
             panel14.Controls.Add(dateTimePicker1);
             panel14.Font = new Font("Tahoma", 9.75F);
-            panel14.Location = new Point(446, 164);
+            panel14.Location = new Point(394, 163);
             panel14.Name = "panel14";
             panel14.Size = new Size(107, 23);
             panel14.TabIndex = 71;
@@ -2380,6 +2423,7 @@
             dateTimePicker1.Format = DateTimePickerFormat.Time;
             dateTimePicker1.Location = new Point(0, 0);
             dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.ShowUpDown = true;
             dateTimePicker1.Size = new Size(107, 23);
             dateTimePicker1.TabIndex = 5;
             // 
@@ -2387,7 +2431,7 @@
             // 
             lineDevider.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lineDevider.AutoSize = true;
-            lineDevider.Location = new Point(521, 27218);
+            lineDevider.Location = new Point(521, 28126);
             lineDevider.Name = "lineDevider";
             lineDevider.Size = new Size(10, 15);
             lineDevider.TabIndex = 59;
@@ -2782,5 +2826,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel14;
         private MaterialSkin.Controls.MaterialLabel materialLabel13;
         private MaterialSkin.Controls.MaterialButton btnViewServices;
+        private MaterialSkin.Controls.MaterialLabel materialLabel22;
+        private MaterialSkin.Controls.MaterialLabel materialLabel23;
     }
 }
