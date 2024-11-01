@@ -38,7 +38,62 @@ namespace Application_Desktop.Controller
                         INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
                         INNER JOIN categories c ON a.selectServices = c.Categories_ID
                         INNER JOIN users u ON a.user_id = u.id
-                        WHERE a.status = 'pending'
+                        WHERE a.status = 'pending' && a.reschedule_date IS NULL
+                        ORDER BY a.created_at DESC";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dataTable = new DataTable();
+
+                            adapter.Fill(dataTable);
+
+                            return dataTable.Rows.Count > 0 ? dataTable : null;
+                        }
+                    }
+                }
+            }
+            catch (MySqlException dbEx)
+            {
+                throw new Exception($"Database error occurred while selecting Inqueue: {dbEx.Message}", dbEx);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error on selecting Inqueue: {ex.Message}", ex);
+            }
+        }
+
+        public async Task<DataTable> RescheduleAppointment()
+        {
+            string query = @"
+                        SELECT 
+                            a.id,
+                            a.user_id,
+                            u.name AS UserName,
+                            b.BranchName,
+                            c.Title AS ServiceTitle,
+                            a.appointment_date,
+                            a.appointment_time,
+                            a.reschedule_date,
+                            a.reschedule_time,
+                            a.status,
+                            a.check_in
+                        FROM appointments a
+                        INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
+                        INNER JOIN categories c ON a.selectServices = c.Categories_ID
+                        INNER JOIN users u ON a.user_id = u.id
+                        WHERE a.status = 'pending' && a.reschedule_date IS NOT NULL
                         ORDER BY a.created_at DESC";
 
             try

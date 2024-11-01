@@ -49,13 +49,16 @@ namespace Application_Desktop.Admin_Views
         {
             LoadButton();
 
-            timer1.Tick += timer1_Tick;
+            //timer1.Tick += timer1_Tick;
 
             await LoadInqueue();
             await LoadApproved();
             await LoadCancelled();
+            await LoadReschedule();
             await LoadMissed();
             await LoadCompleted();
+
+            //
 
             viewPendingAppointment.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             viewPendingAppointment.DefaultCellStyle.SelectionBackColor = Color.LightBlue;
@@ -65,6 +68,18 @@ namespace Application_Desktop.Admin_Views
 
             viewPendingAppointment.ClearSelection();
 
+            //
+
+            viewReschedule.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            viewReschedule.DefaultCellStyle.SelectionBackColor = Color.LightBlue;
+            viewReschedule.DefaultCellStyle.SelectionForeColor = Color.Black;
+            viewReschedule.AlternatingRowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
+            viewReschedule.AlternatingRowsDefaultCellStyle.SelectionForeColor = Color.Black;
+
+            viewReschedule.ClearSelection();
+
+            //
+
             viewApprovedAppointment.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             viewApprovedAppointment.DefaultCellStyle.SelectionBackColor = Color.LightBlue;
             viewApprovedAppointment.DefaultCellStyle.SelectionForeColor = Color.Black;
@@ -72,6 +87,8 @@ namespace Application_Desktop.Admin_Views
             viewApprovedAppointment.AlternatingRowsDefaultCellStyle.SelectionForeColor = Color.Black;
 
             viewApprovedAppointment.ClearSelection();
+
+            //
 
             viewCompletedAppointment.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             viewCompletedAppointment.DefaultCellStyle.SelectionBackColor = Color.LightBlue;
@@ -96,6 +113,27 @@ namespace Application_Desktop.Admin_Views
                 AddColumnInqueue(viewPendingAppointment);
 
                 viewPendingAppointment.DataSource = inqueue;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to load patient records: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async Task LoadReschedule()
+        {
+            try
+            {
+                DataTable reschedule = await _handleAppointmentController.RescheduleAppointment();
+                viewReschedule.DataSource = null;
+                viewReschedule.Rows.Clear();
+                viewReschedule.Columns.Clear();
+
+                viewReschedule.AutoGenerateColumns = false;
+                AddColumnReschedule(viewReschedule);
+
+                viewReschedule.DataSource = reschedule;
 
             }
             catch (Exception ex)
@@ -301,6 +339,112 @@ namespace Application_Desktop.Admin_Views
             };
             Inqueue.Columns.Add(status);
         }
+
+        private void AddColumnReschedule(DataGridView Reschedule)
+        {
+            Reschedule.RowHeadersVisible = false;
+            Reschedule.ColumnHeadersHeight = 40;
+
+            DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "ID",
+                Name = "id",
+                DataPropertyName = "id",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            Reschedule.Columns.Add(id);
+
+            DataGridViewTextBoxColumn userIdColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "User ID",
+                Name = "user_id",
+                DataPropertyName = "user_id",
+                Visible = false
+            };
+            Reschedule.Columns.Add(userIdColumn);
+
+            DataGridViewTextBoxColumn fullname = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Fullname",
+                Name = "fullname",
+                DataPropertyName = "UserName",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            Reschedule.Columns.Add(fullname);
+
+            DataGridViewTextBoxColumn branches = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Branch",
+                Name = "branches",
+                DataPropertyName = "BranchName",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            Reschedule.Columns.Add(branches);
+
+            DataGridViewTextBoxColumn services = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Services",
+                Name = "services",
+                DataPropertyName = "ServiceTitle",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            Reschedule.Columns.Add(services);
+
+            DataGridViewTextBoxColumn appointment_date = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Appointment Date",
+                Name = "appointmentDate",
+                DataPropertyName = "appointment_date",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            Reschedule.Columns.Add(appointment_date);
+
+            DataGridViewTextBoxColumn appointment_time = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Appointment Time",
+                Name = "appointmentTime",
+                DataPropertyName = "appointment_time",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            Reschedule.Columns.Add(appointment_time);
+
+            DataGridViewTextBoxColumn reschedule_date = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Reschedule Date",
+                Name = "rescheduleDate",
+                DataPropertyName = "reschedule_date",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            Reschedule.Columns.Add(reschedule_date);
+
+            DataGridViewTextBoxColumn reschedule_time = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Reschedule Time",
+                Name = "rescheduleTime",
+                DataPropertyName = "reschedule_time",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            Reschedule.Columns.Add(reschedule_time);
+
+            DataGridViewTextBoxColumn status = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Status",
+                Name = "status",
+                DataPropertyName = "status",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+
+            };
+            Reschedule.Columns.Add(status);
+        }
+
         private void AddColumnApproved(DataGridView approved)
         {
             approved.RowHeadersVisible = false;
@@ -783,37 +927,7 @@ namespace Application_Desktop.Admin_Views
 
 
 
-        private int selectedAppointmentId;
-        private int selectedUserId;
-        private async void viewPendingAppointment_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow selectedRow = viewPendingAppointment.Rows[e.RowIndex];
 
-                if (selectedRow.Cells["id"].Value != null &&
-                    Int32.TryParse(selectedRow.Cells["id"].Value.ToString(), out selectedAppointmentId) &&
-                    selectedRow.Cells["user_id"].Value != null &&
-                    Int32.TryParse(selectedRow.Cells["user_id"].Value.ToString(), out selectedUserId))
-                {
-
-                    string userEmail = await _handleAppointmentController.SelectEmail(selectedUserId);
-
-                    if (!string.IsNullOrEmpty(userEmail))
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        MessageBox.Show("No email found for the selected appointment.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Failed to convert Appointment ID to integer.");
-                }
-            }
-        }
         private async Task<bool> SendEmailNotification(string userEmail, string appointmentId, string status)
         {
             string fromEmail = "smtc.dentalcare@gmail.com";
@@ -875,7 +989,7 @@ namespace Application_Desktop.Admin_Views
                     AlertBox(Color.LightGreen, Color.SeaGreen, "Email Sent!", "Notification sent successfully!", Properties.Resources.success);
 
                 });*/
-                return true; 
+                return true;
             }
             catch (Exception ex)
             {
@@ -884,80 +998,44 @@ namespace Application_Desktop.Admin_Views
                     AlertBox(Color.LightCoral, Color.Red, "Failed to Send Email", "Unable to send notification.", Properties.Resources.error);
 
                 });
-                return false; 
+                return false;
             }
         }
-
-
-
         public async Task approved()
         {
             string value = "approved";
+            LoadingState.Visible = true;
 
-            if (selectedAppointmentId > 0)
+            try
             {
-                
-                LoadingState.Visible = true;
-
-                try
+                if (selectedAppointmentId > 0)
                 {
-                    //await Task.Delay(3000);
-
-                    string userEmail = await _handleAppointmentController.SelectEmail(selectedUserId);
-
-                    if (string.IsNullOrEmpty(userEmail))
-                    {
-                        this.BeginInvoke((MethodInvoker)delegate
-                        {
-                            AlertBox(Color.LightCoral, Color.Red, "Email Not Found", "User email not found, approval not processed.", Properties.Resources.error);
-                        });
-                        return;
-                    }
-
-                    bool emailSent = await SendEmailNotification(userEmail, selectedAppointmentId.ToString(), value);
-
-                    if (emailSent)
-                    {
-
-                        await _handleAppointmentController.Approved(value, selectedAppointmentId);
-
-                        viewPendingAppointment.ClearSelection();
-                        selectedAppointmentId = 0;
-
-                        this.BeginInvoke((MethodInvoker)delegate
-                        {
-                            LoadingState.Visible = false;
-                            AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Approved", "Appointment Change Status Successfully!", Properties.Resources.success);
-                        });
-
-
-                    }
-                    else
-                    {
-                        this.BeginInvoke((MethodInvoker)delegate
-                        {
-                            LoadingState.Visible = false;
-                            AlertBox(Color.LightCoral, Color.Red, "Approval Failed", "Email notification failed, approval not processed.", Properties.Resources.error);
-                        });
-                    }
+                    await _handleAppointmentController.Approved(value, selectedAppointmentId);
+                    viewPendingAppointment.ClearSelection();
+                    selectedAppointmentId = 0;
                 }
-                catch (Exception ex)
+                else if (rescheduleAppointmentId > 0)
                 {
-                    throw new Exception($"error something when wrong: {ex.Message}");
-                }
-                finally
-                {
-                    LoadingState.Visible = false;
-
+                    await _handleAppointmentController.Approved(value, rescheduleAppointmentId);
+                    viewReschedule.ClearSelection();
+                    rescheduleAppointmentId = 0;
                 }
 
-                
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Approved", "Appointment Change Status Successfully!", Properties.Resources.success);
+            }
+            catch (Exception ex)
+            {
+                AlertBox(Color.LightCoral, Color.Red, "Error", $"An error occurred: {ex.Message}", Properties.Resources.error);
+            }
+            finally
+            {
+                LoadingState.Visible = false;
             }
         }
 
         private async void btnApprove_Click(object sender, EventArgs e)
         {
-            if (selectedAppointmentId > 0)
+            if (selectedAppointmentId > 0 || rescheduleAppointmentId > 0)
             {
                 DialogResult dialogResult = MessageBox.Show(
                     "Do you want to approve this dental appointment?",
@@ -968,17 +1046,22 @@ namespace Application_Desktop.Admin_Views
 
                 if (dialogResult == DialogResult.Yes)
                 {
-                    string userEmail = await _handleAppointmentController.SelectEmail(selectedUserId);
+                    int userIdToApprove = selectedAppointmentId > 0 ? selectedUserId : rescheduleUserId;
+                    string email = await _handleAppointmentController.SelectEmail(userIdToApprove);
 
-                    if (!string.IsNullOrEmpty(userEmail))
+                    if (!string.IsNullOrEmpty(email))
                     {
-                        // Send email notification
-                        bool emailSent = await SendEmailNotification(userEmail, selectedUserId.ToString(), "approved");
+                        bool emailSent = selectedAppointmentId > 0
+                            ? await SendEmailNotification(email, selectedAppointmentId.ToString(), "approved")
+                            : await SendRescheduleApproved(email, rescheduleUserId.ToString(), "approved");
 
                         if (emailSent)
                         {
                             await approved();
-                            await LoadInqueue();
+                        }
+                        else
+                        {
+                            AlertBox(Color.LightCoral, Color.Red, "Email Notification Failed", "Approval processed, but email notification failed.", Properties.Resources.error);
                         }
                     }
                     else
@@ -1121,7 +1204,79 @@ namespace Application_Desktop.Admin_Views
             {
                 await smtpClient.SendMailAsync(mail);
 
-               /* this.BeginInvoke((MethodInvoker)delegate
+                /* this.BeginInvoke((MethodInvoker)delegate
+                 {
+                     AlertBox(Color.LightGreen, Color.SeaGreen, "Email Sent!", "Cancellation notification sent successfully!", Properties.Resources.success);
+
+                 });*/
+                return true;
+            }
+            catch (Exception ex)
+            {
+                this.BeginInvoke((MethodInvoker)delegate
+                {
+                    AlertBox(Color.LightCoral, Color.Red, "Failed to Send Email", $"Unable to send email: {ex.Message}", Properties.Resources.error);
+                });
+                return false;
+            }
+        }
+
+        private async Task<bool> SendRejectedNotification(string userEmail, string appointmentId, string status)
+        {
+            string fromEmail = "smtc.dentalcare@gmail.com";
+            string appPassword = "pskv swrc tyqh hldz"; // Use the App Password here
+
+            // Create a new MailMessage object
+            MailMessage mail = new MailMessage(fromEmail, userEmail);
+            mail.Subject = $"Update on Your Appointment Status";
+            mail.IsBodyHtml = true;
+
+            mail.Body = $@"<html>
+                    <body style=""font-family: Arial, sans-serif; color: #333; line-height: 1.6;"">
+                        <div style=""max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px;"">
+                            <h2 style=""color: #c0392b; text-align: center;"">Appointment Status Update</h2>
+                            <p>Dear Valued Patient,</p>
+
+                            <p>
+                                We regret to inform you that your reschedule appointment request with Appointment ID 
+                                <strong>{appointmentId}</strong> has been <strong style=""color: #e74c3c;"">{status}</strong>.
+                            </p>
+
+                            <p>We understand that this may be disappointing and apologize for any inconvenience caused. If you have any questions, please contact us at your earliest convenience.</p>
+
+                            <p style=""text-align: center; font-style: italic; color: #7f8c8d;"">
+                                ""Your smile is still our top priority!""
+                            </p>
+
+                            <hr style=""border: 1px solid #ddd;"">
+
+                            <footer style=""text-align: center;"">
+                                <p style=""color: #2980b9; font-size: 16px; margin: 0;"">Ynares, DMJ Bldg, A. Mabini St, Rodriguez, Rizal</p>
+                                <p style=""color: #2980b9; font-size: 16px; margin: 0;"">0933 821 2439</p>
+                                <p style=""color: #2980b9; font-size: 16px; margin: 10px 0;"">P4JR+4J4, L.M.Santos St, Rosario, Rodriguez, 1860 Rizal</p>
+                                <p style=""color: #2980b9; font-size: 16px; margin: 0;"">0933 821 2439</p>
+                            </footer>
+
+                            <p style=""text-align: center; color: #7f8c8d; font-size: 14px; margin-top: 20px;"">
+                                Thank you for understanding. We hope to serve you in the future!
+                            </p>
+                        </div>
+                    </body>
+                  </html>";
+
+            // Set up the SMTP client
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential(fromEmail, appPassword),
+                EnableSsl = true
+            };
+
+            // Send the email
+            try
+            {
+                await smtpClient.SendMailAsync(mail);
+
+                /*this.BeginInvoke((MethodInvoker)delegate
                 {
                     AlertBox(Color.LightGreen, Color.SeaGreen, "Email Sent!", "Cancellation notification sent successfully!", Properties.Resources.success);
 
@@ -1144,10 +1299,10 @@ namespace Application_Desktop.Admin_Views
 
             string userEmailPending = await _handleAppointmentController.SelectEmail(selectedUserId);
             string userEmailApproved = await _handleAppointmentController.SelectEmail(selectedApprovedUserId);
-            MessageBox.Show($"{userEmailApproved} {userEmailPending}");
+            string userEmailReschedule = await _handleAppointmentController.SelectEmail(rescheduleUserId);
 
 
-            if (string.IsNullOrEmpty(userEmailPending) && string.IsNullOrEmpty(userEmailApproved))
+            if (string.IsNullOrEmpty(userEmailPending) && string.IsNullOrEmpty(userEmailApproved) && string.IsNullOrEmpty(userEmailReschedule))
             {
                 AlertBox(Color.LightCoral, Color.Red, "Email Not Found", "User email not found.", Properties.Resources.error);
                 return;
@@ -1164,6 +1319,13 @@ namespace Application_Desktop.Admin_Views
                 await ProcessCancellation(userEmailApproved, ApprovedAppointmentId, viewApprovedAppointment, "missed");
                 userEmailApproved = string.Empty;
                 ApprovedAppointmentId = 0;
+            }
+
+            if (rescheduleAppointmentId > 0)
+            {
+                await ProcessCancellation(userEmailReschedule, rescheduleAppointmentId, viewReschedule, "rejected");
+                userEmailApproved = string.Empty;
+                rescheduleAppointmentId = 0;
             }
         }
 
@@ -1184,6 +1346,10 @@ namespace Application_Desktop.Admin_Views
                 {
                     emailSent = await SendMissedNotification(userEmail, appointmentId.ToString(), cancellationType);
                 }
+                else if (cancellationType == "rejected")
+                {
+                    emailSent = await SendRejectedNotification(userEmail, appointmentId.ToString(), cancellationType);
+                }
 
                 if (emailSent)
                 {
@@ -1196,12 +1362,17 @@ namespace Application_Desktop.Admin_Views
                     {
                         await _handleAppointmentController.Missed(cancellationType, appointmentId);
                     }
+                    else if (cancellationType == "rejected")
+                    {
+                        await _handleAppointmentController.Cancel("cancelled", appointmentId);
+
+                    }
 
                     view.ClearSelection();
                     this.BeginInvoke((MethodInvoker)delegate
                     {
                         AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Cancelled", "Appointment Change Status Successfully!", Properties.Resources.success);
-                        LoadingState.Visible = false; 
+                        LoadingState.Visible = false;
                     });
                 }
                 else
@@ -1209,7 +1380,7 @@ namespace Application_Desktop.Admin_Views
                     this.BeginInvoke((MethodInvoker)delegate
                     {
                         AlertBox(Color.LightCoral, Color.Red, "Cancel Failed", "Email notification failed.", Properties.Resources.error);
-                        LoadingState.Visible = false; 
+                        LoadingState.Visible = false;
                     });
                 }
             }
@@ -1221,14 +1392,14 @@ namespace Application_Desktop.Admin_Views
             {
                 LoadingState.Visible = false;
             }
-            
+
 
         }
 
         private async void btnCancel_Click(object sender, EventArgs e)
         {
 
-            if (selectedAppointmentId > 0 || ApprovedAppointmentId > 0)
+            if (selectedAppointmentId > 0 || ApprovedAppointmentId > 0 || rescheduleAppointmentId > 0)
             {
                 DialogResult dialogResult = MessageBox.Show(
                     "Do you want to cancel this dental appointment?",
@@ -1247,6 +1418,9 @@ namespace Application_Desktop.Admin_Views
                     if (ApprovedAppointmentId > 0)
                         await LoadApproved();
 
+                    if (rescheduleAppointmentId > 0)
+                        await LoadReschedule();
+
                 }
             }
             else
@@ -1256,38 +1430,8 @@ namespace Application_Desktop.Admin_Views
 
         }
 
-        private int ApprovedAppointmentId;
-        private int selectedApprovedUserId;
 
-        private async void viewApprovedAppointment_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow selectedRow = viewApprovedAppointment.Rows[e.RowIndex];
 
-                if (selectedRow.Cells["id"].Value != null &&
-                    Int32.TryParse(selectedRow.Cells["id"].Value.ToString(), out ApprovedAppointmentId) &&
-                    selectedRow.Cells["user_id"].Value != null &&
-                    Int32.TryParse(selectedRow.Cells["user_id"].Value.ToString(), out selectedApprovedUserId))
-                {
-
-                    string userEmail = await _handleAppointmentController.SelectEmail(selectedApprovedUserId);
-
-                    if (!string.IsNullOrEmpty(userEmail))
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        MessageBox.Show("No email found for the selected appointment.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Failed to convert Appointment ID to integer.");
-                }
-            }
-        }
 
         private async Task completed()
         {
@@ -1347,6 +1491,81 @@ namespace Application_Desktop.Admin_Views
                 }
             }
         }
+        private async Task<bool> SendRescheduleApproved(string userEmail, string appointmentId, string status)
+        {
+            string fromEmail = "smtc.dentalcare@gmail.com";
+            string appPassword = "pskv swrc tyqh hldz"; // Use the App Password here
+
+            // Create a new MailMessage object
+            MailMessage mail = new MailMessage(fromEmail, userEmail);
+            mail.Subject = $"Update on Your Appointment Status";
+            mail.IsBodyHtml = true;
+
+            mail.Body = $@"<html>
+                <body style=""font-family: Arial, sans-serif; color: #333; line-height: 1.6;"">
+                    <div style=""max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px;"">
+                        <h2 style=""color: #2c3e50; text-align: center;"">Appointment Status Update</h2>
+                        <p>Dear Valued Patient,</p>
+
+                        <p>
+                            This is to notify you that your rescheduled appointment with Appointment ID 
+                            <strong>{appointmentId}</strong> has been marked as 
+                            <strong style=""color: #27ae60;"">{status}</strong>.
+                        </p>
+
+                        <p>We sincerely appreciate your trust in us and look forward to seeing you soon!</p>
+
+                        <p style=""text-align: center; font-style: italic; color: #7f8c8d;"">
+                            ""Your smile is our top priority!""
+                        </p>
+
+                        <hr style=""border: 1px solid #ddd;"">
+
+                        <footer style=""text-align: center;"">
+                            <p style=""color: #2980b9; font-size: 16px; margin: 0;"">Ynares, DMJ Bldg, A. Mabini St, Rodriguez, Rizal</p>
+                            <p style=""color: #2980b9; font-size: 16px; margin: 0;"">0933 821 2439</p>
+                            <p style=""color: #2980b9; font-size: 16px; margin: 10px 0;"">P4JR+4J4, L.M.Santos St, Rosario, Rodriguez, 1860 Rizal</p>
+                            <p style=""color: #2980b9; font-size: 16px; margin: 0;"">0933 821 2439</p>
+                        </footer>
+
+                        <p style=""text-align: center; color: #7f8c8d; font-size: 14px; margin-top: 20px;"">
+                            Thank you for choosing our dental care. We are always here to assist you!
+                        </p>
+                    </div>
+                </body>
+              </html>";
+
+            // Set up the SMTP client
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential(fromEmail, appPassword),
+                EnableSsl = true
+            };
+
+
+
+            try
+            {
+                await smtpClient.SendMailAsync(mail);
+                /*this.BeginInvoke((MethodInvoker)delegate
+                {
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Email Sent!", "Notification sent successfully!", Properties.Resources.success);
+
+                });*/
+                return true;
+            }
+            catch (Exception ex)
+            {
+                this.BeginInvoke((MethodInvoker)delegate
+                {
+                    AlertBox(Color.LightCoral, Color.Red, "Failed to Send Email", "Unable to send notification.", Properties.Resources.error);
+
+                });
+                return false;
+            }
+        }
+
+
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1397,12 +1616,22 @@ namespace Application_Desktop.Admin_Views
         {
             await LoadInqueue();
             viewPendingAppointment.ClearSelection();
+            selectedAppointmentId = 0;
+            selectedUserId = 0;
+
+
+            await LoadReschedule();
+            viewReschedule.ClearSelection();
+            rescheduleAppointmentId = 0;
+            rescheduleUserId = 0;
 
             await LoadApproved();
             viewApprovedAppointment.ClearSelection();
 
             await LoadCancelled();
             viewCancelledAppointment.ClearSelection();
+            ApprovedAppointmentId = 0;
+            selectedApprovedUserId = 0;
 
             await LoadMissed();
             viewMissedAppointment.ClearSelection();
@@ -1535,10 +1764,7 @@ namespace Application_Desktop.Admin_Views
                 }
             }
         }
-        private void btnQRCode_KeyDown(object sender, KeyEventArgs e)
-        {
 
-        }
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && IsScanning)
@@ -1557,43 +1783,6 @@ namespace Application_Desktop.Admin_Views
 
 
         private receiptForm ReceiptFormInstance;
-
-
-        private async void viewCompletedAppointment_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (viewCompletedAppointment.SelectedRows.Count > 0)
-            {
-                var selectedRow = viewCompletedAppointment.SelectedRows[0];
-                int branchId = Convert.ToInt32(selectedRow.Cells["branch_id"].Value);
-                int categoriesId = Convert.ToInt32(selectedRow.Cells["categories_id"].Value);
-
-                var receiptDetails = await _handleAppointmentController.PrintReceiptDetails(branchId, categoriesId);
-
-                if (ReceiptFormInstance == null || ReceiptFormInstance.IsDisposed)
-                {
-                    ReceiptFormInstance = new receiptForm();
-
-                    ReceiptFormInstance.SetReceiptDetails(receiptDetails);
-                    ReceiptFormInstance.Show();
-                }
-                else
-                {
-                    if (ReceiptFormInstance.Visible)
-                    {
-                        ReceiptFormInstance.BringToFront();
-                    }
-                    else
-                    {
-                        ReceiptFormInstance.Show();
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select an appointment to print the receipt.");
-            }
-        }
-
         private printJobManagerForm PrintJobManagementInstance;
         private void btnInqueue_Click(object sender, EventArgs e)
         {
@@ -1655,20 +1844,133 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
-        private void viewPendingAppointment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
 
+        private int selectedAppointmentId;
+        private int selectedUserId;
+        private async void viewPendingAppointment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = viewPendingAppointment.Rows[e.RowIndex];
+
+                if (selectedRow.Cells["id"].Value != null &&
+                    Int32.TryParse(selectedRow.Cells["id"].Value.ToString(), out selectedAppointmentId) &&
+                    selectedRow.Cells["user_id"].Value != null &&
+                    Int32.TryParse(selectedRow.Cells["user_id"].Value.ToString(), out selectedUserId))
+                {
+
+                    string userEmail = await _handleAppointmentController.SelectEmail(selectedUserId);
+
+                    if (!string.IsNullOrEmpty(userEmail))
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No email found for the selected appointment.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Failed to convert Appointment ID to integer.");
+                }
+            }
         }
 
-        private void viewApprovedAppointment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private int ApprovedAppointmentId;
+        private int selectedApprovedUserId;
+        private async void viewApprovedAppointment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = viewApprovedAppointment.Rows[e.RowIndex];
 
+                if (selectedRow.Cells["id"].Value != null &&
+                    Int32.TryParse(selectedRow.Cells["id"].Value.ToString(), out ApprovedAppointmentId) &&
+                    selectedRow.Cells["user_id"].Value != null &&
+                    Int32.TryParse(selectedRow.Cells["user_id"].Value.ToString(), out selectedApprovedUserId))
+                {
+
+                    string userEmail = await _handleAppointmentController.SelectEmail(selectedApprovedUserId);
+
+                    if (!string.IsNullOrEmpty(userEmail))
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No email found for the selected appointment.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Failed to convert Appointment ID to integer.");
+                }
+            }
         }
 
-        private void viewCompletedAppointment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private async void viewCompletedAppointment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (viewCompletedAppointment.SelectedRows.Count > 0)
+            {
+                var selectedRow = viewCompletedAppointment.SelectedRows[0];
+                int branchId = Convert.ToInt32(selectedRow.Cells["branch_id"].Value);
+                int categoriesId = Convert.ToInt32(selectedRow.Cells["categories_id"].Value);
 
+                var receiptDetails = await _handleAppointmentController.PrintReceiptDetails(branchId, categoriesId);
+
+                if (ReceiptFormInstance == null || ReceiptFormInstance.IsDisposed)
+                {
+                    ReceiptFormInstance = new receiptForm();
+
+                    ReceiptFormInstance.SetReceiptDetails(receiptDetails);
+                    ReceiptFormInstance.Show();
+                }
+                else
+                {
+                    if (ReceiptFormInstance.Visible)
+                    {
+                        ReceiptFormInstance.BringToFront();
+                    }
+                    else
+                    {
+                        ReceiptFormInstance.Show();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an appointment to print the receipt.");
+            }
         }
 
+        private int rescheduleAppointmentId; //row id
+        private int rescheduleUserId; //user id
+        private async void viewReschedule_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = viewReschedule.Rows[e.RowIndex];
+
+                if (selectedRow.Cells["id"].Value != null &&
+                    Int32.TryParse(selectedRow.Cells["id"].Value.ToString(), out rescheduleAppointmentId) &&
+                    selectedRow.Cells["user_id"].Value != null &&
+                    Int32.TryParse(selectedRow.Cells["user_id"].Value.ToString(), out rescheduleUserId))
+                {
+
+                    string userEmail = await _handleAppointmentController.SelectEmail(selectedUserId);
+
+                    if (!string.IsNullOrEmpty(userEmail))
+                    {
+                        return;
+                    }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Failed to convert Appointment ID to integer.");
+                }
+            }
+        }
     }
 }
