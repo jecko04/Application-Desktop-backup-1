@@ -1582,7 +1582,7 @@ namespace Application_Desktop.Admin_Views
 
 
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        private async void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl1.SelectedTab == tabPage3)
             {
@@ -1602,15 +1602,18 @@ namespace Application_Desktop.Admin_Views
                 btnInqueue.Visible = false;
             }
 
+            await _handleAppointmentController.InqueuNotif(InqueueNotif);
+
             /*if (tabControl1.SelectedTab == tabPage2)
             {
-                btnApprove.Visible = true;
-                btnCancel.Visible = true;
-            }
-            else
+                InqueueNotif.Visible = false;
+            }*/
+
+            await _handleAppointmentController.RescheduleNotif(reschedNotif);
+
+            /*if (tabControl1.SelectedTab == tabPage6)
             {
-                btnApprove.Visible = false;
-                btnCancel.Visible = false;
+                reschedNotif.Visible = false;
             }*/
         }
 
@@ -1835,6 +1838,10 @@ namespace Application_Desktop.Admin_Views
                     DataView approvedView = new DataView(appointment);
                     approvedView.RowFilter = "status = 'approved'";
                     viewApprovedAppointment.DataSource = approvedView;
+
+                    DataView rescheduleView = new DataView(appointment);
+                    approvedView.RowFilter = "status = 'pending' AND reschedule_date IS NOT NULL";
+                    viewReschedule.DataSource = approvedView;
 
                     DataView cancelledView = new DataView(appointment);
                     cancelledView.RowFilter = "status = 'cancelled'";

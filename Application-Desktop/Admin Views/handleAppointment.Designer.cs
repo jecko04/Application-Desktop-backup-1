@@ -77,6 +77,8 @@
             lvlScanQRC = new Label();
             lblScanning = new Label();
             LoadingState = new PictureBox();
+            InqueueNotif = new PictureBox();
+            reschedNotif = new PictureBox();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)viewPendingAppointment).BeginInit();
@@ -93,6 +95,8 @@
             qrCodePanel.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)LoadingState).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)InqueueNotif).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)reschedNotif).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -106,7 +110,7 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tabControl1.ItemSize = new Size(89, 30);
-            tabControl1.Location = new Point(3, 3);
+            tabControl1.Location = new Point(3, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.Padding = new Point(30, 3);
             tabControl1.SelectedIndex = 0;
@@ -554,7 +558,7 @@
             txtSearchBoxes.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtSearchBoxes.Hint = "Search by name";
             txtSearchBoxes.LeadingIcon = null;
-            txtSearchBoxes.Location = new Point(846, 35);
+            txtSearchBoxes.Location = new Point(850, 46);
             txtSearchBoxes.MaxLength = 50;
             txtSearchBoxes.MouseState = MaterialSkin.MouseState.OUT;
             txtSearchBoxes.Multiline = false;
@@ -575,7 +579,7 @@
             btnSearcher.Depth = 0;
             btnSearcher.HighEmphasis = true;
             btnSearcher.Icon = (Image)resources.GetObject("btnSearcher.Icon");
-            btnSearcher.Location = new Point(1036, 35);
+            btnSearcher.Location = new Point(1032, 46);
             btnSearcher.Margin = new Padding(4, 6, 4, 6);
             btnSearcher.MouseState = MaterialSkin.MouseState.HOVER;
             btnSearcher.Name = "btnSearcher";
@@ -772,12 +776,37 @@
             LoadingState.TabStop = false;
             LoadingState.Visible = false;
             // 
+            // InqueueNotif
+            // 
+            InqueueNotif.BackColor = Color.Transparent;
+            InqueueNotif.Image = (Image)resources.GetObject("InqueueNotif.Image");
+            InqueueNotif.Location = new Point(110, 12);
+            InqueueNotif.Name = "InqueueNotif";
+            InqueueNotif.Size = new Size(18, 17);
+            InqueueNotif.SizeMode = PictureBoxSizeMode.CenterImage;
+            InqueueNotif.TabIndex = 120;
+            InqueueNotif.TabStop = false;
+            InqueueNotif.Visible = false;
+            // 
+            // reschedNotif
+            // 
+            reschedNotif.BackColor = Color.Transparent;
+            reschedNotif.Image = (Image)resources.GetObject("reschedNotif.Image");
+            reschedNotif.Location = new Point(432, 12);
+            reschedNotif.Name = "reschedNotif";
+            reschedNotif.Size = new Size(18, 17);
+            reschedNotif.SizeMode = PictureBoxSizeMode.CenterImage;
+            reschedNotif.TabIndex = 122;
+            reschedNotif.TabStop = false;
+            // 
             // handleAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1085, 621);
+            Controls.Add(reschedNotif);
+            Controls.Add(InqueueNotif);
             Controls.Add(lvlScanQRC);
             Controls.Add(panel1);
             Controls.Add(lblScanning);
@@ -812,6 +841,8 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)LoadingState).EndInit();
+            ((System.ComponentModel.ISupportInitialize)InqueueNotif).EndInit();
+            ((System.ComponentModel.ISupportInitialize)reschedNotif).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -847,5 +878,7 @@
         private PictureBox LoadingState;
         private TabPage tabPage6;
         private DataGridView viewReschedule;
+        private PictureBox InqueueNotif;
+        private PictureBox reschedNotif;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Application_Desktop.Model;
 using Application_Desktop.Models;
 using MySql.Data.MySqlClient;
+using OfficeOpenXml.FormulaParsing.Excel.Functions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -729,7 +730,59 @@ namespace Application_Desktop.Controller
             }
         }
 
+        public async Task InqueuNotif(PictureBox notif)
+        {
+            string query = @"SELECT COUNT(*) FROM appointments WHERE status = 'pending' AND reschedule_date IS NULL";
 
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        int count = Convert.ToInt32(await cmd.ExecuteScalarAsync());
+
+                        notif.Visible = count > 0;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error {ex.Message}");
+            }
+        }
+
+        public async Task RescheduleNotif(PictureBox notif)
+        {
+            string query = @"SELECT COUNT(*) FROM appointments WHERE status = 'pending' AND reschedule_date IS NOT NULL";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        int count = Convert.ToInt32(await cmd.ExecuteScalarAsync());
+
+                        notif.Visible = count > 0;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error {ex.Message}");
+            }
+        }
     }
 
 
