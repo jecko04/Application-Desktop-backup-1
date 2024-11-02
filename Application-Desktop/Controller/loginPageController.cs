@@ -1,25 +1,27 @@
 ﻿using Application_Desktop.Models;
 using Application_Desktop.Views;
 using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Mysqlx.Expect.Open.Types.Condition.Types;
 
 namespace Application_Desktop.Controller
 {
     public class loginPageController
     {
-        public async Task InsertOtp(int userId, int otp)
+        public async Task InsertOtp(int userId, int superadminId, int otp)
         {
             string query = @"INSERT INTO otp (Admin_ID, SuperAdmin_ID, otp, otpExpirationDate, isUsed, created_at, updated_at) 
-                            VALUES (@userId, @superadminId, @otp, @expirationTime, @isUsed, @createdAt, @updatedAt)
-                            ON DUPLICATE KEY UPDATE 
-                                otp = VALUES(otp),
-                                otpExpirationDate = VALUES(otpExpirationDate),
-                                isUsed = VALUES(isUsed),
-                                updated_at = VALUES(updated_at);";
+                     VALUES (@adminId, @superadminId, @otp, @expirationTime, @isUsed, @createdAt, @updatedAt)
+                     ON DUPLICATE KEY UPDATE 
+                         otp = VALUES(otp),
+                         otpExpirationDate = VALUES(otpExpirationDate),
+                         isUsed = VALUES(isUsed),
+                         updated_at = VALUES(updated_at);";
 
             try
             {
@@ -31,8 +33,8 @@ namespace Application_Desktop.Controller
                     }
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@userId", userId);
-                        cmd.Parameters.AddWithValue("@superadminId", null);
+                        cmd.Parameters.AddWithValue("@adminId", userId);
+                        cmd.Parameters.AddWithValue("@superadminId", superadminId);
                         cmd.Parameters.AddWithValue("@otp", otp);
                         cmd.Parameters.AddWithValue("@expirationTime", DateTime.Now.AddMinutes(3));
                         cmd.Parameters.AddWithValue("@isUsed", false);
@@ -52,7 +54,7 @@ namespace Application_Desktop.Controller
             }
         }
 
-        public async Task InsertOtpSuper(int superAdminId, int otp)
+       /* public async Task InsertOtpSuper(int superAdminId, int otp)
         {
             string query = @"INSERT INTO otp (Admin_ID, SuperAdmin_ID, otp, otpExpirationDate, isUsed, created_at, updated_at) 
                             VALUES (@adminId, @superadminId, @otp, @expirationTime, @isUsed, @createdAt, @updatedAt)
@@ -90,11 +92,11 @@ namespace Application_Desktop.Controller
             {
                 throw new Exception($"Error Send OTP {ex.Message}");
             }
-        }
+        }*/
 
         public async Task<bool> CheckUnusedOtp(int userId)
         {
-            string query = "SELECT otp, otpExpirationDate, isUsed FROM otp WHERE Admin_ID = @userId AND isUsed = false ORDER BY otpExpirationDate DESC LIMIT 1";
+            string query = "SELECT otp, otpExpirationDate, isUsed FROM otp WHERE Admin_ID = @userId AND isUsed = true ORDER BY otpExpirationDate DESC LIMIT 1";
 
             using (MySqlConnection conn = databaseHelper.getConnection())
             {
@@ -109,6 +111,7 @@ namespace Application_Desktop.Controller
                         if (await reader.ReadAsync())
                         {
                             DateTime expiration = reader.GetDateTime("otpExpirationDate");
+                            bool isUsed = reader.GetBoolean("isUsed");
 
                             if (DateTime.Now < expiration)
                             {
@@ -124,7 +127,7 @@ namespace Application_Desktop.Controller
 
         public async Task<bool> CheckUnusedOtpSuper(int superAdminId)
         {
-            string query = "SELECT otp, otpExpirationDate, isUsed FROM otp WHERE SuperAdmin_ID = @superAdminId AND isUsed = false ORDER BY otpExpirationDate DESC LIMIT 1";
+            string query = "SELECT otp, otpExpirationDate, isUsed FROM otp WHERE SuperAdmin_ID = @superAdminId AND isUsed = true ORDER BY otpExpirationDate DESC LIMIT 1";
 
             using (MySqlConnection conn = databaseHelper.getConnection())
             {
@@ -139,12 +142,13 @@ namespace Application_Desktop.Controller
                         if (await reader.ReadAsync())
                         {
                             DateTime expiration = reader.GetDateTime("otpExpirationDate");
+                            bool isUsed = reader.GetBoolean("isUsed");
 
                             if (DateTime.Now < expiration)
                             {
-                                return true; 
+                                return true;
                             }
-                        }
+                        }                    
                     }
                 }
             }
@@ -214,9 +218,11 @@ namespace Application_Desktop.Controller
             return false;
         }
 
-        public async Task UpdateOtpStatusAsync(int userId, bool isUsed)
+
+        public async Task UpdateOtpStatusAsync(int? userId, int? superadminId, bool isUsed)
         {
-            string query = "UPDATE otp SET isUsed = @isUsed WHERE Admin_ID = @userId AND isUsed = false";
+
+            string query = @"UPDATE otp SET isUsed = @isUsed WHERE Admin_ID = @userId AND isUsed = false";
 
             using (MySqlConnection conn = databaseHelper.getConnection())
             {
@@ -224,7 +230,9 @@ namespace Application_Desktop.Controller
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.Parameters.AddWithValue("@userId", userId.HasValue ? userId.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@superAdminId", superadminId.HasValue ? superadminId.Value : DBNull.Value);
+
                     cmd.Parameters.AddWithValue("@isUsed", isUsed);
 
                     await cmd.ExecuteNonQueryAsync();
@@ -234,7 +242,7 @@ namespace Application_Desktop.Controller
 
         public async Task UpdateOtpStatusAsyncSuper(int superAdminId, bool isUsed)
         {
-            string query = "UPDATE otp SET isUsed = @isUsed WHERE SuperAdmin_ID = @superAdminId AND isUsed = false";
+            string query = "UPDATE otp SET isUsed = @isUsed WHERE SuperAdmin_ID = @superAdminId AND isUsed = false ORDER BY otpExpirationDate DESC LIMIT 1";
 
             using (MySqlConnection conn = databaseHelper.getConnection())
             {

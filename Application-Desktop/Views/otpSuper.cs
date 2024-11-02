@@ -36,6 +36,7 @@ namespace Application_Desktop.Views
         private async Task InsertOTP()
         {
             int ID = session.LoggedInSession;
+            int? adminId = null;
             string enteredOtp = txtOtpCode.Text;
 
             bool isValid = await _loginPageController.VerifyOTPsuper(ID, enteredOtp);
@@ -45,7 +46,7 @@ namespace Application_Desktop.Views
 
                 try
                 {
-                    await _loginPageController.UpdateOtpStatusAsync(ID, true);
+                    await _loginPageController.UpdateOtpStatusAsync(adminId, ID, true);
                     
                     superAdmin superadmin = new superAdmin();
                     superadmin.BringToFront();

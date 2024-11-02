@@ -36,24 +36,26 @@ namespace Application_Desktop.Views
         private async Task InsertOTP()
         {
             int ID = session.LoggedInSession;
+            int? superadmin = null;
             string enteredOtp = txtOtpCode.Text;
 
             bool isValid = await _loginPageController.VerifyOTP(ID, enteredOtp);
 
             if (isValid)
             {
-                await _loginPageController.UpdateOtpStatusAsync(ID, true);
+                await _loginPageController.UpdateOtpStatusAsync(ID, superadmin, true);
 
-                this.BeginInvoke((MethodInvoker)delegate
-               {
-                   AlertBox(Color.LightGreen, Color.SeaGreen, "Login Successful", "OTP Verification Code Success", Properties.Resources.success);
-               });
 
                 adminPage adminForm = new adminPage();
                 adminForm.BringToFront();
                 adminForm.Show();
 
                 this.Hide();
+
+                this.BeginInvoke((MethodInvoker)delegate
+               {
+                   AlertBox(Color.LightGreen, Color.SeaGreen, "Login Successful", "OTP Verification Code Success", Properties.Resources.success);
+               });
             }
             else
             {

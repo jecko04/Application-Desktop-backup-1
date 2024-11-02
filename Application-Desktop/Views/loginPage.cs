@@ -152,6 +152,9 @@ namespace Application_Desktop.Views
                                     {
                                         await SendOTPSuper();
 
+                                        AlertBox(Color.LightGreen, Color.SeaGreen, "Verification Send", "Please check your gmail", Properties.Resources.success);
+
+
                                         otpSuper otp = new otpSuper();
                                         otp.BringToFront();
                                         otp.Show();
@@ -180,6 +183,9 @@ namespace Application_Desktop.Views
                                     if (!hasUnusedOtp)
                                     {
                                         await SendOTP();
+
+                                        AlertBox(Color.LightGreen, Color.SeaGreen, "Verification Send", "Please check your gmail", Properties.Resources.success);
+
 
                                         otp otp = new otp();
                                         otp.BringToFront();
@@ -260,6 +266,7 @@ namespace Application_Desktop.Views
         private async Task SendOTP()
         {
             int ID = session.LoggedInSession;
+            int superadminId = 0;
 
 
             int Vcode = new Random().Next(100000, 999999);
@@ -284,9 +291,8 @@ namespace Application_Desktop.Views
             try
             {
                 smtp.Send(message);
-                AlertBox(Color.LightGreen, Color.SeaGreen, "Verification Send", "Please check your gmail", Properties.Resources.success);
 
-                await _loginPageController.InsertOtp(ID, Vcode);
+                await _loginPageController.InsertOtp(ID, superadminId, Vcode);
 
             }
             catch (Exception ex)
@@ -298,6 +304,7 @@ namespace Application_Desktop.Views
         private async Task SendOTPSuper()
         {
             int ID = session.LoggedInSession;
+            int adminId = 0;
 
             int Vcode = new Random().Next(100000, 999999);
 
@@ -321,9 +328,8 @@ namespace Application_Desktop.Views
             try
             {
                 smtp.Send(message);
-                AlertBox(Color.LightGreen, Color.SeaGreen, "Verification Send", "Please check your gmail", Properties.Resources.success);
 
-                await _loginPageController.InsertOtpSuper(ID, Vcode);
+                await _loginPageController.InsertOtp(adminId, ID, Vcode);
 
             }
             catch (Exception ex)
