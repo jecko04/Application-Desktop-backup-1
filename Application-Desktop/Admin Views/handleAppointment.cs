@@ -33,6 +33,13 @@ namespace Application_Desktop.Admin_Views
             InitializeComponent();
             _handleAppointmentController = new handleAppointmentController();
 
+            viewApprovedAppointment.CellFormatting += viewApprovedAppointment_CellFormatting;
+            viewPendingAppointment.CellFormatting += viewPendingAppointment_CellFormatting;
+            viewReschedule.CellFormatting += viewReschedule_CellFormatting;
+            viewMissedAppointment.CellFormatting += viewMissedAppointment_CellFormatting;
+            viewCancelledAppointment.CellFormatting += viewCancelledAppointment_CellFormatting;
+            viewCompletedAppointment.CellFormatting += viewCompletedAppointment_CellFormatting;
+
         }
         void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
         {
@@ -555,7 +562,6 @@ namespace Application_Desktop.Admin_Views
                 Name = "check_in",
                 DataPropertyName = "check_in",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
             };
             approved.Columns.Add(check_in);
 
@@ -1095,7 +1101,7 @@ namespace Application_Desktop.Admin_Views
 
                             <p>
                                 We regret to inform you that your appointment with Appointment ID 
-                                <strong>{appointmentId}</strong> has been <strong style=""color: #e74c3c;"">{status}</strong>.
+                                <strong>{appointmentId}</strong> has been <strong style=""color: #e74c3c;"">rejected</strong>.
                             </p>
 
                             <p>We understand that this may be disappointing and apologize for any inconvenience caused. If you have any questions, please contact us at your earliest convenience.</p>
@@ -1444,6 +1450,15 @@ namespace Application_Desktop.Admin_Views
                 try
                 {
                     await Task.Delay(3000);
+
+                    bool checkedIn = await _handleAppointmentController.IsCheckedIn(ApprovedAppointmentId);
+
+                    if (!checkedIn)
+                    {
+                        LoadingState.Visible = false;
+                        AlertBox(Color.LightCoral, Color.Red, "Check-In Required", "This appointment is not checked in.", Properties.Resources.error);
+                        return;
+                    }
 
                     await _handleAppointmentController.Complete(value, ApprovedAppointmentId);
 
@@ -1964,7 +1979,7 @@ namespace Application_Desktop.Admin_Views
                     {
                         return;
                     }
-                    
+
                 }
                 else
                 {
@@ -1972,5 +1987,186 @@ namespace Application_Desktop.Admin_Views
                 }
             }
         }
+
+        private void viewApprovedAppointment_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (viewApprovedAppointment.Columns[e.ColumnIndex].Name == "check_in" && e.Value != null)
+            {
+                if (e.Value is bool checkInStatus)
+                {
+                    e.Value = checkInStatus ? "Checked-in" : "Not Checked-in";
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (viewApprovedAppointment.Columns[e.ColumnIndex].Name == "appointmentTime" && e.Value != null)
+            {
+                if (DateTime.TryParse(e.Value.ToString(), out DateTime time))
+                {
+                    e.Value = time.ToString("hh:mm tt");
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (viewApprovedAppointment.Columns[e.ColumnIndex].Name == "rescheduleTime" && e.Value != null)
+            {
+                if (DateTime.TryParse(e.Value.ToString(), out DateTime time))
+                {
+                    e.Value = time.ToString("hh:mm tt");
+                    e.FormattingApplied = true;
+                }
+            }
+        }
+
+        private void viewPendingAppointment_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (viewPendingAppointment.Columns[e.ColumnIndex].Name == "check_in" && e.Value != null)
+            {
+                if (e.Value is bool checkInStatus)
+                {
+                    e.Value = checkInStatus ? "Checked-in" : "Not Checked-in";
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (viewPendingAppointment.Columns[e.ColumnIndex].Name == "appointmentTime" && e.Value != null)
+            {
+                if (DateTime.TryParse(e.Value.ToString(), out DateTime time))
+                {
+                    e.Value = time.ToString("hh:mm tt");
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (viewPendingAppointment.Columns[e.ColumnIndex].Name == "rescheduleTime" && e.Value != null)
+            {
+                if (DateTime.TryParse(e.Value.ToString(), out DateTime time))
+                {
+                    e.Value = time.ToString("hh:mm tt");
+                    e.FormattingApplied = true;
+                }
+            }
+        }
+
+        private void viewReschedule_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (viewReschedule.Columns[e.ColumnIndex].Name == "check_in" && e.Value != null)
+            {
+                if (e.Value is bool checkInStatus)
+                {
+                    e.Value = checkInStatus ? "Checked-in" : "Not Checked-in";
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (viewReschedule.Columns[e.ColumnIndex].Name == "appointmentTime" && e.Value != null)
+            {
+                if (DateTime.TryParse(e.Value.ToString(), out DateTime time))
+                {
+                    e.Value = time.ToString("hh:mm tt");
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (viewReschedule.Columns[e.ColumnIndex].Name == "rescheduleTime" && e.Value != null)
+            {
+                if (DateTime.TryParse(e.Value.ToString(), out DateTime time))
+                {
+                    e.Value = time.ToString("hh:mm tt");
+                    e.FormattingApplied = true;
+                }
+            }
+        }
+
+        private void viewCancelledAppointment_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (viewCancelledAppointment.Columns[e.ColumnIndex].Name == "check_in" && e.Value != null)
+            {
+                if (e.Value is bool checkInStatus)
+                {
+                    e.Value = checkInStatus ? "Checked-in" : "Not Checked-in";
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (viewCancelledAppointment.Columns[e.ColumnIndex].Name == "appointmentTime" && e.Value != null)
+            {
+                if (DateTime.TryParse(e.Value.ToString(), out DateTime time))
+                {
+                    e.Value = time.ToString("hh:mm tt");
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (viewCancelledAppointment.Columns[e.ColumnIndex].Name == "rescheduleTime" && e.Value != null)
+            {
+                if (DateTime.TryParse(e.Value.ToString(), out DateTime time))
+                {
+                    e.Value = time.ToString("hh:mm tt");
+                    e.FormattingApplied = true;
+                }
+            }
+        }
+
+        private void viewMissedAppointment_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (viewMissedAppointment.Columns[e.ColumnIndex].Name == "check_in" && e.Value != null)
+            {
+                if (e.Value is bool checkInStatus)
+                {
+                    e.Value = checkInStatus ? "Checked-in" : "Not Checked-in";
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (viewMissedAppointment.Columns[e.ColumnIndex].Name == "appointmentTime" && e.Value != null)
+            {
+                if (DateTime.TryParse(e.Value.ToString(), out DateTime time))
+                {
+                    e.Value = time.ToString("hh:mm tt");
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (viewMissedAppointment.Columns[e.ColumnIndex].Name == "rescheduleTime" && e.Value != null)
+            {
+                if (DateTime.TryParse(e.Value.ToString(), out DateTime time))
+                {
+                    e.Value = time.ToString("hh:mm tt");
+                    e.FormattingApplied = true;
+                }
+            }
+        }
+
+        private void viewCompletedAppointment_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (viewCompletedAppointment.Columns[e.ColumnIndex].Name == "check_in" && e.Value != null)
+            {
+                if (e.Value is bool checkInStatus)
+                {
+                    e.Value = checkInStatus ? "Checked-in" : "Not Checked-in";
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (viewCompletedAppointment.Columns[e.ColumnIndex].Name == "appointmentTime" && e.Value != null)
+            {
+                if (DateTime.TryParse(e.Value.ToString(), out DateTime time))
+                {
+                    e.Value = time.ToString("hh:mm tt");
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (viewCompletedAppointment.Columns[e.ColumnIndex].Name == "rescheduleTime" && e.Value != null)
+            {
+                if (DateTime.TryParse(e.Value.ToString(), out DateTime time))
+                {
+                    e.Value = time.ToString("hh:mm tt");
+                    e.FormattingApplied = true;
+                }
+            }
+        }
+
     }
 }

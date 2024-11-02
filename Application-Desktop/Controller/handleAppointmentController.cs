@@ -349,9 +349,9 @@ namespace Application_Desktop.Controller
                         cmd.Parameters.AddWithValue("@newStatus", status);
                         cmd.Parameters.AddWithValue("@appointmentId", id);
 
-                        await cmd.ExecuteNonQueryAsync();
+                        
 
-                        int rowsAffected = cmd.ExecuteNonQuery();
+                        int rowsAffected = await cmd.ExecuteNonQueryAsync();
 
                         if (rowsAffected > 0)
                         {
@@ -387,9 +387,9 @@ namespace Application_Desktop.Controller
                         cmd.Parameters.AddWithValue("@newStatus", status);
                         cmd.Parameters.AddWithValue("@appointmentId", id);
 
-                        await cmd.ExecuteNonQueryAsync();
+                        
 
-                        int rowsAffected = cmd.ExecuteNonQuery();
+                        int rowsAffected = await cmd.ExecuteNonQueryAsync();
 
                         if (rowsAffected > 0)
                         {
@@ -425,9 +425,9 @@ namespace Application_Desktop.Controller
                         cmd.Parameters.AddWithValue("@newStatus", status);
                         cmd.Parameters.AddWithValue("@appointmentId", id);
 
-                        await cmd.ExecuteNonQueryAsync();
+                        
 
-                        int rowsAffected = cmd.ExecuteNonQuery();
+                        int rowsAffected = await cmd.ExecuteNonQueryAsync();
 
                         if (rowsAffected > 0)
                         {
@@ -435,7 +435,7 @@ namespace Application_Desktop.Controller
                         }
                         else
                         {
-                            MessageBox.Show("Failed to cancel appointment status.");
+                            MessageBox.Show("Failed to missed appointment status.");
                         }
                     }
                 }
@@ -448,7 +448,7 @@ namespace Application_Desktop.Controller
 
         public async Task Complete(string status, int id)
         {
-            string query = "UPDATE appointments SET status = @newStatus WHERE id = @appointmentId";
+            string query = "UPDATE appointments SET status = @newStatus WHERE id = @appointmentId && check_in = TRUE";
 
             try
             {
@@ -463,9 +463,9 @@ namespace Application_Desktop.Controller
                         cmd.Parameters.AddWithValue("@newStatus", status);
                         cmd.Parameters.AddWithValue("@appointmentId", id);
 
-                        await cmd.ExecuteNonQueryAsync();
+                        
 
-                        int rowsAffected = cmd.ExecuteNonQuery();
+                        int rowsAffected = await cmd.ExecuteNonQueryAsync();
 
                         if (rowsAffected > 0)
                         {
@@ -473,7 +473,7 @@ namespace Application_Desktop.Controller
                         }
                         else
                         {
-                            MessageBox.Show("Failed to cancel appointment status.");
+                            MessageBox.Show("Failed to complete appointment status.");
                         }
                     }
                 }
@@ -481,6 +481,35 @@ namespace Application_Desktop.Controller
             catch (Exception ex)
             {
                 throw new Exception($"Error updating to approve : {ex.Message}");
+            }
+        }
+
+        public async Task<bool> IsCheckedIn(int appointmentId)
+        {
+            string query = "SELECT check_in FROM appointments WHERE id = @appointmentId";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@appointmentId", appointmentId);
+
+                        object result = await cmd.ExecuteScalarAsync();
+
+                        return result != null && Convert.ToBoolean(result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error checking check_in status: {ex.Message}");
             }
         }
 
