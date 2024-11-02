@@ -1,14 +1,18 @@
-﻿using Application_Desktop.Models;
+﻿using Application_Desktop.Controller;
+using Application_Desktop.Models;
 using Application_Desktop.Screen;
 using Application_Desktop.Sub_Views;
 using MaterialSkin.Controls;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,14 +22,27 @@ namespace Application_Desktop.Views
 {
     public partial class loginPage : Form
     {
+        private loginPageController _loginPageController;
         public loginPage()
         {
             InitializeComponent();
+            _loginPageController = new loginPageController();
 
             this.AcceptButton = btnLogins;
 
             ElipseManager elipseManager = new ElipseManager(5);
             elipseManager.ApplyElipseToAllButtons(this);
+        }
+
+        void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
+        {
+            alertBox alertbox = new alertBox();
+            alertbox.BackColor = backcolor;
+            alertbox.ColorAlertBox = color;
+            alertbox.TitleAlertBox = title;
+            alertbox.SubTitleAlertBox = subtitle;
+            alertbox.IconAlertBox = icon;
+            alertbox.Show();
         }
 
         private void loginPage_Load(object sender, EventArgs e)
@@ -129,12 +146,27 @@ namespace Application_Desktop.Views
                                     ID = reader.GetInt32("ID");
                                     session.LoggedInSession = ID;
 
-                                    MessageBox.Show("Welcome Super Admin");
+                                    bool hasUnusedOtp = await _loginPageController.CheckUnusedOtpSuper(ID);
+
+                                    if (!hasUnusedOtp)
+                                    {
+                                        await SendOTPSuper();
+
+                                        otpSuper otp = new otpSuper();
+                                        otp.BringToFront();
+                                        otp.Show();
+                                    }
+                                    else
+                                    {
+                                        //MessageBox.Show("An OTP exists. Logging in directly.");
+                                        superAdmin superadmin = new superAdmin();
+                                        superadmin.BringToFront();
+                                        superadmin.Show();
+                                    }
+
 
                                     this.Hide();
-                                    superAdmin superadmin = new superAdmin();
-                                    superadmin.BringToFront();
-                                    superadmin.Show();
+                                    
                                     break;
                                 }
                                 else if (Role.StartsWith("Admin"))
@@ -142,12 +174,27 @@ namespace Application_Desktop.Views
                                     ID = reader.GetInt32("ID");
                                     session.LoggedInSession = ID;
 
-                                    MessageBox.Show("Welcome Admin");
+
+                                    bool hasUnusedOtp = await _loginPageController.CheckUnusedOtp(ID);
+
+                                    if (!hasUnusedOtp)
+                                    {
+                                        await SendOTP();
+
+                                        otp otp = new otp();
+                                        otp.BringToFront();
+                                        otp.Show();
+                                    }
+                                    else
+                                    {
+                                        //MessageBox.Show("An OTP exists. Logging in directly.");
+                                        adminPage adminForm = new adminPage();
+                                        adminForm.BringToFront();
+                                        adminForm.Show();
+                                    }
 
                                     this.Hide();
-                                    adminPage adminForm = new adminPage();
-                                    adminForm.BringToFront();
-                                    adminForm.Show();
+                                    
                                     break;
                                 }
 
@@ -208,6 +255,86 @@ namespace Application_Desktop.Views
             {
                 txtPass.PasswordChar = '*';
             }
+        }
+
+        private async Task SendOTP()
+        {
+            int ID = session.LoggedInSession;
+
+
+            int Vcode = new Random().Next(100000, 999999);
+
+            string to = txtEmail.Text;
+            string from = "smtc.dentalcare@gmail.com";
+            string pass = "esttldcshliffgwz";
+            MailMessage message = new MailMessage();
+            message.To.Add(to);
+            message.From = new MailAddress(from);
+            message.Subject = "Your Verification Code";
+            message.Body = $"Your OTP code is {Vcode}";
+
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com")
+            {
+                EnableSsl = true,
+                Port = 587,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                Credentials = new NetworkCredential(from, pass)
+            };
+
+            try
+            {
+                smtp.Send(message);
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Verification Send", "Please check your gmail", Properties.Resources.success);
+
+                await _loginPageController.InsertOtp(ID, Vcode);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"error {ex.Message}");
+            }
+        }
+
+        private async Task SendOTPSuper()
+        {
+            int ID = session.LoggedInSession;
+
+            int Vcode = new Random().Next(100000, 999999);
+
+            string to = txtEmail.Text;
+            string from = "smtc.dentalcare@gmail.com";
+            string pass = "esttldcshliffgwz";
+            MailMessage message = new MailMessage();
+            message.To.Add(to);
+            message.From = new MailAddress(from);
+            message.Subject = "Your Verification Code";
+            message.Body = $"Your OTP code is {Vcode}";
+
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com")
+            {
+                EnableSsl = true,
+                Port = 587,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                Credentials = new NetworkCredential(from, pass)
+            };
+
+            try
+            {
+                smtp.Send(message);
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Verification Send", "Please check your gmail", Properties.Resources.success);
+
+                await _loginPageController.InsertOtpSuper(ID, Vcode);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"error {ex.Message}");
+            }
+        }
+
+        private void timeVcode_Tick(object sender, EventArgs e)
+        {
+           
         }
     }
 }

@@ -44,6 +44,7 @@
             txtPass = new MaterialSkin.Controls.MaterialTextBox2();
             materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            timeVcode = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
@@ -241,6 +242,11 @@
             materialLabel2.TabIndex = 33;
             materialLabel2.Text = "Password";
             // 
+            // timeVcode
+            // 
+            timeVcode.Interval = 1000;
+            timeVcode.Tick += timeVcode_Tick;
+            // 
             // loginPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -293,5 +299,6 @@
         private MaterialSkin.Controls.MaterialTextBox2 txtPass;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private System.Windows.Forms.Timer timeVcode;
     }
 }

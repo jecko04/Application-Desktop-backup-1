@@ -1138,11 +1138,7 @@ namespace Application_Desktop.Admin_Views
             {
                 await smtpClient.SendMailAsync(mail);
 
-                /*this.BeginInvoke((MethodInvoker)delegate
-                {
-                    AlertBox(Color.LightGreen, Color.SeaGreen, "Email Sent!", "Cancellation notification sent successfully!", Properties.Resources.success);
-
-                });*/
+               
                 return true;
             }
             catch (Exception ex)
