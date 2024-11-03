@@ -101,13 +101,16 @@ namespace Application_Desktop.Views
             }
             else
             {
-
+                btnLogins.Text = "Loading...";
+                btnLogins.Enabled = false;
 
                 string query = "SELECT 'SuperAdmin' AS Role, SuperAdmin_ID AS ID, email AS Name, password AS Pass FROM superadmin " +
                 "UNION ALL " +
                 "SELECT 'Admin' AS Role, Admin_ID AS ID, email AS Name, password AS Pass FROM admin";
 
                 MySqlConnection conn = databaseHelper.getConnection();
+
+
                 try
                 {
                     if (conn.State != ConnectionState.Open)
@@ -154,6 +157,7 @@ namespace Application_Desktop.Views
 
                                         AlertBox(Color.LightGreen, Color.SeaGreen, "Verification Send", "Please check your gmail", Properties.Resources.success);
 
+                                        await Task.Delay(2000);
 
                                         otpSuper otp = new otpSuper();
                                         otp.BringToFront();
@@ -186,6 +190,7 @@ namespace Application_Desktop.Views
 
                                         AlertBox(Color.LightGreen, Color.SeaGreen, "Verification Send", "Please check your gmail", Properties.Resources.success);
 
+                                        await Task.Delay(2000);
 
                                         otp otp = new otp();
                                         otp.BringToFront();
@@ -236,6 +241,8 @@ namespace Application_Desktop.Views
                 finally
                 {
                     await conn.CloseAsync();
+                    btnLogins.Text = "Login";
+                    btnLogins.Enabled = true;
                 }
             }
         }
