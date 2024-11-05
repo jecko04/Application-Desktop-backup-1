@@ -93,7 +93,7 @@ namespace Application_Desktop.Admin_Sub_Views
 
                 if (dentHealthData != null)
                 {
-                    txtLastVisit.Value = dentHealthData._lastvisit;
+                    //txtLastVisit.Value = dentHealthData._lastvisit;
                     txtPastDent.Text = dentHealthData._pastdenttreatment;
                     txtToothSens.Text = dentHealthData._toothsens;
 
@@ -145,7 +145,7 @@ namespace Application_Desktop.Admin_Sub_Views
 
                     DentHealth denthealth = new DentHealth
                     {
-                        _lastvisit = txtLastVisit.Value,
+                        //_lastvisit = txtLastVisit.Value,
                         _pastdenttreatment = txtPastDent.Text,
                         _toothpain = chkToothPain.Checked,
                         _gumdisease = chkGumDisease.Checked,

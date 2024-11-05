@@ -380,12 +380,12 @@ namespace Application_Desktop.Admin_Views
             Fullname.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewDentalHistory.Columns.Add(Fullname);
 
-            DataGridViewTextBoxColumn LastDentalVisit = new DataGridViewTextBoxColumn();
+           /* DataGridViewTextBoxColumn LastDentalVisit = new DataGridViewTextBoxColumn();
             LastDentalVisit.HeaderText = "Last Dental Visit";
             LastDentalVisit.Name = "LastDentalVisit";
             LastDentalVisit.DataPropertyName = "last_dental_visit";
             LastDentalVisit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            viewDentalHistory.Columns.Add(LastDentalVisit);
+            viewDentalHistory.Columns.Add(LastDentalVisit);*/
 
             DataGridViewTextBoxColumn PastDentalTreatments = new DataGridViewTextBoxColumn();
             PastDentalTreatments.HeaderText = "Past Dental Treatments";

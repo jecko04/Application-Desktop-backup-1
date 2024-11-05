@@ -171,28 +171,20 @@ namespace Application_Desktop.Admin_Sub_Views
             command += $"Status              {status}  \n";
 
             decimal price = 0;
-            decimal extraFee = 0;
 
             if (!decimal.TryParse(txtPrice.Text.Replace("₱", "").Replace(",", "").Trim(), out price))
             {
                 return;
             }
 
-            if (!decimal.TryParse(txtExtraFee.Text.Replace("₱", "").Replace(",", "").Trim(), out extraFee))
-            {
-                AlertBox(Color.LightCoral, Color.Red, "Error Extra Fee Value", "Invalid extra fee value!", Properties.Resources.error);
-
-                return;
-            }
-
             // Add items dynamically (Price and Extra Fee)
             command += "-------------------------------\n";
             command += $"Price               P{price:N2}\n";
-            command += $"Extra Fee           P{extraFee:N2}\n";
+            //command += $"Extra Fee           P{extraFee:N2}\n";
             command += "-------------------------------\n";
 
             // Add total dynamically
-            decimal total = price + extraFee;
+            decimal total = price;
             command += $"Total               P{total:N2}\n";
             command += "-------------------------------\n";
 
@@ -207,7 +199,7 @@ namespace Application_Desktop.Admin_Sub_Views
 
 
 
-        private void txtExtraFee_TextChanged(object sender, EventArgs e)
+     /*   private void txtExtraFee_TextChanged(object sender, EventArgs e)
         {
 
             if (sender is TextBox textBox)
@@ -237,18 +229,13 @@ namespace Application_Desktop.Admin_Sub_Views
             }
 
             decimal price = 0m;
-            decimal extraFee = 0m;
 
-            if (decimal.TryParse(txtPrice.Text.Replace("₱", "").Replace(",", "").Trim(), out price) &&
-                decimal.TryParse(txtExtraFee.Text.Replace("₱", "").Replace(",", "").Trim(), out extraFee))
+            if (decimal.TryParse(txtPrice.Text.Replace("₱", "").Replace(",", "").Trim(), out price))
             {
-                decimal total = price + extraFee;
+                decimal total = price;
                 txtTotal.Text = "₱" + total.ToString("N2");
             }
-            else
-            {
-                MessageBox.Show("Please enter valid numbers for Price and Extra Fee.");
-            }
+
         }
 
         private void txtExtraFee_KeyPress(object sender, KeyPressEventArgs e)
@@ -283,6 +270,7 @@ namespace Application_Desktop.Admin_Sub_Views
                 }
             }
         }
+*/
 
         private void txtPrice_TextChanged(object sender, EventArgs e)
         {
@@ -306,21 +294,7 @@ namespace Application_Desktop.Admin_Sub_Views
                     int newLength = textBox.Text.Length;
                     int lengthDifference = newLength - originalLength;
                     textBox.SelectionStart = originalSelectionStart + lengthDifference;
-
-                    // Now calculate the total (price + extra fee)
-                    decimal extraFee = 0m;
-                    // Parse the extra fee if available
-                    if (decimal.TryParse(txtExtraFee.Text.Replace("₱", "").Replace(",", "").Trim(), out extraFee))
-                    {
-                        // Calculate the total
-                        decimal total = price + extraFee;
-                        txtTotal.Text = "₱" + total.ToString("N2");
-                    }
-                    else
-                    {
-                        // If extra fee is not a valid number, just show the price as total
-                        txtTotal.Text = "₱" + price.ToString("N2");
-                    }
+                  
                 }
                 else
                 {

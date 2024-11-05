@@ -94,7 +94,7 @@ namespace Application_Desktop.Admin_Sub_Views
 
                     DentHealth denthealth = new DentHealth
                     {
-                        _lastvisit = txtLastVisit.Value,
+                        //_lastvisit = txtLastVisit.Value,
                         _pastdenttreatment = txtPastDent.Text,
                         _toothpain = chkToothPain.Checked,
                         _gumdisease = chkGumDisease.Checked,

@@ -88,7 +88,7 @@ namespace Application_Desktop.Controller
 
         public async Task<DataTable> SelectPatientDentalRecord(int patientid)
         {
-            string selectDentHealth = @"SELECT dh.`patient_id`, p.`fullname`, dh.`last_dental_visit`, dh.`past_dental_treatments`, dh.`frequent_tooth_pain`, dh.`gum_disease_history`, dh.`teeth_grinding`, dh.`tooth_sensitivity`,
+            string selectDentHealth = @"SELECT dh.`patient_id`, p.`fullname`, dh.`past_dental_treatments`, dh.`frequent_tooth_pain`, dh.`gum_disease_history`, dh.`teeth_grinding`, dh.`tooth_sensitivity`,
                                 dh.`orthodontic_treatment`, dh.`dental_implants`, dh.`bleeding_gums` 
                                 FROM `dental_history` dh
                                 JOIN `patients` p ON dh.patient_id = p.id
@@ -322,7 +322,7 @@ namespace Application_Desktop.Controller
                     }
 
                     // Fetch Dental History for all matching patients
-                    string selectDentHealth = @"SELECT dh.`patient_id`, p.`fullname`, dh.`last_dental_visit`, dh.`past_dental_treatments`, dh.`frequent_tooth_pain`, dh.`gum_disease_history`, 
+                    string selectDentHealth = @"SELECT dh.`patient_id`, p.`fullname`, dh.`past_dental_treatments`, dh.`frequent_tooth_pain`, dh.`gum_disease_history`, 
                                                dh.`teeth_grinding`, dh.`tooth_sensitivity`, dh.`orthodontic_treatment`, dh.`dental_implants`, dh.`bleeding_gums`
                                         FROM `dental_history` dh
                                         JOIN `patients` p ON dh.patient_id = p.id

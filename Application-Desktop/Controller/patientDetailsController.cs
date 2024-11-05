@@ -34,8 +34,8 @@ namespace Application_Desktop.Controller
                                VALUES (@patientId, @medCondition, @currentMedication, @allergies, @pastSurgery, @familyHistory, @bloodPressure, @heartDisease, @diabetes, @smoker, @createdAt, @updatedAt)";
 
             string insertDentHealth = @"INSERT INTO `dental_history`
-                                (`patient_id`, `last_dental_visit`, `past_dental_treatments`, `frequent_tooth_pain`, `gum_disease_history`, `teeth_grinding`, `tooth_sensitivity`, `orthodontic_treatment`, `dental_implants`, `bleeding_gums`, `created_at`, `updated_at`)
-                                VALUES (@patientId, @lastVisit, @pastTreatment, @toothPain, @gumDisease, @teethGrinding, @toothSensitivity, @orthodontics, @implants, @bleedingGums, @createdAt, @updatedAt)";
+                                (`patient_id`, `past_dental_treatments`, `frequent_tooth_pain`, `gum_disease_history`, `teeth_grinding`, `tooth_sensitivity`, `orthodontic_treatment`, `dental_implants`, `bleeding_gums`, `created_at`, `updated_at`)
+                                VALUES (@patientId, @pastTreatment, @toothPain, @gumDisease, @teethGrinding, @toothSensitivity, @orthodontics, @implants, @bleedingGums, @createdAt, @updatedAt)";
 
             using (MySqlConnection conn = databaseHelper.getConnection())
             {
@@ -53,8 +53,8 @@ namespace Application_Desktop.Controller
                             DateTime now = DateTime.Now;
 
                             // Step 1: Insert the patient and get the patientId
-                            int patientId; // Use int if your database uses INT
-                            using (MySqlCommand patientCmd = new MySqlCommand(insertPatient, conn))
+                            int patientId;
+                            using (MySqlCommand patientCmd = new MySqlCommand(insertPatient, conn, transaction))
                             {
                                 patientCmd.Parameters.AddWithValue("@fullname", patients._fullname);
                                 patientCmd.Parameters.AddWithValue("@dob", patients._dob);
@@ -73,7 +73,7 @@ namespace Application_Desktop.Controller
                             }
 
                             // Step 2: Insert into medical_history using patientId
-                            using (MySqlCommand genHealthCmd = new MySqlCommand(insertGenHealth, conn))
+                            using (MySqlCommand genHealthCmd = new MySqlCommand(insertGenHealth, conn, transaction))
                             {
                                 genHealthCmd.Parameters.AddWithValue("@patientId", patientId);
                                 genHealthCmd.Parameters.AddWithValue("@medCondition", genHealth._medcondition);
@@ -92,10 +92,9 @@ namespace Application_Desktop.Controller
                             }
 
                             // Step 3: Insert into dental_history using patientId
-                            using (MySqlCommand dentHealthCmd = new MySqlCommand(insertDentHealth, conn))
+                            using (MySqlCommand dentHealthCmd = new MySqlCommand(insertDentHealth, conn, transaction))
                             {
                                 dentHealthCmd.Parameters.AddWithValue("@patientId", patientId);
-                                dentHealthCmd.Parameters.AddWithValue("@lastVisit", dentHealth._lastvisit);
                                 dentHealthCmd.Parameters.AddWithValue("@pastTreatment", dentHealth._pastdenttreatment);
                                 dentHealthCmd.Parameters.AddWithValue("@toothPain", dentHealth._toothpain);
                                 dentHealthCmd.Parameters.AddWithValue("@gumDisease", dentHealth._gumdisease);
@@ -127,5 +126,6 @@ namespace Application_Desktop.Controller
         }
 
     }
+
 }
 

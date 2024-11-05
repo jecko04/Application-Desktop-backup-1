@@ -1686,8 +1686,10 @@ namespace Application_Desktop.Admin_Views
                     this.BeginInvoke((MethodInvoker)delegate
                     {
                         LoadingState.Visible = false;
-                        lvlScanQRC.Visible = true;
+                        lvlScanQRC.Visible = false;
                         lblScanning.Visible = false;
+                        btnQRCode.Text = "Start Scanning";
+
 
                         AlertBox(Color.LightGreen, Color.SeaGreen, "Valid QRCode", "Check-in successful!", Properties.Resources.success);
                     });
@@ -1699,8 +1701,10 @@ namespace Application_Desktop.Admin_Views
                     this.BeginInvoke((MethodInvoker)delegate
                     {
                         lblScanning.Visible = false;
-                        lvlScanQRC.Visible = true;
+                        lvlScanQRC.Visible = false;
                         LoadingState.Visible = false;
+                        btnQRCode.Text = "Start Scanning";
+
                         AlertBox(Color.LightCoral, Color.Red, "Not Valid QRCode", "Appointment is not approved or does not exist.", Properties.Resources.error);
                     });
                 }
@@ -1713,7 +1717,8 @@ namespace Application_Desktop.Admin_Views
             {
                 LoadingState.Visible = false;
                 lblScanning.Visible = false;
-                lvlScanQRC.Visible = true;
+                lvlScanQRC.Visible = false;
+                btnQRCode.Text = "Start Scanning";
 
                 textBox1.Focus();
 
@@ -1934,8 +1939,9 @@ namespace Application_Desktop.Admin_Views
                 var selectedRow = viewCompletedAppointment.SelectedRows[0];
                 int branchId = Convert.ToInt32(selectedRow.Cells["branch_id"].Value);
                 int categoriesId = Convert.ToInt32(selectedRow.Cells["categories_id"].Value);
+                int userId = Convert.ToInt32(selectedRow.Cells["user_id"].Value);
 
-                var receiptDetails = await _handleAppointmentController.PrintReceiptDetails(branchId, categoriesId);
+                var receiptDetails = await _handleAppointmentController.PrintReceiptDetails(userId, branchId, categoriesId);
 
                 if (ReceiptFormInstance == null || ReceiptFormInstance.IsDisposed)
                 {

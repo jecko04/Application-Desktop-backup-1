@@ -93,7 +93,6 @@ namespace Application_Desktop.Model
 
     public class DentHealth
     {
-        public DateTime _lastvisit { get; set; }
         public string _pastdenttreatment { get; set; }
         public bool _toothpain { get; set; }
         public bool _gumdisease { get; set; }

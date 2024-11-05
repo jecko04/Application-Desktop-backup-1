@@ -53,40 +53,38 @@
             txtFullnames = new MaterialSkin.Controls.MaterialTextBox();
             txtDOB = new DateTimePicker();
             genHealthTab = new TabPage();
+            chkSmoker = new MaterialSkin.Controls.MaterialCheckbox();
+            chkDiabetes = new MaterialSkin.Controls.MaterialCheckbox();
+            chkHeartDisease = new MaterialSkin.Controls.MaterialCheckbox();
+            materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel15 = new MaterialSkin.Controls.MaterialLabel();
+            txtBloodPres = new MaterialSkin.Controls.MaterialTextBox();
+            materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
+            txtFamilyMed = new MaterialSkin.Controls.MaterialTextBox();
+            materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
+            txtPastSurg = new MaterialSkin.Controls.MaterialTextBox();
+            materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
+            txtAllergies = new MaterialSkin.Controls.MaterialTextBox();
+            materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
+            txtCurrentMed = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
+            materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
+            txtMedCondition = new MaterialSkin.Controls.MaterialTextBox();
             tapPage3 = new TabPage();
+            materialLabel20 = new MaterialSkin.Controls.MaterialLabel();
+            txtToothSens = new MaterialSkin.Controls.MaterialComboBox();
+            chkDentImp = new MaterialSkin.Controls.MaterialCheckbox();
+            chkOrtho = new MaterialSkin.Controls.MaterialCheckbox();
+            chkGumDisease = new MaterialSkin.Controls.MaterialCheckbox();
+            chkTeethGrin = new MaterialSkin.Controls.MaterialCheckbox();
+            chkBleedGum = new MaterialSkin.Controls.MaterialCheckbox();
+            chkToothPain = new MaterialSkin.Controls.MaterialCheckbox();
+            materialLabel19 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel18 = new MaterialSkin.Controls.MaterialLabel();
+            txtPastDent = new MaterialSkin.Controls.MaterialTextBox();
             elipseControl1 = new ElipseToolDemo.ElipseControl();
             btnClose = new PictureBox();
             errorProvider1 = new ErrorProvider(components);
             btnSaveRecord = new MaterialSkin.Controls.MaterialButton();
-            materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
-            txtMedCondition = new MaterialSkin.Controls.MaterialTextBox();
-            materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
-            txtCurrentMed = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
-            materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
-            txtAllergies = new MaterialSkin.Controls.MaterialTextBox();
-            materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
-            txtPastSurg = new MaterialSkin.Controls.MaterialTextBox();
-            materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
-            txtFamilyMed = new MaterialSkin.Controls.MaterialTextBox();
-            materialLabel15 = new MaterialSkin.Controls.MaterialLabel();
-            txtBloodPres = new MaterialSkin.Controls.MaterialTextBox();
-            materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
-            chkHeartDisease = new MaterialSkin.Controls.MaterialCheckbox();
-            chkDiabetes = new MaterialSkin.Controls.MaterialCheckbox();
-            chkSmoker = new MaterialSkin.Controls.MaterialCheckbox();
-            materialLabel17 = new MaterialSkin.Controls.MaterialLabel();
-            materialLabel18 = new MaterialSkin.Controls.MaterialLabel();
-            txtPastDent = new MaterialSkin.Controls.MaterialTextBox();
-            txtLastVisit = new DateTimePicker();
-            chkToothPain = new MaterialSkin.Controls.MaterialCheckbox();
-            materialLabel19 = new MaterialSkin.Controls.MaterialLabel();
-            chkBleedGum = new MaterialSkin.Controls.MaterialCheckbox();
-            chkTeethGrin = new MaterialSkin.Controls.MaterialCheckbox();
-            chkGumDisease = new MaterialSkin.Controls.MaterialCheckbox();
-            chkOrtho = new MaterialSkin.Controls.MaterialCheckbox();
-            chkDentImp = new MaterialSkin.Controls.MaterialCheckbox();
-            txtToothSens = new MaterialSkin.Controls.MaterialComboBox();
-            materialLabel20 = new MaterialSkin.Controls.MaterialLabel();
             dentHealthTab.SuspendLayout();
             dentalPatientTab.SuspendLayout();
             genHealthTab.SuspendLayout();
@@ -463,6 +461,253 @@
             genHealthTab.TabIndex = 1;
             genHealthTab.Text = "General Health Information";
             // 
+            // chkSmoker
+            // 
+            chkSmoker.AutoSize = true;
+            chkSmoker.Depth = 0;
+            chkSmoker.Location = new Point(808, 238);
+            chkSmoker.Margin = new Padding(0);
+            chkSmoker.MouseLocation = new Point(-1, -1);
+            chkSmoker.MouseState = MaterialSkin.MouseState.HOVER;
+            chkSmoker.Name = "chkSmoker";
+            chkSmoker.ReadOnly = false;
+            chkSmoker.Ripple = true;
+            chkSmoker.Size = new Size(97, 37);
+            chkSmoker.TabIndex = 157;
+            chkSmoker.Text = "Smoker?";
+            chkSmoker.UseVisualStyleBackColor = true;
+            // 
+            // chkDiabetes
+            // 
+            chkDiabetes.AutoSize = true;
+            chkDiabetes.Depth = 0;
+            chkDiabetes.Location = new Point(662, 238);
+            chkDiabetes.Margin = new Padding(0);
+            chkDiabetes.MouseLocation = new Point(-1, -1);
+            chkDiabetes.MouseState = MaterialSkin.MouseState.HOVER;
+            chkDiabetes.Name = "chkDiabetes";
+            chkDiabetes.ReadOnly = false;
+            chkDiabetes.Ripple = true;
+            chkDiabetes.Size = new Size(105, 37);
+            chkDiabetes.TabIndex = 156;
+            chkDiabetes.Text = "Diabetes?";
+            chkDiabetes.UseVisualStyleBackColor = true;
+            // 
+            // chkHeartDisease
+            // 
+            chkHeartDisease.AutoSize = true;
+            chkHeartDisease.Depth = 0;
+            chkHeartDisease.Location = new Point(492, 238);
+            chkHeartDisease.Margin = new Padding(0);
+            chkHeartDisease.MouseLocation = new Point(-1, -1);
+            chkHeartDisease.MouseState = MaterialSkin.MouseState.HOVER;
+            chkHeartDisease.Name = "chkHeartDisease";
+            chkHeartDisease.ReadOnly = false;
+            chkHeartDisease.Ripple = true;
+            chkHeartDisease.Size = new Size(141, 37);
+            chkHeartDisease.TabIndex = 155;
+            chkHeartDisease.Text = "Heart Disease?";
+            chkHeartDisease.UseVisualStyleBackColor = true;
+            // 
+            // materialLabel16
+            // 
+            materialLabel16.AutoSize = true;
+            materialLabel16.Depth = 0;
+            materialLabel16.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel16.Location = new Point(491, 207);
+            materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel16.Name = "materialLabel16";
+            materialLabel16.Size = new Size(251, 19);
+            materialLabel16.TabIndex = 154;
+            materialLabel16.Text = "Check if 'Yes', Leave Uncheck if 'No'";
+            // 
+            // materialLabel15
+            // 
+            materialLabel15.AutoSize = true;
+            materialLabel15.Depth = 0;
+            materialLabel15.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel15.Location = new Point(492, 109);
+            materialLabel15.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel15.Name = "materialLabel15";
+            materialLabel15.Size = new Size(107, 19);
+            materialLabel15.TabIndex = 153;
+            materialLabel15.Text = "Blood Pressure";
+            // 
+            // txtBloodPres
+            // 
+            txtBloodPres.AnimateReadOnly = false;
+            txtBloodPres.BorderStyle = BorderStyle.None;
+            txtBloodPres.Depth = 0;
+            txtBloodPres.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtBloodPres.LeadingIcon = null;
+            txtBloodPres.Location = new Point(491, 128);
+            txtBloodPres.MaxLength = 50;
+            txtBloodPres.MouseState = MaterialSkin.MouseState.OUT;
+            txtBloodPres.Multiline = false;
+            txtBloodPres.Name = "txtBloodPres";
+            txtBloodPres.Size = new Size(422, 36);
+            txtBloodPres.TabIndex = 152;
+            txtBloodPres.Text = "";
+            txtBloodPres.TrailingIcon = null;
+            txtBloodPres.UseTallSize = false;
+            // 
+            // materialLabel14
+            // 
+            materialLabel14.AutoSize = true;
+            materialLabel14.Depth = 0;
+            materialLabel14.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel14.Location = new Point(492, 41);
+            materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel14.Name = "materialLabel14";
+            materialLabel14.Size = new Size(163, 19);
+            materialLabel14.TabIndex = 151;
+            materialLabel14.Text = "Family Medical History";
+            materialLabel14.Click += materialLabel14_Click;
+            // 
+            // txtFamilyMed
+            // 
+            txtFamilyMed.AnimateReadOnly = false;
+            txtFamilyMed.BorderStyle = BorderStyle.None;
+            txtFamilyMed.Depth = 0;
+            txtFamilyMed.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtFamilyMed.LeadingIcon = null;
+            txtFamilyMed.Location = new Point(491, 60);
+            txtFamilyMed.MaxLength = 50;
+            txtFamilyMed.MouseState = MaterialSkin.MouseState.OUT;
+            txtFamilyMed.Multiline = false;
+            txtFamilyMed.Name = "txtFamilyMed";
+            txtFamilyMed.Size = new Size(422, 36);
+            txtFamilyMed.TabIndex = 150;
+            txtFamilyMed.Text = "";
+            txtFamilyMed.TrailingIcon = null;
+            txtFamilyMed.UseTallSize = false;
+            // 
+            // materialLabel13
+            // 
+            materialLabel13.AutoSize = true;
+            materialLabel13.Depth = 0;
+            materialLabel13.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel13.Location = new Point(31, 276);
+            materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel13.Name = "materialLabel13";
+            materialLabel13.Size = new Size(187, 19);
+            materialLabel13.TabIndex = 149;
+            materialLabel13.Text = "Past Surgeries / Operation";
+            // 
+            // txtPastSurg
+            // 
+            txtPastSurg.AnimateReadOnly = false;
+            txtPastSurg.BorderStyle = BorderStyle.None;
+            txtPastSurg.Depth = 0;
+            txtPastSurg.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtPastSurg.LeadingIcon = null;
+            txtPastSurg.Location = new Point(30, 295);
+            txtPastSurg.MaxLength = 50;
+            txtPastSurg.MouseState = MaterialSkin.MouseState.OUT;
+            txtPastSurg.Multiline = false;
+            txtPastSurg.Name = "txtPastSurg";
+            txtPastSurg.Size = new Size(422, 36);
+            txtPastSurg.TabIndex = 148;
+            txtPastSurg.Text = "";
+            txtPastSurg.TrailingIcon = null;
+            txtPastSurg.UseTallSize = false;
+            // 
+            // materialLabel12
+            // 
+            materialLabel12.AutoSize = true;
+            materialLabel12.Depth = 0;
+            materialLabel12.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel12.Location = new Point(32, 207);
+            materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel12.Name = "materialLabel12";
+            materialLabel12.Size = new Size(61, 19);
+            materialLabel12.TabIndex = 147;
+            materialLabel12.Text = "Allergies";
+            // 
+            // txtAllergies
+            // 
+            txtAllergies.AnimateReadOnly = false;
+            txtAllergies.BorderStyle = BorderStyle.None;
+            txtAllergies.Depth = 0;
+            txtAllergies.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtAllergies.LeadingIcon = null;
+            txtAllergies.Location = new Point(31, 226);
+            txtAllergies.MaxLength = 50;
+            txtAllergies.MouseState = MaterialSkin.MouseState.OUT;
+            txtAllergies.Multiline = false;
+            txtAllergies.Name = "txtAllergies";
+            txtAllergies.Size = new Size(422, 36);
+            txtAllergies.TabIndex = 146;
+            txtAllergies.Text = "";
+            txtAllergies.TrailingIcon = null;
+            txtAllergies.UseTallSize = false;
+            // 
+            // materialLabel11
+            // 
+            materialLabel11.AutoSize = true;
+            materialLabel11.Depth = 0;
+            materialLabel11.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel11.Location = new Point(32, 109);
+            materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel11.Name = "materialLabel11";
+            materialLabel11.Size = new Size(135, 19);
+            materialLabel11.TabIndex = 145;
+            materialLabel11.Text = "Current Medication";
+            // 
+            // txtCurrentMed
+            // 
+            txtCurrentMed.AnimateReadOnly = false;
+            txtCurrentMed.BackgroundImageLayout = ImageLayout.None;
+            txtCurrentMed.CharacterCasing = CharacterCasing.Normal;
+            txtCurrentMed.Depth = 0;
+            txtCurrentMed.HideSelection = true;
+            txtCurrentMed.Location = new Point(29, 131);
+            txtCurrentMed.MaxLength = 32767;
+            txtCurrentMed.MouseState = MaterialSkin.MouseState.OUT;
+            txtCurrentMed.Name = "txtCurrentMed";
+            txtCurrentMed.PasswordChar = '\0';
+            txtCurrentMed.ReadOnly = false;
+            txtCurrentMed.ScrollBars = ScrollBars.None;
+            txtCurrentMed.SelectedText = "";
+            txtCurrentMed.SelectionLength = 0;
+            txtCurrentMed.SelectionStart = 0;
+            txtCurrentMed.ShortcutsEnabled = true;
+            txtCurrentMed.Size = new Size(424, 62);
+            txtCurrentMed.TabIndex = 144;
+            txtCurrentMed.TabStop = false;
+            txtCurrentMed.TextAlign = HorizontalAlignment.Left;
+            txtCurrentMed.UseSystemPasswordChar = false;
+            // 
+            // materialLabel10
+            // 
+            materialLabel10.AutoSize = true;
+            materialLabel10.Depth = 0;
+            materialLabel10.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel10.Location = new Point(32, 41);
+            materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel10.Name = "materialLabel10";
+            materialLabel10.Size = new Size(129, 19);
+            materialLabel10.TabIndex = 143;
+            materialLabel10.Text = "Medical Condition";
+            // 
+            // txtMedCondition
+            // 
+            txtMedCondition.AnimateReadOnly = false;
+            txtMedCondition.BorderStyle = BorderStyle.None;
+            txtMedCondition.Depth = 0;
+            txtMedCondition.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtMedCondition.LeadingIcon = null;
+            txtMedCondition.Location = new Point(31, 60);
+            txtMedCondition.MaxLength = 50;
+            txtMedCondition.MouseState = MaterialSkin.MouseState.OUT;
+            txtMedCondition.Multiline = false;
+            txtMedCondition.Name = "txtMedCondition";
+            txtMedCondition.Size = new Size(422, 36);
+            txtMedCondition.TabIndex = 142;
+            txtMedCondition.Text = "";
+            txtMedCondition.TrailingIcon = null;
+            txtMedCondition.UseTallSize = false;
+            // 
             // tapPage3
             // 
             tapPage3.BackColor = Color.White;
@@ -475,10 +720,8 @@
             tapPage3.Controls.Add(chkBleedGum);
             tapPage3.Controls.Add(chkToothPain);
             tapPage3.Controls.Add(materialLabel19);
-            tapPage3.Controls.Add(materialLabel17);
             tapPage3.Controls.Add(materialLabel18);
             tapPage3.Controls.Add(txtPastDent);
-            tapPage3.Controls.Add(txtLastVisit);
             tapPage3.Location = new Point(4, 28);
             tapPage3.Name = "tapPage3";
             tapPage3.Padding = new Padding(3);
@@ -486,6 +729,180 @@
             tapPage3.TabIndex = 2;
             tapPage3.Text = "Dental Health Information";
             tapPage3.Click += tapPage3_Click;
+            // 
+            // materialLabel20
+            // 
+            materialLabel20.AutoSize = true;
+            materialLabel20.Depth = 0;
+            materialLabel20.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel20.Location = new Point(111, 280);
+            materialLabel20.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel20.Name = "materialLabel20";
+            materialLabel20.Size = new Size(128, 19);
+            materialLabel20.TabIndex = 165;
+            materialLabel20.Text = "Tooth Sensitivity?";
+            // 
+            // txtToothSens
+            // 
+            txtToothSens.AutoResize = false;
+            txtToothSens.BackColor = Color.FromArgb(255, 255, 255);
+            txtToothSens.Depth = 0;
+            txtToothSens.DrawMode = DrawMode.OwnerDrawVariable;
+            txtToothSens.DropDownHeight = 118;
+            txtToothSens.DropDownStyle = ComboBoxStyle.DropDownList;
+            txtToothSens.DropDownWidth = 121;
+            txtToothSens.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            txtToothSens.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            txtToothSens.FormattingEnabled = true;
+            txtToothSens.Hint = "Choose tooth sensitivity if there's any";
+            txtToothSens.IntegralHeight = false;
+            txtToothSens.ItemHeight = 29;
+            txtToothSens.Location = new Point(111, 302);
+            txtToothSens.MaxDropDownItems = 4;
+            txtToothSens.MouseState = MaterialSkin.MouseState.OUT;
+            txtToothSens.Name = "txtToothSens";
+            txtToothSens.Size = new Size(748, 35);
+            txtToothSens.StartIndex = 0;
+            txtToothSens.TabIndex = 164;
+            txtToothSens.UseTallSize = false;
+            // 
+            // chkDentImp
+            // 
+            chkDentImp.AutoSize = true;
+            chkDentImp.Depth = 0;
+            chkDentImp.Location = new Point(574, 212);
+            chkDentImp.Margin = new Padding(0);
+            chkDentImp.MouseLocation = new Point(-1, -1);
+            chkDentImp.MouseState = MaterialSkin.MouseState.HOVER;
+            chkDentImp.Name = "chkDentImp";
+            chkDentImp.ReadOnly = false;
+            chkDentImp.Ripple = true;
+            chkDentImp.Size = new Size(147, 37);
+            chkDentImp.TabIndex = 163;
+            chkDentImp.Text = "Dental Implants";
+            chkDentImp.UseVisualStyleBackColor = true;
+            // 
+            // chkOrtho
+            // 
+            chkOrtho.AutoSize = true;
+            chkOrtho.Depth = 0;
+            chkOrtho.Location = new Point(346, 212);
+            chkOrtho.Margin = new Padding(0);
+            chkOrtho.MouseLocation = new Point(-1, -1);
+            chkOrtho.MouseState = MaterialSkin.MouseState.HOVER;
+            chkOrtho.Name = "chkOrtho";
+            chkOrtho.ReadOnly = false;
+            chkOrtho.Ripple = true;
+            chkOrtho.Size = new Size(195, 37);
+            chkOrtho.TabIndex = 162;
+            chkOrtho.Text = "Orthodontic Treatment";
+            chkOrtho.UseVisualStyleBackColor = true;
+            // 
+            // chkGumDisease
+            // 
+            chkGumDisease.AutoSize = true;
+            chkGumDisease.Depth = 0;
+            chkGumDisease.Location = new Point(111, 215);
+            chkGumDisease.Margin = new Padding(0);
+            chkGumDisease.MouseLocation = new Point(-1, -1);
+            chkGumDisease.MouseState = MaterialSkin.MouseState.HOVER;
+            chkGumDisease.Name = "chkGumDisease";
+            chkGumDisease.ReadOnly = false;
+            chkGumDisease.Ripple = true;
+            chkGumDisease.Size = new Size(191, 37);
+            chkGumDisease.TabIndex = 161;
+            chkGumDisease.Text = "Gum Disease History?";
+            chkGumDisease.UseVisualStyleBackColor = true;
+            // 
+            // chkTeethGrin
+            // 
+            chkTeethGrin.AutoSize = true;
+            chkTeethGrin.Depth = 0;
+            chkTeethGrin.Location = new Point(574, 168);
+            chkTeethGrin.Margin = new Padding(0);
+            chkTeethGrin.MouseLocation = new Point(-1, -1);
+            chkTeethGrin.MouseState = MaterialSkin.MouseState.HOVER;
+            chkTeethGrin.Name = "chkTeethGrin";
+            chkTeethGrin.ReadOnly = false;
+            chkTeethGrin.Ripple = true;
+            chkTeethGrin.Size = new Size(147, 37);
+            chkTeethGrin.TabIndex = 160;
+            chkTeethGrin.Text = "Teeth Grinding?";
+            chkTeethGrin.UseVisualStyleBackColor = true;
+            // 
+            // chkBleedGum
+            // 
+            chkBleedGum.AutoSize = true;
+            chkBleedGum.Depth = 0;
+            chkBleedGum.Location = new Point(346, 168);
+            chkBleedGum.Margin = new Padding(0);
+            chkBleedGum.MouseLocation = new Point(-1, -1);
+            chkBleedGum.MouseState = MaterialSkin.MouseState.HOVER;
+            chkBleedGum.Name = "chkBleedGum";
+            chkBleedGum.ReadOnly = false;
+            chkBleedGum.Ripple = true;
+            chkBleedGum.Size = new Size(150, 37);
+            chkBleedGum.TabIndex = 159;
+            chkBleedGum.Text = "Bleeding Gums?";
+            chkBleedGum.UseVisualStyleBackColor = true;
+            // 
+            // chkToothPain
+            // 
+            chkToothPain.AutoSize = true;
+            chkToothPain.Depth = 0;
+            chkToothPain.Location = new Point(111, 168);
+            chkToothPain.Margin = new Padding(0);
+            chkToothPain.MouseLocation = new Point(-1, -1);
+            chkToothPain.MouseState = MaterialSkin.MouseState.HOVER;
+            chkToothPain.Name = "chkToothPain";
+            chkToothPain.ReadOnly = false;
+            chkToothPain.Ripple = true;
+            chkToothPain.Size = new Size(187, 37);
+            chkToothPain.TabIndex = 158;
+            chkToothPain.Text = "Frequent Tooth Pain?";
+            chkToothPain.UseVisualStyleBackColor = true;
+            // 
+            // materialLabel19
+            // 
+            materialLabel19.AutoSize = true;
+            materialLabel19.Depth = 0;
+            materialLabel19.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel19.Location = new Point(110, 134);
+            materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel19.Name = "materialLabel19";
+            materialLabel19.Size = new Size(251, 19);
+            materialLabel19.TabIndex = 157;
+            materialLabel19.Text = "Check if 'Yes', Leave Uncheck if 'No'";
+            // 
+            // materialLabel18
+            // 
+            materialLabel18.AutoSize = true;
+            materialLabel18.Depth = 0;
+            materialLabel18.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel18.Location = new Point(111, 36);
+            materialLabel18.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel18.Name = "materialLabel18";
+            materialLabel18.Size = new Size(161, 19);
+            materialLabel18.TabIndex = 155;
+            materialLabel18.Text = "Past dental treatments";
+            // 
+            // txtPastDent
+            // 
+            txtPastDent.AnimateReadOnly = false;
+            txtPastDent.BorderStyle = BorderStyle.None;
+            txtPastDent.Depth = 0;
+            txtPastDent.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtPastDent.LeadingIcon = null;
+            txtPastDent.Location = new Point(109, 58);
+            txtPastDent.MaxLength = 50;
+            txtPastDent.MouseState = MaterialSkin.MouseState.OUT;
+            txtPastDent.Multiline = false;
+            txtPastDent.Name = "txtPastDent";
+            txtPastDent.Size = new Size(750, 36);
+            txtPastDent.TabIndex = 154;
+            txtPastDent.Text = "";
+            txtPastDent.TrailingIcon = null;
+            txtPastDent.UseTallSize = false;
             // 
             // elipseControl1
             // 
@@ -530,448 +947,6 @@
             btnSaveRecord.UseAccentColor = false;
             btnSaveRecord.UseVisualStyleBackColor = true;
             btnSaveRecord.Click += btnSaveRecord_Click;
-            // 
-            // materialLabel10
-            // 
-            materialLabel10.AutoSize = true;
-            materialLabel10.Depth = 0;
-            materialLabel10.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel10.Location = new Point(32, 41);
-            materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel10.Name = "materialLabel10";
-            materialLabel10.Size = new Size(129, 19);
-            materialLabel10.TabIndex = 143;
-            materialLabel10.Text = "Medical Condition";
-            // 
-            // txtMedCondition
-            // 
-            txtMedCondition.AnimateReadOnly = false;
-            txtMedCondition.BorderStyle = BorderStyle.None;
-            txtMedCondition.Depth = 0;
-            txtMedCondition.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            txtMedCondition.LeadingIcon = null;
-            txtMedCondition.Location = new Point(31, 60);
-            txtMedCondition.MaxLength = 50;
-            txtMedCondition.MouseState = MaterialSkin.MouseState.OUT;
-            txtMedCondition.Multiline = false;
-            txtMedCondition.Name = "txtMedCondition";
-            txtMedCondition.Size = new Size(422, 36);
-            txtMedCondition.TabIndex = 142;
-            txtMedCondition.Text = "";
-            txtMedCondition.TrailingIcon = null;
-            txtMedCondition.UseTallSize = false;
-            // 
-            // materialLabel11
-            // 
-            materialLabel11.AutoSize = true;
-            materialLabel11.Depth = 0;
-            materialLabel11.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel11.Location = new Point(32, 109);
-            materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel11.Name = "materialLabel11";
-            materialLabel11.Size = new Size(135, 19);
-            materialLabel11.TabIndex = 145;
-            materialLabel11.Text = "Current Medication";
-            // 
-            // txtCurrentMed
-            // 
-            txtCurrentMed.AnimateReadOnly = false;
-            txtCurrentMed.BackgroundImageLayout = ImageLayout.None;
-            txtCurrentMed.CharacterCasing = CharacterCasing.Normal;
-            txtCurrentMed.Depth = 0;
-            txtCurrentMed.HideSelection = true;
-            txtCurrentMed.Location = new Point(29, 131);
-            txtCurrentMed.MaxLength = 32767;
-            txtCurrentMed.MouseState = MaterialSkin.MouseState.OUT;
-            txtCurrentMed.Name = "txtCurrentMed";
-            txtCurrentMed.PasswordChar = '\0';
-            txtCurrentMed.ReadOnly = false;
-            txtCurrentMed.ScrollBars = ScrollBars.None;
-            txtCurrentMed.SelectedText = "";
-            txtCurrentMed.SelectionLength = 0;
-            txtCurrentMed.SelectionStart = 0;
-            txtCurrentMed.ShortcutsEnabled = true;
-            txtCurrentMed.Size = new Size(424, 62);
-            txtCurrentMed.TabIndex = 144;
-            txtCurrentMed.TabStop = false;
-            txtCurrentMed.TextAlign = HorizontalAlignment.Left;
-            txtCurrentMed.UseSystemPasswordChar = false;
-            // 
-            // materialLabel12
-            // 
-            materialLabel12.AutoSize = true;
-            materialLabel12.Depth = 0;
-            materialLabel12.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel12.Location = new Point(32, 207);
-            materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel12.Name = "materialLabel12";
-            materialLabel12.Size = new Size(61, 19);
-            materialLabel12.TabIndex = 147;
-            materialLabel12.Text = "Allergies";
-            // 
-            // txtAllergies
-            // 
-            txtAllergies.AnimateReadOnly = false;
-            txtAllergies.BorderStyle = BorderStyle.None;
-            txtAllergies.Depth = 0;
-            txtAllergies.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            txtAllergies.LeadingIcon = null;
-            txtAllergies.Location = new Point(31, 226);
-            txtAllergies.MaxLength = 50;
-            txtAllergies.MouseState = MaterialSkin.MouseState.OUT;
-            txtAllergies.Multiline = false;
-            txtAllergies.Name = "txtAllergies";
-            txtAllergies.Size = new Size(422, 36);
-            txtAllergies.TabIndex = 146;
-            txtAllergies.Text = "";
-            txtAllergies.TrailingIcon = null;
-            txtAllergies.UseTallSize = false;
-            // 
-            // materialLabel13
-            // 
-            materialLabel13.AutoSize = true;
-            materialLabel13.Depth = 0;
-            materialLabel13.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel13.Location = new Point(31, 276);
-            materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel13.Name = "materialLabel13";
-            materialLabel13.Size = new Size(187, 19);
-            materialLabel13.TabIndex = 149;
-            materialLabel13.Text = "Past Surgeries / Operation";
-            // 
-            // txtPastSurg
-            // 
-            txtPastSurg.AnimateReadOnly = false;
-            txtPastSurg.BorderStyle = BorderStyle.None;
-            txtPastSurg.Depth = 0;
-            txtPastSurg.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            txtPastSurg.LeadingIcon = null;
-            txtPastSurg.Location = new Point(30, 295);
-            txtPastSurg.MaxLength = 50;
-            txtPastSurg.MouseState = MaterialSkin.MouseState.OUT;
-            txtPastSurg.Multiline = false;
-            txtPastSurg.Name = "txtPastSurg";
-            txtPastSurg.Size = new Size(422, 36);
-            txtPastSurg.TabIndex = 148;
-            txtPastSurg.Text = "";
-            txtPastSurg.TrailingIcon = null;
-            txtPastSurg.UseTallSize = false;
-            // 
-            // materialLabel14
-            // 
-            materialLabel14.AutoSize = true;
-            materialLabel14.Depth = 0;
-            materialLabel14.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel14.Location = new Point(492, 41);
-            materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel14.Name = "materialLabel14";
-            materialLabel14.Size = new Size(163, 19);
-            materialLabel14.TabIndex = 151;
-            materialLabel14.Text = "Family Medical History";
-            materialLabel14.Click += materialLabel14_Click;
-            // 
-            // txtFamilyMed
-            // 
-            txtFamilyMed.AnimateReadOnly = false;
-            txtFamilyMed.BorderStyle = BorderStyle.None;
-            txtFamilyMed.Depth = 0;
-            txtFamilyMed.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            txtFamilyMed.LeadingIcon = null;
-            txtFamilyMed.Location = new Point(491, 60);
-            txtFamilyMed.MaxLength = 50;
-            txtFamilyMed.MouseState = MaterialSkin.MouseState.OUT;
-            txtFamilyMed.Multiline = false;
-            txtFamilyMed.Name = "txtFamilyMed";
-            txtFamilyMed.Size = new Size(422, 36);
-            txtFamilyMed.TabIndex = 150;
-            txtFamilyMed.Text = "";
-            txtFamilyMed.TrailingIcon = null;
-            txtFamilyMed.UseTallSize = false;
-            // 
-            // materialLabel15
-            // 
-            materialLabel15.AutoSize = true;
-            materialLabel15.Depth = 0;
-            materialLabel15.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel15.Location = new Point(492, 109);
-            materialLabel15.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel15.Name = "materialLabel15";
-            materialLabel15.Size = new Size(107, 19);
-            materialLabel15.TabIndex = 153;
-            materialLabel15.Text = "Blood Pressure";
-            // 
-            // txtBloodPres
-            // 
-            txtBloodPres.AnimateReadOnly = false;
-            txtBloodPres.BorderStyle = BorderStyle.None;
-            txtBloodPres.Depth = 0;
-            txtBloodPres.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            txtBloodPres.LeadingIcon = null;
-            txtBloodPres.Location = new Point(491, 128);
-            txtBloodPres.MaxLength = 50;
-            txtBloodPres.MouseState = MaterialSkin.MouseState.OUT;
-            txtBloodPres.Multiline = false;
-            txtBloodPres.Name = "txtBloodPres";
-            txtBloodPres.Size = new Size(422, 36);
-            txtBloodPres.TabIndex = 152;
-            txtBloodPres.Text = "";
-            txtBloodPres.TrailingIcon = null;
-            txtBloodPres.UseTallSize = false;
-            // 
-            // materialLabel16
-            // 
-            materialLabel16.AutoSize = true;
-            materialLabel16.Depth = 0;
-            materialLabel16.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel16.Location = new Point(491, 207);
-            materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel16.Name = "materialLabel16";
-            materialLabel16.Size = new Size(251, 19);
-            materialLabel16.TabIndex = 154;
-            materialLabel16.Text = "Check if 'Yes', Leave Uncheck if 'No'";
-            // 
-            // chkHeartDisease
-            // 
-            chkHeartDisease.AutoSize = true;
-            chkHeartDisease.Depth = 0;
-            chkHeartDisease.Location = new Point(492, 238);
-            chkHeartDisease.Margin = new Padding(0);
-            chkHeartDisease.MouseLocation = new Point(-1, -1);
-            chkHeartDisease.MouseState = MaterialSkin.MouseState.HOVER;
-            chkHeartDisease.Name = "chkHeartDisease";
-            chkHeartDisease.ReadOnly = false;
-            chkHeartDisease.Ripple = true;
-            chkHeartDisease.Size = new Size(141, 37);
-            chkHeartDisease.TabIndex = 155;
-            chkHeartDisease.Text = "Heart Disease?";
-            chkHeartDisease.UseVisualStyleBackColor = true;
-            // 
-            // chkDiabetes
-            // 
-            chkDiabetes.AutoSize = true;
-            chkDiabetes.Depth = 0;
-            chkDiabetes.Location = new Point(662, 238);
-            chkDiabetes.Margin = new Padding(0);
-            chkDiabetes.MouseLocation = new Point(-1, -1);
-            chkDiabetes.MouseState = MaterialSkin.MouseState.HOVER;
-            chkDiabetes.Name = "chkDiabetes";
-            chkDiabetes.ReadOnly = false;
-            chkDiabetes.Ripple = true;
-            chkDiabetes.Size = new Size(105, 37);
-            chkDiabetes.TabIndex = 156;
-            chkDiabetes.Text = "Diabetes?";
-            chkDiabetes.UseVisualStyleBackColor = true;
-            // 
-            // chkSmoker
-            // 
-            chkSmoker.AutoSize = true;
-            chkSmoker.Depth = 0;
-            chkSmoker.Location = new Point(808, 238);
-            chkSmoker.Margin = new Padding(0);
-            chkSmoker.MouseLocation = new Point(-1, -1);
-            chkSmoker.MouseState = MaterialSkin.MouseState.HOVER;
-            chkSmoker.Name = "chkSmoker";
-            chkSmoker.ReadOnly = false;
-            chkSmoker.Ripple = true;
-            chkSmoker.Size = new Size(97, 37);
-            chkSmoker.TabIndex = 157;
-            chkSmoker.Text = "Smoker?";
-            chkSmoker.UseVisualStyleBackColor = true;
-            // 
-            // materialLabel17
-            // 
-            materialLabel17.AutoSize = true;
-            materialLabel17.Depth = 0;
-            materialLabel17.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel17.Location = new Point(111, 39);
-            materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel17.Name = "materialLabel17";
-            materialLabel17.Size = new Size(121, 19);
-            materialLabel17.TabIndex = 156;
-            materialLabel17.Text = "Last dental visits";
-            // 
-            // materialLabel18
-            // 
-            materialLabel18.AutoSize = true;
-            materialLabel18.Depth = 0;
-            materialLabel18.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel18.Location = new Point(335, 39);
-            materialLabel18.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel18.Name = "materialLabel18";
-            materialLabel18.Size = new Size(161, 19);
-            materialLabel18.TabIndex = 155;
-            materialLabel18.Text = "Past dental treatments";
-            // 
-            // txtPastDent
-            // 
-            txtPastDent.AnimateReadOnly = false;
-            txtPastDent.BorderStyle = BorderStyle.None;
-            txtPastDent.Depth = 0;
-            txtPastDent.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            txtPastDent.LeadingIcon = null;
-            txtPastDent.Location = new Point(334, 58);
-            txtPastDent.MaxLength = 50;
-            txtPastDent.MouseState = MaterialSkin.MouseState.OUT;
-            txtPastDent.Multiline = false;
-            txtPastDent.Name = "txtPastDent";
-            txtPastDent.Size = new Size(525, 36);
-            txtPastDent.TabIndex = 154;
-            txtPastDent.Text = "";
-            txtPastDent.TrailingIcon = null;
-            txtPastDent.UseTallSize = false;
-            // 
-            // txtLastVisit
-            // 
-            txtLastVisit.Font = new Font("Tahoma", 12.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtLastVisit.Format = DateTimePickerFormat.Short;
-            txtLastVisit.Location = new Point(110, 63);
-            txtLastVisit.Name = "txtLastVisit";
-            txtLastVisit.Size = new Size(163, 28);
-            txtLastVisit.TabIndex = 153;
-            // 
-            // chkToothPain
-            // 
-            chkToothPain.AutoSize = true;
-            chkToothPain.Depth = 0;
-            chkToothPain.Location = new Point(111, 168);
-            chkToothPain.Margin = new Padding(0);
-            chkToothPain.MouseLocation = new Point(-1, -1);
-            chkToothPain.MouseState = MaterialSkin.MouseState.HOVER;
-            chkToothPain.Name = "chkToothPain";
-            chkToothPain.ReadOnly = false;
-            chkToothPain.Ripple = true;
-            chkToothPain.Size = new Size(187, 37);
-            chkToothPain.TabIndex = 158;
-            chkToothPain.Text = "Frequent Tooth Pain?";
-            chkToothPain.UseVisualStyleBackColor = true;
-            // 
-            // materialLabel19
-            // 
-            materialLabel19.AutoSize = true;
-            materialLabel19.Depth = 0;
-            materialLabel19.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel19.Location = new Point(110, 134);
-            materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel19.Name = "materialLabel19";
-            materialLabel19.Size = new Size(251, 19);
-            materialLabel19.TabIndex = 157;
-            materialLabel19.Text = "Check if 'Yes', Leave Uncheck if 'No'";
-            // 
-            // chkBleedGum
-            // 
-            chkBleedGum.AutoSize = true;
-            chkBleedGum.Depth = 0;
-            chkBleedGum.Location = new Point(346, 168);
-            chkBleedGum.Margin = new Padding(0);
-            chkBleedGum.MouseLocation = new Point(-1, -1);
-            chkBleedGum.MouseState = MaterialSkin.MouseState.HOVER;
-            chkBleedGum.Name = "chkBleedGum";
-            chkBleedGum.ReadOnly = false;
-            chkBleedGum.Ripple = true;
-            chkBleedGum.Size = new Size(150, 37);
-            chkBleedGum.TabIndex = 159;
-            chkBleedGum.Text = "Bleeding Gums?";
-            chkBleedGum.UseVisualStyleBackColor = true;
-            // 
-            // chkTeethGrin
-            // 
-            chkTeethGrin.AutoSize = true;
-            chkTeethGrin.Depth = 0;
-            chkTeethGrin.Location = new Point(574, 168);
-            chkTeethGrin.Margin = new Padding(0);
-            chkTeethGrin.MouseLocation = new Point(-1, -1);
-            chkTeethGrin.MouseState = MaterialSkin.MouseState.HOVER;
-            chkTeethGrin.Name = "chkTeethGrin";
-            chkTeethGrin.ReadOnly = false;
-            chkTeethGrin.Ripple = true;
-            chkTeethGrin.Size = new Size(147, 37);
-            chkTeethGrin.TabIndex = 160;
-            chkTeethGrin.Text = "Teeth Grinding?";
-            chkTeethGrin.UseVisualStyleBackColor = true;
-            // 
-            // chkGumDisease
-            // 
-            chkGumDisease.AutoSize = true;
-            chkGumDisease.Depth = 0;
-            chkGumDisease.Location = new Point(111, 215);
-            chkGumDisease.Margin = new Padding(0);
-            chkGumDisease.MouseLocation = new Point(-1, -1);
-            chkGumDisease.MouseState = MaterialSkin.MouseState.HOVER;
-            chkGumDisease.Name = "chkGumDisease";
-            chkGumDisease.ReadOnly = false;
-            chkGumDisease.Ripple = true;
-            chkGumDisease.Size = new Size(191, 37);
-            chkGumDisease.TabIndex = 161;
-            chkGumDisease.Text = "Gum Disease History?";
-            chkGumDisease.UseVisualStyleBackColor = true;
-            // 
-            // chkOrtho
-            // 
-            chkOrtho.AutoSize = true;
-            chkOrtho.Depth = 0;
-            chkOrtho.Location = new Point(346, 212);
-            chkOrtho.Margin = new Padding(0);
-            chkOrtho.MouseLocation = new Point(-1, -1);
-            chkOrtho.MouseState = MaterialSkin.MouseState.HOVER;
-            chkOrtho.Name = "chkOrtho";
-            chkOrtho.ReadOnly = false;
-            chkOrtho.Ripple = true;
-            chkOrtho.Size = new Size(195, 37);
-            chkOrtho.TabIndex = 162;
-            chkOrtho.Text = "Orthodontic Treatment";
-            chkOrtho.UseVisualStyleBackColor = true;
-            // 
-            // chkDentImp
-            // 
-            chkDentImp.AutoSize = true;
-            chkDentImp.Depth = 0;
-            chkDentImp.Location = new Point(574, 212);
-            chkDentImp.Margin = new Padding(0);
-            chkDentImp.MouseLocation = new Point(-1, -1);
-            chkDentImp.MouseState = MaterialSkin.MouseState.HOVER;
-            chkDentImp.Name = "chkDentImp";
-            chkDentImp.ReadOnly = false;
-            chkDentImp.Ripple = true;
-            chkDentImp.Size = new Size(147, 37);
-            chkDentImp.TabIndex = 163;
-            chkDentImp.Text = "Dental Implants";
-            chkDentImp.UseVisualStyleBackColor = true;
-            // 
-            // txtToothSens
-            // 
-            txtToothSens.AutoResize = false;
-            txtToothSens.BackColor = Color.FromArgb(255, 255, 255);
-            txtToothSens.Depth = 0;
-            txtToothSens.DrawMode = DrawMode.OwnerDrawVariable;
-            txtToothSens.DropDownHeight = 118;
-            txtToothSens.DropDownStyle = ComboBoxStyle.DropDownList;
-            txtToothSens.DropDownWidth = 121;
-            txtToothSens.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            txtToothSens.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            txtToothSens.FormattingEnabled = true;
-            txtToothSens.Hint = "Choose tooth sensitivity if there's any";
-            txtToothSens.IntegralHeight = false;
-            txtToothSens.ItemHeight = 29;
-            txtToothSens.Location = new Point(111, 302);
-            txtToothSens.MaxDropDownItems = 4;
-            txtToothSens.MouseState = MaterialSkin.MouseState.OUT;
-            txtToothSens.Name = "txtToothSens";
-            txtToothSens.Size = new Size(748, 35);
-            txtToothSens.StartIndex = 0;
-            txtToothSens.TabIndex = 164;
-            txtToothSens.UseTallSize = false;
-            // 
-            // materialLabel20
-            // 
-            materialLabel20.AutoSize = true;
-            materialLabel20.Depth = 0;
-            materialLabel20.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel20.Location = new Point(111, 280);
-            materialLabel20.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel20.Name = "materialLabel20";
-            materialLabel20.Size = new Size(128, 19);
-            materialLabel20.TabIndex = 165;
-            materialLabel20.Text = "Tooth Sensitivity?";
             // 
             // patientDetails
             // 
@@ -1060,9 +1035,7 @@
         private MaterialSkin.Controls.MaterialCheckbox chkBleedGum;
         private MaterialSkin.Controls.MaterialCheckbox chkToothPain;
         private MaterialSkin.Controls.MaterialLabel materialLabel19;
-        private MaterialSkin.Controls.MaterialLabel materialLabel17;
         private MaterialSkin.Controls.MaterialLabel materialLabel18;
         private MaterialSkin.Controls.MaterialTextBox txtPastDent;
-        private DateTimePicker txtLastVisit;
     }
 }

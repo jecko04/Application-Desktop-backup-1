@@ -614,9 +614,10 @@ namespace Application_Desktop.Controller
             }
         }
 
-        public async Task<ReceiptDetails> PrintReceiptDetails(int branchId, int categoriesId)
+        public async Task<ReceiptDetails> PrintReceiptDetails(int userId, int branchId, int categoriesId)
         {
             string query = @"SELECT 
+                        
                         b.BranchName,
                         u.name AS UserName,
                         c.Title AS ServiceTitle,
@@ -626,7 +627,7 @@ namespace Application_Desktop.Controller
                     INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
                     INNER JOIN categories c ON a.selectServices = c.Categories_ID
                     INNER JOIN users u ON a.user_id = u.id
-                    WHERE a.selectedBranch = @branchId
+                    WHERE a.user_id = @userId AND a.selectedBranch = @branchId 
                     AND a.selectServices = @categoriesId";
 
             try
@@ -641,6 +642,7 @@ namespace Application_Desktop.Controller
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         // Add parameters to prevent SQL injection
+                        cmd.Parameters.AddWithValue("@userId", userId);
                         cmd.Parameters.AddWithValue("@branchId", branchId);
                         cmd.Parameters.AddWithValue("@categoriesId", categoriesId);
 

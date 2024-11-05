@@ -28,7 +28,7 @@ namespace Application_Desktop.Controller
             string selectGenHealth = @"SELECT `patient_id`, `medical_conditions`, `current_medications`, `allergies`, `past_surgeries`, `family_medical_history`, `blood_pressure`, `heart_disease`, `diabetes`, `smoker` 
                                FROM `medical_history` 
                                WHERE `patient_id` = @patientid";
-            string selectDentHealth = @"SELECT `patient_id`, `last_dental_visit`, `past_dental_treatments`, `frequent_tooth_pain`, `gum_disease_history`, `teeth_grinding`, `tooth_sensitivity`,
+            string selectDentHealth = @"SELECT `patient_id`, `past_dental_treatments`, `frequent_tooth_pain`, `gum_disease_history`, `teeth_grinding`, `tooth_sensitivity`,
                                 `orthodontic_treatment`, `dental_implants`, `bleeding_gums` 
                                 FROM `dental_history` 
                                 WHERE `patient_id` = @patientid";
@@ -104,7 +104,7 @@ namespace Application_Desktop.Controller
                             {
                                 dentHealthData = new EditDentHealth
                                 {
-                                    _lastvisit = DateTime.Parse(reader["last_dental_visit"].ToString()),
+                                    //_lastvisit = DateTime.Parse(reader["last_dental_visit"].ToString()),
                                     _pastdenttreatment = reader["past_dental_treatments"].ToString(),
                                     _toothpain = reader.GetBoolean(reader.GetOrdinal("frequent_tooth_pain")),
                                     _gumdisease = reader.GetBoolean(reader.GetOrdinal("gum_disease_history")),
@@ -156,8 +156,7 @@ namespace Application_Desktop.Controller
                                WHERE `patient_id` = @patientId"; 
 
             string updateDentHealth = @"UPDATE `dental_history`
-                                SET `last_dental_visit` = @lastVisit, 
-                                    `past_dental_treatments` = @pastTreatment, 
+                                SET `past_dental_treatments` = @pastTreatment, 
                                     `frequent_tooth_pain` = @toothPain, 
                                     `gum_disease_history` = @gumDisease, 
                                     `teeth_grinding` = @teethGrinding, 
@@ -222,7 +221,7 @@ namespace Application_Desktop.Controller
                             using (MySqlCommand dentHealthCmd = new MySqlCommand(updateDentHealth, conn, transaction))
                             {
                                 dentHealthCmd.Parameters.AddWithValue("@patientId", patientId); 
-                                dentHealthCmd.Parameters.AddWithValue("@lastVisit", dentHealth._lastvisit);
+                                //dentHealthCmd.Parameters.AddWithValue("@lastVisit", dentHealth._lastvisit);
                                 dentHealthCmd.Parameters.AddWithValue("@pastTreatment", dentHealth._pastdenttreatment);
                                 dentHealthCmd.Parameters.AddWithValue("@toothPain", dentHealth._toothpain);
                                 dentHealthCmd.Parameters.AddWithValue("@gumDisease", dentHealth._gumdisease);

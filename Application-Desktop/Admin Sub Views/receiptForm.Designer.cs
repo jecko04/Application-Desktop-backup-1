@@ -41,8 +41,6 @@
             txtStatus = new MaterialSkin.Controls.MaterialTextBox2();
             materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             txtPrice = new MaterialSkin.Controls.MaterialTextBox2();
-            materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
-            txtExtraFee = new MaterialSkin.Controls.MaterialTextBox2();
             txtTotal = new MaterialSkin.Controls.MaterialTextBox2();
             materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             btnClose = new PictureBox();
@@ -291,50 +289,6 @@
             txtPrice.Leave += txtPrice_Leave;
             txtPrice.TextChanged += txtPrice_TextChanged;
             // 
-            // materialLabel7
-            // 
-            materialLabel7.AutoSize = true;
-            materialLabel7.Depth = 0;
-            materialLabel7.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel7.Location = new Point(152, 364);
-            materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel7.Name = "materialLabel7";
-            materialLabel7.Size = new Size(66, 19);
-            materialLabel7.TabIndex = 13;
-            materialLabel7.Text = "Extra Fee";
-            // 
-            // txtExtraFee
-            // 
-            txtExtraFee.AnimateReadOnly = false;
-            txtExtraFee.BackgroundImageLayout = ImageLayout.None;
-            txtExtraFee.CharacterCasing = CharacterCasing.Normal;
-            txtExtraFee.Depth = 0;
-            txtExtraFee.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            txtExtraFee.HideSelection = true;
-            txtExtraFee.LeadingIcon = null;
-            txtExtraFee.Location = new Point(152, 386);
-            txtExtraFee.MaxLength = 32767;
-            txtExtraFee.MouseState = MaterialSkin.MouseState.OUT;
-            txtExtraFee.Name = "txtExtraFee";
-            txtExtraFee.PasswordChar = '\0';
-            txtExtraFee.PrefixSuffixText = null;
-            txtExtraFee.ReadOnly = false;
-            txtExtraFee.RightToLeft = RightToLeft.No;
-            txtExtraFee.SelectedText = "";
-            txtExtraFee.SelectionLength = 0;
-            txtExtraFee.SelectionStart = 0;
-            txtExtraFee.ShortcutsEnabled = true;
-            txtExtraFee.Size = new Size(105, 36);
-            txtExtraFee.TabIndex = 12;
-            txtExtraFee.TabStop = false;
-            txtExtraFee.TextAlign = HorizontalAlignment.Left;
-            txtExtraFee.TrailingIcon = null;
-            txtExtraFee.UseSystemPasswordChar = false;
-            txtExtraFee.UseTallSize = false;
-            txtExtraFee.KeyPress += txtExtraFee_KeyPress;
-            txtExtraFee.Leave += txtExtraFee_Leave;
-            txtExtraFee.TextChanged += txtExtraFee_TextChanged;
-            // 
             // txtTotal
             // 
             txtTotal.AnimateReadOnly = false;
@@ -402,8 +356,6 @@
             Controls.Add(btnClose);
             Controls.Add(materialLabel9);
             Controls.Add(txtTotal);
-            Controls.Add(materialLabel7);
-            Controls.Add(txtExtraFee);
             Controls.Add(materialLabel6);
             Controls.Add(txtPrice);
             Controls.Add(materialLabel5);
@@ -441,8 +393,6 @@
         private MaterialSkin.Controls.MaterialTextBox2 txtStatus;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
         private MaterialSkin.Controls.MaterialTextBox2 txtPrice;
-        private MaterialSkin.Controls.MaterialLabel materialLabel7;
-        private MaterialSkin.Controls.MaterialTextBox2 txtExtraFee;
         private MaterialSkin.Controls.MaterialTextBox2 txtTotal;
         private MaterialSkin.Controls.MaterialLabel materialLabel9;
         private PictureBox btnClose;

@@ -285,7 +285,29 @@ namespace Application_Desktop.Views
             message.To.Add(to);
             message.From = new MailAddress(from);
             message.Subject = "Your Verification Code";
-            message.Body = $"Your OTP code is {Vcode}";
+            message.IsBodyHtml = true;
+            message.Body = $@"<html>
+                    <body style=""font-family: Arial, sans-serif; color: #333; line-height: 1.6;"">
+                        <div style=""max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px;"">
+                            <h2 style=""color: #c0392b; text-align: center;"">Your OTP Code</h2>
+                            <p>Dear Valued User,</p>
+
+                            <p>
+                                Your OTP code is <strong style=""color: #2980b9;"">{Vcode}</strong>. 
+                                Please enter this code to complete your verification process.
+                            </p>
+
+                            <p>If you did not request this code, please disregard this message.</p>
+
+                            <p style=""text-align: center; font-style: italic; color: #7f8c8d;"">
+                                ""Your security is our top priority!""
+                            </p>
+
+                            <hr style=""border: 1px solid #ddd;"">
+
+                        </div>
+                    </body>
+                </html>";
 
             SmtpClient smtp = new SmtpClient("smtp.gmail.com")
             {
@@ -322,7 +344,29 @@ namespace Application_Desktop.Views
             message.To.Add(to);
             message.From = new MailAddress(from);
             message.Subject = "Your Verification Code";
-            message.Body = $"Your OTP code is {Vcode}";
+            message.IsBodyHtml = true;
+            message.Body = $@"<html>
+                    <body style=""font-family: Arial, sans-serif; color: #333; line-height: 1.6;"">
+                        <div style=""max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px;"">
+                            <h2 style=""color: #c0392b; text-align: center;"">Your OTP Code</h2>
+                            <p>Dear Valued User,</p>
+
+                            <p>
+                                Your OTP code is <strong style=""color: #2980b9;"">{Vcode}</strong>. 
+                                Please enter this code to complete your verification process.
+                            </p>
+
+                            <p>If you did not request this code, please disregard this message.</p>
+
+                            <p style=""text-align: center; font-style: italic; color: #7f8c8d;"">
+                                ""Your security is our top priority!""
+                            </p>
+
+                            <hr style=""border: 1px solid #ddd;"">
+
+                        </div>
+                    </body>
+                </html>";
 
             SmtpClient smtp = new SmtpClient("smtp.gmail.com")
             {

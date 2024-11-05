@@ -40,10 +40,8 @@
             chkBleedGum = new MaterialSkin.Controls.MaterialCheckbox();
             chkToothPain = new MaterialSkin.Controls.MaterialCheckbox();
             materialLabel19 = new MaterialSkin.Controls.MaterialLabel();
-            materialLabel17 = new MaterialSkin.Controls.MaterialLabel();
             materialLabel18 = new MaterialSkin.Controls.MaterialLabel();
             txtPastDent = new MaterialSkin.Controls.MaterialTextBox();
-            txtLastVisit = new DateTimePicker();
             errorProvider1 = new ErrorProvider(components);
             dentalPatientTab = new TabPage();
             materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
@@ -107,14 +105,12 @@
             tapPage3.Controls.Add(chkBleedGum);
             tapPage3.Controls.Add(chkToothPain);
             tapPage3.Controls.Add(materialLabel19);
-            tapPage3.Controls.Add(materialLabel17);
             tapPage3.Controls.Add(materialLabel18);
             tapPage3.Controls.Add(txtPastDent);
-            tapPage3.Controls.Add(txtLastVisit);
             tapPage3.Location = new Point(4, 28);
             tapPage3.Name = "tapPage3";
             tapPage3.Padding = new Padding(3);
-            tapPage3.Size = new Size(971, 377);
+            tapPage3.Size = new Size(971, 379);
             tapPage3.TabIndex = 2;
             tapPage3.Text = "Dental Health Information";
             // 
@@ -262,24 +258,12 @@
             materialLabel19.TabIndex = 170;
             materialLabel19.Text = "Check if 'Yes', Leave Uncheck if 'No'";
             // 
-            // materialLabel17
-            // 
-            materialLabel17.AutoSize = true;
-            materialLabel17.Depth = 0;
-            materialLabel17.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel17.Location = new Point(112, 31);
-            materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel17.Name = "materialLabel17";
-            materialLabel17.Size = new Size(121, 19);
-            materialLabel17.TabIndex = 169;
-            materialLabel17.Text = "Last dental visits";
-            // 
             // materialLabel18
             // 
             materialLabel18.AutoSize = true;
             materialLabel18.Depth = 0;
             materialLabel18.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel18.Location = new Point(336, 31);
+            materialLabel18.Location = new Point(112, 28);
             materialLabel18.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel18.Name = "materialLabel18";
             materialLabel18.Size = new Size(161, 19);
@@ -293,25 +277,16 @@
             txtPastDent.Depth = 0;
             txtPastDent.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtPastDent.LeadingIcon = null;
-            txtPastDent.Location = new Point(335, 50);
+            txtPastDent.Location = new Point(111, 50);
             txtPastDent.MaxLength = 50;
             txtPastDent.MouseState = MaterialSkin.MouseState.OUT;
             txtPastDent.Multiline = false;
             txtPastDent.Name = "txtPastDent";
-            txtPastDent.Size = new Size(525, 36);
+            txtPastDent.Size = new Size(749, 36);
             txtPastDent.TabIndex = 167;
             txtPastDent.Text = "";
             txtPastDent.TrailingIcon = null;
             txtPastDent.UseTallSize = false;
-            // 
-            // txtLastVisit
-            // 
-            txtLastVisit.Font = new Font("Tahoma", 12.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtLastVisit.Format = DateTimePickerFormat.Short;
-            txtLastVisit.Location = new Point(111, 55);
-            txtLastVisit.Name = "txtLastVisit";
-            txtLastVisit.Size = new Size(163, 28);
-            txtLastVisit.TabIndex = 166;
             // 
             // errorProvider1
             // 
@@ -681,7 +656,7 @@
             genHealthTab.Location = new Point(4, 28);
             genHealthTab.Name = "genHealthTab";
             genHealthTab.Padding = new Padding(3);
-            genHealthTab.Size = new Size(971, 377);
+            genHealthTab.Size = new Size(971, 379);
             genHealthTab.TabIndex = 1;
             genHealthTab.Text = "General Health Information";
             // 
@@ -1049,10 +1024,8 @@
         private MaterialSkin.Controls.MaterialCheckbox chkBleedGum;
         private MaterialSkin.Controls.MaterialCheckbox chkToothPain;
         private MaterialSkin.Controls.MaterialLabel materialLabel19;
-        private MaterialSkin.Controls.MaterialLabel materialLabel17;
         private MaterialSkin.Controls.MaterialLabel materialLabel18;
         private MaterialSkin.Controls.MaterialTextBox txtPastDent;
-        private DateTimePicker txtLastVisit;
         private MaterialSkin.Controls.MaterialButton btnSaveRecord;
     }
 }
