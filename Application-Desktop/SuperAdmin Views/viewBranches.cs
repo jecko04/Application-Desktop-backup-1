@@ -317,14 +317,14 @@ namespace Application_Desktop.Sub_sub_Views
             editButtonColumn.Width = 50;
             viewBranchData.Columns.Add(editButtonColumn);
 
-            DataGridViewImageColumn deleteButtonColumn = new DataGridViewImageColumn();
+            /*DataGridViewImageColumn deleteButtonColumn = new DataGridViewImageColumn();
             deleteButtonColumn.HeaderText = "";
             deleteButtonColumn.Name = "delete";
             deleteButtonColumn.Image = Properties.Resources.delete_img;
             deleteButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
             deleteButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             deleteButtonColumn.Width = 50;
-            viewBranchData.Columns.Add(deleteButtonColumn);
+            viewBranchData.Columns.Add(deleteButtonColumn);*/
         }
         private async void viewBranches_Load(object sender, EventArgs e)
         {
