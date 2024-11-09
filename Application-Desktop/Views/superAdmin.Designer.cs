@@ -34,8 +34,6 @@
             panel1 = new Panel();
             panel5 = new Panel();
             btnBranches = new Button();
-            panel2 = new Panel();
-            btnRole = new Button();
             panel7 = new Panel();
             btnUsers = new Button();
             panel4 = new Panel();
@@ -54,7 +52,6 @@
             mainPanel = new Panel();
             sidebarContainer.SuspendLayout();
             panel5.SuspendLayout();
-            panel2.SuspendLayout();
             panel7.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
@@ -69,7 +66,6 @@
             sidebarContainer.BackColor = Color.FromArgb(250, 220, 18);
             sidebarContainer.Controls.Add(panel1);
             sidebarContainer.Controls.Add(panel5);
-            sidebarContainer.Controls.Add(panel2);
             sidebarContainer.Controls.Add(panel7);
             sidebarContainer.Controls.Add(panel4);
             sidebarContainer.Controls.Add(panel3);
@@ -119,41 +115,11 @@
             btnBranches.UseVisualStyleBackColor = false;
             btnBranches.Click += btnBranches_Click;
             // 
-            // panel2
-            // 
-            panel2.BackColor = Color.FromArgb(250, 220, 18);
-            panel2.Controls.Add(btnRole);
-            panel2.Location = new Point(0, 80);
-            panel2.Margin = new Padding(0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(179, 34);
-            panel2.TabIndex = 4;
-            // 
-            // btnRole
-            // 
-            btnRole.BackColor = Color.FromArgb(250, 220, 18);
-            btnRole.Dock = DockStyle.Fill;
-            btnRole.FlatAppearance.BorderColor = Color.FromArgb(250, 220, 18);
-            btnRole.FlatStyle = FlatStyle.Flat;
-            btnRole.Font = new Font("Microsoft Sans Serif", 9F);
-            btnRole.ForeColor = Color.Black;
-            btnRole.Image = (Image)resources.GetObject("btnRole.Image");
-            btnRole.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRole.Location = new Point(0, 0);
-            btnRole.Margin = new Padding(0);
-            btnRole.Name = "btnRole";
-            btnRole.Size = new Size(179, 34);
-            btnRole.TabIndex = 3;
-            btnRole.Text = "              Role";
-            btnRole.TextAlign = ContentAlignment.MiddleLeft;
-            btnRole.UseVisualStyleBackColor = false;
-            btnRole.Click += btnRole_Click;
-            // 
             // panel7
             // 
             panel7.BackColor = Color.FromArgb(250, 220, 18);
             panel7.Controls.Add(btnUsers);
-            panel7.Location = new Point(0, 114);
+            panel7.Location = new Point(0, 80);
             panel7.Margin = new Padding(0);
             panel7.Name = "panel7";
             panel7.Size = new Size(179, 34);
@@ -183,7 +149,7 @@
             // 
             panel4.BackColor = Color.FromArgb(250, 220, 18);
             panel4.Controls.Add(btnDentalDoctors);
-            panel4.Location = new Point(0, 148);
+            panel4.Location = new Point(0, 114);
             panel4.Margin = new Padding(0);
             panel4.Name = "panel4";
             panel4.Size = new Size(179, 34);
@@ -213,7 +179,7 @@
             // 
             panel3.BackColor = Color.FromArgb(250, 220, 18);
             panel3.Controls.Add(btnAdmin);
-            panel3.Location = new Point(0, 182);
+            panel3.Location = new Point(0, 148);
             panel3.Margin = new Padding(0);
             panel3.Name = "panel3";
             panel3.Size = new Size(179, 34);
@@ -245,7 +211,7 @@
             menuContainer.Controls.Add(panel9);
             menuContainer.Controls.Add(panel10);
             menuContainer.Controls.Add(panel8);
-            menuContainer.Location = new Point(0, 216);
+            menuContainer.Location = new Point(0, 182);
             menuContainer.Margin = new Padding(0);
             menuContainer.Name = "menuContainer";
             menuContainer.Size = new Size(179, 34);
@@ -371,7 +337,6 @@
             Load += superAdmin_Load;
             sidebarContainer.ResumeLayout(false);
             panel5.ResumeLayout(false);
-            panel2.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel3.ResumeLayout(false);
@@ -398,8 +363,6 @@
         private Panel mainPanel;
         private Panel panel5;
         private Button btnBranches;
-        private Panel panel2;
-        private Button btnRole;
         private Panel panel4;
         private Button btnDentalDoctors;
         private Panel panel7;

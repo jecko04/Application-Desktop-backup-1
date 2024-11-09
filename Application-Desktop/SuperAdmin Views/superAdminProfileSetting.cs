@@ -30,7 +30,7 @@ namespace Application_Desktop.SuperAdmin_Views
             ElipseManager elipseManagerPanel = new ElipseManager(15);
             elipseManagerPanel.ApplyElipseToPanel(profileInfoPanel);
             elipseManagerPanel.ApplyElipseToPanel(updatePasswordPanel);
-            elipseManagerPanel.ApplyElipseToPanel(deleteAccountPanel);
+            //elipseManagerPanel.ApplyElipseToPanel(deleteAccountPanel);
         }
 
         void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
@@ -147,7 +147,7 @@ namespace Application_Desktop.SuperAdmin_Views
             finally { await conn.CloseAsync(); }
             return false;
         }
-        private async void btnDelete_Click(object sender, EventArgs e)
+       /* private async void btnDelete_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
                 "Warning: Deleting your account will permanently delete all of its data. Are you sure you want to proceed?",
@@ -181,7 +181,7 @@ namespace Application_Desktop.SuperAdmin_Views
                     }));
                 }
             }
-        }
+        }*/
 
         //Changed password
         private async Task<bool> GetCurrentPassword(superAdminUpdatePasswordModel superAdminPassword)

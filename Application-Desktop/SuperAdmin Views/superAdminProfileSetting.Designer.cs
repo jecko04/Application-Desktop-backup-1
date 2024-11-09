@@ -35,10 +35,6 @@
             pictureBox1 = new PictureBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel2 = new Panel();
-            deleteAccountPanel = new Panel();
-            label14 = new Label();
-            label15 = new Label();
-            btnDelete = new Button();
             panel31 = new Panel();
             updatePasswordPanel = new Panel();
             borderNew = new Panel();
@@ -96,7 +92,6 @@
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
-            deleteAccountPanel.SuspendLayout();
             updatePasswordPanel.SuspendLayout();
             borderNew.SuspendLayout();
             borderConfirm.SuspendLayout();
@@ -156,7 +151,6 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel2.AutoScroll = true;
-            panel2.Controls.Add(deleteAccountPanel);
             panel2.Controls.Add(panel31);
             panel2.Controls.Add(updatePasswordPanel);
             panel2.Controls.Add(profileInfoPanel);
@@ -165,58 +159,9 @@
             panel2.Size = new Size(1101, 633);
             panel2.TabIndex = 23;
             // 
-            // deleteAccountPanel
-            // 
-            deleteAccountPanel.BackColor = Color.White;
-            deleteAccountPanel.Controls.Add(label14);
-            deleteAccountPanel.Controls.Add(label15);
-            deleteAccountPanel.Controls.Add(btnDelete);
-            deleteAccountPanel.Location = new Point(0, 664);
-            deleteAccountPanel.Name = "deleteAccountPanel";
-            deleteAccountPanel.Size = new Size(899, 148);
-            deleteAccountPanel.TabIndex = 78;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Tahoma", 9.75F);
-            label14.ForeColor = Color.DimGray;
-            label14.Location = new Point(27, 46);
-            label14.Name = "label14";
-            label14.Size = new Size(501, 16);
-            label14.TabIndex = 57;
-            label14.Text = "Once your account is deleted all of its resources and data will be permanently deleted.";
-            label14.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label15.Location = new Point(27, 23);
-            label15.Name = "label15";
-            label15.Size = new Size(92, 16);
-            label15.TabIndex = 56;
-            label15.Text = "Delete Account";
-            // 
-            // btnDelete
-            // 
-            btnDelete.BackColor = Color.FromArgb(255, 66, 0);
-            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Microsoft Sans Serif", 9F);
-            btnDelete.ForeColor = SystemColors.ButtonFace;
-            btnDelete.Location = new Point(28, 78);
-            btnDelete.Margin = new Padding(0, 0, 0, 1);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(122, 24);
-            btnDelete.TabIndex = 18;
-            btnDelete.Text = "Delete Account";
-            btnDelete.UseVisualStyleBackColor = false;
-            btnDelete.Click += btnDelete_Click;
-            // 
             // panel31
             // 
-            panel31.Location = new Point(1152, 550);
+            panel31.Location = new Point(1099, 399);
             panel31.Name = "panel31";
             panel31.Size = new Size(16, 309);
             panel31.TabIndex = 23;
@@ -778,8 +723,6 @@
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
-            deleteAccountPanel.ResumeLayout(false);
-            deleteAccountPanel.PerformLayout();
             updatePasswordPanel.ResumeLayout(false);
             updatePasswordPanel.PerformLayout();
             borderNew.ResumeLayout(false);
@@ -809,10 +752,6 @@
         private PictureBox pictureBox1;
         private FlowLayoutPanel flowLayoutPanel1;
         private Panel panel2;
-        private Panel deleteAccountPanel;
-        private Label label14;
-        private Label label15;
-        private Button btnDelete;
         private Panel panel31;
         private Panel updatePasswordPanel;
         private Panel borderNew;

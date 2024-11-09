@@ -118,11 +118,11 @@ namespace Application_Desktop.Views
             loginForm.Show();
         }
 
-        private void btnRole_Click(object sender, EventArgs e)
+       /* private void btnRole_Click(object sender, EventArgs e)
         {
             LoadForm(new Role());
         }
-
+*/
         private void btnProfile_Click(object sender, EventArgs e)
         {
             LoadForm(new superAdminProfileSetting(this));

@@ -143,7 +143,7 @@ namespace Application_Desktop.Sub_sub_Views
                 }
             }
 
-            //delete
+            /*//delete
             if (e.RowIndex >= 0 && e.ColumnIndex == viewBranchData.Columns["delete"].Index)
             {
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this branch? This will also delete all related admin and user accounts.", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -157,7 +157,7 @@ namespace Application_Desktop.Sub_sub_Views
                     AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The branch data has been deleted successfully", Properties.Resources.success);
 
                 }
-            }
+            }*/
         }
 
         private registerBranches registerBranchInstance;

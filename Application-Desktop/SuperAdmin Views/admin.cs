@@ -517,7 +517,7 @@ namespace Application_Desktop.Sub_Views
                 }
             }
 
-            //delete
+           /* //delete
             if (e.RowIndex >= 0 && e.ColumnIndex == viewSuperAdminData.Columns["deleteSuperAdmin"].Index)
             {
                 DialogResult result = MessageBox.Show("Would you like to proceed with deleting this account?", "Confirm Deletions", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -531,7 +531,7 @@ namespace Application_Desktop.Sub_Views
                     await LoadSuperAdmin();
                     AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The data has been deleted successfully", Properties.Resources.success);
                 }
-            }
+            }*/
 
             //change password
             if (viewSuperAdminData.Columns["changeSuperAdmin"] != null &&
@@ -559,7 +559,7 @@ namespace Application_Desktop.Sub_Views
             }
 
             //Select Check Box
-            if (isProcessingClick) return; // Ignore the click if already processing
+            /*if (isProcessingClick) return; // Ignore the click if already processing
 
             isProcessingClick = true;
 
@@ -577,7 +577,7 @@ namespace Application_Desktop.Sub_Views
             {
                 // Allow clicks again after processing
                 isProcessingClick = false;
-            }
+            }*/
 
         }
 
@@ -625,13 +625,13 @@ namespace Application_Desktop.Sub_Views
 
             viewSuperAdminData.RowHeadersVisible = false;
             viewSuperAdminData.ColumnHeadersHeight = 40;
-
+/*
             DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
             selectColumn.HeaderText = "";
             selectColumn.Name = "selectSuperAdmin";
             selectColumn.Width = 30;
             viewSuperAdminData.Columns.Add(selectColumn);
-            viewSuperAdminData.Columns["selectSuperAdmin"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            viewSuperAdminData.Columns["selectSuperAdmin"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;*/
 
             DataGridViewTextBoxColumn adminColumn = new DataGridViewTextBoxColumn();
             adminColumn.HeaderText = "ID";
@@ -682,14 +682,14 @@ namespace Application_Desktop.Sub_Views
             editButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             viewSuperAdminData.Columns.Add(editButtonColumn);
 
-            DataGridViewImageColumn deleteButtonColumn = new DataGridViewImageColumn();
+         /*   DataGridViewImageColumn deleteButtonColumn = new DataGridViewImageColumn();
             deleteButtonColumn.HeaderText = "";
             deleteButtonColumn.Name = "deleteSuperAdmin";
             deleteButtonColumn.Image = Properties.Resources.delete_img;
             deleteButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
             deleteButtonColumn.Width = 50;
             deleteButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            viewSuperAdminData.Columns.Add(deleteButtonColumn);
+            viewSuperAdminData.Columns.Add(deleteButtonColumn);*/
         }
 
         private void AddColumnAdmin()
@@ -783,7 +783,7 @@ namespace Application_Desktop.Sub_Views
                 viewSuperAdminData.EndEdit();
                 viewAdminData.EndEdit();
 
-                // Deleting from viewSuperAdminData
+              /*  // Deleting from viewSuperAdminData
                 for (int i = viewSuperAdminData.Rows.Count - 1; i >= 0; i--)
                 {
                     DataGridViewRow row = viewSuperAdminData.Rows[i];
@@ -798,7 +798,7 @@ namespace Application_Desktop.Sub_Views
                         viewSuperAdminData.Rows.RemoveAt(i);
                         await DeleteSuperAdmin(superadminID);
                     }
-                }
+                }*/
 
                 // Deleting from viewAdminData
                 for (int i = viewAdminData.Rows.Count - 1; i >= 0; i--)
