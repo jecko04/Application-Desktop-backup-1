@@ -54,13 +54,13 @@ namespace Application_Desktop.Controller
             viewUserAccount.RowHeadersVisible = false;
             viewUserAccount.ColumnHeadersHeight = 40;
 
-            DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
+           /* DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
             selectColumn.HeaderText = "";
             selectColumn.Name = "selectUser";
             selectColumn.DataPropertyName = "selectUser";
             selectColumn.ReadOnly = false;
             selectColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            viewUserAccount.Columns.Add(selectColumn);
+            viewUserAccount.Columns.Add(selectColumn);*/
 
             DataGridViewTextBoxColumn Id = new DataGridViewTextBoxColumn();
             Id.HeaderText = "ID";

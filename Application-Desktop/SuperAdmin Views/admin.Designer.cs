@@ -50,7 +50,6 @@
             viewAdminData = new DataGridView();
             viewSuperAdminData = new DataGridView();
             btnDelete = new Button();
-            btnNewSuperAdmin = new Button();
             pictureBox3 = new PictureBox();
             panel1 = new Panel();
             label40 = new Label();
@@ -245,25 +244,6 @@
             btnDelete.TextAlign = ContentAlignment.MiddleLeft;
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
-            // 
-            // btnNewSuperAdmin
-            // 
-            btnNewSuperAdmin.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnNewSuperAdmin.BackColor = Color.FromArgb(255, 66, 0);
-            btnNewSuperAdmin.FlatAppearance.BorderColor = Color.FromArgb(255, 66, 0);
-            btnNewSuperAdmin.FlatStyle = FlatStyle.Flat;
-            btnNewSuperAdmin.Font = new Font("Microsoft Sans Serif", 9F);
-            btnNewSuperAdmin.ForeColor = SystemColors.ButtonFace;
-            btnNewSuperAdmin.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNewSuperAdmin.Location = new Point(966, 75);
-            btnNewSuperAdmin.Margin = new Padding(0, 0, 0, 1);
-            btnNewSuperAdmin.Name = "btnNewSuperAdmin";
-            btnNewSuperAdmin.Size = new Size(126, 24);
-            btnNewSuperAdmin.TabIndex = 4;
-            btnNewSuperAdmin.Text = "Create SuperAdmin";
-            btnNewSuperAdmin.TextAlign = ContentAlignment.MiddleLeft;
-            btnNewSuperAdmin.UseVisualStyleBackColor = false;
-            btnNewSuperAdmin.Click += btnNewSuperAdmin_Click;
             // 
             // pictureBox3
             // 
@@ -523,7 +503,6 @@
             Controls.Add(tabControl1);
             Controls.Add(panel1);
             Controls.Add(btnNewAdmin);
-            Controls.Add(btnNewSuperAdmin);
             FormBorderStyle = FormBorderStyle.None;
             Name = "admin";
             Text = "registerAdmin";
@@ -548,7 +527,6 @@
         private Button btnRefresh;
         private DataGridView viewAdminData;
         private DataGridView viewSuperAdminData;
-        private Button btnNewSuperAdmin;
         private PictureBox pictureBox3;
         private Panel panel1;
         private Button btnDelete;

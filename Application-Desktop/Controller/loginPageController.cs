@@ -13,10 +13,10 @@ namespace Application_Desktop.Controller
 {
     public class loginPageController
     {
-        public async Task InsertOtp(int userId, int superadminId, int otp)
+        public async Task InsertOtp(int userId, string email, int otp)
         {
-            string query = @"INSERT INTO otp (Admin_ID, SuperAdmin_ID, otp, otpExpirationDate, isUsed, created_at, updated_at) 
-                     VALUES (@adminId, @superadminId, @otp, @expirationTime, @isUsed, @createdAt, @updatedAt)
+            string query = @"INSERT INTO otp (Admin_ID, email, otp, otpExpirationDate, isUsed, created_at, updated_at) 
+                     VALUES (@adminId, @email, @otp, @expirationTime, @isUsed, @createdAt, @updatedAt)
                      ON DUPLICATE KEY UPDATE 
                          otp = VALUES(otp),
                          otpExpirationDate = VALUES(otpExpirationDate),
@@ -34,7 +34,7 @@ namespace Application_Desktop.Controller
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@adminId", userId);
-                        cmd.Parameters.AddWithValue("@superadminId", superadminId);
+                        cmd.Parameters.AddWithValue("@email", email);
                         cmd.Parameters.AddWithValue("@otp", otp);
                         cmd.Parameters.AddWithValue("@expirationTime", DateTime.Now.AddMinutes(3));
                         cmd.Parameters.AddWithValue("@isUsed", false);
@@ -54,15 +54,15 @@ namespace Application_Desktop.Controller
             }
         }
 
-       /* public async Task InsertOtpSuper(int superAdminId, int otp)
+        public async Task InsertOtpSuper(int superadminId, string email, int otp)
         {
-            string query = @"INSERT INTO otp (Admin_ID, SuperAdmin_ID, otp, otpExpirationDate, isUsed, created_at, updated_at) 
-                            VALUES (@adminId, @superadminId, @otp, @expirationTime, @isUsed, @createdAt, @updatedAt)
-                            ON DUPLICATE KEY UPDATE 
-                                otp = VALUES(otp),
-                                otpExpirationDate = VALUES(otpExpirationDate),
-                                isUsed = VALUES(isUsed),
-                                updated_at = VALUES(updated_at);";
+            string query = @"INSERT INTO otp (SuperAdmin_ID, email, otp, otpExpirationDate, isUsed, created_at, updated_at) 
+                     VALUES (@superadminId, @email, @otp, @expirationTime, @isUsed, @createdAt, @updatedAt)
+                     ON DUPLICATE KEY UPDATE 
+                         otp = VALUES(otp),
+                         otpExpirationDate = VALUES(otpExpirationDate),
+                         isUsed = VALUES(isUsed),
+                         updated_at = VALUES(updated_at);";
 
             try
             {
@@ -74,8 +74,8 @@ namespace Application_Desktop.Controller
                     }
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@adminId", null);
-                        cmd.Parameters.AddWithValue("@superAdminId", superAdminId);
+                        cmd.Parameters.AddWithValue("@superadminId", superadminId);
+                        cmd.Parameters.AddWithValue("@email", email);
                         cmd.Parameters.AddWithValue("@otp", otp);
                         cmd.Parameters.AddWithValue("@expirationTime", DateTime.Now.AddMinutes(3));
                         cmd.Parameters.AddWithValue("@isUsed", false);
@@ -83,6 +83,7 @@ namespace Application_Desktop.Controller
                         DateTime now = DateTime.Now;
                         cmd.Parameters.AddWithValue("@createdAt", now);
                         cmd.Parameters.AddWithValue("@updatedAt", now);
+
 
                         await cmd.ExecuteNonQueryAsync();
                     }
@@ -92,7 +93,34 @@ namespace Application_Desktop.Controller
             {
                 throw new Exception($"Error Send OTP {ex.Message}");
             }
-        }*/
+        }
+
+
+        public async Task<int?> SelectBranchID(int adminId)
+        {
+            string query = @"SELECT Branch_ID from admin where Admin_ID = @adminId";
+
+            using (MySqlConnection conn = databaseHelper.getConnection())
+            {
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    await conn.OpenAsync();
+                }
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@adminId", adminId);
+                    using (MySqlDataReader reader = (MySqlDataReader) await cmd.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            int branchId = reader.GetInt32("Branch_ID");
+                            return branchId;
+                        }
+                    }
+                }
+            }
+            return null;
+        }
 
         public async Task<bool> CheckUnusedOtp(int userId)
         {

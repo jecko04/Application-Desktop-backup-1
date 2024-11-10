@@ -517,21 +517,21 @@ namespace Application_Desktop.Sub_Views
                 }
             }
 
-           /* //delete
-            if (e.RowIndex >= 0 && e.ColumnIndex == viewSuperAdminData.Columns["deleteSuperAdmin"].Index)
-            {
-                DialogResult result = MessageBox.Show("Would you like to proceed with deleting this account?", "Confirm Deletions", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            /* //delete
+             if (e.RowIndex >= 0 && e.ColumnIndex == viewSuperAdminData.Columns["deleteSuperAdmin"].Index)
+             {
+                 DialogResult result = MessageBox.Show("Would you like to proceed with deleting this account?", "Confirm Deletions", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (result == DialogResult.Yes)
-                {
-                    int superadminID = Convert.ToInt32(viewSuperAdminData.Rows[e.RowIndex].Cells["SuperAdmin_ID"].Value);
+                 if (result == DialogResult.Yes)
+                 {
+                     int superadminID = Convert.ToInt32(viewSuperAdminData.Rows[e.RowIndex].Cells["SuperAdmin_ID"].Value);
 
-                    // Delete row from database
-                    await DeleteSuperAdmin(superadminID);
-                    await LoadSuperAdmin();
-                    AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The data has been deleted successfully", Properties.Resources.success);
-                }
-            }*/
+                     // Delete row from database
+                     await DeleteSuperAdmin(superadminID);
+                     await LoadSuperAdmin();
+                     AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The data has been deleted successfully", Properties.Resources.success);
+                 }
+             }*/
 
             //change password
             if (viewSuperAdminData.Columns["changeSuperAdmin"] != null &&
@@ -625,13 +625,13 @@ namespace Application_Desktop.Sub_Views
 
             viewSuperAdminData.RowHeadersVisible = false;
             viewSuperAdminData.ColumnHeadersHeight = 40;
-/*
-            DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
-            selectColumn.HeaderText = "";
-            selectColumn.Name = "selectSuperAdmin";
-            selectColumn.Width = 30;
-            viewSuperAdminData.Columns.Add(selectColumn);
-            viewSuperAdminData.Columns["selectSuperAdmin"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;*/
+            /*
+                        DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn();
+                        selectColumn.HeaderText = "";
+                        selectColumn.Name = "selectSuperAdmin";
+                        selectColumn.Width = 30;
+                        viewSuperAdminData.Columns.Add(selectColumn);
+                        viewSuperAdminData.Columns["selectSuperAdmin"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;*/
 
             DataGridViewTextBoxColumn adminColumn = new DataGridViewTextBoxColumn();
             adminColumn.HeaderText = "ID";
@@ -682,14 +682,14 @@ namespace Application_Desktop.Sub_Views
             editButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             viewSuperAdminData.Columns.Add(editButtonColumn);
 
-         /*   DataGridViewImageColumn deleteButtonColumn = new DataGridViewImageColumn();
-            deleteButtonColumn.HeaderText = "";
-            deleteButtonColumn.Name = "deleteSuperAdmin";
-            deleteButtonColumn.Image = Properties.Resources.delete_img;
-            deleteButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            deleteButtonColumn.Width = 50;
-            deleteButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            viewSuperAdminData.Columns.Add(deleteButtonColumn);*/
+            /*   DataGridViewImageColumn deleteButtonColumn = new DataGridViewImageColumn();
+               deleteButtonColumn.HeaderText = "";
+               deleteButtonColumn.Name = "deleteSuperAdmin";
+               deleteButtonColumn.Image = Properties.Resources.delete_img;
+               deleteButtonColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+               deleteButtonColumn.Width = 50;
+               deleteButtonColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+               viewSuperAdminData.Columns.Add(deleteButtonColumn);*/
         }
 
         private void AddColumnAdmin()
@@ -783,22 +783,22 @@ namespace Application_Desktop.Sub_Views
                 viewSuperAdminData.EndEdit();
                 viewAdminData.EndEdit();
 
-              /*  // Deleting from viewSuperAdminData
-                for (int i = viewSuperAdminData.Rows.Count - 1; i >= 0; i--)
-                {
-                    DataGridViewRow row = viewSuperAdminData.Rows[i];
-                    DataGridViewCheckBoxCell checkBoxCell = row.Cells["selectSuperAdmin"] as DataGridViewCheckBoxCell;
+                /*  // Deleting from viewSuperAdminData
+                  for (int i = viewSuperAdminData.Rows.Count - 1; i >= 0; i--)
+                  {
+                      DataGridViewRow row = viewSuperAdminData.Rows[i];
+                      DataGridViewCheckBoxCell checkBoxCell = row.Cells["selectSuperAdmin"] as DataGridViewCheckBoxCell;
 
-                    // Check if the checkbox is checked
-                    if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
-                    {
-                        hasSelectedRows = true;
-                        // Get the ID of the superadmin to delete
-                        int superadminID = Convert.ToInt32(row.Cells["SuperAdmin_ID"].Value);
-                        viewSuperAdminData.Rows.RemoveAt(i);
-                        await DeleteSuperAdmin(superadminID);
-                    }
-                }*/
+                      // Check if the checkbox is checked
+                      if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
+                      {
+                          hasSelectedRows = true;
+                          // Get the ID of the superadmin to delete
+                          int superadminID = Convert.ToInt32(row.Cells["SuperAdmin_ID"].Value);
+                          viewSuperAdminData.Rows.RemoveAt(i);
+                          await DeleteSuperAdmin(superadminID);
+                      }
+                  }*/
 
                 // Deleting from viewAdminData
                 for (int i = viewAdminData.Rows.Count - 1; i >= 0; i--)

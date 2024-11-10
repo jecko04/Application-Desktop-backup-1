@@ -29,15 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(usersAccount));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel1 = new Panel();
             label40 = new Label();
             pictureBox1 = new PictureBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             btnRefresh = new Button();
-            btnDelete = new Button();
             viewUsersAccount = new DataGridView();
             elipseControl1 = new ElipseToolDemo.ElipseControl();
             panel1.SuspendLayout();
@@ -107,61 +106,44 @@
             btnRefresh.UseVisualStyleBackColor = false;
             btnRefresh.Click += btnRefresh_Click;
             // 
-            // btnDelete
-            // 
-            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnDelete.BackColor = Color.FromArgb(41, 56, 218);
-            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(41, 56, 218);
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Font = new Font("Microsoft Sans Serif", 9F);
-            btnDelete.ForeColor = SystemColors.ButtonFace;
-            btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
-            btnDelete.Location = new Point(999, 68);
-            btnDelete.Margin = new Padding(0, 0, 0, 1);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(85, 24);
-            btnDelete.TabIndex = 19;
-            btnDelete.UseVisualStyleBackColor = false;
-            btnDelete.Click += btnDelete_Click;
-            // 
             // viewUsersAccount
             // 
             viewUsersAccount.AllowUserToAddRows = false;
             viewUsersAccount.AllowUserToDeleteRows = false;
             viewUsersAccount.AllowUserToResizeColumns = false;
             viewUsersAccount.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.LightYellow;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.LightYellow;
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            viewUsersAccount.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.LightYellow;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = Color.LightYellow;
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            viewUsersAccount.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             viewUsersAccount.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             viewUsersAccount.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             viewUsersAccount.BackgroundColor = Color.White;
             viewUsersAccount.BorderStyle = BorderStyle.None;
             viewUsersAccount.CellBorderStyle = DataGridViewCellBorderStyle.None;
             viewUsersAccount.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(250, 220, 18);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.NullValue = "N/A";
-            dataGridViewCellStyle2.Padding = new Padding(3);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(250, 220, 18);
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            viewUsersAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.NullValue = "N/A";
+            dataGridViewCellStyle5.Padding = new Padding(3);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(250, 220, 18);
+            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            viewUsersAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             viewUsersAccount.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = Color.Gray;
-            dataGridViewCellStyle3.NullValue = "N/A";
-            dataGridViewCellStyle3.SelectionBackColor = Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            viewUsersAccount.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = SystemColors.Window;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = Color.Gray;
+            dataGridViewCellStyle6.NullValue = "N/A";
+            dataGridViewCellStyle6.SelectionBackColor = Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            viewUsersAccount.DefaultCellStyle = dataGridViewCellStyle6;
             viewUsersAccount.EnableHeadersVisualStyles = false;
             viewUsersAccount.Location = new Point(-2, 43);
             viewUsersAccount.Margin = new Padding(0, 0, 10, 0);
@@ -183,7 +165,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1093, 621);
             Controls.Add(btnRefresh);
-            Controls.Add(btnDelete);
             Controls.Add(viewUsersAccount);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
@@ -204,7 +185,6 @@
         private PictureBox pictureBox1;
         private FlowLayoutPanel flowLayoutPanel1;
         private Button btnRefresh;
-        private Button btnDelete;
         private DataGridView viewUsersAccount;
         private ElipseToolDemo.ElipseControl elipseControl1;
     }

@@ -17,6 +17,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Application_Desktop.Models.EllipseManager;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Application_Desktop.Views
 {
@@ -273,7 +274,7 @@ namespace Application_Desktop.Views
         private async Task SendOTP()
         {
             int ID = session.LoggedInSession;
-            int superadminId = 0;
+            string email = txtEmail.Text;
 
 
             int Vcode = new Random().Next(100000, 999999);
@@ -316,12 +317,11 @@ namespace Application_Desktop.Views
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 Credentials = new NetworkCredential(from, pass)
             };
-
             try
             {
                 smtp.Send(message);
 
-                await _loginPageController.InsertOtp(ID, superadminId, Vcode);
+                await _loginPageController.InsertOtp(ID, email, Vcode);
 
             }
             catch (Exception ex)
@@ -333,7 +333,7 @@ namespace Application_Desktop.Views
         private async Task SendOTPSuper()
         {
             int ID = session.LoggedInSession;
-            int adminId = 0;
+            string email = txtEmail.Text;
 
             int Vcode = new Random().Next(100000, 999999);
 
@@ -380,7 +380,8 @@ namespace Application_Desktop.Views
             {
                 smtp.Send(message);
 
-                await _loginPageController.InsertOtp(adminId, ID, Vcode);
+
+                await _loginPageController.InsertOtpSuper(ID, email, Vcode);
 
             }
             catch (Exception ex)

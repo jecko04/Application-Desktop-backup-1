@@ -67,7 +67,7 @@ namespace Application_Desktop.SuperAdmin_Views
             }
         }
 
-        private async void btnDelete_Click(object sender, EventArgs e)
+        /*private async void btnDelete_Click(object sender, EventArgs e)
         {
             bool hasSelectedRows = false;
             foreach (DataGridViewRow row in viewUsersAccount.Rows)
@@ -94,11 +94,12 @@ namespace Application_Desktop.SuperAdmin_Views
 
                 AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The account has been deleted successfully", Properties.Resources.success);
             }
-        }
+        }*/
+
         private bool isProcessingClick = false;
         private async void viewUsersAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (isProcessingClick) return;
+           /* if (isProcessingClick) return;
 
             if (e.RowIndex >= 0 && e.ColumnIndex == viewUsersAccount.Columns["selectUser"].Index)
             {
@@ -114,7 +115,7 @@ namespace Application_Desktop.SuperAdmin_Views
                 {
                     isProcessingClick = false;
                 }
-            }
+            }*/
         }
     }
 }

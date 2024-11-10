@@ -69,7 +69,7 @@ namespace Application_Desktop.Views
             {
                 this.BeginInvoke((MethodInvoker)delegate
                 {
-                    AlertBox(Color.LightPink, Color.Red, "OTP is Not Valid", "OTP Verification Code Failed", Properties.Resources.success);
+                    AlertBox(Color.LightPink, Color.Red, "OTP is Not Valid", "OTP Verification Code Failed", Properties.Resources.error);
                 });
             }
 
