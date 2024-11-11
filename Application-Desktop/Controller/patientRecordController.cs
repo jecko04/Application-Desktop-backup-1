@@ -235,6 +235,106 @@ namespace Application_Desktop.Controller
             }
         }
 
+        public async Task<DataTable> ExportPatientCsv(int patientId)
+        {
+            string selectPatients = @"
+        SELECT 
+            p.id, 
+            p.fullname, 
+            p.date_of_birth, 
+            p.age, 
+            p.gender, 
+            p.phone, 
+            p.email, 
+            p.address, 
+            p.emergency_contact
+        FROM 
+            patients p
+        WHERE 
+            p.id = @patientid";
+
+            return await FetchDataAsync(selectPatients, patientId);
+        }
+
+        public async Task<DataTable> ExportGeneralHealthCsv(int patientId)
+        {
+            string selectGenHealth = @"
+        SELECT 
+            p.id,
+            p.fullname,
+            mh.medical_conditions, 
+            mh.current_medications, 
+            mh.allergies, 
+            mh.past_surgeries, 
+            mh.family_medical_history, 
+            mh.blood_pressure, 
+            mh.heart_disease, 
+            mh.diabetes, 
+            mh.smoker
+        FROM 
+            medical_history mh
+        JOIN 
+            patients p ON mh.patient_id = p.id
+        WHERE 
+            mh.patient_id = @patientid";
+
+            return await FetchDataAsync(selectGenHealth, patientId);
+        }
+
+        public async Task<DataTable> ExportDentalHealthCsv(int patientId)
+        {
+            string selectDentHealth = @"
+        SELECT 
+            p.id,
+            p.fullname,
+            dh.past_dental_treatments, 
+            dh.frequent_tooth_pain, 
+            dh.gum_disease_history, 
+            dh.teeth_grinding, 
+            dh.tooth_sensitivity, 
+            dh.orthodontic_treatment, 
+            dh.dental_implants, 
+            dh.bleeding_gums
+        FROM 
+            dental_history dh
+        JOIN 
+            patients p ON dh.patient_id = p.id
+        WHERE 
+            dh.patient_id = @patientid";
+
+            return await FetchDataAsync(selectDentHealth, patientId);
+        }
+
+        // Helper method for executing a query and returning data as DataTable
+        private async Task<DataTable> FetchDataAsync(string query, int patientId)
+        {
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+
+                    DataTable data = new DataTable();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@patientid", patientId);
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            adapter.Fill(data);
+                        }
+                    }
+                    return data;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error Fetching Data: {ex.Message}", ex);
+            }
+        }
+
 
         public async Task<int> Delete(int patientid)
         {

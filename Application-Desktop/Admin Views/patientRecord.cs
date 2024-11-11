@@ -48,7 +48,7 @@ namespace Application_Desktop.Admin_Views
         {
             await LoadRecord();
 
-            btnDeketeRecord.BackColor = ColorTranslator.FromHtml("#ff4200");
+            //btnDeketeRecord.BackColor = ColorTranslator.FromHtml("#ff4200");
         }
 
         private async Task LoadRecord()
@@ -380,12 +380,12 @@ namespace Application_Desktop.Admin_Views
             Fullname.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             viewDentalHistory.Columns.Add(Fullname);
 
-           /* DataGridViewTextBoxColumn LastDentalVisit = new DataGridViewTextBoxColumn();
-            LastDentalVisit.HeaderText = "Last Dental Visit";
-            LastDentalVisit.Name = "LastDentalVisit";
-            LastDentalVisit.DataPropertyName = "last_dental_visit";
-            LastDentalVisit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            viewDentalHistory.Columns.Add(LastDentalVisit);*/
+            /* DataGridViewTextBoxColumn LastDentalVisit = new DataGridViewTextBoxColumn();
+             LastDentalVisit.HeaderText = "Last Dental Visit";
+             LastDentalVisit.Name = "LastDentalVisit";
+             LastDentalVisit.DataPropertyName = "last_dental_visit";
+             LastDentalVisit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+             viewDentalHistory.Columns.Add(LastDentalVisit);*/
 
             DataGridViewTextBoxColumn PastDentalTreatments = new DataGridViewTextBoxColumn();
             PastDentalTreatments.HeaderText = "Past Dental Treatments";
@@ -449,80 +449,114 @@ namespace Application_Desktop.Admin_Views
         //Add column end
 
         //refresh
-        private async void btnRefresh_Click(object sender, EventArgs e)
-        {
-
-        }
-        private async void btnDelete_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private async void btnExport_Click(object sender, EventArgs e)
-        {
-
-        }
 
         public void ExportDataTableToCsv(DataTable dataTable, string filePath)
         {
             StringBuilder csvBuilder = new StringBuilder();
+
+            // Add column headers
             var columnNames = dataTable.Columns.Cast<DataColumn>().Select(column => $"\"{column.ColumnName}\"");
             csvBuilder.AppendLine(string.Join(",", columnNames));
 
             foreach (DataRow row in dataTable.Rows)
             {
-                var fields = row.ItemArray.Select(field =>
+                var fields = row.ItemArray.Select((field, index) =>
                 {
-                    // Check if the field is a DateTime
+                    // Get the DataColumn for the current index
+                    DataColumn column = dataTable.Columns[index];
+
+                    // Handle DateTime fields
                     if (field is DateTime dateTime)
                     {
-                        // Format the date as a string, e.g., "MM/dd/yyyy"
-                        return $"\"{dateTime.ToString("MM/dd/yyyy")}\"";
+                        return $"\"{dateTime:MM/dd/yyyy}\"";
                     }
+
+                    // Handle boolean fields (smoker column)
+                    if (field is bool booleanValue)
+                    {
+                        return $"\"{booleanValue.ToString()}\"";  // true/false
+                    }
+                    else if (field == DBNull.Value || field.ToString() == "")
+                    {
+                        // Handle DBNull or empty string for boolean columns
+                        if (column.DataType == typeof(bool))
+                        {
+                            return "\"false\"";  // Default to false for boolean columns
+                        }
+                        return "\"\"";  // For non-bool columns, empty string for DBNull
+                    }
+
+                    // For other fields, escape quotes correctly
                     return $"\"{field.ToString().Replace("\"", "\"\"")}\"";
                 });
 
                 csvBuilder.AppendLine(string.Join(",", fields));
             }
 
-            File.WriteAllText(filePath, csvBuilder.ToString());
+            try
+            {
+                File.WriteAllText(filePath, csvBuilder.ToString(), Encoding.UTF8);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error writing to CSV file: {ex.Message}", ex);
+            }
         }
 
-        public void ExportDataTableToExcel(DataTable dataTable, string filePath)
+
+        public void ExportDataTablesToExcel(Dictionary<string, DataTable> tables, string filePath)
         {
             OfficeOpenXml.ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
 
-            using (ExcelPackage excelPackage = new ExcelPackage())
+            try
             {
-                var worksheet = excelPackage.Workbook.Worksheets.Add("Patient Data");
-
-                // Load the DataTable into the worksheet, starting from cell A1
-                worksheet.Cells["A1"].LoadFromDataTable(dataTable, true);
-
-                // Format DateTime columns (example: assuming the date columns are known)
-                foreach (DataColumn column in dataTable.Columns)
+                using (ExcelPackage excelPackage = new ExcelPackage())
                 {
-                    if (column.DataType == typeof(DateTime))
+                    foreach (var tableEntry in tables)
                     {
-                        // Assuming dates start from the second row (first is the header)
-                        var startRow = 2;
-                        var endRow = dataTable.Rows.Count + 1; // +1 for header
-                        worksheet.Cells[startRow, column.Ordinal + 1, endRow, column.Ordinal + 1].Style.Numberformat.Format = "MM/dd/yyyy"; // or another desired format
+                        var sheetName = tableEntry.Key;
+                        var dataTable = tableEntry.Value;
+
+                        var worksheet = excelPackage.Workbook.Worksheets.Add(sheetName);
+                        worksheet.Cells["A1"].LoadFromDataTable(dataTable, true);
+
+                        foreach (DataColumn column in dataTable.Columns)
+                        {
+                            if (column.DataType == typeof(DateTime))
+                            {
+                                int startRow = 2;
+                                int endRow = dataTable.Rows.Count + 1;
+                                worksheet.Cells[startRow, column.Ordinal + 1, endRow, column.Ordinal + 1].Style.Numberformat.Format = "MM/dd/yyyy";
+                            }
+
+                            // Format boolean fields as true/false
+                            if (column.DataType == typeof(bool))
+                            {
+                                for (int row = 2; row <= dataTable.Rows.Count + 1; row++)
+                                {
+                                    var cell = worksheet.Cells[row, column.Ordinal + 1];
+                                    cell.Value = (bool)cell.Value ? "TRUE" : "FALSE"; // Use TRUE/FALSE as string in Excel
+                                }
+                            }
+                        }
+
+                        // Adjust column widths
+                        for (int i = 1; i <= dataTable.Columns.Count; i++)
+                        {
+                            worksheet.Column(i).AutoFit();
+                        }
                     }
-                }
 
-                // Optional: Adjust column widths
-                for (int i = 1; i <= dataTable.Columns.Count; i++)
-                {
-                    worksheet.Column(i).AutoFit();
+                    FileInfo file = new FileInfo(filePath);
+                    excelPackage.SaveAs(file);
                 }
-
-                // Save to file
-                FileInfo file = new FileInfo(filePath);
-                excelPackage.SaveAs(file);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error exporting data to Excel: {ex.Message}", ex);
             }
         }
+
 
         private void viewGenHealth_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -580,64 +614,72 @@ namespace Application_Desktop.Admin_Views
 
         private async void btnExportRecord_Click(object sender, EventArgs e)
         {
-            DataTable patientData = new DataTable();
+            DataTable patientData = null;
+            DataTable genHealthData = null;
+            DataTable dentHealthData = null;
 
             try
             {
                 // Loop through all rows in the DataGridView to check for selected checkboxes
                 foreach (DataGridViewRow row in viewPatientRecord.Rows)
                 {
-                    // Check if the checkbox is checked
                     DataGridViewCheckBoxCell checkBoxCell = (DataGridViewCheckBoxCell)row.Cells["SelectPatient"];
                     if (checkBoxCell != null && checkBoxCell.Value != null && (bool)checkBoxCell.Value)
                     {
-                        // Get the patient ID from the checked row
                         int patientId = Convert.ToInt32(row.Cells["id"].Value);
-                        DataTable tempData = await _patientRecordController.ExportToCsv(patientId);
 
-                        // If patientData is empty, initialize it with the structure of tempData
-                        if (patientData.Rows.Count == 0)
-                        {
-                            patientData = tempData.Clone(); // Clone the structure
-                        }
+                        // Fetch the data for patient, medical history, and dental history
+                        DataTable tempPatientData = await _patientRecordController.ExportPatientCsv(patientId);
+                        DataTable tempGenHealthData = await _patientRecordController.ExportGeneralHealthCsv(patientId);
+                        DataTable tempDentHealthData = await _patientRecordController.ExportDentalHealthCsv(patientId);
 
-                        // Import the rows from tempData into patientData
-                        foreach (DataRow dataRow in tempData.Rows)
-                        {
-                            patientData.ImportRow(dataRow);
-                        }
+                        // Initialize DataTables for each category if they are null
+                        if (patientData == null)
+                            patientData = tempPatientData.Clone();
+
+                        if (genHealthData == null)
+                            genHealthData = tempGenHealthData.Clone();
+
+                        if (dentHealthData == null)
+                            dentHealthData = tempDentHealthData.Clone();
+
+                        // Add data to respective DataTables
+                        if (tempPatientData.Rows.Count > 0)
+                            patientData.ImportRow(tempPatientData.Rows[0]);
+
+                        if (tempGenHealthData.Rows.Count > 0)
+                            genHealthData.ImportRow(tempGenHealthData.Rows[0]);
+
+                        if (tempDentHealthData.Rows.Count > 0)
+                            dentHealthData.ImportRow(tempDentHealthData.Rows[0]);
                     }
                 }
 
-                // Check if any rows have been added to patientData
-                if (patientData.Rows.Count == 0)
+                if (patientData == null || genHealthData == null || dentHealthData == null)
                 {
                     AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No Selected Data", "No data available to export.", Properties.Resources.information);
                     return;
                 }
 
-                // Open SaveFileDialog to let the user choose the file location and name
                 using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
-                    saveFileDialog.Filter = "CSV files (*.csv)|*.csv|Excel files (*.xlsx)|*.xlsx";
+                    saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
                     saveFileDialog.Title = "Save Exported Patient Data";
 
-                    // If the user selects a path and clicks "Save"
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
                         string selectedFilePath = saveFileDialog.FileName;
 
-                        // Check the file extension to determine whether to export as CSV or Excel
-                        if (Path.GetExtension(selectedFilePath).ToLower() == ".csv")
-                        {
-                            // Export to CSV
-                            ExportDataTableToCsv(patientData, selectedFilePath);
-                        }
-                        else if (Path.GetExtension(selectedFilePath).ToLower() == ".xlsx")
-                        {
-                            // Export to Excel
-                            ExportDataTableToExcel(patientData, selectedFilePath);
-                        }
+                        // Create a dictionary with sheet names and corresponding data tables
+                        var dataTables = new Dictionary<string, DataTable>
+                {
+                    { "Patient Data", patientData },
+                    { "Medical History", genHealthData },
+                    { "Dental History", dentHealthData }
+                };
+
+                        // Export to Excel
+                        ExportDataTablesToExcel(dataTables, selectedFilePath);
 
                         AlertBox(Color.LightGreen, Color.SeaGreen, "Export Complete", "Data exported successfully!", Properties.Resources.success);
                     }
