@@ -617,18 +617,21 @@ namespace Application_Desktop.Controller
         public async Task<ReceiptDetails> PrintReceiptDetails(int userId, int branchId, int categoriesId)
         {
             string query = @"SELECT 
-                        
-                        b.BranchName,
-                        u.name AS UserName,
-                        c.Title AS ServiceTitle,
-                        c.Price,
-                        a.status
-                    FROM appointments a
-                    INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
-                    INNER JOIN categories c ON a.selectServices = c.Categories_ID
-                    INNER JOIN users u ON a.user_id = u.id
-                    WHERE a.user_id = @userId AND a.selectedBranch = @branchId 
-                    AND a.selectServices = @categoriesId";
+                    b.BranchName,
+                    u.name AS UserName,
+                    c.Title AS ServiceTitle,
+                    c.Price,
+                    a.status
+                FROM appointments a
+                INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
+                INNER JOIN categories c ON a.selectServices = c.Categories_ID
+                INNER JOIN users u ON a.user_id = u.id
+                WHERE a.user_id = @userId 
+                    AND a.selectedBranch = @branchId 
+                    AND a.selectServices = @categoriesId
+                    AND a.status = 'completed'
+                ORDER BY COALESCE(a.reschedule_date, a.appointment_date) DESC
+                LIMIT 1;";
 
             try
             {
