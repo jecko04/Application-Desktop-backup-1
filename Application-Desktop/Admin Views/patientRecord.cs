@@ -57,7 +57,7 @@ namespace Application_Desktop.Admin_Views
             {
                 getBranchIdByUserId branchId = new getBranchIdByUserId();
                 BranchID adminId = await branchId.GetUserBranchId();
-                DataTable patientData = await _patientRecordController.SelectAllPatientRecord(adminId._id);
+                DataTable patientData = await _patientRecordController.SelectAllPatientRecord();
                 viewPatientRecord.DataSource = null;
                 viewPatientRecord.Rows.Clear();
                 viewPatientRecord.Columns.Clear();

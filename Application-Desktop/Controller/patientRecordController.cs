@@ -19,11 +19,10 @@ namespace Application_Desktop.Controller
             _patientRecordModel = new patientRecordModel();
         }
 
-        public async Task<DataTable> SelectAllPatientRecord(int admin)
+        public async Task<DataTable> SelectAllPatientRecord()
         {
             string selectPatients = @"SELECT `id`, `fullname`, `date_of_birth`, `age`, `gender`, `phone`, `email`, `address`, `emergency_contact`, `created_at`, `updated_at` 
-                              FROM `patients` 
-                              WHERE Branch_ID = @admin";
+                              FROM `patients`";
 
             try
             {
@@ -33,7 +32,7 @@ namespace Application_Desktop.Controller
 
                     using (MySqlCommand cmd = new MySqlCommand(selectPatients, conn))
                     {
-                        cmd.Parameters.AddWithValue("@admin", admin);
+                        //cmd.Parameters.AddWithValue("@admin", admin);
 
                         using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                         {

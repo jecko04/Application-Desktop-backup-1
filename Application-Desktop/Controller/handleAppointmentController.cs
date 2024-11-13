@@ -552,12 +552,14 @@ namespace Application_Desktop.Controller
         public async Task<bool> CheckAppointmentStatus(int userId, DateTime appointmentDate, string appointmentTime)
         {
             string query = @"
-                    SELECT a.status 
-                    FROM appointments a
-                    WHERE 
-                        a.user_id = @userId 
-                        AND a.appointment_date = @appointmentDate 
-                        AND a.appointment_time = @appointmentTime";
+                SELECT a.status 
+                FROM appointments a
+                WHERE a.user_id = @userId
+                  AND a.status = 'approved' -- Assumes 'approved' is the status for approved appointments
+                ORDER BY 
+                    IFNULL(a.reschedule_date, a.appointment_date) DESC, 
+                    IFNULL(a.reschedule_time, a.appointment_time) DESC
+                LIMIT 1;";
 
             try
             {
@@ -587,8 +589,17 @@ namespace Application_Desktop.Controller
 
         public async Task<bool> UpdateCheckInStatus(int userId, DateTime appointmentDate, string appointmentTime)
         {
-            string query = "UPDATE appointments SET check_in = 1 WHERE user_id = @userId AND appointment_date = @appointmentDate AND appointment_time = @appointmentTime"; // Corrected parameter name
-
+            string query = @"
+            UPDATE appointments 
+            SET check_in = 1 
+            WHERE user_id = @userId AND status = 'approved'
+              AND (IFNULL(reschedule_date, appointment_date), IFNULL(reschedule_time, appointment_time)) = (
+                  SELECT IFNULL(reschedule_date, appointment_date), IFNULL(reschedule_time, appointment_time) 
+                  FROM appointments 
+                  WHERE user_id = @userId AND status = 'approved'
+                  ORDER BY IFNULL(reschedule_date, appointment_date) DESC, IFNULL(reschedule_time, appointment_time) DESC 
+                  LIMIT 1
+              )";
             try
             {
                 using (MySqlConnection conn = databaseHelper.getConnection())
