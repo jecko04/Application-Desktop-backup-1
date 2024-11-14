@@ -625,6 +625,176 @@ namespace Application_Desktop.Controller
             }
         }
 
+        public async Task<Dictionary<string, object>> GetDentalPatientAppointment(int userId)
+        {
+            string query = @"
+                    SELECT 
+                        a.id, 
+                        a.user_id, 
+                        b.BranchName AS selectedBranch, 
+                        c.Title AS selectServices, 
+                        COALESCE(a.reschedule_date, a.appointment_date) AS appointment_date, 
+                        COALESCE(a.reschedule_time, a.appointment_time) AS appointment_time, 
+                        a.reschedule_date, 
+                        a.reschedule_time, 
+                        a.status, 
+                        a.qr_code,
+                        a.check_in
+                    FROM 
+                        appointments a
+                    JOIN 
+                        branch b ON a.selectedBranch = b.Branch_ID
+                    JOIN 
+                        categories c ON a.selectServices = c.Categories_ID
+                    WHERE 
+                        a.user_id = @userId 
+                        AND a.status = 'approved'
+                    ORDER BY 
+                        a.appointment_date DESC, 
+                        a.appointment_time DESC
+                    LIMIT 1;";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@userId", userId);
+
+                        using (MySqlDataReader reader = (MySqlDataReader) await cmd.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                return Enumerable.Range(0, reader.FieldCount)
+                                                 .ToDictionary(reader.GetName, reader.GetValue);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error on getting appointment data: {ex.Message}", ex);
+            }
+
+            return null;
+        }
+
+        public async Task<Dictionary<string, object>> SelectPatientRecord(int userId)
+        {
+            string query = @"
+                    SELECT id, user_id, fullname, date_of_birth, age, gender, phone, email, address, emergency_contact, 
+                           Branch_ID
+                    FROM patients
+                    WHERE user_id = @userId";
+
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    await conn.OpenAsync();
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@userId", userId);
+
+                        using (MySqlDataReader reader = (MySqlDataReader) await cmd.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                return Enumerable.Range(0, reader.FieldCount)
+                                                 .ToDictionary(reader.GetName, reader.GetValue);
+                            }
+                            return null;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error retrieving patient record: {ex.Message}", ex);
+            }
+        }
+
+        public async Task<Dictionary<string, object>> SelectPatientMedicalRecord(int patientId)
+        {
+            string query = @"SELECT mh.`patient_id`, p.`fullname`, mh.`medical_conditions`, mh.`current_medications`, mh.`allergies`, 
+                            mh.`past_surgeries`, mh.`family_medical_history`, mh.`blood_pressure`, mh.`heart_disease`, mh.`diabetes`, mh.`smoker` 
+                     FROM `medical_history` mh
+                     JOIN `patients` p ON mh.patient_id = p.id
+                     WHERE mh.patient_id = @patientId";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    await conn.OpenAsync();
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@patientId", patientId);
+
+                        using (MySqlDataReader reader = (MySqlDataReader) await cmd.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                return Enumerable.Range(0, reader.FieldCount)
+                                                 .ToDictionary(reader.GetName, reader.GetValue);
+                            }
+                            return null;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error retrieving patient medical record: {ex.Message}", ex);
+            }
+        }
+
+        public async Task<Dictionary<string, object>> SelectPatientDentalRecord(int patientId)
+        {
+            string query = @"SELECT dh.`patient_id`, p.`fullname`, dh.`past_dental_treatments`, dh.`frequent_tooth_pain`, dh.`gum_disease_history`, 
+                            dh.`teeth_grinding`, dh.`tooth_sensitivity`, dh.`orthodontic_treatment`, dh.`dental_implants`, dh.`bleeding_gums` 
+                     FROM `dental_history` dh
+                     JOIN `patients` p ON dh.patient_id = p.id
+                     WHERE dh.patient_id = @patientId";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    await conn.OpenAsync();
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@patientId", patientId);
+
+                        using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                return Enumerable.Range(0, reader.FieldCount)
+                                                 .ToDictionary(reader.GetName, reader.GetValue);
+                            }
+                            return null;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error retrieving patient dental record: {ex.Message}", ex);
+            }
+        }
+
+
         public async Task<ReceiptDetails> PrintReceiptDetails(int userId, int branchId, int categoriesId)
         {
             string query = @"SELECT 

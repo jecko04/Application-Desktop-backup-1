@@ -36,7 +36,7 @@ namespace Application_Desktop.Controller
                         cmd.Parameters.AddWithValue("@adminId", userId);
                         cmd.Parameters.AddWithValue("@email", email);
                         cmd.Parameters.AddWithValue("@otp", otp);
-                        cmd.Parameters.AddWithValue("@expirationTime", DateTime.Now.AddMinutes(3));
+                        cmd.Parameters.AddWithValue("@expirationTime", DateTime.Now.AddMinutes(30));
                         cmd.Parameters.AddWithValue("@isUsed", false);
 
                         DateTime now = DateTime.Now;
@@ -77,7 +77,7 @@ namespace Application_Desktop.Controller
                         cmd.Parameters.AddWithValue("@superadminId", superadminId);
                         cmd.Parameters.AddWithValue("@email", email);
                         cmd.Parameters.AddWithValue("@otp", otp);
-                        cmd.Parameters.AddWithValue("@expirationTime", DateTime.Now.AddMinutes(3));
+                        cmd.Parameters.AddWithValue("@expirationTime", DateTime.Now.AddMinutes(30));
                         cmd.Parameters.AddWithValue("@isUsed", false);
 
                         DateTime now = DateTime.Now;

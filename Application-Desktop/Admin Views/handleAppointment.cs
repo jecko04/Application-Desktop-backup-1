@@ -1039,46 +1039,61 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
+        //na edit
         private async void btnApprove_Click(object sender, EventArgs e)
         {
-            if (selectedAppointmentId > 0 || rescheduleAppointmentId > 0)
+            LoadingState.Visible = true;
+
+            try
             {
-                DialogResult dialogResult = MessageBox.Show(
-                    "Do you want to approve this dental appointment?",
-                    "Confirm Approval",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question
-                );
-
-                if (dialogResult == DialogResult.Yes)
+                if (selectedAppointmentId > 0 || rescheduleAppointmentId > 0)
                 {
-                    int userIdToApprove = selectedAppointmentId > 0 ? selectedUserId : rescheduleUserId;
-                    string email = await _handleAppointmentController.SelectEmail(userIdToApprove);
+                    DialogResult dialogResult = MessageBox.Show(
+                        "Do you want to approve this dental appointment?",
+                        "Confirm Approval",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
 
-                    if (!string.IsNullOrEmpty(email))
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        bool emailSent = selectedAppointmentId > 0
-                            ? await SendEmailNotification(email, selectedAppointmentId.ToString(), "approved")
-                            : await SendRescheduleApproved(email, rescheduleUserId.ToString(), "approved");
+                        int userIdToApprove = selectedAppointmentId > 0 ? selectedUserId : rescheduleUserId;
+                        string email = await _handleAppointmentController.SelectEmail(userIdToApprove);
 
-                        if (emailSent)
+                        if (!string.IsNullOrEmpty(email))
                         {
-                            await approved();
+                            bool emailSent = selectedAppointmentId > 0
+                                ? await SendEmailNotification(email, selectedAppointmentId.ToString(), "approved")
+                                : await SendRescheduleApproved(email, rescheduleUserId.ToString(), "approved");
+
+                            if (emailSent)
+                            {
+                                await approved();
+                            }
+                            else
+                            {
+                                AlertBox(Color.LightCoral, Color.Red, "Email Notification Failed", "Approval processed, but email notification failed.", Properties.Resources.error);
+                            }
                         }
                         else
                         {
-                            AlertBox(Color.LightCoral, Color.Red, "Email Notification Failed", "Approval processed, but email notification failed.", Properties.Resources.error);
+                            MessageBox.Show("User email not found. Cannot send notification.");
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show("User email not found. Cannot send notification.");
-                    }
+                }
+                else
+                {
+                    AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No Selected Appointment", "Select an appointment first to approve.", Properties.Resources.information);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                AlertBox(Color.LightSteelBlue, Color.DodgerBlue, "No Selected Appointment", "Select an appointment first to approve.", Properties.Resources.information);
+                AlertBox(Color.LightCoral, Color.Red, "Error", $"An error occurred: {ex.Message}", Properties.Resources.error);
+            }
+            finally
+            {
+                // Hide loading state after all operations are complete
+                LoadingState.Visible = false;
             }
         }
 
@@ -1656,6 +1671,84 @@ namespace Application_Desktop.Admin_Views
 
         bool isCollapsed = true;
 
+
+        private async Task<PatientData> GetPatientDataWithHistories(int userId)
+        {
+            var patientData = new PatientData();
+
+            // Step 1: Fetch patient record using user_id
+            var patientRecord = await _handleAppointmentController.SelectPatientRecord(userId);
+            if (patientRecord != null)
+            {
+                patientData.FullName = patientRecord["fullname"].ToString();
+                patientData.DateOfBirth = patientRecord["date_of_birth"].ToString();
+                patientData.Age = patientRecord["age"].ToString();
+                patientData.Gender = patientRecord["gender"].ToString();
+                patientData.Phone = patientRecord["phone"].ToString();
+                patientData.Email = patientRecord["email"].ToString();
+                patientData.Address = patientRecord["address"].ToString();
+                patientData.EmergencyContact = patientRecord["emergency_contact"].ToString();
+
+                // Retrieve patient_id from the fetched patient record
+                patientData.PatientId = int.Parse(patientRecord["id"].ToString());
+            }
+
+            // Step 2: Fetch medical history using patient_id
+            if (patientData.PatientId > 0)
+            {
+                var medicalHistory = await _handleAppointmentController.SelectPatientMedicalRecord(patientData.PatientId);
+                if (medicalHistory != null)
+                {
+                    patientData.MedicalConditions = medicalHistory["medical_conditions"].ToString();
+                    patientData.CurrentMedications = medicalHistory["current_medications"].ToString();
+                    patientData.Allergies = medicalHistory["allergies"].ToString();
+                    patientData.PastSurgeries = medicalHistory["past_surgeries"].ToString();
+                    patientData.FamilyMedicalHistory = medicalHistory["family_medical_history"].ToString();
+                    patientData.BloodPressure = medicalHistory["blood_pressure"].ToString();
+                    patientData.HeartDisease = bool.TryParse(medicalHistory["heart_disease"].ToString(), out bool heartDisease) ? heartDisease : false;
+                    patientData.Diabetes = bool.TryParse(medicalHistory["diabetes"].ToString(), out bool diabetes) ? diabetes : false;
+                    patientData.Smoker = bool.TryParse(medicalHistory["smoker"].ToString(), out bool smoker) ? smoker : false;
+                }
+            }
+
+            // Step 3: Fetch dental history using patient_id
+            if (patientData.PatientId > 0)
+            {
+                var dentalHistory = await _handleAppointmentController.SelectPatientDentalRecord(patientData.PatientId);
+                if (dentalHistory != null)
+                {
+                    patientData.PastDentalTreatments = dentalHistory["past_dental_treatments"].ToString();
+                    patientData.FrequentToothPain = bool.TryParse(dentalHistory["frequent_tooth_pain"].ToString(), out bool frequentToothPain) ? frequentToothPain : false;
+                    patientData.GumDiseaseHistory = bool.TryParse(dentalHistory["gum_disease_history"].ToString(), out bool gumDiseaseHistory) ? gumDiseaseHistory : false;
+                    patientData.TeethGrinding = bool.TryParse(dentalHistory["teeth_grinding"].ToString(), out bool teethGrinding) ? teethGrinding : false;
+                    patientData.OrthodonticTreatment = bool.TryParse(dentalHistory["orthodontic_treatment"].ToString(), out bool orthodonticTreatment) ? orthodonticTreatment : false;
+                    patientData.DentalImplants = bool.TryParse(dentalHistory["dental_implants"].ToString(), out bool dentalImplants) ? dentalImplants : false;
+                    patientData.BleedingGums = bool.TryParse(dentalHistory["bleeding_gums"].ToString(), out bool bleedingGums) ? bleedingGums : false;
+                    patientData.ToothSensitivity = dentalHistory["tooth_sensitivity"].ToString();
+                }
+            }
+
+            // Step 4: Fetch the latest approved appointment data with Branch and Services
+            var appointmentData = await _handleAppointmentController.GetDentalPatientAppointment(userId);
+            if (appointmentData != null)
+            {
+                patientData.AppointmentId = int.Parse(appointmentData["id"].ToString());
+                patientData.UserId = int.Parse(appointmentData["user_id"].ToString());
+                patientData.Qrcode = appointmentData["qr_code"].ToString();
+                patientData.Branch = appointmentData["selectedBranch"].ToString();
+                patientData.Services = appointmentData["selectServices"].ToString();
+                patientData.AppointmentDate = appointmentData["appointment_date"].ToString();
+                patientData.AppointmentTime = appointmentData["appointment_time"].ToString();
+                patientData.RescheduleDate = appointmentData["reschedule_date"]?.ToString();
+                patientData.RescheduleTime = appointmentData["reschedule_time"]?.ToString();
+                patientData.Status = appointmentData["status"].ToString();
+                patientData.Check_In = bool.TryParse(appointmentData["check_in"].ToString(), out bool check_in) ? check_in : false;
+            }
+
+            //MessageBox.Show(patientData.Qrcode);
+            return patientData;
+        }
+
         private async Task ConfirmCheckIn(string scannedValue)
         {
             LoadingState.Visible = true;
@@ -1683,6 +1776,10 @@ namespace Application_Desktop.Admin_Views
                     // Update the check_in status in the database
                     await _handleAppointmentController.UpdateCheckInStatus(AppointmentData.userId, AppointmentData.appointment_date, AppointmentData.appointment_time);
 
+
+                    //palitan at gawin if check_in == 1 already show the quickretrieval instead and if not update the check_in then show the form
+                    var patientData = await GetPatientDataWithHistories(AppointmentData.userId);
+
                     this.BeginInvoke((MethodInvoker)delegate
                     {
                         LoadingState.Visible = false;
@@ -1692,6 +1789,10 @@ namespace Application_Desktop.Admin_Views
 
 
                         AlertBox(Color.LightGreen, Color.SeaGreen, "Valid QRCode", "Check-in successful!", Properties.Resources.success);
+
+                        quickRetrievalData newForm = new quickRetrievalData();
+                        newForm.LoadPatientData(patientData);
+                        newForm.Show();
                     });
 
 
@@ -1725,6 +1826,7 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
+      
         private scanQRCode ScanQRCodeInstance;
 
         private bool IsScanning = false;
