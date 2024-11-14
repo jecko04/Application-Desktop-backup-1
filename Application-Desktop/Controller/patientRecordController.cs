@@ -368,8 +368,7 @@ namespace Application_Desktop.Controller
                               FROM `patients` 
                               WHERE (`fullname` LIKE CONCAT('%', @searchTerm, '%') 
                                      OR `phone` LIKE CONCAT('%', @searchTerm, '%') 
-                                     OR `email` LIKE CONCAT('%', @searchTerm, '%')) 
-                                     AND `Branch_ID` = @adminId";
+                                     OR `email` LIKE CONCAT('%', @searchTerm, '%'))";
 
             DataTable patientData = new DataTable();
             DataTable medicalData = new DataTable();

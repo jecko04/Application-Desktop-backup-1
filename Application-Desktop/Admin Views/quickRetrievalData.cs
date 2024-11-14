@@ -25,6 +25,8 @@ namespace Application_Desktop.Admin_Views
             InitializeComponent();
             _quickRetrievalDataController = new quickRetrievalDataController();
 
+            ApplyCustomFormatToDateTimePickers();
+
         }
 
         void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
@@ -42,6 +44,12 @@ namespace Application_Desktop.Admin_Views
         {
            
         }*/
+
+        private void ApplyCustomFormatToDateTimePickers()
+        {
+            dtpRescheduleTime.Format = DateTimePickerFormat.Custom;
+            dtpRescheduleTime.CustomFormat = "hh mm tt";
+        }
 
         public void LoadPatientData(PatientData patientData)
         {
@@ -220,6 +228,7 @@ namespace Application_Desktop.Admin_Views
                 if (!checkedIn)
                 {
                     btnCompleted.Enabled = true;
+                    btnCompleted.Text = "Complete";
                     AlertBox(Color.LightCoral, Color.Red, "Check-In Required", "This appointment is not checked in.", Properties.Resources.error);
                     return;
                 }
@@ -227,6 +236,7 @@ namespace Application_Desktop.Admin_Views
                 await _quickRetrievalDataController.Complete(status, PatientData.AppointmentId);
 
                 btnCompleted.Enabled = true;
+                btnCompleted.Text = "Complete";
                 AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Completed", "Appointment Change Status Successfully!", Properties.Resources.success);
             }
             catch (Exception ex)
@@ -242,7 +252,82 @@ namespace Application_Desktop.Admin_Views
 
         private async void btnCompleted_Click(object sender, EventArgs e)
         {
-            await Completed();
+            var confirmationResult = MessageBox.Show(
+                "Are you sure you want to complete this appointment?",
+                "Confirm Complete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (confirmationResult == DialogResult.Yes)
+            {
+                await Completed();
+            }
+            else
+            {
+                return;
+            }
+
+
+        }
+
+        private async Task Reschedule()
+        {
+            btnReschedule.Enabled = false;
+            btnReschedule.Text = "Updating...";
+
+            try
+            {
+                await Task.Delay(3000);
+
+                DateTime rescheduleDate = dtpRescheduleDate.Value;
+                DateTime rescheduleTime = dtpRescheduleTime.Value;
+                string reschedReason = txtRescheduleReason.Text;
+
+                if (string.IsNullOrEmpty(reschedReason))
+                {
+                    btnReschedule.Enabled = true;
+                    btnReschedule.Text = "Reschedule";
+                    AlertBox(Color.LightCoral, Color.Red, "Reschedule Reason Required", "reschedule failed.", Properties.Resources.error);
+                    return;
+                }
+
+                await _quickRetrievalDataController.Rescheduled(PatientData.UserId, rescheduleDate, rescheduleTime);
+                await _quickRetrievalDataController.RescheduleReason(PatientData.AppointmentId, PatientData.UserId, reschedReason);
+
+                btnReschedule.Enabled = true;
+                btnReschedule.Text = "Reschedule";
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Reschedule", "Appointment rescheduled successfully!", Properties.Resources.success);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error in updating resched {ex.Message}");
+            }
+            finally
+            {
+                btnReschedule.Enabled = true;
+                btnReschedule.Text = "Reschedule";
+            }
+        }
+
+        private async void btnReschedule_Click(object sender, EventArgs e)
+        {
+            var confirmationResult = MessageBox.Show(
+                "Are you sure you want to reschedule this appointment?",
+                "Confirm Reschedule",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (confirmationResult == DialogResult.Yes)
+            {
+                await Reschedule();
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

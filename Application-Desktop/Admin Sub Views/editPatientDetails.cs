@@ -51,7 +51,7 @@ namespace Application_Desktop.Admin_Sub_Views
                 getBranchIdByUserId branchId = new getBranchIdByUserId();
                 BranchID adminId = await branchId.GetUserBranchId();
 
-                var (patientData, genHealthData, dentHealthData) = await _editPatientController.EditPatient(patientid, adminId._id);
+                var (patientData, genHealthData, dentHealthData) = await _editPatientController.EditPatient(patientid);
 
                 if (patientData != null)
                 {
@@ -219,6 +219,42 @@ namespace Application_Desktop.Admin_Sub_Views
             {
                 await Update(patient);
                 AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The patient record updated successfully", Properties.Resources.success);
+            }
+        }
+        private Image selectedImage;
+        private string selectedImagePath;
+
+        private async void btnAddImages_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.tiff;*.bmp";
+
+                // Show the dialog and check if the user selected a file
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Load the image into the PictureBox
+                    XraysImage.Image = new Bitmap(openFileDialog.FileName);
+
+                    selectedImage = XraysImage.Image;
+                    selectedImagePath = openFileDialog.FileName;
+                }
+            }
+        }
+
+        private async void btnSaveImages_Click(object sender, EventArgs e)
+        {
+            if (selectedImage != null && !string.IsNullOrEmpty(selectedImagePath))
+            {
+                int patientId = this.id; 
+
+                await _editPatientController.InsertImage(selectedImage, patientId, selectedImagePath).ConfigureAwait(false);
+
+                MessageBox.Show("Image saved successfully.");
+            }
+            else
+            {
+                MessageBox.Show("No image selected.");
             }
         }
     }

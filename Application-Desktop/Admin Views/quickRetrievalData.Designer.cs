@@ -30,6 +30,7 @@
         {
             dentHealthTab = new TabControl();
             tabPage1 = new TabPage();
+            btnCompleted = new MaterialSkin.Controls.MaterialButton();
             ptQrcode = new PictureBox();
             materialLabel24 = new MaterialSkin.Controls.MaterialLabel();
             txtCheckin = new MaterialSkin.Controls.MaterialTextBox();
@@ -97,9 +98,14 @@
             materialLabel18 = new MaterialSkin.Controls.MaterialLabel();
             txtPastDent = new MaterialSkin.Controls.MaterialTextBox();
             tabPage2 = new TabPage();
+            txtRescheduleReason = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
+            btnReschedule = new MaterialSkin.Controls.MaterialButton();
+            materialLabel28 = new MaterialSkin.Controls.MaterialLabel();
+            dtpRescheduleTime = new DateTimePicker();
+            materialLabel27 = new MaterialSkin.Controls.MaterialLabel();
+            dtpRescheduleDate = new DateTimePicker();
             txtAddNotes = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
             btnSaveNotes = new MaterialSkin.Controls.MaterialButton();
-            btnCompleted = new MaterialSkin.Controls.MaterialButton();
             dentHealthTab.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ptQrcode).BeginInit();
@@ -122,15 +128,16 @@
             dentHealthTab.Location = new Point(-2, 27);
             dentHealthTab.Multiline = true;
             dentHealthTab.Name = "dentHealthTab";
-            dentHealthTab.Padding = new Point(30, 4);
+            dentHealthTab.Padding = new Point(27, 4);
             dentHealthTab.RightToLeft = RightToLeft.No;
             dentHealthTab.SelectedIndex = 0;
-            dentHealthTab.Size = new Size(1078, 657);
+            dentHealthTab.Size = new Size(1074, 657);
             dentHealthTab.TabIndex = 26;
             // 
             // tabPage1
             // 
             tabPage1.BackColor = Color.White;
+            tabPage1.Controls.Add(btnCompleted);
             tabPage1.Controls.Add(ptQrcode);
             tabPage1.Controls.Add(materialLabel24);
             tabPage1.Controls.Add(txtCheckin);
@@ -152,10 +159,32 @@
             tabPage1.Controls.Add(txtBranch);
             tabPage1.Location = new Point(4, 28);
             tabPage1.Name = "tabPage1";
-            tabPage1.Size = new Size(1070, 625);
+            tabPage1.Size = new Size(1066, 625);
             tabPage1.TabIndex = 3;
             tabPage1.Text = "Dental Appointment";
             tabPage1.Click += tabPage1_Click;
+            // 
+            // btnCompleted
+            // 
+            btnCompleted.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCompleted.AutoSize = false;
+            btnCompleted.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnCompleted.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnCompleted.Depth = 0;
+            btnCompleted.HighEmphasis = true;
+            btnCompleted.Icon = null;
+            btnCompleted.Location = new Point(828, 540);
+            btnCompleted.Margin = new Padding(4, 6, 4, 6);
+            btnCompleted.MouseState = MaterialSkin.MouseState.HOVER;
+            btnCompleted.Name = "btnCompleted";
+            btnCompleted.NoAccentTextColor = Color.Empty;
+            btnCompleted.Size = new Size(194, 40);
+            btnCompleted.TabIndex = 27;
+            btnCompleted.Text = "Complete";
+            btnCompleted.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnCompleted.UseAccentColor = false;
+            btnCompleted.UseVisualStyleBackColor = true;
+            btnCompleted.Click += btnCompleted_Click;
             // 
             // ptQrcode
             // 
@@ -472,7 +501,7 @@
             dentalPatientTab.Location = new Point(4, 28);
             dentalPatientTab.Name = "dentalPatientTab";
             dentalPatientTab.Padding = new Padding(3);
-            dentalPatientTab.Size = new Size(1070, 625);
+            dentalPatientTab.Size = new Size(1066, 625);
             dentalPatientTab.TabIndex = 0;
             dentalPatientTab.Text = "Dental Patient Details";
             // 
@@ -795,7 +824,7 @@
             genHealthTab.Location = new Point(4, 28);
             genHealthTab.Name = "genHealthTab";
             genHealthTab.Padding = new Padding(3);
-            genHealthTab.Size = new Size(1070, 625);
+            genHealthTab.Size = new Size(1066, 625);
             genHealthTab.TabIndex = 1;
             genHealthTab.Text = "General Health Information";
             // 
@@ -1054,7 +1083,7 @@
             tapPage3.Location = new Point(4, 28);
             tapPage3.Name = "tapPage3";
             tapPage3.Padding = new Padding(3);
-            tapPage3.Size = new Size(1070, 625);
+            tapPage3.Size = new Size(1066, 625);
             tapPage3.TabIndex = 2;
             tapPage3.Text = "Dental Health Information";
             // 
@@ -1190,7 +1219,7 @@
             materialLabel18.AutoSize = true;
             materialLabel18.Depth = 0;
             materialLabel18.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel18.Location = new Point(114, 39);
+            materialLabel18.Location = new Point(109, 36);
             materialLabel18.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel18.Name = "materialLabel18";
             materialLabel18.Size = new Size(161, 19);
@@ -1219,13 +1248,109 @@
             // tabPage2
             // 
             tabPage2.BackColor = Color.White;
+            tabPage2.Controls.Add(txtRescheduleReason);
+            tabPage2.Controls.Add(btnReschedule);
+            tabPage2.Controls.Add(materialLabel28);
+            tabPage2.Controls.Add(dtpRescheduleTime);
+            tabPage2.Controls.Add(materialLabel27);
+            tabPage2.Controls.Add(dtpRescheduleDate);
             tabPage2.Controls.Add(txtAddNotes);
             tabPage2.Controls.Add(btnSaveNotes);
             tabPage2.Location = new Point(4, 28);
             tabPage2.Name = "tabPage2";
-            tabPage2.Size = new Size(1070, 625);
+            tabPage2.Size = new Size(1066, 625);
             tabPage2.TabIndex = 4;
-            tabPage2.Text = "Add Notes";
+            tabPage2.Text = "Resched / Add Notes";
+            // 
+            // txtRescheduleReason
+            // 
+            txtRescheduleReason.AnimateReadOnly = false;
+            txtRescheduleReason.BackgroundImageLayout = ImageLayout.None;
+            txtRescheduleReason.CharacterCasing = CharacterCasing.Normal;
+            txtRescheduleReason.Depth = 0;
+            txtRescheduleReason.HideSelection = true;
+            txtRescheduleReason.Hint = "Add reason for reschedule";
+            txtRescheduleReason.Location = new Point(53, 93);
+            txtRescheduleReason.MaxLength = 32767;
+            txtRescheduleReason.MouseState = MaterialSkin.MouseState.OUT;
+            txtRescheduleReason.Name = "txtRescheduleReason";
+            txtRescheduleReason.PasswordChar = '\0';
+            txtRescheduleReason.ReadOnly = false;
+            txtRescheduleReason.ScrollBars = ScrollBars.None;
+            txtRescheduleReason.SelectedText = "";
+            txtRescheduleReason.SelectionLength = 0;
+            txtRescheduleReason.SelectionStart = 0;
+            txtRescheduleReason.ShortcutsEnabled = true;
+            txtRescheduleReason.Size = new Size(968, 183);
+            txtRescheduleReason.TabIndex = 160;
+            txtRescheduleReason.TabStop = false;
+            txtRescheduleReason.TextAlign = HorizontalAlignment.Left;
+            txtRescheduleReason.UseSystemPasswordChar = false;
+            // 
+            // btnReschedule
+            // 
+            btnReschedule.AutoSize = false;
+            btnReschedule.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnReschedule.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnReschedule.Depth = 0;
+            btnReschedule.HighEmphasis = true;
+            btnReschedule.Icon = null;
+            btnReschedule.Location = new Point(863, 285);
+            btnReschedule.Margin = new Padding(4, 6, 4, 6);
+            btnReschedule.MouseState = MaterialSkin.MouseState.HOVER;
+            btnReschedule.Name = "btnReschedule";
+            btnReschedule.NoAccentTextColor = Color.Empty;
+            btnReschedule.Size = new Size(158, 36);
+            btnReschedule.TabIndex = 159;
+            btnReschedule.Text = "Reschedule";
+            btnReschedule.TextAlign = ContentAlignment.MiddleRight;
+            btnReschedule.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnReschedule.UseAccentColor = false;
+            btnReschedule.UseVisualStyleBackColor = true;
+            btnReschedule.Click += btnReschedule_Click;
+            // 
+            // materialLabel28
+            // 
+            materialLabel28.AutoSize = true;
+            materialLabel28.Depth = 0;
+            materialLabel28.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel28.Location = new Point(260, 37);
+            materialLabel28.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel28.Name = "materialLabel28";
+            materialLabel28.Size = new Size(153, 19);
+            materialLabel28.TabIndex = 158;
+            materialLabel28.Text = "Select Available Time";
+            // 
+            // dtpRescheduleTime
+            // 
+            dtpRescheduleTime.Font = new Font("Tahoma", 12.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dtpRescheduleTime.Format = DateTimePickerFormat.Time;
+            dtpRescheduleTime.Location = new Point(260, 59);
+            dtpRescheduleTime.Name = "dtpRescheduleTime";
+            dtpRescheduleTime.ShowUpDown = true;
+            dtpRescheduleTime.Size = new Size(163, 28);
+            dtpRescheduleTime.TabIndex = 157;
+            // 
+            // materialLabel27
+            // 
+            materialLabel27.AutoSize = true;
+            materialLabel27.Depth = 0;
+            materialLabel27.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel27.Location = new Point(53, 37);
+            materialLabel27.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel27.Name = "materialLabel27";
+            materialLabel27.Size = new Size(150, 19);
+            materialLabel27.TabIndex = 156;
+            materialLabel27.Text = "Select Available Date";
+            // 
+            // dtpRescheduleDate
+            // 
+            dtpRescheduleDate.Font = new Font("Tahoma", 12.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dtpRescheduleDate.Format = DateTimePickerFormat.Short;
+            dtpRescheduleDate.Location = new Point(53, 59);
+            dtpRescheduleDate.Name = "dtpRescheduleDate";
+            dtpRescheduleDate.Size = new Size(163, 28);
+            dtpRescheduleDate.TabIndex = 6;
             // 
             // txtAddNotes
             // 
@@ -1235,7 +1360,7 @@
             txtAddNotes.Depth = 0;
             txtAddNotes.HideSelection = true;
             txtAddNotes.Hint = "Add notes here";
-            txtAddNotes.Location = new Point(47, 39);
+            txtAddNotes.Location = new Point(53, 359);
             txtAddNotes.MaxLength = 32767;
             txtAddNotes.MouseState = MaterialSkin.MouseState.OUT;
             txtAddNotes.Name = "txtAddNotes";
@@ -1246,7 +1371,7 @@
             txtAddNotes.SelectionLength = 0;
             txtAddNotes.SelectionStart = 0;
             txtAddNotes.ShortcutsEnabled = true;
-            txtAddNotes.Size = new Size(968, 323);
+            txtAddNotes.Size = new Size(968, 183);
             txtAddNotes.TabIndex = 1;
             txtAddNotes.TabStop = false;
             txtAddNotes.TextAlign = HorizontalAlignment.Left;
@@ -1260,7 +1385,7 @@
             btnSaveNotes.Depth = 0;
             btnSaveNotes.HighEmphasis = true;
             btnSaveNotes.Icon = null;
-            btnSaveNotes.Location = new Point(857, 371);
+            btnSaveNotes.Location = new Point(863, 551);
             btnSaveNotes.Margin = new Padding(4, 6, 4, 6);
             btnSaveNotes.MouseState = MaterialSkin.MouseState.HOVER;
             btnSaveNotes.Name = "btnSaveNotes";
@@ -1274,35 +1399,12 @@
             btnSaveNotes.UseVisualStyleBackColor = true;
             btnSaveNotes.Click += btnSaveNotes_Click;
             // 
-            // btnCompleted
-            // 
-            btnCompleted.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnCompleted.AutoSize = false;
-            btnCompleted.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnCompleted.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnCompleted.Depth = 0;
-            btnCompleted.HighEmphasis = true;
-            btnCompleted.Icon = null;
-            btnCompleted.Location = new Point(1079, 83);
-            btnCompleted.Margin = new Padding(4, 6, 4, 6);
-            btnCompleted.MouseState = MaterialSkin.MouseState.HOVER;
-            btnCompleted.Name = "btnCompleted";
-            btnCompleted.NoAccentTextColor = Color.Empty;
-            btnCompleted.Size = new Size(194, 40);
-            btnCompleted.TabIndex = 27;
-            btnCompleted.Text = "Complete";
-            btnCompleted.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnCompleted.UseAccentColor = false;
-            btnCompleted.UseVisualStyleBackColor = true;
-            btnCompleted.Click += btnCompleted_Click;
-            // 
             // quickRetrievalData
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(1280, 690);
-            Controls.Add(btnCompleted);
+            ClientSize = new Size(1078, 690);
             Controls.Add(dentHealthTab);
             FormStyle = FormStyles.ActionBar_None;
             Name = "quickRetrievalData";
@@ -1321,6 +1423,7 @@
             tapPage3.ResumeLayout(false);
             tapPage3.PerformLayout();
             tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1398,5 +1501,11 @@
         private MaterialSkin.Controls.MaterialMultiLineTextBox2 txtAddNotes;
         private MaterialSkin.Controls.MaterialButton btnSaveNotes;
         private MaterialSkin.Controls.MaterialTextBox txtDOB;
+        private DateTimePicker dtpRescheduleDate;
+        private MaterialSkin.Controls.MaterialLabel materialLabel27;
+        private DateTimePicker dtpRescheduleTime;
+        private MaterialSkin.Controls.MaterialLabel materialLabel28;
+        private MaterialSkin.Controls.MaterialMultiLineTextBox2 txtRescheduleReason;
+        private MaterialSkin.Controls.MaterialButton btnReschedule;
     }
 }

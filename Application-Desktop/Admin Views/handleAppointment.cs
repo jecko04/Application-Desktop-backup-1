@@ -28,9 +28,12 @@ namespace Application_Desktop.Admin_Views
     public partial class handleAppointment : Form
     {
         private handleAppointmentController _handleAppointmentController;
+        public PatientData PatientData { get; set; }
+
         public handleAppointment()
         {
             InitializeComponent();
+            PatientData = new PatientData();
             _handleAppointmentController = new handleAppointmentController();
 
             viewApprovedAppointment.CellFormatting += viewApprovedAppointment_CellFormatting;
@@ -1671,7 +1674,6 @@ namespace Application_Desktop.Admin_Views
 
         bool isCollapsed = true;
 
-
         private async Task<PatientData> GetPatientDataWithHistories(int userId)
         {
             var patientData = new PatientData();
@@ -1768,47 +1770,43 @@ namespace Application_Desktop.Admin_Views
                     return;
                 }
 
-                // Check if the appointment is approved
-                var isApproved = await _handleAppointmentController.CheckAppointmentStatus(AppointmentData.userId, AppointmentData.appointment_date, AppointmentData.appointment_time);
+                bool isCheckedIn = await _handleAppointmentController.IsCheckedIn(PatientData.AppointmentId);
 
-                if (isApproved)
+                if (isCheckedIn)
                 {
-                    // Update the check_in status in the database
-                    await _handleAppointmentController.UpdateCheckInStatus(AppointmentData.userId, AppointmentData.appointment_date, AppointmentData.appointment_time);
-
-
-                    //palitan at gawin if check_in == 1 already show the quickretrieval instead and if not update the check_in then show the form
-                    var patientData = await GetPatientDataWithHistories(AppointmentData.userId);
-
-                    this.BeginInvoke((MethodInvoker)delegate
-                    {
-                        LoadingState.Visible = false;
-                        lvlScanQRC.Visible = false;
-                        lblScanning.Visible = false;
-                        btnQRCode.Text = "Start Scanning";
-
-
-                        AlertBox(Color.LightGreen, Color.SeaGreen, "Valid QRCode", "Check-in successful!", Properties.Resources.success);
-
-                        quickRetrievalData newForm = new quickRetrievalData();
-                        newForm.LoadPatientData(patientData);
-                        newForm.Show();
-                    });
-
-
+                    await HandleCheckedIn(AppointmentData.userId);
                 }
                 else
                 {
-                    this.BeginInvoke((MethodInvoker)delegate
-                    {
-                        lblScanning.Visible = false;
-                        lvlScanQRC.Visible = false;
-                        LoadingState.Visible = false;
-                        btnQRCode.Text = "Start Scanning";
+                    var isApproved = await _handleAppointmentController.CheckAppointmentStatus(AppointmentData.userId, AppointmentData.appointment_date, AppointmentData.appointment_time);
 
-                        AlertBox(Color.LightCoral, Color.Red, "Not Valid QRCode", "Appointment is not approved or does not exist.", Properties.Resources.error);
-                    });
+                    if (isApproved)
+                    {
+                        // Update the check_in status in the database
+                        await _handleAppointmentController.UpdateCheckInStatus(AppointmentData.userId, AppointmentData.appointment_date, AppointmentData.appointment_time);
+
+
+                        //palitan at gawin if check_in == 1 already show the quickretrieval instead and if not update the check_in then show the form
+                        await HandleCheckedIn(AppointmentData.userId);
+
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Valid QRCode", "Check-in successful!", Properties.Resources.success);
+
+
+                    }
+                    else
+                    {
+                        this.BeginInvoke((MethodInvoker)delegate
+                        {
+                            lblScanning.Visible = false;
+                            lvlScanQRC.Visible = false;
+                            LoadingState.Visible = false;
+                            btnQRCode.Text = "Start Scanning";
+
+                            AlertBox(Color.LightCoral, Color.Red, "Not Valid QRCode", "Appointment is not approved or does not exist.", Properties.Resources.error);
+                        });
+                    }
                 }
+                
             }
             catch (Exception ex)
             {
@@ -1826,7 +1824,24 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
-      
+        private async Task HandleCheckedIn(int userId)
+        {
+            var patientData = await GetPatientDataWithHistories(userId);
+
+            this.BeginInvoke((MethodInvoker)delegate
+            {
+                LoadingState.Visible = false;
+                lvlScanQRC.Visible = false;
+                lblScanning.Visible = false;
+                btnQRCode.Text = "Start Scanning";
+
+                quickRetrievalData newForm = new quickRetrievalData();
+                newForm.LoadPatientData(patientData);
+                newForm.Show();
+            });
+        }
+
+
         private scanQRCode ScanQRCodeInstance;
 
         private bool IsScanning = false;

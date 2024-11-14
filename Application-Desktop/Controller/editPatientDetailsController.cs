@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Security.Cryptography.X509Certificates;
+using System.Reflection.Metadata;
 
 namespace Application_Desktop.Controller
 {
@@ -20,11 +22,11 @@ namespace Application_Desktop.Controller
             _editPatientModel = new editPatientDetailsModel();
         }
 
-        public async Task<(EditPatientData, EditGenHealth, EditDentHealth)> EditPatient(int patientid, int admin)
+        public async Task<(EditPatientData, EditGenHealth, EditDentHealth)> EditPatient(int patientid)
         {
             string selectPatients = @"SELECT `id`, `fullname`, `date_of_birth`, `age`, `gender`, `phone`, `email`, `address`, `emergency_contact`
                               FROM `patients` 
-                              WHERE `id` = @patientid AND Branch_ID = @admin";
+                              WHERE `id` = @patientid";
             string selectGenHealth = @"SELECT `patient_id`, `medical_conditions`, `current_medications`, `allergies`, `past_surgeries`, `family_medical_history`, `blood_pressure`, `heart_disease`, `diabetes`, `smoker` 
                                FROM `medical_history` 
                                WHERE `patient_id` = @patientid";
@@ -50,7 +52,7 @@ namespace Application_Desktop.Controller
                     using (MySqlCommand patientCmd = new MySqlCommand(selectPatients, conn))
                     {
                         patientCmd.Parameters.AddWithValue("@patientid", patientid);
-                        patientCmd.Parameters.AddWithValue("@admin", admin);
+                        //patientCmd.Parameters.AddWithValue("@admin", admin);
                         using (MySqlDataReader reader = (MySqlDataReader)await patientCmd.ExecuteReaderAsync())
                         {
                             if (await reader.ReadAsync())
@@ -248,6 +250,48 @@ namespace Application_Desktop.Controller
                 {
                     throw new Exception($"Error updating dental record: {ex.Message}", ex);
                 }
+            }
+
+            
+        }
+
+        private byte[] ConvertImageToByteArray(Image image)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                image.Save(ms, image.RawFormat); 
+                return ms.ToArray();  
+            }
+        }
+
+        public async Task InsertImage(Image image, int patientId, string imageFilePath)
+        {
+            byte[] imageData = ConvertImageToByteArray(image);
+
+            string query = @"INSERT INTO patient_images (patient_id, xray_data, xray_typefile, created_at, updated_at) 
+                            VALUES (@patientId, @xrayData, @xrayTypefile, @createdAt, @updatedAt)";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@patientId", patientId);
+                        cmd.Parameters.AddWithValue("@xrayData", imageData);
+                        cmd.Parameters.AddWithValue("@xrayTypefile", Path.GetExtension(imageFilePath));
+
+                        DateTime now = DateTime.Now;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error Inserting xray images {ex.Message}");
             }
         }
     }

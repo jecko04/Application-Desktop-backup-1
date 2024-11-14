@@ -85,6 +85,7 @@
             btnClose = new PictureBox();
             errorProvider1 = new ErrorProvider(components);
             btnSaveRecord = new MaterialSkin.Controls.MaterialButton();
+            tabPage1 = new TabPage();
             dentHealthTab.SuspendLayout();
             dentalPatientTab.SuspendLayout();
             genHealthTab.SuspendLayout();
@@ -98,6 +99,7 @@
             dentHealthTab.Controls.Add(dentalPatientTab);
             dentHealthTab.Controls.Add(genHealthTab);
             dentHealthTab.Controls.Add(tapPage3);
+            dentHealthTab.Controls.Add(tabPage1);
             dentHealthTab.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dentHealthTab.ItemSize = new Size(87, 24);
             dentHealthTab.Location = new Point(3, 5);
@@ -948,6 +950,15 @@
             btnSaveRecord.UseVisualStyleBackColor = true;
             btnSaveRecord.Click += btnSaveRecord_Click;
             // 
+            // tabPage1
+            // 
+            tabPage1.Location = new Point(4, 28);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Size = new Size(968, 387);
+            tabPage1.TabIndex = 3;
+            tabPage1.Text = "X-rays";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
             // patientDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1037,5 +1048,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel19;
         private MaterialSkin.Controls.MaterialLabel materialLabel18;
         private MaterialSkin.Controls.MaterialTextBox txtPastDent;
+        private TabPage tabPage1;
     }
 }

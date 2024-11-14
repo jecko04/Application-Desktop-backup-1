@@ -148,5 +148,82 @@ namespace Application_Desktop.Controller
                 throw new Exception($"Error updating to approve : {ex.Message}");
             }
         }
+
+        public async Task RescheduleReason(int appointmentId, int userId, string reason)
+        {
+            string query = @"INSERT INTO reschedule_reasons (appointment_id, user_id, reason, created_at, updated_at)
+                            VALUES (@appointmentId, @userId, @reason, @createdAt, @updatedAt)";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@appointmentId", appointmentId);
+                        cmd.Parameters.AddWithValue("@userId", userId);
+                        cmd.Parameters.AddWithValue("@reason", reason);
+
+                        DateTime now = DateTime.Now;
+                        cmd.Parameters.AddWithValue("@createdAt", now);
+                        cmd.Parameters.AddWithValue("@updatedAt", now);
+                        
+                        await cmd.ExecuteNonQueryAsync();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error adding reason for reschedule {ex.Message}");
+            }
+        }
+
+        public async Task Rescheduled(int userId, DateTime rescheduleDate, DateTime rescheduleTime)
+        {
+            string query = @"
+                    UPDATE appointments
+                    SET reschedule_date = @rescheduleDate, reschedule_time = @rescheduleTime, updated_at = @updatedAt
+                    WHERE id = (
+                        SELECT id
+                        FROM appointments
+                        WHERE user_id = @userId
+                        ORDER BY created_at DESC, updated_at DESC
+                        LIMIT 1
+                    )
+                    AND user_id = @userId AND status = 'approved'";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        //cmd.Parameters.AddWithValue("@appointmentId", appointmentId);
+                        cmd.Parameters.AddWithValue("@userId", userId);
+                        cmd.Parameters.AddWithValue("@rescheduleDate", rescheduleDate);
+                        cmd.Parameters.AddWithValue("@rescheduleTime", rescheduleTime);
+
+                        DateTime now = DateTime.Now;
+                        cmd.Parameters.AddWithValue("@updatedAt", now);
+
+                        await cmd.ExecuteNonQueryAsync();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error on rescheduling {ex.Message}");
+            }
+        }
     }
 }

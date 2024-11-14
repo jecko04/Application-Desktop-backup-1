@@ -82,14 +82,21 @@
             txtPastSurg = new MaterialSkin.Controls.MaterialTextBox();
             txtFamilyMed = new MaterialSkin.Controls.MaterialTextBox();
             materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
+            tabPage1 = new TabPage();
+            XraysImage = new PictureBox();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            btnAddImages = new MaterialSkin.Controls.MaterialButton();
             elipseControl1 = new ElipseToolDemo.ElipseControl();
             btnClose = new PictureBox();
             btnSaveRecord = new MaterialSkin.Controls.MaterialButton();
+            btnSaveImages = new MaterialSkin.Controls.MaterialButton();
             tapPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             dentalPatientTab.SuspendLayout();
             dentHealthTab.SuspendLayout();
             genHealthTab.SuspendLayout();
+            tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)XraysImage).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
             SuspendLayout();
             // 
@@ -623,6 +630,7 @@
             dentHealthTab.Controls.Add(dentalPatientTab);
             dentHealthTab.Controls.Add(genHealthTab);
             dentHealthTab.Controls.Add(tapPage3);
+            dentHealthTab.Controls.Add(tabPage1);
             dentHealthTab.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dentHealthTab.ItemSize = new Size(87, 24);
             dentHealthTab.Location = new Point(3, 5);
@@ -906,6 +914,56 @@
             materialLabel13.TabIndex = 165;
             materialLabel13.Text = "Past Surgeries / Operation";
             // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(btnSaveImages);
+            tabPage1.Controls.Add(XraysImage);
+            tabPage1.Controls.Add(flowLayoutPanel1);
+            tabPage1.Controls.Add(btnAddImages);
+            tabPage1.Location = new Point(4, 28);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Size = new Size(971, 379);
+            tabPage1.TabIndex = 3;
+            tabPage1.Text = "X-rays";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // XraysImage
+            // 
+            XraysImage.Location = new Point(724, 3);
+            XraysImage.Name = "XraysImage";
+            XraysImage.Size = new Size(241, 203);
+            XraysImage.SizeMode = PictureBoxSizeMode.Zoom;
+            XraysImage.TabIndex = 5;
+            XraysImage.TabStop = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Location = new Point(5, 3);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(713, 373);
+            flowLayoutPanel1.TabIndex = 4;
+            // 
+            // btnAddImages
+            // 
+            btnAddImages.AutoSize = false;
+            btnAddImages.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAddImages.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAddImages.Depth = 0;
+            btnAddImages.HighEmphasis = true;
+            btnAddImages.Icon = null;
+            btnAddImages.Location = new Point(725, 215);
+            btnAddImages.Margin = new Padding(4, 6, 4, 6);
+            btnAddImages.MouseState = MaterialSkin.MouseState.HOVER;
+            btnAddImages.Name = "btnAddImages";
+            btnAddImages.NoAccentTextColor = Color.Empty;
+            btnAddImages.Size = new Size(121, 36);
+            btnAddImages.TabIndex = 3;
+            btnAddImages.Text = "Add Images";
+            btnAddImages.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnAddImages.UseAccentColor = false;
+            btnAddImages.UseVisualStyleBackColor = true;
+            btnAddImages.Click += btnAddImages_Click;
+            // 
             // elipseControl1
             // 
             elipseControl1.CornerRadius = 15;
@@ -945,6 +1003,27 @@
             btnSaveRecord.UseVisualStyleBackColor = true;
             btnSaveRecord.Click += btnSaveRecord_Click;
             // 
+            // btnSaveImages
+            // 
+            btnSaveImages.AutoSize = false;
+            btnSaveImages.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnSaveImages.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnSaveImages.Depth = 0;
+            btnSaveImages.HighEmphasis = true;
+            btnSaveImages.Icon = null;
+            btnSaveImages.Location = new Point(854, 215);
+            btnSaveImages.Margin = new Padding(4, 6, 4, 6);
+            btnSaveImages.MouseState = MaterialSkin.MouseState.HOVER;
+            btnSaveImages.Name = "btnSaveImages";
+            btnSaveImages.NoAccentTextColor = Color.Empty;
+            btnSaveImages.Size = new Size(110, 36);
+            btnSaveImages.TabIndex = 6;
+            btnSaveImages.Text = "Save";
+            btnSaveImages.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
+            btnSaveImages.UseAccentColor = false;
+            btnSaveImages.UseVisualStyleBackColor = true;
+            btnSaveImages.Click += btnSaveImages_Click;
+            // 
             // editPatientDetails
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -967,6 +1046,8 @@
             dentHealthTab.ResumeLayout(false);
             genHealthTab.ResumeLayout(false);
             genHealthTab.PerformLayout();
+            tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)XraysImage).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).EndInit();
             ResumeLayout(false);
         }
@@ -1027,5 +1108,10 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel18;
         private MaterialSkin.Controls.MaterialTextBox txtPastDent;
         private MaterialSkin.Controls.MaterialButton btnSaveRecord;
+        private TabPage tabPage1;
+        private PictureBox XraysImage;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private MaterialSkin.Controls.MaterialButton btnAddImages;
+        private MaterialSkin.Controls.MaterialButton btnSaveImages;
     }
 }

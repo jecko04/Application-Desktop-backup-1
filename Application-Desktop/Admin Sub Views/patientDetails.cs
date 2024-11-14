@@ -218,5 +218,10 @@ namespace Application_Desktop.Admin_Sub_Views
         {
 
         }
+
+        private void btnAddImages_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
