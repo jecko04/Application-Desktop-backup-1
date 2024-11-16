@@ -255,7 +255,7 @@ namespace Application_Desktop.Controller
             
         }
 
-        private byte[] ConvertImageToByteArray(Image image)
+       /* private byte[] ConvertImageToByteArray(Image image)
         {
             using (MemoryStream ms = new MemoryStream())
             {
@@ -286,6 +286,9 @@ namespace Application_Desktop.Controller
                         cmd.Parameters.AddWithValue("@xrayTypefile", Path.GetExtension(imageFilePath));
 
                         DateTime now = DateTime.Now;
+                        cmd.Parameters.AddWithValue("@createdAt", now);
+                        cmd.Parameters.AddWithValue("@updatedAt", now);
+
                     }
                 }
             }
@@ -293,6 +296,6 @@ namespace Application_Desktop.Controller
             {
                 throw new Exception($"Error Inserting xray images {ex.Message}");
             }
-        }
+        }*/
     }
 }

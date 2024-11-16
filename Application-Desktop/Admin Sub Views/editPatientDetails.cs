@@ -221,10 +221,12 @@ namespace Application_Desktop.Admin_Sub_Views
                 AlertBox(Color.LightGreen, Color.SeaGreen, "Success", "The patient record updated successfully", Properties.Resources.success);
             }
         }
-        private Image selectedImage;
-        private string selectedImagePath;
 
-        private async void btnAddImages_Click(object sender, EventArgs e)
+
+        /*private Image selectedImage;
+        private string selectedImagePath;*/
+
+        /*private async void btnAddImages_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -246,7 +248,7 @@ namespace Application_Desktop.Admin_Sub_Views
         {
             if (selectedImage != null && !string.IsNullOrEmpty(selectedImagePath))
             {
-                int patientId = this.id; 
+                int patientId = this.id;
 
                 await _editPatientController.InsertImage(selectedImage, patientId, selectedImagePath).ConfigureAwait(false);
 
@@ -256,6 +258,6 @@ namespace Application_Desktop.Admin_Sub_Views
             {
                 MessageBox.Show("No image selected.");
             }
-        }
+        }*/
     }
 }

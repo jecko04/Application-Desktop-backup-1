@@ -22,6 +22,9 @@ using System.Runtime.InteropServices;
 using Application_Desktop.Admin_Sub_Views;
 using Org.BouncyCastle.Asn1.Cmp;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Org.BouncyCastle.Utilities.IO;
+using QRCoder;
+using System.Management;
 
 namespace Application_Desktop.Admin_Views
 {
@@ -42,6 +45,8 @@ namespace Application_Desktop.Admin_Views
             viewMissedAppointment.CellFormatting += viewMissedAppointment_CellFormatting;
             viewCancelledAppointment.CellFormatting += viewCancelledAppointment_CellFormatting;
             viewCompletedAppointment.CellFormatting += viewCompletedAppointment_CellFormatting;
+
+            
 
         }
         void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
@@ -152,26 +157,48 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
-        private async Task LoadApproved()
+        public async Task LoadApproved()
         {
             try
             {
-                getBranchIdByUserId branchId = new getBranchIdByUserId();
-                BranchID adminId = await branchId.GetUserBranchId();
+                // Fetch approved appointments
                 DataTable approved = await _handleAppointmentController.ApprovedAppointment();
+
+                // Clear the DataGridView
                 viewApprovedAppointment.DataSource = null;
                 viewApprovedAppointment.Rows.Clear();
-                viewApprovedAppointment.Columns.Clear();
 
-                viewApprovedAppointment.AutoGenerateColumns = false;
-                AddColumnApproved(viewApprovedAppointment);
+                // Add columns if they don't exist
+                if (viewApprovedAppointment.Columns.Count == 0)
+                {
+                    AddColumnApproved(viewApprovedAppointment);
+                }
 
-                viewApprovedAppointment.DataSource = approved;
+                // Populate DataGridView with rows
+                foreach (DataRow row in approved.Rows)
+                {
+                    string qrData = row["qr_code"].ToString(); // Ensure column name matches your database
+                    Bitmap qrCodeImage = GenerateQrCode(qrData);
 
+                    viewApprovedAppointment.Rows.Add(
+                        qrCodeImage,
+                        row["id"],
+                        row["user_id"],
+                        row["UserName"],
+                        row["BranchName"],
+                        row["ServiceTitle"],
+                        row["appointment_date"],
+                        row["appointment_time"],
+                        row["reschedule_date"],
+                        row["reschedule_time"],
+                        row["status"],
+                        row["check_in"]
+                    );
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to load patient records: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Failed to load approved appointments: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -244,6 +271,17 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
+        private Bitmap GenerateQrCode(string qrData)
+        {
+            using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
+            {
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(qrData, QRCodeGenerator.ECCLevel.Q);
+                using (QRCode qrCode = new QRCode(qrCodeData))
+                {
+                    return qrCode.GetGraphic(20); // 20 = pixels per module
+                }
+            }
+        }
 
         private void AddColumnInqueue(DataGridView Inqueue)
         {
@@ -459,6 +497,20 @@ namespace Application_Desktop.Admin_Views
         {
             approved.RowHeadersVisible = false;
             approved.ColumnHeadersHeight = 40;
+            approved.RowTemplate.Height = 150;
+
+
+            if (!approved.Columns.Contains("qrCode"))
+            {
+                DataGridViewImageColumn qrCodeColumn = new DataGridViewImageColumn
+                {
+                    HeaderText = "QR Code",
+                    Name = "qrCode",
+                    Width = 150,
+                    ImageLayout = DataGridViewImageCellLayout.Zoom 
+                };
+                approved.Columns.Add(qrCodeColumn);
+            }
 
             DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn
             {
@@ -515,6 +567,10 @@ namespace Application_Desktop.Admin_Views
                 Name = "appointmentDate",
                 DataPropertyName = "appointment_date",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Format = "MM/dd/yyyy" 
+                }
 
             };
             approved.Columns.Add(appointment_date);
@@ -535,6 +591,10 @@ namespace Application_Desktop.Admin_Views
                 Name = "rescheduleDate",
                 DataPropertyName = "reschedule_date",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Format = "MM/dd/yyyy"
+                }
 
             };
             approved.Columns.Add(reschedule_date);
@@ -1674,7 +1734,7 @@ namespace Application_Desktop.Admin_Views
 
         bool isCollapsed = true;
 
-        private async Task<PatientData> GetPatientDataWithHistories(int userId)
+        public async Task<PatientData> GetPatientDataWithHistories(int userId)
         {
             var patientData = new PatientData();
 
@@ -1737,8 +1797,10 @@ namespace Application_Desktop.Admin_Views
                 patientData.AppointmentId = int.Parse(appointmentData["id"].ToString());
                 patientData.UserId = int.Parse(appointmentData["user_id"].ToString());
                 patientData.Qrcode = appointmentData["qr_code"].ToString();
-                patientData.Branch = appointmentData["selectedBranch"].ToString();
-                patientData.Services = appointmentData["selectServices"].ToString();
+                patientData.SelectedBranch = int.Parse(appointmentData["selectedBranch"].ToString());
+                patientData.SelectServices = int.Parse(appointmentData["selectServices"].ToString());
+                patientData.Branch = appointmentData["BranchName"].ToString();
+                patientData.Services = appointmentData["Services"].ToString();
                 patientData.AppointmentDate = appointmentData["appointment_date"].ToString();
                 patientData.AppointmentTime = appointmentData["appointment_time"].ToString();
                 patientData.RescheduleDate = appointmentData["reschedule_date"]?.ToString();
@@ -1783,7 +1845,7 @@ namespace Application_Desktop.Admin_Views
                     if (isApproved)
                     {
                         // Update the check_in status in the database
-                        await _handleAppointmentController.UpdateCheckInStatus(AppointmentData.userId, AppointmentData.appointment_date, AppointmentData.appointment_time);
+                        //await _handleAppointmentController.UpdateCheckInStatus(AppointmentData.userId, AppointmentData.appointment_date, AppointmentData.appointment_time);
 
 
                         //palitan at gawin if check_in == 1 already show the quickretrieval instead and if not update the check_in then show the form
@@ -1826,19 +1888,33 @@ namespace Application_Desktop.Admin_Views
 
         private async Task HandleCheckedIn(int userId)
         {
-            var patientData = await GetPatientDataWithHistories(userId);
-
-            this.BeginInvoke((MethodInvoker)delegate
+            try
             {
-                LoadingState.Visible = false;
-                lvlScanQRC.Visible = false;
-                lblScanning.Visible = false;
-                btnQRCode.Text = "Start Scanning";
+                var patientData = await GetPatientDataWithHistories(userId);
 
-                quickRetrievalData newForm = new quickRetrievalData();
-                newForm.LoadPatientData(patientData);
-                newForm.Show();
-            });
+                this.BeginInvoke((MethodInvoker)delegate
+                {
+                    try
+                    {
+                        LoadingState.Visible = false;
+                        lvlScanQRC.Visible = false;
+                        lblScanning.Visible = false;
+                        btnQRCode.Text = "Start Scanning";
+
+                        quickRetrievalData newForm = new quickRetrievalData();
+                        newForm.LoadPatientData(patientData);
+                        newForm.Show();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error updating UI: {ex.Message}");
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error retrieving patient data: {ex.Message}");
+            }
         }
 
 

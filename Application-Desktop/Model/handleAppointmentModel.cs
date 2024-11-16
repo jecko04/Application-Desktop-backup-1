@@ -68,6 +68,8 @@ namespace Application_Desktop.Model
         public int AppointmentId { get; set; }
         public int UserId { get; set; }
         public string Qrcode { get; set; }
+        public int SelectedBranch { get; set; }
+        public int SelectServices { get; set; }
         public string Branch { get; set; }
         public string Services { get; set; }
         public string AppointmentDate { get; set; }

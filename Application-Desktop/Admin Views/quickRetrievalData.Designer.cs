@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(quickRetrievalData));
             dentHealthTab = new TabControl();
             tabPage1 = new TabPage();
+            btnRefresh = new MaterialSkin.Controls.MaterialButton();
+            btnCheckedIn = new MaterialSkin.Controls.MaterialButton();
             btnCompleted = new MaterialSkin.Controls.MaterialButton();
             ptQrcode = new PictureBox();
             materialLabel24 = new MaterialSkin.Controls.MaterialLabel();
@@ -98,6 +101,8 @@
             materialLabel18 = new MaterialSkin.Controls.MaterialLabel();
             txtPastDent = new MaterialSkin.Controls.MaterialTextBox();
             tabPage2 = new TabPage();
+            materialLabel29 = new MaterialSkin.Controls.MaterialLabel();
+            cmbServices = new MaterialSkin.Controls.MaterialComboBox();
             txtRescheduleReason = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
             btnReschedule = new MaterialSkin.Controls.MaterialButton();
             materialLabel28 = new MaterialSkin.Controls.MaterialLabel();
@@ -137,6 +142,8 @@
             // tabPage1
             // 
             tabPage1.BackColor = Color.White;
+            tabPage1.Controls.Add(btnRefresh);
+            tabPage1.Controls.Add(btnCheckedIn);
             tabPage1.Controls.Add(btnCompleted);
             tabPage1.Controls.Add(ptQrcode);
             tabPage1.Controls.Add(materialLabel24);
@@ -163,6 +170,49 @@
             tabPage1.TabIndex = 3;
             tabPage1.Text = "Dental Appointment";
             tabPage1.Click += tabPage1_Click;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnRefresh.AutoSize = false;
+            btnRefresh.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnRefresh.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnRefresh.Depth = 0;
+            btnRefresh.HighEmphasis = true;
+            btnRefresh.Icon = (Image)resources.GetObject("btnRefresh.Icon");
+            btnRefresh.Location = new Point(55, 540);
+            btnRefresh.Margin = new Padding(4, 6, 4, 6);
+            btnRefresh.MouseState = MaterialSkin.MouseState.HOVER;
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.NoAccentTextColor = Color.Empty;
+            btnRefresh.Size = new Size(42, 40);
+            btnRefresh.TabIndex = 155;
+            btnRefresh.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnRefresh.UseAccentColor = false;
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
+            // btnCheckedIn
+            // 
+            btnCheckedIn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCheckedIn.AutoSize = false;
+            btnCheckedIn.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnCheckedIn.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnCheckedIn.Depth = 0;
+            btnCheckedIn.HighEmphasis = true;
+            btnCheckedIn.Icon = null;
+            btnCheckedIn.Location = new Point(626, 540);
+            btnCheckedIn.Margin = new Padding(4, 6, 4, 6);
+            btnCheckedIn.MouseState = MaterialSkin.MouseState.HOVER;
+            btnCheckedIn.Name = "btnCheckedIn";
+            btnCheckedIn.NoAccentTextColor = Color.Empty;
+            btnCheckedIn.Size = new Size(194, 40);
+            btnCheckedIn.TabIndex = 154;
+            btnCheckedIn.Text = "Checked-In";
+            btnCheckedIn.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnCheckedIn.UseAccentColor = false;
+            btnCheckedIn.UseVisualStyleBackColor = true;
+            btnCheckedIn.Click += btnCheckedIn_Click;
             // 
             // btnCompleted
             // 
@@ -1248,6 +1298,8 @@
             // tabPage2
             // 
             tabPage2.BackColor = Color.White;
+            tabPage2.Controls.Add(materialLabel29);
+            tabPage2.Controls.Add(cmbServices);
             tabPage2.Controls.Add(txtRescheduleReason);
             tabPage2.Controls.Add(btnReschedule);
             tabPage2.Controls.Add(materialLabel28);
@@ -1261,6 +1313,41 @@
             tabPage2.Size = new Size(1066, 625);
             tabPage2.TabIndex = 4;
             tabPage2.Text = "Resched / Add Notes";
+            // 
+            // materialLabel29
+            // 
+            materialLabel29.AutoSize = true;
+            materialLabel29.Depth = 0;
+            materialLabel29.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel29.Location = new Point(474, 30);
+            materialLabel29.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel29.Name = "materialLabel29";
+            materialLabel29.Size = new Size(142, 19);
+            materialLabel29.TabIndex = 162;
+            materialLabel29.Text = "Select New Services";
+            // 
+            // cmbServices
+            // 
+            cmbServices.AutoResize = false;
+            cmbServices.BackColor = Color.FromArgb(255, 255, 255);
+            cmbServices.Depth = 0;
+            cmbServices.DrawMode = DrawMode.OwnerDrawVariable;
+            cmbServices.DropDownHeight = 118;
+            cmbServices.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbServices.DropDownWidth = 121;
+            cmbServices.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            cmbServices.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            cmbServices.FormattingEnabled = true;
+            cmbServices.IntegralHeight = false;
+            cmbServices.ItemHeight = 29;
+            cmbServices.Location = new Point(474, 52);
+            cmbServices.MaxDropDownItems = 4;
+            cmbServices.MouseState = MaterialSkin.MouseState.OUT;
+            cmbServices.Name = "cmbServices";
+            cmbServices.Size = new Size(284, 35);
+            cmbServices.StartIndex = 0;
+            cmbServices.TabIndex = 161;
+            cmbServices.UseTallSize = false;
             // 
             // txtRescheduleReason
             // 
@@ -1507,5 +1594,9 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel28;
         private MaterialSkin.Controls.MaterialMultiLineTextBox2 txtRescheduleReason;
         private MaterialSkin.Controls.MaterialButton btnReschedule;
+        private MaterialSkin.Controls.MaterialButton btnCheckedIn;
+        private MaterialSkin.Controls.MaterialButton btnRefresh;
+        private MaterialSkin.Controls.MaterialLabel materialLabel29;
+        private MaterialSkin.Controls.MaterialComboBox cmbServices;
     }
 }

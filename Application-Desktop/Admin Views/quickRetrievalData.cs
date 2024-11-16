@@ -19,11 +19,13 @@ namespace Application_Desktop.Admin_Views
     public partial class quickRetrievalData : MaterialForm
     {
         quickRetrievalDataController _quickRetrievalDataController;
+        handleAppointment _handleAppointment;
         public PatientData PatientData { get; set; }
         public quickRetrievalData()
         {
             InitializeComponent();
             _quickRetrievalDataController = new quickRetrievalDataController();
+            _handleAppointment = new handleAppointment();
 
             ApplyCustomFormatToDateTimePickers();
 
@@ -169,11 +171,14 @@ namespace Application_Desktop.Admin_Views
 
         private async void quickRetrievalData_Load(object sender, EventArgs e)
         {
-            /*PatientData patientData = new PatientData();
-
-            GenerateQRCode(patientData);*/
-
             txtAddNotes.Text = await _quickRetrievalDataController.SelectNotes(PatientData.UserId);
+            var services = await _quickRetrievalDataController.SelectPopulateServices(PatientData.SelectedBranch);
+
+            cmbServices.DataSource = services;
+            cmbServices.DisplayMember = "Title";
+            cmbServices.ValueMember = "Categories_ID";
+            cmbServices.SelectedValue = PatientData.SelectServices;
+
         }
 
 
@@ -283,6 +288,7 @@ namespace Application_Desktop.Admin_Views
                 DateTime rescheduleDate = dtpRescheduleDate.Value;
                 DateTime rescheduleTime = dtpRescheduleTime.Value;
                 string reschedReason = txtRescheduleReason.Text;
+                int services = (int)cmbServices.SelectedValue;
 
                 if (string.IsNullOrEmpty(reschedReason))
                 {
@@ -292,7 +298,7 @@ namespace Application_Desktop.Admin_Views
                     return;
                 }
 
-                await _quickRetrievalDataController.Rescheduled(PatientData.UserId, rescheduleDate, rescheduleTime);
+                await _quickRetrievalDataController.Rescheduled(PatientData.UserId, services, rescheduleDate, rescheduleTime);
                 await _quickRetrievalDataController.RescheduleReason(PatientData.AppointmentId, PatientData.UserId, reschedReason);
 
                 btnReschedule.Enabled = true;
@@ -329,5 +335,115 @@ namespace Application_Desktop.Admin_Views
                 return;
             }
         }
+
+        public async Task CheckedIn()
+        {
+            btnCheckedIn.Enabled = false;
+            btnCheckedIn.Text = "Updating...";
+
+            try
+            {
+                await Task.Delay(3000);
+
+                await _quickRetrievalDataController.UpdateCheckInStatus(PatientData.UserId, PatientData.AppointmentId);
+
+                btnCheckedIn.Enabled = true;
+                btnCheckedIn.Text = "Checked-In";
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Checked-In", "Appointment checked-in successfully!", Properties.Resources.success);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error in updating resched {ex.Message}");
+            }
+            finally
+            {
+                btnCheckedIn.Enabled = true;
+                btnCheckedIn.Text = "Checked-In";
+            }
+        }
+
+        private async void btnCheckedIn_Click(object sender, EventArgs e)
+        {
+            await CheckedIn();
+        }
+
+        private async void btnRefresh_Click(object sender, EventArgs e)
+        {
+            if (PatientData != null)
+            {
+                txtAddNotes.Clear();
+                ClearPatientData();
+
+                PatientData = await _handleAppointment.GetPatientDataWithHistories(PatientData.UserId);
+
+
+                LoadPatientData(PatientData);
+
+                try
+                {
+                    string notes = await _quickRetrievalDataController.SelectNotes(PatientData.UserId);
+                    txtAddNotes.Text = notes ?? "";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error retrieving notes: {ex.Message}");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Patient data is not available.");
+            }
+        }
+
+        public void ClearPatientData()
+        {
+            // Clear all text fields
+            txtFullnames.Clear();
+            txtDOB.Clear();
+            txtAge.Clear();
+            txtGender.Clear();
+            txtContact.Clear();
+            txtEmail.Clear();
+            txtAddress.Clear();
+            txtEmergFullname.Clear();
+            txtEmergContact.Clear();
+            txtMedCondition.Clear();
+            txtCurrentMed.Clear();
+            txtAllergies.Clear();
+            txtPastSurg.Clear();
+            txtFamilyMed.Clear();
+            txtBloodPres.Clear();
+            txtPastDent.Clear();
+            txtToothSensitivity.Clear();
+            txtAppointmentId.Clear();
+            txtBranch.Clear();
+            txtServices.Clear();
+            txtAppointmentDate.Clear();
+            txtAppointmentTime.Clear();
+            txtRescheduleDate.Clear();
+            txtRescheduleTime.Clear();
+            txtStatus.Clear();
+            txtCheckin.Clear();
+
+            // Clear Checkboxes
+            chkDiabetes.Checked = false;
+            chkHeartDisease.Checked = false;
+            chkSmoker.Checked = false;
+            chkToothPain.Checked = false;
+            chkGumDisease.Checked = false;
+            chkBleedGum.Checked = false;
+            chkOrtho.Checked = false;
+            chkTeethGrin.Checked = false;
+            chkDentImp.Checked = false;
+
+            // Clear PictureBox (if applicable)
+            if (ptQrcode != null)
+            {
+                ptQrcode.Image = null;
+            }
+        }
+
     }
 }

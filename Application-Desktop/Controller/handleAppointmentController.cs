@@ -144,6 +144,7 @@ namespace Application_Desktop.Controller
                             a.reschedule_date,
                             a.reschedule_time,
                             a.status,
+                            a.qr_code,
                             a.check_in
                         FROM appointments a
                         INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
@@ -630,9 +631,11 @@ namespace Application_Desktop.Controller
             string query = @"
                     SELECT 
                         a.id, 
-                        a.user_id, 
-                        b.BranchName AS selectedBranch, 
-                        c.Title AS selectServices, 
+                        a.user_id,
+                        a.selectedBranch,
+                        a.selectServices,
+                        b.BranchName AS BranchName, 
+                        c.Title AS Services, 
                         COALESCE(a.reschedule_date, a.appointment_date) AS appointment_date, 
                         COALESCE(a.reschedule_time, a.appointment_time) AS appointment_time, 
                         a.reschedule_date, 

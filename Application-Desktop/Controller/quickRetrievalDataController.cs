@@ -183,11 +183,11 @@ namespace Application_Desktop.Controller
             }
         }
 
-        public async Task Rescheduled(int userId, DateTime rescheduleDate, DateTime rescheduleTime)
+        public async Task Rescheduled(int userId, int services, DateTime rescheduleDate, DateTime rescheduleTime)
         {
             string query = @"
                     UPDATE appointments
-                    SET reschedule_date = @rescheduleDate, reschedule_time = @rescheduleTime, updated_at = @updatedAt
+                    SET selectServices = @services, reschedule_date = @rescheduleDate, reschedule_time = @rescheduleTime, check_in = 0, updated_at = @updatedAt
                     WHERE id = (
                         SELECT id
                         FROM appointments
@@ -209,6 +209,7 @@ namespace Application_Desktop.Controller
                     {
                         //cmd.Parameters.AddWithValue("@appointmentId", appointmentId);
                         cmd.Parameters.AddWithValue("@userId", userId);
+                        cmd.Parameters.AddWithValue("@services", services);
                         cmd.Parameters.AddWithValue("@rescheduleDate", rescheduleDate);
                         cmd.Parameters.AddWithValue("@rescheduleTime", rescheduleTime);
 
@@ -224,6 +225,97 @@ namespace Application_Desktop.Controller
             {
                 throw new Exception($"Error on rescheduling {ex.Message}");
             }
+        }
+
+        public async Task<bool> UpdateCheckInStatus(int userId, int appointmentId)
+        {
+            string query = @"
+            UPDATE appointments 
+                SET check_in = 1 
+                WHERE user_id = @userId 
+                    AND id = @appointmentId 
+                    AND status = 'approved'
+                    AND (IFNULL(reschedule_date, appointment_date), IFNULL(reschedule_time, appointment_time)) = (
+                        SELECT IFNULL(reschedule_date, appointment_date), IFNULL(reschedule_time, appointment_time) 
+                        FROM appointments 
+                        WHERE user_id = @userId 
+                          AND id = @appointmentId 
+                          AND status = 'approved'
+                        ORDER BY IFNULL(reschedule_date, appointment_date) DESC, IFNULL(reschedule_time, appointment_time) DESC 
+                        LIMIT 1
+                    )";
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@userId", userId);
+                        cmd.Parameters.AddWithValue("@appointmentId", appointmentId);
+                       /*cmd.Parameters.AddWithValue("@appointmentDate", appointmentDate);
+                        cmd.Parameters.AddWithValue("@appointmentTime", appointmentTime);*/
+                        int affectedRows = await cmd.ExecuteNonQueryAsync();
+                        return affectedRows > 0; // Indicates whether an update was made
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error updating check-in status: {ex.Message}");
+            }
+        }
+
+        public class Service
+        {
+            public int Categories_ID { get; set; }
+            public string Title { get; set; }
+        }
+
+
+        public async Task<List<Service>> SelectPopulateServices(int selectedBranch)
+        {
+            string query = @"SELECT Categories_ID, Title FROM categories WHERE Branch_ID = @selectedBranch";
+            List<Service> services = new List<Service>();
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@selectedBranch", selectedBranch);
+
+                        using (MySqlDataReader reader = (MySqlDataReader) await cmd.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                var service = new Service
+                                {
+                                    Categories_ID = reader.GetInt32("Categories_ID"),
+                                    Title = reader.GetString("Title")
+                                };
+                                services.Add(service);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error populating services: {ex.Message}");
+            }
+
+            return services;
         }
     }
 }
