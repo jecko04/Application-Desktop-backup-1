@@ -152,7 +152,10 @@ namespace Application_Desktop.Controller
         public async Task RescheduleReason(int appointmentId, int userId, string reason)
         {
             string query = @"INSERT INTO reschedule_reasons (appointment_id, user_id, reason, created_at, updated_at)
-                            VALUES (@appointmentId, @userId, @reason, @createdAt, @updatedAt)";
+                     VALUES (@appointmentId, @userId, @reason, @createdAt, @updatedAt)
+                     ON DUPLICATE KEY UPDATE 
+                         reason = VALUES(reason),
+                         updated_at = VALUES(updated_at)";
 
             try
             {

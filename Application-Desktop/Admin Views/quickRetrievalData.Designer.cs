@@ -111,6 +111,8 @@
             dtpRescheduleDate = new DateTimePicker();
             txtAddNotes = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
             btnSaveNotes = new MaterialSkin.Controls.MaterialButton();
+            materialLabel30 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel31 = new MaterialSkin.Controls.MaterialLabel();
             dentHealthTab.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ptQrcode).BeginInit();
@@ -1298,6 +1300,8 @@
             // tabPage2
             // 
             tabPage2.BackColor = Color.White;
+            tabPage2.Controls.Add(materialLabel31);
+            tabPage2.Controls.Add(materialLabel30);
             tabPage2.Controls.Add(materialLabel29);
             tabPage2.Controls.Add(cmbServices);
             tabPage2.Controls.Add(txtRescheduleReason);
@@ -1313,13 +1317,14 @@
             tabPage2.Size = new Size(1066, 625);
             tabPage2.TabIndex = 4;
             tabPage2.Text = "Resched / Add Notes";
+            tabPage2.Click += tabPage2_Click;
             // 
             // materialLabel29
             // 
             materialLabel29.AutoSize = true;
             materialLabel29.Depth = 0;
             materialLabel29.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel29.Location = new Point(474, 30);
+            materialLabel29.Location = new Point(53, 219);
             materialLabel29.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel29.Name = "materialLabel29";
             materialLabel29.Size = new Size(142, 19);
@@ -1340,11 +1345,11 @@
             cmbServices.FormattingEnabled = true;
             cmbServices.IntegralHeight = false;
             cmbServices.ItemHeight = 29;
-            cmbServices.Location = new Point(474, 52);
+            cmbServices.Location = new Point(53, 241);
             cmbServices.MaxDropDownItems = 4;
             cmbServices.MouseState = MaterialSkin.MouseState.OUT;
             cmbServices.Name = "cmbServices";
-            cmbServices.Size = new Size(284, 35);
+            cmbServices.Size = new Size(163, 35);
             cmbServices.StartIndex = 0;
             cmbServices.TabIndex = 161;
             cmbServices.UseTallSize = false;
@@ -1357,8 +1362,8 @@
             txtRescheduleReason.Depth = 0;
             txtRescheduleReason.HideSelection = true;
             txtRescheduleReason.Hint = "Add reason for reschedule";
-            txtRescheduleReason.Location = new Point(53, 93);
-            txtRescheduleReason.MaxLength = 32767;
+            txtRescheduleReason.Location = new Point(239, 93);
+            txtRescheduleReason.MaxLength = 255;
             txtRescheduleReason.MouseState = MaterialSkin.MouseState.OUT;
             txtRescheduleReason.Name = "txtRescheduleReason";
             txtRescheduleReason.PasswordChar = '\0';
@@ -1368,7 +1373,7 @@
             txtRescheduleReason.SelectionLength = 0;
             txtRescheduleReason.SelectionStart = 0;
             txtRescheduleReason.ShortcutsEnabled = true;
-            txtRescheduleReason.Size = new Size(968, 183);
+            txtRescheduleReason.Size = new Size(782, 183);
             txtRescheduleReason.TabIndex = 160;
             txtRescheduleReason.TabStop = false;
             txtRescheduleReason.TextAlign = HorizontalAlignment.Left;
@@ -1401,7 +1406,7 @@
             materialLabel28.AutoSize = true;
             materialLabel28.Depth = 0;
             materialLabel28.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel28.Location = new Point(260, 37);
+            materialLabel28.Location = new Point(53, 155);
             materialLabel28.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel28.Name = "materialLabel28";
             materialLabel28.Size = new Size(153, 19);
@@ -1412,7 +1417,7 @@
             // 
             dtpRescheduleTime.Font = new Font("Tahoma", 12.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpRescheduleTime.Format = DateTimePickerFormat.Time;
-            dtpRescheduleTime.Location = new Point(260, 59);
+            dtpRescheduleTime.Location = new Point(53, 177);
             dtpRescheduleTime.Name = "dtpRescheduleTime";
             dtpRescheduleTime.ShowUpDown = true;
             dtpRescheduleTime.Size = new Size(163, 28);
@@ -1423,7 +1428,7 @@
             materialLabel27.AutoSize = true;
             materialLabel27.Depth = 0;
             materialLabel27.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel27.Location = new Point(53, 37);
+            materialLabel27.Location = new Point(53, 93);
             materialLabel27.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel27.Name = "materialLabel27";
             materialLabel27.Size = new Size(150, 19);
@@ -1434,7 +1439,7 @@
             // 
             dtpRescheduleDate.Font = new Font("Tahoma", 12.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpRescheduleDate.Format = DateTimePickerFormat.Short;
-            dtpRescheduleDate.Location = new Point(53, 59);
+            dtpRescheduleDate.Location = new Point(53, 115);
             dtpRescheduleDate.Name = "dtpRescheduleDate";
             dtpRescheduleDate.Size = new Size(163, 28);
             dtpRescheduleDate.TabIndex = 6;
@@ -1448,7 +1453,7 @@
             txtAddNotes.HideSelection = true;
             txtAddNotes.Hint = "Add notes here";
             txtAddNotes.Location = new Point(53, 359);
-            txtAddNotes.MaxLength = 32767;
+            txtAddNotes.MaxLength = 255;
             txtAddNotes.MouseState = MaterialSkin.MouseState.OUT;
             txtAddNotes.Name = "txtAddNotes";
             txtAddNotes.PasswordChar = '\0';
@@ -1485,6 +1490,31 @@
             btnSaveNotes.UseAccentColor = false;
             btnSaveNotes.UseVisualStyleBackColor = true;
             btnSaveNotes.Click += btnSaveNotes_Click;
+            // 
+            // materialLabel30
+            // 
+            materialLabel30.AutoSize = true;
+            materialLabel30.Depth = 0;
+            materialLabel30.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel30.Location = new Point(53, 337);
+            materialLabel30.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel30.Name = "materialLabel30";
+            materialLabel30.Size = new Size(157, 19);
+            materialLabel30.TabIndex = 163;
+            materialLabel30.Text = "Give Notes to Patients";
+            materialLabel30.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // materialLabel31
+            // 
+            materialLabel31.AutoSize = true;
+            materialLabel31.Depth = 0;
+            materialLabel31.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel31.Location = new Point(53, 57);
+            materialLabel31.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel31.Name = "materialLabel31";
+            materialLabel31.Size = new Size(136, 19);
+            materialLabel31.TabIndex = 164;
+            materialLabel31.Text = "Reschedule Patient";
             // 
             // quickRetrievalData
             // 
@@ -1598,5 +1628,7 @@
         private MaterialSkin.Controls.MaterialButton btnRefresh;
         private MaterialSkin.Controls.MaterialLabel materialLabel29;
         private MaterialSkin.Controls.MaterialComboBox cmbServices;
+        private MaterialSkin.Controls.MaterialLabel materialLabel30;
+        private MaterialSkin.Controls.MaterialLabel materialLabel31;
     }
 }

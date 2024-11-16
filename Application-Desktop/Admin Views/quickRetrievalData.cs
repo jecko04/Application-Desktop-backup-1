@@ -445,5 +445,9 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
