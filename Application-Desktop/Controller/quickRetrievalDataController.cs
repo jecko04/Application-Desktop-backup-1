@@ -186,11 +186,11 @@ namespace Application_Desktop.Controller
             }
         }
 
-        public async Task Rescheduled(int userId, int services, DateTime rescheduleDate, DateTime rescheduleTime)
+        public async Task Rescheduled(int userId, int services, DateTime rescheduleDate, DateTime rescheduleTime, string qrCode)
         {
             string query = @"
                     UPDATE appointments
-                    SET selectServices = @services, reschedule_date = @rescheduleDate, reschedule_time = @rescheduleTime, check_in = 0, updated_at = @updatedAt
+                    SET selectServices = @services, reschedule_date = @rescheduleDate, reschedule_time = @rescheduleTime, qr_code = @qrCode, check_in = 0, updated_at = @updatedAt
                     WHERE id = (
                         SELECT id
                         FROM appointments
@@ -215,6 +215,8 @@ namespace Application_Desktop.Controller
                         cmd.Parameters.AddWithValue("@services", services);
                         cmd.Parameters.AddWithValue("@rescheduleDate", rescheduleDate);
                         cmd.Parameters.AddWithValue("@rescheduleTime", rescheduleTime);
+                        cmd.Parameters.AddWithValue("@qrCode", qrCode);
+
 
                         DateTime now = DateTime.Now;
                         cmd.Parameters.AddWithValue("@updatedAt", now);

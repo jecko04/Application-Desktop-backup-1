@@ -3,6 +3,7 @@ using Application_Desktop.Model;
 using Application_Desktop.Screen;
 using Google.Protobuf.WellKnownTypes;
 using MaterialSkin.Controls;
+using Newtonsoft.Json;
 using QRCoder;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OfficeOpenXml.Packaging.Ionic.Zlib;
 
 namespace Application_Desktop.Admin_Views
 {
@@ -276,6 +280,94 @@ namespace Application_Desktop.Admin_Views
 
         }
 
+
+        public class AppointmentQRCodeData
+        {
+            public int UserId { get; set; }
+            public string BranchName { get; set; }
+            public string Services { get; set; }
+            public string AppointmentDate { get; set; }
+            public string AppointmentTime { get; set; }
+            public string RescheduleDate { get; set; }
+            public string RescheduleTime { get; set; }
+        }
+
+        private async Task<bool> SendEmailNotification(string userEmail, string appointmentId, DateTime rescheduleDate, DateTime rescheduleTime)
+        {
+            string fromEmail = "smtc.dentalcare@gmail.com";
+            string appPassword = "pskv swrc tyqh hldz"; // Use the App Password here
+
+
+            // Create a new MailMessage object
+            MailMessage mail = new MailMessage(fromEmail, userEmail);
+            mail.Subject = $"Update on Your Appointment Status";
+            mail.IsBodyHtml = true;
+
+            mail.Body = $@"<html>
+        <body style=""font-family: Arial, sans-serif; color: #333; line-height: 1.6;"">
+            <div style=""max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px;"">
+                <h2 style=""color: #2c3e50; text-align: center;"">Appointment Follow-Up Schedule Update</h2>
+                <p>Dear Valued Patient,</p>
+
+                <p>
+                    We would like to inform you that your follow-up appointment with Appointment ID 
+                    <strong>{appointmentId}</strong> has been rescheduled to the following time:
+                </p>
+
+                <p>
+                    <strong>Rescheduled Date:</strong> {rescheduleDate.ToString("MM/dd/yyyy")}<br />
+                    <strong>Rescheduled Time:</strong> {rescheduleTime.ToString("h:mm tt")} <br />
+                </p>
+
+                <p>
+                    We hope this new schedule is more convenient for you. Please make sure to mark your calendar.
+                </p>
+
+                <p style=""text-align: center; font-style: italic; color: #7f8c8d;"">
+                    ""Your smile is our top priority!""
+                </p>
+
+                <hr style=""border: 1px solid #ddd;"">
+
+                <footer style=""text-align: center;"">
+                    <p style=""color: #2980b9; font-size: 16px; margin: 0;"">Ynares, DMJ Bldg, A. Mabini St, Rodriguez, Rizal</p>
+                    <p style=""color: #2980b9; font-size: 16px; margin: 0;"">0933 821 2439</p>
+                    <p style=""color: #2980b9; font-size: 16px; margin: 10px 0;"">P4JR+4J4, L.M.Santos St, Rosario, Rodriguez, 1860 Rizal</p>
+                    <p style=""color: #2980b9; font-size: 16px; margin: 0;"">0933 821 2439</p>
+                </footer>
+
+                <p style=""text-align: center; color: #7f8c8d; font-size: 14px; margin-top: 20px;"">
+                    Thank you for choosing our dental care. We are always here to assist you!
+                </p>
+            </div>
+        </body>
+      </html>";
+
+            // Set up the SMTP client
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential(fromEmail, appPassword),
+                EnableSsl = true
+            };
+
+
+
+            try
+            {
+                await smtpClient.SendMailAsync(mail);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                this.BeginInvoke((MethodInvoker)delegate
+                {
+                    AlertBox(Color.LightCoral, Color.Red, "Failed to Send Email", "Unable to send notification.", Properties.Resources.error);
+
+                });
+                return false;
+            }
+        }
         private async Task Reschedule()
         {
             btnReschedule.Enabled = false;
@@ -290,6 +382,7 @@ namespace Application_Desktop.Admin_Views
                 string reschedReason = txtRescheduleReason.Text;
                 int services = (int)cmbServices.SelectedValue;
 
+
                 if (string.IsNullOrEmpty(reschedReason))
                 {
                     btnReschedule.Enabled = true;
@@ -298,12 +391,38 @@ namespace Application_Desktop.Admin_Views
                     return;
                 }
 
-                await _quickRetrievalDataController.Rescheduled(PatientData.UserId, services, rescheduleDate, rescheduleTime);
+                var qrCodeData = new AppointmentQRCodeData
+                {
+                    UserId = PatientData.UserId,
+                    BranchName = PatientData.Branch,
+                    Services = cmbServices.Text, 
+                    AppointmentDate = PatientData.AppointmentDate.ToString(),
+                    AppointmentTime = PatientData.AppointmentTime.ToString(),
+                    RescheduleDate = rescheduleDate.ToString("yyyy-MM-dd"),
+                    RescheduleTime = rescheduleTime.ToString("HH:mm:ss")
+                };
+
+                // Serialize the object to a JSON string
+                string qrCodeJson = JsonConvert.SerializeObject(qrCodeData);
+
+                bool isEmailSent = await SendEmailNotification(PatientData.Email, PatientData.AppointmentId.ToString(), rescheduleDate.ToString(), rescheduleTime.ToString());
+
+                if (isEmailSent)
+                {
+
+                await _quickRetrievalDataController.Rescheduled(PatientData.UserId, services, rescheduleDate, rescheduleTime, qrCodeJson);
                 await _quickRetrievalDataController.RescheduleReason(PatientData.AppointmentId, PatientData.UserId, reschedReason);
 
                 btnReschedule.Enabled = true;
                 btnReschedule.Text = "Reschedule";
-                AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Reschedule", "Appointment rescheduled successfully!", Properties.Resources.success);
+                AlertBox(Color.LightGreen, Color.SeaGreen, "Follow-Up Appointment", "Follow up appointment scheduled!", Properties.Resources.success);
+                }
+                else
+                {
+                    btnReschedule.Enabled = true;
+                    btnReschedule.Text = "Reschedule";
+                    AlertBox(Color.LightCoral, Color.Red, "Follow-Up Appointment", "Follow up appointment scheduled failed!", Properties.Resources.success);
+                }
 
             }
             catch (Exception ex)
