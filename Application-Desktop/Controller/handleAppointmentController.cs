@@ -34,6 +34,7 @@ namespace Application_Desktop.Controller
                             a.reschedule_date,
                             a.reschedule_time,
                             a.status,
+                            a.qr_code,
                             a.check_in
                         FROM appointments a
                         INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
@@ -60,7 +61,7 @@ namespace Application_Desktop.Controller
 
                             adapter.Fill(dataTable);
 
-                            return dataTable.Rows.Count > 0 ? dataTable : null;
+                            return dataTable.Rows.Count > 0 ? dataTable : new DataTable();
                         }
                     }
                 }
@@ -89,6 +90,7 @@ namespace Application_Desktop.Controller
                             a.reschedule_date,
                             a.reschedule_time,
                             a.status,
+                            a.qr_code,
                             a.check_in
                         FROM appointments a
                         INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
@@ -115,7 +117,7 @@ namespace Application_Desktop.Controller
 
                             adapter.Fill(dataTable);
 
-                            return dataTable.Rows.Count > 0 ? dataTable : null;
+                            return dataTable.Rows.Count > 0 ? dataTable : new DataTable();
                         }
                     }
                 }
@@ -550,6 +552,41 @@ namespace Application_Desktop.Controller
             return email;
         }
 
+        public async Task<string> SelectPhone(int userId)
+        {
+            string query = @"SELECT phone FROM users WHERE id = @user_id";
+            string phone = null;
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@user_id", userId);
+
+                        using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                phone = reader.GetString(reader.GetOrdinal("phone"));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error Selecting phone: {ex.Message}");
+            }
+
+            return phone;
+        }
+
         public async Task<bool> CheckAppointmentStatus(int userId, DateTime appointmentDate, string appointmentTime)
         {
             string query = @"
@@ -558,8 +595,8 @@ namespace Application_Desktop.Controller
                 WHERE a.user_id = @userId
                   AND a.status = 'approved' -- Assumes 'approved' is the status for approved appointments
                 ORDER BY 
-                    IFNULL(a.reschedule_date, a.appointment_date) DESC, 
-                    IFNULL(a.reschedule_time, a.appointment_time) DESC
+                     a.appointment_date DESC, 
+                    a.appointment_time DESC
                 LIMIT 1;";
 
             try
@@ -636,8 +673,8 @@ namespace Application_Desktop.Controller
                         a.selectServices,
                         b.BranchName AS BranchName, 
                         c.Title AS Services, 
-                        COALESCE(a.reschedule_date, a.appointment_date) AS appointment_date, 
-                        COALESCE(a.reschedule_time, a.appointment_time) AS appointment_time, 
+                        a.appointment_date,
+                        a.appointment_time,
                         a.reschedule_date, 
                         a.reschedule_time, 
                         a.status, 
@@ -651,10 +688,11 @@ namespace Application_Desktop.Controller
                         categories c ON a.selectServices = c.Categories_ID
                     WHERE 
                         a.user_id = @userId 
-                        AND a.status = 'approved'
+                        AND a.status IN ('pending', 'approved')
                     ORDER BY 
                         a.appointment_date DESC, 
-                        a.appointment_time DESC
+                        a.appointment_time DESC,
+                        a.user_id DESC
                     LIMIT 1;";
 
             try

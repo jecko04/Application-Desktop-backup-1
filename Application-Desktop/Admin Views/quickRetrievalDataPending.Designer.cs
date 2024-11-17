@@ -1,6 +1,6 @@
 ﻿namespace Application_Desktop.Admin_Views
 {
-    partial class quickRetrievalData
+    partial class quickRetrievalDataPending
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(quickRetrievalData));
             dentHealthTab = new TabControl();
             tabPage1 = new TabPage();
-            btnRefresh = new MaterialSkin.Controls.MaterialButton();
-            btnCheckedIn = new MaterialSkin.Controls.MaterialButton();
-            btnCompleted = new MaterialSkin.Controls.MaterialButton();
+            btnApproved = new MaterialSkin.Controls.MaterialButton();
+            btnReject = new MaterialSkin.Controls.MaterialButton();
             ptQrcode = new PictureBox();
             materialLabel24 = new MaterialSkin.Controls.MaterialLabel();
             txtCheckin = new MaterialSkin.Controls.MaterialTextBox();
@@ -100,26 +98,12 @@
             chkToothPain = new MaterialSkin.Controls.MaterialCheckbox();
             materialLabel18 = new MaterialSkin.Controls.MaterialLabel();
             txtPastDent = new MaterialSkin.Controls.MaterialTextBox();
-            tabPage2 = new TabPage();
-            materialLabel31 = new MaterialSkin.Controls.MaterialLabel();
-            materialLabel30 = new MaterialSkin.Controls.MaterialLabel();
-            materialLabel29 = new MaterialSkin.Controls.MaterialLabel();
-            cmbServices = new MaterialSkin.Controls.MaterialComboBox();
-            txtRescheduleReason = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
-            btnReschedule = new MaterialSkin.Controls.MaterialButton();
-            materialLabel28 = new MaterialSkin.Controls.MaterialLabel();
-            dtpRescheduleTime = new DateTimePicker();
-            materialLabel27 = new MaterialSkin.Controls.MaterialLabel();
-            dtpRescheduleDate = new DateTimePicker();
-            txtAddNotes = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
-            btnSaveNotes = new MaterialSkin.Controls.MaterialButton();
             dentHealthTab.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ptQrcode).BeginInit();
             dentalPatientTab.SuspendLayout();
             genHealthTab.SuspendLayout();
             tapPage3.SuspendLayout();
-            tabPage2.SuspendLayout();
             SuspendLayout();
             // 
             // dentHealthTab
@@ -129,24 +113,22 @@
             dentHealthTab.Controls.Add(dentalPatientTab);
             dentHealthTab.Controls.Add(genHealthTab);
             dentHealthTab.Controls.Add(tapPage3);
-            dentHealthTab.Controls.Add(tabPage2);
             dentHealthTab.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dentHealthTab.ItemSize = new Size(87, 24);
-            dentHealthTab.Location = new Point(-2, 27);
+            dentHealthTab.Location = new Point(-3, 27);
             dentHealthTab.Multiline = true;
             dentHealthTab.Name = "dentHealthTab";
             dentHealthTab.Padding = new Point(27, 4);
             dentHealthTab.RightToLeft = RightToLeft.No;
             dentHealthTab.SelectedIndex = 0;
-            dentHealthTab.Size = new Size(1074, 657);
-            dentHealthTab.TabIndex = 26;
+            dentHealthTab.Size = new Size(1067, 630);
+            dentHealthTab.TabIndex = 27;
             // 
             // tabPage1
             // 
             tabPage1.BackColor = Color.White;
-            tabPage1.Controls.Add(btnRefresh);
-            tabPage1.Controls.Add(btnCheckedIn);
-            tabPage1.Controls.Add(btnCompleted);
+            tabPage1.Controls.Add(btnApproved);
+            tabPage1.Controls.Add(btnReject);
             tabPage1.Controls.Add(ptQrcode);
             tabPage1.Controls.Add(materialLabel24);
             tabPage1.Controls.Add(txtCheckin);
@@ -168,75 +150,53 @@
             tabPage1.Controls.Add(txtBranch);
             tabPage1.Location = new Point(4, 28);
             tabPage1.Name = "tabPage1";
-            tabPage1.Size = new Size(1066, 625);
+            tabPage1.Size = new Size(1059, 598);
             tabPage1.TabIndex = 3;
             tabPage1.Text = "Dental Appointment";
-            tabPage1.Click += tabPage1_Click;
             // 
-            // btnRefresh
+            // btnApproved
             // 
-            btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnRefresh.AutoSize = false;
-            btnRefresh.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnRefresh.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnRefresh.Depth = 0;
-            btnRefresh.HighEmphasis = true;
-            btnRefresh.Icon = (Image)resources.GetObject("btnRefresh.Icon");
-            btnRefresh.Location = new Point(55, 540);
-            btnRefresh.Margin = new Padding(4, 6, 4, 6);
-            btnRefresh.MouseState = MaterialSkin.MouseState.HOVER;
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.NoAccentTextColor = Color.Empty;
-            btnRefresh.Size = new Size(42, 40);
-            btnRefresh.TabIndex = 155;
-            btnRefresh.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnRefresh.UseAccentColor = false;
-            btnRefresh.UseVisualStyleBackColor = true;
-            btnRefresh.Click += btnRefresh_Click;
+            btnApproved.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnApproved.AutoSize = false;
+            btnApproved.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnApproved.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnApproved.Depth = 0;
+            btnApproved.HighEmphasis = true;
+            btnApproved.Icon = null;
+            btnApproved.Location = new Point(626, 521);
+            btnApproved.Margin = new Padding(4, 6, 4, 6);
+            btnApproved.MouseState = MaterialSkin.MouseState.HOVER;
+            btnApproved.Name = "btnApproved";
+            btnApproved.NoAccentTextColor = Color.Empty;
+            btnApproved.Size = new Size(194, 40);
+            btnApproved.TabIndex = 157;
+            btnApproved.Text = "Approved";
+            btnApproved.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnApproved.UseAccentColor = false;
+            btnApproved.UseVisualStyleBackColor = true;
+            btnApproved.Click += btnApproved_Click;
             // 
-            // btnCheckedIn
+            // btnReject
             // 
-            btnCheckedIn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnCheckedIn.AutoSize = false;
-            btnCheckedIn.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnCheckedIn.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnCheckedIn.Depth = 0;
-            btnCheckedIn.HighEmphasis = true;
-            btnCheckedIn.Icon = null;
-            btnCheckedIn.Location = new Point(626, 540);
-            btnCheckedIn.Margin = new Padding(4, 6, 4, 6);
-            btnCheckedIn.MouseState = MaterialSkin.MouseState.HOVER;
-            btnCheckedIn.Name = "btnCheckedIn";
-            btnCheckedIn.NoAccentTextColor = Color.Empty;
-            btnCheckedIn.Size = new Size(194, 40);
-            btnCheckedIn.TabIndex = 154;
-            btnCheckedIn.Text = "Checked-In";
-            btnCheckedIn.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnCheckedIn.UseAccentColor = false;
-            btnCheckedIn.UseVisualStyleBackColor = true;
-            btnCheckedIn.Click += btnCheckedIn_Click;
-            // 
-            // btnCompleted
-            // 
-            btnCompleted.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnCompleted.AutoSize = false;
-            btnCompleted.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnCompleted.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnCompleted.Depth = 0;
-            btnCompleted.HighEmphasis = true;
-            btnCompleted.Icon = null;
-            btnCompleted.Location = new Point(828, 540);
-            btnCompleted.Margin = new Padding(4, 6, 4, 6);
-            btnCompleted.MouseState = MaterialSkin.MouseState.HOVER;
-            btnCompleted.Name = "btnCompleted";
-            btnCompleted.NoAccentTextColor = Color.Empty;
-            btnCompleted.Size = new Size(194, 40);
-            btnCompleted.TabIndex = 27;
-            btnCompleted.Text = "Complete";
-            btnCompleted.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnCompleted.UseAccentColor = false;
-            btnCompleted.UseVisualStyleBackColor = true;
-            btnCompleted.Click += btnCompleted_Click;
+            btnReject.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnReject.AutoSize = false;
+            btnReject.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnReject.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnReject.Depth = 0;
+            btnReject.HighEmphasis = true;
+            btnReject.Icon = null;
+            btnReject.Location = new Point(828, 521);
+            btnReject.Margin = new Padding(4, 6, 4, 6);
+            btnReject.MouseState = MaterialSkin.MouseState.HOVER;
+            btnReject.Name = "btnReject";
+            btnReject.NoAccentTextColor = Color.Empty;
+            btnReject.Size = new Size(194, 40);
+            btnReject.TabIndex = 156;
+            btnReject.Text = "Reject";
+            btnReject.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnReject.UseAccentColor = false;
+            btnReject.UseVisualStyleBackColor = true;
+            btnReject.Click += btnReject_Click;
             // 
             // ptQrcode
             // 
@@ -553,7 +513,7 @@
             dentalPatientTab.Location = new Point(4, 28);
             dentalPatientTab.Name = "dentalPatientTab";
             dentalPatientTab.Padding = new Padding(3);
-            dentalPatientTab.Size = new Size(1066, 625);
+            dentalPatientTab.Size = new Size(1059, 598);
             dentalPatientTab.TabIndex = 0;
             dentalPatientTab.Text = "Dental Patient Details";
             // 
@@ -600,7 +560,7 @@
             materialLabel9.AutoSize = true;
             materialLabel9.Depth = 0;
             materialLabel9.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel9.Location = new Point(65, 466);
+            materialLabel9.Location = new Point(68, 469);
             materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel9.Name = "materialLabel9";
             materialLabel9.Size = new Size(70, 19);
@@ -612,7 +572,7 @@
             materialLabel8.AutoSize = true;
             materialLabel8.Depth = 0;
             materialLabel8.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel8.Location = new Point(65, 397);
+            materialLabel8.Location = new Point(68, 400);
             materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel8.Name = "materialLabel8";
             materialLabel8.Size = new Size(67, 19);
@@ -624,7 +584,7 @@
             materialLabel7.AutoSize = true;
             materialLabel7.Depth = 0;
             materialLabel7.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel7.Location = new Point(65, 368);
+            materialLabel7.Location = new Point(68, 371);
             materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel7.Name = "materialLabel7";
             materialLabel7.Size = new Size(136, 19);
@@ -636,7 +596,7 @@
             txtgenter.AutoSize = true;
             txtgenter.Depth = 0;
             txtgenter.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            txtgenter.Location = new Point(700, 114);
+            txtgenter.Location = new Point(703, 117);
             txtgenter.MouseState = MaterialSkin.MouseState.HOVER;
             txtgenter.Name = "txtgenter";
             txtgenter.Size = new Size(51, 19);
@@ -648,7 +608,7 @@
             materialLabel6.AutoSize = true;
             materialLabel6.Depth = 0;
             materialLabel6.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel6.Location = new Point(898, 43);
+            materialLabel6.Location = new Point(901, 46);
             materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel6.Name = "materialLabel6";
             materialLabel6.Size = new Size(28, 19);
@@ -660,7 +620,7 @@
             materialLabel5.AutoSize = true;
             materialLabel5.Depth = 0;
             materialLabel5.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel5.Location = new Point(700, 43);
+            materialLabel5.Location = new Point(703, 46);
             materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel5.Name = "materialLabel5";
             materialLabel5.Size = new Size(89, 19);
@@ -672,7 +632,7 @@
             materialLabel4.AutoSize = true;
             materialLabel4.Depth = 0;
             materialLabel4.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel4.Location = new Point(69, 253);
+            materialLabel4.Location = new Point(72, 256);
             materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel4.Name = "materialLabel4";
             materialLabel4.Size = new Size(58, 19);
@@ -684,7 +644,7 @@
             materialLabel3.AutoSize = true;
             materialLabel3.Depth = 0;
             materialLabel3.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel3.Location = new Point(68, 184);
+            materialLabel3.Location = new Point(71, 187);
             materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel3.Name = "materialLabel3";
             materialLabel3.Size = new Size(41, 19);
@@ -696,7 +656,7 @@
             materialLabel2.AutoSize = true;
             materialLabel2.Depth = 0;
             materialLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel2.Location = new Point(70, 114);
+            materialLabel2.Location = new Point(73, 117);
             materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel2.Name = "materialLabel2";
             materialLabel2.Size = new Size(70, 19);
@@ -708,13 +668,12 @@
             materialLabel1.AutoSize = true;
             materialLabel1.Depth = 0;
             materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel1.Location = new Point(69, 43);
+            materialLabel1.Location = new Point(72, 46);
             materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel1.Name = "materialLabel1";
             materialLabel1.Size = new Size(67, 19);
             materialLabel1.TabIndex = 132;
             materialLabel1.Text = "Fullname";
-            materialLabel1.Click += materialLabel1_Click;
             // 
             // txtEmergContact
             // 
@@ -734,7 +693,6 @@
             txtEmergContact.Text = "";
             txtEmergContact.TrailingIcon = null;
             txtEmergContact.UseTallSize = false;
-            txtEmergContact.TextChanged += txtEmergContact_TextChanged;
             // 
             // txtEmergFullname
             // 
@@ -876,7 +834,7 @@
             genHealthTab.Location = new Point(4, 28);
             genHealthTab.Name = "genHealthTab";
             genHealthTab.Padding = new Padding(3);
-            genHealthTab.Size = new Size(1066, 625);
+            genHealthTab.Size = new Size(1059, 598);
             genHealthTab.TabIndex = 1;
             genHealthTab.Text = "General Health Information";
             // 
@@ -884,7 +842,7 @@
             // 
             chkSmoker.AutoSize = true;
             chkSmoker.Depth = 0;
-            chkSmoker.Location = new Point(850, 238);
+            chkSmoker.Location = new Point(853, 241);
             chkSmoker.Margin = new Padding(0);
             chkSmoker.MouseLocation = new Point(-1, -1);
             chkSmoker.MouseState = MaterialSkin.MouseState.HOVER;
@@ -900,7 +858,7 @@
             // 
             chkDiabetes.AutoSize = true;
             chkDiabetes.Depth = 0;
-            chkDiabetes.Location = new Point(694, 238);
+            chkDiabetes.Location = new Point(697, 241);
             chkDiabetes.Margin = new Padding(0);
             chkDiabetes.MouseLocation = new Point(-1, -1);
             chkDiabetes.MouseState = MaterialSkin.MouseState.HOVER;
@@ -916,7 +874,7 @@
             // 
             chkHeartDisease.AutoSize = true;
             chkHeartDisease.Depth = 0;
-            chkHeartDisease.Location = new Point(525, 238);
+            chkHeartDisease.Location = new Point(528, 241);
             chkHeartDisease.Margin = new Padding(0);
             chkHeartDisease.MouseLocation = new Point(-1, -1);
             chkHeartDisease.MouseState = MaterialSkin.MouseState.HOVER;
@@ -933,7 +891,7 @@
             materialLabel15.AutoSize = true;
             materialLabel15.Depth = 0;
             materialLabel15.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel15.Location = new Point(529, 113);
+            materialLabel15.Location = new Point(532, 116);
             materialLabel15.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel15.Name = "materialLabel15";
             materialLabel15.Size = new Size(107, 19);
@@ -964,7 +922,7 @@
             materialLabel14.AutoSize = true;
             materialLabel14.Depth = 0;
             materialLabel14.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel14.Location = new Point(529, 45);
+            materialLabel14.Location = new Point(532, 48);
             materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel14.Name = "materialLabel14";
             materialLabel14.Size = new Size(163, 19);
@@ -995,7 +953,7 @@
             materialLabel13.AutoSize = true;
             materialLabel13.Depth = 0;
             materialLabel13.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel13.Location = new Point(66, 298);
+            materialLabel13.Location = new Point(69, 301);
             materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel13.Name = "materialLabel13";
             materialLabel13.Size = new Size(187, 19);
@@ -1026,7 +984,7 @@
             materialLabel12.AutoSize = true;
             materialLabel12.Depth = 0;
             materialLabel12.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel12.Location = new Point(67, 229);
+            materialLabel12.Location = new Point(70, 232);
             materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel12.Name = "materialLabel12";
             materialLabel12.Size = new Size(61, 19);
@@ -1057,7 +1015,7 @@
             materialLabel11.AutoSize = true;
             materialLabel11.Depth = 0;
             materialLabel11.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel11.Location = new Point(69, 113);
+            materialLabel11.Location = new Point(72, 116);
             materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel11.Name = "materialLabel11";
             materialLabel11.Size = new Size(135, 19);
@@ -1093,7 +1051,7 @@
             materialLabel10.AutoSize = true;
             materialLabel10.Depth = 0;
             materialLabel10.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel10.Location = new Point(69, 45);
+            materialLabel10.Location = new Point(72, 48);
             materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel10.Name = "materialLabel10";
             materialLabel10.Size = new Size(129, 19);
@@ -1135,7 +1093,7 @@
             tapPage3.Location = new Point(4, 28);
             tapPage3.Name = "tapPage3";
             tapPage3.Padding = new Padding(3);
-            tapPage3.Size = new Size(1066, 625);
+            tapPage3.Size = new Size(1059, 598);
             tapPage3.TabIndex = 2;
             tapPage3.Text = "Dental Health Information";
             // 
@@ -1163,7 +1121,7 @@
             materialLabel20.AutoSize = true;
             materialLabel20.Depth = 0;
             materialLabel20.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel20.Location = new Point(109, 455);
+            materialLabel20.Location = new Point(112, 458);
             materialLabel20.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel20.Name = "materialLabel20";
             materialLabel20.Size = new Size(128, 19);
@@ -1174,7 +1132,7 @@
             // 
             chkDentImp.AutoSize = true;
             chkDentImp.Depth = 0;
-            chkDentImp.Location = new Point(380, 207);
+            chkDentImp.Location = new Point(383, 210);
             chkDentImp.Margin = new Padding(0);
             chkDentImp.MouseLocation = new Point(-1, -1);
             chkDentImp.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1190,7 +1148,7 @@
             // 
             chkOrtho.AutoSize = true;
             chkOrtho.Depth = 0;
-            chkOrtho.Location = new Point(106, 337);
+            chkOrtho.Location = new Point(109, 340);
             chkOrtho.Margin = new Padding(0);
             chkOrtho.MouseLocation = new Point(-1, -1);
             chkOrtho.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1206,7 +1164,7 @@
             // 
             chkGumDisease.AutoSize = true;
             chkGumDisease.Depth = 0;
-            chkGumDisease.Location = new Point(106, 207);
+            chkGumDisease.Location = new Point(109, 210);
             chkGumDisease.Margin = new Padding(0);
             chkGumDisease.MouseLocation = new Point(-1, -1);
             chkGumDisease.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1222,7 +1180,7 @@
             // 
             chkTeethGrin.AutoSize = true;
             chkTeethGrin.Depth = 0;
-            chkTeethGrin.Location = new Point(380, 157);
+            chkTeethGrin.Location = new Point(383, 160);
             chkTeethGrin.Margin = new Padding(0);
             chkTeethGrin.MouseLocation = new Point(-1, -1);
             chkTeethGrin.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1238,7 +1196,7 @@
             // 
             chkBleedGum.AutoSize = true;
             chkBleedGum.Depth = 0;
-            chkBleedGum.Location = new Point(106, 293);
+            chkBleedGum.Location = new Point(109, 296);
             chkBleedGum.Margin = new Padding(0);
             chkBleedGum.MouseLocation = new Point(-1, -1);
             chkBleedGum.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1254,7 +1212,7 @@
             // 
             chkToothPain.AutoSize = true;
             chkToothPain.Depth = 0;
-            chkToothPain.Location = new Point(106, 157);
+            chkToothPain.Location = new Point(109, 160);
             chkToothPain.Margin = new Padding(0);
             chkToothPain.MouseLocation = new Point(-1, -1);
             chkToothPain.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1271,7 +1229,7 @@
             materialLabel18.AutoSize = true;
             materialLabel18.Depth = 0;
             materialLabel18.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel18.Location = new Point(109, 36);
+            materialLabel18.Location = new Point(112, 39);
             materialLabel18.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel18.Name = "materialLabel18";
             materialLabel18.Size = new Size(161, 19);
@@ -1297,238 +1255,18 @@
             txtPastDent.TrailingIcon = null;
             txtPastDent.UseTallSize = false;
             // 
-            // tabPage2
-            // 
-            tabPage2.BackColor = Color.White;
-            tabPage2.Controls.Add(materialLabel31);
-            tabPage2.Controls.Add(materialLabel30);
-            tabPage2.Controls.Add(materialLabel29);
-            tabPage2.Controls.Add(cmbServices);
-            tabPage2.Controls.Add(txtRescheduleReason);
-            tabPage2.Controls.Add(btnReschedule);
-            tabPage2.Controls.Add(materialLabel28);
-            tabPage2.Controls.Add(dtpRescheduleTime);
-            tabPage2.Controls.Add(materialLabel27);
-            tabPage2.Controls.Add(dtpRescheduleDate);
-            tabPage2.Controls.Add(txtAddNotes);
-            tabPage2.Controls.Add(btnSaveNotes);
-            tabPage2.Location = new Point(4, 28);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Size = new Size(1066, 625);
-            tabPage2.TabIndex = 4;
-            tabPage2.Text = "Resched / Add Notes";
-            tabPage2.Click += tabPage2_Click;
-            // 
-            // materialLabel31
-            // 
-            materialLabel31.AutoSize = true;
-            materialLabel31.Depth = 0;
-            materialLabel31.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel31.Location = new Point(53, 57);
-            materialLabel31.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel31.Name = "materialLabel31";
-            materialLabel31.Size = new Size(136, 19);
-            materialLabel31.TabIndex = 164;
-            materialLabel31.Text = "Reschedule Patient";
-            // 
-            // materialLabel30
-            // 
-            materialLabel30.AutoSize = true;
-            materialLabel30.Depth = 0;
-            materialLabel30.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel30.Location = new Point(53, 337);
-            materialLabel30.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel30.Name = "materialLabel30";
-            materialLabel30.Size = new Size(157, 19);
-            materialLabel30.TabIndex = 163;
-            materialLabel30.Text = "Give Notes to Patients";
-            materialLabel30.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // materialLabel29
-            // 
-            materialLabel29.AutoSize = true;
-            materialLabel29.Depth = 0;
-            materialLabel29.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel29.Location = new Point(53, 219);
-            materialLabel29.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel29.Name = "materialLabel29";
-            materialLabel29.Size = new Size(142, 19);
-            materialLabel29.TabIndex = 162;
-            materialLabel29.Text = "Select New Services";
-            // 
-            // cmbServices
-            // 
-            cmbServices.AutoResize = false;
-            cmbServices.BackColor = Color.FromArgb(255, 255, 255);
-            cmbServices.Depth = 0;
-            cmbServices.DrawMode = DrawMode.OwnerDrawVariable;
-            cmbServices.DropDownHeight = 118;
-            cmbServices.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbServices.DropDownWidth = 121;
-            cmbServices.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            cmbServices.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            cmbServices.FormattingEnabled = true;
-            cmbServices.IntegralHeight = false;
-            cmbServices.ItemHeight = 29;
-            cmbServices.Location = new Point(53, 241);
-            cmbServices.MaxDropDownItems = 4;
-            cmbServices.MouseState = MaterialSkin.MouseState.OUT;
-            cmbServices.Name = "cmbServices";
-            cmbServices.Size = new Size(163, 35);
-            cmbServices.StartIndex = 0;
-            cmbServices.TabIndex = 161;
-            cmbServices.UseTallSize = false;
-            // 
-            // txtRescheduleReason
-            // 
-            txtRescheduleReason.AnimateReadOnly = false;
-            txtRescheduleReason.BackgroundImageLayout = ImageLayout.None;
-            txtRescheduleReason.CharacterCasing = CharacterCasing.Normal;
-            txtRescheduleReason.Depth = 0;
-            txtRescheduleReason.HideSelection = true;
-            txtRescheduleReason.Hint = "Add reason for reschedule";
-            txtRescheduleReason.Location = new Point(239, 93);
-            txtRescheduleReason.MaxLength = 255;
-            txtRescheduleReason.MouseState = MaterialSkin.MouseState.OUT;
-            txtRescheduleReason.Name = "txtRescheduleReason";
-            txtRescheduleReason.PasswordChar = '\0';
-            txtRescheduleReason.ReadOnly = false;
-            txtRescheduleReason.ScrollBars = ScrollBars.None;
-            txtRescheduleReason.SelectedText = "";
-            txtRescheduleReason.SelectionLength = 0;
-            txtRescheduleReason.SelectionStart = 0;
-            txtRescheduleReason.ShortcutsEnabled = true;
-            txtRescheduleReason.Size = new Size(782, 183);
-            txtRescheduleReason.TabIndex = 160;
-            txtRescheduleReason.TabStop = false;
-            txtRescheduleReason.TextAlign = HorizontalAlignment.Left;
-            txtRescheduleReason.UseSystemPasswordChar = false;
-            // 
-            // btnReschedule
-            // 
-            btnReschedule.AutoSize = false;
-            btnReschedule.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnReschedule.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnReschedule.Depth = 0;
-            btnReschedule.HighEmphasis = true;
-            btnReschedule.Icon = null;
-            btnReschedule.Location = new Point(863, 285);
-            btnReschedule.Margin = new Padding(4, 6, 4, 6);
-            btnReschedule.MouseState = MaterialSkin.MouseState.HOVER;
-            btnReschedule.Name = "btnReschedule";
-            btnReschedule.NoAccentTextColor = Color.Empty;
-            btnReschedule.Size = new Size(158, 36);
-            btnReschedule.TabIndex = 159;
-            btnReschedule.Text = "Reschedule";
-            btnReschedule.TextAlign = ContentAlignment.MiddleRight;
-            btnReschedule.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnReschedule.UseAccentColor = false;
-            btnReschedule.UseVisualStyleBackColor = true;
-            btnReschedule.Click += btnReschedule_Click;
-            // 
-            // materialLabel28
-            // 
-            materialLabel28.AutoSize = true;
-            materialLabel28.Depth = 0;
-            materialLabel28.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel28.Location = new Point(53, 155);
-            materialLabel28.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel28.Name = "materialLabel28";
-            materialLabel28.Size = new Size(153, 19);
-            materialLabel28.TabIndex = 158;
-            materialLabel28.Text = "Select Available Time";
-            // 
-            // dtpRescheduleTime
-            // 
-            dtpRescheduleTime.Font = new Font("Tahoma", 12.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dtpRescheduleTime.Format = DateTimePickerFormat.Time;
-            dtpRescheduleTime.Location = new Point(53, 177);
-            dtpRescheduleTime.Name = "dtpRescheduleTime";
-            dtpRescheduleTime.ShowUpDown = true;
-            dtpRescheduleTime.Size = new Size(163, 28);
-            dtpRescheduleTime.TabIndex = 157;
-            // 
-            // materialLabel27
-            // 
-            materialLabel27.AutoSize = true;
-            materialLabel27.Depth = 0;
-            materialLabel27.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel27.Location = new Point(53, 93);
-            materialLabel27.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel27.Name = "materialLabel27";
-            materialLabel27.Size = new Size(150, 19);
-            materialLabel27.TabIndex = 156;
-            materialLabel27.Text = "Select Available Date";
-            // 
-            // dtpRescheduleDate
-            // 
-            dtpRescheduleDate.Font = new Font("Tahoma", 12.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dtpRescheduleDate.Format = DateTimePickerFormat.Short;
-            dtpRescheduleDate.Location = new Point(53, 115);
-            dtpRescheduleDate.Name = "dtpRescheduleDate";
-            dtpRescheduleDate.Size = new Size(163, 28);
-            dtpRescheduleDate.TabIndex = 6;
-            // 
-            // txtAddNotes
-            // 
-            txtAddNotes.AnimateReadOnly = false;
-            txtAddNotes.BackgroundImageLayout = ImageLayout.None;
-            txtAddNotes.CharacterCasing = CharacterCasing.Normal;
-            txtAddNotes.Depth = 0;
-            txtAddNotes.HideSelection = true;
-            txtAddNotes.Hint = "Add notes here";
-            txtAddNotes.Location = new Point(53, 359);
-            txtAddNotes.MaxLength = 255;
-            txtAddNotes.MouseState = MaterialSkin.MouseState.OUT;
-            txtAddNotes.Name = "txtAddNotes";
-            txtAddNotes.PasswordChar = '\0';
-            txtAddNotes.ReadOnly = false;
-            txtAddNotes.ScrollBars = ScrollBars.None;
-            txtAddNotes.SelectedText = "";
-            txtAddNotes.SelectionLength = 0;
-            txtAddNotes.SelectionStart = 0;
-            txtAddNotes.ShortcutsEnabled = true;
-            txtAddNotes.Size = new Size(968, 183);
-            txtAddNotes.TabIndex = 1;
-            txtAddNotes.TabStop = false;
-            txtAddNotes.TextAlign = HorizontalAlignment.Left;
-            txtAddNotes.UseSystemPasswordChar = false;
-            // 
-            // btnSaveNotes
-            // 
-            btnSaveNotes.AutoSize = false;
-            btnSaveNotes.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnSaveNotes.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnSaveNotes.Depth = 0;
-            btnSaveNotes.HighEmphasis = true;
-            btnSaveNotes.Icon = null;
-            btnSaveNotes.Location = new Point(863, 551);
-            btnSaveNotes.Margin = new Padding(4, 6, 4, 6);
-            btnSaveNotes.MouseState = MaterialSkin.MouseState.HOVER;
-            btnSaveNotes.Name = "btnSaveNotes";
-            btnSaveNotes.NoAccentTextColor = Color.Empty;
-            btnSaveNotes.Size = new Size(158, 36);
-            btnSaveNotes.TabIndex = 0;
-            btnSaveNotes.Text = "Save Notes";
-            btnSaveNotes.TextAlign = ContentAlignment.MiddleRight;
-            btnSaveNotes.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnSaveNotes.UseAccentColor = false;
-            btnSaveNotes.UseVisualStyleBackColor = true;
-            btnSaveNotes.Click += btnSaveNotes_Click;
-            // 
-            // quickRetrievalData
+            // quickRetrievalDataPending
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(1078, 690);
+            ClientSize = new Size(1062, 651);
             Controls.Add(dentHealthTab);
             FormStyle = FormStyles.ActionBar_None;
-            Name = "quickRetrievalData";
+            Name = "quickRetrievalDataPending";
             Padding = new Padding(3, 24, 3, 3);
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Dental Patient Info";
-            Load += quickRetrievalData_Load;
+            Text = "quickRetrievalDataPending";
+            Load += quickRetrievalDataPending_Load;
             dentHealthTab.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
@@ -1539,41 +1277,37 @@
             genHealthTab.PerformLayout();
             tapPage3.ResumeLayout(false);
             tapPage3.PerformLayout();
-            tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private TabControl dentHealthTab;
+        private TabPage tabPage1;
+        private MaterialSkin.Controls.MaterialButton btnApproved;
+        private MaterialSkin.Controls.MaterialButton btnReject;
+        private PictureBox ptQrcode;
+        private MaterialSkin.Controls.MaterialLabel materialLabel24;
+        private MaterialSkin.Controls.MaterialTextBox txtCheckin;
+        private MaterialSkin.Controls.MaterialLabel materialLabel25;
+        private MaterialSkin.Controls.MaterialTextBox txtStatus;
+        private MaterialSkin.Controls.MaterialLabel materialLabel26;
+        private MaterialSkin.Controls.MaterialTextBox txtAppointmentId;
+        private MaterialSkin.Controls.MaterialLabel materialLabel22;
+        private MaterialSkin.Controls.MaterialTextBox txtRescheduleTime;
+        private MaterialSkin.Controls.MaterialLabel materialLabel23;
+        private MaterialSkin.Controls.MaterialTextBox txtRescheduleDate;
+        private MaterialSkin.Controls.MaterialLabel materialLabel19;
+        private MaterialSkin.Controls.MaterialTextBox txtAppointmentTime;
+        private MaterialSkin.Controls.MaterialLabel materialLabel21;
+        private MaterialSkin.Controls.MaterialTextBox txtAppointmentDate;
+        private MaterialSkin.Controls.MaterialLabel materialLabel17;
+        private MaterialSkin.Controls.MaterialTextBox txtServices;
+        private MaterialSkin.Controls.MaterialLabel materialLabel16;
+        private MaterialSkin.Controls.MaterialTextBox txtBranch;
         private TabPage dentalPatientTab;
-        private TabPage genHealthTab;
-        private MaterialSkin.Controls.MaterialCheckbox chkSmoker;
-        private MaterialSkin.Controls.MaterialCheckbox chkDiabetes;
-        private MaterialSkin.Controls.MaterialCheckbox chkHeartDisease;
-        private MaterialSkin.Controls.MaterialLabel materialLabel15;
-        private MaterialSkin.Controls.MaterialTextBox txtBloodPres;
-        private MaterialSkin.Controls.MaterialLabel materialLabel14;
-        private MaterialSkin.Controls.MaterialTextBox txtFamilyMed;
-        private MaterialSkin.Controls.MaterialLabel materialLabel13;
-        private MaterialSkin.Controls.MaterialTextBox txtPastSurg;
-        private MaterialSkin.Controls.MaterialLabel materialLabel12;
-        private MaterialSkin.Controls.MaterialTextBox txtAllergies;
-        private MaterialSkin.Controls.MaterialLabel materialLabel11;
-        private MaterialSkin.Controls.MaterialMultiLineTextBox2 txtCurrentMed;
-        private MaterialSkin.Controls.MaterialLabel materialLabel10;
-        private MaterialSkin.Controls.MaterialTextBox txtMedCondition;
-        private TabPage tapPage3;
-        private MaterialSkin.Controls.MaterialLabel materialLabel20;
-        private MaterialSkin.Controls.MaterialCheckbox chkDentImp;
-        private MaterialSkin.Controls.MaterialCheckbox chkOrtho;
-        private MaterialSkin.Controls.MaterialCheckbox chkGumDisease;
-        private MaterialSkin.Controls.MaterialCheckbox chkTeethGrin;
-        private MaterialSkin.Controls.MaterialCheckbox chkBleedGum;
-        private MaterialSkin.Controls.MaterialCheckbox chkToothPain;
-        private MaterialSkin.Controls.MaterialLabel materialLabel18;
-        private MaterialSkin.Controls.MaterialTextBox txtPastDent;
+        private MaterialSkin.Controls.MaterialTextBox txtDOB;
+        private MaterialSkin.Controls.MaterialTextBox txtGender;
         private MaterialSkin.Controls.MaterialLabel materialLabel9;
         private MaterialSkin.Controls.MaterialLabel materialLabel8;
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
@@ -1591,44 +1325,32 @@
         private MaterialSkin.Controls.MaterialTextBox txtEmail;
         private MaterialSkin.Controls.MaterialTextBox txtContact;
         private MaterialSkin.Controls.MaterialTextBox txtFullnames;
-        private TabPage tabPage1;
-        private TabPage tabPage2;
-        private MaterialSkin.Controls.MaterialTextBox txtGender;
+        private TabPage genHealthTab;
+        private MaterialSkin.Controls.MaterialCheckbox chkSmoker;
+        private MaterialSkin.Controls.MaterialCheckbox chkDiabetes;
+        private MaterialSkin.Controls.MaterialCheckbox chkHeartDisease;
+        private MaterialSkin.Controls.MaterialLabel materialLabel15;
+        private MaterialSkin.Controls.MaterialTextBox txtBloodPres;
+        private MaterialSkin.Controls.MaterialLabel materialLabel14;
+        private MaterialSkin.Controls.MaterialTextBox txtFamilyMed;
+        private MaterialSkin.Controls.MaterialLabel materialLabel13;
+        private MaterialSkin.Controls.MaterialTextBox txtPastSurg;
+        private MaterialSkin.Controls.MaterialLabel materialLabel12;
+        private MaterialSkin.Controls.MaterialTextBox txtAllergies;
+        private MaterialSkin.Controls.MaterialLabel materialLabel11;
+        private MaterialSkin.Controls.MaterialMultiLineTextBox2 txtCurrentMed;
+        private MaterialSkin.Controls.MaterialLabel materialLabel10;
+        private MaterialSkin.Controls.MaterialTextBox txtMedCondition;
+        private TabPage tapPage3;
         private MaterialSkin.Controls.MaterialTextBox txtToothSensitivity;
-        private MaterialSkin.Controls.MaterialLabel materialLabel16;
-        private MaterialSkin.Controls.MaterialTextBox txtBranch;
-        private MaterialSkin.Controls.MaterialLabel materialLabel17;
-        private MaterialSkin.Controls.MaterialTextBox txtServices;
-        private MaterialSkin.Controls.MaterialLabel materialLabel22;
-        private MaterialSkin.Controls.MaterialTextBox txtRescheduleTime;
-        private MaterialSkin.Controls.MaterialLabel materialLabel23;
-        private MaterialSkin.Controls.MaterialTextBox txtRescheduleDate;
-        private MaterialSkin.Controls.MaterialLabel materialLabel19;
-        private MaterialSkin.Controls.MaterialTextBox txtAppointmentTime;
-        private MaterialSkin.Controls.MaterialLabel materialLabel21;
-        private MaterialSkin.Controls.MaterialTextBox txtAppointmentDate;
-        private MaterialSkin.Controls.MaterialLabel materialLabel24;
-        private MaterialSkin.Controls.MaterialTextBox txtCheckin;
-        private MaterialSkin.Controls.MaterialLabel materialLabel25;
-        private MaterialSkin.Controls.MaterialTextBox txtStatus;
-        private MaterialSkin.Controls.MaterialLabel materialLabel26;
-        private MaterialSkin.Controls.MaterialTextBox txtAppointmentId;
-        private PictureBox ptQrcode;
-        private MaterialSkin.Controls.MaterialButton btnCompleted;
-        private MaterialSkin.Controls.MaterialMultiLineTextBox2 txtAddNotes;
-        private MaterialSkin.Controls.MaterialButton btnSaveNotes;
-        private MaterialSkin.Controls.MaterialTextBox txtDOB;
-        private DateTimePicker dtpRescheduleDate;
-        private MaterialSkin.Controls.MaterialLabel materialLabel27;
-        private DateTimePicker dtpRescheduleTime;
-        private MaterialSkin.Controls.MaterialLabel materialLabel28;
-        private MaterialSkin.Controls.MaterialMultiLineTextBox2 txtRescheduleReason;
-        private MaterialSkin.Controls.MaterialButton btnReschedule;
-        private MaterialSkin.Controls.MaterialButton btnCheckedIn;
-        private MaterialSkin.Controls.MaterialButton btnRefresh;
-        private MaterialSkin.Controls.MaterialLabel materialLabel29;
-        private MaterialSkin.Controls.MaterialComboBox cmbServices;
-        private MaterialSkin.Controls.MaterialLabel materialLabel30;
-        private MaterialSkin.Controls.MaterialLabel materialLabel31;
+        private MaterialSkin.Controls.MaterialLabel materialLabel20;
+        private MaterialSkin.Controls.MaterialCheckbox chkDentImp;
+        private MaterialSkin.Controls.MaterialCheckbox chkOrtho;
+        private MaterialSkin.Controls.MaterialCheckbox chkGumDisease;
+        private MaterialSkin.Controls.MaterialCheckbox chkTeethGrin;
+        private MaterialSkin.Controls.MaterialCheckbox chkBleedGum;
+        private MaterialSkin.Controls.MaterialCheckbox chkToothPain;
+        private MaterialSkin.Controls.MaterialLabel materialLabel18;
+        private MaterialSkin.Controls.MaterialTextBox txtPastDent;
     }
 }

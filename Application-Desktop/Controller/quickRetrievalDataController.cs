@@ -320,5 +320,81 @@ namespace Application_Desktop.Controller
 
             return services;
         }
+
+        public async Task Approved(string status, int id)
+        {
+            string query = "UPDATE appointments SET status = @newStatus WHERE id = @appointmentId";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@newStatus", status);
+                        cmd.Parameters.AddWithValue("@appointmentId", id);
+
+
+
+                        int rowsAffected = await cmd.ExecuteNonQueryAsync();
+
+                        if (rowsAffected > 0)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to update appointment status.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error updating to approve : {ex.Message}");
+            }
+        }
+
+        public async Task Cancel(string status, int id)
+        {
+            string query = "UPDATE appointments SET status = @newStatus WHERE id = @appointmentId";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@newStatus", status);
+                        cmd.Parameters.AddWithValue("@appointmentId", id);
+
+
+
+                        int rowsAffected = await cmd.ExecuteNonQueryAsync();
+
+                        if (rowsAffected > 0)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to cancel appointment status.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error updating to approve : {ex.Message}");
+            }
+        }
     }
 }

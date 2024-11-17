@@ -119,20 +119,53 @@ namespace Application_Desktop.Admin_Views
         {
             try
             {
+                // Fetch approved appointments
                 DataTable inqueue = await _handleAppointmentController.InqueueAppointment();
-                viewPendingAppointment.DataSource = null;
-                viewPendingAppointment.Rows.Clear();
-                viewPendingAppointment.Columns.Clear();
 
-                viewPendingAppointment.AutoGenerateColumns = false;
-                AddColumnInqueue(viewPendingAppointment);
+                // Check if the inqueue DataTable is null
+                if (inqueue != null)
+                {
+                    // Clear the DataGridView
+                    viewPendingAppointment.DataSource = null;
+                    viewPendingAppointment.Rows.Clear();
 
-                viewPendingAppointment.DataSource = inqueue;
+                    // Ensure columns are added
+                    if (viewPendingAppointment.Columns.Count == 0)
+                    {
+                        AddColumnInqueue(viewPendingAppointment);
+                    }
 
+                    // Populate the DataGridView with data
+                    foreach (DataRow row in inqueue.Rows)
+                    {
+                        string qrData = row["qr_code"].ToString();
+                        Bitmap qrCodeImage = GenerateQrCode(qrData);
+
+                        viewPendingAppointment.Rows.Add(
+                            qrCodeImage,
+                            row["id"],
+                            row["user_id"],
+                            row["UserName"],
+                            row["BranchName"],
+                            row["ServiceTitle"],
+                            row["appointment_date"],
+                            row["appointment_time"],
+                            row["reschedule_date"],
+                            row["reschedule_time"],
+                            row["status"],
+                            row["check_in"]
+                        );
+                    }
+                }
+                else
+                {
+                    // Handle the case where inqueue is null
+                    MessageBox.Show("No appointments found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to load patient records: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Failed to load approved appointments: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -140,20 +173,42 @@ namespace Application_Desktop.Admin_Views
         {
             try
             {
+                // Fetch rescheduled appointments
                 DataTable reschedule = await _handleAppointmentController.RescheduleAppointment();
+
+                // Clear the DataGridView
                 viewReschedule.DataSource = null;
                 viewReschedule.Rows.Clear();
-                viewReschedule.Columns.Clear();
 
-                viewReschedule.AutoGenerateColumns = false;
-                AddColumnReschedule(viewReschedule);
+                if (viewReschedule.Columns.Count == 0)
+                {
+                    AddColumnReschedule(viewReschedule);  
+                }
 
-                viewReschedule.DataSource = reschedule;
+                foreach (DataRow row in reschedule.Rows)
+                {
+                    string qrData = row["qr_code"].ToString(); 
+                    Bitmap qrCodeImage = GenerateQrCode(qrData);
 
+                    viewReschedule.Rows.Add(
+                        qrCodeImage,
+                        row["id"],
+                        row["user_id"],
+                        row["UserName"],
+                        row["BranchName"],
+                        row["ServiceTitle"],
+                        row["appointment_date"],
+                        row["appointment_time"],
+                        row["reschedule_date"],
+                        row["reschedule_time"],
+                        row["status"],
+                        row["check_in"]
+                    );
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to load patient records: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Failed to load rescheduled appointments: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -287,6 +342,20 @@ namespace Application_Desktop.Admin_Views
         {
             Inqueue.RowHeadersVisible = false;
             Inqueue.ColumnHeadersHeight = 40;
+            Inqueue.RowTemplate.Height = 150;
+
+
+            if (!Inqueue.Columns.Contains("qrCode"))
+            {
+                DataGridViewImageColumn qrCodeColumn = new DataGridViewImageColumn
+                {
+                    HeaderText = "QR Code",
+                    Name = "qrCode",
+                    Width = 150,
+                    ImageLayout = DataGridViewImageCellLayout.Zoom
+                };
+                Inqueue.Columns.Add(qrCodeColumn);
+            }
 
             DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn
             {
@@ -343,6 +412,10 @@ namespace Application_Desktop.Admin_Views
                 Name = "appointmentDate",
                 DataPropertyName = "appointment_date",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Format = "MM/dd/yyyy"
+                }
 
             };
             Inqueue.Columns.Add(appointment_date);
@@ -363,6 +436,10 @@ namespace Application_Desktop.Admin_Views
                 Name = "rescheduleDate",
                 DataPropertyName = "reschedule_date",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Format = "MM/dd/yyyy"
+                }
 
             };
             Inqueue.Columns.Add(reschedule_date);
@@ -392,6 +469,20 @@ namespace Application_Desktop.Admin_Views
         {
             Reschedule.RowHeadersVisible = false;
             Reschedule.ColumnHeadersHeight = 40;
+            Reschedule.RowTemplate.Height = 150;
+
+
+            if (!Reschedule.Columns.Contains("qrCode"))
+            {
+                DataGridViewImageColumn qrCodeColumn = new DataGridViewImageColumn
+                {
+                    HeaderText = "QR Code",
+                    Name = "qrCode",
+                    Width = 150,
+                    ImageLayout = DataGridViewImageCellLayout.Zoom
+                };
+                Reschedule.Columns.Add(qrCodeColumn);
+            }
 
             DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn
             {
@@ -448,6 +539,10 @@ namespace Application_Desktop.Admin_Views
                 Name = "appointmentDate",
                 DataPropertyName = "appointment_date",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Format = "MM/dd/yyyy"
+                }
 
             };
             Reschedule.Columns.Add(appointment_date);
@@ -468,6 +563,10 @@ namespace Application_Desktop.Admin_Views
                 Name = "rescheduleDate",
                 DataPropertyName = "reschedule_date",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Format = "MM/dd/yyyy"
+                }
 
             };
             Reschedule.Columns.Add(reschedule_date);
@@ -1001,6 +1100,7 @@ namespace Application_Desktop.Admin_Views
         {
             string fromEmail = "smtc.dentalcare@gmail.com";
             string appPassword = "pskv swrc tyqh hldz"; // Use the App Password here
+
 
             // Create a new MailMessage object
             MailMessage mail = new MailMessage(fromEmail, userEmail);
@@ -1832,42 +1932,18 @@ namespace Application_Desktop.Admin_Views
                     return;
                 }
 
-                bool isCheckedIn = await _handleAppointmentController.IsCheckedIn(PatientData.AppointmentId);
-
-                if (isCheckedIn)
-                {
-                    await HandleCheckedIn(AppointmentData.userId);
-                }
-                else
-                {
+                
                     var isApproved = await _handleAppointmentController.CheckAppointmentStatus(AppointmentData.userId, AppointmentData.appointment_date, AppointmentData.appointment_time);
 
                     if (isApproved)
                     {
-                        // Update the check_in status in the database
-                        //await _handleAppointmentController.UpdateCheckInStatus(AppointmentData.userId, AppointmentData.appointment_date, AppointmentData.appointment_time);
-
-
-                        //palitan at gawin if check_in == 1 already show the quickretrieval instead and if not update the check_in then show the form
                         await HandleCheckedIn(AppointmentData.userId);
-
-                        AlertBox(Color.LightGreen, Color.SeaGreen, "Valid QRCode", "Check-in successful!", Properties.Resources.success);
-
-
+                        //AlertBox(Color.LightGreen, Color.SeaGreen, "Valid QRCode", "Check-in successful!", Properties.Resources.success);
                     }
                     else
                     {
-                        this.BeginInvoke((MethodInvoker)delegate
-                        {
-                            lblScanning.Visible = false;
-                            lvlScanQRC.Visible = false;
-                            LoadingState.Visible = false;
-                            btnQRCode.Text = "Start Scanning";
-
-                            AlertBox(Color.LightCoral, Color.Red, "Not Valid QRCode", "Appointment is not approved or does not exist.", Properties.Resources.error);
-                        });
+                        await HandlePending(AppointmentData.userId);
                     }
-                }
                 
             }
             catch (Exception ex)
@@ -1904,6 +1980,37 @@ namespace Application_Desktop.Admin_Views
                         quickRetrievalData newForm = new quickRetrievalData();
                         newForm.LoadPatientData(patientData);
                         newForm.Show();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error updating UI: {ex.Message}");
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error retrieving patient data: {ex.Message}");
+            }
+        }
+
+        private async Task HandlePending(int userId)
+        {
+            try
+            {
+                var patientData = await GetPatientDataWithHistories(userId);
+
+                this.BeginInvoke((MethodInvoker)delegate
+                {
+                    try
+                    {
+                        LoadingState.Visible = false;
+                        lvlScanQRC.Visible = false;
+                        lblScanning.Visible = false;
+                        btnQRCode.Text = "Start Scanning";
+
+                        quickRetrievalDataPending form2 = new quickRetrievalDataPending();
+                        form2.LoadPatientData(patientData);
+                        form2.Show();
                     }
                     catch (Exception ex)
                     {
