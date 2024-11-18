@@ -61,7 +61,7 @@ namespace Application_Desktop.Admin_Sub_Views
                 }
 
                 // Check if the appointment is approved
-                var isApproved = await _handleAppointmentController.CheckAppointmentStatus(AppointmentData.userId, AppointmentData.appointment_date, AppointmentData.appointment_time);
+                var isApproved = await _handleAppointmentController.CheckAppointmentStatus(AppointmentData.userId);
 
                 if (isApproved)
                 {

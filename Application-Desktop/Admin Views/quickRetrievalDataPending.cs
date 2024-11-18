@@ -124,9 +124,9 @@ namespace Application_Desktop.Admin_Views
             txtAppointmentId.Text = PatientData.AppointmentId.ToString() ?? "N/A";
             txtBranch.Text = PatientData.Branch;
             txtServices.Text = PatientData.Services;
-            txtAppointmentDate.Text = DateTime.TryParse(PatientData.AppointmentDate, out DateTime appointmentDate)
-                 ? appointmentDate.ToString("MM/dd/yyyy")
-                 : string.Empty;
+            txtAppointmentDate.Text = PatientData.AppointmentDate != DateTime.MinValue
+                ? PatientData.AppointmentDate.ToString("MM/dd/yyyy")
+                : string.Empty;
 
             txtAppointmentTime.Text = DateTime.TryParse(PatientData.AppointmentTime, out DateTime appointmentTime)
                 ? appointmentTime.ToString("hh:mm tt")
@@ -247,8 +247,9 @@ namespace Application_Desktop.Admin_Views
                         {
                             // Proceed with further actions after email is successfully sent
                             await _quickRetrievalDataController.Approved(status, userIdToApprove);
-                            this.Close();
                             AlertBox(Color.LightGreen, Color.SeaGreen, "Approval Processed", "Appointment has been approved and notification sent.", Properties.Resources.success);
+                           
+                            return;
                         }
                         else
                         {
@@ -268,7 +269,7 @@ namespace Application_Desktop.Admin_Views
             finally
             {
                 btnApproved.Enabled = true;
-                btnApproved.Text = "Approve";
+                btnApproved.Text = "Approved";
             }
         }
         private async void btnApproved_Click(object sender, EventArgs e)
@@ -370,9 +371,10 @@ namespace Application_Desktop.Admin_Views
                         if (emailSent)
                         {
                             // Proceed with further actions after email is successfully sent
-                            await _quickRetrievalDataController.Cancel(status, userIdToApprove);
-                            this.Close();
+                            await _quickRetrievalDataController.Cancel(status, userIdToApprove);                           
                             AlertBox(Color.LightGreen, Color.SeaGreen, "Rejection Processed", "Appointment has been rejected and notification sent.", Properties.Resources.success);
+                         
+                            return;
                         }
                         else
                         {

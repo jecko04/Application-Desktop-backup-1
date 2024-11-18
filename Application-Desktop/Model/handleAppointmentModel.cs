@@ -72,7 +72,7 @@ namespace Application_Desktop.Model
         public int SelectServices { get; set; }
         public string Branch { get; set; }
         public string Services { get; set; }
-        public string AppointmentDate { get; set; }
+        public DateTime AppointmentDate { get; set; }
         public string AppointmentTime { get; set; }
         public string RescheduleDate { get; set; }
         public string RescheduleTime { get; set; } 

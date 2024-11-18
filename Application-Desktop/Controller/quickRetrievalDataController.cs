@@ -190,15 +190,15 @@ namespace Application_Desktop.Controller
         {
             string query = @"
                     UPDATE appointments
-                    SET selectServices = @services, reschedule_date = @rescheduleDate, reschedule_time = @rescheduleTime, qr_code = @qrCode, check_in = 0, updated_at = @updatedAt
+                    SET selectServices = @services, reschedule_date = @rescheduleDate, reschedule_time = @rescheduleTime, qr_code = @qrCode, check_in = 0, status = 'approved', updated_at = @updatedAt
                     WHERE id = (
                         SELECT id
-                        FROM appointments
-                        WHERE user_id = @userId
-                        ORDER BY created_at DESC, updated_at DESC
+                        FROM appointments a
+                        WHERE a.user_id = @userId
+                        ORDER BY a.created_at DESC, a.updated_at DESC
                         LIMIT 1
                     )
-                    AND user_id = @userId AND status = 'approved'";
+                    AND user_id = @userId AND (status = 'approved' OR status = 'completed')";
 
             try
             {

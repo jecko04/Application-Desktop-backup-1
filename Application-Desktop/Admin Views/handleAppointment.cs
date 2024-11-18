@@ -130,7 +130,7 @@ namespace Application_Desktop.Admin_Views
                     viewPendingAppointment.Rows.Clear();
 
                     // Ensure columns are added
-                    if (viewPendingAppointment.Columns.Count == 0)
+                    if (viewPendingAppointment.Columns["QrCodeImage"] == null)
                     {
                         AddColumnInqueue(viewPendingAppointment);
                     }
@@ -180,7 +180,7 @@ namespace Application_Desktop.Admin_Views
                 viewReschedule.DataSource = null;
                 viewReschedule.Rows.Clear();
 
-                if (viewReschedule.Columns.Count == 0)
+                if (viewReschedule.Columns["QrCodeImage"] == null)
                 {
                     AddColumnReschedule(viewReschedule);  
                 }
@@ -224,7 +224,7 @@ namespace Application_Desktop.Admin_Views
                 viewApprovedAppointment.Rows.Clear();
 
                 // Add columns if they don't exist
-                if (viewApprovedAppointment.Columns.Count == 0)
+                if (viewApprovedAppointment.Columns["QrCodeImage"] == null)
                 {
                     AddColumnApproved(viewApprovedAppointment);
                 }
@@ -344,7 +344,7 @@ namespace Application_Desktop.Admin_Views
             Inqueue.ColumnHeadersHeight = 40;
             Inqueue.RowTemplate.Height = 150;
 
-
+            // Adding QR Code column
             if (!Inqueue.Columns.Contains("qrCode"))
             {
                 DataGridViewImageColumn qrCodeColumn = new DataGridViewImageColumn
@@ -357,120 +357,149 @@ namespace Application_Desktop.Admin_Views
                 Inqueue.Columns.Add(qrCodeColumn);
             }
 
-            DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn
+            // Adding ID column
+            if (!Inqueue.Columns.Contains("id"))
             {
-                HeaderText = "ID",
-                Name = "id",
-                DataPropertyName = "id",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            Inqueue.Columns.Add(id);
-
-            DataGridViewTextBoxColumn userIdColumn = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "User ID",
-                Name = "user_id",
-                DataPropertyName = "user_id",
-                Visible = false
-            };
-            Inqueue.Columns.Add(userIdColumn);
-
-            DataGridViewTextBoxColumn fullname = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Fullname",
-                Name = "fullname",
-                DataPropertyName = "UserName",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            Inqueue.Columns.Add(fullname);
-
-            DataGridViewTextBoxColumn branches = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Branch",
-                Name = "branches",
-                DataPropertyName = "BranchName",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            Inqueue.Columns.Add(branches);
-
-            DataGridViewTextBoxColumn services = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Services",
-                Name = "services",
-                DataPropertyName = "ServiceTitle",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            Inqueue.Columns.Add(services);
-
-            DataGridViewTextBoxColumn appointment_date = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Appointment Date",
-                Name = "appointmentDate",
-                DataPropertyName = "appointment_date",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-                DefaultCellStyle = new DataGridViewCellStyle
+                DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn
                 {
-                    Format = "MM/dd/yyyy"
-                }
+                    HeaderText = "ID",
+                    Name = "id",
+                    DataPropertyName = "id",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                Inqueue.Columns.Add(id);
+            }
 
-            };
-            Inqueue.Columns.Add(appointment_date);
-
-            DataGridViewTextBoxColumn appointment_time = new DataGridViewTextBoxColumn
+            // Adding User ID column
+            if (!Inqueue.Columns.Contains("user_id"))
             {
-                HeaderText = "Appointment Time",
-                Name = "appointmentTime",
-                DataPropertyName = "appointment_time",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            Inqueue.Columns.Add(appointment_time);
-
-            DataGridViewTextBoxColumn reschedule_date = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Reschedule Date",
-                Name = "rescheduleDate",
-                DataPropertyName = "reschedule_date",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-                DefaultCellStyle = new DataGridViewCellStyle
+                DataGridViewTextBoxColumn userIdColumn = new DataGridViewTextBoxColumn
                 {
-                    Format = "MM/dd/yyyy"
-                }
+                    HeaderText = "User ID",
+                    Name = "user_id",
+                    DataPropertyName = "user_id",
+                    Visible = false
+                };
+                Inqueue.Columns.Add(userIdColumn);
+            }
 
-            };
-            Inqueue.Columns.Add(reschedule_date);
-
-            DataGridViewTextBoxColumn reschedule_time = new DataGridViewTextBoxColumn
+            // Adding Fullname column
+            if (!Inqueue.Columns.Contains("fullname"))
             {
-                HeaderText = "Reschedule Time",
-                Name = "rescheduleTime",
-                DataPropertyName = "reschedule_time",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DataGridViewTextBoxColumn fullname = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Fullname",
+                    Name = "fullname",
+                    DataPropertyName = "UserName",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                Inqueue.Columns.Add(fullname);
+            }
 
-            };
-            Inqueue.Columns.Add(reschedule_time);
-
-            DataGridViewTextBoxColumn status = new DataGridViewTextBoxColumn
+            // Adding Branch column
+            if (!Inqueue.Columns.Contains("branches"))
             {
-                HeaderText = "Status",
-                Name = "status",
-                DataPropertyName = "status",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DataGridViewTextBoxColumn branches = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Branch",
+                    Name = "branches",
+                    DataPropertyName = "BranchName",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                Inqueue.Columns.Add(branches);
+            }
 
-            };
-            Inqueue.Columns.Add(status);
+            // Adding Services column
+            if (!Inqueue.Columns.Contains("services"))
+            {
+                DataGridViewTextBoxColumn services = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Services",
+                    Name = "services",
+                    DataPropertyName = "ServiceTitle",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                Inqueue.Columns.Add(services);
+            }
+
+            // Adding Appointment Date column
+            if (!Inqueue.Columns.Contains("appointmentDate"))
+            {
+                DataGridViewTextBoxColumn appointment_date = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Appointment Date",
+                    Name = "appointmentDate",
+                    DataPropertyName = "appointment_date",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                    DefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Format = "MM/dd/yyyy"
+                    }
+                };
+                Inqueue.Columns.Add(appointment_date);
+            }
+
+            // Adding Appointment Time column
+            if (!Inqueue.Columns.Contains("appointmentTime"))
+            {
+                DataGridViewTextBoxColumn appointment_time = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Appointment Time",
+                    Name = "appointmentTime",
+                    DataPropertyName = "appointment_time",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                Inqueue.Columns.Add(appointment_time);
+            }
+
+            // Adding Reschedule Date column
+            if (!Inqueue.Columns.Contains("rescheduleDate"))
+            {
+                DataGridViewTextBoxColumn reschedule_date = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Reschedule Date",
+                    Name = "rescheduleDate",
+                    DataPropertyName = "reschedule_date",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                    DefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Format = "MM/dd/yyyy"
+                    }
+                };
+                Inqueue.Columns.Add(reschedule_date);
+            }
+
+            // Adding Reschedule Time column
+            if (!Inqueue.Columns.Contains("rescheduleTime"))
+            {
+                DataGridViewTextBoxColumn reschedule_time = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Reschedule Time",
+                    Name = "rescheduleTime",
+                    DataPropertyName = "reschedule_time",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                Inqueue.Columns.Add(reschedule_time);
+            }
+
+            // Adding Status column
+            if (!Inqueue.Columns.Contains("status"))
+            {
+                DataGridViewTextBoxColumn status = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Status",
+                    Name = "status",
+                    DataPropertyName = "status",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                Inqueue.Columns.Add(status);
+            }
         }
-
         private void AddColumnReschedule(DataGridView Reschedule)
         {
             Reschedule.RowHeadersVisible = false;
             Reschedule.ColumnHeadersHeight = 40;
             Reschedule.RowTemplate.Height = 150;
-
 
             if (!Reschedule.Columns.Contains("qrCode"))
             {
@@ -484,120 +513,139 @@ namespace Application_Desktop.Admin_Views
                 Reschedule.Columns.Add(qrCodeColumn);
             }
 
-            DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn
+            if (!Reschedule.Columns.Contains("id"))
             {
-                HeaderText = "ID",
-                Name = "id",
-                DataPropertyName = "id",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            Reschedule.Columns.Add(id);
-
-            DataGridViewTextBoxColumn userIdColumn = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "User ID",
-                Name = "user_id",
-                DataPropertyName = "user_id",
-                Visible = false
-            };
-            Reschedule.Columns.Add(userIdColumn);
-
-            DataGridViewTextBoxColumn fullname = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Fullname",
-                Name = "fullname",
-                DataPropertyName = "UserName",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            Reschedule.Columns.Add(fullname);
-
-            DataGridViewTextBoxColumn branches = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Branch",
-                Name = "branches",
-                DataPropertyName = "BranchName",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            Reschedule.Columns.Add(branches);
-
-            DataGridViewTextBoxColumn services = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Services",
-                Name = "services",
-                DataPropertyName = "ServiceTitle",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            Reschedule.Columns.Add(services);
-
-            DataGridViewTextBoxColumn appointment_date = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Appointment Date",
-                Name = "appointmentDate",
-                DataPropertyName = "appointment_date",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-                DefaultCellStyle = new DataGridViewCellStyle
+                DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn
                 {
-                    Format = "MM/dd/yyyy"
-                }
+                    HeaderText = "ID",
+                    Name = "id",
+                    DataPropertyName = "id",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                Reschedule.Columns.Add(id);
+            }
 
-            };
-            Reschedule.Columns.Add(appointment_date);
-
-            DataGridViewTextBoxColumn appointment_time = new DataGridViewTextBoxColumn
+            if (!Reschedule.Columns.Contains("user_id"))
             {
-                HeaderText = "Appointment Time",
-                Name = "appointmentTime",
-                DataPropertyName = "appointment_time",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            Reschedule.Columns.Add(appointment_time);
-
-            DataGridViewTextBoxColumn reschedule_date = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Reschedule Date",
-                Name = "rescheduleDate",
-                DataPropertyName = "reschedule_date",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-                DefaultCellStyle = new DataGridViewCellStyle
+                DataGridViewTextBoxColumn userIdColumn = new DataGridViewTextBoxColumn
                 {
-                    Format = "MM/dd/yyyy"
-                }
+                    HeaderText = "User ID",
+                    Name = "user_id",
+                    DataPropertyName = "user_id",
+                    Visible = false
+                };
+                Reschedule.Columns.Add(userIdColumn);
+            }
 
-            };
-            Reschedule.Columns.Add(reschedule_date);
-
-            DataGridViewTextBoxColumn reschedule_time = new DataGridViewTextBoxColumn
+            if (!Reschedule.Columns.Contains("fullname"))
             {
-                HeaderText = "Reschedule Time",
-                Name = "rescheduleTime",
-                DataPropertyName = "reschedule_time",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DataGridViewTextBoxColumn fullname = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Fullname",
+                    Name = "fullname",
+                    DataPropertyName = "UserName",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                Reschedule.Columns.Add(fullname);
+            }
 
-            };
-            Reschedule.Columns.Add(reschedule_time);
-
-            DataGridViewTextBoxColumn status = new DataGridViewTextBoxColumn
+            if (!Reschedule.Columns.Contains("branches"))
             {
-                HeaderText = "Status",
-                Name = "status",
-                DataPropertyName = "status",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DataGridViewTextBoxColumn branches = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Branch",
+                    Name = "branches",
+                    DataPropertyName = "BranchName",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                Reschedule.Columns.Add(branches);
+            }
 
-            };
-            Reschedule.Columns.Add(status);
+            if (!Reschedule.Columns.Contains("services"))
+            {
+                DataGridViewTextBoxColumn services = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Services",
+                    Name = "services",
+                    DataPropertyName = "ServiceTitle",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                Reschedule.Columns.Add(services);
+            }
+
+            if (!Reschedule.Columns.Contains("appointmentDate"))
+            {
+                DataGridViewTextBoxColumn appointment_date = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Appointment Date",
+                    Name = "appointmentDate",
+                    DataPropertyName = "appointment_date",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                    DefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Format = "MM/dd/yyyy"
+                    }
+                };
+                Reschedule.Columns.Add(appointment_date);
+            }
+
+            if (!Reschedule.Columns.Contains("appointmentTime"))
+            {
+                DataGridViewTextBoxColumn appointment_time = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Appointment Time",
+                    Name = "appointmentTime",
+                    DataPropertyName = "appointment_time",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                Reschedule.Columns.Add(appointment_time);
+            }
+
+            if (!Reschedule.Columns.Contains("rescheduleDate"))
+            {
+                DataGridViewTextBoxColumn reschedule_date = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Reschedule Date",
+                    Name = "rescheduleDate",
+                    DataPropertyName = "reschedule_date",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                    DefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Format = "MM/dd/yyyy"
+                    }
+                };
+                Reschedule.Columns.Add(reschedule_date);
+            }
+
+            if (!Reschedule.Columns.Contains("rescheduleTime"))
+            {
+                DataGridViewTextBoxColumn reschedule_time = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Reschedule Time",
+                    Name = "rescheduleTime",
+                    DataPropertyName = "reschedule_time",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                Reschedule.Columns.Add(reschedule_time);
+            }
+
+            if (!Reschedule.Columns.Contains("status"))
+            {
+                DataGridViewTextBoxColumn status = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Status",
+                    Name = "status",
+                    DataPropertyName = "status",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                Reschedule.Columns.Add(status);
+            }
         }
-
         private void AddColumnApproved(DataGridView approved)
         {
             approved.RowHeadersVisible = false;
             approved.ColumnHeadersHeight = 40;
             approved.RowTemplate.Height = 150;
-
 
             if (!approved.Columns.Contains("qrCode"))
             {
@@ -606,127 +654,150 @@ namespace Application_Desktop.Admin_Views
                     HeaderText = "QR Code",
                     Name = "qrCode",
                     Width = 150,
-                    ImageLayout = DataGridViewImageCellLayout.Zoom 
+                    ImageLayout = DataGridViewImageCellLayout.Zoom
                 };
                 approved.Columns.Add(qrCodeColumn);
             }
 
-            DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn
+            if (!approved.Columns.Contains("id"))
             {
-                HeaderText = "ID",
-                Name = "id",
-                DataPropertyName = "id",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            approved.Columns.Add(id);
-
-            DataGridViewTextBoxColumn userIdColumn = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "User ID",
-                Name = "user_id",
-                DataPropertyName = "user_id",
-                Visible = false
-            };
-            approved.Columns.Add(userIdColumn);
-
-            DataGridViewTextBoxColumn fullname = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Fullname",
-                Name = "fullname",
-                DataPropertyName = "UserName",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            approved.Columns.Add(fullname);
-
-            DataGridViewTextBoxColumn branches = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Branch",
-                Name = "branches",
-                DataPropertyName = "BranchName",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            approved.Columns.Add(branches);
-
-            DataGridViewTextBoxColumn services = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Services",
-                Name = "services",
-                DataPropertyName = "ServiceTitle",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            approved.Columns.Add(services);
-
-            DataGridViewTextBoxColumn appointment_date = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Appointment Date",
-                Name = "appointmentDate",
-                DataPropertyName = "appointment_date",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-                DefaultCellStyle = new DataGridViewCellStyle
+                DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn
                 {
-                    Format = "MM/dd/yyyy" 
-                }
+                    HeaderText = "ID",
+                    Name = "id",
+                    DataPropertyName = "id",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                approved.Columns.Add(id);
+            }
 
-            };
-            approved.Columns.Add(appointment_date);
-
-            DataGridViewTextBoxColumn appointment_time = new DataGridViewTextBoxColumn
+            if (!approved.Columns.Contains("user_id"))
             {
-                HeaderText = "Appointment Time",
-                Name = "appointmentTime",
-                DataPropertyName = "appointment_time",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            approved.Columns.Add(appointment_time);
-
-            DataGridViewTextBoxColumn reschedule_date = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Reschedule Date",
-                Name = "rescheduleDate",
-                DataPropertyName = "reschedule_date",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-                DefaultCellStyle = new DataGridViewCellStyle
+                DataGridViewTextBoxColumn userIdColumn = new DataGridViewTextBoxColumn
                 {
-                    Format = "MM/dd/yyyy"
-                }
+                    HeaderText = "User ID",
+                    Name = "user_id",
+                    DataPropertyName = "user_id",
+                    Visible = false
+                };
+                approved.Columns.Add(userIdColumn);
+            }
 
-            };
-            approved.Columns.Add(reschedule_date);
-
-            DataGridViewTextBoxColumn reschedule_time = new DataGridViewTextBoxColumn
+            if (!approved.Columns.Contains("fullname"))
             {
-                HeaderText = "Reschedule Time",
-                Name = "rescheduleTime",
-                DataPropertyName = "reschedule_time",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DataGridViewTextBoxColumn fullname = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Fullname",
+                    Name = "fullname",
+                    DataPropertyName = "UserName",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                approved.Columns.Add(fullname);
+            }
 
-            };
-            approved.Columns.Add(reschedule_time);
-
-            DataGridViewTextBoxColumn status = new DataGridViewTextBoxColumn
+            if (!approved.Columns.Contains("branches"))
             {
-                HeaderText = "Status",
-                Name = "status",
-                DataPropertyName = "status",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DataGridViewTextBoxColumn branches = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Branch",
+                    Name = "branches",
+                    DataPropertyName = "BranchName",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                approved.Columns.Add(branches);
+            }
 
-            };
-            approved.Columns.Add(status);
-
-            DataGridViewTextBoxColumn check_in = new DataGridViewTextBoxColumn
+            if (!approved.Columns.Contains("services"))
             {
-                HeaderText = "Check In",
-                Name = "check_in",
-                DataPropertyName = "check_in",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-            };
-            approved.Columns.Add(check_in);
+                DataGridViewTextBoxColumn services = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Services",
+                    Name = "services",
+                    DataPropertyName = "ServiceTitle",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                approved.Columns.Add(services);
+            }
 
+            if (!approved.Columns.Contains("appointmentDate"))
+            {
+                DataGridViewTextBoxColumn appointment_date = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Appointment Date",
+                    Name = "appointmentDate",
+                    DataPropertyName = "appointment_date",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                    DefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Format = "MM/dd/yyyy"
+                    }
+                };
+                approved.Columns.Add(appointment_date);
+            }
+
+            if (!approved.Columns.Contains("appointmentTime"))
+            {
+                DataGridViewTextBoxColumn appointment_time = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Appointment Time",
+                    Name = "appointmentTime",
+                    DataPropertyName = "appointment_time",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                approved.Columns.Add(appointment_time);
+            }
+
+            if (!approved.Columns.Contains("rescheduleDate"))
+            {
+                DataGridViewTextBoxColumn reschedule_date = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Reschedule Date",
+                    Name = "rescheduleDate",
+                    DataPropertyName = "reschedule_date",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                    DefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Format = "MM/dd/yyyy"
+                    }
+                };
+                approved.Columns.Add(reschedule_date);
+            }
+
+            if (!approved.Columns.Contains("rescheduleTime"))
+            {
+                DataGridViewTextBoxColumn reschedule_time = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Reschedule Time",
+                    Name = "rescheduleTime",
+                    DataPropertyName = "reschedule_time",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                approved.Columns.Add(reschedule_time);
+            }
+
+            if (!approved.Columns.Contains("status"))
+            {
+                DataGridViewTextBoxColumn status = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Status",
+                    Name = "status",
+                    DataPropertyName = "status",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                approved.Columns.Add(status);
+            }
+
+            if (!approved.Columns.Contains("check_in"))
+            {
+                DataGridViewTextBoxColumn check_in = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Check In",
+                    Name = "check_in",
+                    DataPropertyName = "check_in",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                approved.Columns.Add(check_in);
+            }
         }
         private void AddColumnCancelled(DataGridView cancelled)
         {
@@ -963,6 +1034,20 @@ namespace Application_Desktop.Admin_Views
         {
             completed.RowHeadersVisible = false;
             completed.ColumnHeadersHeight = 40;
+           /* completed.RowTemplate.Height = 150;
+
+
+            if (!completed.Columns.Contains("qrCode"))
+            {
+                DataGridViewImageColumn qrCodeColumn = new DataGridViewImageColumn
+                {
+                    HeaderText = "QR Code",
+                    Name = "qrCode",
+                    Width = 150,
+                    ImageLayout = DataGridViewImageCellLayout.Zoom
+                };
+                completed.Columns.Add(qrCodeColumn);
+            }*/
 
             DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn
             {
@@ -1806,30 +1891,36 @@ namespace Application_Desktop.Admin_Views
 
         private async void btnRefresher_Click(object sender, EventArgs e)
         {
-            await LoadInqueue();
-            viewPendingAppointment.ClearSelection();
-            selectedAppointmentId = 0;
-            selectedUserId = 0;
+            try
+            {
+                await LoadInqueue();
+                viewPendingAppointment.ClearSelection();
+                selectedAppointmentId = 0;
+                selectedUserId = 0;
 
+                await LoadReschedule();
+                viewReschedule.ClearSelection();
+                rescheduleAppointmentId = 0;
+                rescheduleUserId = 0;
 
-            await LoadReschedule();
-            viewReschedule.ClearSelection();
-            rescheduleAppointmentId = 0;
-            rescheduleUserId = 0;
+                await LoadApproved();
+                viewApprovedAppointment.ClearSelection();
 
-            await LoadApproved();
-            viewApprovedAppointment.ClearSelection();
+                await LoadCancelled();
+                viewCancelledAppointment.ClearSelection();
+                ApprovedAppointmentId = 0;
+                selectedApprovedUserId = 0;
 
-            await LoadCancelled();
-            viewCancelledAppointment.ClearSelection();
-            ApprovedAppointmentId = 0;
-            selectedApprovedUserId = 0;
+                await LoadMissed();
+                viewMissedAppointment.ClearSelection();
 
-            await LoadMissed();
-            viewMissedAppointment.ClearSelection();
-
-            await LoadCompleted();
-            viewCompletedAppointment.ClearSelection();
+                await LoadCompleted();
+                viewCompletedAppointment.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during refresh: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         bool isCollapsed = true;
@@ -1901,7 +1992,7 @@ namespace Application_Desktop.Admin_Views
                 patientData.SelectServices = int.Parse(appointmentData["selectServices"].ToString());
                 patientData.Branch = appointmentData["BranchName"].ToString();
                 patientData.Services = appointmentData["Services"].ToString();
-                patientData.AppointmentDate = appointmentData["appointment_date"].ToString();
+                patientData.AppointmentDate = Convert.ToDateTime(appointmentData["appointment_date"]);
                 patientData.AppointmentTime = appointmentData["appointment_time"].ToString();
                 patientData.RescheduleDate = appointmentData["reschedule_date"]?.ToString();
                 patientData.RescheduleTime = appointmentData["reschedule_time"]?.ToString();
@@ -1923,7 +2014,6 @@ namespace Application_Desktop.Admin_Views
             {
                 await Task.Delay(3000);
 
-                // Deserialize the scanned JSON string
                 var AppointmentData = JsonConvert.DeserializeObject<AppointmentData>(scannedValue);
 
                 if (AppointmentData == null)
@@ -1932,19 +2022,30 @@ namespace Application_Desktop.Admin_Views
                     return;
                 }
 
-                
-                    var isApproved = await _handleAppointmentController.CheckAppointmentStatus(AppointmentData.userId, AppointmentData.appointment_date, AppointmentData.appointment_time);
+                var branchName = AppointmentData.branch_name;
+                var services = AppointmentData.services;     
 
-                    if (isApproved)
-                    {
-                        await HandleCheckedIn(AppointmentData.userId);
-                        //AlertBox(Color.LightGreen, Color.SeaGreen, "Valid QRCode", "Check-in successful!", Properties.Resources.success);
-                    }
-                    else
-                    {
-                        await HandlePending(AppointmentData.userId);
-                    }
-                
+                var status = await _handleAppointmentController.GetAppointmentStatus(AppointmentData.userId, branchName, services);
+
+                MessageBox.Show(status);
+                if (string.IsNullOrEmpty(status))
+                {
+                    MessageBox.Show("Appointment status not found.");
+                    return;
+                }
+
+                if (status == "approved" || status == "completed")
+                {
+                    await HandleCheckedIn(AppointmentData.userId);
+                }
+                else if (status == "pending")
+                {
+                    await HandlePending(AppointmentData.userId);
+                }
+                else
+                {
+                    MessageBox.Show($"Unexpected appointment status: {status}");
+                }
             }
             catch (Exception ex)
             {
@@ -1952,15 +2053,17 @@ namespace Application_Desktop.Admin_Views
             }
             finally
             {
+                // Reset UI elements
                 LoadingState.Visible = false;
                 lblScanning.Visible = false;
                 lvlScanQRC.Visible = false;
                 btnQRCode.Text = "Start Scanning";
 
                 textBox1.Focus();
-
             }
         }
+
+
 
         private async Task HandleCheckedIn(int userId)
         {
@@ -2130,10 +2233,10 @@ namespace Application_Desktop.Admin_Views
             {
                 DataTable appointment = await _handleAppointmentController.SearchByName(txtSearchBoxes.Text);
 
-                if (appointment != null && appointment.Rows.Count > 0)
+                if (appointment.Rows.Count > 0)
                 {
                     DataView pendingView = new DataView(appointment);
-                    pendingView.RowFilter = "status = 'pending'";
+                    pendingView.RowFilter = "status = 'pending' AND reschedule_date IS NULL";
                     viewPendingAppointment.DataSource = pendingView;
 
                     DataView approvedView = new DataView(appointment);
@@ -2141,8 +2244,8 @@ namespace Application_Desktop.Admin_Views
                     viewApprovedAppointment.DataSource = approvedView;
 
                     DataView rescheduleView = new DataView(appointment);
-                    approvedView.RowFilter = "status = 'pending' AND reschedule_date IS NOT NULL";
-                    viewReschedule.DataSource = approvedView;
+                    rescheduleView.RowFilter = "status = 'pending' AND reschedule_date IS NOT NULL"; 
+                    viewReschedule.DataSource = rescheduleView;
 
                     DataView cancelledView = new DataView(appointment);
                     cancelledView.RowFilter = "status = 'cancelled'";
@@ -2155,6 +2258,41 @@ namespace Application_Desktop.Admin_Views
                     DataView completeView = new DataView(appointment);
                     completeView.RowFilter = "status = 'completed'";
                     viewCompletedAppointment.DataSource = completeView;
+
+                    foreach (DataRow row in appointment.Rows)
+                    {
+                        if (row["qr_code"] != DBNull.Value)
+                        {
+                            string qrData = row["qr_code"].ToString();
+                            Bitmap qrCodeImage = GenerateQrCode(qrData);
+
+                            foreach (DataGridViewRow dataGridViewRow in viewPendingAppointment.Rows)
+                            {
+                                if (dataGridViewRow.Cells["qrCode"] != null)
+                                {
+                                    dataGridViewRow.Cells["qrCode"].Value = qrCodeImage;
+                                }
+                            }
+
+                            foreach (DataGridViewRow dataGridViewRow in viewApprovedAppointment.Rows)
+                            {
+                                if (dataGridViewRow.Cells["qrCode"] != null)
+                                {
+                                    dataGridViewRow.Cells["qrCode"].Value = qrCodeImage;
+                                }
+                            }
+
+                            foreach (DataGridViewRow dataGridViewRow in viewReschedule.Rows)
+                            {
+                                if (dataGridViewRow.Cells["qrCode"] != null)
+                                {
+                                    dataGridViewRow.Cells["qrCode"].Value = qrCodeImage;
+                                }
+                            }
+
+
+                        }
+                    }
                 }
                 else
                 {

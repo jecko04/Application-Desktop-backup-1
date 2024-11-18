@@ -139,9 +139,9 @@ namespace Application_Desktop.Admin_Views
             txtAppointmentId.Text = PatientData.AppointmentId.ToString() ?? "N/A";
             txtBranch.Text = PatientData.Branch;
             txtServices.Text = PatientData.Services;
-            txtAppointmentDate.Text = DateTime.TryParse(PatientData.AppointmentDate, out DateTime appointmentDate)
-                 ? appointmentDate.ToString("MM/dd/yyyy")
-                 : string.Empty;
+            txtAppointmentDate.Text = PatientData.AppointmentDate != DateTime.MinValue
+                ? PatientData.AppointmentDate.ToString("MM/dd/yyyy")
+                : string.Empty;
 
             txtAppointmentTime.Text = DateTime.TryParse(PatientData.AppointmentTime, out DateTime appointmentTime)
                 ? appointmentTime.ToString("hh:mm tt")
@@ -283,13 +283,13 @@ namespace Application_Desktop.Admin_Views
 
         public class AppointmentQRCodeData
         {
-            public int UserId { get; set; }
-            public string BranchName { get; set; }
-            public string Services { get; set; }
-            public string AppointmentDate { get; set; }
-            public string AppointmentTime { get; set; }
-            public string RescheduleDate { get; set; }
-            public string RescheduleTime { get; set; }
+            public int userId { get; set; }
+            public string branch_name { get; set; }
+            public string services { get; set; }
+            public string appointment_date { get; set; }
+            public string appointment_time { get; set; }
+            public string reschedule_date { get; set; }
+            public string reschedule_time { get; set; }
         }
 
         private async Task<bool> SendEmailNotification(string userEmail, string appointmentId, DateTime rescheduleDate, DateTime rescheduleTime)
@@ -393,29 +393,29 @@ namespace Application_Desktop.Admin_Views
 
                 var qrCodeData = new AppointmentQRCodeData
                 {
-                    UserId = PatientData.UserId,
-                    BranchName = PatientData.Branch,
-                    Services = cmbServices.Text, 
-                    AppointmentDate = PatientData.AppointmentDate.ToString(),
-                    AppointmentTime = PatientData.AppointmentTime.ToString(),
-                    RescheduleDate = rescheduleDate.ToString("yyyy-MM-dd"),
-                    RescheduleTime = rescheduleTime.ToString("HH:mm:ss")
+                    userId = PatientData.UserId,
+                    branch_name = PatientData.Branch,
+                    services = cmbServices.Text,
+                    appointment_date = PatientData.AppointmentDate.ToString("yyyy-MM-dd"),
+                    appointment_time = PatientData.AppointmentTime.ToString(),
+                    reschedule_date = rescheduleDate.ToString("yyyy-MM-dd"),
+                    reschedule_time = rescheduleTime.ToString("HH:mm:ss")
                 };
 
                 // Serialize the object to a JSON string
                 string qrCodeJson = JsonConvert.SerializeObject(qrCodeData);
 
-                bool isEmailSent = await SendEmailNotification(PatientData.Email, PatientData.AppointmentId.ToString(), rescheduleDate.ToString(), rescheduleTime.ToString());
+                bool isEmailSent = await SendEmailNotification(PatientData.Email, PatientData.AppointmentId.ToString(), rescheduleDate, rescheduleTime);
 
                 if (isEmailSent)
                 {
 
-                await _quickRetrievalDataController.Rescheduled(PatientData.UserId, services, rescheduleDate, rescheduleTime, qrCodeJson);
-                await _quickRetrievalDataController.RescheduleReason(PatientData.AppointmentId, PatientData.UserId, reschedReason);
+                    await _quickRetrievalDataController.Rescheduled(PatientData.UserId, services, rescheduleDate, rescheduleTime, qrCodeJson);
+                    await _quickRetrievalDataController.RescheduleReason(PatientData.AppointmentId, PatientData.UserId, reschedReason);
 
-                btnReschedule.Enabled = true;
-                btnReschedule.Text = "Reschedule";
-                AlertBox(Color.LightGreen, Color.SeaGreen, "Follow-Up Appointment", "Follow up appointment scheduled!", Properties.Resources.success);
+                    btnReschedule.Enabled = true;
+                    btnReschedule.Text = "Reschedule";
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Follow-Up Appointment", "Follow up appointment scheduled!", Properties.Resources.success);
                 }
                 else
                 {

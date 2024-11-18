@@ -135,7 +135,7 @@
             dentHealthTab.Location = new Point(-2, 27);
             dentHealthTab.Multiline = true;
             dentHealthTab.Name = "dentHealthTab";
-            dentHealthTab.Padding = new Point(27, 4);
+            dentHealthTab.Padding = new Point(18, 4);
             dentHealthTab.RightToLeft = RightToLeft.No;
             dentHealthTab.SelectedIndex = 0;
             dentHealthTab.Size = new Size(1074, 657);
@@ -1316,7 +1316,7 @@
             tabPage2.Name = "tabPage2";
             tabPage2.Size = new Size(1066, 625);
             tabPage2.TabIndex = 4;
-            tabPage2.Text = "Resched / Add Notes";
+            tabPage2.Text = "Follow-Up Schedule / Add Notes";
             tabPage2.Click += tabPage2_Click;
             // 
             // materialLabel31

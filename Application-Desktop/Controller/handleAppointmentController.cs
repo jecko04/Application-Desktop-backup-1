@@ -298,6 +298,7 @@ namespace Application_Desktop.Controller
                                 a.appointment_time,
                                 a.reschedule_date,
                                 a.reschedule_time,
+                                a.qr_code,
                                 a.status,
                                 a.check_in
                             FROM appointments a
@@ -587,16 +588,58 @@ namespace Application_Desktop.Controller
             return phone;
         }
 
-        public async Task<bool> CheckAppointmentStatus(int userId, DateTime appointmentDate, string appointmentTime)
+        public async Task<string> GetAppointmentStatus(int userId, string branchName, string services)
+        {
+            string query = @"
+                     SELECT a.status 
+                    FROM appointments a
+                    JOIN branch b ON a.selectedBranch = b.Branch_ID
+                    JOIN categories c ON a.selectServices = c.Categories_ID
+                    WHERE a.user_id = @userId 
+                      AND b.BranchName COLLATE utf8mb4_general_ci = @branchName
+                      AND c.title COLLATE utf8mb4_general_ci = @services
+                      AND (a.status = 'pending' OR a.status = 'approved' OR a.status = 'completed')
+                    ORDER BY
+                    a.id DESC
+                    LIMIT 1;";
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@userId", userId);
+                        cmd.Parameters.AddWithValue("@branchName", branchName);
+                        cmd.Parameters.AddWithValue("@services", services);
+
+                        var status = await cmd.ExecuteScalarAsync();
+                        return status?.ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error checking appointment status: {ex.Message}");
+            }
+        }
+
+
+
+        public async Task<bool> CheckAppointmentStatus(int userId)
         {
             string query = @"
                 SELECT a.status 
                 FROM appointments a
                 WHERE a.user_id = @userId
-                  AND a.status = 'approved' -- Assumes 'approved' is the status for approved appointments
+                  AND (a.status = 'approved' OR a.status = 'completed') -- Assumes 'approved' is the status for approved appointments
                 ORDER BY 
-                     a.appointment_date DESC, 
-                    a.appointment_time DESC
+                    COALESCE(a.reschedule_date, a.appointment_date) DESC
                 LIMIT 1;";
 
             try
@@ -611,11 +654,42 @@ namespace Application_Desktop.Controller
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@userId", userId);
-                        cmd.Parameters.AddWithValue("@appointmentDate", appointmentDate);
-                        cmd.Parameters.AddWithValue("@appointmentTime", appointmentTime);
+                        /*cmd.Parameters.AddWithValue("@appointmentDate", appointmentDate);
+                        cmd.Parameters.AddWithValue("@appointmentTime", appointmentTime);*/
 
                         var status = await cmd.ExecuteScalarAsync();
-                        return status != null && status.ToString() == "approved"; // Adjust if you want to check for other statuses
+                        return status != null && (status.ToString() == "approved" || status.ToString() == "completed");// Adjust if you want to check for other statuses
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error checking appointment status: {ex.Message}");
+            }
+        }
+
+        public async Task<bool> CheckQRCode(int userId)
+        {
+            string query = @"SELECT a.qr_code FROM appointments a
+                            WHERE a.user_id = @userId AND a.status IN ('approved', 'completed')
+                            ORDER BY 
+                                a.id DESC
+                            LIMIT 1;";
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@userId", userId);
+
+                        var status = await cmd.ExecuteScalarAsync();
+                        return status != null && (status.ToString() == "approved" || status.ToString() == "completed"); // Adjust if you want to check for other statuses
                     }
                 }
             }
@@ -686,13 +760,11 @@ namespace Application_Desktop.Controller
                         branch b ON a.selectedBranch = b.Branch_ID
                     JOIN 
                         categories c ON a.selectServices = c.Categories_ID
-                    WHERE 
+                    WHERE
                         a.user_id = @userId 
-                        AND a.status IN ('pending', 'approved')
-                    ORDER BY 
-                        a.appointment_date DESC, 
-                        a.appointment_time DESC,
-                        a.user_id DESC
+                        AND (a.status = 'approved' OR a.status = 'completed' OR a.status = 'pending') -- Assumes 'approved
+                    ORDER BY
+                        a.id DESC
                     LIMIT 1;";
 
             try
@@ -904,23 +976,27 @@ namespace Application_Desktop.Controller
         public async Task<DataTable> SearchByName(string userName)
         {
             string query = @"
-            SELECT 
-                a.id,
-                a.user_id,
-                u.name AS UserName,
-                b.BranchName,
-                c.Title AS ServiceTitle,
-                a.appointment_date,
-                a.appointment_time,
-                a.reschedule_date,
-                a.reschedule_time,
-                a.status,
-                a.check_in
-            FROM appointments a
-            INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
-            INNER JOIN categories c ON a.selectServices = c.Categories_ID
-            INNER JOIN users u ON a.user_id = u.id
-            WHERE u.name LIKE @userName";  // Add search filter by user name
+                            SELECT 
+                                a.id,
+                                a.user_id,
+                                u.name AS UserName,
+                                b.BranchName,
+                                c.Title AS ServiceTitle,
+                                a.appointment_date,
+                                a.appointment_time,
+                                a.reschedule_date,
+                                a.reschedule_time,
+                                a.qr_code,
+                                a.status,
+                                a.check_in
+                            FROM appointments a
+                            INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
+                            INNER JOIN categories c ON a.selectServices = c.Categories_ID
+                            INNER JOIN users u ON a.user_id = u.id
+                            WHERE u.name LIKE @userName
+                            ORDER BY 
+                                a.id DESC
+                            ";
 
             try
             {
@@ -942,7 +1018,7 @@ namespace Application_Desktop.Controller
 
                             adapter.Fill(dataTable);
 
-                            return dataTable.Rows.Count > 0 ? dataTable : null;
+                            return dataTable.Rows.Count > 0 ? dataTable : new DataTable();
                         }
                     }
                 }
