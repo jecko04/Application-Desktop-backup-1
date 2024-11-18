@@ -177,7 +177,7 @@
             viewPendingAppointment.RowTemplate.Height = 25;
             viewPendingAppointment.Size = new Size(823, 549);
             viewPendingAppointment.TabIndex = 22;
-            viewPendingAppointment.CellContentDoubleClick += viewPendingAppointment_CellContentDoubleClick;
+            viewPendingAppointment.CellClick += viewPendingAppointment_CellClick;
             viewPendingAppointment.CellFormatting += viewPendingAppointment_CellFormatting;
             // 
             // tabPage3
@@ -239,7 +239,7 @@
             viewApprovedAppointment.RowTemplate.Height = 25;
             viewApprovedAppointment.Size = new Size(823, 549);
             viewApprovedAppointment.TabIndex = 23;
-            viewApprovedAppointment.CellContentDoubleClick += viewApprovedAppointment_CellContentDoubleClick;
+            viewApprovedAppointment.CellClick += viewApprovedAppointment_CellClick;
             viewApprovedAppointment.CellFormatting += viewApprovedAppointment_CellFormatting;
             // 
             // tabPage6
@@ -299,7 +299,7 @@
             viewReschedule.RowTemplate.Height = 25;
             viewReschedule.Size = new Size(829, 555);
             viewReschedule.TabIndex = 23;
-            viewReschedule.CellContentDoubleClick += viewReschedule_CellContentDoubleClick;
+            viewReschedule.CellClick += viewReschedule_CellClick;
             viewReschedule.CellFormatting += viewReschedule_CellFormatting;
             // 
             // tabPage4
@@ -479,7 +479,7 @@
             viewCompletedAppointment.RowTemplate.Height = 25;
             viewCompletedAppointment.Size = new Size(823, 549);
             viewCompletedAppointment.TabIndex = 24;
-            viewCompletedAppointment.CellContentDoubleClick += viewCompletedAppointment_CellContentDoubleClick;
+            viewCompletedAppointment.CellClick += viewCompletedAppointment_CellClick;
             viewCompletedAppointment.CellFormatting += viewCompletedAppointment_CellFormatting;
             // 
             // btnCancel

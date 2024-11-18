@@ -1,6 +1,8 @@
 ﻿using Application_Desktop.Model;
 using Application_Desktop.Models;
+using Microsoft.VisualBasic.ApplicationServices;
 using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using OfficeOpenXml.FormulaParsing.Excel.Functions;
 using System;
 using System.Collections.Generic;
@@ -8,6 +10,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Windows.Forms;
 
 namespace Application_Desktop.Controller
 {
@@ -980,7 +984,10 @@ namespace Application_Desktop.Controller
                                 a.id,
                                 a.user_id,
                                 u.name AS UserName,
+                                a.selectedBranch,
                                 b.BranchName,
+                                a.selectServices,
+                                
                                 c.Title AS ServiceTitle,
                                 a.appointment_date,
                                 a.appointment_time,
@@ -989,6 +996,7 @@ namespace Application_Desktop.Controller
                                 a.qr_code,
                                 a.status,
                                 a.check_in
+
                             FROM appointments a
                             INNER JOIN branch b ON a.selectedBranch = b.Branch_ID
                             INNER JOIN categories c ON a.selectServices = c.Categories_ID
@@ -997,7 +1005,6 @@ namespace Application_Desktop.Controller
                             ORDER BY 
                                 a.id DESC
                             ";
-
             try
             {
                 using (MySqlConnection conn = databaseHelper.getConnection())

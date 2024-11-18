@@ -46,7 +46,7 @@ namespace Application_Desktop.Admin_Views
             viewCancelledAppointment.CellFormatting += viewCancelledAppointment_CellFormatting;
             viewCompletedAppointment.CellFormatting += viewCompletedAppointment_CellFormatting;
 
-            
+
 
         }
         void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
@@ -63,7 +63,7 @@ namespace Application_Desktop.Admin_Views
         private async void handleAppointment_Load(object sender, EventArgs e)
         {
             LoadButton();
-
+            SetupDataGridView();
             //timer1.Tick += timer1_Tick;
 
             await LoadInqueue();
@@ -182,12 +182,12 @@ namespace Application_Desktop.Admin_Views
 
                 if (viewReschedule.Columns["QrCodeImage"] == null)
                 {
-                    AddColumnReschedule(viewReschedule);  
+                    AddColumnReschedule(viewReschedule);
                 }
 
                 foreach (DataRow row in reschedule.Rows)
                 {
-                    string qrData = row["qr_code"].ToString(); 
+                    string qrData = row["qr_code"].ToString();
                     Bitmap qrCodeImage = GenerateQrCode(qrData);
 
                     viewReschedule.Rows.Add(
@@ -307,17 +307,42 @@ namespace Application_Desktop.Admin_Views
         {
             try
             {
-                getBranchIdByUserId branchId = new getBranchIdByUserId();
-                BranchID adminId = await branchId.GetUserBranchId();
+                // Fetch approved appointments
                 DataTable completed = await _handleAppointmentController.CompletedAppointment();
+
+                // Clear the DataGridView
                 viewCompletedAppointment.DataSource = null;
                 viewCompletedAppointment.Rows.Clear();
-                viewCompletedAppointment.Columns.Clear();
 
-                viewCompletedAppointment.AutoGenerateColumns = false;
-                AddColumnCompleted(viewCompletedAppointment);
+                // Add columns if they don't exist
+                if (viewCompletedAppointment.Columns["QrCodeImage"] == null)
+                {
+                    AddColumnCompleted(viewCompletedAppointment);
+                }
 
-                viewCompletedAppointment.DataSource = completed;
+                // Populate DataGridView with rows
+                foreach (DataRow row in completed.Rows)
+                {
+                    string qrData = row["qr_code"].ToString(); // Ensure column name matches your database
+                    Bitmap qrCodeImage = GenerateQrCode(qrData);
+
+                    viewCompletedAppointment.Rows.Add(
+                        qrCodeImage,
+                        row["id"],
+                        row["user_id"],
+                        row["selectedBranch"],
+                        row["selectServices"],
+                        row["UserName"],
+                        row["BranchName"],
+                        row["ServiceTitle"],
+                        row["appointment_date"],
+                        row["appointment_time"],
+                        row["reschedule_date"],
+                        row["reschedule_time"],
+                        row["status"],
+                        row["check_in"]
+                    );
+                }
 
             }
             catch (Exception ex)
@@ -342,7 +367,7 @@ namespace Application_Desktop.Admin_Views
         {
             Inqueue.RowHeadersVisible = false;
             Inqueue.ColumnHeadersHeight = 40;
-            Inqueue.RowTemplate.Height = 150;
+            //Inqueue.RowTemplate.Height = 150;
 
             // Adding QR Code column
             if (!Inqueue.Columns.Contains("qrCode"))
@@ -499,7 +524,7 @@ namespace Application_Desktop.Admin_Views
         {
             Reschedule.RowHeadersVisible = false;
             Reschedule.ColumnHeadersHeight = 40;
-            Reschedule.RowTemplate.Height = 150;
+            //Reschedule.RowTemplate.Height = 150;
 
             if (!Reschedule.Columns.Contains("qrCode"))
             {
@@ -645,7 +670,7 @@ namespace Application_Desktop.Admin_Views
         {
             approved.RowHeadersVisible = false;
             approved.ColumnHeadersHeight = 40;
-            approved.RowTemplate.Height = 150;
+            //approved.RowTemplate.Height = 150;
 
             if (!approved.Columns.Contains("qrCode"))
             {
@@ -1034,8 +1059,7 @@ namespace Application_Desktop.Admin_Views
         {
             completed.RowHeadersVisible = false;
             completed.ColumnHeadersHeight = 40;
-           /* completed.RowTemplate.Height = 150;
-
+            //completed.RowTemplate.Height = 150;
 
             if (!completed.Columns.Contains("qrCode"))
             {
@@ -1047,135 +1071,171 @@ namespace Application_Desktop.Admin_Views
                     ImageLayout = DataGridViewImageCellLayout.Zoom
                 };
                 completed.Columns.Add(qrCodeColumn);
-            }*/
+            }
 
-            DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn
+            if (!completed.Columns.Contains("id"))
             {
-                HeaderText = "ID",
-                Name = "id",
-                DataPropertyName = "id",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "ID",
+                    Name = "id",
+                    DataPropertyName = "id",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                completed.Columns.Add(id);
+            }
 
-            };
-            completed.Columns.Add(id);
-
-            DataGridViewTextBoxColumn userIdColumn = new DataGridViewTextBoxColumn
+            if (!completed.Columns.Contains("user_id"))
             {
-                HeaderText = "User ID",
-                Name = "user_id",
-                DataPropertyName = "user_id",
-                Visible = false
-            };
-            completed.Columns.Add(userIdColumn);
+                DataGridViewTextBoxColumn userIdColumn = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "User ID",
+                    Name = "user_id",
+                    DataPropertyName = "user_id",
+                    Visible = false
+                };
+                completed.Columns.Add(userIdColumn);
+            }
 
-            DataGridViewTextBoxColumn branchId = new DataGridViewTextBoxColumn
+            if (!completed.Columns.Contains("branch_id"))
             {
-                HeaderText = "Brnach ID",
-                Name = "branch_id",
-                DataPropertyName = "selectedBranch",
-                Visible = false
-            };
-            completed.Columns.Add(branchId);
+                DataGridViewTextBoxColumn branchId = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Branch ID",
+                    Name = "branch_id",
+                    DataPropertyName = "selectedBranch",
+                    Visible = false
+                };
+                completed.Columns.Add(branchId);
+            }
 
-            DataGridViewTextBoxColumn categoriesId = new DataGridViewTextBoxColumn
+            if (!completed.Columns.Contains("categories_id"))
             {
-                HeaderText = "Category ID",
-                Name = "categories_id",
-                DataPropertyName = "selectServices",
-                Visible = false
-            };
-            completed.Columns.Add(categoriesId);
+                DataGridViewTextBoxColumn categoryId = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Categories ID",
+                    Name = "categories_id",
+                    DataPropertyName = "selectServices",
+                    Visible = false
+                };
+                completed.Columns.Add(categoryId);
+            }
 
-            DataGridViewTextBoxColumn fullname = new DataGridViewTextBoxColumn
+            if (!completed.Columns.Contains("fullname"))
             {
-                HeaderText = "Fullname",
-                Name = "fullname",
-                DataPropertyName = "UserName",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DataGridViewTextBoxColumn fullname = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Fullname",
+                    Name = "fullname",
+                    DataPropertyName = "UserName",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                completed.Columns.Add(fullname);
+            }
 
-            };
-            completed.Columns.Add(fullname);
-
-            DataGridViewTextBoxColumn branches = new DataGridViewTextBoxColumn
+            if (!completed.Columns.Contains("branches"))
             {
-                HeaderText = "Branch",
-                Name = "branches",
-                DataPropertyName = "BranchName",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DataGridViewTextBoxColumn branches = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Branch",
+                    Name = "branches",
+                    DataPropertyName = "BranchName",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                completed.Columns.Add(branches);
+            }
 
-            };
-            completed.Columns.Add(branches);
-
-            DataGridViewTextBoxColumn services = new DataGridViewTextBoxColumn
+            if (!completed.Columns.Contains("services"))
             {
-                HeaderText = "Services",
-                Name = "services",
-                DataPropertyName = "ServiceTitle",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DataGridViewTextBoxColumn services = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Services",
+                    Name = "services",
+                    DataPropertyName = "ServiceTitle",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                completed.Columns.Add(services);
+            }
 
-            };
-            completed.Columns.Add(services);
-
-            DataGridViewTextBoxColumn appointment_date = new DataGridViewTextBoxColumn
+            if (!completed.Columns.Contains("appointmentDate"))
             {
-                HeaderText = "Appointment Date",
-                Name = "appointmentDate",
-                DataPropertyName = "appointment_date",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DataGridViewTextBoxColumn appointment_date = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Appointment Date",
+                    Name = "appointmentDate",
+                    DataPropertyName = "appointment_date",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                    DefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Format = "MM/dd/yyyy"
+                    }
+                };
+                completed.Columns.Add(appointment_date);
+            }
 
-            };
-            completed.Columns.Add(appointment_date);
-
-            DataGridViewTextBoxColumn appointment_time = new DataGridViewTextBoxColumn
+            if (!completed.Columns.Contains("appointmentTime"))
             {
-                HeaderText = "Appointment Time",
-                Name = "appointmentTime",
-                DataPropertyName = "appointment_time",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DataGridViewTextBoxColumn appointment_time = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Appointment Time",
+                    Name = "appointmentTime",
+                    DataPropertyName = "appointment_time",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                completed.Columns.Add(appointment_time);
+            }
 
-            };
-            completed.Columns.Add(appointment_time);
-
-            DataGridViewTextBoxColumn reschedule_date = new DataGridViewTextBoxColumn
+            if (!completed.Columns.Contains("rescheduleDate"))
             {
-                HeaderText = "Reschedule Date",
-                Name = "rescheduleDate",
-                DataPropertyName = "reschedule_date",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DataGridViewTextBoxColumn reschedule_date = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Reschedule Date",
+                    Name = "rescheduleDate",
+                    DataPropertyName = "reschedule_date",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                    DefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Format = "MM/dd/yyyy"
+                    }
+                };
+                completed.Columns.Add(reschedule_date);
+            }
 
-            };
-            completed.Columns.Add(reschedule_date);
-
-            DataGridViewTextBoxColumn reschedule_time = new DataGridViewTextBoxColumn
+            if (!completed.Columns.Contains("rescheduleTime"))
             {
-                HeaderText = "Reschedule Time",
-                Name = "rescheduleTime",
-                DataPropertyName = "reschedule_time",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DataGridViewTextBoxColumn reschedule_time = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Reschedule Time",
+                    Name = "rescheduleTime",
+                    DataPropertyName = "reschedule_time",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                completed.Columns.Add(reschedule_time);
+            }
 
-            };
-            completed.Columns.Add(reschedule_time);
-
-            DataGridViewTextBoxColumn status = new DataGridViewTextBoxColumn
+            if (!completed.Columns.Contains("status"))
             {
-                HeaderText = "Status",
-                Name = "status",
-                DataPropertyName = "status",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DataGridViewTextBoxColumn status = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Status",
+                    Name = "status",
+                    DataPropertyName = "status",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                completed.Columns.Add(status);
+            }
 
-            };
-            completed.Columns.Add(status);
-
-            DataGridViewTextBoxColumn check_in = new DataGridViewTextBoxColumn
+            if (!completed.Columns.Contains("check_in"))
             {
-                HeaderText = "Check In",
-                Name = "check_in",
-                DataPropertyName = "check_in",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-
-            };
-            completed.Columns.Add(check_in);
-
+                DataGridViewTextBoxColumn check_in = new DataGridViewTextBoxColumn
+                {
+                    HeaderText = "Check In",
+                    Name = "check_in",
+                    DataPropertyName = "check_in",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                };
+                completed.Columns.Add(check_in);
+            }
         }
 
 
@@ -1254,6 +1314,11 @@ namespace Application_Desktop.Admin_Views
                 });
                 return false;
             }
+        }
+
+        private async Task SendSMS()
+        {
+
         }
         public async Task approved()
         {
@@ -1401,7 +1466,7 @@ namespace Application_Desktop.Admin_Views
             {
                 await smtpClient.SendMailAsync(mail);
 
-               
+
                 return true;
             }
             catch (Exception ex)
@@ -2023,7 +2088,7 @@ namespace Application_Desktop.Admin_Views
                 }
 
                 var branchName = AppointmentData.branch_name;
-                var services = AppointmentData.services;     
+                var services = AppointmentData.services;
 
                 var status = await _handleAppointmentController.GetAppointmentStatus(AppointmentData.userId, branchName, services);
 
@@ -2244,7 +2309,7 @@ namespace Application_Desktop.Admin_Views
                     viewApprovedAppointment.DataSource = approvedView;
 
                     DataView rescheduleView = new DataView(appointment);
-                    rescheduleView.RowFilter = "status = 'pending' AND reschedule_date IS NOT NULL"; 
+                    rescheduleView.RowFilter = "status = 'pending' AND reschedule_date IS NOT NULL";
                     viewReschedule.DataSource = rescheduleView;
 
                     DataView cancelledView = new DataView(appointment);
@@ -2290,6 +2355,14 @@ namespace Application_Desktop.Admin_Views
                                 }
                             }
 
+                            foreach (DataGridViewRow dataGridViewRow in viewCompletedAppointment.Rows)
+                            {
+                                if (dataGridViewRow.Cells["qrCode"] != null)
+                                {
+                                    dataGridViewRow.Cells["qrCode"].Value = qrCodeImage;
+                                }
+                            }
+
 
                         }
                     }
@@ -2308,132 +2381,13 @@ namespace Application_Desktop.Admin_Views
 
         private int selectedAppointmentId;
         private int selectedUserId;
-        private async void viewPendingAppointment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow selectedRow = viewPendingAppointment.Rows[e.RowIndex];
-
-                if (selectedRow.Cells["id"].Value != null &&
-                    Int32.TryParse(selectedRow.Cells["id"].Value.ToString(), out selectedAppointmentId) &&
-                    selectedRow.Cells["user_id"].Value != null &&
-                    Int32.TryParse(selectedRow.Cells["user_id"].Value.ToString(), out selectedUserId))
-                {
-
-                    string userEmail = await _handleAppointmentController.SelectEmail(selectedUserId);
-
-                    if (!string.IsNullOrEmpty(userEmail))
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        MessageBox.Show("No email found for the selected appointment.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Failed to convert Appointment ID to integer.");
-                }
-            }
-        }
 
         private int ApprovedAppointmentId;
         private int selectedApprovedUserId;
-        private async void viewApprovedAppointment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow selectedRow = viewApprovedAppointment.Rows[e.RowIndex];
 
-                if (selectedRow.Cells["id"].Value != null &&
-                    Int32.TryParse(selectedRow.Cells["id"].Value.ToString(), out ApprovedAppointmentId) &&
-                    selectedRow.Cells["user_id"].Value != null &&
-                    Int32.TryParse(selectedRow.Cells["user_id"].Value.ToString(), out selectedApprovedUserId))
-                {
-
-                    string userEmail = await _handleAppointmentController.SelectEmail(selectedApprovedUserId);
-
-                    if (!string.IsNullOrEmpty(userEmail))
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        MessageBox.Show("No email found for the selected appointment.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Failed to convert Appointment ID to integer.");
-                }
-            }
-        }
-
-        private async void viewCompletedAppointment_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (viewCompletedAppointment.SelectedRows.Count > 0)
-            {
-                var selectedRow = viewCompletedAppointment.SelectedRows[0];
-                int branchId = Convert.ToInt32(selectedRow.Cells["branch_id"].Value);
-                int categoriesId = Convert.ToInt32(selectedRow.Cells["categories_id"].Value);
-                int userId = Convert.ToInt32(selectedRow.Cells["user_id"].Value);
-
-                var receiptDetails = await _handleAppointmentController.PrintReceiptDetails(userId, branchId, categoriesId);
-
-                if (ReceiptFormInstance == null || ReceiptFormInstance.IsDisposed)
-                {
-                    ReceiptFormInstance = new receiptForm();
-
-                    ReceiptFormInstance.SetReceiptDetails(receiptDetails);
-                    ReceiptFormInstance.Show();
-                }
-                else
-                {
-                    if (ReceiptFormInstance.Visible)
-                    {
-                        ReceiptFormInstance.BringToFront();
-                    }
-                    else
-                    {
-                        ReceiptFormInstance.Show();
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select an appointment to print the receipt.");
-            }
-        }
 
         private int rescheduleAppointmentId; //row id
         private int rescheduleUserId; //user id
-        private async void viewReschedule_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow selectedRow = viewReschedule.Rows[e.RowIndex];
-
-                if (selectedRow.Cells["id"].Value != null &&
-                    Int32.TryParse(selectedRow.Cells["id"].Value.ToString(), out rescheduleAppointmentId) &&
-                    selectedRow.Cells["user_id"].Value != null &&
-                    Int32.TryParse(selectedRow.Cells["user_id"].Value.ToString(), out rescheduleUserId))
-                {
-
-                    string userEmail = await _handleAppointmentController.SelectEmail(selectedUserId);
-
-                    if (!string.IsNullOrEmpty(userEmail))
-                    {
-                        return;
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Failed to convert Appointment ID to integer.");
-                }
-            }
-        }
 
         private void viewApprovedAppointment_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -2615,5 +2569,252 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
+        private Dictionary<int, int> originalRowHeights = new Dictionary<int, int>();
+        private int expandedRowHeight = 150;
+        private int defaultRowHeight = 30;
+
+        private void SetupDataGridView()
+        {
+            foreach (DataGridViewRow row in viewCompletedAppointment.Rows)
+            {
+                originalRowHeights[row.Index] = row.Height;
+            }
+
+            viewCompletedAppointment.RowTemplate.Height = defaultRowHeight;
+
+            viewCompletedAppointment.CellClick += viewCompletedAppointment_CellClick;
+
+            foreach (DataGridViewRow row in viewPendingAppointment.Rows)
+            {
+                originalRowHeights[row.Index] = row.Height;
+            }
+
+            viewPendingAppointment.RowTemplate.Height = defaultRowHeight;
+
+            viewPendingAppointment.CellClick += viewPendingAppointment_CellClick;
+
+            foreach (DataGridViewRow row in viewReschedule.Rows)
+            {
+                originalRowHeights[row.Index] = row.Height;
+            }
+
+            viewReschedule.RowTemplate.Height = defaultRowHeight;
+
+            viewReschedule.CellClick += viewReschedule_CellClick;
+
+            foreach (DataGridViewRow row in viewApprovedAppointment.Rows)
+            {
+                originalRowHeights[row.Index] = row.Height;
+            }
+
+            viewApprovedAppointment.RowTemplate.Height = defaultRowHeight;
+
+            viewApprovedAppointment.CellClick += viewApprovedAppointment_CellClick;
+        }
+
+
+
+        private async void viewApprovedAppointment_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            DataGridView dgv = sender as DataGridView;
+
+            if (e.RowIndex >= 0)
+            {
+                foreach (DataGridViewRow row in dgv.Rows)
+                {
+                    row.Height = defaultRowHeight;
+                }
+
+                if (dgv.Rows[e.RowIndex].Height == expandedRowHeight)
+                {
+                    dgv.Rows[e.RowIndex].Height = defaultRowHeight;
+                }
+                else
+                {
+                    dgv.Rows[e.RowIndex].Height = expandedRowHeight;
+                }
+
+                DataGridViewRow selectedRow = viewApprovedAppointment.Rows[e.RowIndex];
+
+                if (selectedRow.Cells["id"].Value != null &&
+                    Int32.TryParse(selectedRow.Cells["id"].Value.ToString(), out ApprovedAppointmentId) &&
+                    selectedRow.Cells["user_id"].Value != null &&
+                    Int32.TryParse(selectedRow.Cells["user_id"].Value.ToString(), out selectedApprovedUserId))
+                {
+
+                    string userEmail = await _handleAppointmentController.SelectEmail(selectedApprovedUserId);
+
+                    if (!string.IsNullOrEmpty(userEmail))
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No email found for the selected appointment.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Failed to convert Appointment ID to integer.");
+                }
+
+
+
+            }
+
+            /*if (e.RowIndex >= 0)
+            {
+                
+            }*/
+        }
+
+        private async void viewPendingAppointment_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+
+            if (e.RowIndex >= 0)
+            {
+                foreach (DataGridViewRow row in dgv.Rows)
+                {
+                    row.Height = defaultRowHeight;
+                }
+
+                if (dgv.Rows[e.RowIndex].Height == expandedRowHeight)
+                {
+                    dgv.Rows[e.RowIndex].Height = defaultRowHeight;
+                }
+                else
+                {
+                    dgv.Rows[e.RowIndex].Height = expandedRowHeight;
+                }
+
+
+                DataGridViewRow selectedRow = viewPendingAppointment.Rows[e.RowIndex];
+
+                if (selectedRow.Cells["id"].Value != null &&
+                    Int32.TryParse(selectedRow.Cells["id"].Value.ToString(), out selectedAppointmentId) &&
+                    selectedRow.Cells["user_id"].Value != null &&
+                    Int32.TryParse(selectedRow.Cells["user_id"].Value.ToString(), out selectedUserId))
+                {
+
+                    string userEmail = await _handleAppointmentController.SelectEmail(selectedUserId);
+
+                    if (!string.IsNullOrEmpty(userEmail))
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No email found for the selected appointment.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Failed to convert Appointment ID to integer.");
+                }
+            }
+        }
+
+        private async void viewReschedule_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+
+            if (e.RowIndex >= 0)
+            {
+                foreach (DataGridViewRow row in dgv.Rows)
+                {
+                    row.Height = defaultRowHeight;
+                }
+
+                if (dgv.Rows[e.RowIndex].Height == expandedRowHeight)
+                {
+                    dgv.Rows[e.RowIndex].Height = defaultRowHeight;
+                }
+                else
+                {
+                    dgv.Rows[e.RowIndex].Height = expandedRowHeight;
+                }
+
+
+                DataGridViewRow selectedRow = viewReschedule.Rows[e.RowIndex];
+
+                if (selectedRow.Cells["id"].Value != null &&
+                    Int32.TryParse(selectedRow.Cells["id"].Value.ToString(), out rescheduleAppointmentId) &&
+                    selectedRow.Cells["user_id"].Value != null &&
+                    Int32.TryParse(selectedRow.Cells["user_id"].Value.ToString(), out rescheduleUserId))
+                {
+
+                    string userEmail = await _handleAppointmentController.SelectEmail(selectedUserId);
+
+                    if (!string.IsNullOrEmpty(userEmail))
+                    {
+                        return;
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Failed to convert Appointment ID to integer.");
+                }
+            }
+        }
+
+        private async void viewCompletedAppointment_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+
+            if (e.RowIndex >= 0)
+            {
+                foreach (DataGridViewRow row in dgv.Rows)
+                {
+                    row.Height = defaultRowHeight;
+                }
+
+                if (dgv.Rows[e.RowIndex].Height == expandedRowHeight)
+                {
+                    dgv.Rows[e.RowIndex].Height = defaultRowHeight;
+                }
+                else
+                {
+                    dgv.Rows[e.RowIndex].Height = expandedRowHeight;
+                }
+
+                var selectedRow = viewCompletedAppointment.SelectedRows[0];
+                int branchId = Convert.ToInt32(selectedRow.Cells["branch_id"].Value);
+                int categoriesId = Convert.ToInt32(selectedRow.Cells["categories_id"].Value);
+                int userId = Convert.ToInt32(selectedRow.Cells["user_id"].Value);
+
+                var receiptDetails = await _handleAppointmentController.PrintReceiptDetails(userId, branchId, categoriesId);
+
+                if (ReceiptFormInstance == null || ReceiptFormInstance.IsDisposed)
+                {
+                    ReceiptFormInstance = new receiptForm();
+
+                    ReceiptFormInstance.SetReceiptDetails(receiptDetails);
+                    ReceiptFormInstance.Show();
+                }
+                else
+                {
+                    if (ReceiptFormInstance.Visible)
+                    {
+                        ReceiptFormInstance.BringToFront();
+                    }
+                    else
+                    {
+                        ReceiptFormInstance.Show();
+                    }
+                }
+            }
+
+            /*if (viewCompletedAppointment.SelectedRows.Count > 0)
+            {
+               
+            }
+            else
+            {
+                MessageBox.Show("Please select an appointment to print the receipt.");
+            }*/
+        }
     }
 }
