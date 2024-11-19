@@ -14,6 +14,8 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 
 namespace Application_Desktop.Admin_Views
 {
@@ -220,6 +222,54 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
+        private async Task<bool> SendSMSApproved(string phone, string appointmentId, string status)
+        {
+            const string accountId = "AC99fbd29885d0f879e600bb828ba7d859";
+            const string authToken = "641177ec08958fbeb518ea79b5294fa0";
+
+            TwilioClient.Init(accountId, authToken);
+
+            try
+            {
+                var message = await MessageResource.CreateAsync(
+                    body: $"Dear Valued Client,\n\nYour appointment (ID: {appointmentId}) has been successfully updated with the status: {status}.\n\nThank you for choosing SMTC Dental Care! We look forward to serving you.\n\nBest regards,\nSMTC Dental Care Team",
+                    from: new Twilio.Types.PhoneNumber("+14843417234"),
+                    to: new Twilio.Types.PhoneNumber(phone)
+                );
+
+                return message != null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error sending SMS: {ex.Message}");
+                return false;
+            }
+        }
+
+        private async Task<bool> SendSMSRejected(string phone, string appointmentId)
+        {
+            const string accountId = "AC99fbd29885d0f879e600bb828ba7d859";
+            const string authToken = "641177ec08958fbeb518ea79b5294fa0";
+
+            TwilioClient.Init(accountId, authToken);
+
+            try
+            {
+                var message = await MessageResource.CreateAsync(
+                    body: $"Dear Valued Client,\n\nWe regret to inform you that your appointment (ID: {appointmentId}) has been declined. We sincerely apologize for any inconvenience this may cause.\n\nPlease feel free to contact us at SMTC Dental Care for any further assistance.\n\nThank you for your understanding.\n\nBest regards,\nSMTC Dental Care Team",
+                    from: new Twilio.Types.PhoneNumber("+14843417234"), // Replace with verified alphanumeric sender ID if available
+                    to: new Twilio.Types.PhoneNumber(phone)
+                );
+
+                return message != null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error sending SMS: {ex.Message}");
+                return false;
+            }
+        }
+
         private async Task approved()
         {
             btnApproved.Enabled = false;
@@ -239,11 +289,15 @@ namespace Application_Desktop.Admin_Views
                     string email = PatientData.Email;
                     string status = "approved";
 
+                    string phone = await _quickRetrievalDataController.SelectPhone(PatientData.UserId);
+                    
+
                     if (!string.IsNullOrEmpty(email))
                     {
                         bool emailSent = await SendEmailNotification(email, userIdToApprove.ToString(), "approved");
+                        bool phoneSent = await SendSMSApproved(phone, userIdToApprove.ToString(), "approved");
 
-                        if (emailSent)
+                        if (emailSent && phoneSent)
                         {
                             // Proceed with further actions after email is successfully sent
                             await _quickRetrievalDataController.Approved(status, userIdToApprove);
@@ -364,11 +418,15 @@ namespace Application_Desktop.Admin_Views
                     string email = PatientData.Email;
                     string status = "cancelled";
 
+                    string phone = await _quickRetrievalDataController.SelectPhone(PatientData.UserId);
+
+
                     if (!string.IsNullOrEmpty(email))
                     {
                         bool emailSent = await SendCancelledNotification(email, userIdToApprove.ToString(), "cancelled");
+                        bool phoneSent = await SendSMSRejected(phone, userIdToApprove.ToString());
 
-                        if (emailSent)
+                        if (emailSent && phoneSent)
                         {
                             // Proceed with further actions after email is successfully sent
                             await _quickRetrievalDataController.Cancel(status, userIdToApprove);                           

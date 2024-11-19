@@ -25,12 +25,15 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Org.BouncyCastle.Utilities.IO;
 using QRCoder;
 using System.Management;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 
 namespace Application_Desktop.Admin_Views
 {
     public partial class handleAppointment : Form
     {
         private handleAppointmentController _handleAppointmentController;
+        private sendEmailReminder _sendEmailReminder;
         public PatientData PatientData { get; set; }
 
         public handleAppointment()
@@ -38,6 +41,7 @@ namespace Application_Desktop.Admin_Views
             InitializeComponent();
             PatientData = new PatientData();
             _handleAppointmentController = new handleAppointmentController();
+            _sendEmailReminder = new sendEmailReminder();
 
             viewApprovedAppointment.CellFormatting += viewApprovedAppointment_CellFormatting;
             viewPendingAppointment.CellFormatting += viewPendingAppointment_CellFormatting;
@@ -119,23 +123,18 @@ namespace Application_Desktop.Admin_Views
         {
             try
             {
-                // Fetch approved appointments
                 DataTable inqueue = await _handleAppointmentController.InqueueAppointment();
 
-                // Check if the inqueue DataTable is null
                 if (inqueue != null)
                 {
-                    // Clear the DataGridView
                     viewPendingAppointment.DataSource = null;
                     viewPendingAppointment.Rows.Clear();
 
-                    // Ensure columns are added
                     if (viewPendingAppointment.Columns["QrCodeImage"] == null)
                     {
                         AddColumnInqueue(viewPendingAppointment);
                     }
 
-                    // Populate the DataGridView with data
                     foreach (DataRow row in inqueue.Rows)
                     {
                         string qrData = row["qr_code"].ToString();
@@ -159,7 +158,6 @@ namespace Application_Desktop.Admin_Views
                 }
                 else
                 {
-                    // Handle the case where inqueue is null
                     MessageBox.Show("No appointments found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -173,10 +171,8 @@ namespace Application_Desktop.Admin_Views
         {
             try
             {
-                // Fetch rescheduled appointments
                 DataTable reschedule = await _handleAppointmentController.RescheduleAppointment();
 
-                // Clear the DataGridView
                 viewReschedule.DataSource = null;
                 viewReschedule.Rows.Clear();
 
@@ -216,23 +212,19 @@ namespace Application_Desktop.Admin_Views
         {
             try
             {
-                // Fetch approved appointments
                 DataTable approved = await _handleAppointmentController.ApprovedAppointment();
 
-                // Clear the DataGridView
                 viewApprovedAppointment.DataSource = null;
                 viewApprovedAppointment.Rows.Clear();
 
-                // Add columns if they don't exist
                 if (viewApprovedAppointment.Columns["QrCodeImage"] == null)
                 {
                     AddColumnApproved(viewApprovedAppointment);
                 }
 
-                // Populate DataGridView with rows
                 foreach (DataRow row in approved.Rows)
                 {
-                    string qrData = row["qr_code"].ToString(); // Ensure column name matches your database
+                    string qrData = row["qr_code"].ToString(); 
                     Bitmap qrCodeImage = GenerateQrCode(qrData);
 
                     viewApprovedAppointment.Rows.Add(
@@ -307,23 +299,19 @@ namespace Application_Desktop.Admin_Views
         {
             try
             {
-                // Fetch approved appointments
                 DataTable completed = await _handleAppointmentController.CompletedAppointment();
 
-                // Clear the DataGridView
                 viewCompletedAppointment.DataSource = null;
                 viewCompletedAppointment.Rows.Clear();
 
-                // Add columns if they don't exist
                 if (viewCompletedAppointment.Columns["QrCodeImage"] == null)
                 {
                     AddColumnCompleted(viewCompletedAppointment);
                 }
 
-                // Populate DataGridView with rows
                 foreach (DataRow row in completed.Rows)
                 {
-                    string qrData = row["qr_code"].ToString(); // Ensure column name matches your database
+                    string qrData = row["qr_code"].ToString(); 
                     Bitmap qrCodeImage = GenerateQrCode(qrData);
 
                     viewCompletedAppointment.Rows.Add(
@@ -1316,10 +1304,55 @@ namespace Application_Desktop.Admin_Views
             }
         }
 
-        private async Task SendSMS()
+        private async Task<bool> SendSMSApproved(string phone, string appointmentId, string status)
         {
+            const string accountId = "AC99fbd29885d0f879e600bb828ba7d859";
+            const string authToken = "641177ec08958fbeb518ea79b5294fa0";
 
+            TwilioClient.Init(accountId, authToken);
+
+            try
+            {
+                var message = await MessageResource.CreateAsync(
+                    body: $"Dear Valued Client,\n\nYour appointment (ID: {appointmentId}) has been successfully updated with the status: {status}.\n\nThank you for choosing SMTC Dental Care! We look forward to serving you.\n\nBest regards,\nSMTC Dental Care Team",
+                    from: new Twilio.Types.PhoneNumber("+14843417234"),
+                    to: new Twilio.Types.PhoneNumber(phone)
+                );
+
+                return message != null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error sending SMS: {ex.Message}");
+                return false;
+            }
         }
+
+        private async Task<bool> SendSMSRejected(string phone, string appointmentId)
+        {
+            const string accountId = "AC99fbd29885d0f879e600bb828ba7d859";
+            const string authToken = "641177ec08958fbeb518ea79b5294fa0";
+
+            TwilioClient.Init(accountId, authToken);
+
+            try
+            {
+                var message = await MessageResource.CreateAsync(
+                    body: $"Dear Valued Client,\n\nWe regret to inform you that your appointment (ID: {appointmentId}) has been declined. We sincerely apologize for any inconvenience this may cause.\n\nPlease feel free to contact us at SMTC Dental Care for any further assistance.\n\nThank you for your understanding.\n\nBest regards,\nSMTC Dental Care Team",
+                    from: new Twilio.Types.PhoneNumber("+14843417234"), // Replace with verified alphanumeric sender ID if available
+                    to: new Twilio.Types.PhoneNumber(phone)
+                );
+
+                return message != null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error sending SMS: {ex.Message}");
+                return false;
+            }
+        }
+
+
         public async Task approved()
         {
             string value = "approved";
@@ -1372,20 +1405,27 @@ namespace Application_Desktop.Admin_Views
                     {
                         int userIdToApprove = selectedAppointmentId > 0 ? selectedUserId : rescheduleUserId;
                         string email = await _handleAppointmentController.SelectEmail(userIdToApprove);
+                        string phone = await _handleAppointmentController.SelectPhone(userIdToApprove);
 
-                        if (!string.IsNullOrEmpty(email))
+                        if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(phone))
                         {
                             bool emailSent = selectedAppointmentId > 0
                                 ? await SendEmailNotification(email, selectedAppointmentId.ToString(), "approved")
                                 : await SendRescheduleApproved(email, rescheduleUserId.ToString(), "approved");
 
-                            if (emailSent)
+                            bool smsSent = selectedAppointmentId > 0
+                                ? await SendSMSApproved(phone, selectedAppointmentId.ToString(), "approved")
+                                : await SendSMSApproved(phone, rescheduleUserId.ToString(), "approved");
+                            MessageBox.Show(phone);
+                            MessageBox.Show(email);
+
+                            if (emailSent && smsSent)
                             {
                                 await approved();
                             }
                             else
                             {
-                                AlertBox(Color.LightCoral, Color.Red, "Email Notification Failed", "Approval processed, but email notification failed.", Properties.Resources.error);
+                                AlertBox(Color.LightCoral, Color.Red, "Email/SMS Notification Failed", "Email/SMS notification failed.", Properties.Resources.error);
                             }
                         }
                         else
@@ -1606,11 +1646,6 @@ namespace Application_Desktop.Admin_Views
             {
                 await smtpClient.SendMailAsync(mail);
 
-                /*this.BeginInvoke((MethodInvoker)delegate
-                {
-                    AlertBox(Color.LightGreen, Color.SeaGreen, "Email Sent!", "Cancellation notification sent successfully!", Properties.Resources.success);
-
-                });*/
                 return true;
             }
             catch (Exception ex)
@@ -1627,103 +1662,91 @@ namespace Application_Desktop.Admin_Views
         public async Task cancelled()
         {
 
-            string userEmailPending = await _handleAppointmentController.SelectEmail(selectedUserId);
-            string userEmailApproved = await _handleAppointmentController.SelectEmail(selectedApprovedUserId);
-            string userEmailReschedule = await _handleAppointmentController.SelectEmail(rescheduleUserId);
+            string emailPending = await _handleAppointmentController.SelectEmail(selectedUserId);
+            string emailApproved = await _handleAppointmentController.SelectEmail(selectedApprovedUserId);
+            string emailReschedule = await _handleAppointmentController.SelectEmail(rescheduleUserId);
 
+            string phonePending = await _handleAppointmentController.SelectPhone(selectedUserId);
+            string phoneApproved = await _handleAppointmentController.SelectPhone(selectedApprovedUserId);
+            string phoneReschedule = await _handleAppointmentController.SelectPhone(rescheduleUserId);
 
-            if (string.IsNullOrEmpty(userEmailPending) && string.IsNullOrEmpty(userEmailApproved) && string.IsNullOrEmpty(userEmailReschedule))
+            if (string.IsNullOrEmpty(emailPending) && string.IsNullOrEmpty(emailApproved) && string.IsNullOrEmpty(emailReschedule))
             {
                 AlertBox(Color.LightCoral, Color.Red, "Email Not Found", "User email not found.", Properties.Resources.error);
                 return;
             }
+
+            // Handle cancellations
             if (selectedAppointmentId > 0)
             {
-                await ProcessCancellation(userEmailPending, selectedAppointmentId, viewPendingAppointment, "cancelled");
-                userEmailPending = string.Empty;
-                selectedAppointmentId = 0;
+                await ProcessCancellation(emailPending, phonePending, selectedAppointmentId, viewPendingAppointment, "cancelled");
             }
 
             if (ApprovedAppointmentId > 0)
             {
-                await ProcessCancellation(userEmailApproved, ApprovedAppointmentId, viewApprovedAppointment, "missed");
-                userEmailApproved = string.Empty;
-                ApprovedAppointmentId = 0;
+                await ProcessCancellation(emailApproved, phoneApproved, ApprovedAppointmentId, viewApprovedAppointment, "missed");
             }
 
             if (rescheduleAppointmentId > 0)
             {
-                await ProcessCancellation(userEmailReschedule, rescheduleAppointmentId, viewReschedule, "rejected");
-                userEmailApproved = string.Empty;
-                rescheduleAppointmentId = 0;
+                await ProcessCancellation(emailReschedule, phoneReschedule, rescheduleAppointmentId, viewReschedule, "rejected");
             }
         }
 
-        private async Task ProcessCancellation(string userEmail, int appointmentId, DataGridView view, string cancellationType)
+        private async Task ProcessCancellation(string email, string phone, int appointmentId, DataGridView view, string cancellationType)
         {
             LoadingState.Visible = true;
 
             try
             {
-                //await Task.Delay(3000);
                 bool emailSent = false;
+                bool phoneSent = false;
 
-                if (cancellationType == "cancelled")
+                switch (cancellationType)
                 {
-                    emailSent = await SendCancelledNotification(userEmail, appointmentId.ToString(), cancellationType);
+                    case "cancelled":
+                        emailSent = await SendCancelledNotification(email, appointmentId.ToString(), cancellationType);
+                        phoneSent = await SendSMSRejected(phone, appointmentId.ToString());
+                        break;
+
+                    case "missed":
+                        emailSent = await SendMissedNotification(email, appointmentId.ToString(), cancellationType);
+                        phoneSent = await SendSMSRejected(phone, appointmentId.ToString());
+                        break;
+
+                    case "rejected":
+                        emailSent = await SendRejectedNotification(email, appointmentId.ToString(), cancellationType);
+                        phoneSent = await SendSMSRejected(phone, appointmentId.ToString());
+                        break;
                 }
-                else if (cancellationType == "missed")
+
+                if (emailSent && phoneSent)
                 {
-                    emailSent = await SendMissedNotification(userEmail, appointmentId.ToString(), cancellationType);
-                }
-                else if (cancellationType == "rejected")
-                {
-                    emailSent = await SendRejectedNotification(userEmail, appointmentId.ToString(), cancellationType);
-                }
-
-                if (emailSent)
-                {
-
-                    if (cancellationType == "cancelled")
-                    {
-                        await _handleAppointmentController.Cancel(cancellationType, appointmentId);
-                    }
-                    else if (cancellationType == "missed")
-                    {
-                        await _handleAppointmentController.Missed(cancellationType, appointmentId);
-                    }
-                    else if (cancellationType == "rejected")
-                    {
-                        await _handleAppointmentController.Cancel("cancelled", appointmentId);
-
-                    }
-
+                    await _handleAppointmentController.Cancel(cancellationType, appointmentId);
                     view.ClearSelection();
+
                     this.BeginInvoke((MethodInvoker)delegate
                     {
-                        AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Cancelled", "Appointment Change Status Successfully!", Properties.Resources.success);
-                        LoadingState.Visible = false;
+                        AlertBox(Color.LightGreen, Color.SeaGreen, "Appointment Cancelled", "Appointment status changed successfully!", Properties.Resources.success);
                     });
                 }
                 else
                 {
                     this.BeginInvoke((MethodInvoker)delegate
                     {
-                        AlertBox(Color.LightCoral, Color.Red, "Cancel Failed", "Email notification failed.", Properties.Resources.error);
-                        LoadingState.Visible = false;
+                        AlertBox(Color.LightCoral, Color.Red, "Cancel Failed", "Notification failed.", Properties.Resources.error);
                     });
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception($"error {ex.Message}");
+                // Add context only if necessary
+                throw new Exception($"Error occurred: {ex.Message}", ex);
             }
             finally
             {
                 LoadingState.Visible = false;
             }
-
-
         }
 
         private async void btnCancel_Click(object sender, EventArgs e)
@@ -2644,8 +2667,10 @@ namespace Application_Desktop.Admin_Views
                 {
 
                     string userEmail = await _handleAppointmentController.SelectEmail(selectedApprovedUserId);
+                    string phone = await _handleAppointmentController.SelectPhone(selectedApprovedUserId);
 
-                    if (!string.IsNullOrEmpty(userEmail))
+
+                    if (!string.IsNullOrEmpty(userEmail) && !string.IsNullOrEmpty(phone))
                     {
                         return;
                     }
@@ -2815,6 +2840,35 @@ namespace Application_Desktop.Admin_Views
             {
                 MessageBox.Show("Please select an appointment to print the receipt.");
             }*/
+        }
+
+        private async void btnReminder_Click(object sender, EventArgs e)
+        {
+            btnReminder.Enabled = false;
+            btnReminder.Text = "Sending...";
+            try
+            {
+                bool isSend = await _sendEmailReminder.CheckAppointmentAndSendReminder();
+
+                if (isSend)
+                {
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Reminder Sent", "Reminder notification sent successfully", Properties.Resources.success);
+                }
+                else
+                {
+                    AlertBox(Color.LightPink, Color.Red, "Reminder Error", "Failed to send reminder notification", Properties.Resources.error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error sending reminder {ex.Message}");
+            }
+            finally
+            {
+                btnReminder.Enabled = true;
+                btnReminder.Text = "Send Reminder";
+            }
         }
     }
 }

@@ -17,6 +17,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OfficeOpenXml.Packaging.Ionic.Zlib;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 
 namespace Application_Desktop.Admin_Views
 {
@@ -368,6 +370,34 @@ namespace Application_Desktop.Admin_Views
                 return false;
             }
         }
+
+        private async Task<bool> SendSMSFollowUp(string phone, string appointmentId, DateTime rescheduleDate, DateTime rescheduleTime)
+        {
+            const string accountId = "AC99fbd29885d0f879e600bb828ba7d859";
+            const string authToken = "641177ec08958fbeb518ea79b5294fa0";
+
+            TwilioClient.Init(accountId, authToken);
+
+            try
+            {
+                var formattedDate = rescheduleDate.ToString("MMMM dd, yyyy");
+                var formattedTime = rescheduleTime.ToString("hh:mm tt");
+
+                var message = await MessageResource.CreateAsync(
+                    body: $"Dear Valued Client,\n\nWe are reaching out to remind you about your rescheduled appointment (ID: {appointmentId}).\n\nNew Appointment Details:\nDate: {formattedDate}\nTime: {formattedTime}\n\nThank you for choosing SMTC Dental Care! We look forward to seeing you.\n\nBest regards,\nSMTC Dental Care Team",
+                    from: new Twilio.Types.PhoneNumber("+14843417234"), // Replace with verified alphanumeric sender ID if available
+                    to: new Twilio.Types.PhoneNumber(phone)
+                );
+
+                return message != null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error sending SMS: {ex.Message}");
+                return false;
+            }
+        }
+
         private async Task Reschedule()
         {
             btnReschedule.Enabled = false;
@@ -405,9 +435,12 @@ namespace Application_Desktop.Admin_Views
                 // Serialize the object to a JSON string
                 string qrCodeJson = JsonConvert.SerializeObject(qrCodeData);
 
-                bool isEmailSent = await SendEmailNotification(PatientData.Email, PatientData.AppointmentId.ToString(), rescheduleDate, rescheduleTime);
+                string phone = await _quickRetrievalDataController.SelectPhone(PatientData.UserId);
 
-                if (isEmailSent)
+                bool isEmailSent = await SendEmailNotification(PatientData.Email, PatientData.AppointmentId.ToString(), rescheduleDate, rescheduleTime);
+                bool isSMSSent = await SendSMSFollowUp(phone, PatientData.AppointmentId.ToString(), rescheduleDate, rescheduleTime);
+
+                if (isEmailSent && isSMSSent)
                 {
 
                     await _quickRetrievalDataController.Rescheduled(PatientData.UserId, services, rescheduleDate, rescheduleTime, qrCodeJson);

@@ -1,4 +1,5 @@
 ﻿using Application_Desktop.Controller;
+using Application_Desktop.Method;
 using Application_Desktop.Models;
 using Application_Desktop.Screen;
 using Application_Desktop.Sub_Views;
@@ -15,6 +16,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using static Application_Desktop.Models.EllipseManager;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
@@ -24,6 +26,8 @@ namespace Application_Desktop.Views
     public partial class loginPage : Form
     {
         private loginPageController _loginPageController;
+        //private sendEmailReminder _sendEmailReminder;
+
         public loginPage()
         {
             InitializeComponent();
@@ -33,6 +37,10 @@ namespace Application_Desktop.Views
 
             ElipseManager elipseManager = new ElipseManager(5);
             elipseManager.ApplyElipseToAllButtons(this);
+
+            /*timerReminder.Interval = 14400000; // 4 hours in milliseconds
+            timerReminder.Tick += timerReminder_Tick;
+            timerReminder.Start();*/
         }
 
         void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
@@ -174,7 +182,7 @@ namespace Application_Desktop.Views
 
 
                                     this.Hide();
-                                    
+
                                     break;
                                 }
                                 else if (Role.StartsWith("Admin"))
@@ -206,7 +214,7 @@ namespace Application_Desktop.Views
                                     }
 
                                     this.Hide();
-                                    
+
                                     break;
                                 }
 
@@ -392,7 +400,19 @@ namespace Application_Desktop.Views
 
         private void timeVcode_Tick(object sender, EventArgs e)
         {
-           
+
+        }
+
+        private async void timerReminder_Tick(object sender, EventArgs e)
+        {
+           /* try
+            {
+                await _sendEmailReminder.CheckAppointmentAndSendReminder();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error timer {ex.Message}");
+            }*/
         }
     }
 }

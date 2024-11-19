@@ -398,5 +398,40 @@ namespace Application_Desktop.Controller
                 throw new Exception($"Error updating to approve : {ex.Message}");
             }
         }
+
+        public async Task<string> SelectPhone(int userId)
+        {
+            string query = @"SELECT phone FROM users WHERE id = @user_id";
+            string phone = null;
+
+            try
+            {
+                using (MySqlConnection conn = databaseHelper.getConnection())
+                {
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        await conn.OpenAsync();
+                    }
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@user_id", userId);
+
+                        using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                phone = reader.GetString(reader.GetOrdinal("phone"));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error Selecting phone: {ex.Message}");
+            }
+
+            return phone;
+        }
     }
 }
