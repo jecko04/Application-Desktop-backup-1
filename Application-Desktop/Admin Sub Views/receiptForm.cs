@@ -199,78 +199,78 @@ namespace Application_Desktop.Admin_Sub_Views
 
 
 
-     /*   private void txtExtraFee_TextChanged(object sender, EventArgs e)
-        {
+        /*   private void txtExtraFee_TextChanged(object sender, EventArgs e)
+           {
 
-            if (sender is TextBox textBox)
-            {
-                if (string.IsNullOrWhiteSpace(textBox.Text))
-                    return;
+               if (sender is TextBox textBox)
+               {
+                   if (string.IsNullOrWhiteSpace(textBox.Text))
+                       return;
 
-                int originalSelectionStart = textBox.SelectionStart;
-                int originalLength = textBox.Text.Length;
+                   int originalSelectionStart = textBox.SelectionStart;
+                   int originalLength = textBox.Text.Length;
 
-                string rawText = textBox.Text.Replace("₱", "").Replace(",", "").Trim();
+                   string rawText = textBox.Text.Replace("₱", "").Replace(",", "").Trim();
 
-                if (decimal.TryParse(rawText, out decimal value))
-                {
-                    textBox.Text = "₱" + value.ToString("N2");
+                   if (decimal.TryParse(rawText, out decimal value))
+                   {
+                       textBox.Text = "₱" + value.ToString("N2");
 
-                    int newLength = textBox.Text.Length;
-                    int lengthDifference = newLength - originalLength;
+                       int newLength = textBox.Text.Length;
+                       int lengthDifference = newLength - originalLength;
 
-                    textBox.SelectionStart = originalSelectionStart + lengthDifference;
-                }
-                else
-                {
-                    textBox.Text = "₱";
-                    textBox.SelectionStart = textBox.Text.Length;
-                }
-            }
+                       textBox.SelectionStart = originalSelectionStart + lengthDifference;
+                   }
+                   else
+                   {
+                       textBox.Text = "₱";
+                       textBox.SelectionStart = textBox.Text.Length;
+                   }
+               }
 
-            decimal price = 0m;
+               decimal price = 0m;
 
-            if (decimal.TryParse(txtPrice.Text.Replace("₱", "").Replace(",", "").Trim(), out price))
-            {
-                decimal total = price;
-                txtTotal.Text = "₱" + total.ToString("N2");
-            }
+               if (decimal.TryParse(txtPrice.Text.Replace("₱", "").Replace(",", "").Trim(), out price))
+               {
+                   decimal total = price;
+                   txtTotal.Text = "₱" + total.ToString("N2");
+               }
 
-        }
+           }
 
-        private void txtExtraFee_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (sender is MaterialSkin.Controls.MaterialTextBox textBox)
-            {
-                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
-                {
-                    e.Handled = true;
-                }
+           private void txtExtraFee_KeyPress(object sender, KeyPressEventArgs e)
+           {
+               if (sender is MaterialSkin.Controls.MaterialTextBox textBox)
+               {
+                   if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+                   {
+                       e.Handled = true;
+                   }
 
-                if (e.KeyChar == '.' && textBox.Text.IndexOf('.') > -1)
-                {
-                    e.Handled = true;
-                }
-            }
-        }
+                   if (e.KeyChar == '.' && textBox.Text.IndexOf('.') > -1)
+                   {
+                       e.Handled = true;
+                   }
+               }
+           }
 
-        private void txtExtraFee_Leave(object sender, EventArgs e)
-        {
-            if (sender is MaterialSkin.Controls.MaterialTextBox textBox)
-            {
-                string rawText = textBox.Text.Replace("₱", "").Replace(",", "").Trim();
+           private void txtExtraFee_Leave(object sender, EventArgs e)
+           {
+               if (sender is MaterialSkin.Controls.MaterialTextBox textBox)
+               {
+                   string rawText = textBox.Text.Replace("₱", "").Replace(",", "").Trim();
 
-                if (decimal.TryParse(rawText, out decimal value))
-                {
-                    textBox.Text = "₱" + value.ToString("N2");
-                }
-                else
-                {
-                    textBox.Text = "₱0.00";
-                }
-            }
-        }
-*/
+                   if (decimal.TryParse(rawText, out decimal value))
+                   {
+                       textBox.Text = "₱" + value.ToString("N2");
+                   }
+                   else
+                   {
+                       textBox.Text = "₱0.00";
+                   }
+               }
+           }
+   */
 
         private void txtPrice_TextChanged(object sender, EventArgs e)
         {
@@ -294,7 +294,7 @@ namespace Application_Desktop.Admin_Sub_Views
                     int newLength = textBox.Text.Length;
                     int lengthDifference = newLength - originalLength;
                     textBox.SelectionStart = originalSelectionStart + lengthDifference;
-                  
+
                 }
                 else
                 {

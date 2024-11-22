@@ -46,6 +46,7 @@
             materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             timeVcode = new System.Windows.Forms.Timer(components);
             timerReminder = new System.Windows.Forms.Timer(components);
+            btnForgotPassword = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
@@ -218,6 +219,7 @@
             txtPass.TrailingIcon = null;
             txtPass.UseSystemPasswordChar = false;
             txtPass.UseTallSize = false;
+            txtPass.Click += txtPass_Click;
             // 
             // materialLabel1
             // 
@@ -252,11 +254,26 @@
             // 
             timerReminder.Tick += timerReminder_Tick;
             // 
+            // btnForgotPassword
+            // 
+            btnForgotPassword.AutoSize = true;
+            btnForgotPassword.Cursor = Cursors.Hand;
+            btnForgotPassword.Depth = 0;
+            btnForgotPassword.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            btnForgotPassword.Location = new Point(417, 259);
+            btnForgotPassword.MouseState = MaterialSkin.MouseState.HOVER;
+            btnForgotPassword.Name = "btnForgotPassword";
+            btnForgotPassword.Size = new Size(129, 19);
+            btnForgotPassword.TabIndex = 34;
+            btnForgotPassword.Text = "Forgot Password?";
+            btnForgotPassword.Click += btnForgotPassword_Click;
+            // 
             // loginPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(606, 438);
+            Controls.Add(btnForgotPassword);
             Controls.Add(materialLabel2);
             Controls.Add(materialLabel1);
             Controls.Add(txtPass);
@@ -306,5 +323,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.Timer timeVcode;
         private System.Windows.Forms.Timer timerReminder;
+        private MaterialSkin.Controls.MaterialLabel btnForgotPassword;
     }
 }

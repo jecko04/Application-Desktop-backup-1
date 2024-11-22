@@ -1,8 +1,10 @@
-﻿using Application_Desktop.Controller;
+﻿using Application_Desktop.Admin_Sub_Views;
+using Application_Desktop.Controller;
 using Application_Desktop.Method;
 using Application_Desktop.Models;
 using Application_Desktop.Screen;
 using Application_Desktop.Sub_Views;
+using Application_Desktop.Views.forgot;
 using MaterialSkin.Controls;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
@@ -38,9 +40,8 @@ namespace Application_Desktop.Views
             ElipseManager elipseManager = new ElipseManager(5);
             elipseManager.ApplyElipseToAllButtons(this);
 
-            /*timerReminder.Interval = 14400000; // 4 hours in milliseconds
-            timerReminder.Tick += timerReminder_Tick;
-            timerReminder.Start();*/
+
+
         }
 
         void AlertBox(Color backcolor, Color color, string title, string subtitle, Image icon)
@@ -405,14 +406,41 @@ namespace Application_Desktop.Views
 
         private async void timerReminder_Tick(object sender, EventArgs e)
         {
-           /* try
+            /* try
+             {
+                 await _sendEmailReminder.CheckAppointmentAndSendReminder();
+             }
+             catch (Exception ex)
+             {
+                 throw new Exception($"Error timer {ex.Message}");
+             }*/
+        }
+
+        sendEmailForgotPassword sendEmailForgotPasswordInstance;
+
+        private void btnForgotPassword_Click(object sender, EventArgs e)
+        {
+            if (sendEmailForgotPasswordInstance == null || sendEmailForgotPasswordInstance.IsDisposed)
             {
-                await _sendEmailReminder.CheckAppointmentAndSendReminder();
+                sendEmailForgotPasswordInstance = new sendEmailForgotPassword();
+                sendEmailForgotPasswordInstance.Show();
             }
-            catch (Exception ex)
+            else
             {
-                throw new Exception($"Error timer {ex.Message}");
-            }*/
+                if (sendEmailForgotPasswordInstance.Visible)
+                {
+                    sendEmailForgotPasswordInstance.BringToFront();
+                }
+                else
+                {
+                    sendEmailForgotPasswordInstance.Show();
+                }
+            }
+        }
+
+        private void txtPass_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -44,6 +44,7 @@
             txtTotal = new MaterialSkin.Controls.MaterialTextBox2();
             materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             btnClose = new PictureBox();
+            elipseControl1 = new ElipseToolDemo.ElipseControl();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
             SuspendLayout();
             // 
@@ -348,6 +349,11 @@
             btnClose.TabStop = false;
             btnClose.Click += btnClose_Click;
             // 
+            // elipseControl1
+            // 
+            elipseControl1.CornerRadius = 15;
+            elipseControl1.TargetControl = this;
+            // 
             // receiptForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -396,5 +402,6 @@
         private MaterialSkin.Controls.MaterialTextBox2 txtTotal;
         private MaterialSkin.Controls.MaterialLabel materialLabel9;
         private PictureBox btnClose;
+        private ElipseToolDemo.ElipseControl elipseControl1;
     }
 }
