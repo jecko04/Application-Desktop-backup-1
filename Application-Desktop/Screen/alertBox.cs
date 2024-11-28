@@ -21,7 +21,7 @@ namespace Application_Desktop.Screen
         private int progress = 0;
         private void AlertTimer_Tick(object sender, EventArgs e)
         {
-            progress += 4;
+            progress += 2;
             AlertProgressBar.Width = progress;
             if (progress >= 400)
             {
@@ -33,6 +33,15 @@ namespace Application_Desktop.Screen
 
         private void alertBox_Load_1(object sender, EventArgs e)
         {
+
+            System.Windows.Forms.Screen screen = System.Windows.Forms.Screen.PrimaryScreen;
+            Rectangle workingArea = screen.WorkingArea;
+
+            // Calculate bottom-right position for the alert box
+            this.Location = new Point(
+                workingArea.Right - this.Width - 10,
+                workingArea.Bottom - this.Height - 10
+            );
 
             AlertTimer.Start();
         }
