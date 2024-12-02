@@ -61,71 +61,56 @@ namespace Application_Desktop.Views.forgot
             //int ID = session.LoggedInSession;
             //string email = txtEmail.Text;
 
+            string email = txtEmail.Text;
             string token = GenerateSecureToken();
             string resetLink = $"http://localhost:8080/resetpassword?token={WebUtility.UrlEncode(token)}";
 
-            string email = txtEmail.Text;
-            int adminId = await _resetpasswordController.FindUserId(email);
+            var (userId, userType) = await _resetpasswordController.FindUserByEmail(email);
 
-            if (adminId <= 0)
+            if (userId <= 0 || string.IsNullOrEmpty(userType))
             {
                 MessageBox.Show("Email not found. Please check and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-
             string to = email;
             string from = "smtc.dentalcare@gmail.com";
             string pass = "esttldcshliffgwz";
-            MailMessage message = new MailMessage();
+            MailMessage message = new MailMessage
+            {
+                From = new MailAddress(from),
+                Subject = "Reset Your Password",
+                IsBodyHtml = true,
+                Body = $@"<html>
+            <body style='font-family: Arial, sans-serif;'>
+                <div style='max-width: 600px; margin: auto;'>
+                    <h2>Password Reset Request</h2>
+                    <p>Use the link below to reset your password:</p>
+                    <p><a href='{resetLink}'>{resetLink}</a></p>
+                </div>
+            </body>
+        </html>"
+            };
             message.To.Add(to);
-            message.From = new MailAddress(from);
-            message.Subject = "Reset Your Password";
-            message.IsBodyHtml = true;
-            message.Body = $@"<html>
-                    <body style=""font-family: Arial, sans-serif; color: #333; line-height: 1.6;"">
-                        <div style=""max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px;"">
-                            <h2 style=""color: #2980b9; text-align: center;"">Password Reset Request</h2>
-                            <p>Dear Valued User,</p>
 
-                            <p>
-                                We received a request to reset your password. Use the link below to complete the process:
-                            </p>
-
-                            <p style=""text-align: center; font-size: 24px; font-weight: bold; color: #c0392b;"">
-                            <a href=""{resetLink}"">{resetLink}</a>
-                            </p>
-
-                            <p>If you did not request to reset your password, please ignore this message or contact support if you have concerns.</p>
-
-                            <p style=""text-align: center; font-style: italic; color: #7f8c8d;"">
-                                ""Your security is our priority.""
-                            </p>
-
-                            <hr style=""border: 1px solid #ddd;"">
-
-                        </div>
-                    </body>
-                </html>";
-
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com")
+            using (SmtpClient smtp = new SmtpClient("smtp.gmail.com")
             {
                 EnableSsl = true,
                 Port = 587,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
                 Credentials = new NetworkCredential(from, pass)
-            };
-            try
+            })
             {
-                smtp.Send(message);
-                await _resetpasswordController.InsertResetPasswordToken(adminId, email, token);
-                return true;
+                try
+                {
+                    smtp.Send(message);
+                    await _resetpasswordController.InsertResetPasswordToken(userId, email, token, userType);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Error sending email: {ex.Message}");
+                }
             }
-            catch (Exception ex)
-            {
-                throw new Exception($"error {ex.Message}");
-            }
-            return false;
         }
 
         //Send Forgot Password Link
@@ -169,7 +154,30 @@ namespace Application_Desktop.Views.forgot
 
         private async void btnLogins_Click(object sender, EventArgs e)
         {
-            await SendEmailNotif();
+            btnLogins.Enabled = false;
+            btnLogins.Text = "Sending...";
+            try
+            {
+                bool isSend = await SendEmailForgotPassword();
+                if (isSend)
+                {
+                    AlertBox(Color.LightGreen, Color.SeaGreen, "Reset Password Link Sent", "", Properties.Resources.success);
+                }
+                else
+                {
+                    AlertBox(Color.LightPink, Color.Red, "Failed to Send Reset Password Link", "", Properties.Resources.error);
+                }
+                await Task.Delay(3000);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                btnLogins.Enabled = true;
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)

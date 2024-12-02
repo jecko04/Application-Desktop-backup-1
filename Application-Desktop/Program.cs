@@ -104,7 +104,7 @@ namespace Application_Desktop
         {
             string query = @"
                     SELECT 
-                        appointments.id AS AppointmentID, -- Add ID for tracking
+                        appointments.id AS AppointmentID, 
                         appointments.*,
                         users.name AS UserName,
                         branch.BranchName,
